@@ -18,14 +18,10 @@ class PrivacyPolicy extends Component {
                     <div className="container">
                         <div className="content">
                             <p>
-                                Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://clemble.com website (the "Service") operated by Thank Project ("us", "we", or "our").
-                                Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
-                                By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service. [Our Terms of Service](https://termsfeed.com/blog/sample-terms-and-conditions-template/) was created with TermsFeed.
-                            </p>
-                            <p>
-                                When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.
-                                You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password, whether your password is with our Service or a third-party service.
-                                You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.
+                                Thank ("us", "we", or "our") operates the https://clemble.com website (the "Service").
+                                This page informs you of our policies regarding the collection, use and disclosure of Personal Information when you use our Service.
+                                We will not use or share your information with anyone except as described in this Privacy Policy. <a href="https://termsfeed.com/blog/sample-privacy-policy-template/">Our Privacy Policy</a> was created with TermsFeed.
+                                We use your Personal Information for providing and improving the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible at https://clemble.com
                             </p>
                         </div>
                     </div>
@@ -33,13 +29,24 @@ class PrivacyPolicy extends Component {
                 <section className="section">
                     <div className="container">
                         <div className="heading">
-                            <h2 className="title">Links To Other Web Sites</h2>
+                            <h2 className="title">Information Collection And Use</h2>
                         </div>
                         <div className="content">
                             <p>
-                                Our Service may contain links to third-party web sites or services that are not owned or controlled by Thank Project.
-                                Thank Project has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that Thank Project shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.
-                                We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit.
+                                While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to, your name, postal address, other information ("Personal Information").
+                            </p>
+
+                        </div>
+                    </div>
+                </section>
+                <section className="section">
+                    <div className="container">
+                        <div className="heading">
+                            <h2 className="title">Log Data</h2>
+                        </div>
+                        <div className="content">
+                            <p>
+                                We collect information that your browser sends whenever you visit our Service ("Log Data"). This Log Data may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages and other statistics.
                             </p>
                         </div>
                     </div>
@@ -47,15 +54,14 @@ class PrivacyPolicy extends Component {
                 <section className="section">
                     <div className="container">
                         <div className="heading">
-                            <h2 className="title">Termination</h2>
+                            <h2 className="title">Cookies</h2>
                         </div>
                         <div className="content">
                             <p>
-                                We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
-                                All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.
-                                We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
-                                Upon termination, your right to use the Service will immediately cease. If you wish to terminate your account, you may simply discontinue using the Service.
-                                All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.
+                                Cookies are files with small amount of data, which may include an anonymous unique identifier. Cookies are sent to your browser from a web site and stored on your computer's hard drive.
+                            </p>
+                            <p>
+                                We use "cookies" to collect information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.
                             </p>
                         </div>
                     </div>
@@ -63,12 +69,14 @@ class PrivacyPolicy extends Component {
                 <section className="section">
                     <div className="container">
                         <div className="heading">
-                            <h2 className="title">Governing Law</h2>
+                            <h2 className="title">Service Providers</h2>
                         </div>
                         <div className="content">
                             <p>
-                                These Terms shall be governed and construed in accordance with the laws of Hong Kong, without regard to its conflict of law provisions.
-                                Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service, and supersede and replace any prior agreements we might have between us regarding the Service.
+                                We may employ third party companies and individuals to facilitate our Service, to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.
+                            </p>
+                            <p>
+                                These third parties have access to your Personal Information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
                             </p>
                         </div>
                     </div>
@@ -76,12 +84,57 @@ class PrivacyPolicy extends Component {
                 <section className="section">
                     <div className="container">
                         <div className="heading">
-                            <h2 className="title">Changes</h2>
+                            <h2 className="title">Security</h2>
                         </div>
                         <div className="content">
                             <p>
-                                We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
-                                By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.
+                                The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section className="section">
+                    <div className="container">
+                        <div className="heading">
+                            <h2 className="title">Links To Other Sites</h2>
+                        </div>
+                        <div className="content">
+                            <p>
+                                Our Service may contain links to other sites that are not operated by us. If you click on a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.
+                            </p>
+                            <p>
+                                We have no control over, and assume no responsibility for the content, privacy policies or practices of any third party sites or services.
+                            </p>
+
+                        </div>
+                    </div>
+                </section>
+                <section className="section">
+                    <div className="container">
+                        <div className="heading">
+                            <h2 className="title">Children's Privacy</h2>
+                        </div>
+                        <div className="content">
+                            <p>
+                                Our Service does not address anyone under the age of 13 ("Children").
+                            </p>
+                            <p>
+                                We do not knowingly collect personally identifiable information from children under 13. If you are a parent or guardian and you are aware that your Children has provided us with Personal Information, please contact us. If we discover that a Children under 13 has provided us with Personal Information, we will delete such information from our servers immediately.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section className="section">
+                    <div className="container">
+                        <div className="heading">
+                            <h2 className="title">Changes To This Privacy Policy</h2>
+                        </div>
+                        <div className="content">
+                            <p>
+                                We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
+                            </p>
+                            <p>
+                                You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
                             </p>
                         </div>
                     </div>
@@ -92,12 +145,9 @@ class PrivacyPolicy extends Component {
                             <h2 className="title">Contact Us</h2>
                         </div>
                         <div className="content">
-                            <p>
-                                If you have any questions about these Terms, please contact us.
-                            </p>
+                            <p>If you have any questions about this Privacy Policy, please contact us.</p>
                         </div>
                     </div>
-
                 </section>
             </div>
         );
@@ -109,7 +159,7 @@ export default class PrivacyPolicyPage extends Component {
         return (
             <div>
                 <Navigation/>
-                <TermsOfUse/>
+                <PrivacyPolicy/>
                 <Footer/>
             </div>
         )

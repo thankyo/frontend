@@ -5,11 +5,12 @@ import { createStore, combineReducers } from 'redux';
 import { Router, Route, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
-import App from 'components/App';
-import Documentation from 'components/documentation/Documentation';
-import Join from 'components/join/Join';
+import App            from 'components/App';
+import Documentation  from 'components/documentation/Documentation';
+import Join           from 'components/join/Join';
 
-import TermsOfUse from 'components/leagal/TermsOfUse';
+import TermsOfUse     from 'components/legal/TermsOfUse';
+import PrivacyPolicy  from 'components/legal/PrivacyPolicy';
 
 const reducers = combineReducers(
     { routing: routerReducer }
@@ -25,7 +26,8 @@ const load = () => {
         <Route path="/" component={App}/>
         <Route path="/documentation" component={ Documentation }/>
         <Route path="/join" component={ Join }/>
-        <Route path="/leagal/terms" component={ TermsOfUse } />
+        <Route path="/legal/terms" component={ TermsOfUse } />
+        <Route path="/legal/privacy" component={ PrivacyPolicy } />
       </Router>
     </Provider>,
     document.querySelector('#app')
