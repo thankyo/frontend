@@ -27,9 +27,9 @@ export default function(state = initialState, action) {
             console.log(itemIndex);
             return state;
         case MENU_ACTIVATE:
-            let nextState = !state.active;
-            console.log(`Here ${nextState}`);
-            return Object.assign(state, { active: nextState });
+            let nextState = Object.assign({}, state, { active: !state.active });
+            console.log(`Here ${JSON.stringify(nextState)}`);
+            return nextState;
         default:
             return state;
     }
