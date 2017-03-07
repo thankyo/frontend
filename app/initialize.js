@@ -22,7 +22,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 const load = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Router history={history}>
+      <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
         <Route path="/" component={App}/>
         <Route path="/documentation" component={ Documentation }/>
         <Route path="/join" component={ Join }/>
