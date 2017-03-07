@@ -1,34 +1,25 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import { Provider } from 'react-redux';
+
 import { createStore, combineReducers } from 'redux';
-import { Router, Route, browserHistory } from 'react-router';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+import MainApp        from './route';
+
+import { browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-
-import App            from 'components/App';
-import Documentation  from 'components/documentation/Documentation';
-import Join           from 'components/join/Join';
-
-import TermsOfUse     from 'components/legal/TermsOfUse';
-import PrivacyPolicy  from 'components/legal/PrivacyPolicy';
-
 const reducers = combineReducers(
     { routing: routerReducer }
 );
-const store = createStore(reducers);
+const store = createStore(reducers, composeWithDevTools());
 
-const history = syncHistoryWithStore(browserHistory, store)
+const history = syncHistoryWithStore(browserHistory, store);
 
 const load = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
-        <Route path="/" component={App}/>
-        <Route path="/documentation" component={ Documentation }/>
-        <Route path="/join" component={ Join }/>
-        <Route path="/legal/terms" component={ TermsOfUse } />
-        <Route path="/legal/privacy" component={ PrivacyPolicy } />
-      </Router>
+      <MainApp history={history}/>
     </Provider>,
     document.querySelector('#app')
   );
