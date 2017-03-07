@@ -4,7 +4,6 @@ import {Link} from "react-router";
 import {activateMenu} from "../reducers/menu.actions";
 
 const Navigation = ({ menu, onActivate }) => {
-    console.log(JSON.stringify(menu));
     return (
         <nav className="nav">
             <div className="nav-left">
@@ -17,13 +16,13 @@ const Navigation = ({ menu, onActivate }) => {
                 </div>
             </div>
 
-            <span className={menu.active ? "nav-toggle is-active" : "nav-toggle"} onClick={onActivate}>
+            <span className={menu.get("active") ? "nav-toggle is-active" : "nav-toggle"} onClick={onActivate}>
                     <span></span>
                     <span></span>
                     <span></span>
                 </span>
 
-            <div id="nav-menu" className={menu.active ? "nav-right nav-menu is-active" : "nav-right nav-menu"}>
+            <div id="nav-menu" className={menu.get("active") ? "nav-right nav-menu is-active" : "nav-right nav-menu"}>
                     <span className="nav-item">
                         <Link to="/" className="nav-item">
                             {"Home"}
