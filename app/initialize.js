@@ -2,17 +2,16 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import MainApp        from './route';
 
 import { browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-const reducers = combineReducers(
-    { routing: routerReducer }
-);
-const store = createStore(reducers, composeWithDevTools());
+import { syncHistoryWithStore } from 'react-router-redux'
+
+import reducers from './reducers';
+const store = createStore(reducers(), composeWithDevTools());
 
 const history = syncHistoryWithStore(browserHistory, store);
 

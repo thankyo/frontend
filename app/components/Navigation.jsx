@@ -1,43 +1,40 @@
-import React, { Component } from "react";
-import { Link } from 'react-router';
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {Link} from "react-router";
+import {activateMenu} from "../reducers/menu.actions";
 
-export default class Navigation extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { active: false };
-        this.handleMenuClick = this.handleMenuClick.bind(this);
-    }
-    handleMenuClick() {
-        let active = this.state.active;
-        this.setState({ active: !active});
-    }
-    render() {
-        return (
-            <nav className="nav">
-                <div className="nav-left">
-                    <div className="nav-item">
-                        <Link to="/">
+const Navigation = ({ menu, onActivate }) => {
+    console.log(JSON.stringify(menu));
+    return (
+        <nav className="nav">
+            <div className="nav-left">
+                <div className="nav-item">
+                    <Link to="/">
                             <span className="icon">
                                 <i className="fa fa-heart-o"></i>
                             </span>
-                        </Link>
-                    </div>
+                    </Link>
                 </div>
+            </div>
 
-                <span className={this.state.active ? "nav-toggle is-active" : "nav-toggle"} onClick={this.handleMenuClick}>
+            <span className={menu.active ? "nav-toggle is-active" : "nav-toggle"} onClick={onActivate}>
                     <span></span>
                     <span></span>
                     <span></span>
                 </span>
 
-                <div id="nav-menu" className={this.state.active ? "nav-right nav-menu is-active" : "nav-right nav-menu"}>
-                    <Link to="/" className="nav-item">
-                        {"Home"}
-                    </Link>
-                    <Link to="/documentation" className="nav-item">
-                        {"Documentation"}
-                    </Link>
+            <div id="nav-menu" className={menu.active ? "nav-right nav-menu is-active" : "nav-right nav-menu"}>
                     <span className="nav-item">
+                        <Link to="/" className="nav-item">
+                            {"Home"}
+                        </Link>
+                    </span>
+                <span className="nav-item">
+                        <Link to="/documentation" className="nav-item">
+                            {"Documentation"}
+                        </Link>
+                    </span>
+                <span className="nav-item">
                         <Link to="/join" className="button is-primary">
                             <span className="icon">
                                 <i className="fa fa-sign-in"></i>
@@ -45,8 +42,27 @@ export default class Navigation extends Component {
                             <span>Join</span>
                         </Link>
                     </span>
-                </div>
+            </div>
+        </nav>
+    );
+};
 
-            </nav>
-    )}
-}
+const mapStateToProps = ({ menu }) => {
+    return {
+        active: menu.active,
+        menu
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onActivate: () => {
+            dispatch(activateMenu())
+        }
+    }
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Navigation);
