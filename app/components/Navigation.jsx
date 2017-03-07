@@ -3,7 +3,20 @@ import {connect} from "react-redux";
 import {Link} from "react-router";
 import {activateMenu} from "../reducers/menu.actions";
 
-const Navigation = ({ menu, onActivate }) => {
+class NavigationItem extends Component {
+    render() {
+        return (
+            <Link to={this.props.item.path} className={this.props.item.active ? "nav-item is-active" : "nav-item"}>
+                {/*<span className="icon">*/}
+                    {/*<i className={this.props.item.icon}></i>*/}
+                {/*</span>*/}
+                <span>{this.props.item.text}</span>
+            </Link>
+        );
+    }
+}
+
+const Navigation = ({menu, onActivate}) => {
     return (
         <nav className="nav">
             <div className="nav-left">
@@ -16,39 +29,26 @@ const Navigation = ({ menu, onActivate }) => {
                 </div>
             </div>
 
-            <span className={menu.get("active") ? "nav-toggle is-active" : "nav-toggle"} onClick={onActivate}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
+            <span className={menu.active ? "nav-toggle is-active" : "nav-toggle"} onClick={onActivate}>
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
 
-            <div id="nav-menu" className={menu.get("active") ? "nav-right nav-menu is-active" : "nav-right nav-menu"}>
-                    <span className="nav-item">
-                        <Link to="/" className="nav-item">
-                            {"Home"}
-                        </Link>
-                    </span>
-                <span className="nav-item">
-                        <Link to="/documentation" className="nav-item">
-                            {"Documentation"}
-                        </Link>
-                    </span>
-                <span className="nav-item">
-                        <Link to="/join" className="button is-primary">
-                            <span className="icon">
-                                <i className="fa fa-sign-in"></i>
-                            </span>
-                            <span>Join</span>
-                        </Link>
-                    </span>
+            <div id="nav-menu" className={menu.active ? "nav-right nav-menu is-active" : "nav-right nav-menu"}>
+                {menu.items.map((item) =>
+                    <NavigationItem
+                        key={item.path}
+                        item={item}
+                    />
+                )}
             </div>
         </nav>
     );
 };
 
-const mapStateToProps = ({ menu }) => {
+const mapStateToProps = ({menu}) => {
     return {
-        active: menu.active,
         menu
     };
 };
