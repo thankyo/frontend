@@ -10,6 +10,7 @@
     "build": "brunch build --production"
   },
   "dependencies": {
+    "http-proxy": "^1.16.2",
     "immutable": "^3.8.1",
     "react": "^15.4.2",
     "react-dom": "15.4.2",
@@ -20,6 +21,7 @@
     "redux-devtools-extension": "^2.13.0"
   },
   "devDependencies": {
+    "express-history-api-fallback": "^2.1.0",
     "auto-reload-brunch": "^2",
     "hmr-brunch": "^0.1",
     "babel-brunch": "~6.0.0",
