@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-
+import React, {Component} from "react";
 import Footer from "../Footer";
 import Navigation from "../Navigation";
 
@@ -9,12 +8,10 @@ export default class Join extends Component {
             <div>
                 <Navigation/>
                 <div className="section">
-                    <h1>Welcome</h1>
-                    <div className="is-centered">
-                        <a className="button is-primary" href="/api/auth/authenticate/facebook">
+                    <div className="container has-text-centered">
+                        <a className="button is-primary is-large is-outlined" href="/api/auth/authenticate/facebook">
                             <span className="icon">
                                 <i className="fa fa-facebook-f"></i>
-
                             </span>
                             <span>
                             Facebook
