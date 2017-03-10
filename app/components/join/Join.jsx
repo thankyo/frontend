@@ -8,7 +8,20 @@ export default class Join extends Component {
         return (
             <div>
                 <Navigation/>
-                <h1>We have cookies</h1>
+                <div className="section">
+                    <h1>Welcome</h1>
+                    <div className="is-centered">
+                        <a className="button is-primary" href="/api/auth/authenticate/facebook">
+                            <span className="icon">
+                                <i className="fa fa-facebook-f"></i>
+
+                            </span>
+                            <span>
+                            Facebook
+                            </span>
+                        </a>
+                    </div>
+                </div>
                 <Footer/>
             </div>
         )
