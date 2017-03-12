@@ -7,9 +7,6 @@ class NavigationItem extends Component {
     render() {
         return (
             <Link to={this.props.item.path} className={this.props.item.active ? "nav-item is-active" : "nav-item"}>
-                {/*<span className="icon">*/}
-                    {/*<i className={this.props.item.icon}></i>*/}
-                {/*</span>*/}
                 <span>{this.props.item.text}</span>
             </Link>
         );
