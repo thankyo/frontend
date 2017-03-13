@@ -1,7 +1,6 @@
 export const LOGIN_REQUESTED = "LOGIN_REQUESTED";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
-export const CHECK_AUTH = "CHECK_AUTH";
 
 export const LOGOUT = "LOGOUT";
 
@@ -31,19 +30,20 @@ function loginSuccess(token) {
         payload: {
             token
         }
-    }
+    };
 }
 
-export function checkAuth() {
+function logoutEvent() {
     return {
-        type: CHECK_AUTH
+        type: LOGOUT
     };
 }
 
 export function logout() {
-    return {
-        type: LOGOUT
-    }
+    return (dispatch) => {
+        dispatch(logoutEvent());
+        browserHistory.push("/");
+    };
 }
 
 export function login(provider) {

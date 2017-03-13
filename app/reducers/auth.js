@@ -2,13 +2,11 @@ import { LOGIN_REQUESTED, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT } from "./auth.acti
 import authService from '../service/auth';
 
 const anonymousState = {
-    isAuthenticated: false,
-    provider: "none"
+    isAuthenticated: false
 };
 
 const authenticatedState = {
-    isAuthenticated: true,
-    provider: "none"
+    isAuthenticated: true
 };
 
 export default function(state = authService.isAuthenticated() ? authenticatedState : anonymousState, { type, payload}) {
@@ -21,7 +19,7 @@ export default function(state = authService.isAuthenticated() ? authenticatedSta
             return Object.assign({}, state, { isAuthenticated: true, token: payload.token });
         case LOGIN_REQUESTED:
             authService.removeToken();
-            return Object.assign({}, state, { isAuthenticated: false, provider: payload.provider });
+            return Object.assign({}, state, { isAuthenticated: false });
         case LOGOUT:
             authService.removeToken();
             return anonymousState;

@@ -1,9 +1,16 @@
+import 'whatwg-fetch';
+
 class AuthService {
     constructor() {
     }
     isAuthenticated() {
         let token = localStorage.getItem("token");
         return token !== undefined && token !== null;
+    }
+    fetch(req) {
+        if (this.isAuthenticated())
+            req.headers.append('X-Auth-Token', this.getToken());
+        return fetch(req)
     }
     getToken() {
         return localStorage.getItem("token");

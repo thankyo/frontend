@@ -1,14 +1,13 @@
 import { LOCATION_CHANGE }  from 'react-router-redux';
-import { MENU_ACTIVATE }    from '../reducers/menu.actions.js';
+import { MENU_ACTIVATE }    from './menu.actions.js';
 import { LOGIN_SUCCESS, LOGOUT }    from './auth.actions';
 import authService          from '../service/auth';
 
-function createMenu(text, path, icon) {
+function createMenu(text, path) {
     return {
         text,
         path,
-        icon,
-        active: false
+        active: false,
     };
 }
 
@@ -29,13 +28,16 @@ const userMenu = {
     ]
 };
 
+function updateActive(state, path) {
+    let items = state.items.slice().map((item) => Object.assign({}, item, { active: item.path === path }))
+    return Object.assign({}, state, { active: false, items });
+}
 
-export default function(state = authService.isAuthenticated() ? userMenu : anonymousMenu, action) {
-    switch (action.type) {
+
+export default function(state = authService.isAuthenticated() ? userMenu : anonymousMenu, { type, payload }) {
+    switch (type) {
         case LOCATION_CHANGE:
-            let path = action.payload.pathname;
-            let items = state.items.slice().map((item) => Object.assign({}, item, { active: item.path === path }))
-            return Object.assign({}, state, { active: false, items });
+            return updateActive(state, payload.pathname);
         case MENU_ACTIVATE:
             let active = !state.active;
             return Object.assign({}, state, { active });

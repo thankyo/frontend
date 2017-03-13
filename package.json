@@ -20,7 +20,8 @@
     "react-router-redux": "4.0.8",
     "redux": "3.6.0",
     "redux-devtools-extension": "^2.13.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "express-history-api-fallback": "^2.1.0",

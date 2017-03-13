@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router";
-import {activateMenu} from "../reducers/menu.actions";
+import {activateMenu, selected} from "../reducers/menu.actions";
 
 class NavigationItem extends Component {
     render() {
@@ -17,13 +17,6 @@ const Navigation = ({menu, onActivate}) => {
     return (
         <nav className="nav">
             <div className="nav-left">
-                <div className="nav-item">
-                    <Link to="/">
-                            <span className="icon">
-                                <i className="fa fa-heart-o"></i>
-                            </span>
-                    </Link>
-                </div>
             </div>
 
             <span className={menu.active ? "nav-toggle is-active" : "nav-toggle"} onClick={onActivate}>

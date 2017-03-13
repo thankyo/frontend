@@ -10,6 +10,7 @@ import TermsOfUse     from 'components/legal/TermsOfUse';
 import PrivacyPolicy  from 'components/legal/PrivacyPolicy';
 
 import Dashboard      from 'pages/Dashboard';
+import Leave          from 'pages/Leave';
 
 export default class MainApp extends Component {
     render() {
@@ -19,9 +20,10 @@ export default class MainApp extends Component {
                     <Route path="/" component={App}/>
                     <Route path="/dashboard" component={ Dashboard }/>
                     <Route path="/documentation" component={ Documentation }/>
+                    <Route path="/leave" component={ Leave }/>
                     <Route path="/join" component={ Join }/>
-                    <Route path="/legal/terms" component={ TermsOfUse } />
-                    <Route path="/legal/privacy" component={ PrivacyPolicy } />
+                    <Route path="/legal/terms" component={ TermsOfUse }/>
+                    <Route path="/legal/privacy" component={ PrivacyPolicy }/>
                 </Router>
             </div>
         );

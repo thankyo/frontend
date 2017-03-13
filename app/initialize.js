@@ -4,9 +4,6 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 const store = createStore(reducers(), composeWithDevTools( applyMiddleware(thunk) ));
 
-import { checkAuth } from "./reducers/auth.actions";
-store.dispatch(checkAuth);
-
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux'
 const history = syncHistoryWithStore(browserHistory, store);

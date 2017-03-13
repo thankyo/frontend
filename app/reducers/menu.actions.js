@@ -4,4 +4,4 @@ export function activateMenu() {
     return {
         type: MENU_ACTIVATE
     };
-};
+}
