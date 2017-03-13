@@ -11,7 +11,9 @@ export default class Dashboard extends Component {
         return (
             <div>
                 <Navigation/>
-                <Profile id="me"/>
+                <div className="column is-one-third">
+                    <Profile id="me"/>
+                </div>
                 <Footer/>
             </div>
         );

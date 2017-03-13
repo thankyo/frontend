@@ -5,9 +5,6 @@ import { login } from "../../reducers/auth.actions";
 
 import { connect } from "react-redux";
 
-
-
-
 const Join = ({ loginFacebook }) => {
         return (
             <div>
