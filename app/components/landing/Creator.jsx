@@ -3,8 +3,8 @@ import React, {Component} from "react";
 export default class Creator extends Component {
     render() {
         return (
-            <section className="section">
-                <div className="container">
+            <section className="section container">
+                <div className="content">
                     <div className="heading">
                         <h1 className="title">Creator</h1>
                         <h2 className="subtitle">I create</h2>

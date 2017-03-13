@@ -1,5 +1,4 @@
-import React from "react";
-import {connect} from "react-redux";
+import React, { Component } from "react";
 
 import Navigation   from '../components/Navigation';
 import Footer       from '../components/Footer';
@@ -7,25 +6,14 @@ import Footer       from '../components/Footer';
 import Profile      from '../components/user/Profile';
 
 
-const Dashboard = () => {
-    return (
-        <div>
-            <Navigation/>
-            <Profile/>
-            <Footer/>
-        </div>
-    );
-};
-
-const mapStateToProps = ({menu}) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {}
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Dashboard);
+export default class Dashboard extends Component {
+    render() {
+        return (
+            <div>
+                <Navigation/>
+                <Profile id="me"/>
+                <Footer/>
+            </div>
+        );
+    }
+}

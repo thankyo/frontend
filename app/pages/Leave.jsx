@@ -11,8 +11,10 @@ const Leave = ({leave}) => {
         <div>
             <Navigation/>
             <div className="section has-text-centered">
-                <h1>Goodbye and thank you for the fish</h1>
-                <button className="button is-primary" onClick={leave}>Leave</button>
+                <div className="content">
+                    <h1>Goodbye & thank you for the fish</h1>
+                    <button className="button is-primary" onClick={leave}>Leave</button>
+                </div>
             </div>
             <Footer/>
         </div>

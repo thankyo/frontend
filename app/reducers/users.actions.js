@@ -31,7 +31,10 @@ export function fetchUser(id) {
     return (dispatch) => {
         dispatch(fetchRequested(id));
         authService.fetch(new Request(`/api/v1/user/${id}`)).then(
-            user => dispatch(fetchSuccess(user)),
+            user => {
+                dispatch(fetchSuccess(user));
+                dispatch(fetchSuccess(Object.assign({}, user, { id })));
+            },
             error => dispatch(fetchFailed(error))
         )
     }

@@ -3,8 +3,8 @@ import React, {Component} from "react";
 export default class HowItWorks extends Component {
     render() {
         return (
-            <section className="section">
-                <div className="container">
+            <section className="section container">
+                <div className="content">
                     <div className="heading">
                         <h1 className="title">How it works</h1>
                         <h2 className="subtitle">Easier, than you think</h2>

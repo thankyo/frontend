@@ -10,7 +10,7 @@ class AuthService {
     fetch(req) {
         if (this.isAuthenticated())
             req.headers.append('X-Auth-Token', this.getToken());
-        return fetch(req)
+        return fetch(req).then(res => res.json())
     }
     getToken() {
         return localStorage.getItem("token");

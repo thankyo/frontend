@@ -1,25 +1,38 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import { fetchUser } from '../../reducers/user.actions';
+import { fetchUser } from '../../reducers/users.actions';
 
-const Profile = ({ user, fetchUser }) => {
-    fetchUser("me");
-    return (
-        <div>
-            <img src={user.thumbnail}/>
-        </div>
-    )
+const Profile = ({ user }) => {
+    if (user !== undefined)
+        return (
+            <div>
+                <img src={user.thumbnail}/>
+            </div>
+        )
+    else
+        return (
+            <div>
+                <h1>Loading ...</h1>
+            </div>
+        )
 };
 
-const mapStateToProps = ({ user }) => {
+Profile.propTypes = {
+    id: React.PropTypes.string.isRequired,
+    user: React.PropTypes.object
+};
+
+const mapStateToProps = ({ users }, ownProps) => {
+    let id = ownProps.id;
+    let user = users[id];
     return { user };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchUser: (id) => dispatch(fetchUser(id))
-    }
+const mapDispatchToProps = (dispatch, ownProps) => {
+    let id = ownProps.id;
+    dispatch(fetchUser(id));
+    return {}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

@@ -8,7 +8,11 @@ export default class Documentation extends Component {
         return (
             <div>
                 <Navigation/>
-                <h1>I'm documented</h1>
+                <div className="section">
+                    <div className="content">
+                    <h1>I'm documented</h1>
+                    </div>
+                </div>
                 <Footer/>
             </div>
         );
