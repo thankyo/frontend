@@ -1,28 +1,22 @@
-import ReactDOM from 'react-dom';
-import React from 'react';
-import { Provider } from 'react-redux';
-
+import reducers from './reducers';
 import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga'
+import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
-import MainApp        from './route';
+const store = createStore(reducers(), composeWithDevTools( applyMiddleware(thunk) ));
 
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux'
-
-// create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
-
-import reducers from './reducers';
-const store = createStore(reducers(), composeWithDevTools( applyMiddleware(sagaMiddleware) ));
-
 const history = syncHistoryWithStore(browserHistory, store);
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Routes        from './route';
+import { Provider } from 'react-redux';
 const load = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <MainApp history={history}/>
+      <Routes history={history}/>
     </Provider>,
     document.querySelector('#app')
   );

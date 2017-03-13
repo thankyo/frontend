@@ -1,4 +1,4 @@
-import { GET_USER } from './user.actions';
+import { USER_FETCH_REQUESTED } from './user.actions';
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case GET_USER:
+        case USER_FETCH_REQUESTED:
 
         default:
             return state
