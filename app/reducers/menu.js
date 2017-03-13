@@ -1,5 +1,7 @@
 import { LOCATION_CHANGE }  from 'react-router-redux';
 import { MENU_ACTIVATE }    from '../reducers/menu.actions.js';
+import { LOGIN_SUCCESS, LOGOUT }    from './auth.actions';
+import authService          from '../service/auth';
 
 function createMenu(text, path, icon) {
     return {
@@ -10,7 +12,7 @@ function createMenu(text, path, icon) {
     };
 }
 
-const initialState = {
+const anonymousMenu = {
     active: false,
     items: [
         createMenu("Home", "/"),
@@ -19,8 +21,16 @@ const initialState = {
     ]
 };
 
+const userMenu = {
+    items: [
+        createMenu("Dashboard", "/dashboard"),
+        createMenu("Documentation", "/documentation"),
+        createMenu("Leave", "/leave"),
+    ]
+};
 
-export default function(state = initialState, action) {
+
+export default function(state = authService.isAuthenticated() ? userMenu : anonymousMenu, action) {
     switch (action.type) {
         case LOCATION_CHANGE:
             let path = action.payload.pathname;
@@ -29,6 +39,10 @@ export default function(state = initialState, action) {
         case MENU_ACTIVATE:
             let active = !state.active;
             return Object.assign({}, state, { active });
+        case LOGIN_SUCCESS:
+            return userMenu;
+        case LOGOUT:
+            return anonymousMenu;
         default:
             return state;
     }
