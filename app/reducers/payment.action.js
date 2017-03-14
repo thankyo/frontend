@@ -20,25 +20,19 @@ function fetchSuccess(payload) {
     }
 }
 
-function fetchFailed(id, thanks) {
+function fetchFailed(payload) {
     return {
         type: PAYMENT_FETCH_FAILED,
-        payload: {
-            userId: id,
-            thanks
-        }
+        payload
     }
 }
 
 export function fetchPayments(id) {
     return (dispatch) => {
         dispatch(fetchRequested(id));
-        authService.fetch(new Request(`/api/v1/thank/user/${id}`)).then(
-            payments => {
-                dispatch(fetchSuccess(id, payments));
-                dispatch(fetchSuccess(id, payments));
-            },
-            error => dispatch(fetchFailed(id, error))
-        )
+        authService.signAndStream(`/api/v1/transaction/user/${id}`, dispatch, (payment) => {
+            dispatch(fetchSuccess(payment));
+            if (id === "me") dispatch(fetchSuccess(Object.assign({}, payment, { "user": "me"})))
+        })
     }
 }

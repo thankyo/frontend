@@ -15,9 +15,9 @@ export default class Dashboard extends Component {
                     <div className="column is-one-third">
                         <div className="section">
                             <div className="content">
-                                <Profile id="me"/>
-                                <br/>
                                 <Thank/>
+                                <br/>
+                                <Profile id="me"/>
                             </div>
                         </div>
                     </div>

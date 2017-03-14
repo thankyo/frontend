@@ -16,7 +16,7 @@ class PaymentTransaction extends Component {
 
 const Payments = ({payments}) => {
     return (
-        <table class="table">
+        <table className="table">
             <thead>
             <tr>
                 <th><abbr title="Operation">Operation</abbr></th>

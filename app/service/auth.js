@@ -1,5 +1,6 @@
 import 'whatwg-fetch';
 import {logout} from '../reducers/auth.actions'
+import oboe from 'oboe';
 
 class AuthService {
     constructor() {
@@ -8,7 +9,7 @@ class AuthService {
         let token = localStorage.getItem("token");
         return token !== undefined && token !== null;
     }
-    fetch(req, dispatch) {
+    signAndFetch(req, dispatch) {
         if (this.isAuthenticated())
             req.headers.append('X-Auth-Token', this.getToken());
         let res = fetch(req).then(res => {
@@ -19,6 +20,20 @@ class AuthService {
             }
         });
         return res;
+    }
+    signAndStream(url, dispatch, callback) {
+        oboe({
+            url,
+            headers: {
+                'X-Auth-Token': this.getToken()
+            }
+        }).
+        done(callback).
+        fail(( errorReport ) => {
+            if (errorReport.statusCode === 401 || errorReport.statusCode === 403) {
+                dispatch(logout());
+            }
+        })
     }
     getToken() {
         return localStorage.getItem("token");

@@ -2,16 +2,20 @@ import { PAYMENT_FETCH_REQUESTED, PAYMENT_FETCH_SUCCESS, PAYMENT_FETCH_FAILED } 
 
 const initialState = {};
 
-export default function(state = initialState, { type, id, payload}) {
+export default function(payments = initialState, { type, payload}) {
     switch (type) {
         case PAYMENT_FETCH_REQUESTED:
-            return state;
+            return payments;
         case PAYMENT_FETCH_SUCCESS:
             let payment = payload;
-            return Object.assign({}, state, { [payment.id]: payload });
+            let id = payment.user;
+            let existingPayments = payments[id] ? payments[id] : [];
+            let updatedPayments = existingPayments.slice();
+            updatedPayments.push(payment);
+            return Object.assign({}, payments, { [id] : updatedPayments });
         case PAYMENT_FETCH_FAILED:
-            return Object.assign({}, state, payload);
+            return Object.assign({}, payments, payload);
         default:
-            return state;
+            return payments;
     }
 }

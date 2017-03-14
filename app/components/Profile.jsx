@@ -30,7 +30,7 @@ class Profile extends Component {
                         </div>
                         <div className="media-content">
                             <p className="title is-4">{user.firstName} {user.lastName}</p>
-                            <p className="subtitle is-6">{user.profiles.map(provider => <ProviderIcon providerID={provider.providerID}></ProviderIcon>)}</p>
+                            <p className="subtitle is-6">{user.profiles.map(provider => <ProviderIcon key={provider.providerID} providerID={provider.providerID}/>)}</p>
                         </div>
                     </div>
 
