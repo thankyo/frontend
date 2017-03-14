@@ -1,15 +1,15 @@
-import { USER_FETCH_REQUESTED, USER_FETCH_SUCCESS, USER_FETCH_FAILED } from './users.actions';
+import { THANK_FETCH_REQUESTED, THANK_FETCH_SUCCESS, THANK_FETCH_FAILED } from './thanks.action';
 
 const initialState = {};
 
 export default function(users = initialState, { type, payload}) {
     switch (type) {
-        case USER_FETCH_REQUESTED:
+        case THANK_FETCH_REQUESTED:
             return users;
-        case USER_FETCH_SUCCESS:
+        case THANK_FETCH_SUCCESS:
             let user = payload
             return Object.assign({}, users, { [user.id]: payload });
-        case USER_FETCH_FAILED:
+        case THANK_FETCH_FAILED:
             return Object.assign({}, users, payload);
         default:
             return users
