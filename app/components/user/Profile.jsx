@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import {connect} from 'react-redux';
 
 import SmallThankIcon from '../icons/SmallThankIcon';
+import ProviderIcon   from '../icons/ProviderIcon';
 
 import { fetchUser } from '../../reducers/user.actions';
 
@@ -29,14 +30,13 @@ class Profile extends Component {
                         </div>
                         <div className="media-content">
                             <p className="title is-4">{user.firstName} {user.lastName}</p>
-                            <p className="subtitle is-6">@johnsmith</p>
+                            <p className="subtitle is-6">{user.profiles.map(provider => <ProviderIcon providerID={provider.providerID}></ProviderIcon>)}</p>
                         </div>
                     </div>
 
                     <div className="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                        <a>#css</a> <a>#responsive</a>
+                        {user.firstName} you can change the web.
+                        <br/>
                         <br/>
                         <small><SmallThankIcon balance={user.balance}/></small>
                     </div>

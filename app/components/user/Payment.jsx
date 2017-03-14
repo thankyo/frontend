@@ -1,37 +1,45 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router";
-import {fetchPayments} from '../../reducers/payment.action';
+import {fetchPayments} from "../../reducers/payment.action";
 
 class PaymentTransaction extends Component {
     render() {
         return (
-            <Link to={this.props.payment.path} className={this.props.item.active ? "nav-item is-active" : "nav-item"}>
-                <span>{this.props.item.text}</span>
-            </Link>
+            <tr>
+                <td>{this.props.payment.operation}</td>
+                <td>{this.props.payment.resource}</td>
+                <td>{this.props.payment.created}</td>
+            </tr>
         );
     }
 }
 
-const Thanks = ({ payments }) => {
+const Thanks = ({payments}) => {
     return (
-        <div className="section">
-            <div className="content">
-                {payments.map(payment => <PaymentTransaction key={payment.id} payment={payment}/>)}
-                <h1>I'm Payments</h1>
-            </div>
-        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th><abbr title="Operation">Operation</abbr></th>
+                <th>Resource</th>
+                <th><abbr title="Date">Date</abbr></th>
+            </tr>
+            </thead>
+            <tbody>
+            {payments.map(payment => <PaymentTransaction key={payment.id} payment={payment}/>)}
+            </tbody>
+        </table>
     );
 };
 
-const mapStateToProps = ({ payment }, { id }) => {
+const mapStateToProps = ({payment}, {id}) => {
     let payments = payment[id] ? payment[id] : [];
     return {
         payments
     };
 };
 
-const mapDispatchToProps = (dispatch, { id }) => {
+const mapDispatchToProps = (dispatch, {id}) => {
     dispatch(fetchPayments(id));
     return {}
 };

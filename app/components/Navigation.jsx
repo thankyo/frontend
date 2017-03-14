@@ -15,7 +15,7 @@ class NavigationItem extends Component {
 
 const Navigation = ({menu, onActivate}) => {
     return (
-        <nav className="nav">
+        <nav className="nav is-dark">
             <div className="nav-left">
             </div>
 

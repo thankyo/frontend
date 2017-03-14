@@ -1,10 +1,8 @@
-import React, { Component } from "react";
-
-import Navigation   from '../components/Navigation';
-import Footer       from '../components/Footer';
-
-import Profile      from '../components/user/Profile';
-import Payment       from '../components/user/Payment';
+import React, {Component} from "react";
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
+import Profile from "../components/user/Profile";
+import Payment from "../components/user/Payment";
 
 
 export default class Dashboard extends Component {
@@ -12,11 +10,21 @@ export default class Dashboard extends Component {
         return (
             <div>
                 <Navigation/>
-                <div className="column is-one-third">
-                    <Profile id="me"/>
-                </div>
-                <div className="column">
-                    <Payment id="me"/>
+                <div className="columns">
+                    <div className="column is-one-third">
+                        <div className="section">
+                            <div className="content">
+                                <Profile id="me"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="column">
+                        <div className="section">
+                            <div className="content">
+                                <Payment id="me"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <Footer/>
             </div>
