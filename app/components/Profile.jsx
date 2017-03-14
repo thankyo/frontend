@@ -1,10 +1,10 @@
 import React, { Component} from 'react';
 import {connect} from 'react-redux';
 
-import SmallThankIcon from '../icons/SmallThankIcon';
-import ProviderIcon   from '../icons/ProviderIcon';
+import SmallThankIcon from './icons/SmallThankIcon';
+import ProviderIcon   from './icons/ProviderIcon';
 
-import { fetchUser } from '../../reducers/user.actions';
+import { fetchUser } from '../reducers/user.actions';
 
 class Profile extends Component {
     loadingState() {

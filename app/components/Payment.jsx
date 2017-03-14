@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {Link} from "react-router";
-import {fetchPayments} from "../../reducers/payment.action";
+import {fetchPayments} from "../reducers/payment.action";
 
 class PaymentTransaction extends Component {
     render() {
@@ -15,7 +14,7 @@ class PaymentTransaction extends Component {
     }
 }
 
-const Thanks = ({payments}) => {
+const Payments = ({payments}) => {
     return (
         <table class="table">
             <thead>
@@ -32,7 +31,7 @@ const Thanks = ({payments}) => {
     );
 };
 
-const mapStateToProps = ({payment}, {id}) => {
+const mapStateToProps = ({ payment }, {id}) => {
     let payments = payment[id] ? payment[id] : [];
     return {
         payments
@@ -47,4 +46,4 @@ const mapDispatchToProps = (dispatch, {id}) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Thanks);
+)(Payments);

@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import Profile from "../components/user/Profile";
-import Payment from "../components/user/Payment";
+import Profile from "../components/Profile";
+import Payment from "../components/Payment";
+import Thank   from '../components/Thank';
 
 
 export default class Dashboard extends Component {
@@ -15,6 +16,8 @@ export default class Dashboard extends Component {
                         <div className="section">
                             <div className="content">
                                 <Profile id="me"/>
+                                <br/>
+                                <Thank/>
                             </div>
                         </div>
                     </div>
