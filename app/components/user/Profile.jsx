@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import SmallThankIcon from '../icons/SmallThankIcon';
 
-import { fetchUser } from '../../reducers/users.actions';
+import { fetchUser } from '../../reducers/user.actions';
 
 class Profile extends Component {
     loadingState() {
@@ -14,7 +14,6 @@ class Profile extends Component {
         )
     }
     profileState(user) {
-        let dob = new Date(user.dateOfBirth).toString();
         let imageStyle = {
             height: "40px",
             width: "40px"
@@ -59,14 +58,12 @@ Profile.propTypes = {
     user: React.PropTypes.object
 };
 
-const mapStateToProps = ({ users }, ownProps) => {
-    let id = ownProps.id;
-    let user = users[id];
+const mapStateToProps = (state, { id }) => {
+    let user = state.user[id];
     return { user };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    let id = ownProps.id;
+const mapDispatchToProps = (dispatch, { id }) => {
     dispatch(fetchUser(id));
     return {}
 };

@@ -1,9 +1,6 @@
 import React, {Component} from "react";
 
-import Navigation from '../Navigation';
-import Footer from '../Footer';
-
-class PrivacyPolicy extends Component {
+export default class PrivacyPolicy extends Component {
     render() {
         return (
             <div>
@@ -151,18 +148,6 @@ class PrivacyPolicy extends Component {
                 </section>
             </div>
         );
-    }
-};
-
-export default class PrivacyPolicyPage extends Component {
-    render() {
-        return (
-            <div>
-                <Navigation/>
-                <PrivacyPolicy/>
-                <Footer/>
-            </div>
-        )
     }
 };
 

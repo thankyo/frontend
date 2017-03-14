@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import Footer from "../Footer";
-import Navigation from "../Navigation";
-import { login } from "../../reducers/auth.actions";
+import Footer from "../components/Footer";
+import Navigation from "../components/Navigation";
+import { login } from "../reducers/auth.actions";
 
 import { connect } from "react-redux";
 

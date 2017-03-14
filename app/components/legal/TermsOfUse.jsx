@@ -1,10 +1,6 @@
 import React, {Component} from "react";
 
-import Navigation from '../Navigation';
-import Footer from '../Footer';
-
-
-class TermsOfUse extends Component {
+export default class TermsOfUse extends Component {
     render() {
         return (
             <div>
@@ -102,18 +98,6 @@ class TermsOfUse extends Component {
                 </section>
             </div>
         );
-    }
-};
-
-export default class TermsOfUsePage extends Component {
-    render() {
-        return (
-            <div>
-                <Navigation/>
-                <TermsOfUse/>
-                <Footer/>
-            </div>
-        )
     }
 };
 

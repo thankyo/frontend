@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import {logout} from '../reducers/auth.actions'
 
 class AuthService {
     constructor() {
@@ -7,10 +8,17 @@ class AuthService {
         let token = localStorage.getItem("token");
         return token !== undefined && token !== null;
     }
-    fetch(req) {
+    fetch(req, dispatch) {
         if (this.isAuthenticated())
             req.headers.append('X-Auth-Token', this.getToken());
-        return fetch(req).then(res => res.json())
+        let res = fetch(req).then(res => {
+            if (res.status === 401 || res.status === 403) {
+                dispatch(logout());
+            } else {
+                return res.json()
+            }
+        });
+        return res;
     }
     getToken() {
         return localStorage.getItem("token");

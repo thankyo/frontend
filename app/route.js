@@ -2,22 +2,20 @@ import React, {Component} from "react";
 
 import { Router, Route, browserHistory } from 'react-router';
 
-import App            from 'components/App';
-import Documentation  from 'components/documentation/Documentation';
-import Join           from 'components/join/Join';
-
-import TermsOfUse     from 'components/legal/TermsOfUse';
-import PrivacyPolicy  from 'components/legal/PrivacyPolicy';
-
+import Join           from 'pages/Join';
+import TermsOfUse     from 'pages/TermsOfUse';
+import Landing        from 'pages/Landing';
 import Dashboard      from 'pages/Dashboard';
 import Leave          from 'pages/Leave';
+import Documentation  from 'pages/Documentation';
+import PrivacyPolicy  from 'pages/PrivacyPolicy';
 
 export default class MainApp extends Component {
     render() {
         return (
             <div>
                 <Router history={this.props.history} onUpdate={() => window.scrollTo(0, 0)}>
-                    <Route path="/" component={App}/>
+                    <Route path="/" component={Landing}/>
                     <Route path="/dashboard" component={ Dashboard }/>
                     <Route path="/documentation" component={ Documentation }/>
                     <Route path="/leave" component={ Leave }/>

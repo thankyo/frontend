@@ -4,7 +4,7 @@ import Navigation   from '../components/Navigation';
 import Footer       from '../components/Footer';
 
 import Profile      from '../components/user/Profile';
-import Thanks       from '../components/user/Thanks';
+import Payment       from '../components/user/Payment';
 
 
 export default class Dashboard extends Component {
@@ -15,8 +15,8 @@ export default class Dashboard extends Component {
                 <div className="column is-one-third">
                     <Profile id="me"/>
                 </div>
-                <div className="column is-two-third">
-                    <Thanks id="me"/>
+                <div className="column">
+                    <Payment id="me"/>
                 </div>
                 <Footer/>
             </div>

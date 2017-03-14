@@ -1,7 +1,7 @@
 import menu from "./menu";
-import users from "./users";
+import user from "./user";
 import auth from "./auth";
-import thanks from "./thanks";
+import payment from "./payment";
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 
@@ -11,8 +11,8 @@ export default function(){
             routing,
             auth,
             menu,
-            users,
-            thanks
+            user,
+            payment
         }
     );
 }
