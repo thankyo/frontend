@@ -1,13 +1,15 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {fetchPayments} from "../reducers/payment.action";
+import OperationIcon    from "./icons/OperationIcon";
+
 
 class PaymentTransaction extends Component {
     render() {
         return (
             <tr>
-                <td>{this.props.payment.operation}</td>
-                <td>{this.props.payment.resource}</td>
+                <td><OperationIcon operation={this.props.payment.operation} amount={this.props.payment.amount}/></td>
+                <td>{this.props.payment.uri}</td>
                 <td>{this.props.payment.created}</td>
             </tr>
         );
