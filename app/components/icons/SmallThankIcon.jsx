@@ -1,14 +1,16 @@
-import React, { Component, PropTypes } from 'react';
+import React, {Component, PropTypes} from "react";
 
 export default class SmallThankIcon extends Component {
     render() {
         return (
-            <div>
+            <span className="content">
                 <span className="icon is-small">
                     <i className="fa fa-heart-o"></i>
                 </span>
-                <span>{this.props.balance}</span>
-            </div>
+                <span className="icon is-small">
+                    {this.props.balance}
+                </span>
+            </span>
         )
     }
 }

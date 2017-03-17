@@ -11,20 +11,48 @@ export default class Dashboard extends Component {
         return (
             <div>
                 <Navigation/>
+                <section className="hero is-primary">
+                    <div className="hero-body">
+                        <div className="container">
+                            <div className="columns is-vcentered">
+                                <div className="column">
+                                    <p className="title">
+                                        Dashboard
+                                    </p>
+                                    <p classNme="subtitle">
+                                        <strong>Good is strong in you</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <div className="columns">
                     <div className="column is-one-third">
                         <div className="section">
                             <div className="content">
-                                <Thank/>
+                                <div className="card">
+                                    <div className="card-content">
+                                        <Thank/>
+                                    </div>
+                                </div>
                                 <br/>
-                                <Profile id="me"/>
+                                <div className="card">
+                                    <div className="card-content">
+                                        <Profile id="me"/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="column">
                         <div className="section">
                             <div className="content">
-                                <Payment id="me"/>
+                                <div className="card">
+                                    <div className="card-content">
+                                        <Payment id="me"/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

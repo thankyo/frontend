@@ -10,6 +10,22 @@ const Leave = ({leave}) => {
     return (
         <div>
             <Navigation/>
+            <section className="hero is-primary">
+                <div className="hero-body">
+                    <div className="container">
+                        <div className="columns is-vcentered">
+                            <div className="column">
+                                <p className="title">
+                                    Leave
+                                </p>
+                                <p classNme="subtitle">
+                                    <strong>We'll be missing you</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <div className="section has-text-centered">
                 <div className="content">
                     <h1>Goodbye & thank you for the fish</h1>

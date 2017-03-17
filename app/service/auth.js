@@ -28,7 +28,12 @@ class AuthService {
                 'X-Auth-Token': this.getToken()
             }
         }).
-        done(callback).
+        done((obj) => {
+            let isEmpty = obj === undefined ||
+                obj == null ||
+                (Object.keys(obj).length === 0 && obj.constructor === Object);
+            if (!isEmpty) callback(obj)
+        }).
         fail(( errorReport ) => {
             if (errorReport.statusCode === 401 || errorReport.statusCode === 403) {
                 dispatch(logout());

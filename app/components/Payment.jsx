@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {fetchPayments} from "../reducers/payment.action";
-import OperationIcon    from "./icons/OperationIcon";
+import OperationIcon from "./icons/OperationIcon";
+import Resource from "./Resource";
 
 
 class PaymentTransaction extends Component {
@@ -9,7 +10,7 @@ class PaymentTransaction extends Component {
         return (
             <tr>
                 <td><OperationIcon operation={this.props.payment.operation} amount={this.props.payment.amount}/></td>
-                <td>{this.props.payment.uri}</td>
+                <td><Resource resource={this.props.payment.uri}/></td>
                 <td>{this.props.payment.created}</td>
             </tr>
         );
@@ -33,7 +34,7 @@ const Payments = ({payments}) => {
     );
 };
 
-const mapStateToProps = ({ payment }, {id}) => {
+const mapStateToProps = ({payment}, {id}) => {
     let payments = payment[id] ? payment[id] : [];
     return {
         payments

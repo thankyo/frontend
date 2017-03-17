@@ -3,15 +3,20 @@ import React, { Component, PropTypes } from 'react';
 export default class OperationIcon extends Component {
     creditIcon(amount) {
         return (
-            <span className="content icon is-small">
-                <i className="fa fa-heartbeat"></i>
+            <span className="content">
+                <span className="icon">
+                    <i className="fa fa-heartbeat"></i>
+                </span>
+                <span className="icon">
+                    {amount}
+                </span>
             </span>
         )
     }
     debitIcon(amount) {
         return (
-            <span className="icon is-small">
-                <i className="fa fa-heart"></i>
+            <span className="icon">
+                <i className="fa fa-heart"></i> {amount}
             </span>
         )
     }
