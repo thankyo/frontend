@@ -16,7 +16,7 @@ export default class Documentation extends Component {
                                     <p className="title">
                                         Documentation
                                     </p>
-                                    <p classNme="subtitle">
+                                    <p className="subtitle">
                                         Everything you need to <strong>integrate a website</strong>
                                     </p>
                                 </div>

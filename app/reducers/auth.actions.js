@@ -1,37 +1,9 @@
-export const LOGIN_REQUESTED = "LOGIN_REQUESTED";
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_ERROR = "LOGIN_ERROR";
+import { requested, success, failed} from "./state";
 
+export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 
 import { browserHistory } from 'react-router';
-
-function loginRequested(provider) {
-    return {
-        type: LOGIN_REQUESTED,
-        payload: {
-            provider
-        }
-    }
-}
-
-function loginError(error) {
-    return {
-        type: LOGIN_ERROR,
-        payload: {
-            error
-        }
-    }
-}
-
-function loginSuccess(token) {
-    return {
-        type: LOGIN_SUCCESS,
-        payload: {
-            token
-        }
-    };
-}
 
 function logoutEvent() {
     return {
@@ -48,16 +20,16 @@ export function logout() {
 
 export function login(provider) {
     return (dispatch) => {
-        dispatch(loginRequested(provider));
+        dispatch(requested(LOGIN, { provider }));
         let win = window.open(`/api/v1/auth/authenticate/${provider}`);
         win.onload = function(event) {
             try {
                 let token = event.currentTarget.document.documentElement.innerText;
-                dispatch(loginSuccess(token));
+                dispatch(success(LOGIN, { token }));
                 browserHistory.push("/dashboard");
                 event.currentTarget.close();
             } catch (error) {
-                dispatch(loginError(error));
+                dispatch(failed(LOGIN, { error }));
             }
         };
     }
