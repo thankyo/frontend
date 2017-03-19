@@ -1,15 +1,18 @@
-import React, {Component} from "react";
-import { connect } from "react-redux";
-import { fetch } from "../reducers/paymentTransaction.actions";
-import OperationIcon from "./icons/OperationIcon";
+import React, {Component}   from "react";
+import { connect }          from "react-redux";
+import { fetch }            from "../reducers/paymentTransaction.actions";
+import Date                 from "./Date";
+import BankDetails          from "./payment/BankDetails";
+import Money                from "./payment/Money";
 
 class PaymentTransaction extends Component {
     render() {
         return (
             <tr>
-                <td><OperationIcon operation={this.props.transaction.operation} amount={this.props.transaction.amount}/></td>
-                <td>{this.props.transaction.source.type}</td>
-                <td>{this.props.transaction.created}</td>
+                <td><BankDetails {... this.props.transaction.source}/></td>
+                <td><Money {... this.props.transaction.money}/></td>
+                <td><span className="icon">{this.props.transaction.thanks}</span></td>
+                <td><Date time={this.props.transaction.created}/></td>
             </tr>
         );
     }
@@ -20,8 +23,9 @@ const PaymentTransactions = ({transactions}) => {
         <table className="table">
             <thead>
             <tr>
-                <th><abbr title="Operation">Operation</abbr></th>
-                <th>Resource</th>
+                <th><abbr title="Source">Source</abbr></th>
+                <th>Money</th>
+                <th>Amount</th>
                 <th><abbr title="Date">Date</abbr></th>
             </tr>
             </thead>

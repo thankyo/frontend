@@ -1,16 +1,18 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import { fetch } from "../reducers/thankTransaction.actions";
+import {fetch} from "../reducers/thankTransaction.actions";
 import OperationIcon from "./icons/OperationIcon";
 import Resource from "./Resource";
+import Date from "./Date";
 
 class ThankTransaction extends Component {
     render() {
         return (
             <tr>
-                <td><OperationIcon operation={this.props.transaction.operation} amount={this.props.transaction.amount}/></td>
+                <td><OperationIcon operation={this.props.transaction.operation} amount={this.props.transaction.amount}/>
+                </td>
                 <td><Resource resource={this.props.transaction.resource}/></td>
-                <td>{this.props.transaction.created}</td>
+                <td><Date time={this.props.transaction.created}/></td>
             </tr>
         );
     }
