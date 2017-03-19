@@ -12,7 +12,6 @@ function createMenu(text, path) {
 }
 
 const anonymousMenu = {
-    active: false,
     items: [
         createMenu("Home", "/"),
         createMenu("Documentation", "/documentation"),

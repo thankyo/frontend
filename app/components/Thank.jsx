@@ -26,8 +26,7 @@ class Thank extends Component {
             <form className="control has-addons" onSubmit={this.handleSubmit}>
                 <input className="input is-expanded" type="text" placeholder="URL" value={this.state.value}
                        onChange={this.handleChange}/>
-                <button type="submit"
-                        className={this.props.thank.isLoading ? "button is-info is-loading" : "button is-info"}>
+                <button type="submit" className={this.props.thank.isLoading ? "button is-info is-loading" : "button is-info"}>
                     Thank
                 </button>
             </form>

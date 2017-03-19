@@ -1,38 +1,38 @@
 import authService from '../service/auth';
 
-export const PAYMENT_FETCH_REQUESTED   = "PAYMENT_FETCH_REQUESTED";
-export const PAYMENT_FETCH_SUCCESS     = "PAYMENT_FETCH_SUCCESS";
-export const PAYMENT_FETCH_FAILED      = "PAYMENT_FETCH_FAILED";
+export const THANK_TRANSACTION_FETCH_REQUESTED   = "THANK_TRANSACTION_FETCH_REQUESTED";
+export const THANK_TRANSACTION_FETCH_SUCCESS     = "THANK_TRANSACTION_FETCH_SUCCESS";
+export const THANK_TRANSACTION_FETCH_FAILED      = "THANK_TRANSACTION_FETCH_FAILED";
 
-function fetchRequested(id) {
+function fetchTransactionRequested(id) {
     return {
-        type: PAYMENT_FETCH_REQUESTED,
+        type: THANK_TRANSACTION_FETCH_REQUESTED,
         payload: {
             id
         }
     }
 };
 
-function fetchSuccess(payload) {
+function fetchTransactionSuccess(payload) {
     return {
-        type: PAYMENT_FETCH_SUCCESS,
+        type: THANK_TRANSACTION_FETCH_SUCCESS,
         payload
     }
 }
 
-function fetchFailed(payload) {
+function fetchTransactionFailed(payload) {
     return {
-        type: PAYMENT_FETCH_FAILED,
+        type: THANK_TRANSACTION_FETCH_FAILED,
         payload
     }
 }
 
-export function fetchPayments(id) {
+export function fetchThankTransactions(id) {
     return (dispatch) => {
-        dispatch(fetchRequested(id));
+        dispatch(fetchTransactionRequested(id));
         authService.signAndStream(`/api/v1/transaction/user/${id}`, dispatch, (payment) => {
-            dispatch(fetchSuccess(payment));
-            if (id === "me") dispatch(fetchSuccess(Object.assign({}, payment, { "user": "me"})))
+            dispatch(fetchTransactionSuccess(payment));
+            if (id === "me") dispatch(fetchTransactionSuccess(Object.assign({}, payment, { "user": "me"})))
         })
     }
 }

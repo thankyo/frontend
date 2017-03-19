@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Profile from "../components/Profile";
 import Payment from "../components/Payment";
 import Thank   from '../components/Thank';
+import Braintree from '../components/payment/Braintree';
 
 
 export default class Dashboard extends Component {
@@ -19,7 +20,7 @@ export default class Dashboard extends Component {
                                     <p className="title">
                                         Dashboard
                                     </p>
-                                    <p classNme="subtitle">
+                                    <p className="subtitle">
                                         <strong>Good is strong in you</strong>
                                     </p>
                                 </div>
@@ -40,6 +41,12 @@ export default class Dashboard extends Component {
                                 <div className="card">
                                     <div className="card-content">
                                         <Profile id="me"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div className="card">
+                                    <div className="card-content">
+                                        <Braintree/>
                                     </div>
                                 </div>
                             </div>

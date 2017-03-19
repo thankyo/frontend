@@ -21,6 +21,10 @@ const load = () => {
   );
 };
 
+Object.isObject = function(obj) {
+    return typeof obj === 'object' && obj !== null
+};
+
 if (document.readyState !== 'complete') {
   document.addEventListener('DOMContentLoaded', load);
 } else {

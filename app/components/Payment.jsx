@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {fetchPayments} from "../reducers/payment.action";
+import {fetchThankTransactions} from "../reducers/payment.action";
 import OperationIcon from "./icons/OperationIcon";
 import Resource from "./Resource";
 
@@ -10,7 +10,7 @@ class PaymentTransaction extends Component {
         return (
             <tr>
                 <td><OperationIcon operation={this.props.payment.operation} amount={this.props.payment.amount}/></td>
-                <td><Resource resource={this.props.payment.uri}/></td>
+                <td><Resource resource={this.props.payment.resource}/></td>
                 <td>{this.props.payment.created}</td>
             </tr>
         );
@@ -42,7 +42,7 @@ const mapStateToProps = ({payment}, {id}) => {
 };
 
 const mapDispatchToProps = (dispatch, {id}) => {
-    dispatch(fetchPayments(id));
+    dispatch(fetchThankTransactions(id));
     return {}
 };
 

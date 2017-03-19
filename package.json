@@ -10,6 +10,7 @@
     "build": "brunch build --production"
   },
   "dependencies": {
+    "braintree-web": "^3.11.0",
     "http-proxy": "^1.16.2",
     "immutable": "^3.8.1",
     "oboe": "^2.1.3",
