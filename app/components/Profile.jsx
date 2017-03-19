@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import SmallThankIcon from "./icons/SmallThankIcon";
 import ProviderIcon from "./icons/ProviderIcon";
-import {fetchUser} from "../reducers/user.actions";
+import {fetch} from "../reducers/user.actions";
 
 class Profile extends Component {
     loadingState() {
@@ -63,7 +63,7 @@ const mapStateToProps = (state, {id}) => {
 };
 
 const mapDispatchToProps = (dispatch, {id}) => {
-    dispatch(fetchUser(id));
+    dispatch(fetch(id));
     return {}
 };
 

@@ -1,41 +1,16 @@
 import authService from '../service/auth';
 
-export const USER_FETCH_REQUESTED   = "USER_FETCH_REQUESTED";
-export const USER_FETCH_SUCCESS     = "USER_FETCH_SUCCESS";
-export const USER_FETCH_FAILED      = "USER_FETCH_FAILED";
+import { requested, success, failed } from "./state";
 
-function fetchRequested(id) {
-    return {
-        type: USER_FETCH_REQUESTED,
-        payload: {
-            id
-        }
-    }
-};
+export const USER_FETCH   = "USER_FETCH";
 
-function fetchSuccess(payload) {
-    return {
-        type: USER_FETCH_SUCCESS,
-        payload
-    }
-}
-
-function fetchFailed(payload) {
-    return {
-        type: USER_FETCH_FAILED,
-        payload
-    }
-}
-
-export function fetchUser(id) {
+export function fetch(id) {
     return (dispatch) => {
-        dispatch(fetchRequested(id));
-        authService.signAndFetch(new Request(`/api/v1/user/${id}`), dispatch).then(
-            user => {
-                dispatch(fetchSuccess(user));
-                dispatch(fetchSuccess(Object.assign({}, user, { id })));
-            },
-            error => dispatch(fetchFailed(error))
-        )
+        dispatch(requested(USER_FETCH, id));
+        authService.signAndFetch(new Request(`/api/v1/user/${id}`), dispatch).
+        then(user => {
+            dispatch(success(USER_FETCH, user));
+            dispatch(success(USER_FETCH, Object.assign({}, user, {id})));
+        }).catch(error => dispatch(failed(USER_FETCH, error)))
     }
 }
