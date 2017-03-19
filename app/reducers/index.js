@@ -2,6 +2,7 @@ import menu from "./menu";
 import user from "./user";
 import auth from "./auth";
 import thankTransaction from "./thankTransaction";
+import paymentTransaction from './paymentTransaction';
 import braintree from "./braintree";
 import thank from "./thank";
 import { combineReducers } from 'redux';
@@ -15,6 +16,7 @@ export default function(){
             menu,
             user,
             thankTransaction,
+            paymentTransaction,
             thank,
             braintree
         }

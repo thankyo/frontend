@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import Profile from "../components/Profile";
 import ThankTransaction from "../components/ThankTransaction";
+import PaymentTransaction from "../components/PaymentTransaction";
 import Thank   from '../components/Thank';
 import Braintree from '../components/payment/Braintree';
 
@@ -55,6 +56,12 @@ export default class Dashboard extends Component {
                     <div className="column">
                         <div className="section">
                             <div className="content">
+                                <div className="card">
+                                    <div className="card-content">
+                                        <PaymentTransaction id="me"/>
+                                    </div>
+                                </div>
+                                <br/>
                                 <div className="card">
                                     <div className="card-content">
                                         <ThankTransaction id="me"/>

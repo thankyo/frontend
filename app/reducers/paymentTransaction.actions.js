@@ -1,0 +1,15 @@
+import authService from '../service/auth';
+
+import { requested, success, failed } from "./state";
+
+export const PAYMENT_TRANSACTION_FETCH   = "PAYMENT_TRANSACTION_FETCH";
+
+export function fetch(id) {
+    return (dispatch) => {
+        dispatch(requested(PAYMENT_TRANSACTION_FETCH, { id }));
+        authService.signAndStream(`/api/v1/payment/transaction/user/${id}`, dispatch, (payment) => {
+            dispatch(success(PAYMENT_TRANSACTION_FETCH, payment));
+            if (id === "me") dispatch(success(PAYMENT_TRANSACTION_FETCH, Object.assign({}, payment, { "user": "me"})))
+        })
+    }
+}
