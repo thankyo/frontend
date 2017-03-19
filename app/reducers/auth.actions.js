@@ -1,4 +1,4 @@
-import { requested, success, failed} from "./state";
+import { requested, success, failed } from "./state";
 
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";

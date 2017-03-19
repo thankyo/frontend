@@ -1,23 +1,22 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {fetchThankTransactions} from "../reducers/payment.action";
+import { fetch } from "../reducers/thankTransaction.actions";
 import OperationIcon from "./icons/OperationIcon";
 import Resource from "./Resource";
 
-
-class PaymentTransaction extends Component {
+class ThankTransaction extends Component {
     render() {
         return (
             <tr>
-                <td><OperationIcon operation={this.props.payment.operation} amount={this.props.payment.amount}/></td>
-                <td><Resource resource={this.props.payment.resource}/></td>
-                <td>{this.props.payment.created}</td>
+                <td><OperationIcon operation={this.props.transaction.operation} amount={this.props.transaction.amount}/></td>
+                <td><Resource resource={this.props.transaction.resource}/></td>
+                <td>{this.props.transaction.created}</td>
             </tr>
         );
     }
 }
 
-const Payments = ({payments}) => {
+const ThankTransactions = ({transactions}) => {
     return (
         <table className="table">
             <thead>
@@ -28,25 +27,25 @@ const Payments = ({payments}) => {
             </tr>
             </thead>
             <tbody>
-            {payments.map(payment => <PaymentTransaction key={payment.id} payment={payment}/>)}
+            {transactions.map(transaction => <ThankTransaction key={transaction.id} transaction={transaction}/>)}
             </tbody>
         </table>
     );
 };
 
-const mapStateToProps = ({payment}, {id}) => {
-    let payments = payment[id] ? payment[id] : [];
+const mapStateToProps = ({thankTransaction}, {id}) => {
+    let transactions = thankTransaction[id] ? thankTransaction[id] : [];
     return {
-        payments
+        transactions
     };
 };
 
 const mapDispatchToProps = (dispatch, {id}) => {
-    dispatch(fetchThankTransactions(id));
+    dispatch(fetch(id));
     return {}
 };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Payments);
+)(ThankTransactions);

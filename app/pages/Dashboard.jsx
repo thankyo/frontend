@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import Profile from "../components/Profile";
-import Payment from "../components/Payment";
+import ThankTransaction from "../components/ThankTransaction";
 import Thank   from '../components/Thank';
 import Braintree from '../components/payment/Braintree';
 
@@ -57,7 +57,7 @@ export default class Dashboard extends Component {
                             <div className="content">
                                 <div className="card">
                                     <div className="card-content">
-                                        <Payment id="me"/>
+                                        <ThankTransaction id="me"/>
                                     </div>
                                 </div>
                             </div>
