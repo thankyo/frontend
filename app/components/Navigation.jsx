@@ -3,8 +3,6 @@ import {connect} from "react-redux";
 import {login} from "../reducers/auth.actions";
 import {logout}     from '../reducers/auth.actions';
 
-import {activateMenu} from "../reducers/menu.actions";
-
 class Brand extends Component {
     render() {
         return (
@@ -35,7 +33,7 @@ class FacebookLoginButton extends Component {
 class LogoutButton extends Component {
     render() {
         return (
-            <div className="button is-danger is-outlined is-hovered" onClick={this.props.logout}>
+            <div className="button is-info is-outlined is-hovered" onClick={this.props.logout}>
                 <span className="icon">
                     <i className="fa fa-sign-out"></i>
                 </span>
@@ -91,9 +89,6 @@ const mapStateToProps = ({menu}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onActivate: () => {
-            dispatch(activateMenu())
-        },
         loginFacebook: () => dispatch(login("facebook")),
         logout: () => dispatch(logout())
     }

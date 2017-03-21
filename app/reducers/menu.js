@@ -1,5 +1,4 @@
 import { LOCATION_CHANGE }  from 'react-router-redux';
-import { MENU_ACTIVATE }    from './menu.actions.js';
 import { LOGIN, LOGOUT }    from './auth.actions';
 import {SUCCESS}            from './state';
 import authService          from '../service/auth';
@@ -28,7 +27,7 @@ const userMenu = {
 
 function updateActive(state, path) {
     let items = state.items.slice().map((item) => Object.assign({}, item, { active: item.path === path }))
-    return Object.assign({}, state, { active: false, items });
+    return Object.assign({}, state, { items });
 }
 
 
@@ -36,9 +35,6 @@ export default function(menu = authService.isAuthenticated() ? userMenu : anonym
     switch (type) {
         case LOCATION_CHANGE:
             return updateActive(menu, payload.pathname);
-        case MENU_ACTIVATE:
-            let active = !menu.active;
-            return Object.assign({}, menu, { active });
         case LOGIN:
             switch (state) {
                 case SUCCESS:

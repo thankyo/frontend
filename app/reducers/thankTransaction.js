@@ -3,24 +3,25 @@ import { REQUESTED, FAILED, SUCCESS } from './state';
 
 const initialState = {};
 
-export default function(thankTransaction = initialState, { type, state, payload}) {
+export default function(transactions = initialState, { type, state, payload}) {
     switch (type) {
         case THANK_TRANSACTION_FETCH:
             switch (state) {
                 case REQUESTED:
+                    return transactions;
                 case FAILED:
-                    return Object.assign({}, thankTransaction, payload);
+                    return Object.assign({}, transactions, payload);
                 case SUCCESS:
                     let transaction = payload;
                     let id = transaction.user;
-                    let existingPayments = thankTransaction[id] ? thankTransaction[id] : [];
+                    let existingPayments = transactions[id] ? transactions[id] : [];
                     let updatedPayments = existingPayments.slice();
                     updatedPayments.push(transaction);
-                    return Object.assign({}, thankTransaction, { [id] : updatedPayments });
+                    return Object.assign({}, transactions, { [id] : updatedPayments });
                 default:
-                    return thankTransaction;
+                    return transactions;
             }
         default:
-            return thankTransaction;
+            return transactions;
     }
 }
