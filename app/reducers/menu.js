@@ -1,6 +1,7 @@
 import { LOCATION_CHANGE }  from 'react-router-redux';
 import { MENU_ACTIVATE }    from './menu.actions.js';
-import { LOGIN_SUCCESS, LOGOUT }    from './auth.actions';
+import { LOGIN, LOGOUT }    from './auth.actions';
+import {SUCCESS}            from './state';
 import authService          from '../service/auth';
 
 function createMenu(text, path) {
@@ -12,17 +13,15 @@ function createMenu(text, path) {
 }
 
 const anonymousMenu = {
+    enabled: false,
     items: [
-        createMenu("Home", "/"),
-        createMenu("Documentation", "/documentation"),
-        createMenu("Join", "/join"),
     ]
 };
 
 const userMenu = {
+    enabled: true,
     items: [
         createMenu("Dashboard", "/dashboard"),
-        createMenu("Documentation", "/documentation"),
         createMenu("Leave", "/leave"),
     ]
 };
@@ -33,18 +32,23 @@ function updateActive(state, path) {
 }
 
 
-export default function(state = authService.isAuthenticated() ? userMenu : anonymousMenu, { type, payload }) {
+export default function(menu = authService.isAuthenticated() ? userMenu : anonymousMenu, { type, state, payload }) {
     switch (type) {
         case LOCATION_CHANGE:
-            return updateActive(state, payload.pathname);
+            return updateActive(menu, payload.pathname);
         case MENU_ACTIVATE:
-            let active = !state.active;
-            return Object.assign({}, state, { active });
-        case LOGIN_SUCCESS:
-            return userMenu;
+            let active = !menu.active;
+            return Object.assign({}, menu, { active });
+        case LOGIN:
+            switch (state) {
+                case SUCCESS:
+                    return userMenu
+                default:
+                    return menu;
+            }
         case LOGOUT:
             return anonymousMenu;
         default:
-            return state;
+            return menu;
     }
 }

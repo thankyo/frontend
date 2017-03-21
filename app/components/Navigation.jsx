@@ -1,40 +1,86 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {Link} from "react-router";
+import {login} from "../reducers/auth.actions";
+import {logout}     from '../reducers/auth.actions';
+
 import {activateMenu} from "../reducers/menu.actions";
 
-class NavigationItem extends Component {
+class Brand extends Component {
     render() {
         return (
-            <Link to={this.props.item.path} className={this.props.item.active ? "nav-item is-active" : "nav-item"}>
-                <span>{this.props.item.text}</span>
-            </Link>
-        );
+            <div className="nav-left">
+                <div className="nav-item is-brand">
+                    <span className="icon"><i className="fa fa-heart"></i></span>
+                    <span className="icon"></span>
+                    <span className="icon"> Thank</span>
+                </div>
+            </div>
+        )
     }
 }
 
-const Navigation = ({menu, onActivate}) => {
-    return (
-        <nav className="nav is-dark">
-            <div className="nav-left">
+class FacebookLoginButton extends Component {
+    render() {
+        return (
+            <div className="button is-info is-outlined is-hovered" onClick={this.props.loginFacebook}>
+                <span className="icon">
+                    <i className="fa fa-facebook"></i>
+                </span>
+                <span>Join</span>
             </div>
+        )
+    }
+}
 
-            <span className={menu.active ? "nav-toggle is-active" : "nav-toggle"} onClick={onActivate}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
+class LogoutButton extends Component {
+    render() {
+        return (
+            <div className="button is-danger is-outlined is-hovered" onClick={this.props.logout}>
+                <span className="icon">
+                    <i className="fa fa-sign-out"></i>
+                </span>
+                <span>Out</span>
+            </div>
+        )
+    }
+}
 
-            <div id="nav-menu" className={menu.active ? "nav-right nav-menu is-active" : "nav-right nav-menu"}>
-                {menu.items.map((item) =>
-                    <NavigationItem
-                        key={item.path}
-                        item={item}
-                    />
-                )}
+const AnonymousNavigation = (loginFacebook) => {
+    return (
+        <nav className="nav is-dark has-shadow">
+            <Brand/>
+            <div className="nav-center">
+                <div className="nav-item is-black">
+                    <div className="block">
+                        <FacebookLoginButton loginFacebook={loginFacebook}/>
+                    </div>
+                </div>
             </div>
         </nav>
-    );
+    )
+};
+
+const UserNavigation = (logout) => {
+    return (
+        <nav className="nav is-dark has-shadow">
+            <Brand/>
+            <div className="nav-center">
+                <div className="nav-item is-black">
+                    <div className="block">
+                        <LogoutButton logout={logout}/>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    )
+};
+
+const Navigation = ({menu, loginFacebook, logout}) => {
+    if (!menu.enabled) {
+        return AnonymousNavigation(loginFacebook);
+    } else {
+        return UserNavigation(logout);
+    }
 };
 
 const mapStateToProps = ({menu}) => {
@@ -47,7 +93,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onActivate: () => {
             dispatch(activateMenu())
-        }
+        },
+        loginFacebook: () => dispatch(login("facebook")),
+        logout: () => dispatch(logout())
     }
 };
 

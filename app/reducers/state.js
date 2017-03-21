@@ -1,6 +1,6 @@
 export const REQUESTED  = "REQUESTED";
 export const FAILED     = "FAILED";
-export const SUCCESS    =  "SUCCESS";
+export const SUCCESS    = "SUCCESS";
 
 export function requested(type, payload) {
     return { type, state: REQUESTED, payload };
