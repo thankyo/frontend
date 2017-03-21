@@ -12,14 +12,15 @@ class AuthService {
     signAndFetch(req, dispatch) {
         if (this.isAuthenticated())
             req.headers.append('X-Auth-Token', this.getToken());
-        let res = fetch(req).then(res => {
+        return fetch(req).then(res => {
             if (res.status === 401 || res.status === 403) {
                 dispatch(logout());
+            } else if (res.status == 400) {
+                return res.json().then(err => { throw err });
             } else {
                 return res.json()
             }
         });
-        return res;
     }
     signAndStream(url, dispatch, callback) {
         oboe({
