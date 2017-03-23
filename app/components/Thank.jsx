@@ -20,10 +20,16 @@ class Thank extends Component {
         this.props.thankByUrl(this.state.value);
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps !== undefined && prevProps.thank.isLoading && !this.props.thank.isLoading && !this.props.thank.isError) {
+            this.setState({ value: "" });
+        }
+    }
+
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <div class="field">
+                <div className="field">
                     <p className="control has-addons">
                         <input className="input is-expanded" type="text" placeholder="URL" value={this.state.value}
                                onChange={this.handleChange}/>

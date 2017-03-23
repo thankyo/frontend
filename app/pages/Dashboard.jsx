@@ -4,8 +4,8 @@ import Footer from "../components/Footer";
 import Profile from "../components/Profile";
 import ThankTransaction from "../components/ThankTransaction";
 import PaymentTransaction from "../components/PaymentTransaction";
-import Thank   from '../components/Thank';
-import Braintree from '../components/payment/Braintree';
+import Thank from "../components/Thank";
+import Braintree from "../components/payment/Braintree";
 
 
 export default class Dashboard extends Component {
@@ -29,9 +29,9 @@ export default class Dashboard extends Component {
                         </div>
                     </div>
                 </section>
-                <div className="columns">
-                    <div className="column is-one-third">
-                        <div className="section">
+                <div className="section">
+                    <div className="columns">
+                        <div className="column is-one-third">
                             <div className="content">
                                 <div className="card">
                                     <div className="card-content">
@@ -52,9 +52,7 @@ export default class Dashboard extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="column">
-                        <div className="section">
+                        <div className="column">
                             <div className="content">
                                 <div className="card">
                                     <div className="card-content">

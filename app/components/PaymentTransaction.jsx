@@ -4,6 +4,7 @@ import { fetch }            from "../reducers/paymentTransaction.actions";
 import Date                 from "./Date";
 import BankDetails          from "./payment/BankDetails";
 import Money                from "./payment/Money";
+import OperationIcon        from './icons/OperationIcon';
 
 class PaymentTransaction extends Component {
     render() {
@@ -11,7 +12,7 @@ class PaymentTransaction extends Component {
             <tr>
                 <td><BankDetails {... this.props.transaction.source}/></td>
                 <td><Money {... this.props.transaction.money}/></td>
-                <td><span className="icon">{this.props.transaction.thanks}</span></td>
+                <td><OperationIcon operation={this.props.transaction.operation} amount={this.props.transaction.thanks}/></td>
                 <td><Date time={this.props.transaction.created}/></td>
             </tr>
         );
