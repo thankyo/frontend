@@ -46,11 +46,13 @@ class LogoutButton extends Component {
 const AnonymousNavigation = (loginFacebook) => {
     return (
         <nav className="nav is-dark has-shadow">
-            <Brand/>
-            <div className="nav-center">
-                <div className="nav-item is-black">
-                    <div className="block">
-                        <FacebookLoginButton loginFacebook={loginFacebook}/>
+            <div className="container">
+                <Brand/>
+                <div className="nav-center">
+                    <div className="nav-item is-black">
+                        <div className="block">
+                            <FacebookLoginButton loginFacebook={loginFacebook}/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,11 +63,13 @@ const AnonymousNavigation = (loginFacebook) => {
 const UserNavigation = (logout) => {
     return (
         <nav className="nav is-dark has-shadow">
-            <Brand/>
-            <div className="nav-center">
-                <div className="nav-item is-black">
-                    <div className="block">
-                        <LogoutButton logout={logout}/>
+            <div className="container">
+                <Brand/>
+                <div className="nav-center">
+                    <div className="nav-item is-black">
+                        <div className="block">
+                            <LogoutButton logout={logout}/>
+                        </div>
                     </div>
                 </div>
             </div>

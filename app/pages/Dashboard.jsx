@@ -13,7 +13,7 @@ export default class Dashboard extends Component {
         return (
             <div>
                 <Navigation/>
-                <section className="hero is-primary">
+                <div className="hero is-primary">
                     <div className="hero-body">
                         <div className="container">
                             <div className="columns is-vcentered">
@@ -28,7 +28,7 @@ export default class Dashboard extends Component {
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
                 <div className="section">
                     <div className="columns">
                         <div className="column is-one-third">
