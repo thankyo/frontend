@@ -9,8 +9,8 @@ const Braintree = ({braintree, braintreeProcess}) => {
         <div className="content">
             <form className="control is-half" onSubmit={(evt) => braintreeProcess(evt, braintree.token)}>
                 <article className="notification is-primary">
-                    <Money amount="10" currency="USD"/><span className="icon">is</span>
-                    <OperationIcon operation="debit" amount="100"/>
+                    <Money amount={10} currency="USD"/><span className="icon">is</span>
+                    <OperationIcon operation="debit" amount={100}/>
                     <hr/>
                     <button type="submit" className={braintree.isLoading ? "button is-info is-loading" : "button is-info"}>
                         <span className="icon">
