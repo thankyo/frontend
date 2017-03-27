@@ -7,6 +7,7 @@ import Landing from "pages/Landing";
 import Dashboard from "pages/Dashboard";
 import Documentation from "pages/Documentation";
 import PrivacyPolicy from "pages/PrivacyPolicy";
+import NotFound         from "pages/NotFound";
 
 import {browserHistory} from "react-router";
 import authService from "service/auth";
@@ -23,6 +24,7 @@ export default class MainApp extends Component {
                 <Route path="/documentation" component={ Documentation }/>
                 <Route path="/legal/terms" component={ TermsOfUse }/>
                 <Route path="/legal/privacy" component={ PrivacyPolicy }/>
+                <Route path="*" component={NotFound}/>
             </Router>
         );
     }
