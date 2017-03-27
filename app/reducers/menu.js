@@ -3,25 +3,30 @@ import { LOGIN, LOGOUT }    from './auth.actions';
 import {SUCCESS}            from './state';
 import authService          from '../service/auth';
 
-function createMenu(text, path) {
+function createMenu(text, pathname, icon) {
     return {
         text,
-        path,
+        pathname,
+        icon,
         active: false,
     };
 }
 
 const anonymousMenu = {
     enabled: false,
-    items: [
-    ]
+    items: [],
+    my: []
 };
 
 const userMenu = {
     enabled: true,
     items: [
-        createMenu("Dashboard", "/dashboard"),
-        createMenu("Leave", "/leave"),
+        createMenu("Dashboard", "/dashboard")
+    ],
+    my: [
+        createMenu("Love", "/my/love", "fa fa-heart"),
+        createMenu("Payment", "/my/payment", "fa fa-usd"),
+        createMenu("Setting", "/my/setting", "fa fa-cogs")
     ]
 };
 
