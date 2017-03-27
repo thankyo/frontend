@@ -1,34 +1,8 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {login} from "../reducers/auth.actions";
 import {logout}     from '../reducers/auth.actions';
-
-class Brand extends Component {
-    render() {
-        return (
-            <div className="nav-left">
-                <div className="nav-item is-brand">
-                    <span className="icon"><i className="fa fa-heart"></i></span>
-                    <span className="icon"></span>
-                    <span className="icon">Love.it</span>
-                </div>
-            </div>
-        )
-    }
-}
-
-class FacebookLoginButton extends Component {
-    render() {
-        return (
-            <div className="button is-info is-outlined is-hovered" onClick={this.props.loginFacebook}>
-                <span className="icon">
-                    <i className="fa fa-facebook"></i>
-                </span>
-                <span>Join</span>
-            </div>
-        )
-    }
-}
+import Brand from './Brand';
+import FacebookLogin from './FacebookLogin';
 
 class LogoutButton extends Component {
     render() {
@@ -43,7 +17,7 @@ class LogoutButton extends Component {
     }
 }
 
-const AnonymousNavigation = (loginFacebook) => {
+const AnonymousNavigation = () => {
     return (
         <nav className="nav is-dark has-shadow">
             <div className="container">
@@ -51,7 +25,7 @@ const AnonymousNavigation = (loginFacebook) => {
                 <div className="nav-center">
                     <div className="nav-item is-black">
                         <div className="block">
-                            <FacebookLoginButton loginFacebook={loginFacebook}/>
+                            <FacebookLogin/>
                         </div>
                     </div>
                 </div>
@@ -77,9 +51,9 @@ const UserNavigation = (logout) => {
     )
 };
 
-const Navigation = ({menu, loginFacebook, logout}) => {
+const Navigation = ({menu, logout}) => {
     if (!menu.enabled) {
-        return AnonymousNavigation(loginFacebook);
+        return AnonymousNavigation();
     } else {
         return UserNavigation(logout);
     }
@@ -93,7 +67,6 @@ const mapStateToProps = ({menu}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginFacebook: () => dispatch(login("facebook")),
         logout: () => dispatch(logout())
     }
 };

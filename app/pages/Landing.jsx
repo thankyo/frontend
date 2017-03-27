@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import Footer from "../components/Footer";
-import Navigation from "../components/Navigation";
 import Hero from "../components/landing/Hero";
 import Creator from "../components/landing/Creator";
 import Contributor from "../components/landing/Contributor";
@@ -10,11 +9,28 @@ export default class Landing extends Component {
     render() {
         return (
             <div>
-                <Navigation/>
                 <Hero/>
-                <Creator/>
-                <Contributor/>
-                <HowItWorks/>
+                <div className="section main">
+                    <div className="container">
+                        <div className="columns">
+                            <div className="column is-4">
+                                <div className="panel">
+                                    <Creator/>
+                                </div>
+                            </div>
+                            <div className="column is-4">
+                                <div className="panel">
+                                    <Contributor/>
+                                </div>
+                            </div>
+                            <div className="column is-4">
+                                <div className="panel">
+                                    <HowItWorks/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <Footer/>
             </div>
         );
