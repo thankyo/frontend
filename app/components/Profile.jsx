@@ -1,43 +1,41 @@
 import React, {Component} from "react";
-import {connect} from "react-redux";
-import SmallThankIcon from "./icons/SmallThankIcon";
-import ProviderIcon from "./icons/ProviderIcon";
 import {fetch} from "../reducers/user.actions";
+import { connect } from "react-redux";
 
 class Profile extends Component {
     loadingState() {
         return (
-            <div>
-                <h1>Loading ...</h1>
+            <div className="section profile-heading is">
+                <div className="columns is-loading">
+                    <p className="title"> Loading ...</p>
+                </div>
             </div>
         )
     }
 
     profileState(user) {
-        let imageStyle = {
-            height: "40px",
-            width: "40px"
-        }
         return (
-            <div>
-                <div className="media">
-                    <div className="media-left">
-                        <figure className="image" style={imageStyle}>
-                            <img width={96} height={96} src={user.thumbnail} alt="Image"></img>
-                        </figure>
+            <div className="section profile-heading">
+                <div className="columns">
+                    <div className="column is-2">
+                        <div className="image is-128x128 avatar">
+                            <img src={user.thumbnail}/>
+                        </div>
                     </div>
-                    <div className="media-content">
-                        <p className="title is-4">{user.firstName} {user.lastName}</p>
-                        <p className="subtitle is-6">{user.profiles.map(provider => <ProviderIcon
-                            key={provider.providerID} providerID={provider.providerID}/>)}</p>
+                    <div className="column is-6 name">
+                        <p>
+                            <span className="title is-bold">{user.firstName} {user.lastName}</span>
+                        </p>
+                        <p className="tagline">{user.bio}</p>
                     </div>
-                </div>
-
-                <div className="content">
-                    {user.firstName} you can change the web.
-                    <br/>
-                    <br/>
-                    <small><SmallThankIcon balance={user.balance}/></small>
+                    <div className="column is-2 following has-text-centered">
+                        <p className="stat-val">{user.total}</p>
+                        <p className="stat-key">total</p>
+                    </div>
+                    <div className="column is-2 likes has-text-centered">
+                        <p className="stat-val">{user.balance}</p>
+                        <p className="stat-key">balance</p>
+                    </div>
                 </div>
             </div>
         )
