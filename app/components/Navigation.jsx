@@ -10,7 +10,7 @@ class Brand extends Component {
                 <div className="nav-item is-brand">
                     <span className="icon"><i className="fa fa-heart"></i></span>
                     <span className="icon"></span>
-                    <span className="icon"> Thank</span>
+                    <span className="icon">Love.it</span>
                 </div>
             </div>
         )
