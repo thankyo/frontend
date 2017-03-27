@@ -15,7 +15,7 @@ export default class Dashboard extends Component {
             <div>
                 <Navigation/>
                 <div className="container profile">
-                    <Profile id="me"/>
+                    <Profile id="my"/>
                     <ProfileMenu/>
                     <div className="section">
                         <div className="columns">
@@ -43,13 +43,13 @@ export default class Dashboard extends Component {
                                 <div className="content">
                                     <div className="card">
                                         <div className="card-content">
-                                            <PaymentTransaction id="me"/>
+                                            <PaymentTransaction id="my"/>
                                         </div>
                                     </div>
                                     <br/>
                                     <div className="card">
                                         <div className="card-content">
-                                            <ThankTransaction id="me"/>
+                                            <ThankTransaction id="my"/>
                                         </div>
                                     </div>
                                 </div>

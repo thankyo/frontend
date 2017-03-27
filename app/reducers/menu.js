@@ -25,14 +25,14 @@ const userMenu = {
     ],
     my: [
         createMenu("Love", "/my/love", "fa fa-heart"),
-        createMenu("Payment", "/my/payment", "fa fa-usd"),
-        createMenu("Setting", "/my/setting", "fa fa-cogs")
+        createMenu("Payment", "/my/payment", "fa fa-usd")
     ]
 };
 
-function updateActive(state, path) {
-    let items = state.items.slice().map((item) => Object.assign({}, item, { active: item.path === path }))
-    return Object.assign({}, state, { items });
+function updateActive(state, pathname) {
+    let items = state.items.slice().map((item) => Object.assign({}, item, { active: item.pathname === pathname }))
+    let my = state.my.slice().map((item) => Object.assign({}, item, { active: item.pathname === pathname }))
+    return Object.assign({}, state, { items, my });
 }
 
 
@@ -43,7 +43,7 @@ export default function(menu = authService.isAuthenticated() ? userMenu : anonym
         case LOGIN:
             switch (state) {
                 case SUCCESS:
-                    return userMenu
+                    return userMenu;
                 default:
                     return menu;
             }

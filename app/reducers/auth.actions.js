@@ -1,4 +1,5 @@
 import { requested, success, failed } from "./state";
+import { HOME } from "../service/routes";
 
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
@@ -26,7 +27,7 @@ export function login(provider) {
             try {
                 let token = event.currentTarget.document.documentElement.innerText;
                 dispatch(success(LOGIN, { token }));
-                browserHistory.push("/dashboard");
+                browserHistory.push(HOME);
                 event.currentTarget.close();
             } catch (error) {
                 dispatch(failed(LOGIN, { error }));

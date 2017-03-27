@@ -2,11 +2,10 @@ import React, {Component} from "react";
 import Navigation from "../components/Navigation";
 import Profile from "../components/Profile";
 import ProfileMenu from "../components/ProfileMenu";
-import PaymentTransaction from "../components/PaymentTransaction";
-import Braintree from "../components/payment/Braintree";
+import ThankTransaction from "../components/ThankTransaction";
 
 
-export default class Payments extends Component {
+export default class Love extends Component {
     render() {
         return (
             <div>
@@ -14,13 +13,11 @@ export default class Payments extends Component {
                 <div className="container profile">
                     <Profile id={this.props.params.id}/>
                     <ProfileMenu/>
-                    <Braintree/>
                     <div className="section">
-                        <PaymentTransaction id={this.props.params.id}/>
+                        <ThankTransaction id={this.props.params.id}/>
                     </div>
                 </div>
             </div>
         );
     }
 }
-
