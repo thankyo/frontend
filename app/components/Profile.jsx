@@ -45,6 +45,7 @@ class Profile extends Component {
 
     render() {
         if (this.props.user === undefined) {
+            this.props.fetchUser();
             return this.loadingState();
         } else {
             return this.profileState(this.props.user)
@@ -63,8 +64,9 @@ const mapStateToProps = (state, {id}) => {
 };
 
 const mapDispatchToProps = (dispatch, {id}) => {
-    dispatch(fetch(id));
-    return {}
+    return {
+        fetchUser: () => dispatch(fetch(id))
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)
