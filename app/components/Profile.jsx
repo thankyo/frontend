@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {fetch} from "../reducers/user.actions";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 
 class Profile extends Component {
     loadingState() {
@@ -28,13 +28,15 @@ class Profile extends Component {
                         </p>
                         <p className="tagline">{user.bio}</p>
                     </div>
-                    <div className="column is-2 following has-text-centered">
-                        <p className="stat-val">{user.total}</p>
-                        <p className="stat-key">total</p>
-                    </div>
-                    <div className="column is-2 likes has-text-centered">
+                    <br/>
+                    <br/>
+                    <div className="column is-2 following has-text-centered is-hidden-mobile">
                         <p className="stat-val">{user.balance}</p>
                         <p className="stat-key">balance</p>
+                    </div>
+                    <div className="column is-2 likes has-text-centered is-hidden-mobile">
+                        <p className="stat-val">{user.total}</p>
+                        <p className="stat-key">total</p>
                     </div>
                 </div>
             </div>

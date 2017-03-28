@@ -27,9 +27,12 @@ function thankFailed(error) {
 
 export function thank(url) {
     return (dispatch) => {
-        dispatch(thankRequested(url));
+        let normUrl = url.trim();
+        if (normUrl.length == 0)
+            return;
+        dispatch(thankRequested(normUrl));
         authService.
-            signAndFetch(new Request(`/api/v1/thank/${url}`, { method: "PUT" }), dispatch).
+            signAndFetch(new Request(`/api/v1/thank/${normUrl}`, { method: "PUT" }), dispatch).
             then(thank => dispatch(thankSuccess(thank))).
             catch((error) => dispatch(thankFailed(error)))
         
