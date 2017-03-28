@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation";
 import Profile from "../components/Profile";
 import ProfileMenu from "../components/ProfileMenu";
 import ThankTransaction from "../components/ThankTransaction";
-import Thank            from '../components/Thank';
+import Thank from "../components/Thank";
 
 
 export default class Love extends Component {
@@ -11,26 +11,25 @@ export default class Love extends Component {
         return (
             <div>
                 <Navigation/>
-                <section>
-                    <div className="container profile">
-                        <Profile id={this.props.params.id}/>
-                        <ProfileMenu/>
-                    </div>
-                </section>
+                <div className="container profile">
+                    <Profile id={this.props.params.id}/>
+                    <ProfileMenu/>
+                </div>
 
-                <section>
-                    <div className="container">
+                <div className="container">
+                    <div className="box">
                         <Thank/>
                     </div>
-                </section>
+                </div>
+
                 <br/>
-                <section>
-                    <div className="container">
-                        <div className="box">
-                            <ThankTransaction id={this.props.params.id}/>
-                        </div>
+
+                <div className="container">
+                    <div className="box">
+                        <ThankTransaction id={this.props.params.id}/>
                     </div>
-                </section>
+                </div>
+
             </div>
         );
     }

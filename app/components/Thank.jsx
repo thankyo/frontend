@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {thank} from "../reducers/thank.actions";
 
-class AlternativeThank extends Component {
+class Thank extends Component {
     constructor(props) {
         super(props);
         this.state = {value: props.thank.url};
@@ -28,18 +28,17 @@ class AlternativeThank extends Component {
 
     render() {
         return (
-            <div className="box">
-                <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
                 <p className="control has-addons">
                     <input className="input is-expanded" type="text" placeholder="URL" onChange={this.handleChange}/>
                     <button type="submit"
                             className={this.props.thank.isLoading ? "button is-danger is-loading" : "button is-danger"}>
                         <span className="icon"><i className="fa fa-heart"></i></span> <span>LOVE IT</span>
                     </button>
-                    {this.props.thank.isError && <p className="help is-danger title">{this.props.thank.error.message}</p>}
+                    {this.props.thank.isError &&
+                    <p className="help is-danger title">{this.props.thank.error.message}</p>}
                 </p>
-                </form>
-            </div>
+            </form>
         )
     }
 }
@@ -56,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AlternativeThank)
+export default connect(mapStateToProps, mapDispatchToProps)(Thank)
