@@ -12,12 +12,10 @@ export default function(transactions = initialState, { type, state, payload}) {
                 case FAILED:
                     return Object.assign({}, transactions, payload);
                 case SUCCESS:
-                    let transaction = payload;
-                    let id = transaction.user;
-                    let existingPayments = transactions[id] ? transactions[id] : [];
-                    let updatedPayments = existingPayments.slice();
-                    updatedPayments.push(transaction);
-                    return Object.assign({}, transactions, { [id] : updatedPayments });
+                    let user = payload.user;
+                    let userTransactions = transactions[payload.user] ? transactions[payload.user] : {};
+                    let updatedTransactions = Object.assign({}, userTransactions, { [payload.id] : payload });
+                    return Object.assign({}, transactions, { [user] : updatedTransactions });
                 default:
                     return transactions;
             }

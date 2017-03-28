@@ -36,9 +36,9 @@ const ThankTransactions = ({transactions}) => {
 };
 
 const mapStateToProps = ({thankTransaction}, {id}) => {
-    let transactions = thankTransaction[id] ? thankTransaction[id] : [];
+    let userTransactions = thankTransaction[id] ? thankTransaction[id] : [];
     return {
-        transactions
+        transactions: Object.values(userTransactions)
     };
 };
 
