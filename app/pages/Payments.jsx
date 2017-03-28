@@ -14,10 +14,20 @@ export default class Payments extends Component {
                 <div className="container profile">
                     <Profile id={this.props.params.id}/>
                     <ProfileMenu/>
-                    <Braintree/>
-                    <div className="section">
-                        <PaymentTransaction id={this.props.params.id}/>
+                </div>
+                <div className="container box">
+                    <div className="columns">
+                        <div className="column is-6">
+                            <Braintree/>
+                        </div>
+                        <div className="column is-6">
+                            <Braintree/>
+                        </div>
                     </div>
+                </div>
+                <br/>
+                <div className="container box">
+                    <PaymentTransaction id={this.props.params.id}/>
                 </div>
             </div>
         );

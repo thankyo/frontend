@@ -1,6 +1,6 @@
-import authService from '../service/auth';
+import authService from '../../service/auth';
 
-import { requested, success, failed } from "./state";
+import { requested, success, failed } from "../state";
 
 export const PAYMENT_TRANSACTION_FETCH   = "PAYMENT_TRANSACTION_FETCH";
 

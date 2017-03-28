@@ -1,6 +1,6 @@
 import React, {Component}   from "react";
 import { connect }          from "react-redux";
-import { fetch }            from "../reducers/paymentTransaction.actions";
+import { fetch }            from "../reducers/payment/transaction.actions";
 import Date                 from "./Date";
 import BankDetails          from "./payment/BankDetails";
 import Money                from "./payment/Money";
@@ -37,10 +37,10 @@ const PaymentTransactions = ({transactions}) => {
     );
 };
 
-const mapStateToProps = ({paymentTransaction}, {id}) => {
-    let transactions = paymentTransaction[id] ? paymentTransaction[id] : [];
+const mapStateToProps = ({payment: { transaction }}, {id}) => {
+    let userTransactions = transaction[id] ? transaction[id] : {};
     return {
-        transactions
+        transactions: Object.values(userTransactions)
     };
 };
 
