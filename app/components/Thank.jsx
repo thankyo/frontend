@@ -33,11 +33,11 @@ class Thank extends Component {
                     <p className="control has-addons">
                         <input className="input is-expanded" type="text" placeholder="URL" value={this.state.value}
                                onChange={this.handleChange}/>
-                        <button type="submit" className={this.props.thank.isLoading ? "button is-info is-loading" : "button is-info"}>
-                            Thank
+                        <button type="submit" className={this.props.thank.isLoading ? "button is-danger is-loading" : "button is-danger"}>
+                            <span className="icon"><i className="fa fa-heart"></i></span> <span>LOVE IT</span>
                         </button>
                     </p>
-                    {this.props.thank.isError && <p className="help is-danger">{this.props.thank.error.message}</p>}
+                    {this.props.thank.isError && <p className="help is-danger title">{this.props.thank.error.message}</p>}
                 </div>
             </form>
         )

@@ -9,7 +9,7 @@ export function fetch(id) {
         dispatch(requested(THANK_TRANSACTION_FETCH, { id }));
         authService.signAndStream(`/api/v1/transaction/user/${id}`, dispatch, (payment) => {
             dispatch(success(THANK_TRANSACTION_FETCH, payment));
-            if (id === "my") dispatch(success(THANK_TRANSACTION_FETCH, Object.assign({}, payment, { "user": "me"})))
+            if (id === "my") dispatch(success(THANK_TRANSACTION_FETCH, Object.assign({}, payment, { "user": "my"})))
         })
     }
 }
