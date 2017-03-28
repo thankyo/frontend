@@ -4,6 +4,7 @@ import Profile from "../components/Profile";
 import ProfileMenu from "../components/ProfileMenu";
 import PaymentTransaction from "../components/PaymentTransaction";
 import Braintree from "../components/payment/Braintree";
+import Withdraw from "../components/payment/Withdraw";
 
 
 export default class Payments extends Component {
@@ -21,7 +22,7 @@ export default class Payments extends Component {
                             <Braintree/>
                         </div>
                         <div className="column is-6">
-                            <Braintree/>
+                            <Withdraw/>
                         </div>
                     </div>
                 </div>

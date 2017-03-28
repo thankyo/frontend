@@ -25,7 +25,7 @@ const Braintree = ({braintree, braintreeProcess}) => {
     );
 }
 
-const mapStateToProps = ({braintree}) => {
+const mapStateToProps = ({ payment: {braintree}}) => {
     return {braintree};
 };
 
