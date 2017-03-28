@@ -3,7 +3,6 @@ import user from "./user";
 import auth from "./auth";
 import thankTransaction from "./thankTransaction";
 import payment from './payment';
-import braintree from "./braintree";
 import thank from "./thank";
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
@@ -17,8 +16,7 @@ export default function(){
             user,
             thankTransaction,
             payment,
-            thank,
-            braintree
+            thank
         }
     );
 }

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {fetchToken, braintreeProcess} from "../../reducers/braintree.actions";
+import {braintreeProcess} from "../../reducers/payment/braintree.actions";
 import Money from './Money';
 import OperationIcon from '../icons/OperationIcon';
 
