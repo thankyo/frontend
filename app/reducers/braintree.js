@@ -11,7 +11,7 @@ export default function(braintree = initialState, { type, payload}) {
         case BRAINTREE_TOKEN_REQUESTED:
             return Object.assign({}, braintree, { isLoading: true, isError: false, token: ""});
         case BRAINTREE_TOKEN_SUCCESS:
-            return Object.assign({}, braintree, initialState, { token: payload.token });
+            return Object.assign({}, braintree, { token: payload.token });
         case BRAINTREE_TOKEN_ERROR:
             return Object.assign({}, braintree, { isLoading: false, isError: true, error: payload.error });
         case BRAINTREE_PROCESSING_ERROR:

@@ -54,45 +54,49 @@ function braintreeError(error) {
     }
 }
 
-export function braintreeProcess(authorization) {
-    return (dispatch) => {
-        client.create({authorization}, (err, client) => {
-            paypal.create({client}, (paypalErr, paypalInstance) => {
-                dispatch(braintreeProcessingStart());
-                paypalInstance.tokenize({
-                    flow: 'checkout', // Required
-                    amount: 10.00, // Required
-                    currency: 'USD', // Required
-                    locale: 'en_US',
-                    enableShippingAddress: false,
-                    shippingAddressEditable: false
-                }, (err, nonce) => {
-                    if (Object.isObject(err)) {
-                        dispatch(braintreeError(err));
-                    } else {
-                        dispatch(braintreeProcessingSuccess(nonce));
-                        let req = new Request(
-                            "/api/v1/payment/braintree/nonce",
-                            {
-                                method: "POST",
-                                headers: {
-                                    'Accept': 'application/json',
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify(nonce)
-                            });
-                        authService.signAndFetch(req, dispatch)
-                    }
-                });
-            });
-
-        });
-    }
+function fetchToken(dispatch) {
+    dispatch(tokenRequested());
+    let fToken = authService.
+        signAndFetch(new Request("/api/v1/payment/braintree/token"), dispatch)
+    fToken.then((token) => dispatch(tokenSuccess(token)))
+    return fToken;
 }
 
-export function fetchToken() {
+export function braintreeProcess() {
     return (dispatch) => {
-        dispatch(tokenRequested());
-        authService.signAndFetch(new Request("/api/v1/payment/braintree/token"), dispatch).then((token) => dispatch(tokenSuccess(token)))
+        fetchToken(dispatch).
+            then((authorization) => {
+
+                client.create({authorization}, (err, client) => {
+                    paypal.create({client}, (paypalErr, paypalInstance) => {
+                        dispatch(braintreeProcessingStart());
+                        paypalInstance.tokenize({
+                            flow: 'checkout', // Required
+                            amount: 10.00, // Required
+                            currency: 'USD', // Required
+                            locale: 'en_US',
+                            enableShippingAddress: false,
+                            shippingAddressEditable: false
+                        }, (err, nonce) => {
+                            if (Object.isObject(err)) {
+                                dispatch(braintreeError(err));
+                            } else {
+                                dispatch(braintreeProcessingSuccess(nonce));
+                                let req = new Request(
+                                    "/api/v1/payment/braintree/nonce",
+                                    {
+                                        method: "POST",
+                                        headers: {
+                                            'Accept': 'application/json',
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify(nonce)
+                                    });
+                                authService.signAndFetch(req, dispatch)
+                            }
+                        });
+                    });
+            });
+        });
     }
 }

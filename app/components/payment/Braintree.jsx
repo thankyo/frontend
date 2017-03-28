@@ -7,7 +7,7 @@ import OperationIcon from '../icons/OperationIcon';
 const Braintree = ({braintree, braintreeProcess}) => {
     return (
         <div className="content">
-            <form className="control is-half" onSubmit={(evt) => braintreeProcess(evt, braintree.token)}>
+            <form className="control is-half" onSubmit={(evt) => braintreeProcess(evt)}>
                 <article className="notification is-primary">
                     <Money amount={10} currency="USD"/><span className="icon">is</span>
                     <OperationIcon operation="debit" amount={100}/>
@@ -20,7 +20,7 @@ const Braintree = ({braintree, braintreeProcess}) => {
                     </button>
                 </article>
             </form>
-            {braintree.isError ? <p className="help is-danger">{braintree.error.message}</p> : <p></p>}
+            {braintree.isError ? <p className="help is-danger title">{braintree.error.message}</p> : <p></p>}
         </div>
     );
 }
@@ -30,11 +30,10 @@ const mapStateToProps = ({braintree}) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    dispatch(fetchToken());
     return {
-        braintreeProcess: (evt, token) => {
+        braintreeProcess: (evt) => {
             evt.preventDefault();
-            dispatch(braintreeProcess(token))
+            dispatch(braintreeProcess())
         }
     }
 };
