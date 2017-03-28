@@ -11,20 +11,26 @@ export default class Love extends Component {
         return (
             <div>
                 <Navigation/>
-                <div className="container profile">
-                    <Profile id={this.props.params.id}/>
-                    <ProfileMenu/>
-                </div>
-                <div className="container profile">
-                    <div className="section profile-heading">
+                <section>
+                    <div className="container profile">
+                        <Profile id={this.props.params.id}/>
+                        <ProfileMenu/>
+                    </div>
+                </section>
+
+                <section>
+                    <div className="container">
                         <Thank/>
                     </div>
-                </div>
-                <div className="container profile">
-                    <div className="section profile-heading">
-                        <ThankTransaction id={this.props.params.id}/>
+                </section>
+                <br/>
+                <section>
+                    <div className="container">
+                        <div className="box">
+                            <ThankTransaction id={this.props.params.id}/>
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
         );
     }

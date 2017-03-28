@@ -2,10 +2,10 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {thank} from "../reducers/thank.actions";
 
-class Thank extends Component {
+class AlternativeThank extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: props.thank.url };
+        this.state = {value: props.thank.url};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,24 +22,24 @@ class Thank extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps !== undefined && prevProps.thank.isLoading && !this.props.thank.isLoading && !this.props.thank.isError) {
-            this.setState({ value: "" });
+            this.setState({value: ""});
         }
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div className="field">
-                    <p className="control has-addons">
-                        <input className="input is-expanded" type="text" placeholder="URL" value={this.state.value}
-                               onChange={this.handleChange}/>
-                        <button type="submit" className={this.props.thank.isLoading ? "button is-danger is-loading" : "button is-danger"}>
-                            <span className="icon"><i className="fa fa-heart"></i></span> <span>LOVE IT</span>
-                        </button>
-                    </p>
+            <div className="box">
+                <form onSubmit={this.handleSubmit}>
+                <p className="control has-addons">
+                    <input className="input is-expanded" type="text" placeholder="URL" onChange={this.handleChange}/>
+                    <button type="submit"
+                            className={this.props.thank.isLoading ? "button is-danger is-loading" : "button is-danger"}>
+                        <span className="icon"><i className="fa fa-heart"></i></span> <span>LOVE IT</span>
+                    </button>
                     {this.props.thank.isError && <p className="help is-danger title">{this.props.thank.error.message}</p>}
-                </div>
-            </form>
+                </p>
+                </form>
+            </div>
         )
     }
 }
@@ -56,4 +56,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Thank)
+export default connect(mapStateToProps, mapDispatchToProps)(AlternativeThank)
