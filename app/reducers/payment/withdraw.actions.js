@@ -30,7 +30,15 @@ function withdrawSuccess(payload) {
 export function withdraw(amount) {
     return (dispatch) => {
         dispatch(withdrawRequested(amount));
-        let wReq = new Request(`/api/v1/payment/withdraw`, { method: "POST" })
+        let wReq = new Request(`/api/v1/payment/transaction/withdraw`,
+            {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ amount: parseInt(amount) }),
+            });
         authService.signAndFetch(wReq, dispatch).
         then(payment => dispatch(withdrawSuccess(payment))).
         catch((error) => dispatch(withdrawError(error)))
