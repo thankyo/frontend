@@ -2,6 +2,9 @@ import authService from "../../service/auth";
 import client from "braintree-web/client";
 import paypal from "braintree-web/paypal";
 
+import { fetch as fetchUser } from "../user.actions"
+import { fetch as fetchPaymentTransactions } from "./transaction.actions";
+
 export const BRAINTREE_TOKEN_REQUESTED = "BRAINTREE_TOKEN_REQUESTED";
 export const BRAINTREE_TOKEN_SUCCESS = "BRAINTREE_TOKEN_SUCCESS";
 export const BRAINTREE_TOKEN_ERROR = "BRAINTREE_TOKEN_ERROR";
@@ -62,7 +65,7 @@ function fetchToken(dispatch) {
     return fToken;
 }
 
-export function braintreeProcess() {
+export function braintreeProcess(amount, currency) {
     return (dispatch) => {
         fetchToken(dispatch).
             then((authorization) => {
@@ -72,8 +75,8 @@ export function braintreeProcess() {
                         dispatch(braintreeProcessingStart());
                         paypalInstance.tokenize({
                             flow: 'checkout', // Required
-                            amount: 10.00, // Required
-                            currency: 'USD', // Required
+                            amount, // Required
+                            currency, // Required
                             locale: 'en_US',
                             enableShippingAddress: false,
                             shippingAddressEditable: false
@@ -81,7 +84,7 @@ export function braintreeProcess() {
                             if (Object.isObject(err)) {
                                 dispatch(braintreeError(err));
                             } else {
-                                dispatch(braintreeProcessingSuccess(nonce));
+                                let braintreeReq = Object.assign({}, nonce, { money: { amount, currency }})
                                 let req = new Request(
                                     "/api/v1/payment/braintree/nonce",
                                     {
@@ -90,9 +93,13 @@ export function braintreeProcess() {
                                             'Accept': 'application/json',
                                             'Content-Type': 'application/json'
                                         },
-                                        body: JSON.stringify(nonce)
+                                        body: JSON.stringify(braintreeReq)
                                     });
-                                authService.signAndFetch(req, dispatch)
+                                authService.signAndFetch(req, dispatch).then(() => {
+                                    dispatch(braintreeProcessingSuccess(nonce))
+                                    dispatch(fetchUser("my"));
+                                    dispatch(fetchPaymentTransactions("my"));
+                                })
                             }
                         });
                     });

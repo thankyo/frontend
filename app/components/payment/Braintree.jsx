@@ -7,7 +7,7 @@ import OperationIcon from '../icons/OperationIcon';
 const Braintree = ({braintree, braintreeProcess}) => {
     return (
         <div className="content">
-            <form className="control is-half" onSubmit={(evt) => braintreeProcess(evt)}>
+            <form className="control is-half" onSubmit={(evt) => braintreeProcess(10.00, "USD", evt)}>
                 <article className="notification is-primary">
                     <Money amount={10} currency="USD"/><span className="icon">is</span>
                     <OperationIcon operation="debit" amount={100}/>
@@ -31,9 +31,9 @@ const mapStateToProps = ({ payment: {braintree}}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        braintreeProcess: (evt) => {
+        braintreeProcess: (amount, currency, evt) => {
             evt.preventDefault();
-            dispatch(braintreeProcess())
+            dispatch(braintreeProcess(amount, currency))
         }
     }
 };
