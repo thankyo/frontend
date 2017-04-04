@@ -11,27 +11,7 @@ export default class Landing extends Component {
             <div>
                 <Hero/>
                 <Creator/>
-                {/*<Contributor/>*/}
-                <div className="section main">
-                    {/*<div className="container">*/}
-                        {/*<div className="columns">*/}
-                            {/*<div className="column is-4">*/}
-                                {/*<div className="panel">*/}
-                                    {/*<Creator/>*/}
-                                {/*</div>*/}
-                            {/*</div>*/}
-                            {/*<div className="column is-4">*/}
-                                {/*<div className="panel">*/}
-                                {/*</div>*/}
-                            {/*</div>*/}
-                            {/*<div className="column is-4">*/}
-                                {/*<div className="panel">*/}
-                                    {/*<HowItWorks/>*/}
-                                {/*</div>*/}
-                            {/*</div>*/}
-                        {/*</div>*/}
-                    {/*</div>*/}
-                </div>
+                <Contributor/>
                 <Footer/>
             </div>
         );

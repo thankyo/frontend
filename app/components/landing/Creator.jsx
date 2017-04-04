@@ -12,8 +12,7 @@ export default class Creator extends Component {
                             </h1>
                             <h2 className="subtitle is-5">
                                 Create and share your love.<br/>
-                                There are always people <br/>
-                                Who will hear you and understand<br/>
+                                Think about your art, not bills<br/>
                             </h2>
                         </div>
                         <div className="column ">
