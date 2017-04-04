@@ -4,7 +4,7 @@ import {login} from "../reducers/auth.actions";
 
 const FacebookLoginButton = ({loginFacebook}) => {
     return (
-        <div className="button is-info is-outlined is-hovered" onClick={loginFacebook}>
+        <div className="button is-info is-outlined is-hovered is-large" onClick={loginFacebook}>
                 <span className="icon">
                     <i className="fa fa-facebook"></i>
                 </span>
