@@ -12,6 +12,7 @@ export default class Landing extends Component {
                 <Hero/>
                 <Creator/>
                 <Contributor/>
+                <HowItWorks/>
                 <Footer/>
             </div>
         );
