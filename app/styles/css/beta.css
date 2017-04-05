@@ -16,4 +16,5 @@ body:after{
     -ms-transform:rotate(-45deg);
     -webkit-transform:rotate(-45deg);
     transform:rotate(-45deg);
+    z-index: 10;
 }
