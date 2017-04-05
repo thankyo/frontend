@@ -35,7 +35,7 @@ function waitForAuth(win, dispatch) {
 
     function checkAuthenticated() {
         var ur = win.location.href;
-        if (ur.indexOf('/auth/authenticate/facebook') != -1) {
+        if (ur.indexOf('/auth/authenticate/facebook') != -1 && win.document.documentElement.innerText.length > 0) {
             clearInterval(timer);
             updateAuth(win, dispatch);
         }
