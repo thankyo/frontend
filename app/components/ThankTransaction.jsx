@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {fetch} from "../reducers/thankTransaction.actions";
+import {fetch} from "../reducers/thank/thankTransaction.actions";
 import OperationIcon from "./icons/OperationIcon";
 import Resource from "./Resource";
 import Date from "./Date";

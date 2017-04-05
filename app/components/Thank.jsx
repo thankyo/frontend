@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {thank} from "../reducers/thank.actions";
+import {thank} from "../reducers/thank/thank.actions";
 
 class Thank extends Component {
     constructor(props) {

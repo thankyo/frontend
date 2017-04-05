@@ -1,4 +1,4 @@
-import authService from '../service/auth';
+import authService from '../../service/auth';
 
 export const THANK_REQUESTED = "THANK_REQUESTED";
 export const THANK_FAILED = "THANK_FAILED";

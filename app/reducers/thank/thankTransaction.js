@@ -1,5 +1,5 @@
 import { THANK_TRANSACTION_FETCH } from './thankTransaction.actions';
-import { REQUESTED, FAILED, SUCCESS } from './state';
+import { REQUESTED, FAILED, SUCCESS } from '../state';
 
 const initialState = {};
 
