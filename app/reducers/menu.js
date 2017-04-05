@@ -21,7 +21,8 @@ const anonymousMenu = {
 const userMenu = {
     enabled: true,
     items: [
-        createMenu("Dashboard", "/dashboard")
+        createMenu("Love", "/my/love", "fa fa-heart"),
+        createMenu("Payment", "/my/payment", "fa fa-usd")
     ],
     my: [
         createMenu("Love", "/my/love", "fa fa-heart"),

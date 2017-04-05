@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import Profile from "../components/Profile";
+import Profile from "../components/user/Profile";
 import ProfileMenu from "../components/ProfileMenu";
 import ThankTransaction from "../components/ThankTransaction";
 import PaymentTransaction from "../components/PaymentTransaction";
@@ -14,6 +14,38 @@ export default class Dashboard extends Component {
         return (
             <div>
                 <Navigation/>
+                <div className="tile is-ancestor">
+                    <div className="tile is-parent">
+                        <article className="tile is-child notification is-warning has-text-centered stat-tile">
+                            <br/>
+                            <p className="title">Hello World</p>
+                        </article>
+                    </div>
+                    <div className="tile is-parent">
+                        <article className="tile is-child notification is-info has-text-centered stat-tile">
+                            <p className="title">212</p>
+                            <p className="subtitle"><i className="fa fa-twitter"></i></p>
+                        </article>
+                    </div>
+                    <div className="tile is-parent">
+                        <article className="tile is-child notification is-primary has-text-centered stat-tile">
+                            <p className="title">212</p>
+                            <p className="subtitle"><i className="fa fa-facebook"></i></p>
+                        </article>
+                    </div>
+                    <div className="tile is-parent">
+                        <article className="tile is-child notification is-danger has-text-centered stat-tile">
+                            <p className="title">212</p>
+                            <p className="subtitle"><i className="fa fa-google"></i></p>
+                        </article>
+                    </div>
+                    <div className="tile is-parent">
+                        <article className="tile is-child notification is-dark has-text-centered stat-tile">
+                            <p className="title">212</p>
+                            <p className="subtitle"><i className="fa fa-github"></i></p>
+                        </article>
+                    </div>
+                </div>
                 <div className="container profile">
                     <Profile id="my"/>
                     <ProfileMenu/>

@@ -30,7 +30,8 @@ class Thank extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <p className="control has-addons">
-                    <input className="input is-expanded" type="text" placeholder="URL" onChange={this.handleChange}/>
+                    <input className="input is-expanded" type="text" placeholder="URL"
+                           onChange={this.handleChange}/>
                     <button type="submit"
                             className={this.props.thank.isLoading ? "button is-danger is-loading" : "button is-danger"}>
                         <span className="icon"><i className="fa fa-heart"></i></span> <span>LOVE IT</span>

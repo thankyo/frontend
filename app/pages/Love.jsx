@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import Navigation from "../components/Navigation";
-import Profile from "../components/Profile";
-import ProfileMenu from "../components/ProfileMenu";
+import Profile from "../components/user/Profile";
 import ThankTransaction from "../components/ThankTransaction";
 import Thank from "../components/Thank";
+import ComponentWrap from "../components/ComponentWrap";
 
 
 export default class Love extends Component {
@@ -11,25 +11,15 @@ export default class Love extends Component {
         return (
             <div>
                 <Navigation/>
-                <div className="container profile">
+                <ComponentWrap>
                     <Profile id={this.props.params.id}/>
-                    <ProfileMenu/>
-                </div>
-
-                <div className="container">
-                    <div className="box">
-                        <Thank/>
-                    </div>
-                </div>
-
-                <br/>
-
-                <div className="container">
-                    <div className="box">
-                        <ThankTransaction id={this.props.params.id}/>
-                    </div>
-                </div>
-
+                </ComponentWrap>
+                <ComponentWrap>
+                    <Thank/>
+                </ComponentWrap>
+                <ComponentWrap>
+                    <ThankTransaction id={this.props.params.id}/>
+                </ComponentWrap>
             </div>
         );
     }

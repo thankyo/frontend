@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {logout}     from '../reducers/auth.actions';
 import Brand from './Brand';
 import FacebookLogin from './FacebookLogin';
+import { Link } from 'react-router';
 
 class LogoutButton extends Component {
     render() {
@@ -34,12 +35,33 @@ const AnonymousNavigation = () => {
     )
 };
 
-const UserNavigation = (logout) => {
+
+class NavigationItem extends Component {
+    render() {
+        return (
+            <Link to={this.props.item.pathname} className={this.props.item.active ? "nav-item is-active" : "nav-item"}>
+                <span>{this.props.item.text}</span>
+            </Link>
+        );
+    }
+}
+
+const UserNavigation = (menu, logout) => {
     return (
         <nav className="nav is-dark has-shadow">
             <div className="container">
                 <Brand/>
+
+                <span className={menu.active ? "nav-toggle is-active" : "nav-toggle"}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+
                 <div className="nav-center">
+                    <div id="nav-menu" className={menu.active ? "nav-right nav-menu is-active" : "nav-right nav-menu"}>
+                        {menu.items.map((item) => <NavigationItem key={item.pathname} item={item}/>)}
+                    </div>
                     <div className="nav-item is-black">
                         <div className="block">
                             <LogoutButton logout={logout}/>
@@ -55,7 +77,7 @@ const Navigation = ({menu, logout}) => {
     if (!menu.enabled) {
         return AnonymousNavigation();
     } else {
-        return UserNavigation(logout);
+        return UserNavigation(menu, logout);
     }
 };
 
