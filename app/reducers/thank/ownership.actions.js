@@ -36,6 +36,6 @@ export function fetch(id) {
         authService.
             signAndStream(`/api/v1/thank/ownership/${id}`, dispatch, (ownership) => {
                 dispatch(ownershipSuccess(id, ownership))
-            }).catch((err) => dispatch(ownershipFailed(err)))
+            })
     }
 }

@@ -22,18 +22,18 @@ export default class Resource extends Component {
             </p>
         )
     }
-    facebook(uri) {
+    social(provider, uri) {
         return (
-            <span className="icon is-small">
-                <i className="fa fa-heart"></i> {uri}
-            </span>
+            <p>
+                <i className={`fa fa-${provider}`}></i> {uri}
+            </p>
         )
     }
     render() {
-        if (this.props.resource.type === "facebook")
-            return this.facebook(this.props.resource.uri);
-        else
+        if (this.props.resource.type === "http")
             return this.http(this.props.resource.uri);
+        else
+            return this.social(this.props.resource.provider, this.props.resource.uri);
     }
 }
 
