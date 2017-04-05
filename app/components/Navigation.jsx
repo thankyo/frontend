@@ -46,38 +46,49 @@ class NavigationItem extends Component {
     }
 }
 
-const UserNavigation = (menu, logout) => {
-    return (
-        <nav className="nav is-dark has-shadow">
-            <div className="container">
-                <Brand/>
+class UserNavigation extends Component {
+    constructor(props) {
+        super(props)
 
-                <span className={menu.active ? "nav-toggle is-active" : "nav-toggle"}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
+        this.state = { active: false }
+        this.setActive = this.setActive.bind(this)
+    }
+    setActive() {
+        this.setState({ active : !this.state.active })
+    }
+    render() {
+        return (
+            <nav className="nav is-dark has-shadow">
+                <div className="container">
+                    <Brand/>
 
-                <div className="nav-center">
-                    <div id="nav-menu" className={menu.active ? "nav-right nav-menu is-active" : "nav-right nav-menu"}>
-                        {menu.items.map((item) => <NavigationItem key={item.pathname} item={item}/>)}
-                    </div>
-                    <div className="nav-item is-black">
-                        <div className="block">
-                            <LogoutButton logout={logout}/>
+                    <span className={this.state.active ? "nav-toggle is-active" : "nav-toggle"} onClick={this.setActive}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                    <div className="nav-center">
+                        <div id="nav-menu" className={this.state.active ? "nav-right nav-menu is-active" : "nav-right nav-menu"}>
+                            {this.props.menu.items.map((item) => <NavigationItem key={item.pathname} item={item}/>)}
+                        </div>
+                        <div className="nav-item is-black">
+                            <div className="block">
+                                <LogoutButton logout={this.props.logout}/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </nav>
-    )
-};
+            </nav>
+        )
+    }
+}
 
 const Navigation = ({menu, logout}) => {
     if (!menu.enabled) {
         return AnonymousNavigation();
     } else {
-        return UserNavigation(menu, logout);
+        return <UserNavigation menu={menu} logout={logout} />;
     }
 };
 
