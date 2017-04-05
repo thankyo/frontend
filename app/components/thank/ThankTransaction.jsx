@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {fetch} from "../reducers/thank/thankTransaction.actions";
-import OperationIcon from "./icons/OperationIcon";
-import Resource from "./Resource";
-import Date from "./Date";
+import {fetch} from "../../reducers/thank/transaction.actions";
+import OperationIcon from "../icons/OperationIcon";
+import Resource from "../Resource";
+import Date from "../Date";
 
 class ThankTransaction extends Component {
     render() {

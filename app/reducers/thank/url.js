@@ -1,4 +1,4 @@
-import { THANK_REQUESTED, THANK_SUCCESS, THANK_FAILED } from './thank.actions';
+import { THANK_REQUESTED, THANK_SUCCESS, THANK_FAILED } from './url.actions';
 
 const initialState = {
     isLoading: false,

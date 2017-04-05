@@ -1,4 +1,4 @@
-import { THANK_TRANSACTION_FETCH } from './thankTransaction.actions';
+import { THANK_TRANSACTION_FETCH } from './transaction.actions';
 import { REQUESTED, FAILED, SUCCESS } from '../state';
 
 const initialState = {};
