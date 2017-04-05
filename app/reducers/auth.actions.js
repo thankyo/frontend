@@ -19,19 +19,33 @@ export function logout() {
     };
 }
 
+function updateAuth(win, dispatch) {
+    try {
+        let token = win.document.documentElement.innerText;
+        dispatch(success(LOGIN, { token }));
+        browserHistory.push(HOME);
+        win.close();
+    } catch (error) {
+        dispatch(failed(LOGIN, { error }));
+    }
+}
+
+function waitForAuth(win, dispatch) {
+    let timer = setInterval(checkVentana, 500);
+
+    function checkVentana() {
+        var ur = win.location.href;
+        if (ur.indexOf('/auth/authenticate/facebook') != -1) {
+            clearInterval(timer);
+            updateAuth(win, dispatch);
+        }
+    }
+}
+
 export function login(provider) {
     return (dispatch) => {
         dispatch(requested(LOGIN, { provider }));
         let win = window.open(`/api/v1/auth/authenticate/${provider}`);
-        win.onload = function(event) {
-            try {
-                let token = event.currentTarget.document.documentElement.innerText;
-                dispatch(success(LOGIN, { token }));
-                browserHistory.push(HOME);
-                event.currentTarget.close();
-            } catch (error) {
-                dispatch(failed(LOGIN, { error }));
-            }
-        };
+        waitForAuth(win, dispatch);
     }
 }
