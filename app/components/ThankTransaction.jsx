@@ -35,8 +35,8 @@ const ThankTransactions = ({transactions}) => {
     );
 };
 
-const mapStateToProps = ({thankTransaction}, {id}) => {
-    let userTransactions = thankTransaction[id] ? thankTransaction[id] : [];
+const mapStateToProps = ({thank: { transaction }}, {id}) => {
+    let userTransactions = transaction[id] ? transaction[id] : [];
     return {
         transactions: Object.values(userTransactions)
     };

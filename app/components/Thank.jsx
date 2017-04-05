@@ -44,8 +44,8 @@ class Thank extends Component {
     }
 }
 
-const mapStateToProps = ({thank}) => {
-    return {thank};
+const mapStateToProps = ({thank: { url }}) => {
+    return { thank: url };
 };
 
 const mapDispatchToProps = (dispatch) => {
