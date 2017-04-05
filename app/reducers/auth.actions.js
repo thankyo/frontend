@@ -31,9 +31,9 @@ function updateAuth(win, dispatch) {
 }
 
 function waitForAuth(win, dispatch) {
-    let timer = setInterval(checkVentana, 500);
+    let timer = setInterval(checkAuthenticated, 500);
 
-    function checkVentana() {
+    function checkAuthenticated() {
         var ur = win.location.href;
         if (ur.indexOf('/auth/authenticate/facebook') != -1) {
             clearInterval(timer);
