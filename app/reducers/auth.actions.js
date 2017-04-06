@@ -22,9 +22,9 @@ export function logout() {
 function updateAuth(win, dispatch) {
     try {
         let token = win.document.documentElement.innerText;
+        win.close();
         dispatch(success(LOGIN, { token }));
         browserHistory.push(HOME);
-        win.close();
     } catch (error) {
         dispatch(failed(LOGIN, { error }));
     }

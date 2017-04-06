@@ -3,15 +3,15 @@ import {logout} from '../reducers/auth.actions'
 import oboe from 'oboe';
 
 class AuthService {
-    constructor() {
-    }
     isAuthenticated() {
         let token = localStorage.getItem("token");
         return token !== undefined && token !== null;
     }
     signAndFetch(req, dispatch) {
+        let token = localStorage.getItem("token");
         if (this.isAuthenticated())
-            req.headers.append('X-Auth-Token', this.getToken());
+            req.headers.append('X-Auth-Token', token);
+
         return fetch(req).then(res => {
             if (res.status === 401 || res.status === 403) {
                 dispatch(logout());
@@ -44,8 +44,13 @@ class AuthService {
     getToken() {
         return localStorage.getItem("token");
     }
+    parseJwt (token) {
+        let base64Url = token.split('.')[1];
+        let base64 = base64Url.replace('-', '+').replace('_', '/');
+        return JSON.parse(window.atob(base64));
+    }
     setToken(token) {
-        localStorage.setItem("token", token);
+        localStorage.setItem("token", token.trim());
     }
     removeToken() {
         localStorage.removeItem("token")
