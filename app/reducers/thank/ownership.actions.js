@@ -30,7 +30,7 @@ function ownershipFailed(error) {
     }
 }
 
-export function fetch(id) {
+export function listOwnership(id) {
     return (dispatch) => {
         dispatch(ownershipRequested(id));
         authService.

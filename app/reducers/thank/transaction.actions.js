@@ -17,7 +17,7 @@ function transactionSuccess(payload) {
     }
 }
 
-export function fetch(id) {
+export function listTransactions(id) {
     return (dispatch) => {
         dispatch(transactionRequested({ id }));
         authService.signAndStream(`/api/v1/transaction/user/${id}`, dispatch, (payment) => {

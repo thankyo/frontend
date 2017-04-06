@@ -22,8 +22,8 @@ export default function(ownership = initialState, { type, payload}) {
             let { user, item } = payload;
             let items = ownership[user].items.splice();
             items.push(item)
-            let updatedTransactions = Object.assign({}, ownership[user], { items });
-            return Object.assign({}, ownership, { [user] : updatedTransactions });
+            let resources = Object.assign({}, ownership[user], { items });
+            return Object.assign({}, ownership, { [user] : resources });
         default:
             return ownership;
     }

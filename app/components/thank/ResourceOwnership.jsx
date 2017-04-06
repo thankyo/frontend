@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {fetch} from "../../reducers/thank/ownership.actions";
+import {listOwnership} from "../../reducers/thank/ownership.actions";
 import Resource from "../Resource";
 
 class ResourceOwnership extends Component {
@@ -30,7 +30,7 @@ const mapStateToProps = ({thank: { ownership }}, {id}) => {
 };
 
 const mapDispatchToProps = (dispatch, {id}) => {
-    dispatch(fetch(id));
+    dispatch(listOwnership(id));
     return {}
 };
 

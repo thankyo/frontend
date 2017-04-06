@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {fetch} from "../../reducers/thank/transaction.actions";
+import {listTransactions} from "../../reducers/thank/transaction.actions";
 import OperationIcon from "../icons/OperationIcon";
 import Resource from "../Resource";
 import Date from "../Date";
@@ -43,7 +43,7 @@ const mapStateToProps = ({thank: { transaction }}, {id}) => {
 };
 
 const mapDispatchToProps = (dispatch, {id}) => {
-    dispatch(fetch(id));
+    dispatch(listTransactions(id));
     return {}
 };
 

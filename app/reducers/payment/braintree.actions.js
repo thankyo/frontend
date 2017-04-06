@@ -3,7 +3,7 @@ import client from "braintree-web/client";
 import paypal from "braintree-web/paypal";
 
 import { fetch as fetchUser } from "../user.actions"
-import { fetch as fetchPaymentTransactions } from "./transaction.actions";
+import { listTransactions as fetchPaymentTransactions } from "./transaction.actions";
 
 export const BRAINTREE_TOKEN_REQUESTED = "BRAINTREE_TOKEN_REQUESTED";
 export const BRAINTREE_TOKEN_SUCCESS = "BRAINTREE_TOKEN_SUCCESS";
@@ -61,7 +61,7 @@ function fetchToken(dispatch) {
     dispatch(tokenRequested());
     let fToken = authService.
         signAndFetch(new Request("/api/v1/payment/braintree/token"), dispatch)
-    fToken.then((token) => dispatch(tokenSuccess(token)))
+    fToken.then((token) => dispatch(tokenSuccess(token)));
     return fToken;
 }
 
