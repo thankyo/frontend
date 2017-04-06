@@ -2,7 +2,7 @@ import {USER_REQUESTED, USER_SUCCESS, USER_FAILED} from "./user.actions";
 
 const initialState = {};
 
-export default function (users = initialState, {type, state, payload}) {
+export default function (users = initialState, {type, payload}) {
     switch (type) {
         case USER_REQUESTED:
             return users;
