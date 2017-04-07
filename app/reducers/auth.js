@@ -1,5 +1,4 @@
-import { REQUESTED, FAILED, SUCCESS } from './state';
-import { LOGIN, LOGOUT } from "./auth.actions";
+import { LOGIN_REQUESTED, LOGIN_SUCCESS, LOGIN_FAILED, LOGOUT } from "./auth.actions";
 import authService from '../service/auth';
 
 const anonymousState = {
@@ -10,22 +9,17 @@ const authenticatedState = {
     isAuthenticated: true
 };
 
-export default function(auth = authService.isAuthenticated() ? authenticatedState : anonymousState, { type, state, payload}) {
+export default function(auth = authService.isAuthenticated() ? authenticatedState : anonymousState, { type, payload}) {
     switch (type) {
-        case LOGIN:
-            switch (state) {
-                case REQUESTED:
-                    authService.removeToken();
-                    return Object.assign({}, auth, { isAuthenticated: false, error: payload.error });
-                case SUCCESS:
-                    authService.setToken(payload.token);
-                    return Object.assign({}, auth, { isAuthenticated: true, token: payload.token });
-                case FAILED:
-                    authService.removeToken();
-                    return Object.assign({}, auth, { isAuthenticated: false });
-                default:
-                    return auth
-            }
+        case LOGIN_REQUESTED:
+            authService.removeToken();
+            return Object.assign({}, auth, { isAuthenticated: false, error: payload.error });
+        case LOGIN_SUCCESS:
+            authService.setToken(payload.token);
+            return Object.assign({}, auth, { isAuthenticated: true, token: payload.token });
+        case LOGIN_FAILED:
+            authService.removeToken();
+            return Object.assign({}, auth, { isAuthenticated: false });
         case LOGOUT:
             authService.removeToken();
             return anonymousState;

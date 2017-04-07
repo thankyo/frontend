@@ -1,6 +1,5 @@
-import { PAYMENT_TRANSACTION_FETCH } from './transaction.actions';
+import { PAYMENT_TRANSACTION_REQUESTED, PAYMENT_TRANSACTION_SUCCESS } from './transaction.actions';
 import { WITHDRAW_SUCCESS } from './withdraw.actions';
-import { REQUESTED, FAILED, SUCCESS } from '../state';
 
 const initialState = {};
 
@@ -11,22 +10,14 @@ function updateTransactions(transactions, payload) {
     return Object.assign({}, transactions, { [user] : updatedTransactions });
 }
 
-export default function(transactions = initialState, { type, state, payload}) {
+export default function(transactions = initialState, { type, payload }) {
     switch (type) {
-        case PAYMENT_TRANSACTION_FETCH:
-            switch (state) {
-                case REQUESTED:
-                    return transactions;
-                case FAILED:
-                    return Object.assign({}, transactions, payload);
-                case SUCCESS:
-                    return updateTransactions(transactions, payload);
-                default:
-                    return transactions;
-            }
-        case WITHDRAW_SUCCESS: {
-            return updateTransactions(transactions, payload)
-        }
+        case PAYMENT_TRANSACTION_REQUESTED:
+            return transactions;
+        case PAYMENT_TRANSACTION_SUCCESS:
+            return updateTransactions(transactions, payload);
+        case WITHDRAW_SUCCESS:
+            return updateTransactions(transactions, payload);
         default:
             return transactions;
     }

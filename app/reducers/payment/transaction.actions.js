@@ -1,15 +1,28 @@
 import authService from '../../service/auth';
 
-import { requested, success, failed } from "../state";
+export const PAYMENT_TRANSACTION_REQUESTED   = "PAYMENT_TRANSACTION_REQUESTED";
+export const PAYMENT_TRANSACTION_SUCCESS = "PAYMENT_TRANSACTION_SUCCESS";
 
-export const PAYMENT_TRANSACTION_FETCH   = "PAYMENT_TRANSACTION_FETCH";
+function transactionRequested(payload){
+    return {
+        type: PAYMENT_TRANSACTION_REQUESTED,
+        payload
+    }
+}
+
+function transactionSuccess(payload) {
+    return {
+        type: PAYMENT_TRANSACTION_SUCCESS,
+        payload
+    }
+}
 
 export function listTransactions(id) {
     return (dispatch) => {
-        dispatch(requested(PAYMENT_TRANSACTION_FETCH, { id }));
+        dispatch(transactionRequested({ id }));
         authService.signAndStream(`/api/v1/payment/transaction/user/${id}`, dispatch, (payment) => {
-            dispatch(success(PAYMENT_TRANSACTION_FETCH, payment));
-            if (id === "my") dispatch(success(PAYMENT_TRANSACTION_FETCH, Object.assign({}, payment, { "user": "my"})))
+            dispatch(transactionSuccess(payment));
+            if (id === "my") dispatch(transactionSuccess(Object.assign({}, payment, { "user": "my"})))
         })
     }
 }

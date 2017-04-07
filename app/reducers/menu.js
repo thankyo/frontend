@@ -1,6 +1,5 @@
 import { LOCATION_CHANGE }  from 'react-router-redux';
-import { LOGIN, LOGOUT }    from './auth.actions';
-import {SUCCESS}            from './state';
+import { LOGIN_SUCCESS, LOGOUT }    from './auth.actions';
 import authService          from '../service/auth';
 
 function createMenu(text, pathname, icon) {
@@ -38,17 +37,12 @@ function updateActive(state, pathname) {
 }
 
 
-export default function(menu = authService.isAuthenticated() ? userMenu : anonymousMenu, { type, state, payload }) {
+export default function(menu = authService.isAuthenticated() ? userMenu : anonymousMenu, { type, payload }) {
     switch (type) {
         case LOCATION_CHANGE:
             return updateActive(menu, payload.pathname);
-        case LOGIN:
-            switch (state) {
-                case SUCCESS:
-                    return userMenu;
-                default:
-                    return menu;
-            }
+        case LOGIN_SUCCESS:
+            return userMenu;
         case LOGOUT:
             return anonymousMenu;
         default:
