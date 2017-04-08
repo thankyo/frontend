@@ -1,15 +1,15 @@
-import { OWNERSHIP_REQUESTED, OWNERSHIP_SUCCESS, OWNERSHIP_FAILED } from './ownership.actions';
+import {OWNERSHIP_FAILED, OWNERSHIP_REQUESTED, OWNERSHIP_SUCCESS} from "./ownership.actions";
 
 const initialState = {};
 
-export default function(ownership = initialState, { type, payload}) {
+export default function (ownership = initialState, {type, payload}) {
     switch (type) {
         case OWNERSHIP_REQUESTED:
             let userState = {
                 isError: false,
                 items: []
             };
-            return Object.assign({}, ownership, { [payload.user] : userState });
+            return Object.assign({}, ownership, {[payload.user]: userState});
         case OWNERSHIP_FAILED:
             let userError = {
                 isLoading: false,
@@ -17,13 +17,12 @@ export default function(ownership = initialState, { type, payload}) {
                 items: [],
                 error: payload
             };
-            return Object.assign({}, ownership, { [payload.user] : userError });
+            return Object.assign({}, ownership, {[payload.user]: userError});
         case OWNERSHIP_SUCCESS:
-            let { user, item } = payload;
-            let items = ownership[user].items.splice();
-            items.push(item)
-            let resources = Object.assign({}, ownership[user], { items });
-            return Object.assign({}, ownership, { [user] : resources });
+            let {user, item} = payload;
+            let items = ownership[user].items.concat(item);
+            let resources = Object.assign({}, ownership[user], {items});
+            return Object.assign({}, ownership, {[user]: resources});
         default:
             return ownership;
     }

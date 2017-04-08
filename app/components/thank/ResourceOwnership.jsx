@@ -8,7 +8,7 @@ class ResourceOwnership extends Component {
         return (
             <div className="container">
                 <p className="title">{this.props.ownership.type}</p>
-                <p className="subtitle"><Resource resource={this.props.ownership.resource}/></p>
+                <Resource resource={this.props.ownership.resource}/>
             </div>
         );
     }
@@ -17,7 +17,7 @@ class ResourceOwnership extends Component {
 const ResourceOwnerships = ({ own }) => {
     return (
         <div>
-            {own.map(ownership => <ResourceOwnership key={ownership.resource.url} ownership={ownership}/>)}
+            {own.map(ownership => <ResourceOwnership key={ownership.resource.uri} ownership={ownership}/>)}
         </div>
     );
 };
