@@ -8,17 +8,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import MainApp from "./route";
 import {Provider} from "react-redux";
+import analytics from "./analytics";
 
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-96949345-1');
 
 const store = createStore(reducers(), composeWithDevTools(applyMiddleware(thunk)));
 
 const history = syncHistoryWithStore(browserHistory, store);
-history.listen(function (location) {
-    window.ga('send', 'pageview', location.pathname);
-});
-
 const load = () => {
     ReactDOM.render(
         <Provider store={store}>
@@ -37,3 +32,6 @@ if (document.readyState !== 'complete') {
 } else {
     load();
 }
+
+// Initialize analytics
+analytics(history);
