@@ -8,9 +8,6 @@ export default class Footer extends Component {
                 <div className="container">
                     <div className="content has-text-centered">
                         <p>
-                            <strong>Thank project</strong>
-                        </p>
-                        <p>
                             <Link to="/legal/terms">Terms of Use</Link>{" & "}<Link to="/legal/privacy">Privacy Policy</Link>
                         </p>
                     </div>

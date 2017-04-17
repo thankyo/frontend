@@ -25,9 +25,9 @@ const AnonymousNavigation = () => {
                 <Brand/>
                 <div className="nav-center">
                     <div className="nav-item is-black">
-                        <div className="block">
-                            <FacebookLogin/>
-                        </div>
+                        {/*<div className="block">*/}
+                            {/*<FacebookLogin/>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </div>
