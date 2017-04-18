@@ -62,12 +62,37 @@ class AllContact extends Component {
     }
 }
 
+class ContactHero extends Component {
+    render() {
+        return (
+            <section className="hero is-primary header-image">
+                <div className="has-text-centered">
+                    <div className="hero-body">
+                        <div className="container has-text-centered">
+                            <h1 className="title is-1">
+                                Contacts
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+}
+
+
+
 export default class ContactView extends Component {
     render(){
         return (
-            <ComponentWrap>
-                <AllContact/>
-            </ComponentWrap>
+            <div>
+                <ComponentWrap>
+                    <ContactHero/>
+                </ComponentWrap>
+                <ComponentWrap>
+                    <AllContact/>
+                </ComponentWrap>
+            </div>
         )
     }
 }
