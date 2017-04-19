@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Field, reduxForm } from 'redux-form';
 
 class Intro extends Component {
     render() {
@@ -6,7 +7,7 @@ class Intro extends Component {
             <div>
                 <p className="title is-4">LoveIt Button for the Web</p>
                 <p>
-                    A single click on the LoveIt button will 'love' pieces of content on the web and send a small tip to your account.
+                    A single click on the LoveIt button will 'love' pieces of content on the web and send a small tip to the owner.
                 </p>
             </div>
         )
@@ -24,8 +25,8 @@ class StepByStep extends Component {
                         <small>Pick the URL of a website you want to use with the love button.</small>
                     </li>
                     <li className="subtitle">
-                        Code Configuration<br/>
-                        <small>Paste the URL to the code configurator. Click the Get Code button to generate your like button code.</small>
+                        Code Generator<br/>
+                        <small>Paste the URL to the code generator. Click the Get Code button to generate your LoveIt button code.</small>
                     </li>
                     <li className="subtitle">
                         Copy & Paste HTML snippet<br/>
@@ -37,26 +38,54 @@ class StepByStep extends Component {
     }
 }
 
+const renderField = (field) => (
+    <p className={field.expanded ? "control is-expanded" : "control"}>
+        <input className="input" {...field.input} type="text" autoComplete={false} placeholder={field.placeholder}/>
+        {field.meta.touched && field.meta.error &&
+        <span className="error">{field.meta.error}</span>}
+    </p>
+)
+
 class CodeGenerator extends Component {
     render() {
+        const handleSubmit = function(values) {
+            console.log(values)
+        };
         return (
-            <p>
-
-            </p>
+        <div>
+            <p className="title is-4">Code Generator</p>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="url" className="label">URL to LoveIt</label>
+                <div className="field has-addons">
+                    <Field name="url" component={renderField} type="text" placeholder="URL" expanded={true}/>
+                    <p className="control">
+                        <span className="button is-info">
+                            Get Code
+                        </span>
+                    </p>
+                </div>
+            </form>
+        </div>
         )
     }
 }
 
+// Decorate the form component
+CodeGenerator = reduxForm({
+    form: 'codeGenerator' // a unique name for this form
+})(CodeGenerator);
+
+
 export default class Overview extends Component {
     render() {
         return (
-            <div className="section">
+            <div className="section container">
                 <div className="content">
                     <Intro/>
                     <hr/>
                     <StepByStep/>
                     <hr/>
-                    <h1>I'm documented</h1>
+                    <CodeGenerator/>
                 </div>
             </div>
         );

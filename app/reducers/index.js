@@ -5,6 +5,7 @@ import payment from './payment';
 import thank from "./thank";
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form'
 
 export default function(){
     return combineReducers(
@@ -15,6 +16,7 @@ export default function(){
             user,
             payment,
             thank,
+            form: formReducer
         }
     );
 }
