@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {fetch} from "../../reducers/user.actions";
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 class Profile extends Component {
@@ -49,8 +50,8 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-    id: React.PropTypes.string.isRequired,
-    user: React.PropTypes.object
+    id: PropTypes.string.isRequired,
+    user: PropTypes.object
 };
 
 const mapStateToProps = (state, {id}) => {

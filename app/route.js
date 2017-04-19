@@ -1,11 +1,10 @@
 import React, {Component} from "react";
 
-import {Route, Router} from "react-router";
-
-import TermsOfUse from "pages/TermsOfUse";
-import Landing from "pages/Landing";
-import Documentation from "pages/Documentation";
-import PrivacyPolicy from "pages/PrivacyPolicy";
+import {Route, Router}  from "react-router";
+import TermsOfUse       from "pages/TermsOfUse";
+import Landing          from "pages/Landing";
+import Documentation    from "components/documentation/DocumentationPage";
+import PrivacyPolicy    from "pages/PrivacyPolicy";
 import NotFound         from "pages/NotFound";
 import Payments         from "pages/Payments";
 import Love             from "pages/Love";
