@@ -2,7 +2,7 @@ import reducers from "./reducers";
 import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
-import {browserHistory} from "react-router";
+import { browserHistory } from "react-router";
 import {syncHistoryWithStore} from "react-router-redux";
 import React from "react";
 import ReactDOM from "react-dom";
