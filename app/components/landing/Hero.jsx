@@ -21,9 +21,9 @@ export default class Hero extends Component {
                             Love.It
                         </h1>
                         <h2 className="subtitle is-3">
-                            Like, that actually means something
+                            Donations 2.0
                         </h2>
-                        <FacebookLogin/>
+                        {/*<FacebookLogin/>*/}
                     </div>
                 </div>
             </section>
