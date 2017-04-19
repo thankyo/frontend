@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Navigation from "../components/Navigation";
 import Profile from "../components/user/Profile";
-import PaymentTransaction from "../components/PaymentTransaction";
+import PaymentTransaction from "../components/payment/PaymentTransaction";
 import ComponentWrap from "../components/ComponentWrap";
 import Payment from "../components/payment/Payment";
 

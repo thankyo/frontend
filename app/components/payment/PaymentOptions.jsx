@@ -7,14 +7,14 @@ class PaymentOption extends Component {
     render() {
         return (
             <div className="column">
-                <p className="notification is-success">
+                <div className="notification is-success">
                     <p className="title is-5">Large</p>
                     <Money amount={this.props.amount} currency={this.props.currency}/>
                     <hr/>
                     <OperationIcon operation="debit" amount={this.props.loveit}/>
                     <hr/>
                     <button className="button is-primary" onClick={(evt) => this.props.selected(this.props.amount, this.props.currency, evt)}>Select</button>
-                </p>
+                </div>
             </div>
         )
     }

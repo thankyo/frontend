@@ -7,7 +7,7 @@ export default class BankDetails extends Component {
                 <span className="icon">
                     <i className="fa fa-paypal"></i>
                 </span>
-                <span className="icon is-hidden-mobile is-small">
+                <span className="is-hidden-mobile">
                     {email}
                 </span>
             </span>

@@ -1,18 +1,19 @@
 import React, {Component}   from "react";
-import { connect }          from "react-redux";
-import { listTransactions }            from "../reducers/payment/transaction.actions";
-import Date                 from "./Date";
-import BankDetails          from "./payment/BankDetails";
-import Money                from "./payment/Money";
-import OperationIcon        from './icons/OperationIcon';
+import {connect}            from "react-redux";
+import {listTransactions}   from "../../reducers/payment/transaction.actions";
+import Date                 from "../Date";
+import BankDetails          from "./BankDetails";
+import Money                from "./Money";
+import OperationIcon        from "../icons/OperationIcon";
 
 class PaymentTransaction extends Component {
     render() {
         return (
             <tr>
-                <td><BankDetails {... this.props.transaction.source}/></td>
-                <td><Money {... this.props.transaction.money}/></td>
-                <td><OperationIcon operation={this.props.transaction.operation} amount={this.props.transaction.thanks}/></td>
+                <td><BankDetails {...this.props.transaction.source}/></td>
+                <td><Money {...this.props.transaction.money}/></td>
+                <td><OperationIcon operation={this.props.transaction.operation} amount={this.props.transaction.thanks}/>
+                </td>
                 <td><Date time={this.props.transaction.created}/></td>
             </tr>
         );
@@ -37,7 +38,7 @@ const PaymentTransactions = ({transactions}) => {
     );
 };
 
-const mapStateToProps = ({payment: { transaction }}, {id}) => {
+const mapStateToProps = ({payment: {transaction}}, {id}) => {
     let userTransactions = transaction[id] ? transaction[id] : {};
     return {
         transactions: Object.values(userTransactions)
