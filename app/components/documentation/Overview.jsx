@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import { Field, reduxForm } from 'redux-form';
+import {Field, reduxForm} from "redux-form";
+
 
 class Intro extends Component {
     render() {
@@ -7,7 +8,8 @@ class Intro extends Component {
             <div>
                 <p className="title is-4">LoveIt Button for the Web</p>
                 <p>
-                    A single click on the LoveIt button will 'love' pieces of content on the web and send a small tip to the owner.
+                    A single click on the LoveIt button will 'love' pieces of content on the web and send a small tip to
+                    the owner.
                 </p>
             </div>
         )
@@ -26,7 +28,9 @@ class StepByStep extends Component {
                     </li>
                     <li className="subtitle">
                         Code Generator<br/>
-                        <small>Paste the URL to the code generator. Click the Get Code button to generate your LoveIt button code.</small>
+                        <small>Paste the URL to the code generator. Click the Get Code button to generate your LoveIt
+                            button code.
+                        </small>
                     </li>
                     <li className="subtitle">
                         Copy & Paste HTML snippet<br/>
@@ -38,34 +42,25 @@ class StepByStep extends Component {
     }
 }
 
-const renderField = (field) => (
-    <p className={field.expanded ? "control is-expanded" : "control"}>
-        <input className="input" {...field.input} type="text" autoComplete={false} placeholder={field.placeholder}/>
-        {field.meta.touched && field.meta.error &&
-        <span className="error">{field.meta.error}</span>}
-    </p>
-)
-
-class CodeGenerator extends Component {
+export class CodeGenerator extends Component {
     render() {
-        const handleSubmit = function(values) {
-            console.log(values)
-        };
         return (
-        <div>
-            <p className="title is-4">Code Generator</p>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="url" className="label">URL to LoveIt</label>
-                <div className="field has-addons">
-                    <Field name="url" component={renderField} type="text" placeholder="URL" expanded={true}/>
-                    <p className="control">
-                        <span className="button is-info">
-                            Get Code
-                        </span>
-                    </p>
-                </div>
-            </form>
-        </div>
+            <div>
+                <p className="title is-4">Code Generator</p>
+                <form onSubmit={this.props.handleSubmit}>
+                    <label htmlFor="url" className="label">URL to LoveIt</label>
+                    <div className="field has-addons">
+                        <p className="control is-expanded">
+                            <Field name="url" component="input" type="text" className="input"/>
+                        </p>
+                        <p className="control">
+                            <button className="button is-success" type="submit">
+                                Get Code
+                            </button>
+                        </p>
+                    </div>
+                </form>
+            </div>
         )
     }
 }
@@ -75,8 +70,10 @@ CodeGenerator = reduxForm({
     form: 'codeGenerator' // a unique name for this form
 })(CodeGenerator);
 
-
 export default class Overview extends Component {
+    handleSubmit(values) {
+        console.log(values);
+    }
     render() {
         return (
             <div className="section container">
@@ -85,7 +82,7 @@ export default class Overview extends Component {
                     <hr/>
                     <StepByStep/>
                     <hr/>
-                    <CodeGenerator/>
+                    <CodeGenerator onSubmit={this.handleSubmit}/>
                 </div>
             </div>
         );

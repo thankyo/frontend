@@ -1,59 +1,47 @@
 import React, {Component} from "react";
+import {Field, reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {thank} from "../../reducers/thank/url.actions";
 
-class Thank extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {value: props.thank.url};
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
-
-    handleSubmit(event) {
-        event.preventDefault();
-        this.props.thankByUrl(this.state.value);
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps !== undefined && prevProps.thank.isLoading && !this.props.thank.isLoading && !this.props.thank.isError) {
-            this.setState({value: ""});
-        }
-    }
-
+class ThankUrlForm extends Component {
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <p className="control has-addons">
-                    <input className="input is-expanded" type="text" placeholder="URL"
-                           onChange={this.handleChange}/>
-                    <button type="submit"
-                            className={this.props.thank.isLoading ? "button is-danger is-loading" : "button is-danger"}>
-                        <span className="icon"><i className="fa fa-heart"></i></span> <span>LOVE IT</span>
-                    </button>
-                    {this.props.thank.isError &&
-                    <p className="help is-danger title">{this.props.thank.error.message}</p>}
-                </p>
-            </form>
+            <div>
+                <form onSubmit={this.props.handleSubmit}>
+                    <div className="field has-addons">
+                        <p className="control is-expanded">
+                            <Field name="url" component="input" type="text" className="input"/>
+                        </p>
+                        <p className="control">
+                            <button className="button is-success" type="submit">
+                                Love It
+                            </button>
+                        </p>
+                    </div>
+                </form>
+            </div>
         )
     }
 }
 
-const mapStateToProps = ({thank: { url }}) => {
-    return { thank: url };
-};
+ThankUrlForm = reduxForm({
+    form: 'thankUrl'
+})(ThankUrlForm);
+
+class ThankUrl extends Component {
+    render() {
+        return (
+            <ThankUrlForm onSubmit={this.props.thankByUrl}/>
+        )
+    }
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {
         thankByUrl: (url) => {
-            dispatch(thank(url))
+            dispatch(thank(url));
         }
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Thank)
+export default connect(undefined, mapDispatchToProps)(ThankUrl)

@@ -1,13 +1,14 @@
 import authService from '../../service/auth';
+import {reset} from 'redux-form';
 
 export const THANK_REQUESTED = "THANK_REQUESTED";
 export const THANK_FAILED = "THANK_FAILED";
 export const THANK_SUCCESS = "THANK_SUCCESS";
 
-function thankRequested(url) {
+function thankRequested(payload) {
     return {
         type: THANK_REQUESTED,
-        payload: { url }
+        payload
     }
 }
 
@@ -25,16 +26,18 @@ function thankFailed(error) {
     }
 }
 
-export function thank(url) {
+export function thank(payload) {
     return (dispatch) => {
-        let normUrl = url.trim();
+        let normUrl = payload.url.trim();
         if (normUrl.length == 0)
             return;
-        dispatch(thankRequested(normUrl));
+        dispatch(thankRequested(payload));
         authService.
             signAndFetch(new Request(`/api/v1/thank/${normUrl}`, { method: "PUT" }), dispatch).
-            then(thank => dispatch(thankSuccess(thank))).
-            catch((error) => dispatch(thankFailed(error)))
+            then(thank => {
+                dispatch(thankSuccess(thank))
+                dispatch(reset('thankUrl'))
+            }).catch((error) => dispatch(thankFailed(error)))
         
     }
 }

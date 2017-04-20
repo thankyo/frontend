@@ -2,12 +2,12 @@ import React, {Component} from "react";
 
 import {Route, Router}  from "react-router";
 import TermsOfUse       from "pages/TermsOfUse";
-import Landing          from "pages/Landing";
+import Landing          from "components/landing/LandingPage";
 import Documentation    from "components/documentation/DocumentationPage";
 import PrivacyPolicy    from "pages/PrivacyPolicy";
 import NotFound         from "pages/NotFound";
 import Payments         from "pages/Payments";
-import Love             from "pages/Love";
+import Love             from "components/thank/Love";
 import Owns             from "pages/Owns";
 
 import {browserHistory} from "react-router";
