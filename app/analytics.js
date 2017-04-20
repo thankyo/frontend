@@ -13,7 +13,17 @@ function recordLoadTime() {
     }
 }
 
-export default function configure(history) {
-    history.listen(function (location) { window.ga('send', 'pageview', location.pathname) });
+function doConfigure(history) {
+    history.listen(function (location) {
+        window.ga('send', 'pageview', location.pathname)
+    });
     document.addEventListener('DOMContentLoaded', recordLoadTime);
+}
+
+export default function configure(history) {
+    if (window.location.hostname === "localhost") {
+        console.log("Analytics disabled")
+    } else {
+        doConfigure(history)
+    }
 };
