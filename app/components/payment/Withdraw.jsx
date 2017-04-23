@@ -1,41 +1,17 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import { withdraw } from "../../reducers/payment/withdraw.actions";
+import { Field, reduxForm } from "redux-form";
 
-class Withdraw extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {value: props.withdraw.amount};
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
-
-    handleSubmit(event) {
-        event.preventDefault();
-        this.props.doWithdraw(this.state.value);
-    }
-
-    componentDidUpdate(prevProps) {
-        if (prevProps !== undefined && prevProps.withdraw.isLoading && !this.props.withdraw.isLoading && !this.props.withdraw.isError) {
-            this.setState({ value: "" });
-        }
-    }
-
+class WithdrawForm extends Component {
     render() {
         return (
-            <form className="has-text-centered" onSubmit={this.handleSubmit}>
-                <p className="control">
-                    <input className="input is-expanded" type="number" placeholder="Amount" onChange={this.handleChange}/>
-                    {this.props.withdraw.isError &&
-                    <p className="help is-danger title">{this.props.withdraw.error.message}</p>}
+            <form className="has-text-centered" onSubmit={this.props.handleSubmit}>
+                <p className="control is-expanded">
+                    <Field name="amount" className="input" component="input" type="number" placeholder="Amount"/>
                 </p>
                 <hr/>
-                <button type="submit" className={this.props.withdraw.isLoading ? "button is-inverted is-outlined is-loading" : "button is-inverted is-outlined"}>
+                <button type="submit" className="button is-inverted is-outlined">
                     <span className="icon"><i className="fa fa-bank"></i></span> <span>Withdraw</span>
                 </button>
             </form>
@@ -43,9 +19,17 @@ class Withdraw extends Component {
     }
 }
 
-const mapStateToProps = ({ payment: { withdraw }}) => {
-    return { withdraw };
-};
+WithdrawForm = reduxForm({
+    form: 'withdraw'
+})(WithdrawForm);
+
+class Withdraw extends Component {
+    render() {
+        return (
+            <WithdrawForm onSubmit={this.props.doWithdraw}/>
+        )
+    }
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -55,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Withdraw)
+export default connect(undefined, mapDispatchToProps)(Withdraw)

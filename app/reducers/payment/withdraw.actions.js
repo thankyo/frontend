@@ -4,12 +4,10 @@ export const WITHDRAW_REQUESTED = "WITHDRAW_REQUESTED";
 export const WITHDRAW_SUCCESS = "WITHDRAW_SUCCESS";
 export const WITHDRAW_ERROR = "WITHDRAW_ERROR";
 
-function withdrawRequested(amount) {
+function withdrawRequested(payload) {
     return {
         type: WITHDRAW_REQUESTED,
-        payload: {
-            amount
-        }
+        payload
     }
 }
 
@@ -27,9 +25,9 @@ function withdrawSuccess(payload) {
     }
 }
 
-export function withdraw(amount) {
+export function withdraw(payload) {
     return (dispatch) => {
-        dispatch(withdrawRequested(amount));
+        dispatch(withdrawRequested(payload));
         let wReq = new Request(`/api/v1/payment/transaction/withdraw`,
             {
                 method: "POST",
@@ -37,11 +35,12 @@ export function withdraw(amount) {
                     'Accept': 'application/json, text/plain, */*',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ amount: parseInt(amount) }),
+                body: JSON.stringify(payload),
             });
         authService.signAndFetch(wReq, dispatch).
-        then(payment => dispatch(withdrawSuccess(payment))).
-        catch((error) => dispatch(withdrawError(error)))
+        then(payment => {
+            dispatch(withdrawSuccess(payment))
+        }).catch((error) => dispatch(withdrawError(error)))
     }
 }
 
