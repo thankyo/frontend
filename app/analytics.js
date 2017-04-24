@@ -1,27 +1,25 @@
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-96949345-1');
-
 function recordLoadTime() {
     // Feature detects Navigation Timing API support.
-    if (window.performance) {
+    if (performance) {
         // Gets the number of milliseconds since page load
         // (and rounds the result since the value must be an integer).
         var timeSincePageLoad = Math.round(performance.now());
 
         // Sends the timing hit to Google Analytics.
-        window.ga('send', 'timing', 'JS Dependencies', 'load', timeSincePageLoad);
+        ga('send', 'timing', 'JS Dependencies', 'load', timeSincePageLoad);
     }
 }
 
 function doConfigure(history) {
+    ga('create', 'UA-96949345-1', 'auto');
     history.listen(function (location) {
-        window.ga('send', 'pageview', location.pathname)
+        ga('send', 'pageview', location.pathname)
     });
     document.addEventListener('DOMContentLoaded', recordLoadTime);
 }
 
 export default function configure(history) {
-    if (window.location.hostname === "localhost") {
+    if (location.hostname === "localhost") {
         console.log("Analytics disabled")
     } else {
         doConfigure(history)
