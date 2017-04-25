@@ -1,19 +1,18 @@
 import React, {Component} from "react";
 
-import {Route, Router}  from "react-router";
-import TermsOfUse       from "pages/TermsOfUse";
-import Landing          from "components/landing/LandingPage";
-import Documentation    from "components/documentation/DocumentationPage";
-import PrivacyPolicy    from "pages/PrivacyPolicy";
-import NotFound         from "pages/NotFound";
-import Payments         from "pages/Payments";
-import Love             from "components/thank/Love";
-import Owns             from "pages/Owns";
-
-import {browserHistory} from "react-router";
+import {browserHistory, Route, Router} from "react-router";
+import TermsOfUse from "pages/TermsOfUse";
+import Landing from "components/landing/LandingPage";
+import Documentation from "components/documentation/DocumentationPage";
+import PrivacyPolicy from "pages/PrivacyPolicy";
+import NotFound from "pages/NotFound";
+import Payments from "pages/Payments";
+import Love from "components/thank/Love";
+import Owns from "pages/Owns";
 import authService from "service/auth";
 
-import { HOME }         from "service/routes";
+import {HOME} from "service/routes";
+import {Helmet} from "react-helmet";
 
 if (authService.isAuthenticated() && window.location.pathname === "/")
     browserHistory.push(HOME);
@@ -21,16 +20,28 @@ if (authService.isAuthenticated() && window.location.pathname === "/")
 export default class MainApp extends Component {
     render() {
         return (
-            <Router history={this.props.history} onUpdate={() => window.scrollTo(0, 0)}>
-                <Route path="/" component={Landing}/>
-                <Route path="/documentation" component={ Documentation }/>
-                <Route path="/:id/love" component={ Love }/>
-                <Route path="/:id/payment" component={ Payments }/>
-                <Route path="/:id/own" component={ Owns }/>
-                <Route path="/legal/terms" component={ TermsOfUse }/>
-                <Route path="/legal/privacy" component={ PrivacyPolicy }/>
-                <Route path="*" component={NotFound}/>
-            </Router>
+            <div>
+                <Helmet>
+                    <html lang="en" amp />
+                    <meta charSet="utf-8"/>
+                    <title>Love.it</title>
+                    <meta name="viewport" content="width=device-width"/>
+                    <meta name="google-site-verification" content="VXBRnbM3Jh54uR-jHjoHSrmu0UM78IKma7FDtydCPnk"/>
+                    <meta name="description" content="Love.it microtips platform"/>
+                    <meta name="keywords" content="donation,microtip,microdonation"/>
+                    <link rel="shortcut icon" type="image/x-icon" href="favicon.png"></link>
+                </Helmet>
+                <Router history={this.props.history} onUpdate={() => window.scrollTo(0, 0)}>
+                    <Route path="/" component={Landing}/>
+                    <Route path="/documentation" component={ Documentation }/>
+                    <Route path="/:id/love" component={ Love }/>
+                    <Route path="/:id/payment" component={ Payments }/>
+                    <Route path="/:id/own" component={ Owns }/>
+                    <Route path="/legal/terms" component={ TermsOfUse }/>
+                    <Route path="/legal/privacy" component={ PrivacyPolicy }/>
+                    <Route path="*" component={NotFound}/>
+                </Router>
+            </div>
         );
     }
 }

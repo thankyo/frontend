@@ -10,7 +10,6 @@ import MainApp from "./route";
 import {Provider} from "react-redux";
 import analytics from "./analytics";
 
-
 const store = createStore(reducers(), composeWithDevTools(applyMiddleware(thunk)));
 
 const history = syncHistoryWithStore(browserHistory, store);
