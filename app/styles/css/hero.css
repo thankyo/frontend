@@ -1,19 +1,6 @@
 body {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
-.main-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.49),rgba(0, 0, 0, 0.89)),url('/images/landing.jpg');
-}
-.creator-image {
-    background-image: url('/images/creator.jpg');
-}
-.contributor-image {
-    background-image: url('/images/contributor.jpg');
-}
-.how-it-works-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.49),rgba(0, 0, 0, 0.89)), url('/images/how.jpg');
-}
-
 .is-outlined {
     background-color:transparent;
     color:#fff;
