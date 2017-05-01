@@ -1,19 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
-import {login} from "../reducers/auth.actions";
+import {login} from "../../reducers/auth.actions";
 
 const FacebookLoginButton = ({loginFacebook}) => {
     return (
         <div className="button is-info is-outlined is-hovered is-large" onClick={loginFacebook}>
-            <span>Be the </span>
-                <span className="icon">
-                    <i className="fa fa-facebook"></i>
-                </span>
-            <span>irst</span>
+            Change the world
         </div>
     )
-}
-
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -21,7 +16,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(
-    undefined,
-    mapDispatchToProps
-)(FacebookLoginButton);
+export default connect(undefined, mapDispatchToProps)(FacebookLoginButton);

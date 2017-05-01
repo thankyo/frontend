@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import {browserHistory, Route, Router} from "react-router";
 import TermsOfUse from "pages/TermsOfUse";
 import Landing from "components/landing/LandingPage";
+import CreatorPage from "components/landing/CreatorPage";
 import Documentation from "components/documentation/DocumentationPage";
 import PrivacyPolicy from "pages/PrivacyPolicy";
 import NotFound from "pages/NotFound";
@@ -33,6 +34,7 @@ export default class MainApp extends Component {
                 </Helmet>
                 <Router history={this.props.history} onUpdate={() => window.scrollTo(0, 0)}>
                     <Route path="/" component={Landing}/>
+                    <Route path="/creator" component={CreatorPage}/>
                     <Route path="/documentation" component={ Documentation }/>
                     <Route path="/:id/love" component={ Love }/>
                     <Route path="/:id/payment" component={ Payments }/>

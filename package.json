@@ -11,8 +11,7 @@
   },
   "dependencies": {
     "braintree-web": "3.12.1",
-    "bulma": "^0.4.0",
-    "gzip-brunch": "^1.3.0",
+    "bulma": "0.4.1",
     "oboe": "2.1.3",
     "prop-types": "^15.5.8",
     "react": "15.5.4",
@@ -28,6 +27,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "gzip-brunch": "1.3.0",
     "auto-reload-brunch": "^2",
     "babel-brunch": "~6.0.0",
     "babel-preset-latest": "^6",

@@ -1,5 +1,29 @@
 import React, {Component} from "react";
 import ComponentWrap from "../ComponentWrap";
+import Brand from "../Brand";
+import { Link } from "react-router";
+
+class CreatorHead extends Component {
+    render() {
+        return (
+
+            <div className="hero-head">
+                <header className="nav">
+                    <div className="container">
+                        <Link className="nav-left" to="/">
+                            <Brand/>
+                        </Link>
+                        <div className="nav-right">
+                            <div className="nav-item is-brand">
+                                <Link to="/creator" className="is-active">Creator</Link>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+        )
+    }
+}
 
 class CreatorHow extends Component {
     render() {
@@ -63,8 +87,9 @@ class CreatorHowYouGetPaid extends Component {
 class CreatorHero extends Component {
     render() {
         return (
-            <section className="hero is-primary is-large header-image creator-image">
+            <section className="hero is-large is-primary header-image creator-image">
                 <div className="has-text-centered">
+                    <CreatorHead/>
                     <div className="hero-body">
                         <div className="container has-text-centered">
                             <h1 className="title is-1">
@@ -99,9 +124,7 @@ export default class Creator extends Component {
     render() {
         return (
             <div>
-                <ComponentWrap>
-                    <CreatorHero/>
-                </ComponentWrap>
+                <CreatorHero/>
                 <ComponentWrap>
                     <CreatorPoints/>
                 </ComponentWrap>
