@@ -28,7 +28,7 @@ function withdrawSuccess(payload) {
 export function withdraw(payload) {
     return (dispatch) => {
         dispatch(withdrawRequested(payload));
-        let wReq = new Request(`/api/v1/payment/transaction/withdraw`,
+        let wReq = new Request(`/api/v1/payment/withdraw`,
             {
                 method: "POST",
                 headers: {

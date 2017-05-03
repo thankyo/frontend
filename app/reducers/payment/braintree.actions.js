@@ -2,8 +2,7 @@ import authService from "../../service/auth";
 import client from "braintree-web/client";
 import paypal from "braintree-web/paypal";
 
-import { fetch as fetchUser } from "../user.actions"
-import { listTransactions as fetchPaymentTransactions } from "./transaction.actions";
+import { paymentSuccess } from "./payment.actions";
 
 export const BRAINTREE_TOKEN_REQUESTED = "BRAINTREE_TOKEN_REQUESTED";
 export const BRAINTREE_TOKEN_SUCCESS = "BRAINTREE_TOKEN_SUCCESS";
@@ -69,7 +68,6 @@ export function braintreeProcess(amount, currency) {
     return (dispatch) => {
         fetchToken(dispatch).
             then((authorization) => {
-
                 client.create({authorization}, (err, client) => {
                     paypal.create({client}, (paypalErr, paypalInstance) => {
                         dispatch(braintreeProcessingStart());
@@ -84,9 +82,9 @@ export function braintreeProcess(amount, currency) {
                             if (Object.isObject(err)) {
                                 dispatch(braintreeError(err));
                             } else {
-                                let braintreeReq = Object.assign({}, nonce, { money: { amount, currency }})
+                                let braintreeReq = Object.assign({}, nonce, { charge: { amount, currency }})
                                 let req = new Request(
-                                    "/api/v1/payment/braintree/nonce",
+                                    "/api/v1/payment/process",
                                     {
                                         method: "POST",
                                         headers: {
@@ -96,9 +94,8 @@ export function braintreeProcess(amount, currency) {
                                         body: JSON.stringify(braintreeReq)
                                     });
                                 authService.signAndFetch(req, dispatch).then(() => {
-                                    dispatch(braintreeProcessingSuccess(nonce))
-                                    dispatch(fetchUser("my"));
-                                    dispatch(fetchPaymentTransactions("my"));
+                                    dispatch(braintreeProcessingSuccess(nonce));
+                                    dispatch(paymentSuccess());
                                 })
                             }
                         });
