@@ -6,20 +6,18 @@ import {thank} from "../../reducers/thank/url.actions";
 class ThankUrlForm extends Component {
     render() {
         return (
-            <div>
-                <form onSubmit={this.props.handleSubmit}>
-                    <div className="field has-addons">
-                        <p className="control is-expanded">
-                            <Field name="url" component="input" type="text" className="input"/>
-                        </p>
-                        <p className="control">
-                            <button className="button is-success" type="submit">
-                                Love It
-                            </button>
-                        </p>
-                    </div>
-                </form>
-            </div>
+            <form onSubmit={this.props.handleSubmit}>
+                <div className="field has-addons">
+                    <p className="control is-expanded">
+                        <Field name="url" component="input" type="text" className="input"/>
+                    </p>
+                    <p className="control">
+                        <button className="button is-success" type="submit">
+                            Love It
+                        </button>
+                    </p>
+                </div>
+            </form>
         )
     }
 }

@@ -3,12 +3,14 @@ worker_processes  auto;
 error_log  /usr/local/openresty/nginx/logs/error.log warn;
 pid        /usr/local/openresty/nginx/logs/nginx.pid;
 
+
 events {
   worker_connections  1024;
 }
 
 
 http {
+  include           /usr/local/openresty/nginx/conf/mime.types;
   charset           utf-8;
 
   # backend is the name in docker-compose
@@ -16,8 +18,7 @@ http {
     server backend:9000;
   }
 
-  include         /usr/local/openresty/nginx/conf/mime.types;
-  default_type    application/octet-stream;
+  default_type  application/octet-stream;
 
   log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
   '$status $body_bytes_sent "$http_referer" '
@@ -40,28 +41,93 @@ http {
   gzip_types      text/plain text/css text/xml text/javascript application/x-javascript application/xml;
   gzip_disable    "MSIE [1-6]\.";
 
-  # Redirect to mobile version
+  # BEGIN SSL configuration
+
+  # The "auto_ssl" shared dict must be defined with enough storage space to
+  # hold your certificate data.
+  lua_shared_dict auto_ssl 1m;
+
+  # A DNS resolver must be defined for OSCP stapling to function.
+  resolver 8.8.8.8;
+
+  # Initial setup tasks.
+  init_by_lua_block {
+    auto_ssl = (require "resty.auto-ssl").new()
+
+    -- Define a function to determine which SNI domains to automatically handle
+    -- and register new certificates for. Defaults to not allowing any domains,
+    -- so this must be configured.
+    auto_ssl:set("allow_domain", function(domain)
+    return true
+    end)
+    auto_ssl:set("dir", "/tmp")
+
+    auto_ssl:init()
+  }
+
+  init_worker_by_lua_block {
+    auto_ssl:init_worker()
+  }
+
+  # Internal server running on port 8999 for handling certificate tasks.
+  server {
+    listen 127.0.0.1:8999;
+    location / {
+      content_by_lua_block {
+        auto_ssl:hook_server()
+      }
+    }
+  }
+
+  # END SSL configuration
+
+  # Redirect
   server {
     server_name  www.loveit.tips www.clemble.com clemble.com;
-    rewrite ^(.*) http://loveit.tips$1 permanent;
+    rewrite ^(.*) https://loveit.tips$1 permanent;
   }
 
   server {
-    listen       80;
-    server_name  loveit.tips;
+    listen        80;
+    server_name   loveit.tips www.loveit.tips www.clemble.com clemble.com;
 
+    location /.well-known/acme-challenge/ {
+      content_by_lua_block {
+        auto_ssl:challenge_server()
+      }
+    }
+
+    location / {
+      rewrite ^(.*) https://loveit.tips$1 permanent;
+    }
+
+  }
+
+  server {
+    listen     443 ssl http2;
+
+    # Dynamic handler for issuing or returning certs for SNI domains.
+    ssl_certificate_by_lua_block {
+      auto_ssl:ssl_certificate()
+    }
+
+    ssl        on;
+    ssl_certificate     /etc/ssl/resty-auto-ssl-fallback.crt;
+    ssl_certificate_key /etc/ssl/resty-auto-ssl-fallback.key;
+
+    server_name  loveit.tips;
     add_header   X-Xss-Protection "1; mode=block" always;
     add_header   X-Content-Type-Options "nosniff" always;
     add_header   Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://google-analytics.com https://www.google-analytics.com https://cdn.jsdelivr.net https://ajax.cloudflare.com; img-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' 'unsafe-inline' https://themes.googleusercontent.com https://cdn.jsdelivr.net; object-src 'none'";
 
 
     location / {
-      add_header   X-Frame-Options "DENY";
-
       root   /usr/local/openresty/nginx/html/;
       index  index.html index.htm;
       gzip_static on;
       expires 1y;
+
+      add_header   X-Frame-Options "DENY";
 
       if (!-e $request_filename) {
         rewrite ^(.*)$ /index.html break;
@@ -79,11 +145,10 @@ http {
       proxy_pass http://api;
     }
 
-
     location /api/ {
-      add_header   X-Frame-Options "DENY";
-
       proxy_http_version 1.1; # this is essential for chunked responses to work
+
+      add_header   X-Frame-Options "DENY";
 
       proxy_set_header Host $host;
       proxy_set_header X-Real-IP $remote_addr;
