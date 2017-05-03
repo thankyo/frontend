@@ -64,7 +64,7 @@ function fetchToken(dispatch) {
     return fToken;
 }
 
-export function braintreeProcess(amount, currency) {
+export function braintreeProcess({ amount, currency }) {
     return (dispatch) => {
         fetchToken(dispatch).
             then((authorization) => {

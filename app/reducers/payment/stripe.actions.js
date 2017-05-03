@@ -1,5 +1,5 @@
-import authService from '../../service/auth';
-import { paymentSuccess } from './payment.actions';
+import authService from "../../service/auth";
+import {paymentSuccess} from "./payment.actions";
 
 export const STRIPE_PROCESSING_START = "STRIPE_PROCESSING_START";
 export const STRIPE_PROCESSING_SUCCESS = "STRIPE_PROCESSING_SUCCESS";
@@ -32,7 +32,7 @@ function processingError(error) {
     }
 }
 
-export function process(charge, token) {
+function processToken(charge, token) {
     return (dispatch) => {
         dispatch(processingStart(token));
         let loveItTokenFormat = {
@@ -40,7 +40,7 @@ export function process(charge, token) {
             token: token.id,
             charge,
             details: token
-        }
+        };
         let req = new Request(
             "/api/v1/payment/process",
             {
@@ -51,13 +51,22 @@ export function process(charge, token) {
                 },
                 body: JSON.stringify(loveItTokenFormat)
             });
-        authService.
-            signAndFetch(req, dispatch).
-            then((success) => {
-                dispatch(processingSuccess(success))
-                dispatch(paymentSuccess)
-            }).
-            catch((err) => dispatch(processingError(error)))
+        authService.signAndFetch(req, dispatch).then((success) => {
+            dispatch(processingSuccess(success));
+            dispatch(paymentSuccess());
+        }).catch((err) => dispatch(processingError(error)))
+    }
+}
 
+
+export function process(charge) {
+    return (dispatch) => {
+        StripeButton.open({
+            key: 'pk_test_wZ8YJXCwtdpqUHDBDM5p5QSj',
+            locale: 'auto',
+            currency: charge.currency,
+            amount: charge.amount * 100,
+            token: (token) => dispatch(processToken(charge, token))
+        });
     }
 }
