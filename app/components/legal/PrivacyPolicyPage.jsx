@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
+import Navigation from '../Navigation';
+import Footer from '../Footer';
 
-import PrivacyPolicy from '../components/legal/PrivacyPolicy';
+import PrivacyPolicy from './PrivacyPolicy';
 
 export default class PrivacyPolicyPage extends Component {
     render() {

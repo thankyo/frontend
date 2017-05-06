@@ -5,7 +5,7 @@ import TermsOfUse from "pages/TermsOfUse";
 import Landing from "components/landing/LandingPage";
 import CreatorPage from "components/landing/CreatorPage";
 import Documentation from "components/documentation/DocumentationPage";
-import PrivacyPolicy from "pages/PrivacyPolicy";
+import PrivacyPolicy from "components/legal/PrivacyPolicyPage";
 import NotFound from "pages/NotFound";
 import Payments from "pages/Payments";
 import Love from "components/thank/Love";
