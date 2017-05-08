@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
-import TermsOfUse from '../components/legal/TermsOfUse';
+import Navigation from '../Navigation';
+import Footer from '../Footer';
+import TermsOfUse from './TermsOfUse';
 
 
 export default class TermsOfUsePage extends Component {

@@ -10,7 +10,11 @@ import MainApp from "./route";
 import {Provider} from "react-redux";
 import analytics from "./analytics";
 
+import feedbackConf from './feedback';
+
 const store = createStore(reducers(), composeWithDevTools(applyMiddleware(thunk)));
+
+store.subscribe(feedbackConf(store));
 
 const history = syncHistoryWithStore(browserHistory, store);
 const load = () => {

@@ -1,18 +1,15 @@
 import React, {Component} from "react";
 import ComponentWrap from "../ComponentWrap";
 import Brand from "../Brand";
-import { Link } from "react-router";
+import {Link} from "react-router";
 
 class CreatorHead extends Component {
     render() {
         return (
-
             <div className="hero-head">
                 <header className="nav">
                     <div className="container">
-                        <Link className="nav-left" to="/">
-                            <Brand/>
-                        </Link>
+                        <Brand/>
                         <div className="nav-right">
                             <div className="nav-item is-brand">
                                 <Link to="/creator" className="is-active">Creator</Link>
@@ -76,7 +73,8 @@ class CreatorHowYouGetPaid extends Component {
                     </p>
                     <p className="subtitle is-3">How you get paid</p>
                     <p className="subtitle is-5">
-                        LoveIt handles all of the payments, <strong>you never have to deal with integration nightmare.</strong> Every click turns into money on your bank account.
+                        LoveIt handles all of the payments, <strong>you never have to deal with integration
+                        nightmare.</strong> Every click turns into money on your bank account.
                     </p>
                 </article>
             </div>
@@ -87,16 +85,16 @@ class CreatorHowYouGetPaid extends Component {
 class CreatorHero extends Component {
     render() {
         return (
-            <section className="hero is-large is-primary header-image creator-image">
+            <section className="hero is-large is-primary">
                 <div className="has-text-centered">
                     <CreatorHead/>
                     <div className="hero-body">
                         <div className="container has-text-centered">
                             <h1 className="title is-1">
-                                Artist
+                                Fund your passion
                             </h1>
                             <h2 className="subtitle is-3">
-                                Focus on your art, not bills<br/>
+                                Connect to your most loyal funds<br/>
                             </h2>
                         </div>
                     </div>
@@ -109,12 +107,10 @@ class CreatorHero extends Component {
 class CreatorPoints extends Component {
     render() {
         return (
-            <div>
-                <div className="tile is-ancestor">
-                    <CreatorWhyUs/>
-                    <CreatorHow/>
-                    <CreatorHowYouGetPaid/>
-                </div>
+            <div className="tile is-ancestor">
+                <CreatorWhyUs/>
+                <CreatorHow/>
+                <CreatorHowYouGetPaid/>
             </div>
         )
     }

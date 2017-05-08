@@ -4,7 +4,7 @@ import FacebookYesNoButton from "./FacebookYesNoButton";
 class ContributorMove extends Component {
     render() {
         return (
-            <section className="hero is-warning is-large move-image">
+            <section className="hero is-large is-warning">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <div className="title is-1">
@@ -23,7 +23,7 @@ class ContributorMove extends Component {
 class ContributorThink extends Component {
     render() {
         return (
-            <section className="hero is-large think-image">
+            <section className="hero is-large">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <div className="title is-1">
@@ -42,7 +42,7 @@ class ContributorThink extends Component {
 class ContributorSmile extends Component {
     render() {
         return (
-            <section className="hero is-warning is-large smile-image">
+            <section className="hero is-large is-warning">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <div className="title is-1">
@@ -61,7 +61,7 @@ class ContributorSmile extends Component {
 class ContributorGiveBack extends Component {
     render() {
         return (
-            <section className="hero is-large header-image">
+            <section className="hero is-large">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <div className="title is-1">
@@ -78,6 +78,27 @@ class ContributorGiveBack extends Component {
     }
 }
 
+class ContributorLoveWithAMeaning extends Component {
+    render() {
+        return (
+            <section className="hero is-large">
+                <div className="hero-body">
+                    <div className="container has-text-centered">
+                        <div className="title is-1">
+                            We can change the world if we show a little support
+                        </div>
+                        <div className="title is-3">
+                            Do you want to try
+                        </div>
+                        <FacebookYesNoButton></FacebookYesNoButton>
+                    </div>
+                </div>
+            </section>
+        )
+
+    }
+}
+
 
 export default class Contributor extends Component {
     render() {
@@ -86,7 +107,7 @@ export default class Contributor extends Component {
                 <ContributorSmile/>
                 <ContributorThink/>
                 <ContributorMove/>
-                <ContributorGiveBack/>
+                <ContributorLoveWithAMeaning/>
             </div>
         );
     }

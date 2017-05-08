@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 
+import TermsOfUse from "components/legal/TermsOfUsePage";
+import PrivacyPolicy from "components/legal/PrivacyPolicyPage";
 import {browserHistory, Route, Router} from "react-router";
-import TermsOfUse from "pages/TermsOfUse";
 import Landing from "components/landing/LandingPage";
 import CreatorPage from "components/landing/CreatorPage";
 import Documentation from "components/documentation/DocumentationPage";
-import PrivacyPolicy from "components/legal/PrivacyPolicyPage";
 import NotFound from "pages/NotFound";
 import Payments from "pages/Payments";
 import Love from "components/thank/Love";

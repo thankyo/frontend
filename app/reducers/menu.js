@@ -13,7 +13,9 @@ function createMenu(text, pathname, icon) {
 
 const anonymousMenu = {
     enabled: false,
-    items: [],
+    items: [
+        createMenu("Creator", "/creator", "fa fa-image")
+    ],
     my: []
 };
 
