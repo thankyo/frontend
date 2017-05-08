@@ -1,57 +1,44 @@
-import React, {Component} from "react";
+import React from "react";
 import {connect} from "react-redux";
+import {Field, reduxForm} from "redux-form";
 import {own} from "../../reducers/thank/ownership.actions";
 
-class AddOwnership extends Component {
-    constructor(props) {
-        super(props);
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
-
-    handleSubmit(event) {
-        event.preventDefault();
-        this.props.own(this.state.value);
-    }
-
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <p className="control has-addons">
-                    <input className="input is-expanded" type="text" placeholder="URL" onChange={this.handleChange}/>
-                    <button type="submit" className={this.props.thank.isLoading ? "button is-danger is-loading" : "button is-danger"}>
-                        <span className="icon"><i className="fa fa-bank"></i></span> <span>Own</span>
+let AddOwnershipForm = ({ handleSubmit }) => {
+    return (
+        <form onSubmit={handleSubmit}>
+            <div className="field has-addons">
+                <Field name="uri" component="input" type="text" className="input" placeholder="URL"/>
+                <p className="control">
+                    <button className="button is-success" type="submit">
+                        Own
                     </button>
-                    {this.props.thank.isError &&
-                    <p className="help is-danger title">{this.props.thank.error.message}</p>}
                 </p>
-            </form>
-        )
-    }
-}
 
-const mapStateToProps = ({thank: { url }}) => {
-    return { thank: url };
+            </div>
+        </form>
+    )
+};
+
+AddOwnershipForm = reduxForm({
+    form: 'ownUrl'
+})(AddOwnershipForm);
+
+const AddOwnership = ({own}) => {
+    return (
+        <AddOwnershipForm onSubmit={own}/>
+    )
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        own: (uri) => {
+        own: (resource) => {
             let ownership = {
-                type: "full",
-                resource: {
-                    type: "http",
-                    uri
-                }
+                ownershipType: "full",
+                resource: Object.assign(resource, { type: "http"})
             };
             dispatch(own(ownership))
         }
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddOwnership)
+export default connect(undefined, mapDispatchToProps)(AddOwnership)
