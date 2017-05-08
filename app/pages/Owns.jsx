@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Navigation from "../components/Navigation";
 import Profile from "../components/user/Profile";
 import ComponentWrap from "../components/ComponentWrap";
-import AddOwnership  from '../components/thank/AddOwnership';
+import AddOwnership  from '../components/thank/Verification';
 import ResourceOwnership from '../components/thank/ResourceOwnership';
 
 

@@ -19,10 +19,9 @@ export default function (ownership = initialState, {type, payload}) {
             };
             return Object.assign({}, ownership, {[payload.user]: userError});
         case OWNERSHIP_SUCCESS:
-            let {user, item} = payload;
-            let items = ownership[user].items.concat(item);
-            let resources = Object.assign({}, ownership[user], {items});
-            return Object.assign({}, ownership, {[user]: resources});
+            let {user, items} = payload;
+            let resources = Object.assign({}, ownership[user], { items });
+            return Object.assign({}, ownership, {[user]: resources });
         default:
             return ownership;
     }
