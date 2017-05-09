@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {list, remove} from "../../reducers/thank/verification.actions";
+import {list, remove, verify} from "../../reducers/thank/verification.actions";
 import Resource from "../Resource";
 
 class Verification extends Component {
@@ -18,7 +18,7 @@ class Verification extends Component {
     }
 }
 
-const Verifications = ({verification, remove}) => (
+const Verifications = ({verification, remove, verify}) => (
     <table className="table is-grouped">
         <thead>
             <tr>
@@ -30,7 +30,7 @@ const Verifications = ({verification, remove}) => (
             </tr>
         </thead>
         <tbody>
-            {verification.map(ver => <Verification key={ver.resource.uri} verification={ver} remove={() => remove(ver.id)}/>)}
+            {verification.map(ver => <Verification key={ver.resource.uri} verification={ver} remove={() => remove(ver.id)} verify={() => verify(ver.id)}/>)}
         </tbody>
     </table>
 );
@@ -46,7 +46,8 @@ const mapStateToProps = ({thank: { verification }}, {id}) => {
 const mapDispatchToProps = (dispatch, { id }) => {
     dispatch(list(id));
     return {
-        remove: (ver) => dispatch(remove(id, ver))
+        remove: (ver) => dispatch(remove(id, ver)),
+        verify: (ver) => dispatch(verify(id, ver)),
     }
 };
 

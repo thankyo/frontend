@@ -43,7 +43,8 @@ export function remove(user, verID) {
         authService.signAndFetch(req, dispatch).then(removed => {
             let event = removed ? removeSuccess(user, verID) : removeFailed(user, verID, "Server error, our admins are looking into it");
             dispatch(event)
-        })//.catch(error => dispatch(removeFailed(user, verID, error)))
+        }).
+        catch(error => dispatch(removeFailed(user, verID, error)))
     }
 }
 
@@ -58,8 +59,30 @@ const listFailed = (user, error) => toAction(VERIFICATION_LIST_FAILED, {user, er
 export const list = (user) => (dispatch) => {
     dispatch(listRequested(user));
     let listReq = new Request(`/api/v1/thank/verification/${user}`);
-    authService.signAndFetch(listReq, dispatch).then(list => dispatch(listSuccess(user, list)))//.catch(error => dispatch(listFailed(user, error)))
+    authService.
+        signAndFetch(listReq, dispatch).
+        then(list => dispatch(listSuccess(user, list))).
+        catch(error => dispatch(listFailed(user, error)))
 };
+
+export const VERIFICATION_CONFIRMATION_REQUESTED = "VERIFICATION_CONFIRMATION_REQUESTED";
+export const VERIFICATION_CONFIRMATION_SUCCESS = "VERIFICATION_CONFIRMATION_SUCCESS";
+export const VERIFICATION_CONFIRMATION_FAILED = "VERIFICATION_CONFIRMATION_FAILED";
+
+const confirmationRequested = (user, verID) => toAction(VERIFICATION_CONFIRMATION_REQUESTED, {user, verID});
+const confirmationSuccess = (user, ver) => toAction(VERIFICATION_CONFIRMATION_SUCCESS, {user, ver});
+const confirmationFailed = (user, verID, error) => toAction(VERIFICATION_CONFIRMATION_FAILED, {user, verID, error});
+
+export function verify(user, verID) {
+    return (dispatch) => {
+        dispatch(confirmationRequested(user, verID));
+        let req = new Request(`/api/v1/thank/verification/${user}/${verID}`, {method: "PUT"});
+        authService.signAndFetch(req, dispatch).then(verification => {
+            dispatch(confirmationSuccess(user, verification))
+        })//.catch(error => dispatch(confirmationFailed(user, verID, error)))
+    }
+}
+
 
 
 
