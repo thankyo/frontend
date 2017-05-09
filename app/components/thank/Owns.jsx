@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Navigation from "../Navigation";
 import Profile from "../user/Profile";
 import ComponentWrap from "../ComponentWrap";
-import AddOwnership  from './AddVerification';
+import AddVerification  from './AddVerification';
 import Verifications from './Verifications';
 import ResourceOwnership from './ResourceOwnership';
 
@@ -16,7 +16,7 @@ export default class Love extends Component {
                     <Profile id={this.props.params.id}/>
                 </ComponentWrap>
                 <ComponentWrap>
-                    <AddOwnership/>
+                    <AddVerification id={this.props.params.id}/>
                 </ComponentWrap>
                 <ComponentWrap>
                     <Verifications id={this.props.params.id}/>

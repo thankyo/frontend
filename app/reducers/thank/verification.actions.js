@@ -8,13 +8,13 @@ function toAction(type, payload) {
     return {type, payload};
 }
 
-const createRequested = (ownership) => toAction(VERIFICATION_CREATE_REQUESTED, {ownership});
-const createSuccess = (ownership) => toAction(VERIFICATION_CREATE_SUCCESS, {ownership});
-const createFailed = (error) => toAction(VERIFICATION_CREATE_FAILED, {error});
+const createRequested = (user, ownership) => toAction(VERIFICATION_CREATE_REQUESTED, { user, ownership });
+const createSuccess = (user, ownership) => toAction(VERIFICATION_CREATE_SUCCESS, { user, ownership });
+const createFailed = (user, error) => toAction(VERIFICATION_CREATE_FAILED, { user, error});
 
-export const create = (ownership) => (dispatch) => {
-    dispatch(createRequested(ownership));
-    let req = new Request(`/api/v1/thank/verification/my`, {
+export const create = (user, ownership) => (dispatch) => {
+    dispatch(createRequested(user, ownership));
+    let req = new Request(`/api/v1/thank/verification/${user}`, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -22,25 +22,28 @@ export const create = (ownership) => (dispatch) => {
         },
         body: JSON.stringify(ownership),
     });
-    authService.signAndFetch(req, dispatch).then(ownership => dispatch(createSuccess(ownership))).catch(error => dispatch(createFailed(error)))
+    authService.
+        signAndFetch(req, dispatch).
+        then(res => dispatch(createSuccess(user, res))).
+        catch(error => dispatch(createFailed(user, error)))
 }
 
 export const VERIFICATION_REMOVE_REQUESTED = "VERIFICATION_REMOVE_REQUESTED";
 export const VERIFICATION_REMOVE_SUCCESS = "VERIFICATION_REMOVE_SUCCESS";
 export const VERIFICATION_REMOVE_FAILED = "VERIFICATION_REMOVE_FAILED";
 
-const removeRequested = (user, verification) => toAction(VERIFICATION_REMOVE_REQUESTED, {user, verification});
-const removeSuccess = (user, verification) => toAction(VERIFICATION_REMOVE_SUCCESS, {user, verification});
-const removeFailed = (user, verification, error) => toAction(VERIFICATION_REMOVE_FAILED, {user, verification, error});
+const removeRequested = (user, verID) => toAction(VERIFICATION_REMOVE_REQUESTED, {user, verID});
+const removeSuccess = (user, verID) => toAction(VERIFICATION_REMOVE_SUCCESS, {user, verID});
+const removeFailed = (user, verID, error) => toAction(VERIFICATION_REMOVE_FAILED, {user, verID, error});
 
-export function remove(user, verification) {
+export function remove(user, verID) {
     return (dispatch) => {
-        dispatch(removeRequested(ownership));
-        let req = new Request(`/api/v1/thank/verification/${user}/${verification}`, {method: "DELETE"});
+        dispatch(removeRequested(user, verID));
+        let req = new Request(`/api/v1/thank/verification/${user}/${verID}`, {method: "DELETE"});
         authService.signAndFetch(req, dispatch).then(removed => {
-            let event = removed ? removeSuccess(user, verification) : removeFailed(user, verification, "Server error, our admins are looking into it");
+            let event = removed ? removeSuccess(user, verID) : removeFailed(user, verID, "Server error, our admins are looking into it");
             dispatch(event)
-        }).catch(error => dispatch(removeFailed(user, verification, error)))
+        })//.catch(error => dispatch(removeFailed(user, verID, error)))
     }
 }
 

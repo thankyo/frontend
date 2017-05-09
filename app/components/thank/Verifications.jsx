@@ -1,25 +1,38 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {list} from "../../reducers/thank/verification.actions";
+import {list, remove} from "../../reducers/thank/verification.actions";
 import Resource from "../Resource";
 
 class Verification extends Component {
     render() {
         let metaText = `<meta name='loveit-site-verification" content="${this.props.verification.verificationCode}"/>`
         return (
-            <div className="container">
-                <p className="subtitle">{this.props.verification.status}</p>
-                <Resource resource={this.props.verification.resource}/>
-                <p> {metaText}</p>
-            </div>
+            <tr>
+                <td><button onClick={this.props.verify} className="button is-primary">Verify</button></td>
+                <td>{this.props.verification.status}</td>
+                <td><Resource resource={this.props.verification.resource}/></td>
+                <td>{metaText}</td>
+                <td><button onClick={this.props.remove} className="button"><span className="fa fa-remove"></span><span>Delete</span></button></td>
+            </tr>
         );
     }
 }
 
-const Verifications = ({verification}) => (
-    <div>
-        {verification.map(ver => <Verification key={ver.resource.uri} verification={ver}/>)}
-    </div>
+const Verifications = ({verification, remove}) => (
+    <table className="table is-grouped">
+        <thead>
+            <tr>
+                <td></td>
+                <td>Status</td>
+                <td>Resource</td>
+                <td>Meta</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            {verification.map(ver => <Verification key={ver.resource.uri} verification={ver} remove={() => remove(ver.id)}/>)}
+        </tbody>
+    </table>
 );
 
 
@@ -32,7 +45,9 @@ const mapStateToProps = ({thank: { verification }}, {id}) => {
 
 const mapDispatchToProps = (dispatch, { id }) => {
     dispatch(list(id));
-    return {}
+    return {
+        remove: (ver) => dispatch(remove(id, ver))
+    }
 };
 
 export default connect(

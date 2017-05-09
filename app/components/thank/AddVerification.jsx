@@ -29,14 +29,14 @@ const AddOwnership = ({verify}) => {
     )
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, { id }) => {
     return {
         verify: (resource) => {
             let ownership = {
                 ownershipType: "full",
                 resource: Object.assign(resource, { type: "http"})
             };
-            dispatch(create(ownership))
+            dispatch(create(id, ownership))
         }
     }
 };
