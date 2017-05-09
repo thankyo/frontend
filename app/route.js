@@ -9,7 +9,7 @@ import Documentation from "components/documentation/DocumentationPage";
 import NotFound from "pages/NotFound";
 import Payments from "pages/Payments";
 import Love from "components/thank/Love";
-import Owns from "pages/Owns";
+import Owns from "components/thank/Owns";
 import authService from "service/auth";
 
 import {HOME} from "service/routes";

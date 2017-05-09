@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import Navigation from "../components/Navigation";
-import Profile from "../components/user/Profile";
-import ComponentWrap from "../components/ComponentWrap";
-import AddOwnership  from '../components/thank/Verification';
-import ResourceOwnership from '../components/thank/ResourceOwnership';
+import Navigation from "../Navigation";
+import Profile from "../user/Profile";
+import ComponentWrap from "../ComponentWrap";
+import AddOwnership  from './AddVerification';
+import Verifications from './Verifications';
+import ResourceOwnership from './ResourceOwnership';
 
 
 export default class Love extends Component {
@@ -16,6 +17,9 @@ export default class Love extends Component {
                 </ComponentWrap>
                 <ComponentWrap>
                     <AddOwnership/>
+                </ComponentWrap>
+                <ComponentWrap>
+                    <Verifications id={this.props.params.id}/>
                 </ComponentWrap>
                 <ComponentWrap>
                     <ResourceOwnership id={this.props.params.id}/>
