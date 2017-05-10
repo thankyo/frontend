@@ -1,14 +1,13 @@
 import React, {Component} from "react";
 import FacebookLogin from "../FacebookLogin";
 
-
 class SocialProof extends Component {
     render() {
-        let link = `https://placehold.it/256x256?text=${this.props.text}`;
+        let link = `https://placehold.it/180x180?text=${this.props.text}`;
         return (
             <div className="column">
                 <div className="image is-1by1 sui-avatar">
-                    <img src={link}/>
+                    <img src={link} alt={this.props.text}/>
                 </div>
             </div>
         )
@@ -19,7 +18,7 @@ class SocialProof extends Component {
 export default class ContributorSocialProof extends Component {
     render() {
         return (
-            <section className="hero is-primary">
+            <section className="hero is-warning">
                 <div className="hero-body">
                     <div className="container has-text-centered">
 
@@ -36,7 +35,7 @@ export default class ContributorSocialProof extends Component {
                                 <SocialProof text="Che"/>
                             </div>
                             <div className="column is-2">
-                                <SocialProof text="U"/>
+                                <SocialProof text="Gandi"/>
                             </div>
                             <div className="column">
                             </div>

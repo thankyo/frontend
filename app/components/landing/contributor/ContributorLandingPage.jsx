@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import FacebookYesNoButton from "../FacebookYesNoButton";
 import Brand from "../../Brand";
-import FacebookLoginButton from "../FacebookLoginButton";
-import { Link } from "react-router";
+import FacebookLogin from "../FacebookLogin";
+import {Link} from "react-router";
 import Footer from "../../Footer";
-import ContributorSocialProof from './ContributorSocialProof';
+import ContributorSocialProof from "./ContributorSocialProof";
+import What from './ContributorWhat';
 
 class ContributorMove extends Component {
     render() {
@@ -63,51 +63,10 @@ class ContributorSmile extends Component {
     }
 }
 
-class ContributorGiveBack extends Component {
-    render() {
-        return (
-            <section className="hero is-large">
-                <div className="hero-body">
-                    <div className="container has-text-centered">
-                        <div className="title is-1">
-                            We love what they do
-                        </div>
-                        <div className="title is-3">
-                            It's time to give back
-                        </div>
-                        <FacebookYesNoButton></FacebookYesNoButton>
-                    </div>
-                </div>
-            </section>
-        )
-    }
-}
-
-class ContributorLoveWithAMeaning extends Component {
-    render() {
-        return (
-            <section className="hero is-large">
-                <div className="hero-body">
-                    <div className="container has-text-centered">
-                        <div className="title is-1">
-                            We can change the world if we show a little support
-                        </div>
-                        <div className="title is-3">
-                            Do you want to try
-                        </div>
-                        <FacebookYesNoButton></FacebookYesNoButton>
-                    </div>
-                </div>
-            </section>
-        )
-
-    }
-}
-
 class ContributorHero extends Component {
     render() {
         return (
-            <section className="hero is-large header-image">
+            <section className="hero is-medium is-primary creator-image">
                 <div className="hero-head">
                     <header className="nav">
                         <div className="container">
@@ -123,12 +82,16 @@ class ContributorHero extends Component {
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <h1 className="title is-1">
-                            Make world better
+                            Tip like a boss
                         </h1>
                         <h2 className="subtitle is-3">
-                            Give back to what you love
+                            Microtip revolution
                         </h2>
-                        <FacebookLoginButton/>
+                        <FacebookLogin>
+                            <div className="button is-info is-outlined is-hovered is-large">
+                                <span>Yeah!</span>
+                            </div>
+                        </FacebookLogin>
                     </div>
                 </div>
             </section>
@@ -143,11 +106,7 @@ export default class Contributor extends Component {
             <div>
                 <ContributorHero/>
                 <ContributorSocialProof/>
-                <ContributorSmile/>
-                <ContributorThink/>
-                <ContributorMove/>
-                <ContributorLoveWithAMeaning/>
-
+                <What/>
                 <Footer/>
             </div>
         );

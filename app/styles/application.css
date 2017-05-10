@@ -7,6 +7,9 @@
 }
 
 .is-link {
-    text-decoration-color: #132687;
     text-decoration: underline;
+}
+
+.creator-image {
+    background-image: url("http://placehold.it/1440x460?text=AWESOME");
 }
