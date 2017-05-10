@@ -13,3 +13,7 @@
 .creator-image {
     background-image: url("http://placehold.it/1440x460?text=AWESOME");
 }
+
+.not-ready-image {
+    background-image: url("http://placehold.it/1440x460?text=What a Shame");
+}

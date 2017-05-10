@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import TermsOfUse from "components/legal/TermsOfUsePage";
 import PrivacyPolicy from "components/legal/PrivacyPolicyPage";
 import {browserHistory, Route, Router} from "react-router";
-import ContributorLandingPage from "components/landing/contributor/ContributorLandingPage";
+import ContributorLandingPage from "components/landing/contributor/LandingPage";
 import CreatorLandingPage from "components/landing/creator/CreatorLandingPage";
 import Documentation from "components/documentation/DocumentationPage";
 import NotFound from "pages/NotFound";

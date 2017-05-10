@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-import FacebookLogin from "../FacebookLogin";
 
-class SocialProof extends Component {
+class Proof extends Component {
     render() {
         let link = `https://placehold.it/180x180?text=${this.props.text}`;
         return (
@@ -15,35 +14,31 @@ class SocialProof extends Component {
 }
 
 
-export default class ContributorSocialProof extends Component {
+export default class ContributorPressProof extends Component {
     render() {
         return (
             <section className="hero is-warning">
                 <div className="hero-body">
                     <div className="container has-text-centered">
-
                         <div className="columns">
                             <div className="column">
                             </div>
                             <div className="column is-2 is-primary">
-                                <SocialProof text="EINSTEIN"/>
+                                <Proof text="Times"/>
                             </div>
                             <div className="column is-2">
-                                <SocialProof text="TESLA"/>
+                                <Proof text="Mashable"/>
                             </div>
                             <div className="column is-2">
-                                <SocialProof text="Che"/>
+                                <Proof text="Tech Crunch"/>
                             </div>
                             <div className="column is-2">
-                                <SocialProof text="Gandi"/>
+                                <Proof text="HBO"/>
                             </div>
                             <div className="column">
                             </div>
                         </div>
-                        <div className="title is-2">Could be our first users</div>
-                        <FacebookLogin>
-                            <a className="subtitle is-link">They can't, but you can</a>
-                        </FacebookLogin>
+                        <div className="title is-2">Have no idea we exist, YET</div>
                     </div>
                 </div>
             </section>
