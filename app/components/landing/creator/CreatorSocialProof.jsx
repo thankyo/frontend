@@ -15,11 +15,10 @@ class SocialProof extends Component {
     }
 }
 
-
-export default class ContributorSocialProof extends Component {
+export default class CreatorSocialProof extends Component {
     render() {
         return (
-            <section className="hero is-primary">
+            <section className="hero is-warning">
                 <div className="hero-body">
                     <div className="container has-text-centered">
 
@@ -27,23 +26,24 @@ export default class ContributorSocialProof extends Component {
                             <div className="column">
                             </div>
                             <div className="column is-2 is-primary">
-                                <SocialProof text="EINSTEIN"/>
+                                <SocialProof text="New York Times"/>
                             </div>
                             <div className="column is-2">
-                                <SocialProof text="TESLA"/>
+                                <SocialProof text="YouTube"/>
                             </div>
                             <div className="column is-2">
-                                <SocialProof text="Che"/>
+                                <SocialProof text="Dribbble"/>
                             </div>
                             <div className="column is-2">
-                                <SocialProof text="U"/>
+                                <SocialProof text="Medium"/>
                             </div>
                             <div className="column">
                             </div>
                         </div>
-                        <div className="title is-2">Could be our first users</div>
+                        <div className="title is-2">Our future clients</div>
+                        <div className="subtitle is-4">Too bad, they have no idea we exist</div>
                         <FacebookLogin>
-                            <a className="subtitle is-link">They can't, but you can</a>
+                            <a className="subtitle is-link">pave the way</a>
                         </FacebookLogin>
                     </div>
                 </div>

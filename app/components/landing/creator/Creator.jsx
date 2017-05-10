@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import ComponentWrap from "../../ComponentWrap";
 import Brand from "../../Brand";
 import {Link} from "react-router";
+import CreatorSocialProof from './CreatorSocialProof';
 
 class CreatorHead extends Component {
     render() {
@@ -121,6 +122,7 @@ export default class Creator extends Component {
         return (
             <div>
                 <CreatorHero/>
+                <CreatorSocialProof/>
                 <ComponentWrap>
                     <CreatorPoints/>
                 </ComponentWrap>
