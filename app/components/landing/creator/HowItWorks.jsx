@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import ComponentWrap from "../ComponentWrap";
+import ComponentWrap from "../../ComponentWrap";
 
 class EarningAndFees extends Component {
     render() {

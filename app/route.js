@@ -3,8 +3,8 @@ import React, {Component} from "react";
 import TermsOfUse from "components/legal/TermsOfUsePage";
 import PrivacyPolicy from "components/legal/PrivacyPolicyPage";
 import {browserHistory, Route, Router} from "react-router";
-import Landing from "components/landing/LandingPage";
-import CreatorPage from "components/landing/CreatorPage";
+import ContributorLandingPage from "components/landing/contributor/ContributorLandingPage";
+import CreatorLandingPage from "components/landing/creator/CreatorLandingPage";
 import Documentation from "components/documentation/DocumentationPage";
 import NotFound from "pages/NotFound";
 import Payments from "pages/Payments";
@@ -33,8 +33,8 @@ export default class MainApp extends Component {
                     <link rel="shortcut icon" type="image/x-icon" href="favicon.png"></link>
                 </Helmet>
                 <Router history={this.props.history} onUpdate={() => window.scrollTo(0, 0)}>
-                    <Route path="/" component={Landing}/>
-                    <Route path="/creator" component={CreatorPage}/>
+                    <Route path="/" component={ContributorLandingPage}/>
+                    <Route path="/creator" component={CreatorLandingPage}/>
                     <Route path="/documentation" component={ Documentation }/>
                     <Route path="/:id/love" component={ Love }/>
                     <Route path="/:id/payment" component={ Payments }/>

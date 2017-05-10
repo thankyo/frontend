@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import ComponentWrap from "../ComponentWrap";
-import Brand from "../Brand";
+import ComponentWrap from "../../ComponentWrap";
+import Brand from "../../Brand";
 import {Link} from "react-router";
 
 class CreatorHead extends Component {

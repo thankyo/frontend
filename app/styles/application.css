@@ -1,0 +1,12 @@
+.sui-avatar {
+    margin: auto;
+}
+
+.sui-avatar img {
+    border-radius: 999px;
+}
+
+.is-link {
+    text-decoration-color: #132687;
+    text-decoration: underline;
+}

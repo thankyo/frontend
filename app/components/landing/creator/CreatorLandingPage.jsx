@@ -2,9 +2,9 @@ import React, {Component} from "react";
 
 import Creator from "./Creator";
 import HowItWorks from "./HowItWorks";
-import Contact from "../Contact";
+import Contact from "../../Contact";
 
-import Footer from "../Footer";
+import Footer from "../../Footer";
 
 export default class CreatorPage extends Component {
     render() {
