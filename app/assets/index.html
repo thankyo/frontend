@@ -101,7 +101,10 @@
                 oScript.src = sSrc;
             }
         })(document.head || document.getElementsByTagName("head")[0]);
-        importScript("/app.js", function() { require('initialize') })
+        importScript("/app.js", function() {
+            console.log("Running script");
+            require('initialize');
+        });
     </script>
 
 </body>
