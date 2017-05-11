@@ -1,58 +1,92 @@
 <!DOCTYPE html>
 <head>
 
+    <html lang="en" amp/>
+    <meta charSet="utf-8"/>
+
+    <title>Love.it</title>
+
     <meta name="viewport" content="width=device-width"/>
     <meta name="google-site-verification" content="VXBRnbM3Jh54uR-jHjoHSrmu0UM78IKma7FDtydCPnk"/>
     <meta name="description" content="Love.it microtips platform"/>
     <meta name="keywords" content="donation,microtip,microdonation"/>
 
-    <link async defer rel="stylesheet" href="/app.css"/>
-    <link async defer
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png"></link>
+
+    <link defer
           rel="stylesheet"
           type="text/css"
           href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css"
           integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
           crossorigin="anonymous"
     />
-    <link async defer
+    <link defer
           rel="stylesheet"
           type="text/css"
           href="https://cdn.jsdelivr.net/bulma/0.4.1/css/bulma.css"
           integrity="sha256-PELQzdZwUQw2WSX3q4QLMSzDqQyWrmrXODp2bZy6JOU="
           crossorigin="anonymous"
     />
+    <link defer rel="stylesheet" href="/app.css"/>
+
+</head>
+<body>
+    <div id="app">
+    </div>
+
+    <noscript>Your browser does not support JavaScript! We have no offline version so far</noscript>
+
+    <!-- Google Analytics -->
+    <script defer async type="application/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    </script>
+    <!-- End Google Analytics -->
+    <script defer async type="text/javascript">
+        (function (w, d, t) {
+            var hasLoaded = false;
+
+            function l() {
+                if (hasLoaded) {
+                    return;
+                }
+                hasLoaded = true;
+                window.doorbellOptions.windowLoaded = true;
+                var g = d.createElement(t);
+                g.id = 'doorbellScript';
+                g.type = 'text/javascript';
+                g.async = true;
+                g.src = 'https://embed.doorbell.io/button/6118?t=' + (new Date().getTime());
+                (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(g);
+            }
+
+            if (w.attachEvent) {
+                w.attachEvent('onload', l);
+            } else if (w.addEventListener) {
+                w.addEventListener('load', l, false);
+            } else {
+                l();
+            }
+            if (d.readyState == 'complete') {
+                l();
+            }
+        }(window, document, 'script'));
+    </script>
 
     <!-- Stripe -->
     <script defer src="https://checkout.stripe.com/checkout.js"></script>
     <!-- Stripe integration end -->
-</head>
-<body>
-<div id="app">
-</div>
-<script defer src="/app.js"></script>
-<script defer src="/run.js"></script>
-<noscript>Your browser does not support JavaScript! We have no offline version so far</noscript>
-<!-- Google Analytics -->
-<script defer async type="application/javascript">
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-</script>
-<!-- End Google Analytics -->
-<script defer async type="text/javascript">
-    (function(w, d, t) {
-        var hasLoaded = false;
-        function l() { if (hasLoaded) { return; } hasLoaded = true; window.doorbellOptions.windowLoaded = true; var g = d.createElement(t);g.id = 'doorbellScript';g.type = 'text/javascript';g.async = true;g.src = 'https://embed.doorbell.io/button/6118?t='+(new Date().getTime());(d.getElementsByTagName('head')[0]||d.getElementsByTagName('body')[0]).appendChild(g); }
-        if (w.attachEvent) { w.attachEvent('onload', l); } else if (w.addEventListener) { w.addEventListener('load', l, false); } else { l(); }
-        if (d.readyState == 'complete') { l(); }
-    }(window, document, 'script'));
-</script>
+
+    <script defer src="/app.js"></script>
+    <script defer src="/run.js"></script>
+
 </body>
