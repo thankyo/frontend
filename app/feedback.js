@@ -4,7 +4,7 @@ import {LOGOUT} from "./reducers/auth.actions";
 function updateOptions(options) {
     console.log("Updating options");
     window.doorbellOptions = options;
-    if (window.doorbell) {
+    if (window.doorbell !== undefined) {
         Object.keys(options).map((key) => {
             window.doorbell.setOption(key, options[key]);
         });
@@ -19,8 +19,7 @@ function anonymousFeedback() {
         name: ``,
         properties: {
             loggedIn: false,
-        },
-        appKey: 't09yYUuKEgKKLChNXy1Dg9xXZNhezrxch9oJnNKHYNGTZ1IT3SZzjkbdDmalroR7'
+        }
     });
 }
 
@@ -33,9 +32,7 @@ function userFeedback(user) {
         name: `${user.firstName} ${user.lastName}`,
         properties: { // Optional, a Javascript object of custom properties you want to set
             loggedIn: true,
-        },
-        appKey: 't09yYUuKEgKKLChNXy1Dg9xXZNhezrxch9oJnNKHYNGTZ1IT3SZzjkbdDmalroR7'
-
+        }
     });
 }
 

@@ -53,6 +53,7 @@
     <!-- End Google Analytics -->
     <script defer async type="text/javascript">
         (function (w, d, t) {
+            window.doorbellOptions = { appKey: 't09yYUuKEgKKLChNXy1Dg9xXZNhezrxch9oJnNKHYNGTZ1IT3SZzjkbdDmalroR7' }
             var hasLoaded = false;
 
             function l() {
@@ -83,10 +84,15 @@
     </script>
 
     <!-- Stripe -->
-    <script defer src="https://checkout.stripe.com/checkout.js"></script>
+    <script defer async src="https://checkout.stripe.com/checkout.js"></script>
     <!-- Stripe integration end -->
 
-    <script defer src="/app.js"></script>
-    <script defer src="/run.js"></script>
+    <script defer async src="/app.js" onload="require('initialize')"></script>
+    <script>
+        function start() {
+            console.log("Run");
+            require('initialize');
+        }
+    </script>
 
 </body>
