@@ -86,13 +86,22 @@
     <!-- Stripe -->
     <script defer async src="https://checkout.stripe.com/checkout.js"></script>
     <!-- Stripe integration end -->
-
-    <script defer async src="/app.js" onload="require('initialize')"></script>
     <script>
-        function start() {
-            console.log("Run");
-            require('initialize');
-        }
+        var importScript = (function (oHead) {
+            function loadError (oError) {
+                throw new URIError("The script " + oError.target.src + " is not accessible.");
+            }
+            return function (sSrc, fOnload) {
+                var oScript = document.createElement("script");
+                oScript.type = "text\/javascript";
+                oScript.async = true;
+                oScript.onerror = loadError;
+                if (fOnload) { oScript.onload = fOnload; }
+                oHead.appendChild(oScript);
+                oScript.src = sSrc;
+            }
+        })(document.head || document.getElementsByTagName("head")[0]);
+        importScript("/app.js", function() { require('initialize') })
     </script>
 
 </body>
