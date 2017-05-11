@@ -30,7 +30,11 @@ Object.isObject = function (obj) {
     return typeof obj === 'object' && obj !== null
 };
 
-load();
+if (document.readyState !== 'complete') {
+    document.addEventListener('DOMContentLoaded', load);
+} else {
+    load();
+}
 
 // Initialize analytics
 analytics(history);
