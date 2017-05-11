@@ -2,11 +2,11 @@ import React, {Component} from "react";
 
 class Proof extends Component {
     render() {
-        let link = `https://placehold.it/180x180?text=${this.props.text}`;
+        let nativeLink = `/images/landing/contributor/${this.props.text}.png`;
         return (
             <div className="column">
                 <div className="image is-1by1 sui-avatar">
-                    <img src={link} alt={this.props.text}/>
+                    <img src={nativeLink} alt={this.props.text}/>
                 </div>
             </div>
         )

@@ -3,9 +3,11 @@ import {Field, reduxForm} from "redux-form";
 
 class NotReadyToJoin extends Component {
     render() {
-
+        let notReadyToJoin = {
+            backgroundImage: 'url(/images/landing/contributor/notReadyToJoin.png)'
+        };
         return (
-            <section className="hero is-medium is-primary not-ready-image">
+            <section className="hero is-medium is-primary" style={notReadyToJoin}>
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <h1 className="title is-1">
