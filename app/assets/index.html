@@ -13,28 +13,21 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png"></link>
 
-    <link defer
+    <link defer async
           rel="stylesheet"
           type="text/css"
           href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css"
           integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
           crossorigin="anonymous"
     />
-    <link defer
+    <link defer async
           rel="stylesheet"
           type="text/css"
           href="https://cdn.jsdelivr.net/bulma/0.4.1/css/bulma.css"
           integrity="sha256-PELQzdZwUQw2WSX3q4QLMSzDqQyWrmrXODp2bZy6JOU="
           crossorigin="anonymous"
     />
-    <link defer rel="stylesheet" href="/app.css"/>
-
-</head>
-<body>
-    <div id="app">
-    </div>
-
-    <noscript>Your browser does not support JavaScript! We have no offline version so far</noscript>
+    <link defer async rel="stylesheet" href="/app.css"/>
 
     <!-- Google Analytics -->
     <script defer async type="application/javascript">
@@ -43,8 +36,7 @@
             i[r] = i[r] || function () {
                     (i[r].q = i[r].q || []).push(arguments)
                 }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
             a.async = 1;
             a.src = g;
             m.parentNode.insertBefore(a, m)
@@ -106,5 +98,12 @@
             require('initialize');
         });
     </script>
+</head>
+<body>
+    <div id="app">
+    </div>
+
+    <noscript>Your browser does not support JavaScript! We have no offline version so far</noscript>
+
 
 </body>
