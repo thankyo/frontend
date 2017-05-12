@@ -31,6 +31,11 @@ export default class What extends Component {
                                     Feeling good is everyday thing, it works 24/7 holidays included.
                                     <br/>
                                     <br/>
+                                    <strong>Are you going to know everything about me, like FB and Google do?</strong><br/>
+                                    No, we have no desire to do so. Your information belongs to you and only you, we might use it in
+                                    for technical needs, but nothing more.
+                                    <br/>
+                                    <br/>
                                     <strong>What else do I get</strong><br/>
                                     <ul>
                                         <li><strong>Free things</strong>, like press, journalism, art and so much more.</li>

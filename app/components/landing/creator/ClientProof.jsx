@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import FacebookLogin from "../FacebookLogin";
 
 
-class SocialProof extends Component {
+class Proof extends Component {
     render() {
         let link = `https://placehold.it/256x256?text=${this.props.text}`;
         return (
@@ -15,7 +15,7 @@ class SocialProof extends Component {
     }
 }
 
-export default class CreatorSocialProof extends Component {
+export default class SocialProof extends Component {
     render() {
         return (
             <section className="hero is-warning">
@@ -26,16 +26,16 @@ export default class CreatorSocialProof extends Component {
                             <div className="column">
                             </div>
                             <div className="column is-2 is-primary">
-                                <SocialProof text="New York Times"/>
+                                <Proof text="New York Times"/>
                             </div>
                             <div className="column is-2">
-                                <SocialProof text="YouTube"/>
+                                <Proof text="YouTube"/>
                             </div>
                             <div className="column is-2">
-                                <SocialProof text="Dribbble"/>
+                                <Proof text="Dribbble"/>
                             </div>
                             <div className="column is-2">
-                                <SocialProof text="Medium"/>
+                                <Proof text="Medium"/>
                             </div>
                             <div className="column">
                             </div>
