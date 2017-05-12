@@ -5,11 +5,8 @@ import FacebookLogin from "../FacebookLogin";
 
 export default class Hero extends Component {
     render() {
-        let hero = {
-            backgroundImage: 'url(/images/landing/contributor/hero.png)'
-        };
         return (
-            <section className="hero is-medium is-primary" style={ hero }>
+            <section className="hero is-medium is-success">
                 <div className="hero-head">
                     <header className="nav">
                         <div className="container">

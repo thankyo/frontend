@@ -4,7 +4,7 @@ import FacebookLogin from '../FacebookLogin';
 export default class What extends Component {
     render() {
         return (
-            <section className="hero">
+            <section className="hero is-success">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <div className="columns">

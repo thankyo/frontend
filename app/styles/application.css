@@ -1,9 +1,10 @@
 .sui-avatar {
     margin: auto;
 }
-
 .sui-avatar img {
-    border-radius: 999px;
+    border-radius: 100px;
+    padding: 5px;
+    border: 1px solid #dbdbdb;
 }
 
 .is-link {

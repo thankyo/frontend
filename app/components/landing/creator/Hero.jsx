@@ -24,7 +24,7 @@ class CreatorHead extends Component {
 export default class Hero extends Component {
     render() {
         return (
-            <section className="hero is-large is-primary">
+            <section className="hero is-large is-success">
                 <div className="has-text-centered">
                     <CreatorHead/>
                     <div className="hero-body">

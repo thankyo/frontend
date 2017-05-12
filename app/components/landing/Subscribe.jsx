@@ -11,7 +11,7 @@ let SubscribeForm = ({ handleSubmit }) => {
                            placeholder="Email"/>
                 </p>
                 <p className="control">
-                    <button className="button is-success" type="submit">
+                    <button className="button is-primary" type="submit">
                         Subscribe
                     </button>
                 </p>

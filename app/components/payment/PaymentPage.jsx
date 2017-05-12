@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import Navigation from "../components/Navigation";
-import Profile from "../components/user/Profile";
-import PaymentTransaction from "../components/payment/PaymentTransaction";
-import ComponentWrap from "../components/ComponentWrap";
-import Payment from "../components/payment/Payment";
+import Navigation from "../Navigation";
+import Profile from "../user/Profile";
+import PaymentTransaction from "./PaymentTransaction";
+import ComponentWrap from "../ComponentWrap";
+import Payment from "./Payment";
 
 export default class Payments extends Component {
     render() {

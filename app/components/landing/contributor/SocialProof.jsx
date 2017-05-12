@@ -18,7 +18,7 @@ class Proof extends Component {
 export default class ContributorSocialProof extends Component {
     render() {
         return (
-            <section className="hero is-warning">
+            <section className="hero">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <div className="columns">
