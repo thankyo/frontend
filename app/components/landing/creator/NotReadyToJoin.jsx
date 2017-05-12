@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import {Field, reduxForm} from "redux-form";
+import Subscribe from '../Subscribe';
 
-class NotReadyToJoin extends Component {
+export default class NotReadyToJoin extends Component {
     render() {
         let notReadyToJoin = {
             backgroundImage: 'url(/images/landing/contributor/notReadyToJoin.png)'
@@ -19,19 +19,7 @@ class NotReadyToJoin extends Component {
                         <div className="columns">
                             <div className="column is-4 is-hidden-mobile">
                             </div>
-                            <div className="column is-4">
-                                <div className="field has-addons">
-                                    <p className="control is-expanded">
-                                        <Field name="email" component="input" type="email" className="input"
-                                               placeholder="Email"/>
-                                    </p>
-                                    <p className="control">
-                                        <button className="button is-success" type="submit">
-                                            Subscribe
-                                        </button>
-                                    </p>
-                                </div>
-                            </div>
+                            <Subscribe role="creator"/>
                             <div className="column is-4 is-hidden-mobile">
                             </div>
                         </div>
@@ -41,5 +29,3 @@ class NotReadyToJoin extends Component {
         );
     }
 }
-
-export default reduxForm({form: 'notReadyCreator'})(NotReadyToJoin);
