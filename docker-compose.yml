@@ -10,7 +10,6 @@ backend:
 
 frontend:
   image: mavarazy/thank-frontend:latest
-
   ports:
     - "80:80"
     - "443:443"
