@@ -41,7 +41,7 @@ export default class ContributorSocialProof extends Component {
                         </div>
                         <div className="title is-2">Could be our first users</div>
                         <FacebookLogin>
-                            <a className="subtitle is-link">Change is in the air</a>
+                            <a className="subtitle is-link">Be the change</a>
                         </FacebookLogin>
                     </div>
                 </div>
