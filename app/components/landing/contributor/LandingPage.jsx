@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import Hero from './Hero';
 import SocialProof from "./SocialProof";
 import What from './What';
-import PressProof from './PressProof';
+import PressProof from '../PressProof';
 import NotReadyToJoin from './NotReadyToJoin';
 import Footer from "../../Footer";
 

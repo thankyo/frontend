@@ -14,6 +14,9 @@ export default class Hero extends Component {
                                 <Brand/>
                             </div>
                             <div className="nav-item">
+                                <Link to="/creator" className="is-active">Contributor</Link>
+                            </div>
+                            <div className="nav-item">
                                 <Link to="/creator">Creator</Link>
                             </div>
                         </div>

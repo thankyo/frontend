@@ -10,8 +10,11 @@ class CreatorHead extends Component {
                     <div className="container">
                         <Brand/>
                         <div className="nav-right">
-                            <div className="nav-item is-brand">
-                                <Link to="/creator" className="is-active">Creator</Link>
+                            <div className="nav-item">
+                                <Link to="/">Contributor</Link>
+                            </div>
+                            <div className="nav-item">
+                                <Link to="/creator" className="is-active"> Creator</Link>
                             </div>
                         </div>
                     </div>

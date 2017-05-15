@@ -27,14 +27,9 @@ export default class What extends Component {
                                     We believe this will become a <strong>healthy habit</strong>, for your users.
                                     <br/>
                                     <br/>
-                                    <strong>Why only 10c</strong><br/>
+                                    <strong>10c, really</strong><br/>
                                     In order for it to become a habit - amount should be small enough, so that users won't be thinking too much about it.
                                     So we are going with 10c, we might change it in the future or make other colors.
-                                    <br/>
-                                    <br/>
-                                    <strong>What is a difference between you and Patreon?</strong><br/>
-                                    Unlike <strong>Patreon</strong> we are working on one time connections with no commitments.
-                                    We are pro long term relationships, but not all of your users are.
                                     <br/>
                                     <br/>
                                     <strong>What about integrations and other technical things</strong><br/>
@@ -42,12 +37,12 @@ export default class What extends Component {
                                     <br/>
                                     <br/>
                                     <strong>What about the fees?</strong><br/>
-                                    LoveIt will take 5% flat fee, plus 3% payed to processing companies, we'll be working on minimizing this amounts in future.
+                                    LoveIt will take 5% flat fee, plus 3% payed to processing companies. We'll be working on minimizing this amounts in future.
                                     <br/>
                                     <br/>
                                     <FacebookLogin>
                                         <div className="has-text-centered">
-                                            <div className="button is-info is-large">Try us out</div>
+                                            <div className="button is-info is-large">Click away</div>
                                         </div>
                                     </FacebookLogin>
                                 </div>

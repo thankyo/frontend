@@ -1,12 +1,9 @@
 import React, {Component} from "react";
 
-import Creator from "./Creator";
-import HowItWorks from "./HowItWorks";
-import Contact from "../../Contact";
-
 import Hero from "./Hero";
 import What from './What';
 import SocialProof from './SocialProof';
+import PressProof from '../PressProof';
 import NotReadyToJoin from './NotReadyToJoin';
 import Footer from "../../Footer";
 
@@ -17,6 +14,7 @@ export default class CreatorPage extends Component {
                 <Hero/>
                 <SocialProof/>
                 <What/>
+                <PressProof/>
                 <NotReadyToJoin/>
                 <Footer/>
             </div>

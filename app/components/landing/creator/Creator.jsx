@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ComponentWrap from "../../ComponentWrap";
 import SocialProof from './SocialProof';
-
+import Subscribe from '../Subscribe';
 
 class CreatorHow extends Component {
     render() {
