@@ -44,6 +44,9 @@ class AuthService {
     getToken() {
         return localStorage.getItem("token");
     }
+    getUserIdentity() {
+        return this.parseJwt(this.getToken());
+    }
     parseJwt (token) {
         let base64Url = token.split('.')[1];
         let base64 = base64Url.replace('-', '+').replace('_', '/');

@@ -29,7 +29,7 @@ export default class Hero extends Component {
                         </h2>
                         <FacebookLogin>
                             <div className="button is-info is-outlined is-hovered is-large">
-                                <span>Yeah!</span>
+                                <span>Change the world</span>
                             </div>
                         </FacebookLogin>
                     </div>

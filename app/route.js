@@ -12,6 +12,8 @@ import Love from "components/thank/Love";
 import Owns from "components/thank/Owns";
 import authService from "service/auth";
 
+import Introduction from "./components/introduction/CreatorIntroductionPage";
+
 import {HOME} from "service/routes";
 import {Helmet} from "react-helmet";
 
@@ -39,6 +41,7 @@ export default class MainApp extends Component {
                     <Route path="/:id/love" component={ Love }/>
                     <Route path="/:id/payment" component={ Payments }/>
                     <Route path="/:id/own" component={ Owns }/>
+                    <Route path="/introduction" components={Introduction}/>
                     <Route path="/legal/terms" component={ TermsOfUse }/>
                     <Route path="/legal/privacy" component={ PrivacyPolicy }/>
                     <Route path="*" component={NotFound}/>
