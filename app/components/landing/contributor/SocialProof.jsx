@@ -24,24 +24,24 @@ export default class ContributorSocialProof extends Component {
                         <div className="columns">
                             <div className="column">
                             </div>
+                            <div className="column is-2">
+                                <Proof text="Tesla"/>
+                            </div>
                             <div className="column is-2 is-primary">
-                                <Proof text="EINSTEIN"/>
+                                <Proof text="Einstein"/>
                             </div>
                             <div className="column is-2">
-                                <Proof text="TESLA"/>
+                                <Proof text="Ghandi"/>
                             </div>
                             <div className="column is-2">
-                                <Proof text="Che"/>
-                            </div>
-                            <div className="column is-2">
-                                <Proof text="Gandi"/>
+                                <Proof text="Picaso"/>
                             </div>
                             <div className="column">
                             </div>
                         </div>
                         <div className="title is-2">Could be our first users</div>
                         <FacebookLogin>
-                            <a className="subtitle is-link">They can't, but you can</a>
+                            <a className="subtitle is-link">Change is in the air</a>
                         </FacebookLogin>
                     </div>
                 </div>
