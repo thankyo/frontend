@@ -14,18 +14,17 @@ export default class What extends Component {
                                 <div className="is-4 has-text-left">
                                     <strong className="hand-written">What is microtip and why should I care?</strong><br/>
                                     Microtip is a small 10c tip, that anyone of your users can share with you.
-                                    We want to make it as simple as possible to use.
-                                    In other words it's additional source of income.
+                                    We are going to make it as simple as possible with a <strong>LoveIt button</strong>.
                                     <br/>
                                     <br/>
                                     <strong className="hand-written">What is LoveIt button and How do I get one?</strong><br/>
-                                    It's something like `FB like` button, but with a bit more meaning.
-                                    We believe this will become a <strong>healthy habit</strong>, for your users.
+                                    It's basically Facebook Like button, but with a bit more meaning. Every time user click it
+                                    you get <strong>10c</strong>, which accumulated will be significant, but of course it will take time to make your user base.
                                     <br/>
                                     <br/>
                                     <strong className="hand-written">10c, really?</strong><br/>
                                     In order for it to become a habit - amount should be small enough, so that users won't be thinking too much about it.
-                                    So we are going with 10c, we might change it in the future or make other colors.
+                                    We believe this will become a <strong>healthy habit</strong>, for your users.
                                     <br/>
                                     <br/>
                                     <strong className="hand-written">What about integrations and other technical things?</strong><br/>

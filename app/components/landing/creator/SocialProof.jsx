@@ -39,7 +39,7 @@ export default class SocialProof extends Component {
                             <div className="column">
                             </div>
                         </div>
-                        <div className="title is-2 hand-written">Our future clients (if only they knew)</div>
+                        <div className="title is-2 hand-written">Our future clients (don't tell them yet)</div>
                     </div>
                 </div>
             </section>

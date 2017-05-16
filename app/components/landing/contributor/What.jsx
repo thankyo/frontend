@@ -18,18 +18,13 @@ export default class What extends Component {
                                     <br/>
                                     <br/>
                                     <strong className="hand-written">What is LoveIt button</strong><br/>
-                                    First of all it's a button and you click it, whenever you see one.<br/>
-                                    Creator gets <strong>10c</strong> feels appreciated, loved and understood, by the world and <strong>you did something good</strong>.
+                                    It's basically Facebook Like button, but with a bit more meaning. Every time you click it
+                                    creator gets <strong>10c</strong> and hears your voice of appreciation.
                                     <br/>
                                     <br/>
                                     <strong className="hand-written">Why only 10c</strong><br/>
                                     Well, we think this should be a <strong>healthy habit</strong>, not a do once and forget until Christmas.
                                     Feeling good is everyday thing, it works 24/7 holidays included.
-                                    <br/>
-                                    <br/>
-                                    <strong className="hand-written">Are you going to know everything about me, like FB and Google do?</strong><br/>
-                                    No, we have no desire to do so. Your information belongs to you and only you, we might use it in
-                                    for technical needs, but nothing more.
                                     <br/>
                                     <br/>
                                     <strong className="hand-written">What else do I get</strong><br/>
