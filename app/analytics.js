@@ -1,6 +1,8 @@
+import loadScript from 'loadScript';
+
 function recordLoadTime() {
     // Feature detects Navigation Timing API support.
-    if (performance) {
+    if (window.performance) {
         // Gets the number of milliseconds since page load
         // (and rounds the result since the value must be an integer).
         var timeSincePageLoad = Math.round(performance.now());
@@ -10,24 +12,21 @@ function recordLoadTime() {
     }
 }
 
-function doConfigure(history, attempt) {
-    let gaLoaded = window.ga !== undefined  && ga.create !== undefined;
-    if (gaLoaded) {
+function doConfigure(history) {
+    return () => {
         ga('create', 'UA-96949345-1', 'auto');
         history.listen(function (location) {
             ga('send', 'pageview', location.pathname)
         });
-        document.addEventListener('DOMContentLoaded', recordLoadTime);
-    } else if (attempt < 5) {
-        setTimeout(() =>  { doConfigure(history, attempt + 1) }, 10000);
+        recordLoadTime();
     }
 }
 
 export default function configure(history) {
     console.log("Starting analytics");
-    if (location.hostname === "localhost") {
-        console.log("Analytics disabled")
-    } else {
-        doConfigure(history, 0)
-   }
+    // if (location.hostname === "localhost") {
+    //     console.log("Analytics disabled")
+    // } else {
+        loadScript('https://www.google-analytics.com/analytics.js', 'ga', 'GoogleAnalyticsObject', doConfigure(history));
+   // }
 };

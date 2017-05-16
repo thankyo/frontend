@@ -1,3 +1,6 @@
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
 .sui-avatar {
     margin: auto;
 }
@@ -6,15 +9,6 @@
     padding: 5px;
     border: 1px solid #dbdbdb;
 }
-
 .is-link {
     text-decoration: underline;
-}
-
-.creator-image {
-    background-image: url("http://placehold.it/1440x460?text=AWESOME");
-}
-
-.not-ready-image {
-    background-image: url("http://placehold.it/1440x460?text=What a Shame");
 }
