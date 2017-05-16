@@ -16,9 +16,6 @@ class Proof extends Component {
 
 export default class ContributorPressProof extends Component {
     render() {
-        let style = {
-            fontFamily: ['Amatic SC', 'cursive']
-        };
         return (
             <section className="hero">
                 <div className="hero-body">
@@ -38,7 +35,7 @@ export default class ContributorPressProof extends Component {
                             <div className="column">
                             </div>
                         </div>
-                        <div className="title is-2" style={style}>Have no idea we exist (YET)</div>
+                        <div className="title is-2 hand-written">Have no idea we exist (YET)</div>
                     </div>
                 </div>
             </section>

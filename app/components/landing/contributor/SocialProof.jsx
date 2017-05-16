@@ -17,9 +17,6 @@ class Proof extends Component {
 
 export default class ContributorSocialProof extends Component {
     render() {
-        let style = {
-            fontFamily: ['Amatic SC', 'cursive']
-        };
         return (
             <section className="hero">
                 <div className="hero-body">
@@ -39,7 +36,7 @@ export default class ContributorSocialProof extends Component {
                             <div className="column">
                             </div>
                         </div>
-                        <div className="title is-2" style={style}>Could be our first users</div>
+                        <div className="title is-2 hand-written">Could be our first users</div>
                     </div>
                 </div>
             </section>

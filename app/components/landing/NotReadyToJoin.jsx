@@ -33,7 +33,7 @@ class Subscribe extends Component {
 export default class NotReadyToJoin extends Component {
     render() {
         return (
-            <section className="hero is-medium is-info">
+            <section className="hero is-medium is-info hand-written">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <h1 className="title is-1">

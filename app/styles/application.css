@@ -12,3 +12,7 @@ body {
 .is-link {
     text-decoration: underline;
 }
+.hand-written{
+    font-family: "Amatic SC", cursive;
+    font-size: 22px;
+}

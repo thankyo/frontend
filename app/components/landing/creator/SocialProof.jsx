@@ -18,9 +18,7 @@ class Proof extends Component {
 
 export default class SocialProof extends Component {
     render() {
-        let style = {
-            fontFamily: ['Amatic SC', 'cursive']
-        };
+
         return (
             <section className="hero">
                 <div className="hero-body">
@@ -41,7 +39,7 @@ export default class SocialProof extends Component {
                             <div className="column">
                             </div>
                         </div>
-                        <div className="title is-2" style={style}>Our future clients (if only they knew)</div>
+                        <div className="title is-2 hand-written">Our future clients (if only they knew)</div>
                     </div>
                 </div>
             </section>
