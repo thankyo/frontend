@@ -4,7 +4,7 @@ import Hero from './Hero';
 import SocialProof from "./SocialProof";
 import What from './What';
 import PressProof from '../PressProof';
-import NotReadyToJoin from './NotReadyToJoin';
+import NotReadyToJoin from '../NotReadyToJoin';
 import Footer from "../../Footer";
 
 export default class Contributor extends Component {
@@ -15,7 +15,7 @@ export default class Contributor extends Component {
                 <SocialProof/>
                 <What/>
                 <PressProof/>
-                <NotReadyToJoin/>
+                <NotReadyToJoin role="contributor"/>
                 <Footer/>
             </div>
         );

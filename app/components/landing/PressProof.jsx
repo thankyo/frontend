@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 class Proof extends Component {
     render() {
-        let nativeLink = `/images/landing/contributor/${this.props.text}.png`;
+        let nativeLink = `/images/landing/${this.props.text}.jpg`;
         return (
             <div className="column">
                 <div className="image is-1by1 sui-avatar">
@@ -24,16 +24,13 @@ export default class ContributorPressProof extends Component {
                             <div className="column">
                             </div>
                             <div className="column is-2 is-primary">
-                                <Proof text="Times"/>
+                                <Proof text="NYT"/>
                             </div>
                             <div className="column is-2">
                                 <Proof text="Mashable"/>
                             </div>
                             <div className="column is-2">
                                 <Proof text="Tech Crunch"/>
-                            </div>
-                            <div className="column is-2">
-                                <Proof text="HBO"/>
                             </div>
                             <div className="column">
                             </div>

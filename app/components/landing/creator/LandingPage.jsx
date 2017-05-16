@@ -4,7 +4,7 @@ import Hero from "./Hero";
 import What from './What';
 import SocialProof from './SocialProof';
 import PressProof from '../PressProof';
-import NotReadyToJoin from './NotReadyToJoin';
+import NotReadyToJoin from '../NotReadyToJoin';
 import Footer from "../../Footer";
 
 export default class CreatorPage extends Component {
@@ -15,7 +15,7 @@ export default class CreatorPage extends Component {
                 <SocialProof/>
                 <What/>
                 <PressProof/>
-                <NotReadyToJoin/>
+                <NotReadyToJoin role="creator"/>
                 <Footer/>
             </div>
         );

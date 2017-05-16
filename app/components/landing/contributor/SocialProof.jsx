@@ -3,7 +3,7 @@ import FacebookLogin from "../FacebookLogin";
 
 class Proof extends Component {
     render() {
-        let nativeLink = `/images/landing/contributor/${this.props.text}.png`;
+        let nativeLink = `/images/landing/contributor/${this.props.text}.jpg`;
         return (
             <div className="column">
                 <div className="image is-1by1 sui-avatar">
@@ -17,6 +17,9 @@ class Proof extends Component {
 
 export default class ContributorSocialProof extends Component {
     render() {
+        let style = {
+            fontFamily: ['Amatic SC', 'cursive']
+        };
         return (
             <section className="hero">
                 <div className="hero-body">
@@ -27,9 +30,6 @@ export default class ContributorSocialProof extends Component {
                             <div className="column is-2">
                                 <Proof text="Tesla"/>
                             </div>
-                            <div className="column is-2 is-primary">
-                                <Proof text="Einstein"/>
-                            </div>
                             <div className="column is-2">
                                 <Proof text="Ghandi"/>
                             </div>
@@ -39,10 +39,7 @@ export default class ContributorSocialProof extends Component {
                             <div className="column">
                             </div>
                         </div>
-                        <div className="title is-2">Could be our first users</div>
-                        <FacebookLogin>
-                            <a className="subtitle is-link">Be the change</a>
-                        </FacebookLogin>
+                        <div className="title is-2" style={style}>Could be our first users</div>
                     </div>
                 </div>
             </section>

@@ -4,7 +4,7 @@ import FacebookLogin from '../FacebookLogin';
 export default class What extends Component {
     render() {
         return (
-            <section className="hero is-success">
+            <section className="hero is-info">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <div className="columns">
@@ -42,7 +42,7 @@ export default class What extends Component {
                                     <br/>
                                     <FacebookLogin>
                                         <div className="has-text-centered">
-                                            <div className="button is-info is-large">Click away</div>
+                                            <div className="button is-info is-large is-outlined is-inverted">Click away</div>
                                         </div>
                                     </FacebookLogin>
                                 </div>
