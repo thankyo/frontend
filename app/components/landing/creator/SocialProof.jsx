@@ -41,8 +41,7 @@ export default class SocialProof extends Component {
                             <div className="column">
                             </div>
                         </div>
-                        <div className="title is-2" style={style}>Our future clients</div>
-                        <div className="subtitle is-4">Too bad, they have no idea we exist</div>
+                        <div className="title is-2" style={style}>Our future clients (if only they knew)</div>
                     </div>
                 </div>
             </section>

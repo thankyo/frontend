@@ -11,7 +11,7 @@ let SubscribeForm = ({ handleSubmit }) => {
                            placeholder="Email"/>
                 </p>
                 <p className="control">
-                    <button className="button is-info" type="submit">
+                    <button className="button is-info is-outlined is-inverted" type="submit">
                         Subscribe
                     </button>
                 </p>
@@ -32,11 +32,8 @@ class Subscribe extends Component {
 
 export default class NotReadyToJoin extends Component {
     render() {
-        let style = {
-            backgroundImage: "url('/images/landing/NotReadyToJoin.jpg')"
-        };
         return (
-            <section className="hero is-medium is-success" style={style}>
+            <section className="hero is-medium is-info">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <h1 className="title is-1">
