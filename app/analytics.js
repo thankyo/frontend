@@ -24,9 +24,9 @@ function doConfigure(history) {
 
 export default function configure(history) {
     console.log("Starting analytics");
-    // if (location.hostname === "localhost") {
-    //     console.log("Analytics disabled")
-    // } else {
+    if (location.hostname === "localhost") {
+        console.log("Analytics disabled")
+    } else {
         loadScript('https://www.google-analytics.com/analytics.js', 'ga', 'GoogleAnalyticsObject', doConfigure(history));
-   // }
+   }
 };
