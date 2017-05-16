@@ -5,8 +5,6 @@ import Transaction from "./Transaction";
 import Url from "./Url";
 import ComponentWrap from "../ComponentWrap";
 
-import { CodeGenerator } from "../documentation/Overview";
-
 
 export default class Love extends Component {
     render() {

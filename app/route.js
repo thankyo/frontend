@@ -41,6 +41,7 @@ export default class MainApp extends Component {
                     <Route path="/:id/love" component={ Love }/>
                     <Route path="/:id/payment" component={ Payments }/>
                     <Route path="/:id/own" component={ Owns }/>
+                    <Route path="/my" components={Introduction}/>
                     <Route path="/introduction" components={Introduction}/>
                     <Route path="/legal/terms" component={ TermsOfUse }/>
                     <Route path="/legal/privacy" component={ PrivacyPolicy }/>

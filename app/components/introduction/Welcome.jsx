@@ -2,10 +2,15 @@ import React, {Component} from "react";
 
 export default class Introduction extends Component {
     render() {
-        let {thumbnail} = this.props.user;
+        let {firstName, thumbnail} = this.props.user;
         return (
-            <section className="hero is-full-desktop">
+            <section className="hero is-medium hand-written">
                 <div className="hero-body">
+                    <div className="columns has-text-centered">
+                        <div className="column">
+                            <h1 className="title is-1">Welcome {firstName}!</h1>
+                        </div>
+                    </div>
                     <div className="columns has-text-centered">
                         <div className="column is-5">
                         </div>
@@ -15,13 +20,6 @@ export default class Introduction extends Component {
                             </div>
                         </div>
                         <div className="column is-5">
-                        </div>
-                    </div>
-                    <div className="container has-text-centered">
-                        <div className="columns">
-                            <div className="column">
-                                {this.props.children}
-                            </div>
                         </div>
                     </div>
                 </div>
