@@ -28,10 +28,12 @@ class CreatorHead extends Component {
 export default class Hero extends Component {
     render() {
         let style = {
-            backgroundImage: "url('/images/landing/creator/Hero.jpg')"
+            backgroundImage: "url('/images/landing/creator/Hero.jpg')",
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
         };
         return (
-            <section className="hero is-medium is-success" style={style}>
+            <section className="hero is-large is-success" style={style}>
                 <div className="has-text-centered">
                     <CreatorHead/>
                     <div className="hero-body">
@@ -40,7 +42,7 @@ export default class Hero extends Component {
                                 Fund your passion
                             </h1>
                             <h2 className="subtitle is-3">
-                                Connect to your most loyal fans<br/>
+                                Microtip revolution<br/>
                             </h2>
                             <FacebookLogin>
                                 <div className="button is-info is-outlined is-inverted is-hovered is-large">

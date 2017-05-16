@@ -17,18 +17,21 @@ class LogoutButton extends Component {
     }
 }
 
-const AnonymousNavigation = () => {
-    return (
-        <nav className="nav is-dark has-shadow">
-            <div className="container">
-                <Brand/>
-                <div className="nav-center">
-                    <div className="nav-item is-black">
+class AnonymousNavigation extends Component {
+    render() {
+        return (
+            <nav className="nav is-dark has-shadow">
+                <div className="container">
+                    <Brand/>
+                    <div className="nav-center">
+                        <div id="nav-menu" className="nav-right nav-menu">
+                            {this.props.menu.items.map((item) => <NavigationItem key={item.pathname} item={item}/>)}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>
-    )
+            </nav>
+        )
+    }
 };
 
 
@@ -44,9 +47,9 @@ class NavigationItem extends Component {
 
 class UserNavigation extends Component {
     constructor(props) {
-        super(props)
+        super(props);
 
-        this.state = { active: false }
+        this.state = { active: false };
         this.setActive = this.setActive.bind(this)
     }
     setActive() {
@@ -82,7 +85,7 @@ class UserNavigation extends Component {
 
 const Navigation = ({menu, logout}) => {
     if (!menu.enabled) {
-        return AnonymousNavigation();
+        return <AnonymousNavigation menu={menu}/>;
     } else {
         return <UserNavigation menu={menu} logout={logout} />;
     }

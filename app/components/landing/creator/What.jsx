@@ -12,10 +12,6 @@ export default class What extends Component {
                             <div className="column is-6">
                                 <div className="title is-3 hand-written">What is this all about</div>
                                 <div className="is-4 has-text-left">
-                                    <strong className="hand-written">Is this a joke?</strong><br/>
-                                    We are more then serious, just read ahead.
-                                    <br/>
-                                    <br/>
                                     <strong className="hand-written">What is microtip and why should I care?</strong><br/>
                                     Microtip is a small 10c tip, that anyone of your users can share with you.
                                     We want to make it as simple as possible to use.

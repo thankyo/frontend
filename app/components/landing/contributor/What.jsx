@@ -12,10 +12,6 @@ export default class What extends Component {
                             <div className="column is-6">
                                 <div className="title is-3 hand-written">What is this all about</div>
                                 <div className="is-4 has-text-left">
-                                    <strong className="hand-written">Is this a joke</strong><br/>
-                                    <strong>No, not really</strong>, we just don't take our self too serious, it helps a lot, just try and see.
-                                    <br/>
-                                    <br/>
                                     <strong className="hand-written">What are you selling</strong><br/>
                                     We are starting a microtip revolution - putting a <strong>LoveIt button</strong> on every digital piece, we can reach.
                                     Change the world one click at a time.
