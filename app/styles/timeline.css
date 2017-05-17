@@ -10,6 +10,9 @@
 .card-content {
     padding: 0px;
 }
+.footer {
+    background-color: white;
+}
 .card-avatar {
     background-color: #fff;
     border-radius: 6px;
