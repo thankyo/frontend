@@ -1,4 +1,4 @@
-import {fetch as fetchUser} from "../user.actions";
+import {fetch as fetchUser} from "reducers/user.actions";
 import {listTransactions as fetchPaymentTransactions} from "./transaction.actions";
 
 export function paymentSuccess() {

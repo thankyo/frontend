@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {list, remove, verify} from "../../reducers/thank/verification.actions";
-import Resource from "../Resource";
+import {list, remove, verify} from "reducers/thank/verification.actions";
+import Resource from "components/Resource";
 
 class Verification extends Component {
     render() {

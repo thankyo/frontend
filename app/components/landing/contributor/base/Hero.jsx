@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import Brand from "../../../Brand";
+import Brand from "components/Brand";
 import {Link} from "react-router";
-import FacebookLogin from "../../FacebookLogin";
+import FacebookLogin from "components/landing/FacebookLogin";
 
 export default class Hero extends Component {
     render() {
@@ -19,7 +19,7 @@ export default class Hero extends Component {
                                 <Brand/>
                             </div>
                             <div className="nav-item">
-                                <Link to="/creator" className="is-active">Contributor</Link>
+                                <Link to="/" className="is-active">Contributor</Link>
                             </div>
                             <div className="nav-item">
                                 <Link to="/creator">Creator</Link>

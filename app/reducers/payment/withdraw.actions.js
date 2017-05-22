@@ -1,4 +1,4 @@
-import authService from '../../service/auth';
+import authService from 'service/auth';
 
 export const WITHDRAW_REQUESTED = "WITHDRAW_REQUESTED";
 export const WITHDRAW_SUCCESS = "WITHDRAW_SUCCESS";

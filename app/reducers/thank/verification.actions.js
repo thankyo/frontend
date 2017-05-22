@@ -1,4 +1,4 @@
-import authService from "../../service/auth";
+import authService from "service/auth";
 
 export const VERIFICATION_CREATE_REQUESTED = "VERIFICATION_CREATE_REQUESTED";
 export const VERIFICATION_CREATE_SUCCESS = "VERIFICATION_CREATE_SUCCESS";

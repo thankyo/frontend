@@ -1,10 +1,10 @@
 import React, {Component}   from "react";
 import {connect}            from "react-redux";
-import {listTransactions}   from "../../reducers/payment/transaction.actions";
-import Date                 from "../Date";
+import {listTransactions}   from "reducers/payment/transaction.actions";
+import Date                 from "components/Date";
+import OperationIcon        from "components/icons/OperationIcon";
 import BankDetails          from "./BankDetails";
 import Money                from "./Money";
-import OperationIcon        from "../icons/OperationIcon";
 
 class PaymentTransaction extends Component {
     render() {

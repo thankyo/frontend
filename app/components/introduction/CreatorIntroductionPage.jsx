@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import Welcome from "./Welcome";
 
-import Navigation from "../Navigation";
-import authService from "../../service/auth";
-import Footer from "../Footer";
+import Navigation from "components/Navigation";
+import authService from "service/auth";
+import Footer from "components/Footer";
 
 class YouAreHere extends Component {
     render() {

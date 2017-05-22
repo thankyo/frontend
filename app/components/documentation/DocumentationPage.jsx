@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Navigation from "../Navigation";
+import Navigation from "components/Navigation";
 import DocumentationMenu from "./Menu";
 import Overview from "./Overview";
 

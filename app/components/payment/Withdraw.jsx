@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import { withdraw } from "../../reducers/payment/withdraw.actions";
+import { withdraw } from "reducers/payment/withdraw.actions";
 import { Field, reduxForm } from "redux-form";
 
 class WithdrawForm extends Component {

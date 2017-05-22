@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {listOwnership} from "../../reducers/thank/ownership.actions";
-import Resource from "../Resource";
+import {listOwnership} from "reducers/thank/ownership.actions";
+import Resource from "components/Resource";
 
 class ResourceOwnership extends Component {
     render() {

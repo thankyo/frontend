@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Field, reduxForm} from "redux-form";
-import {create} from "../../reducers/thank/verification.actions";
+import {create} from "reducers/thank/verification.actions";
 
 let AddOwnershipForm = ({ handleSubmit }) => {
     return (

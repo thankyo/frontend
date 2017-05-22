@@ -1,5 +1,5 @@
 import { LOGIN_REQUESTED, LOGIN_SUCCESS, LOGIN_FAILED, LOGOUT } from "./auth.actions";
-import authService from '../service/auth';
+import authService from 'service/auth';
 
 const anonymousState = {
     isAuthenticated: false

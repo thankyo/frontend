@@ -1,4 +1,4 @@
-import authService from "../../service/auth";
+import authService from "service/auth";
 import {paymentSuccess} from "./payment.actions";
 
 export const STRIPE_PROCESSING_START = "STRIPE_PROCESSING_START";

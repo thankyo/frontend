@@ -1,4 +1,4 @@
-import { HOME } from "../service/routes";
+import { HOME } from "service/routes";
 
 export const LOGIN_REQUESTED = "LOGIN_REQUESTED";
 export const LOGIN_FAILED = "LOGIN_FAILED";

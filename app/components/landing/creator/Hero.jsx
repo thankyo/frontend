@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Brand from "../../Brand";
+import Brand from "components/Brand";
 import {Link} from "react-router";
-import FacebookLogin from '../FacebookLogin';
+import FacebookLogin from 'components/landing/FacebookLogin';
 
 class CreatorHead extends Component {
     render() {

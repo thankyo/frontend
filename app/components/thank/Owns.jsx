@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import Navigation from "../Navigation";
-import Profile from "../user/Profile";
-import ComponentWrap from "../ComponentWrap";
+import Navigation from "components/Navigation";
+import Profile from "components/user/Profile";
+import ComponentWrap from "components/ComponentWrap";
 import AddVerification  from './AddVerification';
 import Verifications from './Verifications';
 import ResourceOwnership from './ResourceOwnership';

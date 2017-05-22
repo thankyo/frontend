@@ -1,4 +1,4 @@
-import authService from "../../service/auth";
+import authService from "service/auth";
 import client from "braintree-web/client";
 import paypal from "braintree-web/paypal";
 

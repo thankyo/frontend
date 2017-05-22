@@ -1,5 +1,5 @@
 import 'whatwg-fetch';
-import {logout} from '../reducers/auth.actions'
+import {logout} from 'reducers/auth.actions'
 import oboe from 'oboe';
 
 class AuthService {

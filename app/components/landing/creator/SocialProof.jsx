@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import FacebookLogin from "../FacebookLogin";
 
 
 class Proof extends Component {

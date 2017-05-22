@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
-import Navigation from '../Navigation';
-import Footer from '../Footer';
+import Navigation from 'components/Navigation';
+import Footer from 'components/Footer';
 import TermsOfUse from './TermsOfUse';
 
 

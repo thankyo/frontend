@@ -1,6 +1,6 @@
 import { LOCATION_CHANGE }  from 'react-router-redux';
 import { LOGIN_SUCCESS, LOGOUT }    from './auth.actions';
-import authService          from '../service/auth';
+import authService          from 'service/auth';
 
 function createMenu(text, pathname, icon) {
     return {

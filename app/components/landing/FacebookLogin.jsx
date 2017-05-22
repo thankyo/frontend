@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
-import {login} from "../../reducers/auth.actions";
+import {login} from "reducers/auth.actions";
 
 class FacebookLogin extends Component {
     render() {

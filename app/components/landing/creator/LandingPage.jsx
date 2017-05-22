@@ -3,9 +3,9 @@ import React, {Component} from "react";
 import Hero from "./Hero";
 import What from './What';
 import SocialProof from './SocialProof';
-import PressProof from '../PressProof';
-import NotReadyToJoin from '../NotReadyToJoin';
-import Footer from "../../Footer";
+import PressProof from 'components/landing/PressProof';
+import NotReadyToJoin from 'components/landing/NotReadyToJoin';
+import Footer from "components/Footer";
 
 export default class CreatorPage extends Component {
     render() {

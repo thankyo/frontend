@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import Money from "./Money";
-import OperationIcon from "../icons/OperationIcon";
+import OperationIcon from "components/icons/OperationIcon";
 
 import { connect } from 'react-redux';
 
-import {braintreeProcess} from "../../reducers/payment/braintree.actions";
-import {process as stripeProcess} from "../../reducers/payment/stripe.actions";
+import {braintreeProcess} from "reducers/payment/braintree.actions";
+import {process as stripeProcess} from "reducers/payment/stripe.actions";
 
 
 class PaymentOption extends Component {

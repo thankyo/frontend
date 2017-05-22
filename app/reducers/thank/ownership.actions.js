@@ -1,4 +1,4 @@
-import authService from '../../service/auth';
+import authService from 'service/auth';
 
 export const OWNERSHIP_REQUESTED   = "OWNERSHIP_REQUESTED";
 export const OWNERSHIP_SUCCESS     = "OWNERSHIP_SUCCESS";
