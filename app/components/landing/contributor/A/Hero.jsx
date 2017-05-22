@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-import Brand from "../../Brand";
-import {Link} from "react-router";
-import FacebookLogin from "../FacebookLogin";
+import Brand from "components/Brand";
+import FacebookLogin from "../../FacebookLogin";
 
 export default class Hero extends Component {
     render() {
@@ -17,12 +16,6 @@ export default class Hero extends Component {
                         <div className="container">
                             <div className="nav-left">
                                 <Brand/>
-                            </div>
-                            <div className="nav-item">
-                                <Link to="/creator" className="is-active">Contributor</Link>
-                            </div>
-                            <div className="nav-item">
-                                <Link to="/creator">Creator</Link>
                             </div>
                         </div>
                     </header>

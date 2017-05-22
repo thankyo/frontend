@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import FacebookLogin from '../FacebookLogin';
+import FacebookLogin from '../../FacebookLogin';
 
 export default class What extends Component {
     render() {
