@@ -1,8 +1,9 @@
 import React, {Component} from "react";
+import PropTypes from "prop-types";
 
 class Proof extends Component {
     render() {
-        let nativeLink = `/images/landing/contributor/${this.props.text}.jpg`;
+        let nativeLink = `/images/landing/proof/${this.props.text}.jpg`;
         return (
             <div className="column">
                 <div className="image is-1by1 sui-avatar">
@@ -13,8 +14,7 @@ class Proof extends Component {
     }
 }
 
-
-export default class ContributorSocialProof extends Component {
+export default class Proofs extends Component {
     render() {
         return (
             <section className="hero">
@@ -23,22 +23,27 @@ export default class ContributorSocialProof extends Component {
                         <div className="columns">
                             <div className="column">
                             </div>
-                            <div className="column is-2">
-                                <Proof text="Tesla"/>
+                            <div className="column is-2 is-primary">
+                                <Proof text={this.props.proofs[0]}/>
                             </div>
                             <div className="column is-2">
-                                <Proof text="Ghandi"/>
+                                <Proof text={this.props.proofs[1]}/>
                             </div>
                             <div className="column is-2">
-                                <Proof text="Picaso"/>
+                                <Proof text={this.props.proofs[2]}/>
                             </div>
                             <div className="column">
                             </div>
                         </div>
-                        <div className="title is-2 hand-written">Could be our first users</div>
+                        <div className="title is-2 hand-written">{this.props.subtitle}</div>
                     </div>
                 </div>
             </section>
         )
     }
 }
+
+Proofs.propTypes = {
+    proofs: PropTypes.arrayOf(PropTypes.string).isRequired,
+    subtitle: PropTypes.string.isRequired
+};
