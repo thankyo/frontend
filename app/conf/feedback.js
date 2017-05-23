@@ -1,8 +1,7 @@
-import {USER_SUCCESS} from "./reducers/user.actions";
-import {LOGOUT} from "./reducers/auth.actions";
+import {USER_SUCCESS} from "../reducers/user.actions";
+import {LOGOUT} from "../reducers/auth.actions";
 
 function updateOptions(options) {
-    console.log("Updating options");
     window.doorbellOptions = options;
     if (window.doorbell !== undefined) {
         Object.keys(options).map((key) => {

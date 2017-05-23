@@ -1,4 +1,4 @@
-import loadScript from 'loadScript';
+import { loadGA } from './loadScript';
 
 function recordLoadTime() {
     // Feature detects Navigation Timing API support.
@@ -27,6 +27,6 @@ export default function configure(history) {
     if (location.hostname === "localhost") {
         console.log("Analytics disabled")
     } else {
-        loadScript('https://www.google-analytics.com/analytics.js', 'ga', 'GoogleAnalyticsObject', doConfigure(history));
+        loadGA(doConfigure(history));
    }
 };

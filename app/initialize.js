@@ -1,4 +1,3 @@
-import reducers from "./reducers";
 import {applyMiddleware, createStore} from "redux";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
@@ -6,15 +5,14 @@ import { browserHistory } from "react-router";
 import {syncHistoryWithStore} from "react-router-redux";
 import React from "react";
 import ReactDOM from "react-dom";
-import MainApp from "./route";
 import {Provider} from "react-redux";
-import analytics from "./analytics";
 
-import feedbackConf from './feedback';
+import reducers from "reducers";
+import MainApp from "route";
+
+import conf from "conf";
 
 const store = createStore(reducers(), composeWithDevTools(applyMiddleware(thunk)));
-
-store.subscribe(feedbackConf(store));
 
 const history = syncHistoryWithStore(browserHistory, store);
 const load = () => {
@@ -37,4 +35,4 @@ if (document.readyState !== 'complete') {
 }
 
 // Initialize analytics
-analytics(history);
+conf(history, store);

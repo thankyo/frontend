@@ -22,7 +22,7 @@
           href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css"
           integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
           crossorigin="anonymous"
-          onerror="loadLocal('font-awesome.css')"
+          onerror="loadCSS('/css/font-awesome.css')"
     />
     <link async
           rel="stylesheet"
@@ -30,21 +30,20 @@
           href="https://cdn.jsdelivr.net/bulma/0.4.1/css/bulma.css"
           integrity="sha256-PELQzdZwUQw2WSX3q4QLMSzDqQyWrmrXODp2bZy6JOU="
           crossorigin="anonymous"
-          onerror="loadLocal('bulma.css')"
+          onerror="loadCSS('/css/bulma.css')"
     />
     <link async rel="stylesheet" href="/app.css"/>
     <script>
-        function loadLocal(lib) {
-            console.log("loading " + lib);
+        function loadCSS(href) {
+            console.log("loading " + href);
             var a = document.createElement('link'), m = document.getElementsByTagName('script')[0];
             a.async = 1;
             a.rel="stylesheet";
             a.type="text/css";
-            a.href = "/css/" + lib;
+            a.href = href;
             m.parentNode.insertBefore(a, m);
         }
     </script>
-
 
     <!-- Stripe -->
     <script defer async src="https://checkout.stripe.com/checkout.js"></script>
@@ -53,25 +52,6 @@
     <script src="/app.js"></script>
     <script>
         require('initialize');
-    </script>
-
-    <link async rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-    <script defer async src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-    <script>
-        window.addEventListener("load", function(){
-            window.cookieconsent.initialise({
-                "palette": {
-                    "popup": {
-                        "background": "#eaf7f7",
-                        "text": "#5c7291"
-                    },
-                    "button": {
-                        "background": "#56cbdb",
-                        "text": "#ffffff"
-                    }
-                },
-                "theme": "edgeless"
-            })});
     </script>
 </head>
 <body>
