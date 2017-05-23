@@ -20,7 +20,7 @@ export default class ContributorSocialProof extends Component {
             <section className="hero">
                 <div className="hero-body">
                     <div className="container has-text-centered">
-                        <div className="columns is-hidden-mobile">
+                        <div className="columns">
                             <div className="column">
                             </div>
                             <div className="column is-2">
