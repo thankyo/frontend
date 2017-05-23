@@ -14,7 +14,7 @@
     <link rel="canonical" href="https://loveit.tips" />
     <script async src="https://cdn.ampproject.org/v0.js"></script>
 
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png"></link>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png"/>
 
     <link async
           rel="stylesheet"
@@ -22,6 +22,7 @@
           href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css"
           integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
           crossorigin="anonymous"
+          onerror="loadLocal('font-awesome.css')"
     />
     <link async
           rel="stylesheet"
@@ -29,8 +30,20 @@
           href="https://cdn.jsdelivr.net/bulma/0.4.1/css/bulma.css"
           integrity="sha256-PELQzdZwUQw2WSX3q4QLMSzDqQyWrmrXODp2bZy6JOU="
           crossorigin="anonymous"
+          onerror="loadLocal('bulma.css')"
     />
     <link async rel="stylesheet" href="/app.css"/>
+    <script>
+        function loadLocal(lib) {
+            console.log("loading " + lib);
+            var a = document.createElement('link'), m = document.getElementsByTagName('script')[0];
+            a.async = 1;
+            a.rel="stylesheet";
+            a.type="text/css";
+            a.href = "/css/" + lib;
+            m.parentNode.insertBefore(a, m);
+        }
+    </script>
 
 
     <!-- Stripe -->
