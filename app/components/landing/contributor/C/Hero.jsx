@@ -5,7 +5,7 @@ import FacebookLogin from "components/landing/FacebookLogin";
 export default class Hero extends Component {
     render() {
         let style = {
-            backgroundImage: "url('/images/landing/contributor/Hero.jpg')",
+            backgroundImage: "url('/images/landing/contributor/C/Hero.jpg')",
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
         };

@@ -28,7 +28,7 @@ class CreatorHead extends Component {
 export default class Hero extends Component {
     render() {
         let style = {
-            backgroundImage: "url('/images/landing/creator/Hero.jpg')",
+            backgroundImage: "url('/images/landing/creator/default/Hero.jpg')",
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
         };
