@@ -34,8 +34,6 @@ export default class MainApp extends Component {
         return (
             <div>
                 <Helmet>
-                    <html lang="en" amp />
-                    <meta charSet="utf-8"/>
                 </Helmet>
                 <Router history={this.props.history} onUpdate={() => window.scrollTo(0, 0)}>
                     <Route path="/" component={LandingPageDefault}/>

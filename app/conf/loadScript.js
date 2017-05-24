@@ -14,3 +14,13 @@ export function loadGA(callback) {
 
     load(window,document,'script','https://www.google-analytics.com/analytics.js','ga',callback)
 }
+
+export function loadQuantcast(callback) {
+    var elem = document.createElement('script');
+    elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+    elem.async = true;
+    elem.type = "text/javascript";
+    elem.onload = callback;
+    var scpt = document.getElementsByTagName('script')[0];
+    scpt.parentNode.insertBefore(elem, scpt);
+}

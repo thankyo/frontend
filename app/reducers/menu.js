@@ -16,28 +16,22 @@ const anonymousMenu = {
     items: [
         createMenu("Contributor", "/", "fa fa-image"),
         createMenu("Creator", "/creator", "fa fa-image"),
-    ],
-    my: []
+    ]
 };
 
 const userMenu = {
     enabled: true,
     items: [
         // createMenu("Love", "/my/love", "fa fa-heart"),
-        // // createMenu("Payment", "/my/payment", "fa fa-usd"),
+        // createMenu("Payment", "/my/payment", "fa fa-usd"),
         // createMenu("Own", "/my/own", "fa fa-usd"),
         // createMenu("Documentation", "/documentation", "fa fa-book"),
-    ],
-my: [
-        createMenu("Love", "/my/love", "fa fa-heart"),
-        createMenu("Payment", "/my/payment", "fa fa-usd"),
     ]
 };
 
 function updateActive(state, pathname) {
     let items = state.items.slice().map((item) => Object.assign({}, item, { active: item.pathname === pathname }))
-    let my = state.my.slice().map((item) => Object.assign({}, item, { active: item.pathname === pathname }))
-    return Object.assign({}, state, { items, my });
+    return Object.assign({}, state, { items });
 }
 
 
