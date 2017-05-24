@@ -13,9 +13,9 @@ export default class Contributor extends Component {
             <div>
                 <Hero
                     image="contributor/A/Hero.jpg"
-                    title="Voice of the people"
-                    subtitle="Microtip revolution"
-                    button="Change the world"
+                    title="Drop of coffee in creators cup"
+                    subtitle="Small tip, that counts"
+                    button="Join"
                 />
                 <Proofs
                     proofs={["Tesla", "Ghandi", "Picaso"]}

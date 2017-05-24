@@ -17,8 +17,8 @@ export default class Contributor extends Component {
                     button="Change the world"
                 />
                 <Proofs
-                    proofs={["Tesla", "Ghandi", "Picaso"]}
-                    subtitle="Could be our first users"
+                    proofs={["Lincoln", "Che", "Napoleon"]}
+                    subtitle="Would approve (we are almost certain)"
                 />
                 <What/>
                 <Proofs
