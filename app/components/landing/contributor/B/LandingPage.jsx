@@ -12,13 +12,13 @@ export default class Contributor extends Component {
             <div>
                 <Hero
                     image="contributor/B/Hero.jpg"
-                    title="Voice of the people"
-                    subtitle="Microtip revolution"
+                    title="Create and prosper"
+                    subtitle="Support creatives with a single click"
                     button="Change the world"
                 />
                 <Proofs
-                    proofs={["Tesla", "Ghandi", "Picaso"]}
-                    subtitle="Could be our first users"
+                    proofs={[ "Deadpool", "Yoda", "Goku"]}
+                    subtitle="Would be our first users"
                 />
                 <What/>
                 <Proofs
