@@ -5,7 +5,7 @@ import FacebookLogin from "components/landing/FacebookLogin";
 export default class Hero extends Component {
     render() {
         let style = {
-            backgroundImage: "url('/images/landing/contributor/A/Hero.jpg')",
+            backgroundImage: `url('/images/landing/${this.props.image}')`,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
         };
@@ -23,12 +23,12 @@ export default class Hero extends Component {
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <h1 className="title is-1">
-                            Voice of the people
+                            {this.props.title}
                         </h1>
-                        <h2 className="subtitle is-3">Microtip revolution</h2>
+                        <h2 className="subtitle is-3">{this.props.subtitle}</h2>
                         <FacebookLogin>
                             <div className="button is-info is-inverted is-outlined is-hovered is-large">
-                                <span>Change the world</span>
+                                <span>{this.props.button}</span>
                             </div>
                         </FacebookLogin>
                     </div>

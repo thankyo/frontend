@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import Hero from "./Hero";
+import Hero from "components/landing/Hero";
 import What from './What';
 import Proofs from 'components/landing/Proofs';
 import NotReadyToJoin from 'components/landing/NotReadyToJoin';
@@ -10,7 +10,12 @@ export default class CreatorPage extends Component {
     render() {
         return (
             <div>
-                <Hero/>
+                <Hero
+                    image="creator/A/Hero.jpg"
+                    title="Create and prosper"
+                    subtitle="Microtip revolution"
+                    button="Just try it"
+                />
                 <Proofs
                     proofs={["YouTube", "Dribbble", "Medium"]}
                     subtitle="Our future clients (don't tell them yet)"

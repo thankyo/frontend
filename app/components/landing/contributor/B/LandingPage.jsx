@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
-import Hero from './Hero';
 import What from './What';
+import Hero from 'components/landing/Hero';
 import Proofs from 'components/landing/Proofs';
 import NotReadyToJoin from 'components/landing/NotReadyToJoin';
 import Footer from "components/Footer";
@@ -10,7 +10,12 @@ export default class Contributor extends Component {
     render() {
         return (
             <div>
-                <Hero/>
+                <Hero
+                    image="contributor/B/Hero.jpg"
+                    title="Voice of the people"
+                    subtitle="Microtip revolution"
+                    button="Change the world"
+                />
                 <Proofs
                     proofs={["Tesla", "Ghandi", "Picaso"]}
                     subtitle="Could be our first users"

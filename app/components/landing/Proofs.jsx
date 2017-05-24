@@ -14,6 +14,10 @@ class Proof extends Component {
     }
 }
 
+Proof.propTypes = {
+    text: PropTypes.string.isRequired,
+};
+
 export default class Proofs extends Component {
     render() {
         return (
@@ -45,5 +49,5 @@ export default class Proofs extends Component {
 
 Proofs.propTypes = {
     proofs: PropTypes.arrayOf(PropTypes.string).isRequired,
-    subtitle: PropTypes.string.isRequired
+    subtitle: PropTypes.string.isRequired,
 };
