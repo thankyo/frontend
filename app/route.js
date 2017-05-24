@@ -36,12 +36,6 @@ export default class MainApp extends Component {
                 <Helmet>
                     <html lang="en" amp />
                     <meta charSet="utf-8"/>
-                    <title>Love.it</title>
-                    <meta name="viewport" content="width=device-width"/>
-                    <meta name="google-site-verification" content="VXBRnbM3Jh54uR-jHjoHSrmu0UM78IKma7FDtydCPnk"/>
-                    <meta name="description" content="Love.it microtips platform"/>
-                    <meta name="keywords" content="donation,microtip,microdonation"/>
-                    <link rel="shortcut icon" type="image/x-icon" href="favicon.png"></link>
                 </Helmet>
                 <Router history={this.props.history} onUpdate={() => window.scrollTo(0, 0)}>
                     <Route path="/" component={LandingPageDefault}/>
