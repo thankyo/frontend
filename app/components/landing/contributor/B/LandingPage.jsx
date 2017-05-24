@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import What from './What';
+import What from 'components/landing/contributor/What';
 import Hero from 'components/landing/Hero';
 import Proofs from 'components/landing/Proofs';
 import NotReadyToJoin from 'components/landing/NotReadyToJoin';

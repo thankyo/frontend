@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 import Hero from 'components/landing/Hero';
 import Proofs from 'components/landing/Proofs';
-import What from './What';
+import What from 'components/landing/contributor/What';
 import NotReadyToJoin from 'components/landing/NotReadyToJoin';
 import Footer from "components/Footer";
 
