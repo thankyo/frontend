@@ -1,31 +1,31 @@
 import React, {Component} from "react";
 
-import Hero from 'components/landing/Hero';
-import Proofs from 'components/landing/Proofs';
+import Hero from "components/landing/Hero";
 import What from './What';
+import Proofs from 'components/landing/Proofs';
 import NotReadyToJoin from 'components/landing/NotReadyToJoin';
 import Footer from "components/Footer";
 
-export default class Contributor extends Component {
+export default class CreatorPage extends Component {
     render() {
         return (
             <div>
                 <Hero
-                    image="contributor/C/Hero.jpg"
-                    title="Voice of the people"
+                    image="creator/B/Hero.jpg"
+                    title="Create and prosper"
                     subtitle="Microtip revolution"
-                    button="Change the world"
+                    button="Just try it"
                 />
                 <Proofs
-                    proofs={["Tesla", "Ghandi", "Picaso"]}
-                    subtitle="Could be our first users"
+                    proofs={["YouTube", "Dribbble", "Medium"]}
+                    subtitle="Our future clients (don't tell them yet)"
                 />
                 <What/>
                 <Proofs
                     proofs={["NYT", "Mashable", "Tech Crunch"]}
                     subtitle="Have no idea we exist (YET)"
                 />
-                <NotReadyToJoin role="contributor"/>
+                <NotReadyToJoin role="creator"/>
                 <Footer/>
             </div>
         );

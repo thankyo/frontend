@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 import CreatorDefaultLandingPage from "components/landing/creator/default/LandingPage";
 import CreatorLandingPageA from "components/landing/creator/A/LandingPage";
+import CreatorLandingPageB from "components/landing/creator/B/LandingPage";
 
 import TermsOfUse from "components/legal/TermsOfUsePage";
 import PrivacyPolicy from "components/legal/PrivacyPolicyPage";
@@ -10,7 +11,6 @@ import {browserHistory, Route, Router} from "react-router";
 import LandingPageDefault from "components/landing/contributor/default/LandingPage";
 import LandingPageA from "components/landing/contributor/A/LandingPage";
 import LandingPageB from "components/landing/contributor/B/LandingPage";
-import LandingPageC from "components/landing/contributor/C/LandingPage";
 
 import RoadMap      from "components/landing/roadmap/RoadMapPage";
 
@@ -47,9 +47,9 @@ export default class MainApp extends Component {
                     <Route path="/" component={LandingPageDefault}/>
                     <Route path="/A" component={LandingPageA}/>
                     <Route path="/B" component={LandingPageB}/>
-                    <Route path="/C" component={LandingPageC}/>
                     <Route path="/creator" component={CreatorDefaultLandingPage}/>
                     <Route path="/creator/A" component={CreatorLandingPageA}/>
+                    <Route path="/creator/B" component={CreatorLandingPageB}/>
                     <Route path="/roadmap" component={RoadMap}/>
                     <Route path="/documentation" component={ Documentation }/>
                     <Route path="/:id/love" component={ Love }/>
