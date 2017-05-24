@@ -10,6 +10,9 @@ export default function(role) {
             },
             body: JSON.stringify(email),
         });
-        return fetch(req);
+        let process = fetch(req);
+        if (ga !== undefined)
+            process.then(() => ga('send', 'event', 'conversion', 'signup'));
+        return process;
     }
 };
