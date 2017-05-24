@@ -23,10 +23,9 @@ function doConfigure(history) {
 }
 
 export default function configure(history) {
-    console.log("Starting analytics");
-    if (location.hostname === "localhost") {
-        console.log("Analytics disabled")
-    } else {
+    if(ga === undefined) {
         loadGA(doConfigure(history));
-   }
+    } else {
+        doConfigure(history)();
+    }
 };
