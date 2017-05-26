@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 import Hero from 'components/landing/Hero';
 import Proofs from 'components/landing/Proofs';
+import HowItWorks from "components/landing/contributor/HowItWorks";
 import What from 'components/landing/contributor/What';
 import NotReadyToJoin from 'components/landing/NotReadyToJoin';
 import Footer from "components/Footer";
