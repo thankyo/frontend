@@ -6,6 +6,6 @@ import quantcast from './quantcastConf';
 export default function configure(history, store) {
     store.subscribe(feedback(store));
     analytics(history);
-    quantcast();
+    // quantcast();
     consent();
 }
