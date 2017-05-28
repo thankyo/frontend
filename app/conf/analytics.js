@@ -24,7 +24,7 @@ function doConfigure(history) {
 }
 
 export default function configure(history) {
-    if(ga === undefined) {
+    if(window.ga === undefined) {
         loadGA(doConfigure(history));
     } else {
         doConfigure(history)();
