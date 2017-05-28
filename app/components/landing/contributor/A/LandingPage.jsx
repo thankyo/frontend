@@ -4,6 +4,7 @@ import Hero from 'components/landing/Hero';
 import Proofs from 'components/landing/Proofs';
 
 import What from 'components/landing/contributor/What';
+import HowItWorks from "../HowItWorks";
 import NotReadyToJoin from 'components/landing/NotReadyToJoin';
 import Footer from "components/Footer";
 
@@ -17,6 +18,7 @@ export default class Contributor extends Component {
                     subtitle="Small tip, that counts"
                     button="Join"
                 />
+                <HowItWorks/>
                 <Proofs
                     proofs={["Tesla", "Ghandi", "Picaso"]}
                     subtitle="Could be our first users"

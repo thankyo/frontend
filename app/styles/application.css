@@ -16,3 +16,6 @@ body {
     font-family: "Amatic SC", cursive;
     font-size: 22px;
 }
+.is-line-through {
+    text-decoration: line-through;
+}

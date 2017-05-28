@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 import What from 'components/landing/contributor/What';
 import Hero from 'components/landing/Hero';
+import HowItWorks from "../HowItWorks";
 import Proofs from 'components/landing/Proofs';
 import NotReadyToJoin from 'components/landing/NotReadyToJoin';
 import Footer from "components/Footer";
@@ -16,6 +17,7 @@ export default class Contributor extends Component {
                     subtitle="Support creatives with a single click"
                     button="Change the world"
                 />
+                <HowItWorks/>
                 <Proofs
                     proofs={[ "Deadpool", "Yoda", "Goku"]}
                     subtitle="Would be our first users"

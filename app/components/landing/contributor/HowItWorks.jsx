@@ -1,108 +1,49 @@
 import React, {Component} from "react";
 
-const WEB = "Web";
-const SOCIAL = "Social";
-const MOBILE = "Mobile";
-
-
-class HowItWorksTabs extends Component {
-    render() {
-        return (
-            <div className="tabs is-fullwidth is-large">
-                <ul>
-                    <li onClick={() => this.props.setActive(WEB)}
-                        className={this.props.active === WEB ? "is-active" : ""}>
-                        <a>
-                            <span>{WEB}</span>
-                        </a>
-                    </li>
-                    <li onClick={() => this.props.setActive(SOCIAL)}
-                        className={this.props.active === SOCIAL ? "is-active" : ""}>
-                        <a>
-                            <span>{SOCIAL}</span>
-                        </a>
-                    </li>
-                    <li onClick={() => this.props.setActive(MOBILE)}
-                        className={this.props.active === MOBILE ? "is-active" : ""}>
-                        <a>
-                            <span>{MOBILE}</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        )
-    }
-}
-
-class Web extends Component {
-    render() {
-        return (
-            <section className="hero">
-                <div className="hero-body">
-                    <h1 className="title is-1">I'm Web</h1>
-                </div>
-            </section>
-        )
-    }
-}
-
-class Social extends Component {
-    render() {
-        return (
-            <section className="hero">
-                <div className="hero-body">
-                    <h1 className="title is-1">I'm Social</h1>
-                </div>
-            </section>
-        )
-    }
-}
-
-class Mobile extends Component {
-    render() {
-        return (
-            <section className="hero">
-                <div className="hero-body">
-                    <h1 className="title is-1"> I'm kinda mobile</h1>
-                </div>
-
-            </section>
-        )
-    }
-}
-
 export default class HowItWorks extends Component {
     constructor() {
         super();
-        this.state = {"active": "Web"};
+
+        this.state = {clicked: false};
+        this.handleLoveItPress = this.handleLoveItPress.bind(this);
+    }
+
+    handleLoveItPress() {
+        let clicked = !this.state.clicked;
+        this.setState({clicked})
     }
 
     render() {
-        let content = <Mobile/>;
-        switch (this.state.active) {
-            case WEB:
-                content = <Web/>;
-                break;
-            case SOCIAL:
-                content = <Social/>;
-                break;
-            case MOBILE:
-                content = <Mobile/>;
-                break;
-        }
+        let {clicked} = this.state;
         return (
-            <section className="hero">
-                <div className="hero-body">
-                    <div className="container has-text-centered">
-                        <h1 className="title is-3">
-                            How this works.
-                        </h1>
-                        <HowItWorksTabs active={this.state.active} setActive={(active) => this.setState({active})}/>
-                        <hr/>
-                        { content }
+            <div className="section container">
+                <div className="content has-text-centered">
+                    <h1 className="title is-1 hand-written">
+                        How this works
+                    </h1>
+
+                    <div className="columns">
+                        <div className="column is-3 is-hidden-mobile">
+                        </div>
+                        <div className="column is-6 has-text-centered">
+                            <div>
+                                <h2 className="title is-2">Here is LoveIt button</h2>
+                                <div className="title is-large">
+                                    <a onClick={this.handleLoveItPress}><span
+                                        className={clicked ? "tag is-large is-success" : 'tag is-large is-info'}>Love it</span></a>
+                                </div>
+                                <h4 className="title is-4">Whenever you <a onClick={this.handleLoveItPress}>click it</a>
+                                </h4>
+                                <h4 className={clicked ? "title is-4" : "title is-4 is-line-through"}>You send a dime to
+                                    the creator</h4>
+                                <h1 className="title is-1 hand-written">{clicked ? "Awesome right" : "Just click it"}</h1>
+                            </div>
+                        </div>
+                        <div className="column is-2 is-hidden-mobile">
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
         )
     }
 }
