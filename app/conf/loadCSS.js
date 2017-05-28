@@ -44,7 +44,6 @@ class CSSConfiguration {
     }
 }
 
-
 export function loadCSS(remote, local) {
     new CSSConfiguration(
         remote,
