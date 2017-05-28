@@ -1,16 +1,13 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import responsive from 'service/responsive';
 
 class Proof extends Component {
     render() {
         let nativeLink = `/images/landing/proof/${this.props.text}.jpg`;
         return (
-            <div className="column">
                 <div className="sui-avatar">
-                    <img src={nativeLink} alt={this.props.text}/>
+                    <img src={nativeLink} alt={this.props.text} width={180} height={180}/>
                 </div>
-            </div>
         )
     }
 }

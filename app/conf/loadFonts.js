@@ -1,3 +1,5 @@
+// Does not work with fallback to local
+
 function loadAmaticRemote(document) {
     document.createElement("script")
     let font = document.createElement('style');
