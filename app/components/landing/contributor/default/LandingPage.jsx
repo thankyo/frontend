@@ -2,10 +2,10 @@ import React, {Component} from "react";
 
 import Hero from 'components/landing/Hero';
 import Proofs from 'components/landing/Proofs';
-import HowItWorks from "components/landing/contributor/HowItWorks";
 import What from 'components/landing/contributor/What';
 import NotReadyToJoin from 'components/landing/NotReadyToJoin';
 import Footer from "components/Footer";
+import HowItWorks from "../HowItWorks";
 
 export default class Contributor extends Component {
     render() {
@@ -17,9 +17,10 @@ export default class Contributor extends Component {
                     subtitle="Microtip revolution"
                     button="Change the world"
                 />
+                <HowItWorks/>
                 <Proofs
                     proofs={["Napoleon", "Lincoln", "Che"]}
-                    subtitle="Would approve (we are almost certain)"
+                    subtitle="Would approve"
                 />
                 <What/>
                 <Proofs
