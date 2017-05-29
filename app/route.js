@@ -39,7 +39,7 @@ export default class MainApp extends Component {
                     <Route path="/" component={LandingPageDefault}/>
                     <Route path="/A" component={LandingPageA}/>
                     <Route path="/B" component={LandingPageB}/>
-                    <Route path="/default" component={LandingPageB}/>
+                    <Route path="/default" component={LandingPageDefault}/>
                     <Route path="/creator" component={CreatorDefaultLandingPage}/>
                     <Route path="/creator/A" component={CreatorLandingPageA}/>
                     <Route path="/creator/B" component={CreatorLandingPageB}/>
