@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 
-import What from 'components/landing/contributor/What';
 import Hero from 'components/landing/Hero';
 import HowItWorks from "../HowItWorks";
 import Idea from "../Idea";
+import Simple from "../Simple";
+import Join from "../../Join";
 import Proofs from 'components/landing/Proofs';
 import NotReadyToJoin from 'components/landing/NotReadyToJoin';
 import Footer from "components/Footer";
@@ -24,10 +25,16 @@ export default class Contributor extends Component {
                     subtitle="Would be our first users"
                 />
                 <HowItWorks/>
-                <What/>
                 <Proofs
-                    proofs={["NYT", "Mashable", "Tech Crunch"]}
-                    subtitle="Have no idea we exist (YET)"
+                    proofs={["YouTube", "Dribbble", "Medium"]}
+                    subtitle="Soon every place on the web (NOT YET)"
+                />
+                <Simple/>
+                <Join
+                    image="contributor/default/Hero.jpg"
+                    title="Love and prosper"
+                    subtitle="Support creatives with a single click"
+                    button="Change the world"
                 />
                 <NotReadyToJoin role="contributor"/>
                 <Footer/>

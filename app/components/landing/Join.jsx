@@ -5,7 +5,7 @@ import FacebookLogin from "components/landing/FacebookLogin";
 export default class Join extends Component {
     render() {
         return (
-            <section className="hero is-large">
+            <section className="hero is-medium">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <h1 className="title is-1">

@@ -5,7 +5,6 @@ export default class Footer extends Component {
     render() {
         return (
             <footer className="footer">
-                <hr/>
                 <div className="container">
                     <div className="content has-text-centered">
                         <div className="columns">
