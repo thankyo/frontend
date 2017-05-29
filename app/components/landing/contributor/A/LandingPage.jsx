@@ -5,6 +5,7 @@ import Proofs from 'components/landing/Proofs';
 
 import What from 'components/landing/contributor/What';
 import HowItWorks from "../HowItWorks";
+import Idea from "../Idea";
 import NotReadyToJoin from 'components/landing/NotReadyToJoin';
 import Footer from "components/Footer";
 
@@ -18,11 +19,12 @@ export default class Contributor extends Component {
                     subtitle="Small tip, that counts"
                     button="Join"
                 />
-                <HowItWorks/>
+                <Idea/>
                 <Proofs
                     proofs={["Tesla", "Ghandi", "Picaso"]}
                     subtitle="Could be our first users"
                 />
+                <HowItWorks/>
                 <What/>
                 <Proofs
                     proofs={["NYT", "Mashable", "Tech Crunch"]}
