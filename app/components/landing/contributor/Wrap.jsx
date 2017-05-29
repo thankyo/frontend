@@ -3,7 +3,7 @@ import React, {Component} from "react";
 export default class Wrap extends Component {
     render() {
         return (
-            <section className="hero">
+            <section className={this.props.className + " hero"}>
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <div className="columns">
