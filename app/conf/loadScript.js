@@ -12,7 +12,13 @@ export function loadGA(callback) {
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.onload = cb;m.parentNode.insertBefore(a,m);
     };
 
-    load(window,document,'script','https://www.google-analytics.com/analytics.js','ga',callback)
+    let loadOptimize = function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+        h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+        (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+    };
+
+    load(window,document,'script','https://www.google-analytics.com/analytics.js','ga',callback);
+    loadOptimize(window,document.documentElement,'async-hide','dataLayer',4000, {'GTM-NMWM54N':true});
 }
 
 export function loadQuantcast(callback) {

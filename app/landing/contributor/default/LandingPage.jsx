@@ -16,23 +16,23 @@ export default class Contributor extends Component {
             <div>
                 <Hero
                     image="contributor/default/Hero.jpg"
-                    title="Voice of the people"
-                    subtitle="Microtip revolution"
-                    button="Change the world"
+                    title="Drop of coffee in creators cup"
+                    subtitle="Small tip, that counts"
+                    button="Join"
                 />
                 <Idea/>
                 <Proofs
-                    proofs={["Napoleon", "Lincoln", "Che"]}
-                    subtitle="Would approve"
+                    proofs={["Tesla", "Gandhi", "Picasso"]}
+                    subtitle="Could be our first users"
                 />
                 <HowItWorks/>
                 <Payment/>
                 <Simple/>
                 <Join
                     image="contributor/default/Hero.jpg"
-                    title="Join"
-                    subtitle="Microtip revolution"
-                    button="Change the world"
+                    title="Fuel creators"
+                    subtitle="A dime, that counts"
+                    button="Join"
                 />
                 <NotReadyToJoin role="contributor"/>
                 <Footer/>

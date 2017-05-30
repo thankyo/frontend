@@ -19,3 +19,4 @@ body {
 .is-line-through {
     text-decoration: line-through;
 }
+.async-hide { opacity: 0 !important}
