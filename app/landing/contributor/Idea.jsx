@@ -11,7 +11,7 @@ export default class Idea extends Component {
                     <h3>For creativity to grow it needs fuel</h3>
                     <h3 className="hand-written">Everybody does</h3>
                     <br/>
-                    <h3>How much fuel does it needs?</h3>
+                    <h3>How much fuel does it need?</h3>
                     <h3 className="hand-written">Not much</h3>
                     <h3></h3>
                     <br/>

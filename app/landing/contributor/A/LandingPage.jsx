@@ -23,7 +23,7 @@ export default class Contributor extends Component {
                 />
                 <Idea/>
                 <Proofs
-                    proofs={["Tesla", "Ghandi", "Picaso"]}
+                    proofs={["Tesla", "Gandhi", "Picasso"]}
                     subtitle="Could be our first users"
                 />
                 <HowItWorks/>

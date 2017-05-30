@@ -37,7 +37,7 @@ export default class NotReadyToJoin extends Component {
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <h1 className="title is-1">
-                            Not ready to join, but curios
+                            Not ready to join, but curious
                         </h1>
                         <h2 className="subtitle is-3">
                             Let's keep in touch.

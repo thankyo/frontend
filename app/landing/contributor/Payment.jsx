@@ -18,7 +18,7 @@ class CreatorFees extends Component {
                 <section className="subtitle">
                     The service is <b>free for creators.</b><br/>
                     We simply collect <b>10% fee from successful transactions</b> for processing.<br/>
-                    <b>Payout is once a month.</b><br/>
+                    <b>The payout is once a month.</b><br/>
                 </section>
                 {this.props.showExample && <CreatorExamples/>}
             </div>
@@ -48,8 +48,8 @@ class SupporterFees extends Component {
             <div className="has-text-left">
                 <h2 className="title is-2 hand-written">Supporter payments and fees</h2>
                 <section className="subtitle">
-                    We track your tips through out the month.<br/>
-                    At the end of month we charge you with a total tips + 30 cents.<br/>
+                    We track your tips throughout the month.<br/>
+                    At the end of a month, we charge you with total tips + 30 cents.<br/>
                     <br/>
                     <b>You are in full control of how much you spend.</b><br/>
                     Set a limit per month and we won't charge you more, than that.<br/>
