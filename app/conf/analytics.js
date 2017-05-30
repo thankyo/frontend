@@ -17,7 +17,6 @@ function recordLoadTime() {
 function doConfigure(history) {
     return () => {
         ga('create', 'UA-96949345-1', 'auto');
-        ga('require', 'GTM-NMWM54N');
         ga('send', 'pageview', location.pathname);
         history.listen(function (location) {
             ga('send', 'pageview', location.pathname)
