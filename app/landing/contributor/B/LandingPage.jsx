@@ -6,6 +6,7 @@ import Idea from "../Idea";
 import Simple from "../Simple";
 import Join from "../../Join";
 import Proofs from 'landing/Proofs';
+import Payment from "../Payment";
 import NotReadyToJoin from 'landing/NotReadyToJoin';
 import Footer from "components/Footer";
 
@@ -15,7 +16,7 @@ export default class Contributor extends Component {
             <div>
                 <Hero
                     image="contributor/B/Hero.jpg"
-                    title="Create and prosper"
+                    title="Love and prosper"
                     subtitle="Support creatives with a single click"
                     button="Change the world"
                 />
@@ -25,10 +26,7 @@ export default class Contributor extends Component {
                     subtitle="Would be our first users"
                 />
                 <HowItWorks/>
-                <Proofs
-                    proofs={["YouTube", "Dribbble", "Medium"]}
-                    subtitle="Soon every place on the web (NOT YET)"
-                />
+                <Payment/>
                 <Simple/>
                 <Join
                     image="contributor/default/Hero.jpg"

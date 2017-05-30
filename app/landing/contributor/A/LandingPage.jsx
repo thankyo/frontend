@@ -4,8 +4,10 @@ import Hero from 'landing/Hero';
 import Proofs from 'landing/Proofs';
 import HowItWorks from "../HowItWorks";
 import Idea from "../Idea";
+import Payment from "../Payment";
 import Simple from "../Simple";
 import Join from "../../Join";
+
 import NotReadyToJoin from 'landing/NotReadyToJoin';
 import Footer from "components/Footer";
 
@@ -25,10 +27,7 @@ export default class Contributor extends Component {
                     subtitle="Could be our first users"
                 />
                 <HowItWorks/>
-                <Proofs
-                    proofs={["YouTube", "Dribbble", "Medium"]}
-                    subtitle="Soon every place on the web (NOT YET)"
-                />
+                <Payment/>
                 <Simple/>
                 <Join
                     image="contributor/default/Hero.jpg"

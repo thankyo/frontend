@@ -7,6 +7,7 @@ import NotReadyToJoin from 'landing/NotReadyToJoin';
 import Footer from "components/Footer";
 import HowItWorks from "../HowItWorks";
 import Idea from '../Idea';
+import Payment from "../Payment";
 import Simple from "../Simple";
 
 export default class Contributor extends Component {
@@ -25,10 +26,7 @@ export default class Contributor extends Component {
                     subtitle="Would approve"
                 />
                 <HowItWorks/>
-                <Proofs
-                    proofs={["YouTube", "Dribbble", "Medium"]}
-                    subtitle="Soon every place on the web (NOT YET)"
-                />
+                <Payment/>
                 <Simple/>
                 <Join
                     image="contributor/default/Hero.jpg"
