@@ -1,18 +1,18 @@
 import React, {Component} from "react";
 
-import CreatorDefaultLandingPage from "components/landing/creator/default/LandingPage";
-import CreatorLandingPageA from "components/landing/creator/A/LandingPage";
-import CreatorLandingPageB from "components/landing/creator/B/LandingPage";
+import CreatorDefaultLandingPage from "landing/creator/default/LandingPage";
+import CreatorLandingPageA from "landing/creator/A/LandingPage";
+import CreatorLandingPageB from "landing/creator/B/LandingPage";
 
 import TermsOfUse from "components/legal/TermsOfUsePage";
 import PrivacyPolicy from "components/legal/PrivacyPolicyPage";
 import {browserHistory, Route, Router} from "react-router";
 
-import LandingPageDefault from "components/landing/contributor/default/LandingPage";
-import LandingPageA from "components/landing/contributor/A/LandingPage";
-import LandingPageB from "components/landing/contributor/B/LandingPage";
+import LandingPageDefault from "landing/contributor/default/LandingPage";
+import LandingPageA from "landing/contributor/A/LandingPage";
+import LandingPageB from "landing/contributor/B/LandingPage";
 
-import RoadMap      from "components/landing/roadmap/RoadMapPage";
+import RoadMap      from "landing/roadmap/RoadMapPage";
 
 import Documentation from "components/documentation/DocumentationPage";
 import NotFound from "pages/NotFound";

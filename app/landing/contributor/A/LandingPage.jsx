@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 
-import Hero from 'components/landing/Hero';
-import Proofs from 'components/landing/Proofs';
+import Hero from 'landing/Hero';
+import Proofs from 'landing/Proofs';
 import HowItWorks from "../HowItWorks";
 import Idea from "../Idea";
 import Simple from "../Simple";
 import Join from "../../Join";
-import NotReadyToJoin from 'components/landing/NotReadyToJoin';
+import NotReadyToJoin from 'landing/NotReadyToJoin';
 import Footer from "components/Footer";
 
 export default class Contributor extends Component {

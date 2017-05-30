@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import Brand from "components/Brand";
-import FacebookLogin from "components/landing/FacebookLogin";
+import FacebookLogin from "landing/FacebookLogin";
 
 export default class Join extends Component {
     render() {

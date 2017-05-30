@@ -1,28 +1,28 @@
 import React, {Component} from "react";
 
-import Hero from 'components/landing/Hero';
-import Join from 'components/landing/Join';
-import Proofs from 'components/landing/Proofs';
-import NotReadyToJoin from 'components/landing/NotReadyToJoin';
-import Footer from "components/Footer";
+import Hero from 'landing/Hero';
 import HowItWorks from "../HowItWorks";
-import Idea from '../Idea';
+import Idea from "../Idea";
 import Simple from "../Simple";
+import Join from "../../Join";
+import Proofs from 'landing/Proofs';
+import NotReadyToJoin from 'landing/NotReadyToJoin';
+import Footer from "components/Footer";
 
 export default class Contributor extends Component {
     render() {
         return (
             <div>
                 <Hero
-                    image="contributor/default/Hero.jpg"
-                    title="Voice of the people"
-                    subtitle="Microtip revolution"
+                    image="contributor/B/Hero.jpg"
+                    title="Create and prosper"
+                    subtitle="Support creatives with a single click"
                     button="Change the world"
                 />
                 <Idea/>
                 <Proofs
-                    proofs={["Napoleon", "Lincoln", "Che"]}
-                    subtitle="Would approve"
+                    proofs={[ "Deadpool", "Yoda", "Goku"]}
+                    subtitle="Would be our first users"
                 />
                 <HowItWorks/>
                 <Proofs
@@ -32,8 +32,8 @@ export default class Contributor extends Component {
                 <Simple/>
                 <Join
                     image="contributor/default/Hero.jpg"
-                    title="Join"
-                    subtitle="Microtip revolution"
+                    title="Love and prosper"
+                    subtitle="Support creatives with a single click"
                     button="Change the world"
                 />
                 <NotReadyToJoin role="contributor"/>

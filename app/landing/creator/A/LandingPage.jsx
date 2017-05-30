@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 
-import Hero from "components/landing/Hero";
-import What from 'components/landing/creator/What';
-import Proofs from 'components/landing/Proofs';
-import NotReadyToJoin from 'components/landing/NotReadyToJoin';
+import Hero from "landing/Hero";
+import What from 'landing/creator/What';
+import Proofs from 'landing/Proofs';
+import NotReadyToJoin from 'landing/NotReadyToJoin';
 import Footer from "components/Footer";
 
 export default class CreatorPage extends Component {
