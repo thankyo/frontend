@@ -10,7 +10,7 @@ export default class HowItWorks extends Component {
     }
 
     handleLoveItPress() {
-        let clicked = !this.state.clicked;
+        let clicked = true;
         this.setState({clicked})
     }
 
