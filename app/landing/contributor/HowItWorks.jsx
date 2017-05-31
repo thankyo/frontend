@@ -21,7 +21,7 @@ export default class HowItWorks extends Component {
                 <h1 className="title is-1 hand-written">
                     How this works
                 </h1>
-                <div className="title is-2">Here is
+                <div className="title is-2">Here is the
                 <h2 className="title is-2 is-large">
                     <a onClick={this.handleLoveItPress}><span className={clicked ? "tag is-large is-success" : 'tag is-large'}>Love it</span></a> button
                 </h2>
@@ -30,7 +30,7 @@ export default class HowItWorks extends Component {
                     <a onClick={this.handleLoveItPress}>click it</a>
                 </h4>
                 <h4 className={clicked ? "title is-4" : "title is-4 is-line-through"}>You send 10 cents to the creator</h4>
-                <a className="title is-1 hand-written" onClick={this.handleLoveItPress}>{clicked ? "Awesome right" : "Do it"}</a>
+                <a className="title is-1 hand-written" onClick={this.handleLoveItPress}>{clicked ? "Awesome" : "Do it"}</a>
             </Wrap>
         )
     }

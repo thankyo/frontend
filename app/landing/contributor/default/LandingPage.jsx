@@ -17,7 +17,7 @@ export default class Contributor extends Component {
                 <Hero
                     image="contributor/default/Hero.jpg"
                     title="Drop of coffee in creators cup"
-                    subtitle="Small tip, that counts"
+                    subtitle="Support creators with a single click"
                     button="Join"
                 />
                 <Idea/>
