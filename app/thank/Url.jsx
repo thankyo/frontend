@@ -26,7 +26,7 @@ ThankUrl = reduxForm({
 
 const ThankUrlToReducer = ({ thankByUrl }) => {
     return (<ThankUrl onSubmit={thankByUrl} />)
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
