@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import Icon from "components/Icon";
 
 export default class ProviderIcon extends Component {
     facebookIcon() {
         return (
-            <span className="icon is-small">
-                <i className="fa fa-facebook-square"></i>
-            </span>
+            <Icon fa="facebook-square" />
         )
     }
     unknownIcon() {
         return (
-            <span className="icon is-small">
-                <i className="fa fa-heart"></i>
-            </span>
+            <Icon fa="heart"/>
         )
     }
     render() {

@@ -12,7 +12,7 @@ class WithdrawForm extends Component {
                 </p>
                 <hr/>
                 <button type="submit" className="button is-inverted is-outlined">
-                    <span className="icon"><i className="fa fa-bank"></i></span> <span>Withdraw</span>
+                    <Icon fa="bank"/> <span>Withdraw</span>
                 </button>
             </form>
         )

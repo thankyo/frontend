@@ -16,7 +16,7 @@ export default class Introduction extends Component {
                                 <img src={thumbnail} alt={this.props.text} width={180} height={180}/>
                             </div>
                             <br/>
-                            <Link to="my/thank/resource" className="button is-info"><span className="icon"><i className="fa fa-globe"></i></span><span>Connect resource</span></Link>
+                            <Link to="my/thank/resource" className="button is-info"><Icon fa="globe"/><span>Connect resource</span></Link>
                         </div>
                         <div className="column is-3">
                         </div>

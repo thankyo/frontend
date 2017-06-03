@@ -1,13 +1,12 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
+import Icon from "components/Icon";
 
 export default class SmallThankIcon extends Component {
     render() {
         return (
             <span className="content">
-                <span className="icon is-small">
-                    <i className="fa fa-heart-o"></i>
-                </span>
+                <Icon fa="heart-o"/>
                 <span className="icon is-small">
                     {this.props.balance}
                 </span>

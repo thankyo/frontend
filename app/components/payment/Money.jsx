@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import Icon from "components/Icon";
 
 export default class Money extends Component {
     usd(amount) {
         return (
             <span className="content">
-                <span className="icon">
-                    <i className="fa fa-usd"></i>
-                </span>
+                <Icon fa="usd"/>
                 <span className="icon">
                     {amount}
                 </span>

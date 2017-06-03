@@ -12,7 +12,7 @@ class Verification extends Component {
                 <td>{this.props.verification.status}</td>
                 <td><Resource resource={this.props.verification.resource}/></td>
                 <td>{metaText}</td>
-                <td><button onClick={this.props.remove} className="button"><span className="fa fa-remove"></span><span>Delete</span></button></td>
+                <td><button onClick={this.props.remove} className="button"><Icon fa="remove"/><span>Delete</span></button></td>
             </tr>
         );
     }

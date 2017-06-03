@@ -1,21 +1,18 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
+import Icon from "../Icon";
 
 class CreditIcon extends Component {
     singleCredit() {
         return (
-            <span className="icon ">
-                <i className="fa fa-heart-o"></i>
-            </span>
+            <Icon fa="heart-o"/>
         )
     }
 
     multipleCredit(amount) {
         return (
             <span className="content ">
-                <span className="icon ">
-                    <i className="fa fa-heart-o"></i>
-                </span>
+                <Icon fa="heart-o"/>
                 <span className="icon ">{amount}</span>
             </span>
         )
@@ -32,18 +29,14 @@ class CreditIcon extends Component {
 class DebitIcon extends Component {
     singleDebit() {
         return (
-            <span className="icon ">
-                <i className="fa fa-heartbeat"></i>
-            </span>
+            <Icon fa="heartbeat"/>
         )
     }
 
     multipleDebit(amount) {
         return (
             <span className="content ">
-                <span className="icon ">
-                    <i className="fa fa-heartbeat"></i>
-                </span>
+                <Icon fa="heartbeat"/>
                 <span className="icon ">{amount}</span>
             </span>
         )
@@ -61,16 +54,14 @@ export default class OperationIcon extends Component {
     creditIcon(amount) {
         if (amount == 1)
             return (
-                <span className="icon">
-                    <i className="fa fa-heart-o"></i>
-                </span>
+                <Icon fa="heart-o"/>
             )
     }
 
     debitIcon(amount) {
         return (
             <span className="icon">
-                <i className="fa fa-plus"></i> {amount}
+                <Icon fa="plus"/> {amount}
             </span>
         )
     }

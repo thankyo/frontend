@@ -3,14 +3,13 @@ import {connect} from "react-redux";
 import {logout}     from 'reducers/auth.actions';
 import Brand from './Brand';
 import { Link } from 'react-router';
+import Icon from "./Icon";
 
 class LogoutButton extends Component {
     render() {
         return (
             <div className="button is-info is-outlined is-hovered" onClick={this.props.logout}>
-                <span className="icon">
-                    <i className="fa fa-sign-out"></i>
-                </span>
+                <Icon fa="sign-out"/>
                 <span>Out</span>
             </div>
         )

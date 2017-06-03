@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import Navigation from "components/Navigation";
-import Profile from "components/user/Profile";
 import ComponentWrap from "components/ComponentWrap";
 import AddVerification  from './AddVerification';
 import Verifications from './Verifications';
@@ -12,9 +11,6 @@ export default class Love extends Component {
         return (
             <div>
                 <Navigation/>
-                <ComponentWrap>
-                    <Profile id={this.props.params.id}/>
-                </ComponentWrap>
                 <ComponentWrap>
                     <AddVerification id={this.props.params.id}/>
                 </ComponentWrap>

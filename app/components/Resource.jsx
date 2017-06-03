@@ -1,12 +1,11 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
+import Icon from "./Icon";
 
 class HttpResourceIcon extends Component {
     render() {
         return (
-            <span className="content icon is-loading">
-                <i className="fa fa-html5"></i>
-            </span>
+            <Icon fa="html5"/>
         );
     }
 }
@@ -26,7 +25,7 @@ export default class Resource extends Component {
     social(provider, uri) {
         return (
             <p>
-                <i className={`fa fa-${provider}`}></i> {uri}
+                <Icon fa={provider}/> {uri}
             </p>
         )
     }

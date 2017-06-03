@@ -23,13 +23,13 @@ class PaymentOption extends Component {
                         evt.preventDefault();
                         this.props.payPal(charge)
                     }}>
-                        <span className="fa fa-paypal"></span><span>PayPal</span>
+                        <Icon fa="paypal"/><span>PayPal</span>
                     </button>
                     <button className="button is-warning" onClick={(evt) => {
                         evt.preventDefault();
                         this.props.stripe(charge);
                     }}>
-                        <span className="fa fa-credit-card"></span><span>Card</span>
+                        <Icon fa="credit-card"/><span>Card</span>
                     </button>
                 </div>
             </div>

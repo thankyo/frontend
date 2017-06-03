@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import Icon from "components/Icon";
 
 export default class BankDetails extends Component {
     payPal(email) {
         return (
             <span className="content">
-                <span className="icon">
-                    <i className="fa fa-paypal"></i>
-                </span>
+                <Icon fa="paypal"/>
                 <span className="is-hidden-mobile">
                     {email}
                 </span>
@@ -16,9 +15,7 @@ export default class BankDetails extends Component {
     }
     empty() {
         return (
-            <span className="icon">
-                <i className="fa fa-blind"></i>
-            </span>
+            <Icon fa="blind"/>
         )
     }
     render() {
