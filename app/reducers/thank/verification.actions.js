@@ -1,4 +1,5 @@
 import authService from "service/auth";
+import {reset} from 'redux-form';
 
 export const VERIFICATION_CREATE_REQUESTED = "VERIFICATION_CREATE_REQUESTED";
 export const VERIFICATION_CREATE_SUCCESS = "VERIFICATION_CREATE_SUCCESS";
@@ -24,7 +25,10 @@ export const create = (user, ownership) => (dispatch) => {
     });
     authService.
         signAndFetch(req, dispatch).
-        then(res => dispatch(createSuccess(user, res))).
+        then(res => {
+            dispatch(createSuccess(user, res));
+            dispatch(reset('ownUrl'));
+        }).
         catch(error => dispatch(createFailed(user, error)))
 }
 
