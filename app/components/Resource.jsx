@@ -5,7 +5,7 @@ import Icon from "components/Icon";
 class HttpResourceIcon extends Component {
     render() {
         return (
-            <Icon fa="html5"/>
+            <Icon fa="html5" text={this.props.uri}/>
         );
     }
 }
@@ -17,17 +17,13 @@ HttpResourceIcon.propTypes = {
 export default class Resource extends Component {
     http(uri) {
         return (
-            <p>
-                <HttpResourceIcon uri={uri}/>{uri}
-            </p>
+            <div className="field has-addons">
+                <Icon fa="html5"/><span>{uri}</span>
+            </div>
         )
     }
     social(provider, uri) {
-        return (
-            <p>
-                <Icon fa={provider}/> {uri}
-            </p>
-        )
+        return (<Icon fa={provider} text={uri}/>)
     }
     render() {
         if (this.props.resource.type === "http")

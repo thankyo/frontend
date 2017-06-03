@@ -65,8 +65,12 @@ export const list = (user) => (dispatch) => {
     let listReq = new Request(`/api/v1/thank/verification/${user}`);
     authService.
         signAndFetch(listReq, dispatch).
-        then(list => dispatch(listSuccess(user, list))).
-        catch(error => dispatch(listFailed(user, error)))
+        then(list => {
+            dispatch(listSuccess(user, list))
+        }).
+        catch(error => {
+            dispatch(listFailed(user, error))
+        })
 };
 
 export const VERIFICATION_CONFIRMATION_REQUESTED = "VERIFICATION_CONFIRMATION_REQUESTED";
