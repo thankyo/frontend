@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
+import PropTypes from "prop-types";
 
 export default class Icon extends Component {
     render() {
@@ -12,5 +13,6 @@ export default class Icon extends Component {
 }
 
 Icon.propTypes = {
-    fa: PropTypes.string.isRequired
+    fa: PropTypes.string.isRequired,
+    text: PropTypes.string,
 };

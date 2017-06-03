@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import ComponentWrap from "./ComponentWrap";
-import Icon from "./Icon";
+import Icon from "components/Icon";
 
 class EmailContact extends Component {
     render() {
