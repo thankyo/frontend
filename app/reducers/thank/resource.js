@@ -28,7 +28,8 @@ export default function (resources = initialState, {type, payload}) {
             let {user, error} = payload;
             return Object.assign({}, resources, {[user]: { error }});
         }
-        case RESOURCE_VERIFICATION_SUCCESS: {
+        case RESOURCE_VERIFICATION_SUCCESS:
+        case RESOURCE_CONFIRMATION_FINISHED: {
             let {user, verification} = payload;
             let userRes = Object.assign({}, resources[user], { verification });
             return Object.assign({}, resources, {[user]: userRes});
@@ -41,15 +42,11 @@ export default function (resources = initialState, {type, payload}) {
         }
         case RESOURCE_CONFIRMATION_STARTED: {
             let { user } = payload;
-            return setVerificationStatus(resources, user, 'Running');
-        }
-        case RESOURCE_CONFIRMATION_FINISHED: {
-            let { user } = payload;
-            return setVerificationStatus(resources, user, 'Finished');
+            return setVerificationStatus(resources, user, 'running');
         }
         case RESOURCE_CONFIRMATION_ERROR: {
             let { user } = payload;
-            return setVerificationStatus(resources, user, 'Error');
+            return setVerificationStatus(resources, user, 'notVerified');
         }
         default:
             return resources;

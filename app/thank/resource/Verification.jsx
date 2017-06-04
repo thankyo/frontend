@@ -5,7 +5,7 @@ import AddVerification from './AddVerification';
 import PendingVerification from './PendingVerification';
 
 let Verification = ({ verification, verify, cancel, confirm }) => {
-    if (verification === undefined) {
+    if (verification === undefined || verification.status === "verified") {
         return <AddVerification onSubmit={verify}></AddVerification>
     } else {
         return <PendingVerification {...verification} cancel={cancel} confirm={confirm}/>

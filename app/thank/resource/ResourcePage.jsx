@@ -14,7 +14,7 @@ export default class Love extends Component {
                     <h4 className="title is-4">Resources</h4>
                     <OwnedResources id={this.props.params.id}/>
                     <hr/>
-                    <h4 className="title is-4">Verify</h4>
+                    <h4 className="title is-4">Add Resource</h4>
                     <Verification id={this.props.params.id}/>
                 </ComponentWrap>
             </div>

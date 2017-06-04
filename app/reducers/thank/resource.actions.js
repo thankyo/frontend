@@ -75,7 +75,7 @@ export const RESOURCE_CONFIRMATION_ERROR = "RESOURCE_CONFIRMATION_ERROR";
 export const RESOURCE_CONFIRMATION_FINISHED = "RESOURCE_CONFIRMATION_FINISHED";
 
 const confirmationRequested = (user) => toAction(RESOURCE_CONFIRMATION_STARTED, {user});
-const confirmationSuccess = (user) => toAction(RESOURCE_CONFIRMATION_FINISHED, {user});
+const confirmationSuccess = (user, verification) => toAction(RESOURCE_CONFIRMATION_FINISHED, {user, verification});
 const confirmationError = (user, error) => toAction(RESOURCE_CONFIRMATION_ERROR, {user, error});
 
 export function confirm(user) {
