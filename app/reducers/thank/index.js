@@ -1,5 +1,4 @@
 import transaction from './transaction';
-import ownership   from './ownership';
 import url         from './url';
 import verification from './verification';
 import resource     from './resource';
@@ -9,7 +8,6 @@ export default combineReducers(
     {
         transaction,
         resource,
-        ownership,
         verification,
         url,
     }
