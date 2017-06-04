@@ -17,19 +17,25 @@ class OwnedResource extends Component {
 }
 
 const OwnedResources = ({own}) => {
-    return (
-        <table className="table is-grouped">
-            <thead>
-            <tr>
-                <td><Icon fa="html5"/>HTTP</td>
-                <td></td>
-            </tr>
-            </thead>
-            <tbody>
-                {own.map(resource => <OwnedResource key={resource.uri} resource={resource}/>)}
-            </tbody>
-        </table>
-    );
+    if (own.length > 0) {
+        return (
+            <table className="table is-grouped">
+                <thead>
+                <tr>
+                    <td><Icon fa="html5"/>HTTP</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                    {own.map(resource => <OwnedResource key={resource.uri} resource={resource}/>)}
+                </tbody>
+            </table>
+        );
+    } else {
+        return (
+            <h4 className="title is-5 is-warning">No verified resources</h4>
+        )
+    }
 };
 
 const mapStateToProps = ({thank: { resource }}, {id}) => {

@@ -1,9 +1,9 @@
 import authService from "service/auth";
 import {reset} from 'redux-form';
 
-export const VERIFICATION_CREATE_REQUESTED = "VERIFICATION_CREATE_REQUESTED";
-export const VERIFICATION_CREATE_SUCCESS = "VERIFICATION_CREATE_SUCCESS";
-export const VERIFICATION_CREATE_FAILED = "VERIFICATION_CREATE_FAILED";
+export const VERIFICATION_CREATE_REQUESTED = "RESOURCE_VERIFICATION_REQUESTED";
+export const VERIFICATION_CREATE_SUCCESS = "RESOURCE_VERIFICATION_SUCCESS";
+export const VERIFICATION_CREATE_FAILED = "RESOURCE_VERIFICATION_FAILED";
 
 function toAction(type, payload) {
     return {type, payload};
@@ -30,11 +30,11 @@ export const create = (user, ownership) => (dispatch) => {
             dispatch(reset('ownUrl'));
         }).
         catch(error => dispatch(createFailed(user, error)))
-}
+};
 
-export const VERIFICATION_REMOVE_REQUESTED = "VERIFICATION_REMOVE_REQUESTED";
-export const VERIFICATION_REMOVE_SUCCESS = "VERIFICATION_REMOVE_SUCCESS";
-export const VERIFICATION_REMOVE_FAILED = "VERIFICATION_REMOVE_FAILED";
+export const VERIFICATION_REMOVE_REQUESTED = "RESOURCE_VERIFICATION_CANCEL_REQUESTED";
+export const VERIFICATION_REMOVE_SUCCESS = "RESOURCE_VERIFICATION_CANCEL_SUCCESS";
+export const VERIFICATION_REMOVE_FAILED = "RESOURCE_VERIFICATION_CANCEL_FAILED";
 
 const removeRequested = (user, verID) => toAction(VERIFICATION_REMOVE_REQUESTED, {user, verID});
 const removeSuccess = (user, verID) => toAction(VERIFICATION_REMOVE_SUCCESS, {user, verID});
