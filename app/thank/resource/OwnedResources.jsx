@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {listOwnership} from "reducers/thank/ownership.actions";
+import {get} from "../../reducers/thank/resource.actions";
 import Resource from "components/Resource";
 import Icon from "../../components/Icon";
 
@@ -32,15 +32,15 @@ const OwnedResources = ({own}) => {
     );
 };
 
-const mapStateToProps = ({thank: {ownership}}, {id}) => {
-    let own = ownership[id] ? ownership[id].items : [];
+const mapStateToProps = ({thank: { resource }}, {id}) => {
+    let own = resource[id] ? resource[id].owns : [];
     return {
         own
     };
 };
 
 const mapDispatchToProps = (dispatch, {id}) => {
-    dispatch(listOwnership(id));
+    dispatch(get(id));
     return {}
 };
 
