@@ -1,14 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
-import {verify, cancelVerification} from "../../reducers/thank/resource.actions";
+import {verify, cancelVerification, confirm} from "../../reducers/thank/resource.actions";
 import AddVerification from './AddVerification';
 import PendingVerification from './PendingVerification';
 
-let Verification = ({ verification, verify, cancel }) => {
+let Verification = ({ verification, verify, cancel, confirm }) => {
     if (verification === undefined) {
         return <AddVerification onSubmit={verify}></AddVerification>
     } else {
-        return <PendingVerification {...verification} cancel={cancel}/>
+        return <PendingVerification {...verification} cancel={cancel} confirm={confirm}/>
     }
 };
 
@@ -24,8 +24,10 @@ const mapDispatchToProps = (dispatch, { id }) => {
         },
         cancel: () => {
             dispatch(cancelVerification(id))
+        },
+        confirm: () => {
+            dispatch(confirm(id))
         }
-
     }
 };
 

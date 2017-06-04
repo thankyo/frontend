@@ -70,3 +70,22 @@ export function cancelVerification(user) {
     }
 }
 
+export const RESOURCE_CONFIRMATION_STARTED = "RESOURCE_CONFIRMATION_STARTED";
+export const RESOURCE_CONFIRMATION_ERROR = "RESOURCE_CONFIRMATION_ERROR";
+export const RESOURCE_CONFIRMATION_FINISHED = "RESOURCE_CONFIRMATION_FINISHED";
+
+const confirmationRequested = (user) => toAction(RESOURCE_CONFIRMATION_STARTED, {user});
+const confirmationSuccess = (user) => toAction(RESOURCE_CONFIRMATION_FINISHED, {user});
+const confirmationError = (user, error) => toAction(RESOURCE_CONFIRMATION_ERROR, {user, error});
+
+export function confirm(user) {
+    return (dispatch) => {
+        dispatch(confirmationRequested(user));
+        let req = new Request(`/api/v1/thank/resource/${user}/verification`, {method: "PUT"});
+        authService.
+            signAndFetch(req, dispatch).
+            then(verification => dispatch(confirmationSuccess(user, verification))).
+            catch(error => dispatch(confirmationError(user, error)))
+    }
+}
+
