@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Icon from "../components/Icon";
 
 const height = 20;
 const width = 110;
@@ -58,7 +59,7 @@ export default class JSIntegration extends Component {
                         </code>
                     </pre>
                 </div>
-                <h5 className="title is-5">2. Place button tag where you want the plugin to appear on your page.</h5>
+                <h5 className="title is-5">2. Place button tag where you want it.</h5>
                 <div className="content">
                 <pre>
                     <code>
@@ -66,8 +67,13 @@ export default class JSIntegration extends Component {
                     </code>
                 </pre>
                 </div>
+                <br/>
+                <br/>
                 <h5 className="title is-5">When everything is right, it looks like this</h5>
                 <Example/>
+                <br/>
+                <br/>
+                <h3 className="title is-3 has-text-centered"><Icon fa="rocket fa-4x"/> that's it you are ready to rock.</h3>
             </div>
         );
     }
