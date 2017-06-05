@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Icon from "../components/Icon";
 
-const height = 20;
+const height = 48;
 const width = 110;
 const title = "LoveIt";
 
