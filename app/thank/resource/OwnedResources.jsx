@@ -7,9 +7,15 @@ import Icon from "../../components/Icon";
 class OwnedResource extends Component {
     render() {
         return (
-            <tr className="container">
+            <tr>
+                <td className="is-narrow">
+                    <Icon fa="check"/>
+                </td>
                 <td>
                     <Resource resource={this.props.resource}/>
+                </td>
+                <td>
+
                 </td>
             </tr>
         );
@@ -19,17 +25,14 @@ class OwnedResource extends Component {
 const OwnedResources = ({own}) => {
     if (own.length > 0) {
         return (
-            <table className="table is-grouped">
-                <thead>
-                <tr>
-                    <td><Icon fa="html5"/>HTTP</td>
-                    <td></td>
-                </tr>
-                </thead>
-                <tbody>
-                    {own.map(resource => <OwnedResource key={resource.uri} resource={resource}/>)}
-                </tbody>
-            </table>
+            <div className="content">
+                <h4 className="title is-4">Owned</h4>
+                <table className="table is-grouped">
+                    <tbody>
+                        {own.map(resource => <OwnedResource key={resource.uri} resource={resource}/>)}
+                    </tbody>
+                </table>
+            </div>
         );
     } else {
         return (

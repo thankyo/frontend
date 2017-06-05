@@ -25,7 +25,7 @@ const userMenu = {
         // createMenu("Love", "/my/love", "fa fa-heart"),
         // createMenu("Payment", "/my/payment", "fa fa-usd"),
         // createMenu("Own", "/my/own", "fa fa-usd"),
-        // createMenu("Documentation", "/documentation", "fa fa-book"),
+        createMenu("Integration", "/my/integration", "fa fa-plug"),
     ]
 };
 

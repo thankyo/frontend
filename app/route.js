@@ -22,6 +22,7 @@ import ResourcePage from "thank/resource/ResourcePage";
 import authService from "service/auth";
 
 import Introduction from "./components/introduction/CreatorIntroductionPage";
+import IntegrationPage from "./integration/IntegrationPage";
 
 import {HOME} from "service/routes";
 import {Helmet} from "react-helmet";
@@ -36,18 +37,24 @@ export default class MainApp extends Component {
                 <Helmet>
                 </Helmet>
                 <Router history={this.props.history} onUpdate={() => window.scrollTo(0, 0)}>
+
                     <Route path="/" component={LandingPageDefault}/>
                     <Route path="/A" component={LandingPageA}/>
                     <Route path="/B" component={LandingPageB}/>
                     <Route path="/default" component={LandingPageDefault}/>
+
                     <Route path="/creator" component={CreatorDefaultLandingPage}/>
                     <Route path="/creator/A" component={CreatorLandingPageA}/>
                     <Route path="/creator/B" component={CreatorLandingPageB}/>
+
                     <Route path="/roadmap" component={RoadMap}/>
                     <Route path="/documentation" component={ Documentation }/>
+
                     <Route path="/:id/love" component={ Love }/>
                     <Route path="/:id/payment" component={ Payments }/>
                     <Route path="/:id/thank/resource" component={ ResourcePage }/>
+                    <Route path="/:id/integration" component={ IntegrationPage }/>
+
                     <Route path="/my" components={Introduction}/>
                     <Route path="/introduction" components={Introduction}/>
                     <Route path="/legal/terms" component={ TermsOfUse }/>

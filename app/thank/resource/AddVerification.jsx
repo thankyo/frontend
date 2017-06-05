@@ -4,7 +4,8 @@ import Icon from "../../components/Icon";
 
 let AddOwnershipForm = ({handleSubmit}) => {
     return (
-        <div>
+        <div className="content">
+            <h4 className="title is-4">Verify</h4>
             <form onSubmit={handleSubmit}>
                 <div className="field has-addons">
                     <Field name="uri" component="input" type="text" className="input control" placeholder="URL"/>

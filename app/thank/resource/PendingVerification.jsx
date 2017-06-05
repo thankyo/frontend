@@ -77,11 +77,8 @@ export default class PendingVerification extends Component {
         return (
             <div>
                 <div className="content">
+                    <h4 className="title is-4">Verifying <a href={targetLink} target="blank">{this.props.resource.uri}</a></h4>
                     <ol>
-                        <li className="subtitle">
-                            Target URL is<br/>
-                            <small><a href={targetLink} target="blank">{this.props.resource.uri}</a></small>
-                        </li>
                         <li className="subtitle">
                             Copy & Paste HTML snippet in <b>head</b> section of your <b>index.html</b><br/>
                             <b><small>{metaText}</small></b>
