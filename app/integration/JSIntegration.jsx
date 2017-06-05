@@ -1,5 +1,9 @@
 import React, {Component} from "react";
 
+const height = 20;
+const width = 110;
+const title = "LoveIt";
+
 class Example extends Component {
     render() {
         let src = `/api/v1/thank/http/${window.location.host}/${window.location.pathname}`;
@@ -7,23 +11,33 @@ class Example extends Component {
             borderWidth: 0
         };
         return(
-            <iframe src={src} title="LoveIt" height={20} width={110} style={style}></iframe>
+            <iframe src={src} title={title} height={height} width={width} style={style}></iframe>
         )
     }
 }
 
 let jsText  = `
-<!-- LoveIt Script -->
-<script>(function(i) {
-    var f, s = document.getElementById(i);
-    f = document.createElement('iframe');
-    f.src = "//loveit.tips/api/v1/thank/http/" + window.location.host + "/" + window.location.pathname;
-    f.title = 'LoveIt';
-    f.height = 20;
-    f.width = 110;
+<!-- JS LoveIt Script -->
+<script>(function(d, i, l) {
+    var f = d.createElement('iframe');
+    f.src = "//loveit.tips/api/v1/thank/http/" + l.host + "/" + l.pathname;
+    f.title = "${title}";
+    f.height = ${height};
+    f.width = ${width};
     f.style.borderWidth = 0;
-    s.parentNode.insertBefore(f, s);
-})('love-it')
+    
+    function initButton() {
+        var s = d.getElementById(i);
+        s.appendChild(f);
+    };
+    initButton = initButton.bind(this);
+    
+    if (d.readyState !== 'loading') {
+        initButton();
+    } else {
+        d.addEventListener('DOMContentLoaded', initButton)
+    }
+})(document, 'love-it', window.location)
 </script>
 `;
 
