@@ -87,7 +87,7 @@ class BePatient extends Component {
     }
 }
 
-export default class CreatorIntroduction extends Component {
+export default class IntroductionPage extends Component {
     render() {
         let user = authService.getUserIdentity();
         return (

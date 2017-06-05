@@ -14,14 +14,13 @@ import LandingPageB from "landing/contributor/B/LandingPage";
 
 import RoadMap      from "landing/roadmap/RoadMapPage";
 
-import Documentation from "components/documentation/DocumentationPage";
 import NotFound from "NotFound";
 import Payments from "components/payment/PaymentPage";
 import Love from "thank/Love";
 import ResourcePage from "thank/resource/ResourcePage";
 import authService from "service/auth";
 
-import Introduction from "./components/introduction/CreatorIntroductionPage";
+import IntroductionPage from "./components/introduction/IntroductionPage";
 import IntegrationPage from "./integration/IntegrationPage";
 
 import {HOME} from "service/routes";
@@ -48,15 +47,14 @@ export default class MainApp extends Component {
                     <Route path="/creator/B" component={CreatorLandingPageB}/>
 
                     <Route path="/roadmap" component={RoadMap}/>
-                    <Route path="/documentation" component={ Documentation }/>
 
                     <Route path="/:id/love" component={ Love }/>
                     <Route path="/:id/payment" component={ Payments }/>
                     <Route path="/:id/thank/resource" component={ ResourcePage }/>
                     <Route path="/:id/integration" component={ IntegrationPage }/>
 
-                    <Route path="/my" components={Introduction}/>
-                    <Route path="/introduction" components={Introduction}/>
+                    <Route path="/my" components={IntroductionPage}/>
+                    <Route path="/introduction" components={IntroductionPage}/>
                     <Route path="/legal/terms" component={ TermsOfUse }/>
                     <Route path="/legal/privacy" component={ PrivacyPolicy }/>
                     <Route path="*" component={NotFound}/>

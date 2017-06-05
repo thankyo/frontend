@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { Link } from "react-router";
 import Icon from "../Icon";
 
-export default class Introduction extends Component {
+export default class Welcome extends Component {
     render() {
         let {firstName, thumbnail} = this.props.user;
         return (
