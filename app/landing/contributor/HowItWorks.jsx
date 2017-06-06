@@ -23,7 +23,7 @@ export default class HowItWorks extends Component {
                 </h1>
                 <div className="title is-2">Here is the
                 <h2 className="title is-2 is-large">
-                    <a onClick={this.handleLoveItPress}><span className={clicked ? "tag is-large is-success" : 'tag is-large'}>Love it</span></a> button
+                    <a onClick={this.handleLoveItPress}><span className={clicked ? "tag is-large is-success" : 'tag is-large is-warning'}>Love it</span></a> button
                 </h2>
                 </div>
                 <h4 className="title is-4">Whenever you <br/>

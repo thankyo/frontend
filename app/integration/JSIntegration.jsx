@@ -7,12 +7,18 @@ const title = "LoveIt";
 
 class Example extends Component {
     render() {
-        let src = `/api/v1/thank/http/${window.location.host}/${window.location.pathname}`;
+        let src = `/api/v1/thank/http/example.com/verified`;
         let style = {
             borderWidth: 0
         };
+        let unverifiedSrc = `/api/v1/thank/http/example.com/unverified`;
         return(
-            <iframe src={src} title={title} height={height} width={width} style={style}></iframe>
+            <div>
+                <h5 className="title is-6 is-success">Everything is right</h5>
+                <iframe src={src} title={title} height={height} width={width} style={style}></iframe>
+                <h5 className="title is-6 is-error">Something wrong</h5>
+                <iframe src={unverifiedSrc} title={title} height={height} width={width} style={style}></iframe>
+            </div>
         )
     }
 }
@@ -69,7 +75,7 @@ export default class JSIntegration extends Component {
                 </div>
                 <br/>
                 <br/>
-                <h5 className="title is-5">When everything is right, it looks like this</h5>
+                <h5 className="title is-5">for example</h5>
                 <Example/>
                 <br/>
                 <br/>
