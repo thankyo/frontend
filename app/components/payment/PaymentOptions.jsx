@@ -4,8 +4,8 @@ import OperationIcon from "components/icons/OperationIcon";
 
 import { connect } from 'react-redux';
 
-import {braintreeProcess} from "reducers/payment/braintree.actions";
 import {process as stripeProcess} from "reducers/payment/stripe.actions";
+import Icon from "../Icon";
 
 
 class PaymentOption extends Component {
@@ -19,12 +19,6 @@ class PaymentOption extends Component {
                     <hr/>
                     <OperationIcon operation="debit" amount={this.props.loveit}/>
                     <hr/>
-                    <button className="button is-primary" onClick={(evt) => {
-                        evt.preventDefault();
-                        this.props.payPal(charge)
-                    }}>
-                        <Icon fa="paypal"/><span>PayPal</span>
-                    </button>
                     <button className="button is-warning" onClick={(evt) => {
                         evt.preventDefault();
                         this.props.stripe(charge);
@@ -37,17 +31,17 @@ class PaymentOption extends Component {
     }
 }
 
-const PaymentOptions = ({payPal, stripe}) => {
+const PaymentOptions = ({stripe}) => {
     return (
         <div className="has-text-centered">
             <p className="title">Payment</p>
             <hr/>
             <div className="columns is-mobile">
-                <PaymentOption payPal={payPal} stripe={stripe} amount={10} loveit={100}
+                <PaymentOption stripe={stripe} amount={10} loveit={100}
                                currency="USD"/>
-                <PaymentOption payPal={payPal} stripe={stripe} amount={15} loveit={150}
+                <PaymentOption stripe={stripe} amount={15} loveit={150}
                                currency="USD"/>
-                <PaymentOption payPal={payPal} stripe={stripe} amount={20} loveit={200}
+                <PaymentOption stripe={stripe} amount={20} loveit={200}
                                currency="USD"/>
             </div>
         </div>
@@ -56,9 +50,6 @@ const PaymentOptions = ({payPal, stripe}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        payPal: (charge) => {
-            dispatch(braintreeProcess(charge))
-        },
         stripe: (charge) => {
             dispatch(stripeProcess(charge))
         }

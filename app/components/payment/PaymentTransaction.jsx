@@ -3,14 +3,13 @@ import {connect}            from "react-redux";
 import {listTransactions}   from "reducers/payment/transaction.actions";
 import Date                 from "components/Date";
 import OperationIcon        from "components/icons/OperationIcon";
-import BankDetails          from "./BankDetails";
 import Money                from "./Money";
 
 class PaymentTransaction extends Component {
     render() {
         return (
             <tr>
-                <td><BankDetails {...this.props.transaction.source}/></td>
+                <td></td>
                 <td><Money {...this.props.transaction.money}/></td>
                 <td><OperationIcon operation={this.props.transaction.operation} amount={this.props.transaction.thanks}/>
                 </td>
