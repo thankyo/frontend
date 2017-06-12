@@ -13,11 +13,15 @@ class Example extends Component {
         };
         let unverifiedSrc = `/api/v1/thank/http/example.com/unverified`;
         return(
-            <div>
-                <h5 className="title is-6 is-success">Everything is right</h5>
-                <iframe src={src} title={title} height={height} width={width} style={style}></iframe>
-                <h5 className="title is-6 is-error">Something wrong</h5>
-                <iframe src={unverifiedSrc} title={title} height={height} width={width} style={style}></iframe>
+            <div className="columns">
+                <div className="column is-one-third">
+                    <span className="title is-error">Something wrong</span><br/>
+                    <iframe src={unverifiedSrc} title={title} height={height} width={width} style={style}></iframe>
+                </div>
+                <div className="column is-one-third">
+                    <span className="title is-success">Everything is right</span><br/>
+                    <iframe src={src} title={title} height={height} width={width} style={style}></iframe>
+                </div>
             </div>
         )
     }
@@ -75,11 +79,8 @@ export default class JSIntegration extends Component {
                 </div>
                 <br/>
                 <br/>
-                <h5 className="title is-5">for example</h5>
+                <h5 className="title is-5">Example</h5>
                 <Example/>
-                <br/>
-                <br/>
-                <h3 className="title is-3 has-text-centered"><Icon fa="rocket fa-4x"/> that's it you are ready to rock.</h3>
             </div>
         );
     }
