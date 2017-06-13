@@ -1,6 +1,8 @@
 import authService from 'service/auth';
 
 export const SET_LIMIT = "SET_LIMIT";
+export const INC_LIMIT = "INC_LIMIT";
+export const DEC_LIMIT = "DEC_LIMIT";
 export const GET_LIMIT = "GET_LIMIT";
 
 export function dispatchPromise(p, event, dispatch) {
@@ -25,6 +27,17 @@ export function promiseReducer(initialState, event, pending, fulfilled, rejected
     };
 };
 
+export function increase() {
+    return (dispatch) => {
+        dispatch({ type: INC_LIMIT })
+    }
+}
+
+export function decrease() {
+    return (dispatch) => {
+        dispatch({ type: DEC_LIMIT })
+    }
+}
 
 export function getLimit() {
     return (dispatch) => {
