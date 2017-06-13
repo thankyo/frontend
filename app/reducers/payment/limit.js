@@ -1,7 +1,7 @@
 import { SET_LIMIT, GET_LIMIT, DEC_LIMIT, INC_LIMIT, promiseReducer } from './limit.actions';
 
 const initialState = {
-    amount: 5,
+    amount: 10,
     currency: "USD"
 };
 
@@ -20,11 +20,11 @@ const rejected = (state) => {
 function limitUpdate(state, { type }) {
     switch (type) {
         case INC_LIMIT: {
-            let amount = state.amount + 5
+            let amount = state.amount + 5;
             return Object.assign({}, state, {amount})
         }
         case DEC_LIMIT: {
-            let amount = Math.max(5, state.amount - 5)
+            let amount = Math.max(5, state.amount - 5);
             return Object.assign({}, state, {amount})
         }
         default:

@@ -25,7 +25,7 @@ const LimitPage = ({limit, setLimit, increase, decrease}) => {
                             <h5 className="subtitle is-5">we'll <b className="is-danger">never</b> charge you more, than
                                 that</h5>
                             <a className="button is-info is-inverted is-large pull-right"
-                               onClick={() => setLimit(limit)}>Next</a>
+                               onClick={() => setLimit(limit)}>Next ></a>
                         </div>
                     </div>
                 </div>
