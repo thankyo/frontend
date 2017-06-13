@@ -4,8 +4,9 @@ import Profile from "components/user/Profile";
 import PaymentTransaction from "./PaymentTransaction";
 import ComponentWrap from "components/ComponentWrap";
 import Payment from "./Payment";
+import Footer from "../components/Footer";
 
-export default class Payments extends Component {
+export default class PaymentPage extends Component {
     render() {
         return (
             <div>
@@ -19,6 +20,7 @@ export default class Payments extends Component {
                 <ComponentWrap>
                     <PaymentTransaction id={this.props.params.id}/>
                 </ComponentWrap>
+                <Footer/>
             </div>
         );
     }

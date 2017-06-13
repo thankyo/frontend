@@ -54,13 +54,14 @@ function updateAuth(win, dispatch) {
 }
 
 function waitForAuth(win, dispatch) {
-    let timer = setInterval(checkAuthenticated, 500);
+    setTimeout(checkAuthenticated, 500);
 
     function checkAuthenticated() {
         let ur = win.location.href;
         if (ur.indexOf('/auth/authenticate/facebook') != -1 && win.document.documentElement.innerText.length > 0) {
-            clearInterval(timer);
             updateAuth(win, dispatch);
+        } else {
+            setTimeout(checkAuthenticated, 500);
         }
     }
 }

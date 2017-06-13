@@ -15,7 +15,9 @@ import LandingPageB from "landing/contributor/B/LandingPage";
 import RoadMap      from "landing/roadmap/RoadMapPage";
 
 import NotFound from "NotFound";
-import Payments from "components/payment/PaymentPage";
+import PaymentPage from "payment/PaymentPage";
+import LimitPage from 'payment/LimitPage';
+
 import Love from "thank/Love";
 import ResourcePage from "thank/resource/ResourcePage";
 import authService from "service/auth";
@@ -49,7 +51,8 @@ export default class MainApp extends Component {
                     <Route path="/roadmap" component={RoadMap}/>
 
                     <Route path="/:id/love" component={ Love }/>
-                    <Route path="/:id/payment" component={ Payments }/>
+                    <Route path="/:id/payment" component={ PaymentPage }/>
+                    <Route path="/:id/payment/limit" component={ LimitPage }/>
                     <Route path="/:id/thank/resource" component={ ResourcePage }/>
                     <Route path="/:id/integration" component={ IntegrationPage }/>
 

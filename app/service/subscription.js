@@ -2,7 +2,7 @@ import 'whatwg-fetch';
 
 export default function(role) {
     return (email) => {
-        let req = new Request(`/api/v1/subscribe/${role}`, {
+        let req = new Request(`/api/v1/user/subscribe/${role}`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',

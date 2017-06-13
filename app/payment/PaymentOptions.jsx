@@ -5,7 +5,7 @@ import OperationIcon from "components/icons/OperationIcon";
 import { connect } from 'react-redux';
 
 import {process as stripeProcess} from "reducers/payment/stripe.actions";
-import Icon from "../Icon";
+import Icon from "../components/Icon";
 
 
 class PaymentOption extends Component {
