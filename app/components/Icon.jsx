@@ -5,7 +5,7 @@ export default class Icon extends Component {
     render() {
         let className = `fa fa-${this.props.fa}`;
         return (
-            <span className="icon ">
+            <span className="icon">
                 <i className={className}></i>
             </span>
         )

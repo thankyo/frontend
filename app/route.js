@@ -4,8 +4,8 @@ import CreatorDefaultLandingPage from "landing/creator/default/LandingPage";
 import CreatorLandingPageA from "landing/creator/A/LandingPage";
 import CreatorLandingPageB from "landing/creator/B/LandingPage";
 
-import TermsOfUse from "components/legal/TermsOfUsePage";
-import PrivacyPolicy from "components/legal/PrivacyPolicyPage";
+import TermsOfUse from "legal/TermsOfUsePage";
+import PrivacyPolicy from "legal/PrivacyPolicyPage";
 import {browserHistory, Route, Router} from "react-router";
 
 import LandingPageDefault from "landing/contributor/default/LandingPage";
@@ -22,7 +22,7 @@ import Love from "thank/Love";
 import ResourcePage from "thank/resource/ResourcePage";
 import authService from "service/auth";
 
-import IntroductionPage from "./components/introduction/IntroductionPage";
+import IntroductionPage from "./introduction/IntroductionPage";
 import IntegrationPage from "./integration/IntegrationPage";
 
 import {HOME} from "service/routes";

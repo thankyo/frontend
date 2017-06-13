@@ -35,23 +35,18 @@ function processingError(error) {
 function processToken(charge, token) {
     return (dispatch) => {
         dispatch(processingStart(token));
-        let loveItTokenFormat = {
-            type: 'stripe',
-            token: token.id,
-            charge,
-            details: token
-        };
         let req = new Request(
-            "/api/v1/payment/process",
+            "/api/v1/payment/charge/my/account",
             {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(loveItTokenFormat)
+                body: JSON.stringify(token.id)
             });
-        authService.signAndFetch(req, dispatch).then((success) => {
+        authService.signAndFetch(req, dispatch).
+        then((success) => {
             dispatch(processingSuccess(success));
             dispatch(paymentSuccess());
         }).catch((err) => dispatch(processingError(error)))

@@ -58,7 +58,7 @@ export default class IntegrationPage extends Component {
                     <br/>
                     <h3 className="title is-3 has-text-centered"><Icon fa="rocket fa-4x"/> that's it you are ready to rock.</h3>
                     <br/>
-                    <h3 className="title is-5 pull-right">If something did not work <a href="mailto:antono@loveit.tips?subject=Integration problem">contact us.</a></h3>
+                    <h3 className="title is-5 pull-right">Did not work? <a href="mailto:antono@loveit.tips?subject=Integration problem">contact us.</a></h3>
 
                 </ComponentWrap>
                 <Footer/>

@@ -3,7 +3,6 @@ import Navigation from "components/Navigation";
 import Profile from "components/user/Profile";
 import PaymentTransaction from "./PaymentTransaction";
 import ComponentWrap from "components/ComponentWrap";
-import Payment from "./Payment";
 import Footer from "../components/Footer";
 
 export default class PaymentPage extends Component {
@@ -13,9 +12,6 @@ export default class PaymentPage extends Component {
                 <Navigation/>
                 <ComponentWrap>
                     <Profile id={this.props.params.id}/>
-                </ComponentWrap>
-                <ComponentWrap>
-                    <Payment/>
                 </ComponentWrap>
                 <ComponentWrap>
                     <PaymentTransaction id={this.props.params.id}/>

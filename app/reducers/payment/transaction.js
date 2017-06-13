@@ -1,5 +1,4 @@
 import { PAYMENT_TRANSACTION_REQUESTED, PAYMENT_TRANSACTION_SUCCESS } from './transaction.actions';
-import { WITHDRAW_SUCCESS } from './withdraw.actions';
 
 const initialState = {};
 
@@ -15,8 +14,6 @@ export default function(transactions = initialState, { type, payload }) {
         case PAYMENT_TRANSACTION_REQUESTED:
             return transactions;
         case PAYMENT_TRANSACTION_SUCCESS:
-            return updateTransactions(transactions, payload);
-        case WITHDRAW_SUCCESS:
             return updateTransactions(transactions, payload);
         default:
             return transactions;
