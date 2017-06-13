@@ -6,18 +6,6 @@ const initialState = {
     currency: "USD"
 };
 
-const success = (state, payload) => {
-    return payload;
-};
-
-const pending = (state) => {
-    return state;
-};
-
-const rejected = (state) => {
-    return state;
-};
-
 function limitUpdate(state, { type }) {
     switch (type) {
         case INC_LIMIT: {
@@ -33,8 +21,8 @@ function limitUpdate(state, { type }) {
     }
 }
 
-const setReducer = promiseReducer(initialState, SET_LIMIT, pending, success, rejected);
-const getReducer = promiseReducer(initialState, GET_LIMIT, pending, success, rejected)
+const setReducer = promiseReducer(initialState, SET_LIMIT);
+const getReducer = promiseReducer(initialState, GET_LIMIT)
 
 export default (state, action) => {
     let afterSetReducers = setReducer(state, action);

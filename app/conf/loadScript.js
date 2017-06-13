@@ -33,3 +33,13 @@ export function loadQuantcast(callback) {
     var scpt = document.getElementsByTagName('script')[0];
     scpt.parentNode.insertBefore(elem, scpt);
 }
+
+export function loadStripe(callback) {
+    var elem = document.createElement('script');
+    elem.src = "https://checkout.stripe.com/checkout.js";
+    elem.async = true;
+    elem.type = "text/javascript";
+    elem.onload = callback;
+    var scpt = document.getElementsByTagName('script')[0];
+    scpt.parentNode.insertBefore(elem, scpt);
+}

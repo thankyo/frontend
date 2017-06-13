@@ -1,5 +1,7 @@
 import authService from "service/auth";
-import {paymentSuccess} from "./payment.actions";
+import {loadStripe} from 'conf/loadScript';
+
+export const STRIPE_LOADIN = "STRIPE_LOADING";
 
 export const STRIPE_PROCESSING_START = "STRIPE_PROCESSING_START";
 export const STRIPE_PROCESSING_SUCCESS = "STRIPE_PROCESSING_SUCCESS";
@@ -46,20 +48,20 @@ function processToken(charge, token) {
                 body: JSON.stringify(token.id)
             });
         authService.signAndFetch(req, dispatch).
-        then((success) => {
-            dispatch(processingSuccess(success));
-            dispatch(paymentSuccess());
-        }).catch((err) => dispatch(processingError(error)))
+        then((success) => dispatch(processingSuccess(success))).
+        catch((err) => dispatch(processingError(error)))
     }
 }
 
 
 export function connectChargeAccount(charge) {
     return (dispatch) => {
-        StripeButton.open({
-            key: 'pk_test_l8X6IIKp6dumjWWwqsuowf5p',
-            locale: 'auto',
-            token: (token) => dispatch(processToken(charge, token))
+        loadStripe(() => {
+            StripeButton.open({
+                key: 'pk_test_l8X6IIKp6dumjWWwqsuowf5p',
+                locale: 'auto',
+                token: (token) => dispatch(processToken(charge, token))
+            });
         });
     }
 }
