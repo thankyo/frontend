@@ -17,6 +17,7 @@ import RoadMap      from "landing/roadmap/RoadMapPage";
 import NotFound from "NotFound";
 import PaymentPage from "payment/PaymentPage";
 import LimitPage from 'payment/LimitPage';
+import ChargeAccountPage from 'payment/ChargeAccountPage';
 
 import Love from "thank/Love";
 import ResourcePage from "thank/resource/ResourcePage";
@@ -53,6 +54,7 @@ export default class MainApp extends Component {
                     <Route path="/:id/love" component={ Love }/>
                     <Route path="/:id/payment" component={ PaymentPage }/>
                     <Route path="/:id/payment/limit" component={ LimitPage }/>
+                    <Route path="/:id/payment/charge/account" component={ ChargeAccountPage }/>
                     <Route path="/:id/thank/resource" component={ ResourcePage }/>
                     <Route path="/:id/integration" component={ IntegrationPage }/>
 

@@ -54,13 +54,11 @@ function processToken(charge, token) {
 }
 
 
-export function process(charge) {
+export function connectChargeAccount(charge) {
     return (dispatch) => {
         StripeButton.open({
-            key: 'pk_test_wZ8YJXCwtdpqUHDBDM5p5QSj',
+            key: 'pk_test_l8X6IIKp6dumjWWwqsuowf5p',
             locale: 'auto',
-            currency: charge.currency,
-            amount: charge.amount * 100,
             token: (token) => dispatch(processToken(charge, token))
         });
     }

@@ -1,4 +1,5 @@
-import { SET_LIMIT, GET_LIMIT, DEC_LIMIT, INC_LIMIT, promiseReducer } from './limit.actions';
+import { SET_LIMIT, GET_LIMIT, DEC_LIMIT, INC_LIMIT } from './limit.actions';
+import { promiseReducer } from 'service/promiseStates';
 
 const initialState = {
     amount: 10,

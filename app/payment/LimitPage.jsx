@@ -8,7 +8,7 @@ const LimitPage = ({limit, setLimit, increase, decrease}) => {
         <div className="hero is-fullheight">
             <div className="hero-body">
                 <div className="container">
-                    <div className="columns is-vcentered has-text-centered is-loading">
+                    <div className="columns is-vcentered has-text-centered">
                         <div className="column is-4 is-offset-4">
                             <h3 className="title is-3">What is your monthly limit?</h3>
                             <h3 className="title is-3 is-success">

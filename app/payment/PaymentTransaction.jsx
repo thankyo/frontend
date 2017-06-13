@@ -3,7 +3,7 @@ import {connect}            from "react-redux";
 import {listTransactions}   from "reducers/payment/transaction.actions";
 import Date                 from "components/Date";
 import OperationIcon        from "components/icons/OperationIcon";
-import Money                from "./Money";
+import Money                from "components/Money";
 
 class PaymentTransaction extends Component {
     render() {
