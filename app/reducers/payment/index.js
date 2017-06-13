@@ -1,12 +1,12 @@
 import transaction from './transaction';
 import limit from './limit';
-import stripe from './stripe';
+import chargeAccount from './chargeAccount';
 import { combineReducers } from 'redux';
 
 export default combineReducers(
     {
         transaction,
-        stripe,
+        chargeAccount,
         limit
     }
 );

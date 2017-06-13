@@ -1,9 +1,19 @@
 import React from "react";
-import {connectChargeAccount} from "reducers/payment/stripe.actions";
+import {connectChargeAccount, getChargeAccount} from "reducers/payment/chargeAccount.actions";
 import {connect} from "react-redux";
 import Icon from "../components/Icon";
+import { Link } from 'react-router';
 
-const ChargeAccountPage = ({ updateChargeAccount }) => {
+function CreditCard(props) {
+    return (
+        <div className="box">
+            <div className="title is-2">{props.brand} ... {props.last4} </div>
+        </div>
+    )
+}
+
+
+const ChargeAccountPage = ({ chargeAccount, updateChargeAccount }) => {
     return (
         <div className="hero is-fullheight">
             <div className="hero-body">
@@ -11,6 +21,7 @@ const ChargeAccountPage = ({ updateChargeAccount }) => {
                     <div className="columns is-vcentered has-text-centered">
                         <div className="column is-4 is-offset-4">
                             <h3 className="title is-3">Connect your card</h3>
+                            <CreditCard {...chargeAccount}/>
                             <div className="title is-4 has-addons is-grouped">
                                 <a onClick={updateChargeAccount} className="button is-large is-success is-large"><Icon fa="cc-stripe"/><span>Pay with Card</span></a>
                             </div>
@@ -19,7 +30,7 @@ const ChargeAccountPage = ({ updateChargeAccount }) => {
                             </div>
                             <br/>
                             <h5 className="subtitle is-5"><b>All charges happen at the end of the month</b></h5>
-                            <a className="button is-info is-inverted is-large pull-right" onClick={() => skip()}>Skip</a>
+                            <Link className="button is-info is-inverted is-large pull-right" to="/my">Skip</Link>
                         </div>
                     </div>
                     <img className="pull-right" src="/images/stripe/powered_by_stripe.png"/>
@@ -35,6 +46,7 @@ const mapStateToProps = ({payment: { chargeAccount }}) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
+    dispatch(getChargeAccount());
     return {
         updateChargeAccount: () => {
             dispatch(connectChargeAccount());

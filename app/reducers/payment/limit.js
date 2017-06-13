@@ -21,8 +21,8 @@ function limitUpdate(state, { type }) {
     }
 }
 
-const setReducer = promiseReducer(initialState, SET_LIMIT);
-const getReducer = promiseReducer(initialState, GET_LIMIT)
+const setReducer = promiseReducer(SET_LIMIT, initialState);
+const getReducer = promiseReducer(GET_LIMIT, initialState);
 
 export default (state, action) => {
     let afterSetReducers = setReducer(state, action);
