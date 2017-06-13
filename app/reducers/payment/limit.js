@@ -1,12 +1,12 @@
 import { SET_LIMIT, GET_LIMIT, DEC_LIMIT, INC_LIMIT } from './limit.actions';
-import { promiseReducer } from 'service/promiseStates';
+import { promiseReducer, combineReducersInSingle } from 'service/promiseStates';
 
 const initialState = {
     amount: 10,
     currency: "USD"
 };
 
-function limitUpdate(state, { type }) {
+function limitUpdate(state = initialState, { type }) {
     switch (type) {
         case INC_LIMIT: {
             let amount = state.amount + 5;
@@ -21,11 +21,10 @@ function limitUpdate(state, { type }) {
     }
 }
 
-const setReducer = promiseReducer(SET_LIMIT, initialState);
-const getReducer = promiseReducer(GET_LIMIT, initialState);
+const reducer = combineReducersInSingle(
+    promiseReducer(SET_LIMIT, initialState),
+    promiseReducer(GET_LIMIT, initialState),
+    limitUpdate
+);
 
-export default (state, action) => {
-    let afterSetReducers = setReducer(state, action);
-    let afterGetReducers = getReducer(afterSetReducers, action);
-    return limitUpdate(afterGetReducers, action)
-}
+export default reducer;

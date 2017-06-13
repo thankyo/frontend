@@ -19,3 +19,13 @@ export function promiseReducer(event, initialState = {}, pending = (state, paylo
         }
     };
 };
+
+export function combineReducersInSingle() {
+    let reducers = Array.prototype.slice.call(arguments);
+    return function (state, action) {
+        return reducers.reduce(function (updState, reducer) {
+            let newState =  reducer(updState, action)
+            return newState;
+        }, state);
+    }
+}
