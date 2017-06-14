@@ -17,7 +17,7 @@ export default class Welcome extends Component {
                                 <img src={thumbnail} alt={this.props.text} width={180} height={180}/>
                             </div>
                             <br/>
-                            <Link to="my/integration" className="button is-info"><Icon fa="plug"/><span>Integration</span></Link>
+                            <h2 className="title is-2 hand-written">We are glad to have you</h2>
                         </div>
                         <div className="column is-3">
                         </div>

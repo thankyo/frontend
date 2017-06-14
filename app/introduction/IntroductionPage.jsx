@@ -4,81 +4,24 @@ import Welcome from "./Welcome";
 import Navigation from "components/Navigation";
 import authService from "service/auth";
 import Footer from "components/Footer";
-
-class YouAreHere extends Component {
-    render() {
-        return (
-            <section className="hero is-medium is-info hand-written">
-                <div className="hero-body">
-                    <div className="container has-text-centered">
-                        <div className="title is-1">
-                            You are here to change the world.
-                        </div>
-                    </div>
-                </div>
-            </section>
-        )
-    }
-}
-
-class WeAreHere extends Component {
-    render() {
-        return (
-            <section className="hero is-medium hand-written">
-                <div className="hero-body">
-                    <div className="container has-text-centered">
-                        <div className="title is-1">
-                            We are here to build <strong>tools</strong> you'll needed.
-                        </div>
-                    </div>
-                </div>
-            </section>
-        )
-    }
-}
-
-class StartingFrom extends Component {
-    render() {
-        return (
-            <section className="hero is-medium hand-written is-info">
-                <div className="hero-body">
-                    <div className="container has-text-centered">
-                        <div className="title is-1">
-                            Starting from microtip revolution.
-                        </div>
-                    </div>
-                </div>
-            </section>
-        )
-    }
-}
+import HowItWorks from "../landing/contributor/HowItWorks";
+import Payment from "../landing/contributor/Payment";
+import {Link} from 'react-router';
+import Icon from "../components/Icon";
 
 class WhatToStartWith extends Component {
     render() {
         return (
-            <section className="hero is-medium hand-written">
+            <section className="hero is-narrow hand-written">
                 <div className="hero-body">
                     <div className="container has-text-centered">
                         <div className="title is-1">
-                            Thank you for joining our alpha.<br/>
-                            We are working non stop to deliver.<br/>
+                            Supporter can <Link to="my/payment">set their monthly limit</Link> and start using it right away<br/>
+                            <Link to="my/payment" className="button is-large is-success is-inverted"><Icon fa="heart"/><span>Supporter</span></Link>
                         </div>
-                    </div>
-                </div>
-            </section>
-        )
-    }
-}
-
-class BePatient extends Component {
-    render() {
-        return (
-            <section className="hero is-medium hand-written is-info">
-                <div className="hero-body">
-                    <div className="container has-text-centered">
                         <div className="title is-1">
-                            Please be patient<br/>
-                            Thank you!
+                            Creator - we are ready to <Link to="my/integration">integrate</Link><br/>
+                            <Link to="my/integration" className="button is-large is-info is-inverted"><Icon fa="paint-brush"/><span>Creator</span></Link>
                         </div>
                     </div>
                 </div>
@@ -94,11 +37,9 @@ export default class IntroductionPage extends Component {
             <div>
                 <Navigation/>
                 <Welcome user={user}/>
-                <YouAreHere user={user}/>
-                <WeAreHere user={user}/>
-                <StartingFrom/>
+                <HowItWorks/>
+                <Payment/>
                 <WhatToStartWith/>
-                <BePatient/>
                 <Footer/>
             </div>
         );

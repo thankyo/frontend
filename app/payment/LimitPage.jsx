@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 const LimitPage = ({limit, setLimit, increase, decrease}) => {
     let cups = limit.amount / 5;
     return (
-        <div className="hero is-fullheight">
+        <div className="hero is-narrow">
             <div className="hero-body">
                 <div className="container">
                     <div className="columns is-vcentered has-text-centered">
@@ -25,7 +25,7 @@ const LimitPage = ({limit, setLimit, increase, decrease}) => {
                             <h5 className="subtitle is-5">we'll <b className="is-danger">never</b> charge you more, than
                                 that</h5>
                             <a className="button is-info is-inverted is-large pull-right"
-                               onClick={() => setLimit(limit)}>Next ></a>
+                               onClick={() => setLimit(limit)}>Save</a>
                         </div>
                     </div>
                 </div>
