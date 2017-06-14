@@ -20,7 +20,7 @@ function doConfigure() {
 
 export default function configure() {
     if (document.cookie.indexOf("cookieconsent_status=dismiss") === -1) {
-        loadScript("//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js", doConfigure);
-        loadCSS("//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css", "/css/cookieconsent.min.css");
+        loadScript("//cdn.jsdelivr.net/cookieconsent3/3.0.4/cookieconsent.min.js", doConfigure);
+        loadCSS("//cdn.jsdelivr.net/cookieconsent3/3.0.4/cookieconsent.min.css", "/css/cookieconsent.min.css");
     }
 }
