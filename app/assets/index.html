@@ -15,6 +15,138 @@
     <link async rel="shortcut icon" type="image/x-icon" href="/favicon.png"/>
     <link async rel="stylesheet" href="DIGEST(/app.css)"/>
 
+    <script>
+        (function() {
+            'use strict';
+
+            function loadAmatic(document, url) {
+                return new Promise(function (resolve, reject) {
+                    document.createElement("script");
+                    var font = document.createElement('style');
+                    font.type = 'text/css';
+                    font.innerHTML = '@font-face {\n        font-family: \'Amatic SC\';\n        font-style: normal;\n        font-weight: 400;\n            src: local(\'Amatic SC Regular\'), local(\'AmaticSC-Regular\'), ' + url + ' format(\'woff2\');\n            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;\n        }';
+                    font.onload = resolve;
+                    font.error = reject;
+                    document.getElementsByTagName('head')[0].appendChild(font);
+                });
+            }
+
+            function configure() {
+                if (location.host.startsWith('localhost')) {
+                    return loadAmatic(document, "url(/fonts/AmaticSC-Regular.woff2)");
+                } else {
+                    return loadAmatic(document, "url(https://fonts.gstatic.com/s/amaticsc/v9/DPPfSFKxRTXvae2bKDzp5JBw1xU1rKptJj_0jans920.woff2)");
+                }
+            }
+
+            configure();
+        })();
+    </script>
+
+    <script type="application/javascript">
+        (function() {
+            "use strict";
+
+            var _createClass = function () {
+                function defineProperties(target, props) {
+                    for (var i = 0; i < props.length; i++) {
+                        var descriptor = props[i];
+                        descriptor.enumerable = descriptor.enumerable || false;
+                        descriptor.configurable = true;
+                        if ("value" in descriptor) descriptor.writable = true;
+                        Object.defineProperty(target, descriptor.key, descriptor);
+                    }
+                }
+
+                return function (Constructor, protoProps, staticProps) {
+                    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+                    if (staticProps) defineProperties(Constructor, staticProps);
+                    return Constructor;
+                };
+            }();
+
+            function _classCallCheck(instance, Constructor) {
+                if (!(instance instanceof Constructor)) {
+                    throw new TypeError("Cannot call a class as a function");
+                }
+            }
+
+            var CSSConfiguration = function () {
+                function CSSConfiguration(remote, local, integrity) {
+                    _classCallCheck(this, CSSConfiguration);
+
+                    this.remote = remote;
+                    this.local = local;
+                    this.integrity = integrity;
+
+                    this.load = this.load.bind(this);
+                }
+
+                _createClass(CSSConfiguration, [{
+                    key: "load",
+                    value: function load(document) {
+                        var _this = this;
+
+                        var fillElement = function fillElement(document, href) {
+                            var css = document.createElement('link');
+                            css.rel = "stylesheet";
+                            css.type = "text/css";
+                            css.async = 1;
+                            css.href = href;
+                            css.integrity = _this.integrity;
+                            css.crossOrigin = "anonymous";
+                            return css;
+                        };
+
+                        var insert = function insert(document, elem) {
+                            var scpt = document.getElementsByTagName('script')[0];
+                            scpt.parentNode.insertBefore(elem, scpt);
+                        };
+
+                        var loadRemote = function loadRemote(document) {
+                            var css = fillElement(document, _this.remote);
+                            css.onerror = function () {
+                                loadLocal(document);
+                            };
+                            insert(document, css);
+                        };
+
+                        var loadLocal = function loadLocal(document) {
+                            var css = fillElement(document, _this.local);
+                            css.integrity = undefined;
+                            css.onerror = function () {
+                                console.error("WTF");
+                            };
+                            insert(document, css);
+                        };
+
+                        if (location.host.startsWith('localhost')) {
+                            loadLocal(document);
+                        } else {
+                            loadRemote(document);
+                        }
+                    }
+                }]);
+
+                return CSSConfiguration;
+            }();
+
+            function loadCSS(remote, local) {
+                new CSSConfiguration(remote, local).load(document);
+            }
+
+            function configure() {
+                var CSS_CONFIGURATIONS = [new CSSConfiguration("https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css", "/css/font-awesome.css", "sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="), new CSSConfiguration("https://cdn.jsdelivr.net/bulma/0.4.1/css/bulma.css", '/css/bulma.css', "sha256-PELQzdZwUQw2WSX3q4QLMSzDqQyWrmrXODp2bZy6JOU=")];
+
+                CSS_CONFIGURATIONS.forEach(function (conf) {
+                    return conf.load(document);
+                });
+            }
+
+            configure();
+        })()
+    </script>
+
     <script src="DIGEST(/app.js)"></script>
     <script>
         require('initialize');

@@ -6,8 +6,8 @@ import loadFonts from './loadFonts';
 import loadCSS from './loadCSS';
 
 export default function configure(history, store) {
-    loadFonts();
-    loadCSS();
+    // loadFonts();
+    // loadCSS();
     store.subscribe(feedback(store));
     analytics(history);
     // quantcast();
