@@ -7,7 +7,10 @@ exports.files = {
         }
     },
     javascripts: {
-        joinTo: 'app.js'
+        joinTo: {
+            'vendor.js': /^(?!app)/, // Files that are not in `app` dir.
+            'app.js': /^app/
+        }
     },
     stylesheets: {
         joinTo: 'app.css'
