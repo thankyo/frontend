@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {logout}     from 'reducers/auth.actions';
+import {logout}     from '../reducers/auth.actions';
 import Brand from './Brand';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import Icon from "components/Icon";
 
 class LogoutButton extends Component {
@@ -98,7 +98,10 @@ const mapStateToProps = ({menu}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        logout: () => dispatch(logout())
+        logout: () => {
+            browserHistory.push("/");
+            dispatch(logout())
+        }
     }
 };
 

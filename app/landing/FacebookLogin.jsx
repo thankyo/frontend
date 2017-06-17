@@ -1,21 +1,14 @@
 import React, { Component } from "react";
-import {connect} from "react-redux";
-import {login} from "reducers/auth.actions";
 
-class FacebookLogin extends Component {
+export default class FacebookLogin extends Component {
     render() {
+        let redirect = `http://${window.location.host}/auth/facebook`
+        let clientId = `1867505463531006`;
+        let url = `https://graph.facebook.com/v2.3/oauth/authorize?scope=email&client_id=${clientId}&redirect_uri=${redirect}&response_type=code`
         return (
-            <div onClick={this.props.loginFacebook}>
+            <div onClick={() => window.location = url}>
                 {this.props.children}
             </div>
         )
     }
 };
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        loginFacebook: () => dispatch(login("facebook"))
-    }
-};
-
-export default connect(undefined, mapDispatchToProps)(FacebookLogin);

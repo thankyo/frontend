@@ -1,75 +1,24 @@
-import { HOME } from "service/routes";
-
-export const LOGIN_REQUESTED = "LOGIN_REQUESTED";
-export const LOGIN_FAILED = "LOGIN_FAILED";
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+import 'whatwg-fetch';
+import authService from '../service/auth';
+import { typeEvent, dispatchPromise } from '../service/promiseStates';
 
 export const LOGOUT = "LOGOUT";
 
-import { browserHistory } from 'react-router';
-
-function loginRequested(payload) {
-    return {
-        type: LOGIN_REQUESTED,
-        payload
-    }
-}
-
-function loginSuccess(payload) {
-    return {
-        type: LOGIN_SUCCESS,
-        payload
-    }
-}
-
-function loginFailed(payload) {
-    return {
-        type: LOGIN_FAILED,
-        payload
-    }
-}
-
-function logoutEvent() {
-    return {
-        type: LOGOUT
-    };
-}
-
 export function logout() {
     return (dispatch) => {
-        dispatch(logoutEvent());
-        browserHistory.push("/");
+        dispatch(typeEvent(LOGOUT));
     };
 }
 
-function updateAuth(win, dispatch) {
-    try {
-        let token = win.document.documentElement.innerText;
-        win.close();
-        dispatch(loginSuccess({ token }));
-        browserHistory.push(HOME);
-    } catch (error) {
-        dispatch(loginFailed({ error }));
-    }
-}
 
-function waitForAuth(win, dispatch) {
-    setTimeout(checkAuthenticated, 500);
+export const FACEBOOK_LOGIN = "FACEBOOK_LOGIN";
 
-    function checkAuthenticated() {
-        let ur = win.location.href;
-        if (ur.indexOf('/auth/authenticate/facebook') != -1 && win.document.documentElement.innerText.length > 0) {
-            updateAuth(win, dispatch);
-        } else {
-            setTimeout(checkAuthenticated, 500);
-        }
-    }
-}
-
-export function login(provider) {
+export function authFacebook(search) {
     return (dispatch) => {
-        dispatch(loginRequested({ provider }));
-        let win = window.open(`/api/v1/auth/authenticate/${provider}`);
-        waitForAuth(win, dispatch);
+        if (!authService.isAuthenticated()) {
+            let url = `/api/v1/auth/authenticate/facebook${search}`;
+            let p = fetch(new Request(url)).then((res) => res.json());
+            dispatchPromise(p, FACEBOOK_LOGIN, dispatch);
+        }
     }
 }

@@ -1,29 +1,22 @@
-import { LOGIN_REQUESTED, LOGIN_SUCCESS, LOGIN_FAILED, LOGOUT } from "./auth.actions";
+import { LOGOUT, FACEBOOK_LOGIN } from "./auth.actions";
 import authService from 'service/auth';
+import { promiseReducer, combineReducersInSingle } from '../service/promiseStates';
+import { combineReducers } from 'redux';
 
-const anonymousState = {
-    isAuthenticated: false
-};
-
-const authenticatedState = {
-    isAuthenticated: true
-};
-
-export default function(auth = authService.isAuthenticated() ? authenticatedState : anonymousState, { type, payload}) {
+const authenticated = function(authenticated = authService.isAuthenticated(), { type, payload }) {
     switch (type) {
-        case LOGIN_REQUESTED:
-            authService.removeToken();
-            return Object.assign({}, auth, { isAuthenticated: false, error: payload.error });
-        case LOGIN_SUCCESS:
-            authService.setToken(payload.token);
-            return Object.assign({}, auth, { isAuthenticated: true, token: payload.token });
-        case LOGIN_FAILED:
-            authService.removeToken();
-            return Object.assign({}, auth, { isAuthenticated: false });
         case LOGOUT:
             authService.removeToken();
-            return anonymousState;
+            return false;
+        case `${FACEBOOK_LOGIN}.fulfilled`:
+            authService.setToken(payload);
+            return authService.isAuthenticated();
         default:
-            return auth;
+            return authenticated;
     }
-}
+};
+
+export default combineReducers({
+    token: promiseReducer(FACEBOOK_LOGIN, { token: authService.getToken() }),
+    authenticated
+});

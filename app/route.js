@@ -26,6 +26,8 @@ import authService from "service/auth";
 import IntroductionPage from "./introduction/IntroductionPage";
 import IntegrationPage from "./integration/IntegrationPage";
 
+import FacebookAuthPage from "./auth/FacebookAuthPage";
+
 import {HOME} from "service/routes";
 import {Helmet} from "react-helmet";
 
@@ -48,6 +50,8 @@ export default class MainApp extends Component {
                     <Route path="/creator" component={CreatorDefaultLandingPage}/>
                     <Route path="/creator/A" component={CreatorLandingPageA}/>
                     <Route path="/creator/B" component={CreatorLandingPageB}/>
+
+                    <Route path="/auth/facebook" components={FacebookAuthPage} />
 
                     <Route path="/roadmap" component={RoadMap}/>
 

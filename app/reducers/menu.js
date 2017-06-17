@@ -1,5 +1,5 @@
 import { LOCATION_CHANGE }  from 'react-router-redux';
-import { LOGIN_SUCCESS, LOGOUT }    from './auth.actions';
+import { FACEBOOK_LOGIN, LOGOUT }    from './auth.actions';
 import authService          from 'service/auth';
 
 function createMenu(text, pathname, icon) {
@@ -41,7 +41,7 @@ export default function(menu = authService.isAuthenticated() ? userMenu : anonym
     switch (type) {
         case LOCATION_CHANGE:
             return updateActive(menu, payload.pathname);
-        case LOGIN_SUCCESS:
+        case `${FACEBOOK_LOGIN}.fulfilled`:
             return userMenu;
         case LOGOUT:
             return anonymousMenu;

@@ -1,3 +1,7 @@
+export function typeEvent(type) {
+    return { type };
+}
+
 export function dispatchPromise(p, event, dispatch) {
     dispatch({ type: `${event}.pending`, payload: {}});
     p.
@@ -24,7 +28,7 @@ export function combineReducersInSingle() {
     let reducers = Array.prototype.slice.call(arguments);
     return function (state, action) {
         return reducers.reduce(function (updState, reducer) {
-            let newState =  reducer(updState, action)
+            let newState =  reducer(updState, action);
             return newState;
         }, state);
     }
