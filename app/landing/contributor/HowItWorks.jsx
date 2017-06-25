@@ -29,7 +29,7 @@ export default class HowItWorks extends Component {
                 <h4 className="title is-4">Whenever you <br/>
                     <a onClick={this.handleLoveItPress}>click it</a>
                 </h4>
-                <h4 className={clicked ? "title is-4" : "title is-4 is-line-through"}>you send 10 cents to the @uthot</h4>
+                <h4 className={clicked ? "title is-4" : "title is-4 is-line-through"}>you send 10 cents to the creator</h4>
                 <a className="title is-1 hand-written" onClick={this.handleLoveItPress}>{clicked ? "Awesome" : "Do it"}</a>
             </Wrap>
         )
