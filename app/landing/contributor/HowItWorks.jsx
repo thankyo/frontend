@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Wrap from "./Wrap";
+import Icon from "../../components/Icon";
 
 export default class HowItWorks extends Component {
     constructor() {
@@ -16,6 +17,9 @@ export default class HowItWorks extends Component {
 
     render() {
         let {clicked} = this.state;
+        let buttonUI = clicked
+          ? <span className="tag is-large is-success" ><Icon fa="heart" text="Love it"/></span>
+          : <span className="tag is-large is-warning" ><Icon fa="heart-o" text="Love it"/></span>;
         return (
             <Wrap className="is-info">
                 <h1 className="title is-1 hand-written">
@@ -23,7 +27,7 @@ export default class HowItWorks extends Component {
                 </h1>
                 <div className="title is-2">Here is the
                 <h2 className="title is-2 is-large">
-                    <a onClick={this.handleLoveItPress}><span className={clicked ? "tag is-large is-success" : 'tag is-large is-warning'}>Love it</span></a> button
+                    <a onClick={this.handleLoveItPress}>{buttonUI}</a> button
                 </h2>
                 </div>
                 <h4 className="title is-4">Whenever you <br/>

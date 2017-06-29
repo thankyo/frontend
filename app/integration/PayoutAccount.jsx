@@ -8,8 +8,7 @@ class PayoutAccount extends Component {
         return (
             <div className="content has-text-centered">
                 <a className="button is-large is-success" href="/api/v1/payment/payout/my/account">
-                    <Icon fa="cc-stripe"/>
-                    <span>Connect with Stripe</span>
+                    <Icon fa="cc-stripe" text="Connect with Stripe"/>
                 </a>
             </div>
         )

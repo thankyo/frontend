@@ -11,7 +11,7 @@ let AddOwnershipForm = ({handleSubmit}) => {
                     <Field name="uri" component="input" type="text" className="input control" placeholder="URL"/>
                     <div className="control">
                         <a className="button is-success" onClick={handleSubmit}>
-                            <Icon fa="check"/><span>Verify</span>
+                            <Icon fa="check" text="Verify"/>
                         </a>
                     </div>
                 </div>

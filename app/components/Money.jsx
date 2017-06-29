@@ -5,12 +5,7 @@ import Icon from "components/Icon";
 export default class Money extends Component {
     usd(amount) {
         return (
-            <span className="content">
-                <Icon fa="usd"/>
-                <span className="icon">
-                    {amount}
-                </span>
-            </span>
+            <Icon fa="usd" text={amount}/>
         )
     }
     currency(currency, amount) {

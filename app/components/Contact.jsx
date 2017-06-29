@@ -8,8 +8,7 @@ class EmailContact extends Component {
             <a className="tile is-parent is-4" href="mailto:antono@loveit.tips">
                 <article className="tile is-child notification is-success has-text-centered stat-tile">
                     <p className="title">
-                        <Icon fa="send"/>
-                        <span> Email</span>
+                        <Icon fa="send" text="Email"/>
                     </p>
                     <p className="subtitle">antono@loveit.tips</p>
                 </article>
@@ -24,8 +23,7 @@ class SkypeContact extends Component {
             <a className="tile is-parent is-4" href="skype:oparin.anton?call">
                 <article className="tile is-child notification is-success has-text-centered stat-tile">
                     <p className="title">
-                        <Icon fa="skype"/>
-                        <span> Skype</span>
+                        <Icon fa="skype" text="Skype"/>
                     </p>
                     <p className="subtitle">oparin.anton</p>
                 </article>
@@ -40,8 +38,7 @@ class CalendlyContact extends Component {
             <a className="tile is-parent is-4" href="https://calendly.com/antono">
                 <article className="tile is-child notification is-success has-text-centered stat-tile">
                     <p className="title">
-                        <Icon fa="calendar-check-o"/>
-                        <span> Calendar</span>
+                        <Icon fa="calendar-check-o" text="Calendar"/>
                     </p>
                     <p className="subtitle">Let's talk</p>
                 </article>

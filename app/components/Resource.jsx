@@ -18,7 +18,7 @@ export default class Resource extends Component {
     http(uri) {
         return (
             <div className="field has-addons">
-                <Icon fa="html5"/><span>{uri}</span>
+                <Icon fa="html5" text={uri}/>
             </div>
         )
     }

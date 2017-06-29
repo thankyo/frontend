@@ -6,10 +6,7 @@ export default class SmallThankIcon extends Component {
     render() {
         return (
             <span className="content">
-                <Icon fa="heart-o"/>
-                <span className="icon is-small">
-                    {this.props.balance}
-                </span>
+                <Icon fa="heart-o" text={this.props.balance}/>
             </span>
         )
     }

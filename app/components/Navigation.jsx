@@ -9,8 +9,7 @@ class LogoutButton extends Component {
     render() {
         return (
             <div className="button is-info is-outlined is-hovered" onClick={this.props.logout}>
-                <Icon fa="sign-out"/>
-                <span>Out</span>
+                <Icon fa="sign-out" text="Out"/>
             </div>
         )
     }

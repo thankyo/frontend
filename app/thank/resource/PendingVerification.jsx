@@ -5,32 +5,28 @@ class VerificationStatus extends Component {
     notVerified() {
         return (
             <b>
-                <Icon fa="ban"/>
-                <span>Unverified</span>
+                <Icon fa="ban" text="Unverified"/>
             </b>
         )
     }
     pending() {
         return (
             <b>
-                <Icon fa="play"/>
-                <span>Ready</span>
+                <Icon fa="play" text="Ready"/>
             </b>
         )
     }
     running() {
         return (
             <b>
-                <Icon fa="spinner fa-spin"/>
-                <span>Checking</span>
+                <Icon fa="spinner fa-spin" text="Checking"/>
             </b>
         )
     }
     verified() {
         return (
             <b>
-                <Icon fa="check"/>
-                <span>Verified</span>
+                <Icon fa="check" text="Verified"/>
             </b>
         )
     }
@@ -95,12 +91,12 @@ export default class PendingVerification extends Component {
                 <div className="field has-addons is-centered pull-right">
                     <p className="control">
                         <button onClick={this.props.confirm} className="button is-success">
-                            <Icon fa="check"/><span>Confirm</span>
+                            <Icon fa="check" text="Confirm"/>
                         </button>
                     </p>
                     <p className="control">
                         <button onClick={this.props.cancel} className="button is-danger is-centered">
-                            <Icon fa="remove"/><span>Cancel</span>
+                            <Icon fa="remove" text="Cancel"/>
                         </button>
                     </p>
                 </div>

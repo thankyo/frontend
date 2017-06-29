@@ -17,11 +17,11 @@ class WhatToStartWith extends Component {
                     <div className="container has-text-centered">
                         <div className="title is-1">
                             Supporter can <Link to="my/payment">set their monthly limit</Link> and start using it right away<br/>
-                            <Link to="my/payment" className="button is-large is-success is-inverted"><Icon fa="heart"/><span>Supporter</span></Link>
+                            <Link to="my/payment" className="button is-large is-success is-inverted"><Icon fa="heart" text="Supporter"/></Link>
                         </div>
                         <div className="title is-1">
                             Creator - we are ready to <Link to="my/integration">integrate</Link><br/>
-                            <Link to="my/integration" className="button is-large is-info is-inverted"><Icon fa="paint-brush"/><span>Creator</span></Link>
+                            <Link to="my/integration" className="button is-large is-info is-inverted"><Icon fa="paint-brush" text="Creator"/></Link>
                         </div>
                     </div>
                 </div>
