@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {logout}     from '../reducers/auth.actions';
 import Brand from './Brand';
 import { Link, browserHistory } from 'react-router';
-import Icon from "components/Icon";
+import Icon from "./Icon";
 
 class LogoutButton extends Component {
     render() {

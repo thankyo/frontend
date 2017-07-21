@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import Navigation from "components/Navigation";
-import Profile from "components/user/Profile";
+import Navigation from "../components/Navigation";
+import Profile from "../components/Profile";
 import Transaction from "./Transaction";
 import Url from "./Url";
-import ComponentWrap from "components/ComponentWrap";
+import ComponentWrap from "../components/ComponentWrap";
 
 
 export default class Love extends Component {

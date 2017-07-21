@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import Navigation from "components/Navigation";
-import Profile from "components/user/Profile";
-import PaymentTransaction from "./PaymentTransaction";
 import ComponentWrap from "components/ComponentWrap";
 import Footer from "../components/Footer";
 import LimitPage from './LimitPage';
