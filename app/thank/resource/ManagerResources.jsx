@@ -1,10 +1,9 @@
 import React, {Component} from "react";
-import ComponentWrap from "components/ComponentWrap";
 import Verification from "./Verification";
 import OwnedResources from "./OwnedResources";
 
 
-export default class Resource extends Component {
+export default class ManagedResources extends Component {
     render() {
         return (
             <div>

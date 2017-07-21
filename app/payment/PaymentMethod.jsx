@@ -1,5 +1,5 @@
 import React from "react";
-import {connectChargeAccount, getChargeAccount} from "reducers/payment/chargeAccount.actions";
+import {connectChargeAccount, getChargeAccount} from "../reducers/payment/chargeAccount.actions";
 import {connect} from "react-redux";
 import Icon from "../components/Icon";
 

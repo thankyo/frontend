@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import Navigation from "components/Navigation";
 import ComponentWrap from "components/ComponentWrap";
 import Footer from "../components/Footer";
-import LimitPage from './LimitPage';
-import ChargeAccountPage from './ChargeAccountPage';
+import PaymentLimit from './PaymentLimit';
+import PaymentMethod from './PaymentMethod';
 
 class PaymentHero extends Component {
     render() {
@@ -38,10 +38,10 @@ export default class PaymentPage extends Component {
                 <ComponentWrap>
                     <h3 className="title is-3">1. Specify your limit</h3>
                     <h3 className="subtitle is-5">We'll never charge you more than that</h3>
-                    <LimitPage/>
+                    <PaymentLimit/>
                     <hr/>
                     <h3 className="title is-3">2. Connect your card</h3>
-                    <ChargeAccountPage/>
+                    <PaymentMethod/>
                 </ComponentWrap>
                 <Footer/>
             </div>
