@@ -5,7 +5,6 @@ import Resource from "../thank/resource/ManagedResources";
 import JSIntegration from "./JSIntegration";
 import Footer from "../components/Footer";
 import PayoutAccount from './PayoutAccount'
-import Icon from "../components/Icon";
 
 class IntegrationHero extends Component {
     render() {
