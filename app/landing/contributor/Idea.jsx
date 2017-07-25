@@ -1,27 +1,32 @@
-import React, {Component} from "react";
-import Wrap from "./Wrap";
+import React, { Component } from "react";
 
 export default class Idea extends Component {
-    render() {
-        return (
-            <Wrap className="is-info">
-                <h1 className="title is-1 hand-written">Idea</h1>
-                <br/>
-                <div className="title is-3 has-text-left">
-                    <h3>For creativity to grow it needs fuel</h3>
-                    <h3 className="hand-written">Everybody does</h3>
-                    <br/>
-                    <h3>How much fuel does it need?</h3>
-                    <h3 className="hand-written">Not much</h3>
-                    <h3></h3>
-                    <br/>
-                    <h3>Just a dime, every time</h3>
-                    <h3 className="hand-written">Combined, this is enough to continue creating.</h3>
-                    <br/>
-                </div>
-                <br/>
-                <h1 className="title is-1 hand-written">Just a dime, every time</h1>
-            </Wrap>
-        )
-    }
+  render() {
+    return (
+      <section className="section is-fullheight hero is-info has-text-centered">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title">What</h1>
+            <br/>
+            <h2 className="subtitle">
+              <strong>Loveit</strong> is a <strong>micro donation platform</strong> that allows you to support creators everywhere with a single click.
+              <br/>
+            </h2>
+            <h2 className="subtitle">
+              <strong>Micro donation</strong> - is a small fixed amount, which is really <strong>just a dime</strong>.
+            </h2>
+            <h2 className="subtitle">
+              This is the <strong>easiest and most effective way to give back</strong> to creators all around the world.
+            </h2>
+            <h2 className="subtitle">
+              Basically it's <strong>like saying</strong>
+            </h2>
+            <h2 className="subtitle">
+              I love the thing you do, and I want to <strong>support you</strong>.
+            </h2>
+          </div>
+        </div>
+      </section>
+    )
+  }
 }
