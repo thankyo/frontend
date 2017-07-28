@@ -15,22 +15,17 @@ function createMenu(text, pathname, icon) {
 
 const anonymousMenu = {
   enabled: false,
-  items: [
-    // createMenu("Contributor", "/", "fa fa-image"),
-    // createMenu("Creator", "/creator", "fa fa-image"),
-  ]
+  items: [],
+  modes: []
 };
+
+const DASHBOARD = createMenu("Dashboard", "/user/my", "fa fa-plug");
+const PAYMENT = createMenu("Payment", "/user/my/payment", "fa fa-usd");
+const INTEGRATION = createMenu("Integration", "/user/my/integration", "fa fa-plug");
 
 const userMenu = {
   enabled: true,
-  items: [
-    // createMenu("Love", "/my/love", "fa fa-heart"),
-    // createMenu("Payment", "/my/payment", "fa fa-usd"),
-    // createMenu("Own", "/my/own", "fa fa-usd"),
-    createMenu("Dashboard", "/user/my", "fa fa-plug"),
-    createMenu("Payment", "/user/my/payment", "fa fa-plug"),
-    createMenu("Integration", "/user/my/integration", "fa fa-plug"),
-  ],
+  items: [DASHBOARD, PAYMENT],
   modes: [
     { name: "Supporter", icon: "fa fa-user-circle-o", isActive: true },
     { name: "Creator", icon: "fa fa-paint-brush" }
@@ -38,8 +33,9 @@ const userMenu = {
 };
 
 function updateActiveMode(state, name) {
+  let items = name === "Supporter" ? [DASHBOARD, PAYMENT] : [DASHBOARD, INTEGRATION, PAYMENT];
   let modes = state.modes.slice().map((mode) => Object.assign({}, mode, { isActive: mode.name === name }))
-  return Object.assign({}, state, { modes });
+  return Object.assign({}, state, { modes, items });
 }
 
 function updateActive(state, pathname) {
