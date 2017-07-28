@@ -30,7 +30,7 @@ class Loading extends Component {
     }
 }
 
-const FacebookAuthPage = ({ auth, authFacebook }) => {
+const FacebookAuthPage = ({ auth }) => {
     return (
         <div className="hero is-fullheight is-info">
             <div className="hero-body">
