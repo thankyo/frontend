@@ -28,7 +28,7 @@ function userFailed(payload) {
 export function fetch(id) {
     return (dispatch) => {
         dispatch(userRequested(id));
-        authService.signAndFetch(new Request(`/api/v1/user/${id}`), dispatch).
+        authService.signAndFetch(new Request(`/api/v1/user/profile/${id}`), dispatch).
         then(user => {
             dispatch(userSuccess(user));
             dispatch(userSuccess(Object.assign({}, user, {id})));

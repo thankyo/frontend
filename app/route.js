@@ -17,7 +17,7 @@ import PaymentPage from "payment/PaymentPage";
 
 import IntroductionPage from "./introduction/IntroductionPage";
 import IntegrationPage from "./integration/IntegrationPage";
-import UserDashboard from "./dashboard/user/UserDashboardPage";
+import UserDashboard from "./dashboard/UserDashboardPage";
 
 import FacebookAuthPage from "./auth/FacebookAuthPage";
 
@@ -48,14 +48,13 @@ export default class MainApp extends Component {
 
                     <Route path="/auth/facebook" components={FacebookAuthPage} />
 
-
-                    <Route path="/:id" components={UserDashboard}/>
-                    <Route path="/:id/payment" component={ PaymentPage }/>
-                    <Route path="/:id/integration" component={ IntegrationPage }/>
-
                     <Route path="/legal/terms" component={ TermsOfUse }/>
                     <Route path="/legal/privacy" component={ PrivacyPolicy }/>
                     <Route path="/roadmap" component={RoadMap}/>
+
+                    <Route path="/user/:id" components={UserDashboard}/>
+                    <Route path="/user/:id/payment" component={ PaymentPage }/>
+                    <Route path="/user/:id/integration" component={ IntegrationPage }/>
                     <Route path="*" component={NotFound}/>
                 </Router>
             </div>
