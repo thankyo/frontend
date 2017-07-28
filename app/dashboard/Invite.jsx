@@ -1,41 +1,47 @@
-import React, { Component } from "react";
+import React from "react";
+import { invite } from "../reducers/invite.actions";
 import Icon from "../components/Icon";
+import { connect } from 'react-redux';
+import { Field, reduxForm } from "redux-form";
 
-export default class Invite extends Component {
-  render() {
-    return (
-      <div className="has-text-centered notification is-info">
+let Invite = ({ handleSubmit }) => {
+  return (
+    <div className="has-text-centered notification is-info">
+      <form onSubmit={ handleSubmit }>
         <h1 className="title">Who you are ready to support?</h1>
         <h2 className="subtitle">Put a link or email of the creator and we'll contact him</h2>
         <div className="field has-addons">
           <p className="control is-expanded has-icons-left">
-            <input className="input" type="text" placeholder="link"/>
+            <Field name="linkOrEmail" component="input" type="text" className="input" placeholder="link or email"/>
             <span className="icon is-small is-left">
               <i className="fa fa-globe"></i>
             </span>
           </p>
           <p className="control has-icon-left">
-            <a className="button is-info is-inverted is-outlined is-hovered">
+            <button className="button is-info is-inverted is-outlined is-hovered" type="submit">
               <Icon fa="hand-spock-o" text="Invite"/>
-            </a>
+            </button>
           </p>
         </div>
-        {/*<button className="button is-info is-inverted is-outlined is-hovered">Invite</button>*/}
-        {/*<div className="field has-addons">*/}
-        {/*<div className="control has-icons-left has-icons-right">*/}
-        {/*<input className="input" type="email" placeholder="Email"/>*/}
-        {/*<span className="icon is-small is-left">*/}
-        {/*<i className="fa fa-envelope"></i>*/}
-        {/*</span>*/}
-        {/*<span className="icon is-small is-right">*/}
-        {/*<i className="fa fa-check"></i>*/}
-        {/*</span>*/}
-        {/*</div>*/}
-        {/*<div className="control">*/}
-        {/*<button className="button is-info">Invite</button>*/}
-        {/*</div>*/}
-        {/*</div>*/}
-      </div>
-    );
+      </form>
+    </div>
+  )
+};
+
+Invite = reduxForm({
+  form: 'invite'
+})(Invite);
+
+const InviteToReducer = ({ invite }) => {
+  return (<Invite onSubmit={ invite }/>)
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    invite: (linkOrEmail) => {
+      dispatch(invite(linkOrEmail));
+    }
   }
-}
+};
+
+export default connect(undefined, mapDispatchToProps)(InviteToReducer);

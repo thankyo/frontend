@@ -4,7 +4,7 @@ export function typeEvent(type) {
 
 export function dispatchPromise(p, event, dispatch) {
   dispatch({ type: `${event}.pending`, payload: {} });
-  p.then((res) => {
+  return p.then((res) => {
     dispatch({ type: `${event}.fulfilled`, payload: res });
     return res;
   }).catch((err) => {
