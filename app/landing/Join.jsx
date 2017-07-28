@@ -4,7 +4,7 @@ import FacebookLogin from "landing/FacebookLogin";
 export default class Join extends Component {
   render() {
     let style = {
-      backgroundImage: `url('/images/landing/contributor/default/Hero.jpg')`,
+      backgroundImage: `url('/images/landing/${this.props.image}')`,
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
     };
@@ -17,7 +17,7 @@ export default class Join extends Component {
                   </h1>
                   <h2 className="subtitle is-3">{this.props.subtitle}</h2>
                   <FacebookLogin>
-                      <div className="button is-inverted is-outlined is-hovered is-large">
+                      <div className="button is-info is-inverted is-outlined is-hovered is-large">
                           <span>{this.props.button}</span>
                       </div>
                   </FacebookLogin>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import Hero from "landing/Hero";
-import Join from "landing/Join";
+import Hero from "../../Hero";
+import Join from "../../Join";
 import Proofs from "landing/Proofs";
 import NotReadyToJoin from "landing/NotReadyToJoin";
 import Footer from "components/Footer";
@@ -33,14 +33,14 @@ export default class Contributor extends Component {
         <HowItWorks/>
         <Metaphor/>
         <Join
-          image="contributor/default/Hero.jpg"
+          image="contributor/default/newHero.jpg"
           title="Support creativity"
           subtitle="Just a dime, every time"
           button="Join"
         />
         <SkepticZone/>
         <Join
-          image="contributor/default/Hero.jpg"
+          image="contributor/default/oldHero.jpg"
           title="Support creativity"
           subtitle="Just a dime, every time"
           button="Join"

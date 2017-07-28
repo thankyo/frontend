@@ -16,6 +16,7 @@ export default class SkepticZone extends Component {
                 <h2 className="subtitle">
                   <strong>Bank level security.</strong><br/>
                   We do not store your Card information inside our system.
+                  We use market standard processing systems that prevent any of your information to be harmed.
                 </h2>
               </div>
               <div className="column is-one-third">
@@ -23,9 +24,9 @@ export default class SkepticZone extends Component {
                 <br/>
                 <br/>
                 <h2 className="subtitle">
-                  We are <strong>more effective than PayPal or Stripe</strong>.<br/>
+                  We are <strong>more effective</strong> on small donations <strong>than PayPal or Stripe</strong>.
                   Every donation lesser than 2$ turns into 18% commission,
-                  combining into a monthly donations, allows us to lower this commission.
+                  combining into a monthly donations, allows us to lower this to only 10%.
                   <br/>
                 </h2>
               </div>
@@ -34,8 +35,9 @@ export default class SkepticZone extends Component {
                 <br/>
                 <br/>
                 <h2 className="subtitle">
-                  <strong>You are in full control of how much you spend</strong>.<br/>
+                  You are in <strong>full control of how much you spend</strong>.
                   Set a limit for a month and we won't charge you more, than that.
+                  All your donations will be transferred to the next month, until you rich your limit.
                 </h2>
               </div>
             </div>
@@ -48,7 +50,7 @@ export default class SkepticZone extends Component {
                 <br/>
                 <br/>
                 <h2 className="subtitle">
-                  <strong>No long term obligations.</strong><br/>
+                  <strong>No long term obligations. </strong>
                   Long term support is a great thing, but it's not for everyone, so we don't force you
                   to be in relationship, that you are not sure you need.
                 </h2>
@@ -58,8 +60,8 @@ export default class SkepticZone extends Component {
                 <br/>
                 <br/>
                 <h2 className="subtitle">
-                  <strong>Creativity freedom.</strong><br/>
-                  Creators are free to do what they want, we pose no restrictions on them.<br/>
+                  <strong>Creativity freedom. </strong>
+                  Creators are free to do what they want, we pose no restrictions on how they express themselves.<br/>
                 </h2>
               </div>
               <div className="column is-one-third">
@@ -67,8 +69,7 @@ export default class SkepticZone extends Component {
                 <br/>
                 <br/>
                 <h2 className="subtitle">
-                  We keep our fees low.<br/>
-                  <strong>90% of the tip goes directly to the creator</strong>, we'll be lowering this down in the future<br/>
+                  We keep our fees low. <strong>90% of the tip goes directly to the creator</strong>, we'll be lowering this down in the future<br/>
                 </h2>
               </div>
             </div>
