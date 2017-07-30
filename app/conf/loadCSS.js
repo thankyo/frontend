@@ -60,9 +60,8 @@ export default function configure(){
             "sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
         ),
         new CSSConfiguration(
-            "https://cdn.jsdelivr.net/bulma/0.4.1/css/bulma.css",
-            '/css/bulma.css',
-            "sha256-PELQzdZwUQw2WSX3q4QLMSzDqQyWrmrXODp2bZy6JOU="
+            "https://cdn.jsdelivr.net/npm/bulma@0.4.4/css/bulma.css",
+            '/css/bulma.css'
         )
     ];
 

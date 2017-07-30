@@ -4,11 +4,11 @@ import {authFacebook} from "../reducers/auth.actions.js";
 import { Link, browserHistory } from 'react-router';
 
 function Authenticated() {
-    setTimeout(() => browserHistory.push("/my"), 1000);
+    setTimeout(() => browserHistory.push("/supporter/my"), 1000);
     return (
         <div>
             <h1 className="title is-1">All done.</h1>
-            <div className=" is-3">Please <Link to="/my" className="is-link">click here</Link> if you are not redirected within a few seconds</div>
+            <div className=" is-3">Please <Link to="/supporter/my" className="is-link">click here</Link> if you are not redirected within a few seconds</div>
         </div>
     )
 }
@@ -30,8 +30,7 @@ class Loading extends Component {
     }
 }
 
-const FacebookAuthPage = ({ auth, authFacebook }) => {
-
+const FacebookAuthPage = ({ auth }) => {
     return (
         <div className="hero is-fullheight is-info">
             <div className="hero-body">

@@ -13,7 +13,7 @@ let Verification = ({ verification, verify, cancel, confirm }) => {
 };
 
 const mapStateToProps = ({ thank: { resource }}, { id }) => {
-    let { verification } = resource[id];
+    let { verification } = resource[id] ? resource[id] : {};
     return { verification };
 };
 

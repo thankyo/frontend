@@ -9,7 +9,7 @@ import Simple from "../Simple";
 import Join from "../../Join";
 
 import NotReadyToJoin from 'landing/NotReadyToJoin';
-import Footer from "components/Footer";
+import Footer from "../../../navigation/Footer";
 
 export default class Contributor extends Component {
     render() {

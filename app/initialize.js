@@ -8,7 +8,7 @@ import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 
 import reducers from "reducers";
-import MainApp from "route";
+import MainApp from "./navigation/route";
 
 import conf from "conf";
 

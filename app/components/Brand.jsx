@@ -6,7 +6,7 @@ export default class Brand extends Component {
         return (
             <div className="nav-left">
                 <div className="nav-item is-brand">
-                    <Icon fa="heart" text="Loveit"/>
+                    <Icon fa="heart" text=" Loveit"/>
                 </div>
             </div>
         )

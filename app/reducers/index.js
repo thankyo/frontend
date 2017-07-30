@@ -1,4 +1,4 @@
-import menu from "./menu";
+import menu from "../navigation/menu";
 import user from "./user";
 import auth from "./auth";
 import payment from './payment';

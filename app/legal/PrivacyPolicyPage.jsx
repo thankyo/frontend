@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import Navigation from 'components/Navigation';
-import Footer from 'components/Footer';
+import Navigation from '../navigation/Navigation';
+import Footer from '../navigation/Footer';
 
 import PrivacyPolicy from './PrivacyPolicy';
 

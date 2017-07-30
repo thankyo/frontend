@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {get} from "../../reducers/thank/resource.actions";
-import Resource from "components/ManagedResources";
+import Resource from "../../components/Resource";
 import Icon from "../../components/Icon";
 
 class OwnedResource extends Component {

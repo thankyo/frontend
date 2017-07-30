@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import Welcome from "./Welcome";
 
-import Navigation from "components/Navigation";
-import authService from "service/auth";
-import Footer from "components/Footer";
+import Navigation from "../navigation/Navigation";
+import authService from "../service/auth";
+import Footer from "../navigation/Footer";
 import HowItWorks from "../landing/contributor/HowItWorks";
 import Payment from "../landing/contributor/Payment";
 import {Link} from 'react-router';
