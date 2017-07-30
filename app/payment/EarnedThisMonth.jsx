@@ -5,7 +5,7 @@ import { thisMonthEarnings } from "../reducers/thank/earning.actions";
 function EarnedThisMonth({ total }) {
   return (
     <div className="has-text-centered">
-      <h3 className="title is-4">This month earnings</h3>
+      <h3 className="title is-6">This month earnings</h3>
       <h4 className="subtitle">{total}</h4>
     </div>
   );

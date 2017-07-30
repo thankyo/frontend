@@ -14,9 +14,8 @@ export default class HowItWorks extends Component {
                 <br/>
                 <br/>
                 <h2 className="subtitle">
-                  Creators put <strong>Loveit button</strong> on their page<br/>
-                  On every piece he creates.<br/>
-                  It can be a song, poem, photo, blog, basically anything on the web can have this button.
+                  <strong>Creators put Loveit button on every piece they create. </strong>
+                  <strong>It can</strong> be a song, poem, photo, blog, basically <strong>anything</strong> on the web can have this button.
                 </h2>
               </div>
               <div className="column is-one-third">
@@ -24,7 +23,7 @@ export default class HowItWorks extends Component {
                 <br/>
                 <br/>
                 <h2 className="subtitle">
-                  Whenever <strong>you click it</strong>, we register your tip.<br/>
+                  Whenever <strong>you click it</strong>, we register your tip.
                   We track your support throughout the month and charge you total at the end of it.
                   <br/>
                 </h2>

@@ -8,7 +8,7 @@ let Invite = ({ handleSubmit }) => {
   return (
     <div className="has-text-centered notification is-info">
       <form onSubmit={ handleSubmit }>
-        <h1 className="title">Who you are ready to support?</h1>
+        <h1 className="title is-4">Who you are ready to support?</h1>
         <h2 className="subtitle">Put a link or email of the creator and we'll contact him</h2>
         <div className="field has-addons">
           <p className="control is-expanded has-icons-left">
