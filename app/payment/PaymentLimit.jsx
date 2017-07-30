@@ -37,18 +37,20 @@ class LimitPage extends Component {
     let cups = amount / 5;
     return (
       <div className="has-text-centered">
-          <h3 className="title is-4">What is your monthly limit?</h3>
-          <h3 className="title is-4 is-success">
+          <h6 className="title is-6">What is your monthly limit?</h6>
+          <h5 className="title is-6 is-success">
               <span><b>{cups}</b></span>
-              <span> cup{cups > 1 && "s"} of coffee</span></h3>
+              <span> cup{cups > 1 && "s"} of coffee</span>
+          </h5>
           <h5 className="subtitle is-6 is-success">
-              <span className="is-small">{amount}.0 {currency}</span></h5>
-          <div className="title is-5 has-addons is-grouped">
+              <span className="is-small">{amount}.0 {currency}</span>
+          </h5>
+          <h6 className="title is-6 has-addons is-grouped">
               <a onClick={this.increase}
                  className="button is-large is-success is-inverted"><span>+ more</span></a>
               <a onClick={this.decrease} className="button is-large is-danger is-inverted"
                  disabled={cups == 1}><span>- less</span></a>
-          </div>
+          </h6>
           <h5 className="subtitle is-6">we'll <b className="is-danger">never</b> charge you more, than that</h5>
       </div>
     );

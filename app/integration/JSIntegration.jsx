@@ -14,11 +14,11 @@ class Example extends Component {
     return (
       <div className="columns">
         <div className="column is-half">
-          <span className="title is-error">Something wrong</span><br/>
+          <span className="title is-4 is-error">Something wrong</span><br/>
           <iframe src={unverifiedSrc} title={title} height={height} width={width} style={style}></iframe>
         </div>
         <div className="column is-half">
-          <span className="title is-success">Everything is right</span><br/>
+          <span className="title is-4 is-success">Everything is right</span><br/>
           <iframe src={src} title={title} height={height} width={width} style={style}></iframe>
         </div>
       </div>
