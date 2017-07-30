@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import Navigation from "components/Navigation";
-import ComponentWrap from "components/ComponentWrap";
+import Navigation from "../navigation/Navigation";
+import ComponentWrap from "../components/ComponentWrap";
 import Resource from "../thank/resource/ManagedResources";
 import JSIntegration from "./JSIntegration";
-import Footer from "../components/Footer";
+import Footer from "../navigation/Footer";
 import PayoutAccount from './PayoutAccount'
 
 class IntegrationHero extends Component {

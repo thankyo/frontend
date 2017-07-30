@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navigation from "../components/Navigation";
+import Navigation from "../navigation/Navigation";
 import ComponentWrap from "../components/ComponentWrap";
 import Invite from "./Invite";
 import Profile from "../components/Profile";

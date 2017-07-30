@@ -4,7 +4,7 @@ import Hero from "landing/Hero";
 import What from 'landing/creator/What';
 import Proofs from 'landing/Proofs';
 import NotReadyToJoin from 'landing/NotReadyToJoin';
-import Footer from "components/Footer";
+import Footer from "../../../navigation/Footer";
 
 export default class CreatorPage extends Component {
     render() {

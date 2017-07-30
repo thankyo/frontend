@@ -1,52 +1,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logout } from '../reducers/auth.actions';
-import { setActive } from '../reducers/menu';
-import Brand from './Brand';
+import { setMode } from './menu';
+import Brand from '../components/Brand';
 import { browserHistory, Link } from 'react-router';
-import Icon from "./Icon";
+import Icon from "../components/Icon";
 
-class LogoutButton extends Component {
-  render() {
-    return (
-      <div className="button is-info is-outlined is-hovered" onClick={this.props.logout}>
-        <Icon fa="sign-out" text="Out"/>
-      </div>
-    )
-  }
-}
-
-class AnonymousNavigation extends Component {
-  render() {
-    return (
-      <nav className="nav is-dark has-shadow">
-        <div className="container">
-          <Brand/>
-          <div className="nav-center">
-            <div id="nav-menu" className="nav-right nav-menu">
-              {this.props.menu.items.map((item) => <NavigationItem key={item.pathname} item={item}/>)}
-            </div>
-          </div>
-        </div>
-      </nav>
-    )
-  }
-};
-
-
-class NavigationItem extends Component {
-  render() {
-    return (
-      <Link to={this.props.item.pathname} className={this.props.item.active ? "nav-item is-active" : "nav-item"}>
-        <span>{this.props.item.text}</span>
-      </Link>
-    );
-  }
-}
-
-function ModeItem({ name, icon, isActive, setActive}) {
+function LogoutButton({ logout }) {
   return (
-    <div className="control" onClick={() => !isActive && setActive(name)}>
+    <div className="button is-info is-outlined is-hovered" onClick={logout}>
+      <Icon fa="sign-out" text="Out"/>
+    </div>
+  )
+}
+
+function NavigationItem({ item: { text, active, pathname } }) {
+  return (
+    <Link to={pathname} className={active ? "nav-item is-active" : "nav-item"}>
+      <span>{text}</span>
+    </Link>
+  );
+}
+
+function ModeItem({ name, icon, isActive, setMode }) {
+  return (
+    <div className="control" onClick={() => !isActive && setMode(name)}>
       <div className={isActive ? "button is-active" : "button"}>
         <span className="icon">
             <i className={icon}></i>
@@ -57,7 +35,7 @@ function ModeItem({ name, icon, isActive, setActive}) {
   )
 }
 
-class UserNavigation extends Component {
+class Navigation extends Component {
   constructor(props) {
     super(props);
 
@@ -96,8 +74,8 @@ class UserNavigation extends Component {
               <div className="field has-addons">
                 {
                   modes.map(mode => {
-                    return (<ModeItem key={mode.name} {... mode} setActive={setMode}/>);
-                    })
+                    return (<ModeItem key={mode.name} {...mode} setMode={setMode}/>);
+                  })
                 }
               </div>
             </div>
@@ -113,14 +91,6 @@ class UserNavigation extends Component {
   }
 }
 
-const Navigation = ({ menu, logout, setMode }) => {
-  if (!menu.enabled) {
-    return <AnonymousNavigation menu={menu}/>;
-  } else {
-    return <UserNavigation menu={menu} logout={logout} setMode={setMode}/>;
-  }
-};
-
 const mapStateToProps = ({ menu }) => {
   return {
     menu
@@ -134,7 +104,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(logout())
     },
     setMode: (name) => {
-      dispatch(setActive(name))
+      dispatch(setMode(name))
     }
   }
 };

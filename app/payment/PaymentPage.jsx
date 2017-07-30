@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Navigation from "../components/Navigation";
+import Navigation from "../navigation/Navigation";
 import ComponentWrap from "../components/ComponentWrap";
-import Footer from "../components/Footer";
+import Footer from "../navigation/Footer";
 import PaymentLimit from './PaymentLimit';
 import PaymentMethod from './PaymentMethod';
 
