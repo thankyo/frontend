@@ -16,7 +16,7 @@ import NotFound from "./NotFound";
 import PaymentPage from "../payment/PaymentPage";
 
 import IntegrationPage from "../integration/IntegrationPage";
-import UserDashboard from "../dashboard/UserDashboardPage";
+import SupporterDashboard from "../dashboard/UserDashboardPage";
 import CreatorDashboard from "../dashboard/CreatorDashboardPage";
 
 import FacebookAuthPage from "../auth/FacebookAuthPage";
@@ -25,10 +25,11 @@ import authService from "../service/auth";
 import {browserHistory, Route, Router} from "react-router";
 import {Helmet} from "react-helmet";
 
-const HOME = "/user/my";
+const HOME = "/supporter/my";
 
-if (authService.isAuthenticated() && window.location.pathname === "/")
-    browserHistory.push(HOME);
+if (authService.isAuthenticated() && window.location.pathname === "/") {
+  browserHistory.push(HOME);
+}
 
 export default class MainApp extends Component {
     render() {
@@ -56,8 +57,8 @@ export default class MainApp extends Component {
                     <Route path="/creator/:id" components={CreatorDashboard}/>
                     <Route path="/creator/:id/integration" component={ IntegrationPage }/>
 
-                    <Route path="/user/:id" components={UserDashboard}/>
-                    <Route path="/user/:id/payment" component={ PaymentPage }/>
+                    <Route path="/supporter/:id" components={SupporterDashboard}/>
+                    <Route path="/supporter/:id/payment" component={ PaymentPage }/>
 
                     <Route path="*" component={NotFound}/>
                 </Router>

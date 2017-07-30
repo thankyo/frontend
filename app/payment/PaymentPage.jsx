@@ -49,7 +49,15 @@ export default class PaymentPage extends Component {
           </div>
           <hr/>
           <h3 className="title is-3">2. Connect your card</h3>
-          <PaymentMethod/>
+          <div className="hero is-narrow">
+            <div className="hero-body">
+              <div className="columns is-vcentered has-text-centered">
+                <div className="column is-4 is-offset-4">
+                  <PaymentMethod/>
+                </div>
+              </div>
+            </div>
+          </div>
         </ComponentWrap>
         <Footer/>
       </div>

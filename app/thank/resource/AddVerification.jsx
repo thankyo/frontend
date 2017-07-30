@@ -2,7 +2,7 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 import Icon from "../../components/Icon";
 
-let AddOwnershipForm = ({handleSubmit}) => {
+let AddVerification = ({handleSubmit}) => {
     return (
         <div className="content">
             <h4 className="title is-4">Verify</h4>
@@ -20,8 +20,8 @@ let AddOwnershipForm = ({handleSubmit}) => {
     )
 };
 
-AddOwnershipForm = reduxForm({
+AddVerification = reduxForm({
     form: 'verifyResource'
-})(AddOwnershipForm);
+})(AddVerification);
 
-export default AddOwnershipForm;
+export default AddVerification;

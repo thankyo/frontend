@@ -19,7 +19,7 @@ class VerificationStatus extends Component {
         break;
     }
     return (
-      <div className="container has-text-centered">
+      <div className="has-text-centered">
           <b>{icon}</b>
       </div>
     )

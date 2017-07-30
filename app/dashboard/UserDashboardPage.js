@@ -5,6 +5,8 @@ import Invite from "./Invite";
 import Profile from "../components/Profile";
 import ThankTransactions from "../thank/Transaction";
 import PaymentLimit from "../payment/PaymentLimit";
+import PaymentMethod from "../payment/PaymentMethod";
+
 
 export default class UserDashboardPage extends Component {
   render() {
@@ -27,6 +29,7 @@ export default class UserDashboardPage extends Component {
                   <PaymentLimit/>
                 </div>
               </article>
+              <PaymentMethod/>
             </div>
           </div>
         </ComponentWrap>

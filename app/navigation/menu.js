@@ -20,8 +20,8 @@ function createMenu(text, pathname, icon) {
 const CREATOR_DASHBOARD = createMenu("Dashboard", "/creator/my", "fa fa-plug");
 const INTEGRATION = createMenu("Integration", "/creator/my/integration", "fa fa-plug");
 
-const USER_DASHBOARD = createMenu("Dashboard", "/user/my", "fa fa-plug");
-const PAYMENT = createMenu("Payment", "/user/my/payment", "fa fa-usd");
+const USER_DASHBOARD = createMenu("Dashboard", "/supporter/my", "fa fa-plug");
+const PAYMENT = createMenu("Payment", "/supporter/my/payment", "fa fa-usd");
 
 const anonymousMode = {
   home: "/",
@@ -30,17 +30,17 @@ const anonymousMode = {
 };
 
 const supporterMode = {
-  home: "/user/my",
-  items: [USER_DASHBOARD, PAYMENT],
+  home: "/supporter/my",
+  items: [],
   modes: [
-    { name: "Supporter", icon: "fa fa-user-circle-o", isActive: true},
-    { name: "Creator", icon: "fa fa-paint-brush", isActive: false }
+    { name: SUPPORTER_MODE, icon: "fa fa-user-circle-o", isActive: true},
+    { name: CREATOR_MODE, icon: "fa fa-paint-brush", isActive: false }
   ]
 };
 
 const creatorMode = {
   home: "/creator/my",
-  items: [CREATOR_DASHBOARD, INTEGRATION],
+  items: [],
   modes: [
     { name: SUPPORTER_MODE, icon: "fa fa-user-circle-o", isActive: false},
     { name: CREATOR_MODE, icon: "fa fa-paint-brush", isActive: true }
@@ -74,7 +74,18 @@ export function setMode(name) {
   }
 }
 
-export default function (menu = authService.isAuthenticated() ? supporterMode : anonymousMode, { type, payload }) {
+function initialize() {
+  if (authService.isAuthenticated()) {
+    if (window.location.pathname.startsWith("/supporter"))
+      return supporterMode;
+    else
+      return creatorMode;
+  } else {
+    return anonymousMode;
+  }
+}
+
+export default function (menu = initialize(), { type, payload }) {
   switch (type) {
     case LOCATION_CHANGE:
       return updateActive(menu, payload.pathname);
