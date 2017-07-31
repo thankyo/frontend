@@ -1,4 +1,4 @@
-import { loadQuantcast } from "./loadScript";
+import { loadScriptAsPromise } from "./loadScript";
 
 export default function configure() {
     window._qevents = window._qevents || [];
@@ -6,5 +6,6 @@ export default function configure() {
         qacct:"p-7vP8g9XSPrnMP"
     });
 
-    loadQuantcast(() => console.log("Loaded Quantcast"));
+    let src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+    return loadScriptAsPromise(src);
 }

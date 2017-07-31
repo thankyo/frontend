@@ -1,5 +1,5 @@
 import authService from "../../service/auth";
-import { loadStripe } from '../../conf/loadScript';
+import { loadScriptAsPromise } from '../../conf/loadScript';
 import { dispatchPromise } from '../../service/promiseStates';
 
 export const CHARGE_ACCOUNT_GET = "CHARGE_ACCOUNT_GET";
@@ -40,12 +40,13 @@ export function getChargeAccount() {
 
 export function connectChargeAccount() {
   return (dispatch) => {
-    loadStripe(() => {
-      StripeButton.open({
-        key: 'pk_test_l8X6IIKp6dumjWWwqsuowf5p',
-        locale: 'auto',
-        token: (token) => dispatch(processToken(token))
-      });
+    loadScriptAsPromise("https://checkout.stripe.com/checkout.js").
+      then(() => {
+        StripeButton.open({
+          key: 'pk_test_l8X6IIKp6dumjWWwqsuowf5p',
+          locale: 'auto',
+          token: (token) => dispatch(processToken(token))
+        });
     });
   }
 }
