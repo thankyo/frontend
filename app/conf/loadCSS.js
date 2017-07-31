@@ -23,29 +23,33 @@ class CSSConfiguration {
             scpt.parentNode.insertBefore(elem, scpt);
         };
 
-        const loadRemote = (document) => {
+        const loadRemote = (document, onload, onerror) => {
             let css = fillElement(document, this.remote);
-            css.onerror = () => { loadLocal(document) }
+            css.onload = onload;
+            css.onerror = () => { loadLocal(document, onload, onerror) };
             insert(document, css);
         };
 
-        const loadLocal = (document) => {
+        const loadLocal = (document, onload, onerror) => {
             let css = fillElement(document, this.local);
             css.integrity = undefined;
-            css.onerror = () => { console.error("WTF"); };
+            css.onload = onload;
+            css.onerror = onerror;
             insert(document, css);
         };
 
-        if (location.host.startsWith('localhost')) {
-            loadLocal(document);
-        } else {
-            loadRemote(document);
-        }
+        return new Promise((resolve, reject) => {
+          if (location.host.startsWith('localhost')) {
+            loadLocal(document, resolve, reject);
+          } else {
+            loadRemote(document, resolve, reject);
+          }
+        });
     }
 }
 
 export function loadCSS(remote, local) {
-    new CSSConfiguration(
+    return new CSSConfiguration(
         remote,
         local
     ).load(document);
@@ -65,5 +69,5 @@ export default function configure(){
         )
     ];
 
-    CSS_CONFIGURATIONS.forEach((conf) => conf.load(document));
+    return Promise.all(CSS_CONFIGURATIONS.map((conf) => conf.load(document)));
 }
