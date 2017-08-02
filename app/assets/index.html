@@ -10,15 +10,25 @@
     <meta name="description" content="Love.it microtips platform"/>
     <meta name="keywords" content="donation,microtip,microdonation"/>
 
-    <link rel="canonical" href="https://loveit.tips" />
+    <link rel="canonical" href="https://loveit.tips"/>
 
     <link async rel="shortcut icon" type="image/x-icon" href="/favicon.png"/>
     <link async rel="stylesheet" href="DIGEST(/app.css)"/>
 
+    <script src="https://cdn.ravenjs.com/3.17.0/raven.min.js" crossorigin="anonymous" onload="configureSentry()"></script>
+
+    <script>
+        function configureSentry() {
+            Raven.
+                config('https://9135be526dd647ab9aaff18d0871fc82@sentry.io/197694').
+                install();
+        };
+    </script>
+
     <script src="DIGEST(/vendor.js)"></script>
     <script src="DIGEST(/app.js)"></script>
     <script>
-        require('initialize');
+      require('initialize');
     </script>
 </head>
 <body>
