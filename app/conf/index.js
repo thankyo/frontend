@@ -6,7 +6,7 @@ import sentry from "./sentry";
 
 export default function configure(history, store) {
   analytics(history);
-  sentry();
+  //sentry();
   return Promise.all([
     loadCSS(),
     consent()
