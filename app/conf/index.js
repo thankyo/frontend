@@ -9,14 +9,7 @@ export default function configure(history, store) {
   polyfills;
   analytics(history);
   consent();
-  //sentry();
   return Promise.all([
     loadCSS(),
   ]);
-  //store.subscribe(feedback(store));
-  // loadCSS();
-  // analytics(history);
-  // consent();
-  // sentry().then(() => console.log("WEEEEE "));
-  // quantcast();
 }
