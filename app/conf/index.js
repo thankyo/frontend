@@ -8,10 +8,10 @@ import polyfills from './polyfills';
 export default function configure(history, store) {
   polyfills;
   analytics(history);
+  consent();
   //sentry();
   return Promise.all([
     loadCSS(),
-    consent()
   ]);
   //store.subscribe(feedback(store));
   // loadCSS();
