@@ -34,7 +34,7 @@
     "babel-preset-react": "~6.24",
     "brunch": "^2",
     "clean-css-brunch": "^2",
-    "digest-brunch": "^1.6.0",
+    "digest-brunch": "git+https://git@github.com/netronixgroup/digest-brunch.git",
     "express-history-api-fallback": "2.2.1",
     "gzip-brunch": "1.3.0",
     "hmr-brunch": "^0.1",
