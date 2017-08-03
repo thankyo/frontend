@@ -2,7 +2,7 @@ import { loadScriptAsPromise } from './loadScript';
 import { loadCSS } from './loadCSS';
 
 function doConfigure() {
-  let config = {
+  const config = {
     palette: {
       popup: {
         background: "#eaf7f7",
