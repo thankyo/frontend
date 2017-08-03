@@ -1,21 +1,20 @@
 import { loadScriptAsPromise } from './loadScript';
 import { loadCSS } from './loadCSS';
 
-let config = {
-  palette: {
-    popup: {
-      background: "#eaf7f7",
-      text: "#5c7291"
-    },
-    button: {
-      background: "#56cbdb",
-      text: "#ffffff"
-    }
-  },
-  theme: "edgeless"
-};
-
 function doConfigure() {
+  let config = {
+    palette: {
+      popup: {
+        background: "#eaf7f7",
+        text: "#5c7291"
+      },
+      button: {
+        background: "#56cbdb",
+        text: "#ffffff"
+      }
+    },
+    theme: "edgeless"
+  };
   window.cookieconsent.initialise(config)
 }
 
