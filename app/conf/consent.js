@@ -20,9 +20,12 @@ function doConfigure() {
 
 export default function configure() {
   if (document.cookie.indexOf("cookieconsent_status=dismiss") === -1) {
-    let loadScript = loadScriptAsPromise("//cdn.jsdelivr.net/cookieconsent3/3.0.4/cookieconsent.min.js").then(doConfigure);
-    let loadCSS = loadCSS("//cdn.jsdelivr.net/cookieconsent3/3.0.4/cookieconsent.min.css", "/css/cookieconsent.min.css");
-    return Promise.all([loadScript, loadCSS]);
+    let loadConsentScript = loadScriptAsPromise("//cdn.jsdelivr.net/cookieconsent3/3.0.4/cookieconsent.min.js").then(doConfigure);
+    let loadConsentCSS = loadCSS(
+      "//cdn.jsdelivr.net/cookieconsent3/3.0.4/cookieconsent.min.css",
+      "/css/cookieconsent.min.css"
+    );
+    return Promise.all([ loadConsentScript, loadConsentCSS ]);
   } else {
     return Promise.resolve()
   }

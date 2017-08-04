@@ -1,8 +1,8 @@
 //import feedback from "./feedback";
+import polyfills from './polyfills';
 import analytics from './analytics';
 import consent from './consent';
 import loadCSS from './loadCSS';
-import polyfills from './polyfills';
 
 
 export default function configure(history, store) {

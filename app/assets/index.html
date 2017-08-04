@@ -18,9 +18,9 @@
 
     <script>
         function configureSentry() {
-            Raven.
-                config('https://9135be526dd647ab9aaff18d0871fc82@sentry.io/197694').
-                install();
+          if (location.hostname !== "localhost") {
+            Raven.config('https://9135be526dd647ab9aaff18d0871fc82@sentry.io/197694').install();
+          }
         };
     </script>
     <script src="https://cdn.ravenjs.com/3.17.0/raven.min.js" crossorigin="anonymous" onload="configureSentry()"></script>
