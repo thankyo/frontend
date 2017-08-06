@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { getLimit, setLimit } from "../reducers/payment/limit.actions";
 import { connect } from "react-redux";
+import { getLimit, setLimit } from "../../../reducers/payment/limit.actions";
 
 class LimitPage extends Component {
   constructor(props) {

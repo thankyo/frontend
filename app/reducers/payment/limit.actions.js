@@ -1,5 +1,5 @@
-import authService from '../../service/auth';
-import { dispatchPromise } from '../../service/promiseStates';
+import authService from '../util/auth';
+import { dispatchPromise } from '../util/promiseStates';
 
 export const SET_LIMIT = "SET_LIMIT";
 export const GET_LIMIT = "GET_LIMIT";

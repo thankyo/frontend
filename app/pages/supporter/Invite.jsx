@@ -1,5 +1,5 @@
 import React from "react";
-import { invite } from "../reducers/invite.actions";
+import { invite } from "../../reducers/invite.actions";
 import Icon from "../components/Icon";
 import { connect } from 'react-redux';
 import { Field, reduxForm } from "redux-form";

@@ -1,5 +1,5 @@
 import { GET_EARNINGS } from './earning.actions';
-import { promiseReducer } from '../../service/promiseStates';
+import { promiseReducer } from '../util/promiseStates';
 
 const initialState = {
   total: 0,

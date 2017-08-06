@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logout } from '../reducers/auth.actions';
-import { setMode } from './menu';
-import Brand from '../components/Brand';
+import { setMode } from '../reducers/menu';
+import Brand from '../pages/components/Brand';
 import { browserHistory, Link } from 'react-router';
-import Icon from "../components/Icon";
+import Icon from "../pages/components/Icon";
 
 function LogoutButton({ logout }) {
   return (

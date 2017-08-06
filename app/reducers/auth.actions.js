@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
-import authService from '../service/auth';
-import { typeEvent, dispatchPromise } from '../service/promiseStates';
-import { Link, browserHistory } from 'react-router';
+import authService from './util/auth';
+import { typeEvent, dispatchPromise } from './util/promiseStates';
+import { browserHistory } from 'react-router';
 
 export const LOGOUT = "LOGOUT";
 
@@ -10,7 +10,6 @@ export function logout() {
         dispatch(typeEvent(LOGOUT));
     };
 }
-
 
 export const FACEBOOK_LOGIN = "FACEBOOK_LOGIN";
 

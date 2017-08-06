@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { authFacebook } from "../reducers/auth.actions.js";
+import { authFacebook } from "../../reducers/auth.actions.js";
 
 function FacebookAuthPage() {
   return (

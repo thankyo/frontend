@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import Navigation from "../navigation/Navigation";
+import Navigation from "../../navigation/Navigation";
 import ComponentWrap from "../components/ComponentWrap";
 import Invite from "./Invite";
 import Profile from "../components/Profile";
-import IntegrationContent from "../integration/IntegrationContent";
-import EarnedThisMonth from "../payment/EarnedThisMonth";
-import PayoutAccount from "../payment/PayoutAccount";
+import ThankTransactions from "../components/thank/Transaction";
+import PaymentLimit from "../components/payment/PaymentLimit";
+import PaymentMethod from "../components/payment/PaymentMethod";
 
-export default class CreatorDashboardPage extends Component {
+
+export default class SupporterDashboardPage extends Component {
   render() {
     let { params: { id } } = this.props;
     return (
@@ -19,15 +20,16 @@ export default class CreatorDashboardPage extends Component {
               <Profile id={id}/>
             </div>
             <div className="column is-two-quarter">
-              <IntegrationContent id={id}/>
+              <Invite id={id}/>
+              <ThankTransactions id={id}/>
             </div>
             <div className="column is-one-quarter">
               <article className="message is-info">
                 <div className="message-body">
-                  <EarnedThisMonth/>
+                  <PaymentLimit/>
                 </div>
               </article>
-              <PayoutAccount id={id}/>
+              <PaymentMethod/>
             </div>
           </div>
         </ComponentWrap>

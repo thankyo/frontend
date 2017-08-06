@@ -1,6 +1,6 @@
 import { LOGOUT, FACEBOOK_LOGIN } from "./auth.actions";
-import authService from 'service/auth';
-import { promiseReducer, combineReducersInSingle } from '../service/promiseStates';
+import authService from './util/auth';
+import { promiseReducer, combineReducersInSingle } from './util/promiseStates';
 import { combineReducers } from 'redux';
 
 const authenticated = function(authenticated = authService.isAuthenticated(), { type, payload }) {

@@ -10,7 +10,7 @@ export function dispatchPromise(p, event, dispatch) {
   }).catch((err) => {
     dispatch({ type: `${event}.rejected`, payload: err });
   })
-};
+}
 
 export function promiseReducer(event, initialState = {}, pending = (state, payload) => state, fulfilled = (state, payload) => payload, rejected = (state, payload) => state) {
   return function (state = initialState, { type, payload }) {

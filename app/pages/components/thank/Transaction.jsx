@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { listTransactions } from "../reducers/thank/transaction.actions";
-import Resource from "../components/Resource";
-import Date from "../components/Date";
+import { listTransactions } from "../../../reducers/thank/transaction.actions";
+import Resource from "../Resource";
+import Date from "../Date";
 
 class ThankTransaction extends Component {
   render() {

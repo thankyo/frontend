@@ -1,4 +1,4 @@
-import authService from 'service/auth';
+import authService from '../util/auth';
 
 export const PAYMENT_TRANSACTION_REQUESTED   = "PAYMENT_TRANSACTION_REQUESTED";
 export const PAYMENT_TRANSACTION_SUCCESS = "PAYMENT_TRANSACTION_SUCCESS";

@@ -1,4 +1,4 @@
-import authService from 'service/auth';
+import authService from '../util/auth';
 import {reset} from 'redux-form';
 
 export const RESOURCE_REQUESTED   = "RESOURCE_REQUESTED";

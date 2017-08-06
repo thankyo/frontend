@@ -1,5 +1,5 @@
-import authService from '../service/auth';
-import { dispatchPromise } from '../service/promiseStates';
+import authService from './util/auth';
+import { dispatchPromise } from './util/promiseStates';
 import { reset } from 'redux-form';
 
 export const INVITE = "INVITE";

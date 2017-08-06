@@ -1,5 +1,5 @@
 import { CHARGE_ACCOUNT_GET, CHARGE_ACCOUNT_SET } from './chargeAccount.actions';
-import { promiseReducer, combineReducersInSingle } from 'service/promiseStates';
+import { promiseReducer, combineReducersInSingle } from '../util/promiseStates';
 
 const initialState = {
     brand: "Visa",

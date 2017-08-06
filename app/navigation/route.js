@@ -1,21 +1,19 @@
 import React, {Component} from "react";
 
-import LandingPageDefault from "../landing/LandingPage";
+import LandingPageDefault from "../pages/landing/LandingPage";
 
-import TermsOfUse from "../general/legal/TermsOfUsePage";
-import PrivacyPolicy from "../general/legal/PrivacyPolicyPage";
-import RoadMap      from "../general/roadmap/RoadMapPage";
+import TermsOfUse from "../pages/legal/TermsOfUsePage";
+import PrivacyPolicy from "../pages/legal/PrivacyPolicyPage";
+import RoadMap      from "../pages/roadmap/RoadMapPage";
 
 import NotFound from "./NotFound";
-import PaymentPage from "../payment/PaymentPage";
 
-import IntegrationPage from "../integration/IntegrationPage";
-import SupporterDashboard from "../dashboard/UserDashboardPage";
-import CreatorDashboard from "../dashboard/CreatorDashboardPage";
+import SupporterDashboard from "../pages/supporter/SupporterDashboardPage";
+import CreatorDashboard from "../pages/creator/CreatorDashboardPage";
 
-import FacebookAuthPage from "../landing/FacebookAuthPage";
+import FacebookAuthPage from "../pages/landing/FacebookAuthPage";
 
-import authService from "../service/auth";
+import authService from "../reducers/util/auth";
 import {browserHistory, Route, Router} from "react-router";
 import {Helmet} from "react-helmet";
 
@@ -42,10 +40,8 @@ export default class MainApp extends Component {
                     <Route path="/roadmap" component={RoadMap}/>
 
                     <Route path="/creator/:id" components={CreatorDashboard}/>
-                    <Route path="/creator/:id/integration" component={ IntegrationPage }/>
 
                     <Route path="/supporter/:id" components={SupporterDashboard}/>
-                    <Route path="/supporter/:id/payment" component={ PaymentPage }/>
 
                     <Route path="*" component={NotFound}/>
                 </Router>

@@ -1,6 +1,6 @@
-import authService from "../../service/auth";
+import authService from "../util/auth";
 import { loadScriptAsPromise } from '../../conf/loadScript';
-import { dispatchPromise } from '../../service/promiseStates';
+import { dispatchPromise } from '../util/promiseStates';
 
 export const CHARGE_ACCOUNT_GET = "CHARGE_ACCOUNT_GET";
 export const CHARGE_ACCOUNT_SET = "CHARGE_ACCOUNT_SET";

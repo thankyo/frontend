@@ -1,4 +1,4 @@
-import authService from 'service/auth';
+import authService from '../util/auth';
 import {reset} from 'redux-form';
 
 export const THANK_REQUESTED = "THANK_REQUESTED";

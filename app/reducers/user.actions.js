@@ -1,4 +1,4 @@
-import authService from 'service/auth';
+import authService from './util/auth';
 
 export const USER_REQUESTED   = "USER_REQUESTED";
 export const USER_SUCCESS     = "USER_SUCCESS";

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Hero from "./Hero";
 import Join from "./Join";
-import Footer from "../navigation/Footer";
+import Footer from "../../navigation/Footer";
 import HowItWorks from "./HowItWorks";
 import Idea from "./Idea";
 import SkepticZone from "./SkepticZone";

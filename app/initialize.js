@@ -15,11 +15,7 @@ import conf from "conf";
 const store = createStore(reducers(), composeWithDevTools(applyMiddleware(thunk)));
 const history = syncHistoryWithStore(browserHistory, store);
 
-Object.isObject = function (obj) {
-  return typeof obj === 'object' && obj !== null
-};
-
-let loaded = new Promise((resolve, reject) => {
+let loaded = new Promise((resolve) => {
   if (document.readyState !== 'complete') {
     resolve();
   } else {

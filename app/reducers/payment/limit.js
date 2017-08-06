@@ -1,5 +1,5 @@
 import { SET_LIMIT, GET_LIMIT } from './limit.actions';
-import { promiseReducer, combineReducersInSingle } from 'service/promiseStates';
+import { promiseReducer, combineReducersInSingle } from '../util/promiseStates';
 
 const initialState = {
     amount: 10,

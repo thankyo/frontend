@@ -1,4 +1,4 @@
-import authService from 'service/auth';
+import authService from '../util/auth';
 
 export const THANK_TRANSACTION_REQUESTED   = "THANK_TRANSACTION_REQUESTED";
 export const THANK_TRANSACTION_SUCCESS   = "THANK_TRANSACTION_SUCCESS";

@@ -1,7 +1,7 @@
 import { browserHistory, Link } from 'react-router';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { FACEBOOK_LOGIN, LOGOUT } from '../reducers/auth.actions';
-import authService from '../service/auth';
+import { FACEBOOK_LOGIN, LOGOUT } from './auth.actions';
+import authService from './util/auth';
 
 export const MODE_CHANGE = "MODE_CHANGE";
 
