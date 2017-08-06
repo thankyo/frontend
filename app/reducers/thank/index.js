@@ -1,8 +1,10 @@
+import { combineReducers } from 'redux';
+
 import transaction from './transaction';
 import url from './url';
 import resource from './resource';
-import { combineReducers } from 'redux';
 import earning from "./earning";
+import supported from './supported';
 
 export default combineReducers(
   {
@@ -10,5 +12,6 @@ export default combineReducers(
     resource,
     url,
     earning,
+    supported,
   }
 );
