@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Brand from "../components/Brand";
-import FacebookLogin from "landing/FacebookLogin";
+import FacebookLogin from "./FacebookLogin";
 
 export default class Hero extends Component {
   render() {

@@ -19,10 +19,7 @@ export default class CreatorDashboardPage extends Component {
               <Profile id={id}/>
             </div>
             <div className="column is-two-quarter">
-              {/*<Invite id={id}/>*/}
               <IntegrationContent id={id}/>
-              {/*<Verification id={id}/>*/}
-              {/*<OwnedResources id={id}/>*/}
             </div>
             <div className="column is-one-quarter">
               <article className="message is-info">
