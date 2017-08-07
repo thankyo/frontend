@@ -16,7 +16,8 @@ const mapStateToProps = ({ thank: { earning }}) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  dispatch(thisMonthEarnings())
+  dispatch(thisMonthEarnings());
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EarnedThisMonth);
