@@ -26,7 +26,7 @@ const ThankTransactions = ({ transactions }) => {
         </tr>
         </thead>
         <tbody>
-        {transactions.map(transaction => <ThankTransaction key={transaction.id} transaction={transaction}/>)}
+        {transactions.map((transaction, i) => <ThankTransaction key={i} transaction={transaction}/>)}
         </tbody>
       </table>
     </div>
@@ -34,10 +34,8 @@ const ThankTransactions = ({ transactions }) => {
 };
 
 const mapStateToProps = ({ thank: { transaction } }, { id }) => {
-  let userTransactions = transaction[id] ? transaction[id] : [];
-  return {
-    transactions: Object.values(userTransactions)
-  };
+  let transactions = transaction[id] ? transaction[id] : [];
+  return { transactions };
 };
 
 const mapDispatchToProps = (dispatch, { id }) => {

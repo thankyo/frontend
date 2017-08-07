@@ -20,8 +20,8 @@ function transactionSuccess(payload) {
 export function listTransactions(id) {
     return (dispatch) => {
         dispatch(transactionRequested({ id }));
-        authService.signAndStream(`/api/v1/transaction/user/${id}`, dispatch, (payment) => {
-            dispatch(transactionSuccess(THANK_TRANSACTION_REQUESTED, payment));
+        authService.signAndStream(`/api/v1/payment/pending/${id}`, dispatch, (payment) => {
+            dispatch(transactionSuccess(payment));
             if (id === "my") dispatch(transactionSuccess(Object.assign({}, payment, { "user": "my"})))
         })
     }
