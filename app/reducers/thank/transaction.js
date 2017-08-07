@@ -2,15 +2,12 @@ import { THANK_TRANSACTION_REQUESTED, THANK_TRANSACTION_SUCCESS } from './transa
 
 const initialState = {};
 
-export default function (transactions = initialState, { type, payload }) {
+export default function (transactions = initialState, { type, user, payload }) {
   switch (type) {
     case THANK_TRANSACTION_REQUESTED:
       return transactions;
     case THANK_TRANSACTION_SUCCESS:
-      let { user } = payload;
-      let userTransactions = (transactions[user] ? transactions[user] : []).slice();
-      userTransactions.push(payload);
-      return Object.assign({}, transactions, { [user]: userTransactions });
+      return Object.assign({}, transactions, { [user]: payload });
     default:
       return transactions;
   }
