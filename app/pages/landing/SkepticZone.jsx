@@ -37,7 +37,7 @@ export default class SkepticZone extends Component {
                 <h2 className="subtitle">
                   You are in <strong>full control of how much you spend</strong>.
                   Set a limit for a month and we won't charge you more, than that.
-                  All your donations will be transferred to the next month, until you rich your limit.
+                  All your donations will be transferred to the next month, until you reach your limit.
                 </h2>
               </div>
             </div>
@@ -69,7 +69,7 @@ export default class SkepticZone extends Component {
                 <br/>
                 <br/>
                 <h2 className="subtitle">
-                  We keep our fees low. <strong>90% of the tip goes directly to the creator</strong>, we'll be lowering this down in the future<br/>
+                  We keep our fees low. <strong>90% of the tip goes directly to the creator</strong>.<br/>
                 </h2>
               </div>
             </div>
