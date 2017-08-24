@@ -4,7 +4,7 @@ import FacebookLogin from "./FacebookLogin";
 export default class Join extends Component {
   render() {
     let style = {
-      backgroundImage: `url('/images/landing/${this.props.image}')`,
+      backgroundImage: `url('/img/landing/${this.props.image}')`,
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
     };
