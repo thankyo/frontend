@@ -7,10 +7,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
-import reducers from "reducers";
+import conf from "./conf";
+import reducers from "./reducers";
 import MainApp from "./navigation/route";
-
-import conf from "conf";
 
 const store = createStore(reducers(), composeWithDevTools(applyMiddleware(thunk)));
 const history = syncHistoryWithStore(browserHistory, store);

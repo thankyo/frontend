@@ -6,7 +6,6 @@ import TermsOfUse from "../pages/legal/TermsOfUsePage";
 import PrivacyPolicy from "../pages/legal/PrivacyPolicyPage";
 import RoadMap      from "../pages/roadmap/RoadMapPage";
 
-import NotFound from "./NotFound";
 
 import SupporterDashboard from "../pages/supporter/SupporterDashboardPage";
 import CreatorDashboard from "../pages/creator/CreatorDashboardPage";
@@ -15,6 +14,9 @@ import FacebookAuthPage from "../pages/landing/FacebookAuthPage";
 
 import authService from "../reducers/util/auth";
 import {browserHistory, Route, Router} from "react-router";
+
+import NotFound from "./NotFound";
+
 import {Helmet} from "react-helmet";
 
 const HOME = "/supporter/my";

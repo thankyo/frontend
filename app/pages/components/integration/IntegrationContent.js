@@ -1,8 +1,6 @@
 import React from "react";
 import ManagedResources from "../thank/resource/ManagedResources";
 import JSIntegration from "./JSIntegration";
-import PayoutAccount from '../payment/PayoutAccount'
-
 
 export default function ({ id }) {
   return (

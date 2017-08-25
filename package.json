@@ -1,12 +1,15 @@
 {
   "name": "thank-brunch",
-  "description": "Brunch.io application",
+  "description": "loveit.tips frontend",
   "private": true,
-  "author": "Brunch",
+  "author": "Anton O.",
   "version": "0.0.1",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thankyo/thank-brunch.git"
+  },
   "scripts": {
-    "start": "brunch watch --server",
+    "start": "webpack-dev-server",
     "build": "brunch build --production"
   },
   "dependencies": {
@@ -29,17 +32,24 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
-    "auto-reload-brunch": "^2",
-    "babel-brunch": "~6.1.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-latest": "^6",
-    "babel-preset-react": "~6.24",
-    "brunch": "^2",
-    "clean-css-brunch": "^2",
-    "digest-brunch": "git+https://git@github.com/netronixgroup/digest-brunch.git",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "css-loader": "^0.28.5",
     "express-history-api-fallback": "2.2.1",
-    "gzip-brunch": "1.3.0",
-    "hmr-brunch": "^0.1",
-    "http-proxy": "^1.16.2",
-    "uglify-js-brunch": "^2"
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-hot-middleware": "^2.18.2"
   }
 }

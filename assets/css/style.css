@@ -8484,7 +8484,7 @@ label.panel-block:hover
 
     color: #fff;
     background-color: #48c8fe;
-    background-image: url('./../img/bg-book.jpg');
+    background-image: url('../img/bg-book.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -8493,14 +8493,14 @@ label.panel-block:hover
 {
     height: auto;
 
-    background-image: url('./../img/bg-boy.jpg');
+    background-image: url('../img/bg-boy.jpg');
 }
 .hero.page-promo--girl
 {
     height: auto;
     min-height: 370px;
 
-    background-image: url('./../img/bg-girl.jpg');
+    background-image: url('../img/bg-girl.jpg');
 }
 
 .button__join
@@ -8625,7 +8625,7 @@ label.panel-block:hover
 
     content: '';
 
-    background-image: url('./../img/underline.svg');
+    background-image: url('../img/underline.svg');
     background-repeat: no-repeat;
 }
 
