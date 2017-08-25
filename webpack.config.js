@@ -3,52 +3,62 @@ const webpack = require("webpack");
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const WebpackChunkHash = require('webpack-chunk-hash');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
-  devtool: "eval",
-  entry: [
-    "./app",
-  ],
+  context: path.resolve(__dirname, 'src'),
+  entry: {
+    index: "./index.js",
+    vendor: [
+      'offline-plugin/runtime',
+      'react',
+      'react-dom',
+      'react-router',
+      'prop-types',
+      'react-redux',
+      'redux',
+      'redux-thunk'
+    ]
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.(jpg|jpeg|gif|png|svg|woff|woff2)$/,
+        use: {
+          loader: 'file-loader',
+          options: { name: '[name].[hash].[ext]' },
+        },
+      },
+    ]
+  },
   output: {
     path: path.join(__dirname, "public"),
-    filename: "bundle.js",
-    publicPath: "/static/"
+    filename: '[name].bundle.js',
+    publicPath: "/"
   },
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.UglifyJsPlugin({/* options here */}),
+    new webpack.optimize.UglifyJsPlugin({ /* options here */ }),
     new webpack.HotModuleReplacementPlugin(),
     /* Uncomment to enable automatic HTML generation */
     new HtmlWebpackPlugin({
       inlineManifestWebpackName: 'webpackManifest',
       template: require('html-webpack-template'),
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+    }),
+    new OfflinePlugin({
+      AppCache: false,
+      ServiceWorker: { events: true },
+    }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.js/,
-        include: [
-          path.resolve(__dirname, "app"),
-        ],
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        }
-      },
-      {
-        test: /\.css$/,
-        include: [
-          path.join(__dirname, "css"),
-          path.join(__dirname, "node_modules"),
-        ],
-        use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" }
-        ]
-      }
-    ]
-  },
   devServer: {
     contentBase: path.join(__dirname, "assets"),
     historyApiFallback: true,
@@ -81,6 +91,13 @@ if (process.env.NODE_ENV === 'production') {
       manifestVariable: 'webpackManifest',
       inlineManifest: true,
     }),
+  ];
+}
+
+if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+  config.plugins = [
+    ...config.plugins,
+    new BundleAnalyzerPlugin(),
   ];
 }
 
