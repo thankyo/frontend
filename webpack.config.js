@@ -1,7 +1,10 @@
-var path = require("path");
-var webpack = require("webpack");
+const path = require("path");
+const webpack = require("webpack");
+const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
+const WebpackChunkHash = require('webpack-chunk-hash');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+const config = {
   devtool: "eval",
   entry: [
     "./app",
@@ -12,18 +15,23 @@ module.exports = {
     publicPath: "/static/"
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.UglifyJsPlugin({/* options here */}),
+    new webpack.HotModuleReplacementPlugin(),
+    /* Uncomment to enable automatic HTML generation */
+    new HtmlWebpackPlugin({
+      inlineManifestWebpackName: 'webpackManifest',
+      template: require('html-webpack-template'),
+    }),
   ],
   module: {
     rules: [
       {
-        test: /\.jsx/,
+        test: /\.js/,
         include: [
           path.resolve(__dirname, "app"),
         ],
-        exclude: [
-          path.resolve(__dirname, "node_modules"),
-        ],
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
         }
@@ -59,3 +67,21 @@ module.exports = {
     }
   },
 };
+
+/* Production */
+
+if (process.env.NODE_ENV === 'production') {
+  config.output.filename = '[name].[chunkhash].js';
+  config.plugins = [
+    ...config.plugins, // ES6 array destructuring, available in Node 5+
+    new webpack.HashedModuleIdsPlugin(),
+    new WebpackChunkHash(),
+    new ChunkManifestPlugin({
+      filename: 'chunk-manifest.json',
+      manifestVariable: 'webpackManifest',
+      inlineManifest: true,
+    }),
+  ];
+}
+
+module.exports = config;

@@ -15,6 +15,12 @@
     <link async rel="shortcut icon" type="image/x-icon" href="/favicon.png"/>
 
     <script>
+      //<![CDATA[
+      window.webpackManifest = { /* contents of chunk-manifest.json */ };
+      //]]>
+    </script>
+
+    <script>
       function configureSentry() {
         if (location.hostname !== "localhost") {
           Raven.config('https://9135be526dd647ab9aaff18d0871fc82@sentry.io/197694').install();

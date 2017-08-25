@@ -1,23 +1,21 @@
 import React, {Component} from "react";
+import Async from 'react-code-splitting';
 
 import LandingPageDefault from "../pages/landing/LandingPage";
-
-import TermsOfUse from "../pages/legal/TermsOfUsePage";
-import PrivacyPolicy from "../pages/legal/PrivacyPolicyPage";
-import RoadMap      from "../pages/roadmap/RoadMapPage";
-
-
-import SupporterDashboard from "../pages/supporter/SupporterDashboardPage";
-import CreatorDashboard from "../pages/creator/CreatorDashboardPage";
-
 import FacebookAuthPage from "../pages/landing/FacebookAuthPage";
+import NotFound from "./NotFound";
+
+const TermsOfUse = (props) => <Async load={import('../pages/legal/TermsOfUsePage')} componentProps={props}/>;
+const PrivacyPolicy = (props) => <Async load={import('../pages/legal/PrivacyPolicyPage')} componentProps={props}/>;
+const RoadMap = (props) => <Async load={import('../pages/roadmap/RoadMapPage')} componentProps={props}/>;
+
+const SupporterDashboard = (props) => <Async load={import("../pages/supporter/SupporterDashboardPage")} componentProps={props}/>;
+const CreatorDashboard = (props) => <Async load={import("../pages/creator/CreatorDashboardPage")} componentProps={props}/>;
 
 import authService from "../reducers/util/auth";
 import {browserHistory, Route, Router} from "react-router";
 
-import NotFound from "./NotFound";
-
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 const HOME = "/supporter/my";
 
