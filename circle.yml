@@ -10,7 +10,7 @@ dependencies:
 
 test:
   override:
-    - npm build
+    - npm run build
     - docker build -t mavarazy/thank-frontend .
 
 deployment:
