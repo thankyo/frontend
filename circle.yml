@@ -10,7 +10,6 @@ dependencies:
 
 test:
   override:
-    - export NODE-ENV='production'
     - npm build
     - docker build -t mavarazy/thank-frontend .
 
