@@ -1,5 +1,5 @@
 machine:
- environment:
+  environment:
     NODE_ENV: production
   node:
     version: v6.11.0
