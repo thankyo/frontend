@@ -46,7 +46,6 @@ const config = {
   plugins: [
     new CopyWebpackPlugin([ { from: '../assets' } ]),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    //new webpack.optimize.UglifyJsPlugin({ /* options here */ }),
     new webpack.HotModuleReplacementPlugin(),
     /* Uncomment to enable automatic HTML generation */
     new HtmlWebpackPlugin({
@@ -89,11 +88,13 @@ console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
   const CompressionPlugin = require("compression-webpack-plugin");
 
-  config.output.filename = '[name].[chunkhash].js';
+  config.output.filename = '[name].[hash].js';
+  config.output.chunkFilename = '[name].[hash].js';
   config.plugins = [
     ...config.plugins, // ES6 array destructuring, available in Node 5+
+    new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
     new webpack.HashedModuleIdsPlugin(),
-    new WebpackChunkHash(),
+    new WebpackChunkHash({ algorithm: 'md5' }),
     new ChunkManifestPlugin({
       filename: 'chunk-manifest.json',
       manifestVariable: 'webpackManifest',
