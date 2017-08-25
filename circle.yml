@@ -6,14 +6,12 @@ dependencies:
   cache_directories:
     - ./node_modules/
   override:
-    - npm install -g brunch
-    - docker info
     - npm install
 
 test:
   override:
-
-    - brunch build --production
+    - export NODE-ENV='production'
+    - npm build
     - docker build -t mavarazy/thank-frontend .
 
 deployment:

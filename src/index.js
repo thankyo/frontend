@@ -40,6 +40,6 @@ Promise.all([ loaded, conf(history, store) ]).then(() => {
     <Provider store={store}>
         <MainApp history={history}/>
     </Provider>,
-    document.querySelector('#app')
+    document.getElementById('app-root')
   );
 });

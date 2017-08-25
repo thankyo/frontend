@@ -1,10 +1,10 @@
 const path = require("path");
 const webpack = require("webpack");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const WebpackChunkHash = require('webpack-chunk-hash');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
   context: path.resolve(__dirname, 'src'),
@@ -18,7 +18,8 @@ const config = {
       'prop-types',
       'react-redux',
       'redux',
-      'redux-thunk'
+      'redux-thunk',
+      'redux-form'
     ]
   },
   module: {
@@ -43,13 +44,16 @@ const config = {
     publicPath: "/"
   },
   plugins: [
+    new CopyWebpackPlugin([ { from: '../assets' } ]),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ /* options here */ }),
+    //new webpack.optimize.UglifyJsPlugin({ /* options here */ }),
     new webpack.HotModuleReplacementPlugin(),
     /* Uncomment to enable automatic HTML generation */
     new HtmlWebpackPlugin({
+      appMountId: 'app-root',
       inlineManifestWebpackName: 'webpackManifest',
-      template: require('html-webpack-template'),
+      template: './index.ejs',
+      title: 'LoveIt',
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -80,8 +84,10 @@ const config = {
 
 /* Production */
 
+console.log(process.env.NODE_ENV);
+
 if (process.env.NODE_ENV === 'production') {
-  config.output.filename = '[name].[chunkhash].js';
+  config.output.filename = '[name].[hash].js';
   config.plugins = [
     ...config.plugins, // ES6 array destructuring, available in Node 5+
     new webpack.HashedModuleIdsPlugin(),
@@ -94,11 +100,14 @@ if (process.env.NODE_ENV === 'production') {
   ];
 }
 
+/*
 if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
   config.plugins = [
     ...config.plugins,
     new BundleAnalyzerPlugin(),
   ];
 }
+*/
 
 module.exports = config;

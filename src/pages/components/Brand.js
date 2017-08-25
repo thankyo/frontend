@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import Icon from "./Icon";
 
 export default class Brand extends Component {
     render() {
