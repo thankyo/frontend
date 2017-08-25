@@ -87,7 +87,9 @@ const config = {
 console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'production') {
-  config.output.filename = '[name].[hash].js';
+  const CompressionPlugin = require("compression-webpack-plugin");
+
+  config.output.filename = '[name].[chunkhash].js';
   config.plugins = [
     ...config.plugins, // ES6 array destructuring, available in Node 5+
     new webpack.HashedModuleIdsPlugin(),
@@ -97,6 +99,13 @@ if (process.env.NODE_ENV === 'production') {
       manifestVariable: 'webpackManifest',
       inlineManifest: true,
     }),
+    new CompressionPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.(js|html)$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
   ];
 }
 

@@ -47,6 +47,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "chunk-manifest-webpack-plugin": "^1.1.2",
+    "compression-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.5",
     "express-history-api-fallback": "2.2.1",
