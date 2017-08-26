@@ -84,7 +84,6 @@ if (process.env.NODE_ENV === 'production') {
   config.output.filename = '[name].[chunkhash].js';
   config.output.chunkFilename = '[name].[chunkhash].js';
   config.plugins = [
-    new CopyWebpackPlugin([ { from: '../assets' } ]),
     ...config.plugins, // ES6 array destructuring, available in Node 5+
     new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
     new webpack.HashedModuleIdsPlugin(),
@@ -94,6 +93,7 @@ if (process.env.NODE_ENV === 'production') {
     //   manifestVariable: 'webpackManifest',
     //   inlineManifest: true,
     // }),
+    new CopyWebpackPlugin([ { from: '../assets' } ]),
     new FaviconsWebpackPlugin('../assets/favicon.png'),
     new CompressionPlugin({
       asset: "[path].gz[query]",
