@@ -1,16 +1,14 @@
 const path = require("path");
 const webpack = require("webpack");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
-const WebpackChunkHash = require('webpack-chunk-hash');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
 const OfflinePlugin = require('offline-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 const config = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    index: "./index.js",
+    app: "./index.js",
     vendor: [
       'offline-plugin/runtime',
       'react',
@@ -30,13 +28,6 @@ const config = {
         use: 'babel-loader',
         exclude: /node_modules/,
       },
-      {
-        test: /\.(jpg|jpeg|gif|png|svg|woff|woff2)$/,
-        use: {
-          loader: 'file-loader',
-          options: { name: '[name].[hash].[ext]' },
-        },
-      },
     ]
   },
   output: {
@@ -45,19 +36,19 @@ const config = {
     publicPath: "/"
   },
   plugins: [
-    new CopyWebpackPlugin([ { from: '../assets' } ]),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
+
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new HtmlWebpackPlugin({
       appMountId: 'app-root',
       inject: true,
       inlineManifestWebpackName: 'webpackManifest',
-      template: './index.ejs',
+      template: require('html-webpack-template'),
       title: 'LoveIt',
     }),
-    new OfflinePlugin({
+    new OfflinePlugin({ // should be last
       AppCache: false,
       ServiceWorker: { events: true },
     }),
@@ -87,19 +78,22 @@ console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'production') {
   const CompressionPlugin = require("compression-webpack-plugin");
+  const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+  const CopyWebpackPlugin = require('copy-webpack-plugin');
 
   config.output.filename = '[name].[chunkhash].js';
   config.output.chunkFilename = '[name].[chunkhash].js';
   config.plugins = [
+    new CopyWebpackPlugin([ { from: '../assets' } ]),
     ...config.plugins, // ES6 array destructuring, available in Node 5+
     new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
     new webpack.HashedModuleIdsPlugin(),
-    new WebpackChunkHash({ algorithm: 'md5' }),
-    new ChunkManifestPlugin({
-      filename: 'chunk-manifest.json',
-      manifestVariable: 'webpackManifest',
-      inlineManifest: true,
-    }),
+    new WebpackMd5Hash(),
+    // new ChunkManifestPlugin({
+    //   filename: 'chunk-manifest.json',
+    //   manifestVariable: 'webpackManifest',
+    //   inlineManifest: true,
+    // }),
     new FaviconsWebpackPlugin('../assets/favicon.png'),
     new CompressionPlugin({
       asset: "[path].gz[query]",
