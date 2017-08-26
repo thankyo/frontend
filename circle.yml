@@ -15,11 +15,11 @@ dependencies:
 test:
   override:
     - npm run build
-    - docker build -t mavarazy/thank-frontend .
 
 deployment:
   prod:
     branch: master
     commands:
+      - docker build -t mavarazy/thank-frontend .
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push mavarazy/thank-frontend

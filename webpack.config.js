@@ -1,8 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
-const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
 const OfflinePlugin = require('offline-plugin');
 
 const config = {
@@ -80,6 +78,8 @@ if (process.env.NODE_ENV === 'production') {
   const CompressionPlugin = require("compression-webpack-plugin");
   const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
   const CopyWebpackPlugin = require('copy-webpack-plugin');
+  const WebpackMd5Hash = require('webpack-md5-hash');
+  const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 
   config.output.filename = '[name].[chunkhash].js';
   config.output.chunkFilename = '[name].[chunkhash].js';
