@@ -1,5 +1,6 @@
 machine:
   environment:
+    NODE_ENV: 'development'
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
   services:
     - docker
