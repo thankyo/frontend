@@ -1,6 +1,6 @@
 machine:
   environment:
-    NODE_ENV: 'development'
+    NODE_ENV: 'production'
   services:
     - docker
   node:
@@ -10,21 +10,16 @@ dependencies:
   cache_directories:
     - ~/.cache/yarn
   override:
-    - yarn install
+    - NODE_ENV=development yarn install
 
 test:
   override:
-    - node -v
-    - yarn install
     - yarn run build
 
 deployment:
   prod:
     branch: master
-    environment:
-      NODE_ENV: 'production'
     commands:
-      - yarn run build
       - docker build -t mavarazy/thank-frontend .
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push mavarazy/thank-frontend
