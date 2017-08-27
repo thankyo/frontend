@@ -7,7 +7,6 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
-const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 
 const config = {
   context: path.resolve(__dirname, 'src'),

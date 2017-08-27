@@ -1,26 +1,26 @@
 machine:
   environment:
-    NODE_ENV: production
-  node:
-    version: v6.11.0
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
   services:
     - docker
 
 dependencies:
   cache_directories:
-    - ./node_modules/
+    - ~/.cache/yarn
   override:
-    - npm install
-    - npm install rimraf -g
+    - yarn install
 
 test:
   override:
-    - npm run build
+    - yarn run build
 
 deployment:
   prod:
     branch: master
+    environment:
+      NODE_ENV: 'production'
     commands:
+      - yarn run build
       - docker build -t mavarazy/thank-frontend .
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push mavarazy/thank-frontend
