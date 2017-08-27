@@ -9,6 +9,10 @@
     "start": "webpack-dev-server",
     "build": "rimraf public && webpack -p"
   },
+  "engines": {
+    "npm": "^2.14.7",
+    "node": ">=6"
+  },
   "dependencies": {
     "bulma": "0.5.0",
     "es6-promise": "^4.1.1",
