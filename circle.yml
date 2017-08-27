@@ -11,6 +11,7 @@ dependencies:
     - ./node_modules/
   override:
     - npm install
+    - npm install rimraf -g
 
 test:
   override:
