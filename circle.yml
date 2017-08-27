@@ -1,6 +1,6 @@
 machine:
   environment:
-    NODE_ENV: 'development'
+#    NODE_ENV: 'development'
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
   services:
     - docker
@@ -20,8 +20,8 @@ test:
 deployment:
   prod:
     branch: master
-    environment:
-      NODE_ENV: 'production'
+#    environment:
+#      NODE_ENV: 'production'
     commands:
       - yarn run build
       - docker build -t mavarazy/thank-frontend .
