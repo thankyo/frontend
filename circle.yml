@@ -3,6 +3,8 @@ machine:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
   services:
     - docker
+  node:
+    version: v6.11.0
 
 dependencies:
   cache_directories:
