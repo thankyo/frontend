@@ -48,7 +48,7 @@ const config = {
       appMountId: 'app-root',
       inject: true,
       inlineManifestWebpackName: 'webpackManifest',
-      template: require('html-webpack-template'),
+      template: './index.ejs',
       title: 'LoveIt',
     }),
     new OfflinePlugin({ // should be last
