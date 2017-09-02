@@ -9,30 +9,53 @@ export default class Hero extends Component {
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
     };
+    {/*<header className="nav">*/
+    }
+    {/*<div className="container">*/
+    }
+    {/*<div className="nav-left">*/
+    }
+    {/*<Brand/>*/
+    }
+    {/*</div>*/
+    }
+    {/*</div>*/
+    }
+    {/*</header>*/
+    }
     return (
-      <section className="hero is-success is-fullheight" style={style}>
-          <div className="hero-head">
-              <header className="nav">
-                  <div className="container">
-                      <div className="nav-left">
-                          <Brand/>
-                      </div>
-                  </div>
-              </header>
-          </div>
-          <div className="hero-body">
-              <div className="container has-text-centered">
-                  <h1 className="title is-1">
-                    {this.props.title}
-                  </h1>
-                  <h2 className="subtitle is-3">{this.props.subtitle}</h2>
-                  <FacebookLogin>
-                      <div className="button is-info is-inverted is-outlined is-hovered is-large">
-                          <span>{this.props.button}</span>
-                      </div>
-                  </FacebookLogin>
+      <section className="hero is-fullheight page-promo">
+        <div className="hero-head">
+          <header className="nav main-nav">
+            <div className="container">
+              <div className="nav-left">
+                <a className="nav-item">
+                  <Brand/>
+                </a>
               </div>
+              <FacebookLogin>
+                <div className="nav-right nav-menu">
+                  <a className="nav-item">
+                    Login
+                  </a>
+                  <a className="nav-item nav-item-btn button button-white-border">
+                    Sign Up
+                  </a>
+                </div>
+              </FacebookLogin>
+            </div>
+          </header>
+        </div>
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            <h1 className="title title-main-promo title-main-promo-left">
+              Support creators with a single click
+            </h1>
+            <FacebookLogin>
+              <a href="#" className="button button-join">Join</a>
+            </FacebookLogin>
           </div>
+        </div>
       </section>
     );
   }

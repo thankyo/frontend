@@ -40,12 +40,7 @@ function configure() {
     "sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
   );
 
-  let loadBulma = loadCSS(
-    "https://cdn.jsdelivr.net/npm/bulma@0.5.0/css/bulma.css",
-    '/css/bulma.css'
-  );
-
-  return Promise.all([ loadFontAwesome, loadBulma ]);
+  return Promise.all([ loadFontAwesome ]);
 }
 
 export default configure;

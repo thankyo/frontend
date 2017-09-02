@@ -33,7 +33,7 @@ const config = {
         exclude: /node_modules/,
       },
       {
-        test: /\.sass$/,
+        test: /\.s[ac]ss$/,
         use: [{
           loader: "style-loader" // creates style nodes from JS strings
         }, {
@@ -45,6 +45,18 @@ const config = {
             sourceMap: true
           } // compiles Sass to CSS
         }]
+      },
+      {
+        test: /\.css$/,
+        use: [ "style-loader", "css-loader" ]
+      },
+      {
+        test: /\.svg$/,
+        use: [ 'svg-inline-loader' ]
+      },
+      {
+        test: /\.(jpg|woff|woff2)$/,
+        use: "file-loader"
       }
     ]
   },

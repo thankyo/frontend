@@ -1,0 +1,622 @@
+@import "./bulma-custom"
+
+@font-face
+  font-family: 'Open Sans'
+  font-weight: 400
+  font-style: normal
+  src: url('../assets/fonts/OpenSansRegular.woff2') format("woff2"), url('../assets/fonts/OpenSansRegular.woff') format("woff")
+
+
+@font-face
+  font-family: 'Open Sans Bold'
+  font-weight: 700
+  font-style: bold
+  src: url('../assets/fonts/OpenSansBold.woff2') format("woff2"), url('../assets/fonts/OpenSansBold.woff') format("woff")
+
+
+@font-face
+  font-family: 'Open Sans Bold'
+  font-weight: 700
+  font-style: italic
+  src: url('../assets/fonts/OpenSansBoldItalic.woff2') format("woff2"), url('../assets/fonts/OpenSansBoldItalic.woff') format("woff")
+
+
+@font-face
+  font-family: 'Open Sans Extra Bold'
+  font-weight: 800
+  font-style: bold
+  src: url('../assets/fonts/OpenSansExtraBold.woff2') format("woff2"), url('../assets/fonts/OpenSansExtraBold.woff') format("woff")
+
+
+@font-face
+  font-family: 'Open Sans Extra Bold'
+  font-weight: 800
+  font-style: italic
+  src: url('../assets/fonts/OpenSansExtraBoldItalic.woff2') format("woff2"), url('../assets/fonts/OpenSansExtraBoldItalic.woff') format("woff")
+
+
+body
+  font-family: 'Open Sans', 'Arial', sans-serif
+  font-size: 16px
+  font-weight: 400
+  line-height: 20px
+  min-width: 320px
+  margin: 0
+  background-color: #fff
+
+.hero
+  &.page-promo
+    font-size: 40px
+    height: 692px
+    color: #fff
+    background-color: $primary
+    background-image: url('./../assets/img/bg-book.jpg')
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: cover
+  &.page-promo-boy
+    height: auto
+    background-image: url('./../assets/img/bg-boy.jpg')
+  &.page-promo-girl
+    height: auto
+    min-height: 370px
+    background-image: url('./../assets/img/bg-girl.jpg')
+
+.button-join
+  font-family: Arial, Helvetica, sans-serif
+  font-size: 24px
+  line-height: 1.2
+  display: inline-block
+  min-width: 128px
+  height: auto
+  padding: 10px
+  color: #fff
+  border: 0
+  background-color: $success
+  &:hover
+    color: #fff
+    background-color: #96d044
+
+.icon-on-white
+  margin-bottom: 35px
+  color: $primary
+  i
+    font-size: 42px
+
+.icon-on-blue
+  margin-bottom: 35px
+  color: #fff
+  i
+    font-size: 42px
+
+.main-nav
+  box-sizing: border-box
+  min-height: 78px
+  padding: 20px 15px
+  background-color: $primary
+  box-shadow: 0 0 0 0 transparent
+
+.hero-head .main-nav
+  box-sizing: border-box
+  height: 78px
+  padding: 20px 15px
+  background-color: rgba(72, 200, 254, 0.8)
+  box-shadow: 0 0 0 0 transparent
+
+.main-nav a.nav-item:not(.button)
+  display: -ms-flexbox
+  display: flex
+  color: #fff
+
+.nav-menu.nav-right
+  .nav-item-btn
+    margin-left: 20px
+  display: -ms-flexbox
+  display: flex
+  -ms-flex-align: center
+  align-items: center
+
+.nav-item
+  padding: .35rem .75rem
+
+.nav > .container
+  min-height: auto
+
+.title-main-promo
+  font-family: 'Open Sans Extra Bold'
+  font-size: 52px
+  font-weight: 700
+  position: relative
+  max-width: 480px
+  margin: 0 auto
+  color: #fff
+  &::after
+    position: absolute
+    right: 0
+    bottom: -5px
+    display: block
+    width: 293px
+    height: 8px
+    content: ''
+    background-image: url('./../assets/img/underline.svg')
+    background-repeat: no-repeat
+
+.title-promo
+  font-family: 'Open Sans Extra Bold'
+  font-size: 52px
+  line-height: 54px
+  color: #fff
+
+.title-dark
+  font-size: 40px
+  margin-bottom: 65px
+  color: #393939
+  &.title:not(:last-child)
+    margin-bottom: 1.5em
+
+.title-light
+  font-size: 40px
+  margin-bottom: 65px
+  color: #fff
+  &.title:not(:last-child)
+    margin-bottom: 1.5em
+
+.subtitle-promo
+  font-family: 'Open Sans Bold'
+  font-size: 40px
+  font-style: italic
+  line-height: 1
+  color: #fff
+
+.subtitle-quote
+  font-family: 'Open Sans Bold'
+  font-size: 40px
+  font-style: italic
+  position: relative
+  display: inline-block
+  box-sizing: border-box
+  max-width: 616px
+  padding: 0 30px
+  color: $primary
+  &::before
+    font-size: 50px
+    position: absolute
+    top: 0
+    left: 0
+    display: block
+    content: '"'
+  &::after
+    position: relative
+    right: -40px
+    bottom: 0
+    display: inline-block
+    content: '"'
+
+.about-project
+  padding-right: 1.5rem
+  padding-left: 1.5rem
+
+.about-project-white
+  color: #393939
+  background-color: #fff
+
+.about-project-blue
+  color: #fff
+  background-color: $primary
+
+.about-project-item
+  padding: 0 5%
+
+.about-project-subtitle
+  font-size: 19px
+  font-weight: bold
+  line-height: 24px
+  margin-bottom: 20px
+
+.about-project p
+  font-size: 15px
+
+.page-footer
+  padding: 3rem 1.5rem 3rem
+  background-color: #f8f8f8
+
+.page-links
+  line-height: 22px
+  display: inline-block
+  color: $success
+  border-bottom: 1px solid $success
+  &:hover
+    color: #96d044
+    border-color: #96d044
+
+.message-body a:not(.button)
+  color: inherit
+
+.message-body-new-style
+  padding: 24px 20px 30px
+  > .image
+    overflow: hidden
+    max-width: 200px
+    max-height: 200px
+    margin: 0 auto
+    margin-bottom: 15px
+    border: 10px solid $primary
+    border-radius: 50%
+  a:not(.button)
+    text-decoration: none
+
+.button-connect
+  font-size: 16px
+  width: 200px
+  min-height: 40px
+  text-align: center
+
+.field-new-style
+  &:not(:last-child)
+    margin-bottom: 0
+  .control .button .icon:first-child:not(:last-child)
+    margin-right: 0
+    margin-left: 0
+  &.nav-item
+    padding-right: 0
+    padding-left: 0
+
+.button-control
+  padding-right: calc(.625em - 1px)
+  padding-left: calc(.625em - 1px)
+  color: #fff
+  border: 1px solid #fff
+  background-color: transparent
+  &:hover
+    color: $primary
+    border: 1px solid #fff
+    background-color: #fff
+
+.button-control-active
+  color: $primary
+  background-color: #fff
+
+.control-name
+  font-size: 0
+
+.message-text
+  font-size: 16px
+  font-weight: 600
+  text-align: center
+  .icon
+    width: auto
+    height: auto
+    text-decoration: none
+    color: #8b8b8b
+    .fa
+      font-size: 17px
+      margin-left: 5px
+      vertical-align: baseline
+      color: #8b8b8b
+      &:hover
+        color: #5b5b5b
+
+.message-text-small
+  font-size: 14px
+  font-weight: 400
+  .icon .fa
+    font-size: 14px
+
+.support-block
+  margin-right: -24px
+  margin-left: -24px
+  padding: 20px 24px
+  color: #fff
+  border-radius: 0
+  background-color: $primary
+  .icon.is-small .fa
+    font-size: 18px
+    color: #8b8b8b
+  .input[type='text']
+    border: 1px solid #e3e3e3
+
+.message-card
+  font-size: 22px
+  .message-body
+    padding-top: 10px
+    padding-bottom: 10px
+
+.payment-variants
+  display: -ms-flexbox
+  display: flex
+  -ms-flex-pack: center
+  justify-content: center
+
+.payment-item
+  .icon
+    width: auto
+    height: auto
+    .fa
+      font-size: 21px
+      color: #8b8b8b
+  &:not(:last-child)
+    margin-right: 7px
+
+.payment-text
+  font-size: 12px
+  font-style: italic
+  margin-top: 10px
+  color: #393939
+
+.limit
+  display: -ms-flexbox
+  display: flex
+  margin-bottom: 18px
+  color: #393939
+  -ms-flex-pack: justify
+  justify-content: space-between
+  -ms-flex-wrap: wrap
+  flex-wrap: wrap
+
+.limit-image
+  display: -ms-flexbox
+  display: flex
+  width: 30%
+  text-align: center
+  -ms-flex-align: center
+  align-items: center
+  -ms-flex-pack: center
+  justify-content: center
+  svg
+    min-width: 65px
+    height: auto
+
+.limit-choose
+  width: 65%
+
+.limit-text
+  font-style: italic
+  width: 100%
+
+.limit-cups
+  font-size: 14px
+  font-weight: normal
+
+.limit-button
+  font-size: 20px
+  display: inline-block
+  box-sizing: content-box
+  width: 11px
+  padding: 5px
+  &:hover
+    color: #33afe3
+
+.limit-button-plus
+  color: $success
+  &:hover
+    color: #96d044
+
+.limit-count-block
+  display: -ms-flexbox
+  display: flex
+  -ms-flex-align: center
+  align-items: center
+  -ms-flex-pack: center
+  justify-content: center
+
+.limit-count
+  font-weight: 700
+  display: inline-block
+  width: auto
+  min-width: 90px
+  height: auto
+  padding: 3px 10px
+  border: 0
+  >
+  b
+    font-size: 20px
+    line-height: 20px
+    display: inline-block
+    vertical-align: baseline
+    span
+      font-size: 12px
+      font-weight: 600
+      display: inline-block
+      margin-left: 2px
+      vertical-align: baseline
+
+.earn-image
+  margin-top: -5px
+  margin-bottom: 10px
+  img
+    width: 100px
+    height: auto
+
+.media-new-style
+  display: -ms-flexbox
+  display: flex
+  text-decoration: none
+  -ms-flex-align: center
+  align-items: center
+  &:hover
+    color: $primary
+  .image
+    overflow: hidden
+    width: 56px
+    height: 56px
+    border: 3px solid $primary
+    border-radius: 50%
+  strong
+    font-size: 14px
+  p
+    font-size: 12px
+
+.message-body
+  .media-new-style:not(.button), .limit-button:not(.button)
+    text-decoration: none
+    &:hover
+      color: $primary
+  .limit-button-plus:not(.button)
+    color: $success
+
+.timeline-new-style
+  .timeline-item
+    padding-bottom: 1em
+    border-left: 3px solid #f6f6f6
+    &::before
+      top: 0
+      bottom: 0
+      left: -8px
+      margin: auto 0
+      border: 3px solid $primary
+  .timeline-item-done::before
+    font-family: FontAwesome
+    font-size: 18px
+    font-weight: normal
+    font-style: normal
+    position: absolute
+    top: 0
+    bottom: 0
+    left: -14px
+    display: block
+    width: 25px
+    height: 25px
+    margin: auto 0
+    content: '\f00c'
+    text-align: center
+    text-decoration: inherit
+    color: #fff
+    border: 0
+    border-radius: 5px
+    background: $primary
+
+.title:not(.is-spaced) + .subtitle
+  margin-top: -.5rem
+
+.button-blue
+  color: #fff
+  border: none
+  background-color: $primary
+  &:hover
+    color: #fff
+    background-color: #33afe3
+
+.button-white-border
+  color: #fff
+  border: 1px solid #fff
+  background-color: transparent
+  &:hover
+    color: $primary
+    border: 1px solid #fff
+    background-color: #fff
+
+.button-green
+  color: #fff
+  border: 0
+  background-color: $success
+  &:hover
+    color: #fff
+    background-color: #96d044
+
+.fw
+  -ms-flex-wrap: wrap
+  flex-wrap: wrap
+
+.columns-fw
+  -ms-flex-wrap: wrap
+  flex-wrap: wrap
+  -ms-flex-pack: center
+  justify-content: center
+
+pre
+  margin: 0
+  margin-bottom: 35px
+  padding: 1em 1.25em
+  white-space: pre-wrap
+  word-wrap: break-word
+  border: 1px solid #dbdbdb
+  border-radius: 3px
+
+a
+  color: $success
+  &:hover
+    color: #96d044
+
+.subtitle-mb:not(:last-child)
+  margin-bottom: .5rem
+
+@media (min-width: 768px)
+  .support-block
+    margin-right: 0
+    margin-left: 0
+    border-radius: 3px
+  .control-name
+    font-size: 16px
+  .field-new-style
+    .button .icon:first-child:not(:last-child)
+      margin-right: .1875em
+      margin-left: calc(-.375em - 1px)
+    &.nav-item
+      padding: .35rem .75rem
+
+@media (min-width: 768px) and (max-width: 900px)
+  .button-connect
+    width: 100%
+
+@media screen and (min-width: 1260px)
+  .container
+    width: 1190px
+    max-width: 1190px
+
+@media (max-width: 768px)
+  .title-main-promo
+    font-size: 34px
+    &::after
+      right: auto
+      bottom: -8px
+      left: 0
+      width: 200px
+      background-size: contain
+  .title-main-promo-left
+    width: 276px
+    text-align: left
+  .title-dark, .title-light
+    font-size: 28px
+  .nav-menu.nav-left
+    display: -ms-flexbox
+    display: flex
+    -ms-flex-align: center
+    align-items: center
+  .button-join
+    padding: 5px
+  .hero
+    &.page-promo
+      height: auto
+      background-position: 80% center
+    &.page-promo-boy, &.page-promo-girl
+      background-position: center center
+  .nav-menu.nav-right
+    position: static
+    display: -ms-flexbox
+    display: flex
+    background-color: transparent
+    box-shadow: none
+    -ms-flex-align: center
+    align-items: center
+    .nav-item
+      border-top: 0
+    .nav-item-btn
+      margin-left: 0
+      border: 1px solid
+  .button-join
+    font-size: 22px
+    min-width: 106px
+  .about-project
+    padding-right: 0
+    padding-left: 0
+  pre
+    margin-right: -24px
+    margin-left: -24px
+    border-right: 0
+    border-left: 0
+    border-radius: 0
+
+@media (max-width: 350px)
+  .button-control
+    padding-right: 5px
+    padding-left: 5px
