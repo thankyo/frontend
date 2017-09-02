@@ -7,7 +7,7 @@
   "repository": "git+https://github.com/thankyo/thank-brunch.git",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "rimraf public && webpack -p"
+    "build": "rimraf public && NODE_ENV=production webpack -p"
   },
   "engines": {
     "npm": "^2.14.7",

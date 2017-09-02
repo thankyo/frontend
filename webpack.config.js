@@ -9,6 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 
 const config = {
+  devtool: "source-map",
   context: path.resolve(__dirname, 'src'),
   entry: {
     app: "./index.js",
@@ -83,13 +84,17 @@ const config = {
 
 /* Production */
 
-console.log(process.env.NODE_ENV);
-
 if (process.env.NODE_ENV === 'production') {
-
   config.output.filename = '[name].[chunkhash].js';
   config.output.chunkFilename = '[name].[chunkhash].js';
   config.plugins = [
+    new webpack.DefinePlugin({
+      '__DEV__': true,
+      'FACEBOOK_KEY': 1429718427098411,
+      "process.env": {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') // default value if not specified
+      }
+    }),
     ...config.plugins, // ES6 array destructuring, available in Node 5+
     new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
     new webpack.HashedModuleIdsPlugin(),
@@ -130,6 +135,14 @@ if (process.env.NODE_ENV === 'production') {
   ];
 } else {
   config.plugins = [
+    new webpack.DefinePlugin({
+      '__DEV__': true,
+      'FACEBOOK_KEY': 1429230027124287,
+      "process.env": {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') // default value if not specified
+      }
+    }),
+
     new webpack.HotModuleReplacementPlugin(),
     ...config.plugins,
     new HtmlWebpackPlugin({
