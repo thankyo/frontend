@@ -1,47 +1,52 @@
-import React, { Component } from "react";
-import Icon from "../components/Icon";
+import React from "react";
 
-export default class HowItWorks extends Component {
-  render() {
-    return (
-      <section className="section hero has-text-centered">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title">How this works</h1>
-            <div className="columns">
-              <div className="column is-one-third">
-                <Icon fa="heart-o" size="large"/>
-                <br/>
-                <br/>
-                <h2 className="subtitle">
-                  <strong>Creators put Loveit button on every piece they create. </strong>
-                  <strong>It can</strong> be a song, poem, photo, blog, basically <strong>anything</strong> on the web can have this button.
-                </h2>
-              </div>
-              <div className="column is-one-third">
-                <Icon fa="heart" size="large"/>
-                <br/>
-                <br/>
-                <h2 className="subtitle">
-                  Whenever <strong>you click it</strong>, we register your tip.
-                  We track your support throughout the month and charge you total at the end of it.
-                  <br/>
-                </h2>
-              </div>
-              <div className="column is-one-third">
-                <Icon fa="calendar" size="large"/>
-                <br/>
-                <br/>
-                <h2 className="subtitle">
-                  At the end of the month we combine all your tips and <strong>send your support to the creators.</strong>
-                  You are in <strong>full control of how much you spend</strong> - set your own limits and we won't charge you more, than that.
-                </h2>
+export default function () {
+  return (
+    <section className="section hero has-text-centered about-project about-project-blue">
+      <div className="hero-body">
+        <div className="container">
+          <h1 className="title title-light">How microtip works</h1>
+          <div className="columns">
+            <div className="column is-one-third">
+              <div className="about-project-item">
+                      <span className="is-narrow">
+                        <span className="icon icon-on-blue is-large">
+                          <i className="fa fa-heart-o"></i>
+                        </span>
+                      </span>
+                <h2 className="about-project-subtitle"><b>Creators put Loveit button on every&nbsp;piece&nbsp;they&nbsp;
+                  create</b></h2>
+                <p>It can be a song, poem, photo, blog, basically anything on the web can have this button</p>
               </div>
             </div>
-            <br/>
+            <div className="column is-one-third">
+              <div className="about-project-item">
+                      <span className="is-narrow">
+                        <span className="icon icon-on-blue is-large">
+                          <i className="fa fa-heart"></i>
+                        </span>
+                      </span>
+                <h2 className="about-project-subtitle"><b>Whenever you click it, we register&nbsp;your&nbsp;tip</b>
+                </h2>
+                <p>We track your support throughout the month and charge you total at the end of it</p>
+              </div>
+            </div>
+            <div className="column is-one-third">
+              <div className="about-project-item">
+                      <span className="is-narrow">
+                        <span className="icon icon-on-blue is-large">
+                          <i className="fa fa-calendar"></i>
+                        </span>
+                      </span>
+                <h2 className="about-project-subtitle"><b>Send your support to&nbsp;the creators at&nbsp;the&nbsp;end
+                  of&nbsp;the&nbsp;month</b></h2>
+                <p>You are in full control of how much you spend - set your own limits and we won't charge you more,
+                  than that</p>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  )
 }

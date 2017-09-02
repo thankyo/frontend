@@ -3,11 +3,6 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 
-const CompressionPlugin = require("compression-webpack-plugin");
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
-
 const config = {
   devtool: "source-map",
   context: path.resolve(__dirname, 'src'),
@@ -52,11 +47,11 @@ const config = {
       },
       {
         test: /\.svg$/,
-        use: [ 'svg-inline-loader' ]
+        use: [ 'file-loader' ]
       },
       {
         test: /\.(jpg|woff|woff2)$/,
-        use: "file-loader"
+        use: [ "file-loader" ]
       }
     ]
   },
@@ -95,8 +90,13 @@ const config = {
 };
 
 /* Production */
-
 if (process.env.NODE_ENV === 'production') {
+  const CompressionPlugin = require("compression-webpack-plugin");
+  const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+  const CopyWebpackPlugin = require('copy-webpack-plugin');
+  const WebpackMd5Hash = require('webpack-md5-hash');
+
+
   config.output.filename = '[name].[chunkhash].js';
   config.output.chunkFilename = '[name].[chunkhash].js';
   config.plugins = [
@@ -145,7 +145,10 @@ if (process.env.NODE_ENV === 'production') {
       title: 'LoveIt',
     })
   ];
-} else {
+}
+
+
+if (process.env.NODE_ENV !== 'production') {
   config.plugins = [
     new webpack.DefinePlugin({
       '__DEV__': true,
@@ -166,14 +169,12 @@ if (process.env.NODE_ENV === 'production') {
   ]
 }
 
-/*
-if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV === 'analyze') {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
   config.plugins = [
     ...config.plugins,
     new BundleAnalyzerPlugin(),
   ];
 }
-*/
 
 module.exports = config;

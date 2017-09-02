@@ -1,29 +1,17 @@
-import React, { Component } from "react";
-import FacebookLogin from "./FacebookLogin";
+import React from "react";
 
-export default class Join extends Component {
-  render() {
-    let style = {
-      backgroundImage: `url('/img/landing/${this.props.image}')`,
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-    };
-    return (
-      <section className="hero is-medium is-success" style={style}>
-          <div className="hero-body">
-              <div className="container has-text-centered">
-                  <h1 className="title is-1">
-                    {this.props.title}
-                  </h1>
-                  <h2 className="subtitle is-3">{this.props.subtitle}</h2>
-                  <FacebookLogin>
-                      <div className="button is-info is-inverted is-outlined is-hovered is-large">
-                          <span>{this.props.button}</span>
-                      </div>
-                  </FacebookLogin>
-              </div>
-          </div>
-      </section>
-    );
-  }
+export default function () {
+  return (
+    <section className="hero is-medium page-promo page-promo-boy">
+      <div className="hero-body">
+        <div className="container has-text-centered">
+          <h1 className="title title-promo">
+            Support creativity
+          </h1>
+          <p className="subtitle subtitle-promo">Just a dime, every time</p>
+          <a href="#" className="button button-join">Join</a>
+        </div>
+      </div>
+    </section>
+  );
 }
