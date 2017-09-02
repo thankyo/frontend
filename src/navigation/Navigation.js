@@ -1,99 +1,53 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { logout } from '../reducers/auth.actions';
-import { setMode } from '../reducers/menu';
+import React from "react";
 import Brand from '../pages/components/Brand';
+import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
-import Icon from "../pages/components/Icon";
 
-function LogoutButton({ logout }) {
+function NavigationLink({ name, icon, pathname, isActive }) {
   return (
-    <div className="button is-info is-outlined is-hovered" onClick={logout}>
-      <Icon fa="sign-out" text="Out"/>
+    <div className="control">
+      <Link to={pathname}>
+        <div className={isActive ? "button button-control button-control-active" : "button button-control"}>
+          <span className="icon"><i className={icon}></i></span>
+          <span>{name}</span>
+        </div>
+      </Link>
     </div>
-  )
-}
-
-function NavigationItem({ item: { text, active, pathname } }) {
-  return (
-    <Link to={pathname} className={active ? "nav-item is-active" : "nav-item"}>
-      <span>{text}</span>
-    </Link>
   );
 }
 
-function ModeItem({ name, icon, isActive, setMode }) {
+function Navigation({ logout, links }) {
   return (
-    <div className="control" onClick={() => !isActive && setMode(name)}>
-      <div className={isActive ? "button is-active" : "button"}>
-        <span className="icon">
-            <i className={icon}></i>
-        </span>
-        <span>{name}</span>
-      </div>
-    </div>
-  )
-}
-
-class Navigation extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { active: false };
-    this.handleExpand = this.handleExpand.bind(this)
-  }
-
-  handleExpand() {
-    this.setState({ active: !this.state.active })
-  }
-
-  render() {
-    let { logout, setMode } = this.props;
-    let { items, modes } = this.props.menu;
-    let { active } = this.state;
-
-    return (
-      <nav className="nav is-dark has-shadow">
-        <div className="container">
+    <nav className="nav main-nav">
+      <div className="container">
+        <div className="nav-left">
           <Brand/>
-
-          <span className={active ? "nav-toggle is-active" : "nav-toggle"} onClick={this.handleExpand}>
-              <span></span>
-              <span></span>
-              <span></span>
-          </span>
-
-          <div className="nav-center">
-            <div id="nav-menu" className={active ? "nav-right nav-menu is-active" : "nav-right nav-menu"}>
-              {
-                items.map((item) => (<NavigationItem key={item.pathname} item={item}/>))
-              }
-            </div>
-
-            <div className="nav-item">
-              <div className="field has-addons">
-                {
-                  modes.map(mode => {
-                    return (<ModeItem key={mode.name} {...mode} setMode={setMode}/>);
-                  })
-                }
-              </div>
-            </div>
-            <div className="nav-item is-black">
-              <div className="block">
-                <LogoutButton logout={logout}/>
+        </div>
+        <div className="nav-right">
+          <div className="nav-item field has-addons field-new-style">
+            {
+              links.map((link, i) => <NavigationLink key={i} {...link}/>)
+            }
+          </div>
+          <div className="nav-item">
+            <div className="block">
+              <div className="button button-logout button-white-border" onClick={logout}>
+                  <span className="is-narrow">
+                    <span className="icon"><i className="fa fa-sign-out"></i></span>
+                    <span>Log Out</span>
+                  </span>
               </div>
             </div>
           </div>
         </div>
-      </nav>
-    )
-  }
+      </div>
+    </nav>
+  )
 }
 
 const mapStateToProps = ({ menu }) => {
   return {
-    menu
+    links: menu
   };
 };
 
@@ -102,9 +56,6 @@ const mapDispatchToProps = (dispatch) => {
     logout: () => {
       browserHistory.push("/");
       dispatch(logout())
-    },
-    setMode: (name) => {
-      dispatch(setMode(name))
     }
   }
 };
