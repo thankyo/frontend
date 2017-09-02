@@ -1,3 +1,5 @@
+import "./styles.sass";
+
 import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -27,6 +29,6 @@ Promise.all([ loaded, conf(history, store) ]).then(() => {
     <Provider store={store}>
         <MainApp history={history}/>
     </Provider>,
-    document.getElementById('app-root')
+    document.getElementById('app')
   );
 });

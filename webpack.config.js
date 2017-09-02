@@ -31,6 +31,20 @@ const config = {
         use: 'babel-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.sass$/,
+        use: [{
+          loader: "style-loader" // creates style nodes from JS strings
+        }, {
+          loader: "css-loader", options: {
+            sourceMap: true
+          } // translates CSS into CommonJS
+        }, {
+          loader: "sass-loader", options: {
+            sourceMap: true
+          } // compiles Sass to CSS
+        }]
+      }
     ]
   },
   output: {
@@ -41,16 +55,8 @@ const config = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new HtmlWebpackPlugin({
-      appMountId: 'app-root',
-      inject: true,
-      inlineManifestWebpackName: 'webpackManifest',
-      template: './index.ejs',
-      title: 'LoveIt',
-    }),
     new OfflinePlugin({ // should be last
       AppCache: false,
       ServiceWorker: { events: true },
@@ -93,7 +99,7 @@ if (process.env.NODE_ENV === 'production') {
     //   manifestVariable: 'webpackManifest',
     //   inlineManifest: true,
     // }),
-    new CopyWebpackPlugin([ { from: '../assets' } ]),
+    new CopyWebpackPlugin([{ from: '../assets' }]),
     new FaviconsWebpackPlugin('../assets/favicon.png'),
     new CompressionPlugin({
       asset: "[path].gz[query]",
@@ -101,8 +107,38 @@ if (process.env.NODE_ENV === 'production') {
       test: /\.(js|html)$/,
       threshold: 10240,
       minRatio: 0.8
+    }),
+    new HtmlWebpackPlugin({
+      appMountId: 'app',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+      inject: true,
+      inlineManifestWebpackName: 'webpackManifest',
+      template: './index.ejs',
+      title: 'LoveIt',
     })
   ];
+} else {
+  config.plugins = [
+    new webpack.HotModuleReplacementPlugin(),
+    ...config.plugins,
+    new HtmlWebpackPlugin({
+      // Required
+      inject: false,
+      template: require('html-webpack-template'),
+      appMountId: 'app',
+    })
+  ]
 }
 
 /*

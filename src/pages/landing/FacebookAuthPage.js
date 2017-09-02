@@ -6,7 +6,7 @@ function FacebookAuthPage() {
   return (
     <div className="pageloader is-active"/>
   );
-};
+}
 
 const mapStateToProps = ({ auth }) => {
   return { auth };
