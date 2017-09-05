@@ -47,7 +47,7 @@ const config = {
       },
       {
         test: /\.svg$/,
-        use: [ 'file-loader' ]
+        loader: 'svg-inline-loader'
       },
       {
         test: /\.(jpg|woff|woff2)$/,
