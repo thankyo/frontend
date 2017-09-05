@@ -28,7 +28,7 @@ function Invite({ handleSubmit }) {
       </div>
     </form>
   )
-};
+}
 
 Invite = reduxForm({
   form: 'invite'

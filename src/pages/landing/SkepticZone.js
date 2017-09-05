@@ -27,7 +27,7 @@ export default function () {
                           <i className="fa fa-paypal"></i>
                         </span>
                       </span>
-                <h2 className="about-project-subtitle"><b>More effective than PayPal or Stripe</b></h2>
+                <h2 className="about-project-subtitle"><b>More effective on most donations than PayPal</b></h2>
                 <p>Every donation lesser than 2$ turns into 18% commission, combining into a monthly donations, allows
                   us to lower this to only 10%</p>
               </div>
@@ -39,9 +39,9 @@ export default function () {
                           <i className="fa fa-file"></i>
                         </span>
                       </span>
-                <h2 className="about-project-subtitle"><b>Full control of how much you spend</b></h2>
+                <h2 className="about-project-subtitle"><b>Full control of &nbsp;how&nbsp;much&nbsp;you&nbsp;spend&nbsp;</b></h2>
                 <p>Set a limit for a month and we won't charge you more, than that. All your donations will be
-                  transferred to the next month, until you rich your limit</p>
+                  transferred to the next month, until you reach your limit</p>
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function () {
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>We keep our fees low</b></h2>
-                <p>90% of the tip goes directly to the creator, we'll be lowering this down in the future</p>
+                <p>90% of the tip goes directly to the creator</p>
               </div>
             </div>
           </div>

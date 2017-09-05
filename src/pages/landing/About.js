@@ -14,8 +14,7 @@ export default function () {
                           <i className="fa fa-thumbs-o-up"></i>
                         </span>
                       </span>
-                <h2 className="about-project-subtitle"><b>Support creators everywhere with&nbsp;a&nbsp;<i>single
-                  click</i></b></h2>
+                <h2 className="about-project-subtitle"><b>Loveit is a simple <i>microtip</i> platform</b></h2>
                 <p>It works the same way as Facebook Like, but you know with a bit more meaning</p>
               </div>
             </div>
@@ -26,8 +25,7 @@ export default function () {
                           <i className="fa fa-circle-o"></i>
                         </span>
                       </span>
-                <h2 className="about-project-subtitle"><b>Small fixed amount, which is really&nbsp;just&nbsp;a&nbsp;
-                  dime</b></h2>
+                <h2 className="about-project-subtitle"><b><i>Microtip</i> - is a small amount, which is really&nbsp;just&nbsp;a&nbsp;dime</b></h2>
                 <p>It's made small on purpose, so that you could use it without harming your budget</p>
               </div>
             </div>
@@ -38,8 +36,7 @@ export default function () {
                           <i className="fa fa-hand-peace-o"></i>
                         </span>
                       </span>
-                <h2 className="about-project-subtitle"><b>Easiest way to support creators&nbsp;all&nbsp;around
-                  the&nbsp;world</b></h2>
+                <h2 className="about-project-subtitle"><b>Easiest and effective way to support creators everywhere</b></h2>
                 <p>Supporting creative freedom we make world a better place</p>
               </div>
             </div>

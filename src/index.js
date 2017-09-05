@@ -1,4 +1,4 @@
-import "./styles.sass";
+import "./styles/styles.sass";
 
 import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";

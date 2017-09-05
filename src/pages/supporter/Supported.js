@@ -2,11 +2,22 @@ import React from "react";
 import { connect } from "react-redux";
 import { getSupportedByMe } from "../../reducers/thank/supported.actions";
 
-function Supported({ firstName, lastName }) {
+function Supported({ thumbnail, firstName, lastName, bio }) {
   return (
-    <div>
-      <div className="title">{firstName} {lastName}</div>
-    </div>
+    <a href="#" className="media media-new-style">
+      <div className="media-left">
+        <figure className="image">
+          <img src={thumbnail} width="50" height="50" alt="user picture"/>
+        </figure>
+      </div>
+      <div className="media-content">
+        <div className="content">
+          <strong>{firstName} {lastName}</strong>
+          <p>{ bio }</p>
+        </div>
+      </div>
+      <i className="fa fa-angle-right"></i>
+    </a>
   );
 }
 

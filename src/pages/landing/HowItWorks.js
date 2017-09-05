@@ -38,8 +38,7 @@ export default function () {
                           <i className="fa fa-calendar"></i>
                         </span>
                       </span>
-                <h2 className="about-project-subtitle"><b>Send your support to&nbsp;the creators at&nbsp;the&nbsp;end
-                  of&nbsp;the&nbsp;month</b></h2>
+                <h2 className="about-project-subtitle"><b>At the end of the month we combine your tips</b></h2>
                 <p>You are in full control of how much you spend - set your own limits and we won't charge you more,
                   than that</p>
               </div>
