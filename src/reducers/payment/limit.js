@@ -1,14 +1,24 @@
-import { SET_LIMIT, GET_LIMIT } from './limit.actions';
-import { promiseReducer, combineReducersInSingle } from '../util/promiseStates';
+import { GET_LIMIT, SET_LIMIT } from './limit.actions';
+import { combineReducersInSingle, promiseReducer } from '../util/promiseStates';
 
 const initialState = {
-    amount: 10,
-    currency: "USD"
+  amount: 0,
+  currency: "USD"
 };
 
+const setLimitReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case SET_LIMIT:
+      return payload;
+    default:
+      return state;
+  }
+}
+
 const reducer = combineReducersInSingle(
-    promiseReducer(SET_LIMIT, initialState),
-    promiseReducer(GET_LIMIT, initialState)
+  promiseReducer(SET_LIMIT, initialState),
+  promiseReducer(GET_LIMIT, initialState),
+  setLimitReducer
 );
 
 export default reducer;

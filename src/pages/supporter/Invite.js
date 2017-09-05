@@ -12,7 +12,7 @@ function Invite({ handleSubmit }) {
           <h2 className="subtitle is-6">Put a link or email of the creator and we'll contact him</h2>
           <div className="field has-addons">
             <p className="control is-expanded has-icons-left">
-              <Field name="linkOrEmail" component="input" type="text" className="input" placeholder="link or email"/>
+              <Field name="linkOrEmail" component="input" type="text" className="input" placeholder="Link or email"/>
               <span className="icon is-small is-left">
                   <i className="fa fa-globe"></i>
                 </span>

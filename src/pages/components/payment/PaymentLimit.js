@@ -1,60 +1,56 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { getLimit, setLimit } from "../../../reducers/payment/limit.actions";
+import { decrease, getLimit, increase } from "../../../reducers/payment/limit.actions";
 
-class LimitPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { limit: this.props };
-    this.increase = this.increase.bind(this);
-    this.decrease = this.decrease.bind(this);
+function cupToIcon(numCups) {
+  if (numCups === 1) {
+    return "/img/sup_icon_espresso.svg";
+  } else if (numCups === 2) {
+    return "/img/sup_icon_americano.svg";
+  } else if (numCups === 3) {
+    return "/img/sup_icon_latte.svg";
+  } else {
+    return "/img/sup_icon_siphone.svg";
   }
+}
 
-  increase() {
-    let { limit } = this.state;
-    let newLimit = Object.assign({}, limit, { amount: limit.amount + 5 });
+function LimitIcon({ cups }) {
+  return (
+    <div className="limit-image">
+      <img src={cupToIcon(cups)} width="100" height="40" alt="Limit"/>
+    </div>
+  )
+}
 
-    this.setState({ limit: newLimit });
-    this.props.setLimit(newLimit);
-  };
-
-  decrease() {
-    let { limit } = this.state;
-    let newLimit = Object.assign({}, limit, { amount: limit.amount - 5 });
-
-    this.setState({ limit: newLimit });
-    this.props.setLimit(newLimit);
-  };
-
-  componentWillReceiveProps({ limit }) {
-      this.props.limit === limit;
-      this.setState({ limit });
-  }
-
-  render() {
-    let { limit: { amount, currency } } = this.state;
-    let cups = amount / 5;
-    return (
-      <div className="has-text-centered">
-          <h6 className="title is-6">What is your monthly limit?</h6>
-          <h5 className="title is-6 is-success">
-              <span><b>{cups}</b></span>
-              <span> cup{cups > 1 && "s"} of coffee</span>
-          </h5>
-          <h5 className="subtitle is-6 is-success">
-              <span className="is-small">{amount}.0 {currency}</span>
-          </h5>
-          <h6 className="title is-6 has-addons is-grouped">
-              <a onClick={this.increase}
-                 className="button is-large is-success is-inverted"><span>+ more</span></a>
-              <a onClick={this.decrease} className="button is-large is-danger is-inverted"
-                 disabled={cups == 1}><span>- less</span></a>
-          </h6>
-          <h5 className="subtitle is-6">we'll <b className="is-danger">never</b> charge you more, than that</h5>
+function LimitPage({ limit, decrease, increase }) {
+  let { amount, currency } = limit;
+  let cups = amount / 5;
+  return (
+    <div className="message-body has-text-centered">
+      <div className="limit">
+        <LimitIcon cups={cups}/>
+        <div className="limit-choose">
+          <h6 className="title limit-title is-6">What is your monthly limit?</h6>
+          <p className="title limit-cups">
+            <span>{cups} cups of coffee</span>
+          </p>
+          <p className="limit-count-block">
+            <a className="limit-button" disabled={cups === 1} onClick={() => decrease(limit)}>
+              -
+            </a>
+            <span className="limit-count button button-blue">
+                                        <b>{amount}.0</b>
+                                        <span>{currency}</span>
+                                      </span>
+            <a className="limit-button limit-button-plus" onClick={() => increase(limit)} >
+              <span>+</span>
+            </a>
+          </p>
+        </div>
       </div>
-    );
-  };
+      <p className="limit-text subtitle is-7">we'll <b class="is-danger">never</b> charge you more, than that</p>
+    </div>
+  );
 }
 
 
@@ -65,9 +61,8 @@ const mapStateToProps = ({ payment: { limit } }) => {
 const mapDispatchToProps = (dispatch) => {
   dispatch(getLimit());
   return {
-    setLimit: (limit) => {
-      dispatch(setLimit(limit));
-    }
+    increase: (limit) => dispatch(increase(limit)),
+    decrease: (limit) => dispatch(decrease(limit))
   }
 };
 

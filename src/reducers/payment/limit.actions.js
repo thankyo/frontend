@@ -20,6 +20,24 @@ export function getLimit() {
   }
 }
 
+export function increase(limit) {
+  return (dispatch) => {
+    let newLimit = Object.assign({}, limit, { amount: limit.amount + 5 });
+    dispatch({ type: "SET_LIMIT", payload: newLimit });
+    setLimit(newLimit)(dispatch);
+  }
+}
+
+export function decrease(limit) {
+  return (dispatch) => {
+    let newLimit = Object.assign({}, limit, { amount: limit.amount - 5 });
+    if (newLimit.amount === 0)
+      return;
+    dispatch({ type: "SET_LIMIT", payload: newLimit });
+    setLimit(newLimit)(dispatch);
+  }
+}
+
 export function setLimit(limit) {
   return (dispatch) => {
     let req = new Request(

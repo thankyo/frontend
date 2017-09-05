@@ -25,7 +25,9 @@ export function promiseReducer(event, initialState = {}, pending = (state, paylo
         return state;
     }
   };
-};
+}
+
+
 
 export function combineReducersInSingle() {
   let reducers = Array.prototype.slice.call(arguments);
