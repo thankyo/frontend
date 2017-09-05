@@ -3,35 +3,41 @@ import { connectChargeAccount, getChargeAccount } from "../../../reducers/paymen
 import { connect } from "react-redux";
 import Icon from "../Icon";
 
+const PAYMENT_OPTIONS = [ "visa", "mastercard", "discover", "amex", "paypal" ];
+
 function CreditCard(props) {
   return (
-    <div className="box">
-      <div className="title is-7">{props.brand} ... {props.last4} </div>
-    </div>
+    <article className="message message-card has-text-centered">
+      <div className="message-body">
+        <div className="title is-4">
+          <Icon fa={`cc-${props.brand.toLowerCase()}`}/>
+          <span> ... </span>
+          <span>{props.last4}</span>
+        </div>
+      </div>
+    </article>
   )
 }
-
 
 function PaymentMethod({ chargeAccount, updateChargeAccount }) {
   return (
     <div className="has-text-centered">
-      <h3 className="title is-6">Connect your card</h3>
       <CreditCard {...chargeAccount}/>
       <div className="title is-7 has-addons is-grouped">
-        <a onClick={updateChargeAccount} className="button is-large is-success is-large">
-          <Icon fa="cc-stripe"/><span>Connect your Card</span>
+        <a onClick={updateChargeAccount} className="button button-green button-connect">
+          Connect your Card
         </a>
       </div>
-      <div className="title is-7">
-        <Icon fa="cc-visa"/><span> </span>
-        <Icon fa="cc-mastercard"/><span> </span>
-        <Icon fa="cc-amex"/><span> </span>
-        <Icon fa="cc-jcb"/><span> </span>
-        <Icon fa="cc-discover"/><span> </span>
-        <Icon fa="cc-diners-club"/><span> </span>
+      <div className="payment-variants">
+        {PAYMENT_OPTIONS.map(option => (
+            <span className="payment-item">
+              <Icon fa={`cc-${option}`}/>
+            </span>
+          )
+        )}
       </div>
       <br/>
-      <h5 className="subtitle is-7"><b>All charges happen at the end of the month</b></h5>
+      <h5 className="subtitle payment-text"><b>All charges happen at the end of the month</b></h5>
       <img className="pull-right" src="/img/stripe/powered_by_stripe.png"/>
     </div>
   );

@@ -26,9 +26,7 @@ export default class SupporterDashboardPage extends Component {
               <ThankTransactions id={id}/>
             </div>
             <div className="column is-one-quarter">
-              <article className="message ">
-                <PaymentLimit/>
-              </article>
+              <PaymentLimit/>
               <PaymentMethod/>
             </div>
           </div>
