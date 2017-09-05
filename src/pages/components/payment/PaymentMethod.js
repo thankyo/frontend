@@ -29,8 +29,8 @@ function PaymentMethod({ chargeAccount, updateChargeAccount }) {
         </a>
       </div>
       <div className="payment-variants">
-        {PAYMENT_OPTIONS.map(option => (
-            <span className="payment-item">
+        {PAYMENT_OPTIONS.map((option, i) => (
+            <span key={i} className="payment-item">
               <Icon fa={`cc-${option}`}/>
             </span>
           )

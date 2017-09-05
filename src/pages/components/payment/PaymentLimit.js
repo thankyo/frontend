@@ -1,26 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { decrease, getLimit, increase } from "../../../reducers/payment/limit.actions";
-
-function cupToIcon(numCups) {
-  if (numCups === 1) {
-    return "/img/sup_icon_espresso.svg";
-  } else if (numCups === 2) {
-    return "/img/sup_icon_americano.svg";
-  } else if (numCups === 3) {
-    return "/img/sup_icon_latte.svg";
-  } else {
-    return "/img/sup_icon_siphone.svg";
-  }
-}
-
-function LimitIcon({ cups }) {
-  return (
-    <div className="limit-image">
-      <img src={cupToIcon(cups)} width="100" height="40" alt="Limit"/>
-    </div>
-  )
-}
+import MoneyToCoffeeIcon from "./MoneyToCoffeeIcon";
 
 function LimitPage({ limit, decrease, increase }) {
   let { amount, currency } = limit;
@@ -29,7 +10,9 @@ function LimitPage({ limit, decrease, increase }) {
     <article className="message ">
       <div className="message-body has-text-centered">
         <div className="limit">
-          <LimitIcon cups={cups}/>
+          <div className="limit-image">
+            <MoneyToCoffeeIcon amount={amount}/>
+          </div>
           <div className="limit-choose">
             <h6 className="title limit-title is-6">What is your monthly limit?</h6>
             <p className="title limit-cups">

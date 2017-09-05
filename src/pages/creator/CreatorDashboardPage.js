@@ -21,11 +21,7 @@ export default class CreatorDashboardPage extends Component {
               <IntegrationContent id={id}/>
             </div>
             <div className="column is-one-quarter">
-              <article className="message is-info">
-                <div className="message-body">
-                  <EarnedThisMonth/>
-                </div>
-              </article>
+              <EarnedThisMonth/>
               <PayoutAccount id={id}/>
             </div>
           </div>
