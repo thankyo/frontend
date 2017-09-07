@@ -7,15 +7,9 @@ export default function ({ id }) {
     <div>
       <ManagedResources id={id}/>
       <br/>
-      <br/>
-      <br/>
-      <h3 className="title is-3">2. LoveIt button integration</h3>
-      <h4 className="subtitle is-5">After verifying resource you can integrate it to your site</h4>
       <JSIntegration/>
       <br/>
-      <br/>
-      <br/>
-      <h3 className="title is-5 pull-right">Did not work? <a
+      <h3 className="title is-6">Did not work? <a
         href="mailto:antono@loveit.tips?subject=Integration problem">contact us.</a></h3>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./notVerified.scss";
 
 const height = 48;
 const width = 110;
@@ -14,20 +15,19 @@ class Example extends Component {
     return (
       <div className="columns">
         <div className="column is-half">
-          <span className="title is-4 is-error">Something wrong</span><br/>
-          <iframe src={unverifiedSrc} title={title} height={height} width={width} style={style}></iframe>
+          <span className="subtitle subtitle-mb is-6 is-error">Something wrong</span><br/>
+          <span id="problem">Problem</span>
         </div>
         <div className="column is-half">
-          <span className="title is-4 is-success">Everything is right</span><br/>
-          <iframe src={src} title={title} height={height} width={width} style={style}></iframe>
+          <span className="subtitle subtitle-mb is-6 is-error">Everything is right</span><br/>
+          <span id="normal">LoveIt</span>
         </div>
       </div>
     )
   }
 }
 
-let jsText = `
-<!-- JS LoveIt Script -->
+let jsText = `<!-- JS LoveIt Script -->
 <script>(function(d, i, l) {
   var f = d.createElement('iframe');
   f.src = "//loveit.tips/api/v1/thank/http/" +
@@ -50,34 +50,24 @@ let jsText = `
     d.addEventListener('DOMContentLoaded', initButton)
   }
 })(document, 'love-it', window.location)
-</script>
-`;
+</script>`;
 
-let buttonHtml = `
-<div id="love-it"></div>
-`;
+let buttonHtml = `<div id="love-it"></div>`;
 
 
 export default class JSIntegration extends Component {
   render() {
     return (
       <div>
-        <h5 className="title is-5">1. Embed following JS script on your page.</h5>
+        <h6 className="title is-6">Embed following JS script on your page.</h6>
         <pre>
-          {/*<code>*/}
             {jsText}
-          {/*</code>*/}
         </pre>
-        <br/>
-        <h5 className="title is-5">2. Place button tag where you want it.</h5>
+        <h6 className="title is-6">Place button tag where you want it.</h6>
         <pre>
-          <code>
             {buttonHtml}
-          </code>
         </pre>
-        <br/>
-        <br/>
-        <h5 className="title is-5">Example</h5>
+        <h6 className="title is-6">Example</h6>
         <Example/>
       </div>
     );
