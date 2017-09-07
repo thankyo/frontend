@@ -20,7 +20,7 @@ class VerificationStatus extends Component {
     }
     return (
       <div className="has-text-centered">
-          <b>{icon}</b>
+        <b>{icon}</b>
       </div>
     )
   }
@@ -31,39 +31,29 @@ export default class PendingVerification extends Component {
     let metaText = `<meta name="loveit-site-verification" content="${this.props.verificationCode}"/>`;
     let targetLink = `http://${this.props.resource.uri}`;
     return (
-      <div>
-          <div className="content">
-              <h4 className="title is-4">Verifying <a href={targetLink} target="blank">{this.props.resource.uri}</a>
-              </h4>
-              <ol>
-                  <li className="subtitle">
-                      Copy & Paste HTML snippet in <b>head</b> section of your <b>index.html</b><br/>
-                      <b>
-                          <small>{metaText}</small>
-                      </b>
-                  </li>
-                  <li className="subtitle">
-                      <a onClick={this.props.confirm}>Confirm</a><br/>
-                      <small>We'll verify in seconds.</small>
-                      <br/>
-                  </li>
-              </ol>
-          </div>
+      <div className="message">
+        <div className="message-body message-body-new-style">
+          <h6 className="title is-6">Verifying <a href={targetLink} target="blank">{this.props.resource.uri}</a></h6>
+          Copy & Paste HTML snippet in <b>head</b> section of your <b>index.html</b><br/>
+          <b>
+            <small>{metaText}</small>
+          </b>
           <hr/>
           <VerificationStatus status={this.props.status}/>
           <hr/>
-          <div className="field has-addons is-centered pull-right">
-              <p className="control">
-                  <button onClick={this.props.confirm} className="button is-success">
-                      <Icon fa="check" text="Confirm"/>
-                  </button>
-              </p>
-              <p className="control">
-                  <button onClick={this.props.cancel} className="button is-danger is-centered">
-                      <Icon fa="remove" text="Cancel"/>
-                  </button>
-              </p>
+          <div className="field has-addons has-text-centered">
+            <p className="control">
+              <button onClick={this.props.confirm} className="button is-success">
+                <Icon fa="check" text="Verify"/>
+              </button>
+            </p>
+            <p className="control">
+              <button onClick={this.props.cancel} className="button is-danger is-centered">
+                <Icon fa="remove" text="Cancel"/>
+              </button>
+            </p>
           </div>
+        </div>
       </div>
     )
   }

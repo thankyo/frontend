@@ -6,9 +6,8 @@ import OwnedResources from "./OwnedResources";
 export default function({ id }) {
   return (
     <div>
-      <OwnedResources id={id}/>
-      <hr/>
       <Verification id={id}/>
+      <OwnedResources id={id}/>
     </div>
   );
 }

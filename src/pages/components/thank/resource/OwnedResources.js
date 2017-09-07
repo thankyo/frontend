@@ -1,59 +1,67 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {get} from "../../../../reducers/thank/resource.actions";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { get } from "../../../../reducers/thank/resource.actions";
 import Resource from "../../Resource";
 import Icon from "../../Icon";
 
 class OwnedResource extends Component {
-    render() {
-        return (
-            <tr>
-                <td className="is-narrow">
-                    <Icon fa="check"/>
-                </td>
-                <td>
-                    <Resource resource={this.props.resource}/>
-                </td>
-                <td>
+  render() {
+    return (
+      <tr>
+        <td className="is-narrow">
+          <Icon fa="check"/>
+        </td>
+        <td>
+          <Resource resource={this.props.resource}/>
+        </td>
+        <td>
 
-                </td>
-            </tr>
-        );
-    }
+        </td>
+      </tr>
+    );
+  }
 }
 
-const OwnedResources = ({own}) => {
-    if (own.length > 0) {
-        return (
-            <div className="content">
-                <h4 className="title is-4">Owned</h4>
-                <table className="table is-grouped">
-                    <tbody>
-                        {own.map(resource => <OwnedResource key={resource.uri} resource={resource}/>)}
-                    </tbody>
-                </table>
-            </div>
-        );
-    } else {
-        return (
-            <h4 className="title is-5 is-warning">No verified resources</h4>
-        )
-    }
+const ListOwnedResource = ({ own }) => {
+  return (
+    <div className="content">
+      <h4 className="title is-4">Owned</h4>
+      <table className="table is-grouped">
+        <tbody>
+        {own.map(resource => <OwnedResource key={resource.uri} resource={resource}/>)}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
-const mapStateToProps = ({thank: { resource }}, {id}) => {
-    let own = resource[id] ? resource[id].owns : [];
-    return {
-        own
-    };
+const NoResources = () => {
+  return (
+    <h6 className="title is-6 is-warning has-text-centered"><i>No verified resources</i></h6>
+  )
 };
 
-const mapDispatchToProps = (dispatch, {id}) => {
-    dispatch(get(id));
-    return {}
+const OwnedResources = ({ own }) => {
+  return (
+    <div className="support-block has-text-centered notification">
+      {own.length == 0 ? <NoResources/> : <ListOwnedResource resources={ own }/>}
+    </div>
+  );
+};
+
+const mapStateToProps = ({ thank: { resource } }, { id }) => {
+  let own = resource[id] ? resource[id].owns : [];
+  return {
+    own
+  };
+};
+
+const mapDispatchToProps = (dispatch, { id }) => {
+  dispatch(get(id));
+  return {}
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(OwnedResources);

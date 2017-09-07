@@ -5,10 +5,6 @@ import JSIntegration from "./JSIntegration";
 export default function ({ id }) {
   return (
     <div>
-      <h3 className="title is-3">1. Resource ownership</h3>
-      <div className="subtitle is-5">
-        Before starting integration you need to verify resource ownership.
-      </div>
       <ManagedResources id={id}/>
       <br/>
       <br/>
