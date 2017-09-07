@@ -17,9 +17,7 @@ HttpResourceIcon.propTypes = {
 export default class Resource extends Component {
     http(uri) {
         return (
-            <div className="field has-addons">
-                <Icon fa="html5" text={uri}/>
-            </div>
+          <a href={`https://${uri}`}>{uri}</a>
         )
     }
     social(provider, uri) {

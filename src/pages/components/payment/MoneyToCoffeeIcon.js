@@ -20,7 +20,7 @@ function Latte() {
 
 function Siphone() {
   return (
-    <img src="/img/sup_icon_latte.svg" width={100} height={40} alt={"Siphone"}/>
+    <img src="/img/sup_icon_siphone.svg" width={100} height={40} alt={"Siphone"}/>
   )
 }
 

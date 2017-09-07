@@ -1,35 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { listTransactions } from "../../../reducers/thank/transaction.actions";
+import moment from 'moment';
 import Resource from "../Resource";
-import Date from "../Date";
 
-class ThankTransaction extends Component {
-  render() {
-    return (
-      <tr>
-        <td><Resource resource={this.props.transaction.resource}/></td>
-        <td><Date time={this.props.transaction.created}/></td>
-      </tr>
-    );
-  }
+function ThankTransaction({ resource, destination: { firstName, lastName, shortBio },created }) {
+  let dateStr = moment(created).format("MMMM Do");
+  return (
+    <li className="timeline-item">
+      <div className="timeline-content">
+        <p>{dateStr}</p>
+        <p><b>{firstName} {lastName}</b> <small>{shortBio}</small></p>
+        <Resource resource={resource}/>
+      </div>
+    </li>
+  );
 }
 
 const ThankTransactions = ({ transactions }) => {
   return (
-    <div className="content">
-      <table className="table">
-        <thead>
-        <tr>
-          <th>Resource</th>
-          <th><abbr title="Date">Date</abbr></th>
-        </tr>
-        </thead>
-        <tbody>
-        {transactions.map((transaction, i) => <ThankTransaction key={i} transaction={transaction}/>)}
-        </tbody>
-      </table>
-    </div>
+    <ul className="timeline timeline-new-style">
+      <li className="timeline-header">
+        <span className="button button-green">2017</span>
+      </li>
+      {transactions.map((transaction, i) => <ThankTransaction key={i} {...transaction}/>)}
+    </ul>
   );
 };
 
