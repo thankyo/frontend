@@ -3,6 +3,10 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 
+function isProduction() {
+  return process.env.NODE_ENV === 'production';
+}
+
 const config = {
   devtool: "source-map",
   context: path.resolve(__dirname, 'src'),
@@ -43,15 +47,24 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: [ "style-loader", "css-loader" ]
+        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        loaders: [
+          {
+            loader: 'babel-loader',
+            query: { presets: ['es2015'] }
+          },
+          {
+            loader: 'react-svg-loader',
+            query: { jsx: true }
+          }
+        ]
       },
       {
         test: /\.(jpg|woff|woff2)$/,
-        use: [ "file-loader" ]
+        use: ["file-loader"]
       }
     ]
   },
@@ -69,6 +82,64 @@ const config = {
       AppCache: false,
       ServiceWorker: { events: true },
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: require('html-webpack-template'),
+
+      appMountId: 'app',
+      meta: [
+        {
+          name: "charSet",
+          content: "utf-8",
+        },
+        {
+          name: 'description',
+          content: 'A better default template for html-webpack-plugin.'
+        },
+        {
+          name: "viewport",
+          content: "width=device-width,minimum-scale=1"
+        }, {
+          name: "google-site-verification",
+          content: "VXBRnbM3Jh54uR-jHjoHSrmu0UM78IKma7FDtydCPnk",
+        }, {
+          name: "description",
+          content: "Love.it microtips platform"
+        }, {
+          name: "keywords",
+          content: "donation,micro tip,micro donation,microtip,microdonation"
+        }
+      ],
+      mobile: true,
+      lang: 'en-US',
+      inlineManifestWebpackName: 'webpackManifest',
+      scripts: [
+        // {
+        //   src: "https://cdn.ravenjs.com/3.17.0/raven.min.js",
+        //   crossorigin: "anonymous",
+        //   async: true
+        // }
+      ],
+      links: [
+        {
+          href: 'https://loveit.tips',
+          rel: 'canonical',
+        }
+      ],
+      title: 'Love It',
+      minify: {
+        removeComments: isProduction(),
+        collapseWhitespace: isProduction(),
+        removeRedundantAttributes: isProduction(),
+        useShortDoctype: isProduction(),
+        removeEmptyAttributes: isProduction(),
+        removeStyleLinkTypeAttributes: isProduction(),
+        keepClosingSlash: isProduction(),
+        minifyJS: isProduction(),
+        minifyCSS: isProduction(),
+        minifyURLs: isProduction(),
+      },
+    })
   ],
   devServer: {
     contentBase: path.join(__dirname, "assets"),
@@ -104,7 +175,7 @@ if (process.env.NODE_ENV === 'production') {
       '__DEV__': true,
       'FACEBOOK_KEY': 1429718427098411,
       "process.env": {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') // default value if not specified
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     }),
     ...config.plugins, // ES6 array destructuring, available in Node 5+
@@ -124,25 +195,6 @@ if (process.env.NODE_ENV === 'production') {
       test: /\.(js|html)$/,
       threshold: 10240,
       minRatio: 0.8
-    }),
-    new HtmlWebpackPlugin({
-      appMountId: 'app',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-      inject: true,
-      inlineManifestWebpackName: 'webpackManifest',
-      template: './index.ejs',
-      title: 'LoveIt',
     })
   ];
 }
@@ -160,12 +212,6 @@ if (process.env.NODE_ENV !== 'production') {
 
     new webpack.HotModuleReplacementPlugin(),
     ...config.plugins,
-    new HtmlWebpackPlugin({
-      // Required
-      inject: false,
-      template: require('html-webpack-template'),
-      appMountId: 'app',
-    })
   ]
 }
 
