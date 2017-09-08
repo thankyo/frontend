@@ -7,7 +7,6 @@ function Invite({ handleSubmit }) {
   return (
     <div className="support-block has-text-centered notification">
       <form onSubmit={handleSubmit}>
-        <form>
           <h1 className="title is-5">Who you are ready to support?</h1>
           <h2 className="subtitle is-6">Put a link or email of the creator and we'll contact him</h2>
           <div className="field has-addons">
@@ -24,7 +23,6 @@ function Invite({ handleSubmit }) {
               </button>
             </p>
           </div>
-        </form>
       </form>
     </div>
   )
