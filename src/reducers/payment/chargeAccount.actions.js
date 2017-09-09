@@ -8,7 +8,7 @@ export const CHARGE_ACCOUNT_SET = "CHARGE_ACCOUNT_SET";
 function processToken(token) {
   return (dispatch) => {
     let req = new Request(
-      "/api/v1/payment/my/charge/account",
+      "/api/v1/payment/my/account",
       {
         method: "POST",
         headers: {
@@ -25,7 +25,7 @@ function processToken(token) {
 export function getChargeAccount() {
   return (dispatch) => {
     let req = new Request(
-      "/api/v1/payment/my/charge/account",
+      "/api/v1/payment/my/account",
       {
         method: "GET",
         headers: {

@@ -24,7 +24,7 @@ export function listTransactions(id) {
         authService.signAndStream(`/api/v1/payment/${id}/pending`, dispatch, (payment) => {
             dispatch(transactionSuccess(id, payment));
             if (id === "my") {
-                dispatch(transactionSuccess("me", payment));
+                dispatch(transactionSuccess("my", payment));
             }
         })
     }
