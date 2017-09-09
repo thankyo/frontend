@@ -2,6 +2,7 @@ import React from "react";
 import Brand from '../pages/components/Brand';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
+import { logout } from "../reducers/auth.actions";
 
 function NavigationLink({ name, icon, pathname, isActive }) {
   return (

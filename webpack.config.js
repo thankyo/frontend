@@ -84,48 +84,11 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      template: require('html-webpack-template'),
+      template: './index.ejs',
 
       appMountId: 'app',
-      meta: [
-        {
-          name: "charSet",
-          content: "utf-8",
-        },
-        {
-          name: 'description',
-          content: 'A better default template for html-webpack-plugin.'
-        },
-        {
-          name: "viewport",
-          content: "width=device-width,minimum-scale=1"
-        }, {
-          name: "google-site-verification",
-          content: "VXBRnbM3Jh54uR-jHjoHSrmu0UM78IKma7FDtydCPnk",
-        }, {
-          name: "description",
-          content: "Love.it microtips platform"
-        }, {
-          name: "keywords",
-          content: "donation,micro tip,micro donation,microtip,microdonation"
-        }
-      ],
       mobile: true,
       lang: 'en-US',
-      inlineManifestWebpackName: 'webpackManifest',
-      scripts: [
-        // {
-        //   src: "https://cdn.ravenjs.com/3.17.0/raven.min.js",
-        //   crossorigin: "anonymous",
-        //   async: true
-        // }
-      ],
-      links: [
-        {
-          href: 'https://loveit.tips',
-          rel: 'canonical',
-        }
-      ],
       title: 'Love It',
       minify: {
         removeComments: isProduction(),

@@ -5,14 +5,14 @@ import Icon from "../Icon";
 
 const PAYMENT_OPTIONS = [ "visa", "mastercard", "discover", "amex", "paypal" ];
 
-function CreditCard(props) {
+function CreditCard({ brand, last4}) {
   return (
     <article className="message message-card has-text-centered">
       <div className="message-body">
         <div className="title is-4">
-          <Icon fa={`cc-${props.brand.toLowerCase()}`}/>
+          <Icon fa={`cc-${brand.toLowerCase()}`}/>
           <span> ... </span>
-          <span>{props.last4}</span>
+          <span>{last4}</span>
         </div>
       </div>
     </article>
