@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Logo from '../../../assets/img/loveit_logo.svg';
+import Logo from './logo.svg';
 
 export default class Brand extends Component {
     render() {

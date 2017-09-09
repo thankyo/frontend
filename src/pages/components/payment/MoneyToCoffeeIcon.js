@@ -1,11 +1,11 @@
 import React from "react";
-import Espresso from "../../../../assets/img/sup_icon_espresso.svg";
-import Americano from "../../../../assets/img/sup_icon_americano.svg";
-import Latte from "../../../../assets/img/sup_icon_latte.svg";
-import Siphone from "../../../../assets/img/sup_icon_siphone.svg";
-import Kettle from "../../../../assets/img/creat_icon_kettle.svg";
-import Pot from "../../../../assets/img/creat_icon_pot.svg";
-import Termos from "../../../../assets/img/creat_icon_termos.svg";
+import Espresso from "./coffee/espresso.svg";
+import Americano from "./coffee/americano.svg";
+import Latte from "./coffee/latte.svg";
+import Siphone from "./coffee/siphone.svg";
+import Kettle from "./coffee/kettle.svg";
+import Pot from "./coffee/pot.svg";
+import Termos from "./coffee/termos.svg";
 
 
 export default function MoneyToCoffeeIcon({ amount }) {
