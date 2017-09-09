@@ -7,7 +7,7 @@ export const GET_LIMIT = "GET_LIMIT";
 export function getLimit() {
   return (dispatch) => {
     let req = new Request(
-      "/api/v1/payment/limit/month/my",
+      "/api/v1/payment/my/limit",
       {
         method: "GET",
         headers: {
@@ -41,7 +41,7 @@ export function decrease(limit) {
 export function setLimit(limit) {
   return (dispatch) => {
     let req = new Request(
-      "/api/v1/payment/limit/month/my",
+      "/api/v1/payment/my/limit",
       {
         method: "POST",
         headers: {

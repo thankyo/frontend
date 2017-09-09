@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fetch } from "../../reducers/user.actions";
+import { fetchUser } from "../../reducers/user.actions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -48,7 +48,7 @@ const mapStateToProps = (state, { id }) => {
 
 const mapDispatchToProps = (dispatch, { id }) => {
   return {
-    fetchUser: () => dispatch(fetch(id))
+    fetchUser: () => dispatch(fetchUser(id))
   }
 };
 

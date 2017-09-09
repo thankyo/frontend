@@ -14,7 +14,7 @@ const resourceSuccess = (user, resource) => toAction(RESOURCE_SUCCESS, { user, r
 const resourceFailed = (user, error) => toAction(RESOURCE_FAILED, { user, error });
 
 export function get(user) {
-    let req = new Request(`/api/v1/thank/resource/${user}`);
+    let req = new Request(`/api/v1/thank/${user}/resource`);
     return (dispatch) => {
         dispatch(resourceRequested(user));
         authService.
@@ -34,7 +34,7 @@ const verificationFailed = (user, error) => toAction(RESOURCE_VERIFICATION_FAILE
 
 export const verify = (user, resource) => (dispatch) => {
     dispatch(verificationRequested(user, resource));
-    let req = new Request(`/api/v1/thank/resource/${user}/verification`, {
+    let req = new Request(`/api/v1/thank/${user}/resource/verification`, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -62,7 +62,7 @@ const verificationCancelFailed = (user, error) => toAction(RESOURCE_VERIFICATION
 export function cancelVerification(user) {
     return (dispatch) => {
         dispatch(verificationCancelRequested(user));
-        let req = new Request(`/api/v1/thank/resource/${user}/verification`, {method: "DELETE"});
+        let req = new Request(`/api/v1/thank/${user}/resource/verification`, {method: "DELETE"});
         authService.
             signAndFetch(req, dispatch).
             then(removed => dispatch(verificationCancelSuccess(user))).
@@ -81,7 +81,7 @@ const confirmationError = (user, error) => toAction(RESOURCE_CONFIRMATION_ERROR,
 export function confirm(user) {
     return (dispatch) => {
         dispatch(confirmationRequested(user));
-        let req = new Request(`/api/v1/thank/resource/${user}/verification`, {method: "PUT"});
+        let req = new Request(`/api/v1/thank/${user}/resource/verification`, {method: "PUT"});
         authService.
             signAndFetch(req, dispatch).
             then(verification => dispatch(confirmationSuccess(user, verification))).
