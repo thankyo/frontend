@@ -26,9 +26,8 @@ class Profile extends Component {
   }
 
   render() {
-    let { user, fetchUser } = this.props;
+    let { user } = this.props;
     if (user === undefined) {
-      fetchUser();
       return this.profileState({ firstName: "", lastName: "", bio: "loading"});
     } else {
       return this.profileState(user)
@@ -47,9 +46,8 @@ const mapStateToProps = (state, { id }) => {
 };
 
 const mapDispatchToProps = (dispatch, { id }) => {
-  return {
-    fetchUser: () => dispatch(fetchUser(id))
-  }
+  dispatch(fetchUser(id));
+  return { };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

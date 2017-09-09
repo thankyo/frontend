@@ -1,3 +1,5 @@
+import authService from "./auth";
+
 export function typeEvent(type) {
   return { type };
 }
@@ -27,7 +29,24 @@ export function promiseReducer(event, initialState = {}, pending = (state, paylo
   };
 }
 
-
+export function promiseReducerDB(event, initialState = {}, id = "id") {
+  return function (state = initialState, { type, payload }) {
+    switch (type) {
+      case `${event}.pending`:
+        return state;
+      case `${event}.fulfilled`:
+        if (authService.isMy(payload[id])) {
+          return Object.assign({}, state, { [payload[id]] : payload, my: payload });
+        } else {
+          return Object.assign({}, state, { [payload[id]]: payload });
+        }
+      case `${event}.rejected`:
+        return state;
+      default:
+        return state;
+    }
+  };
+}
 
 export function combineReducersInSingle() {
   let reducers = Array.prototype.slice.call(arguments);
