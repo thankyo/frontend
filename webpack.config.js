@@ -136,7 +136,8 @@ if (process.env.NODE_ENV === 'production') {
   config.plugins = [
     new webpack.DefinePlugin({
       '__DEV__': true,
-      'FACEBOOK_KEY': 1429718427098411,
+      FACEBOOK_KEY: 1429718427098411,
+      STRIPE_KEY: 'pk_live_dmgtat0UE6oSGz9OzmB3ch0A',
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
@@ -167,7 +168,8 @@ if (process.env.NODE_ENV !== 'production') {
   config.plugins = [
     new webpack.DefinePlugin({
       '__DEV__': true,
-      'FACEBOOK_KEY': 1429230027124287,
+      FACEBOOK_KEY: 1429230027124287,
+      STRIPE_KEY: 'pk_test_l8X6IIKp6dumjWWwqsuowf5p',
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') // default value if not specified
       }
