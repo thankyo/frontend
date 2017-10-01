@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Navigation from "../../navigation/Navigation";
 import ComponentWrap from "../components/ComponentWrap";
 import Supported from "./Supported";
@@ -8,30 +8,26 @@ import ThankTransactions from "../components/thank/Transaction";
 import PaymentLimit from "../components/payment/PaymentLimit";
 import PaymentMethod from "../components/payment/PaymentMethod";
 
-
-export default class SupporterDashboardPage extends Component {
-  render() {
-    let { params: { id } } = this.props;
-    return (
-      <div>
-        <Navigation/>
-        <ComponentWrap>
-          <div className="columns">
-            <div className="column is-one-quarter">
-              <Profile id={id}/>
-              <Supported id={id}/>
-            </div>
-            <div className="column is-two-quarter">
-              <Invite id={id}/>
-              <ThankTransactions id={id}/>
-            </div>
-            <div className="column is-one-quarter">
-              <PaymentLimit/>
-              <PaymentMethod/>
-            </div>
+export default function supporterDashboardPage({ match: { params: { id } } }) {
+  return (
+    <div>
+      <Navigation/>
+      <ComponentWrap>
+        <div className="columns">
+          <div className="column is-one-quarter">
+            <Profile id={id}/>
+            <Supported id={id}/>
           </div>
-        </ComponentWrap>
-      </div>
-    );
-  }
+          <div className="column is-two-quarter">
+            <Invite id={id}/>
+            <ThankTransactions id={id}/>
+          </div>
+          <div className="column is-one-quarter">
+            <PaymentLimit/>
+            <PaymentMethod/>
+          </div>
+        </div>
+      </ComponentWrap>
+    </div>
+  );
 }

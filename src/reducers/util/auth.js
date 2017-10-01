@@ -1,15 +1,51 @@
 import 'whatwg-fetch';
-import { logout } from '../auth.actions'
 import oboe from 'oboe';
 
+class TokenStore {
+  getToken = () => {
+    return localStorage.getItem("token");
+  };
+
+  setToken = (token) => {
+    let base64Url = token.split('.')[1];
+    let base64 = base64Url.replace('-', '+').replace('_', '/');
+    let identity = JSON.parse(window.atob(base64));
+    localStorage.setItem("user", identity.id);
+
+    localStorage.setItem("token", token.trim());
+  };
+
+  isMy = (id) => {
+    if (id === "my")
+      return true;
+    return localStorage.getItem("user") === id;
+  };
+
+  removeToken = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  };
+}
+
 class AuthService {
-  isAuthenticated() {
-    let token = localStorage.getItem("token");
-    return token !== undefined && token !== null;
+  constructor() {
+    this.tokenStore = new TokenStore();
   }
 
-  signAndFetch(req, dispatch) {
-    let token = localStorage.getItem("token");
+  authWithFacebook(search) {
+    let url = `/api/v1/auth/social/facebook${search}`;
+    return fetch(new Request(url)).
+      then((res) => res.json()).
+      then(token => this.tokenStore.setToken(token));
+  }
+
+  isAuthenticated = () => {
+    let token = this.tokenStore.getToken();
+    return token !== undefined && token !== null;
+  };
+
+  signAndFetch = (req, dispatch) => {
+    let token = this.tokenStore.getToken();
     if (this.isAuthenticated())
       req.headers.append('X-Auth-Token', token);
 
@@ -24,13 +60,13 @@ class AuthService {
         return res.json()
       }
     });
-  }
+  };
 
-  signAndStream(url, dispatch, callback) {
+  signAndStream = (url, dispatch, callback) => {
     oboe({
       url,
       headers: {
-        'X-Auth-Token': this.getToken()
+        'X-Auth-Token': this.tokenStore.getToken()
       }
     }).done((obj) => {
       let isEmpty = obj === undefined ||
@@ -42,36 +78,13 @@ class AuthService {
         dispatch(logout());
       }
     })
-  }
-
-  getToken = () => {
-    return localStorage.getItem("token");
   };
 
-  isMy = (id) => {
-    if (this.user === undefined) {
-      this.user = this.getUserIdentity().id
-    }
-    return this.user === id;
-  };
+  isMy = (id) => this.tokenStore.isMy(id);
 
-  getUserIdentity = () => {
-    return this.parseJwt(this.getToken());
-  };
-
-  parseJwt(token) {
-    let base64Url = token.split('.')[1];
-    let base64 = base64Url.replace('-', '+').replace('_', '/');
-    return JSON.parse(window.atob(base64));
-  }
-
-  setToken(token) {
-    localStorage.setItem("token", token.trim());
-  }
-
-  removeToken() {
-    localStorage.removeItem("token");
-    this.user = undefined;
+  logout = () => {
+    this.tokenStore.removeToken();
+    window.location = '/';
   }
 }
 

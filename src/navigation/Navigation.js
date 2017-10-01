@@ -1,8 +1,8 @@
 import React from "react";
 import Brand from '../pages/components/Brand';
 import { connect } from 'react-redux';
-import { browserHistory, Link } from 'react-router';
-import { logout } from "../reducers/auth.actions";
+import { Link } from 'react-router-dom';
+import auth from "../reducers/util/auth";
 
 function NavigationLink({ name, icon, pathname, isActive }) {
   return (
@@ -17,7 +17,7 @@ function NavigationLink({ name, icon, pathname, isActive }) {
   );
 }
 
-function Navigation({ logout, links }) {
+function Navigation({ links }) {
   return (
     <nav className="nav main-nav">
       <div className="container">
@@ -32,7 +32,7 @@ function Navigation({ logout, links }) {
           </div>
           <div className="nav-item">
             <div className="block">
-              <div className="button button-logout button-white-border" onClick={logout}>
+              <div className="button button-logout button-white-border" onClick={() => auth.logout()}>
                   <span className="is-narrow">
                     <span className="icon"><i className="fa fa-sign-out"></i></span>
                     <span>Log Out</span>
@@ -52,16 +52,7 @@ const mapStateToProps = ({ menu }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logout: () => {
-      browserHistory.push("/");
-      dispatch(logout())
-    }
-  }
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  undefined
 )(Navigation);

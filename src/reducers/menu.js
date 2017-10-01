@@ -1,5 +1,4 @@
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { FACEBOOK_LOGIN, LOGOUT } from './auth.actions';
 import authService from './util/auth';
 
 const ANONYMOUS = [];
@@ -29,10 +28,6 @@ export default function (menu = initialize(), { type, payload }) {
   switch (type) {
     case LOCATION_CHANGE:
       return updateActive(menu, payload.pathname);
-    case `${FACEBOOK_LOGIN}.fulfilled`:
-      return USER;
-    case LOGOUT:
-      return ANONYMOUS;
     default:
       return menu;
   }

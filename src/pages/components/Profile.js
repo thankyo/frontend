@@ -3,13 +3,13 @@ import { fetchUser } from "../../reducers/user.actions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-function ImageProfile({ thumbnail, firstName, lastName, bio }) {
+function ImageProfile({ avatar, firstName, lastName, bio }) {
   return (
     <div className="message">
       <div className="message-body message-body-new-style">
         <div className="image sui-avatar">
           <figure className="image is-1by1 is-small">
-            <img src={thumbnail} width={100} height={100} className="is-centered"/>
+            <img src={avatar} width={100} height={100} className="is-centered"/>
           </figure>
         </div>
         <div className="message-text">{firstName} {lastName}</div>

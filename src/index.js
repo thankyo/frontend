@@ -3,8 +3,6 @@ import "./styles/styles.sass";
 import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { browserHistory } from "react-router";
-import { syncHistoryWithStore } from "react-router-redux";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -14,7 +12,6 @@ import reducers from "./reducers";
 import MainApp from "./navigation/route";
 
 const store = createStore(reducers(), composeWithDevTools(applyMiddleware(thunk)));
-const history = syncHistoryWithStore(browserHistory, store);
 
 let loaded = new Promise((resolve) => {
   if (document.readyState !== 'complete') {

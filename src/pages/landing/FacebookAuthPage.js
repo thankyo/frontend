@@ -1,23 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
-import { authFacebook } from "../../reducers/auth.actions.js";
+import auth from "../../reducers/util/auth";
 
-function FacebookAuthPage() {
+export default function AuthPage({ history }) {
+  auth.authWithFacebook(window.location.search).then(auth => history.push("/supporter/my"));
   return (
-    <div className="pageloader is-active"/>
+    <div>
+      <div className="pageloader is-active"/>
+    </div>
   );
 }
-
-const mapStateToProps = ({ auth }) => {
-  return { auth };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  dispatch(authFacebook(window.location.search));
-  return {};
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FacebookAuthPage);

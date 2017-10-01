@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { getSupportedByMe } from "../../reducers/thank/supported.actions";
 
-function Supported({ thumbnail, firstName, lastName, bio }) {
+function Supported({ avatar, firstName, lastName, bio }) {
   return (
     <a href="#" className="media media-new-style">
       <div className="media-left">
         <figure className="image">
-          <img src={thumbnail} width="50" height="50" alt="user picture"/>
+          <img src={avatar} width="50" height="50" alt="user picture"/>
         </figure>
       </div>
       <div className="media-content">

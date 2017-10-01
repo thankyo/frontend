@@ -8,7 +8,7 @@ import offline from "./offline";
 export default function configure(history, store) {
   offline();
   polyfills();
-  analytics(history);
+  // analytics(history);
   consent();
   return Promise.all([
     loadCSS(),
