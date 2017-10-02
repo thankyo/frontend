@@ -32,12 +32,12 @@ function Navigation({ links }) {
           </div>
           <div className="nav-item">
             <div className="block">
-              <div className="button button-logout button-white-border" onClick={() => auth.logout()}>
+              <a className="button button-logout button-white-border" onClick={() => auth.logout()}>
                   <span className="is-narrow">
                     <span className="icon"><i className="fa fa-sign-out"></i></span>
                     <span>Log Out</span>
                   </span>
-              </div>
+              </a>
             </div>
           </div>
         </div>

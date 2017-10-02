@@ -43,11 +43,12 @@ export function connectChargeAccount() {
     loadScriptAsPromise("https://checkout.stripe.com/checkout.js").
       then(() => {
         let key = STRIPE_KEY;
-        StripeButton.open({
+        let conf = {
           key,
           locale: 'auto',
           token: (token) => dispatch(processToken(token))
-        });
+        };
+        StripeButton.open(conf);
     });
   }
 }

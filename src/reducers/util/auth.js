@@ -34,7 +34,7 @@ class AuthService {
 
   authWithFacebook(search) {
     let url = `/api/v1/auth/social/facebook${search}`;
-    return fetch(new Request(url)).
+    return fetch(new Request(url, { credentials: 'same-origin' })).
       then((res) => res.json()).
       then(token => this.tokenStore.setToken(token));
   }
@@ -84,7 +84,7 @@ class AuthService {
 
   logout = () => {
     this.tokenStore.removeToken();
-    window.location = '/';
+    window.location = '/api/v1/auth/logout';
   }
 }
 
