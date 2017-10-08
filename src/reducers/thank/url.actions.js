@@ -29,7 +29,7 @@ function thankFailed(error) {
 export function thank(payload) {
     return (dispatch) => {
         let normUrl = payload.url.trim();
-        if (normUrl.length == 0)
+        if (normUrl.length === 0)
             return;
         dispatch(thankRequested(payload));
         authService.

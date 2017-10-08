@@ -19,7 +19,7 @@ class CreditIcon extends Component {
     }
 
     render() {
-        if (this.props.amount == 1)
+        if (this.props.amount === 1)
             return this.singleCredit();
         else
             return this.multipleCredit(this.props.amount);
@@ -43,7 +43,7 @@ class DebitIcon extends Component {
     }
 
     render() {
-        if (this.props.amount == 1)
+        if (this.props.amount === 1)
             return this.singleDebit();
         else
             return this.multipleDebit(this.props.amount);
@@ -52,7 +52,7 @@ class DebitIcon extends Component {
 
 export default class OperationIcon extends Component {
     creditIcon(amount) {
-        if (amount == 1)
+        if (amount === 1)
             return (
                 <Icon fa="heart-o"/>
             )

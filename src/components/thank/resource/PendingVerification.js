@@ -26,35 +26,34 @@ class VerificationStatus extends Component {
   }
 }
 
-export default class PendingVerification extends Component {
-  render() {
-    let metaText = `<meta name="loveit-site-verification" content="${this.props.verificationCode}"/>`;
-    let targetLink = `http://${this.props.resource.uri}`;
-    return (
-      <div className="message">
-        <div className="message-body message-body-new-style">
-          <h6 className="title is-6">Verifying <a href={targetLink} target="blank">{this.props.resource.uri}</a></h6>
-          Copy & Paste HTML snippet in <b>head</b> section of your <b>index.html</b><br/>
-          <b>
-            <small>{metaText}</small>
-          </b>
-          <hr/>
-          <VerificationStatus status={this.props.status}/>
-          <hr/>
-          <div className="field has-addons has-text-centered">
-            <p className="control">
-              <button onClick={this.props.confirm} className="button is-success">
-                <Icon fa="check" text="Verify"/>
-              </button>
-            </p>
-            <p className="control">
-              <button onClick={this.props.cancel} className="button is-danger is-centered">
-                <Icon fa="remove" text="Cancel"/>
-              </button>
-            </p>
-          </div>
+export default function pendingVerification({ verificationCode, resource: { uri }, status, confirm, cancel }) {
+  let metaText = `<meta name="loveit-site-verification" content="${verificationCode}"/>`;
+  let targetLink = `http://${uri}`;
+  return (
+    <div className="message">
+      <div className="message-body message-body-new-style">
+        <h6 className="title is-6">Verifying <a href={targetLink} target="blank">{uri}</a></h6>
+        Copy & Paste HTML snippet in <b>head</b> section of your <b>index.html</b><br/>
+        <b>
+          <small>{metaText}</small>
+        </b>
+        <hr/>
+        <VerificationStatus status={status}/>
+        <hr/>
+        <div className="field has-addons has-text-centered">
+          <p className="control">
+            <button onClick={confirm} className="button is-success">
+              <Icon fa="check" text="Verify"/>
+            </button>
+          </p>
+          <p className="control">
+            <button onClick={cancel} className="button is-danger is-centered">
+              <Icon fa="remove" text="Cancel"/>
+            </button>
+          </p>
         </div>
       </div>
-    )
-  }
+    </div>
+  )
+}
 }

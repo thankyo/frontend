@@ -11,7 +11,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-white is-large">
-                          <i className="fa fa-thumbs-o-up"></i>
+                          <i className="fa fa-thumbs-o-up"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>Loveit is a simple <i>microtip</i> platform</b></h2>
@@ -22,7 +22,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-white is-large">
-                          <i className="fa fa-circle-o"></i>
+                          <i className="fa fa-circle-o"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b><i>Microtip</i> - is a small amount, which is really&nbsp;just&nbsp;a&nbsp;dime</b></h2>
@@ -33,7 +33,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-white is-large">
-                          <i className="fa fa-hand-peace-o"></i>
+                          <i className="fa fa-hand-peace-o"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>Easiest and effective way to support creators everywhere</b></h2>

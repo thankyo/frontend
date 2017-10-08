@@ -11,7 +11,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-blue is-large">
-                          <i className="fa fa-heart-o"></i>
+                          <i className="fa fa-heart-o"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>Creators put Loveit button on every&nbsp;piece&nbsp;they&nbsp;
@@ -23,7 +23,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-blue is-large">
-                          <i className="fa fa-heart"></i>
+                          <i className="fa fa-heart"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>Whenever you click it, we register&nbsp;your&nbsp;tip</b>
@@ -35,7 +35,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-blue is-large">
-                          <i className="fa fa-calendar"></i>
+                          <i className="fa fa-calendar"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>At the end of the month we combine your tips</b></h2>

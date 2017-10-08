@@ -12,7 +12,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-white is-large">
-                          <i className="fa fa-shield"></i>
+                          <i className="fa fa-shield"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>Bank level security</b></h2>
@@ -24,7 +24,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-white is-large">
-                          <i className="fa fa-paypal"></i>
+                          <i className="fa fa-paypal"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>More effective on most donations than PayPal</b></h2>
@@ -36,7 +36,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-white is-large">
-                          <i className="fa fa-file"></i>
+                          <i className="fa fa-file"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>Full control of &nbsp;how&nbsp;much&nbsp;you&nbsp;spend&nbsp;</b></h2>
@@ -50,7 +50,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-white is-large">
-                          <i className="fa fa-plane"></i>
+                          <i className="fa fa-plane"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>No long term obligations</b></h2>
@@ -62,7 +62,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-white is-large">
-                          <i className="fa fa-circle-o"></i>
+                          <i className="fa fa-circle-o"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>Creativity freedom</b></h2>
@@ -73,7 +73,7 @@ export default function () {
               <div className="about-project-item">
                       <span className="is-narrow">
                         <span className="icon icon-on-white is-large">
-                          <i className="fa fa-usd"></i>
+                          <i className="fa fa-usd"/>
                         </span>
                       </span>
                 <h2 className="about-project-subtitle"><b>We keep our fees low</b></h2>

@@ -52,7 +52,7 @@ class AuthService {
     return fetch(req).then(res => {
       if (res.status === 401 || res.status === 403) {
         dispatch(logout());
-      } else if (res.status == 400) {
+      } else if (res.status === 400) {
         return res.json().then(err => {
           throw err
         });
@@ -70,7 +70,7 @@ class AuthService {
       }
     }).done((obj) => {
       let isEmpty = obj === undefined ||
-        obj == null ||
+        obj === null ||
         (Object.keys(obj).length === 0 && obj.constructor === Object);
       if (!isEmpty) callback(obj)
     }).fail((errorReport) => {

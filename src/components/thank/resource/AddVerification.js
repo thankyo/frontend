@@ -11,13 +11,13 @@ let AddVerification = ({handleSubmit}) => {
           <div className="field has-addons">
             <p className="control is-expanded has-icons-left">
               <Field name="uri" component="input" value="" className="input" placeholder="Link"/>
-              <span className="icon is-small is-left"><i className="fa fa-globe"></i></span>
+              <span className="icon is-small is-left"><i className="fa fa-globe"/></span>
             </p>
             <p className="control has-icon-left">
               <button className="button button-green" type="submit" onClick={handleSubmit}>
                 <span className="is-narrow">
                   <span className="icon">
-                    <i className="fa fa-check"></i>
+                    <i className="fa fa-check"/>
                   </span>
                   <span>Verify</span>
                 </span>

@@ -8,7 +8,7 @@ export default class Icon extends Component {
     let spanClass = size ? `icon is-${size}` : "icon";
     return (
       <span className="is-narrow">
-        <span className={spanClass}><i className={iconClass}></i></span><span>{this.props.text}</span>
+        <span className={spanClass}><i className={iconClass}/></span><span>{this.props.text}</span>
       </span>
     )
   }
