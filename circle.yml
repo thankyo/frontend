@@ -20,6 +20,6 @@ deployment:
   prod:
     branch: master
     commands:
-      - docker build -t mavarazy/thank-frontend .
+      - docker build -t loveit/frontend .
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push mavarazy/thank-frontend
+      - docker push loveit/frontend

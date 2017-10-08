@@ -1,5 +1,4 @@
 import React from "react";
-import Navigation from "../../navigation/Navigation";
 import ComponentWrap from "../components/ComponentWrap";
 import Profile from "../components/Profile";
 import IntegrationContent from "../components/integration/IntegrationContent";
@@ -9,7 +8,6 @@ import PayoutAccount from "../components/payment/PayoutAccount";
 export default function creatorDashboardPage({ match: { params: { id } } }) {
   return (
     <div>
-      <Navigation/>
       <ComponentWrap>
         <div className="columns">
           <div className="column is-one-quarter">

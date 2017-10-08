@@ -1,6 +1,5 @@
 import React from "react";
 import Brand from '../pages/components/Brand';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import auth from "../reducers/util/auth";
 
@@ -18,7 +17,7 @@ function NavigationLink({ name, icon, pathname }) {
   );
 }
 
-function Navigation({ links }) {
+export default function Navigation({ links = [] }) {
   return (
     <nav className="nav main-nav">
       <div className="container">
@@ -46,14 +45,3 @@ function Navigation({ links }) {
     </nav>
   )
 }
-
-const mapStateToProps = ({ menu }) => {
-  return {
-    links: menu
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  undefined
-)(Navigation);

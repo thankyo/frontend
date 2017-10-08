@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
 
 export default class NotFound extends Component {
   render() {
     let emailContact = `mailto:antono@loveit.tips?subject=404 on ${location.host}/${location.pathname}`
     return (
       <div>
-        <Navigation/>
         <div className="section">
           <div className="container has-text-centered">
             <p className="title">404</p>
