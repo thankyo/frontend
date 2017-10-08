@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import auth from "../reducers/util/auth";
 
-function NavigationLink({ name, icon, pathname, isActive }) {
+function NavigationLink({ name, icon, pathname }) {
+  let isActive = location.pathname === pathname;
   return (
     <div className="control">
       <Link to={pathname}>
