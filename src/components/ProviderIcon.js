@@ -3,21 +3,21 @@ import PropTypes from "prop-types";
 import Icon from "./Icon";
 
 export default class ProviderIcon extends Component {
-    facebookIcon() {
+    static facebookIcon() {
         return (
             <Icon fa="facebook-square" />
         )
     }
-    unknownIcon() {
+    static unknownIcon() {
         return (
             <Icon fa="heart"/>
         )
     }
     render() {
         if (this.props.providerID === "facebook")
-            return this.facebookIcon();
+            return ProviderIcon.facebookIcon();
         else
-            return this.unknownIcon();
+            return ProviderIcon.unknownIcon();
     }
 }
 

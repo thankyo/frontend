@@ -15,19 +15,19 @@ HttpResourceIcon.propTypes = {
 };
 
 export default class Resource extends Component {
-    http(uri) {
+    static http(uri) {
         return (
           <a href={`https://${uri}`}>{uri}</a>
         )
     }
-    social(provider, uri) {
+    static social(provider, uri) {
         return (<Icon fa={provider} text={uri}/>)
     }
     render() {
         if (this.props.resource.type === "http")
-            return this.http(this.props.resource.uri);
+            return Resource.http(this.props.resource.uri);
         else
-            return this.social(this.props.resource.provider, this.props.resource.uri);
+            return Resource.social(this.props.resource.provider, this.props.resource.uri);
     }
 }
 

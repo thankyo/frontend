@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import Icon from "./Icon";
 
 class CreditIcon extends Component {
-    singleCredit() {
+    static singleCredit() {
         return (
             <Icon fa="heart-o"/>
         )
     }
 
-    multipleCredit(amount) {
+    static multipleCredit(amount) {
         return (
             <span className="content ">
                 <Icon fa="heart-o"/>
@@ -20,20 +20,20 @@ class CreditIcon extends Component {
 
     render() {
         if (this.props.amount === 1)
-            return this.singleCredit();
+            return CreditIcon.singleCredit();
         else
-            return this.multipleCredit(this.props.amount);
+            return CreditIcon.multipleCredit(this.props.amount);
     }
 }
 
 class DebitIcon extends Component {
-    singleDebit() {
+    static singleDebit() {
         return (
             <Icon fa="heartbeat"/>
         )
     }
 
-    multipleDebit(amount) {
+    static multipleDebit(amount) {
         return (
             <span className="content ">
                 <Icon fa="heartbeat"/>
@@ -44,28 +44,13 @@ class DebitIcon extends Component {
 
     render() {
         if (this.props.amount === 1)
-            return this.singleDebit();
+            return DebitIcon.singleDebit();
         else
-            return this.multipleDebit(this.props.amount);
+            return DebitIcon.multipleDebit(this.props.amount);
     }
 }
 
 export default class OperationIcon extends Component {
-    creditIcon(amount) {
-        if (amount === 1)
-            return (
-                <Icon fa="heart-o"/>
-            )
-    }
-
-    debitIcon(amount) {
-        return (
-            <span className="icon">
-                <Icon fa="plus"/> {amount}
-            </span>
-        )
-    }
-
     render() {
         if (this.props.operation === "credit") {
             return (<CreditIcon amount={this.props.amount}/>);

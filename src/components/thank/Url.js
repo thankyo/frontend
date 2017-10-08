@@ -6,16 +6,16 @@ import { thank } from "../../reducers/thank/url.actions";
 let ThankUrl = ({ handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
-        <div className="field has-addons">
-            <p className="control is-expanded">
-                <Field name="url" component="input" type="text" className="input"/>
-            </p>
-            <p className="control">
-                <button className="button is-success" type="submit">
-                    Love It
-                </button>
-            </p>
-        </div>
+      <div className="field has-addons">
+        <p className="control is-expanded">
+          <Field name="url" component="input" type="text" className="input"/>
+        </p>
+        <p className="control">
+          <button className="button is-success" type="submit">
+            Love It
+          </button>
+        </p>
+      </div>
     </form>
   )
 };

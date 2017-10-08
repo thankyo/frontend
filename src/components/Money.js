@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import Icon from "./Icon";
 
 export default class Money extends Component {
-    usd(amount) {
+    static usd(amount) {
         return (
             <Icon fa="usd" text={amount}/>
         )
     }
-    currency(currency, amount) {
+    static currency(currency, amount) {
         return (
             <span className="content">
                 <span className="icon">
@@ -22,9 +22,9 @@ export default class Money extends Component {
     }
     render() {
         if (this.props.currency === "USD")
-            return this.usd(this.props.amount);
+            return Money.usd(this.props.amount);
         else
-            return this.currency(this.props.amount);
+            return Money.currency(this.props.amount);
     }
 }
 

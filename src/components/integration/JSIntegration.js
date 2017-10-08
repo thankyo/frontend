@@ -41,7 +41,7 @@ let jsText = `<!-- JS LoveIt Script -->
   function initButton() {
     var s = d.getElementById(i);
     s.appendChild(f);
-  };
+  }
   initButton = initButton.bind(this);
   
   if (d.readyState !== 'loading') {

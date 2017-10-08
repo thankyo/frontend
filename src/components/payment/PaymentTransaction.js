@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { listTransactions } from "../../../reducers/payment/transaction.actions";
+import { listTransactions } from "../../reducers/payment/transaction.actions";
 import Date from "../Date";
 import OperationIcon from "../OperationIcon";
 import Money from "../Money";

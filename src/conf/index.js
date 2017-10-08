@@ -1,5 +1,4 @@
 import polyfills from './polyfills';
-import analytics from './analytics';
 import consent from './consent';
 import loadCSS from './loadCSS';
 import offline from "./offline";

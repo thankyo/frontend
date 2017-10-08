@@ -35,8 +35,8 @@ export function thank(payload) {
         authService.
             signAndFetch(new Request(`/api/v1/thank/http/${normUrl}`, { method: "PUT" }), dispatch).
             then(thank => {
-                dispatch(thankSuccess(thank))
-                dispatch(reset('thankUrl'))
+                dispatch(thankSuccess(thank));
+                dispatch(reset('thankUrl'));
             }).catch((error) => dispatch(thankFailed(error)))
         
     }
