@@ -16,7 +16,7 @@ function Supported({ avatar, firstName, lastName, bio }) {
           <p>{ bio }</p>
         </div>
       </div>
-      <i className="fa fa-angle-right"></i>
+      <i className="fa fa-angle-right"/>
     </a>
   );
 }

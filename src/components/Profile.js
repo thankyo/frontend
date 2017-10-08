@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fetchUser } from "../../reducers/user.actions";
+import { fetchUser } from "../reducers/user.actions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -21,16 +21,16 @@ function ImageProfile({ avatar, firstName, lastName, bio }) {
 
 class Profile extends Component {
 
-  profileState(user) {
+  static profileState(user) {
     return ImageProfile(user);
   }
 
   render() {
     let { user } = this.props;
     if (user === undefined) {
-      return this.profileState({ firstName: "", lastName: "", bio: "loading"});
+      return Profile.profileState({ firstName: "", lastName: "", bio: "loading"});
     } else {
-      return this.profileState(user)
+      return Profile.profileState(user)
     }
   }
 }

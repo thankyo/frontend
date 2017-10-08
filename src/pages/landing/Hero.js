@@ -1,5 +1,5 @@
 import React from "react";
-import Brand from "../components/Brand";
+import Brand from "../../components/Brand";
 import FacebookLogin from "./FacebookLogin";
 
 export default function () {

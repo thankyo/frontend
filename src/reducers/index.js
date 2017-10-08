@@ -1,4 +1,3 @@
-import menu from "./menu";
 import user from "./user";
 import payment from './payment';
 import thank from "./thank";
@@ -11,7 +10,6 @@ export default function(){
     return combineReducers(
         {
             routing,
-            menu,
             user: user,
             payment: payment,
             thank: thank,

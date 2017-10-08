@@ -1,5 +1,5 @@
 import React from "react";
-import Brand from '../pages/components/Brand';
+import Brand from '../components/Brand';
 import { Link } from 'react-router-dom';
 import auth from "../reducers/util/auth";
 
@@ -9,7 +9,7 @@ function NavigationLink({ name, icon, pathname }) {
     <div className="control">
       <Link to={pathname}>
         <div className={isActive ? "button button-control button-control-active" : "button button-control"}>
-          <span className="icon"><i className={icon}></i></span>
+          <span className="icon"><i className={icon}/></span>
           <span>{name}</span>
         </div>
       </Link>
@@ -34,7 +34,7 @@ export default function Navigation({ links = [] }) {
             <div className="block">
               <a className="button button-logout button-white-border" onClick={() => auth.logout()}>
                   <span className="is-narrow">
-                    <span className="icon"><i className="fa fa-sign-out"></i></span>
+                    <span className="icon"><i className="fa fa-sign-out"/></span>
                     <span>Log Out</span>
                   </span>
               </a>

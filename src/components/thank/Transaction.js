@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { listTransactions } from "../../../reducers/thank/transaction.actions";
+import { listTransactions } from "../../reducers/thank/transaction.actions";
 import moment from 'moment';
 import Resource from "../Resource";
 

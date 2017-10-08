@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { decrease, getLimit, increase } from "../../../reducers/payment/limit.actions";
+import { decrease, getLimit, increase } from "../../reducers/payment/limit.actions";
 import MoneyToCoffeeIcon from "./MoneyToCoffeeIcon";
 
 function LimitPage({ limit, decrease, increase }) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { thisMonthEarnings } from "../../../reducers/thank/earning.actions";
+import { thisMonthEarnings } from "../../reducers/thank/earning.actions";
 import MoneyToCoffeeIcon from "./MoneyToCoffeeIcon";
 
 function EarnedThisMonth({ total }) {
@@ -20,7 +20,7 @@ function EarnedThisMonth({ total }) {
       </div>
     </article>
 );
-};
+}
 
 const mapStateToProps = ({thank: {earning}}) => {
   return earning;

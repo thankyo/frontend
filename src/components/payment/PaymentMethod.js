@@ -1,5 +1,5 @@
 import React from "react";
-import { connectChargeAccount, getChargeAccount } from "../../../reducers/payment/chargeAccount.actions";
+import { connectChargeAccount, getChargeAccount } from "../../reducers/payment/chargeAccount.actions";
 import { connect } from "react-redux";
 import Icon from "../Icon";
 
@@ -41,7 +41,7 @@ function PaymentMethod({ chargeAccount, updateChargeAccount }) {
       <img className="pull-right" src="/img/stripe/powered_by_stripe.png"/>
     </div>
   );
-};
+}
 
 
 const mapStateToProps = ({ payment: { chargeAccount } }) => {
