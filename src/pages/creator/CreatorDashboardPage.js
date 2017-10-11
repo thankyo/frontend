@@ -3,10 +3,11 @@ import Profile from "../../components/Profile";
 import IntegrationContent from "../../components/integration/IntegrationContent";
 import EarnedThisMonth from "../../components/payment/EarnedThisMonth";
 import PayoutAccount from "../../components/payment/PayoutAccount";
+import ComponentWrap from "../../components/ComponentWrap";
 
 export default function creatorDashboardPage({ match: { params: { id } } }) {
   return (
-    <div>
+    <ComponentWrap>
         <div className="columns">
           <div className="column is-one-quarter">
             <Profile id={id}/>
@@ -19,6 +20,6 @@ export default function creatorDashboardPage({ match: { params: { id } } }) {
             <PayoutAccount id={id}/>
           </div>
         </div>
-    </div>
+    </ComponentWrap>
   );
 }

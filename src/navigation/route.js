@@ -56,7 +56,14 @@ export default class MainApp extends Component {
 
               <Route component={NotFound}/>
             </Switch>
-            <Footer/>
+            <Switch>
+              <Route exact path="/">
+                <Footer/>
+              </Route>
+              <Route path="/legal">
+                <Footer/>
+              </Route>
+            </Switch>
           </div>
         </BrowserRouter>
       </div>
