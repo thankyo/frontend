@@ -1311,9 +1311,9 @@ bulma-pageloader@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/bulma-pageloader/-/bulma-pageloader-0.0.2.tgz#6487d4ae8059e9500592e2b9c926c9e26852e88d"
 
-bulma@0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.5.3.tgz#be93afb6246192505c30df3f9c1c29a97d319a13"
+bulma@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.6.0.tgz#4f5c5de582810d11aa0cfb1f30aec8a792d0d92c"
 
 bytes@3.0.0:
   version "3.0.0"

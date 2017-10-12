@@ -39,6 +39,21 @@ class AuthService {
       then(token => this.tokenStore.setToken(token));
   }
 
+  signUp(req) {
+    let url = `/api/v1/auth/signUp`;
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(req)
+    };
+    return fetch(new Request(url, options)).
+      then((res) => res.json()).
+      then(token => this.tokenStore.setToken(token));
+  }
+
   isAuthenticated = () => {
     let token = this.tokenStore.getToken();
     return token !== undefined && token !== null;
