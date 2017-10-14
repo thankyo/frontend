@@ -3,7 +3,7 @@ import Async from 'react-code-splitting';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
-import FacebookAuthPage from "../pages/landing/FacebookAuthPage";
+import FacebookAuthPage from "../pages/auth/FacebookAuthPage";
 import LandingPageDefault from "../pages/landing/LandingPage";
 import NotFound from "./NotFound";
 
@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 
-import SignUpPage from "../pages/auth/SignUpPage";
+import RegisterPage from "../pages/auth/RegisterPage";
 
 const TermsOfUse = (props) => <Async load={import('../pages/legal/TermsOfUsePage')} componentProps={props}/>;
 const PrivacyPolicy = (props) => <Async load={import('../pages/legal/PrivacyPolicyPage')} componentProps={props}/>;
@@ -46,8 +46,8 @@ export default class MainApp extends Component {
             <Switch>
               <Route exact path="/" component={LandingPageDefault}/>
 
-              <Route exact path="/auth" component={SignUpPage}/>
-              <Route path="/auth/facebook" component={FacebookAuthPage}/>
+              <Route exact path="/auth/facebook" component={FacebookAuthPage}/>
+              <Route path="/auth" component={RegisterPage}/>
 
               <Route path="/legal/terms" component={TermsOfUse}/>
               <Route path="/legal/privacy" component={PrivacyPolicy}/>

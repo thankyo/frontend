@@ -1,28 +1,29 @@
 import React from "react";
 import Brand from "../../components/Brand";
-import FacebookLogin from "./FacebookLogin";
+import { Link } from 'react-router-dom';
 
 export default function () {
   return (
-    <section className="hero is-medium is-fullheight page-promo">
+    <section className="hero is-medium is-fullheight page-promo is-primary">
       <div className="hero-head">
-        <header className="nav main-nav">
-          <div className="container">
-            <div className="nav-left">
-              <a className="nav-item">
-                <Brand/>
-              </a>
+        <header className="navbar main-nav">
+          <div className="navbar-brand">
+            <Brand/>
+          </div>
+
+          <div className="navbar-end">
+            <div className="field is-grouped">
+              <p className="control">
+                <Link to="/auth/login" className="button is-inverted is-primary">
+                  <span>Log in</span>
+                </Link>
+              </p>
+              <p className="control">
+                <Link to="/auth" className="button is-inverted is-outlined is-primary">
+                  <span>Register</span>
+                </Link>
+              </p>
             </div>
-            <FacebookLogin>
-              <div className="nav-right nav-menu">
-                <a className="nav-item">
-                  Login
-                </a>
-                <a className="nav-item nav-item-btn button button-white-border">
-                  Sign Up
-                </a>
-              </div>
-            </FacebookLogin>
           </div>
         </header>
       </div>
@@ -31,9 +32,9 @@ export default function () {
           <h1 className="title title-main-promo title-main-promo-left">
             Support creators with a single click
           </h1>
-          <FacebookLogin>
-            <a href="#" className="button button-join">Join</a>
-          </FacebookLogin>
+          <Link to="/auth" className="button button-join">
+            Join
+          </Link>
         </div>
       </div>
     </section>

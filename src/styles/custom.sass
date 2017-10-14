@@ -45,6 +45,13 @@ body
   background-color: #fff
 
 .hero
+  &.register-page
+    font-size: 40px
+    background-color: $primary
+    background-image: url('../../assets/img/bg-register.jpg')
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: cover
   &.page-promo
     font-size: 40px
     height: 692px
@@ -77,6 +84,15 @@ body
     color: #fff
     background-color: #96d044
 
+.register-page
+  li
+    a
+      border-bottom-width: 0px
+    &.is-active
+      a
+        border-bottom-color: white
+        border-bottom-width: 3px
+
 .icon-on-white
   margin-bottom: 35px
   color: $primary
@@ -107,20 +123,6 @@ body
   display: -ms-flexbox
   display: flex
   color: #fff
-
-.nav-menu.nav-right
-  .nav-item-btn
-    margin-left: 20px
-  display: -ms-flexbox
-  display: flex
-  -ms-flex-align: center
-  align-items: center
-
-.nav-item
-  padding: .35rem .75rem
-
-.nav > .container
-  min-height: auto
 
 .title-main-promo
   font-family: $font
@@ -257,9 +259,6 @@ body
   .control .button .icon:first-child:not(:last-child)
     margin-right: 0
     margin-left: 0
-  &.nav-item
-    padding-right: 0
-    padding-left: 0
 
 .button-control
   padding-right: calc(.625em - 1px)
@@ -520,8 +519,6 @@ a
     .button .icon:first-child:not(:last-child)
       margin-right: .1875em
       margin-left: calc(-.375em - 1px)
-    &.nav-item
-      padding: .35rem .75rem
 
 @media (min-width: 768px) and (max-width: 900px)
   .button-connect
@@ -546,11 +543,6 @@ a
     text-align: left
   .title-dark, .title-light
     font-size: 28px
-  .nav-menu.nav-left
-    display: -ms-flexbox
-    display: flex
-    -ms-flex-align: center
-    align-items: center
   .button-join
     padding: 5px
   .hero
@@ -559,19 +551,6 @@ a
       background-position: 80% center
     &.page-promo-boy, &.page-promo-girl
       background-position: center center
-  .nav-menu.nav-right
-    position: static
-    display: -ms-flexbox
-    display: flex
-    background-color: transparent
-    box-shadow: none
-    -ms-flex-align: center
-    align-items: center
-    .nav-item
-      border-top: 0
-    .nav-item-btn
-      margin-left: 0
-      border: 1px solid
   .button-join
     font-size: 22px
     min-width: 106px

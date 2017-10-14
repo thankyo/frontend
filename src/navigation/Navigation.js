@@ -19,26 +19,26 @@ function NavigationLink({ name, icon, pathname }) {
 
 export default function Navigation({ links = [] }) {
   return (
-    <nav className="nav main-nav">
+    <nav className="navbar main-nav" role="navigation">
       <div className="container">
-        <div className="nav-left">
+        <div className="navbar-brand">
           <Brand/>
         </div>
-        <div className="nav-right">
-          <div className="nav-item field has-addons field-new-style">
-            {
-              links.map((link, i) => <NavigationLink key={i} {...link}/>)
-            }
+        <div className="navbar-end">
+          <div className="navbar-item">
+            <div className="field has-addons field-new-style">
+              {
+                links.map((link, i) => <NavigationLink key={i} {...link}/>)
+              }
+            </div>
           </div>
-          <div className="nav-item">
-            <div className="block">
-              <a className="button button-logout button-white-border" onClick={() => auth.logout()}>
+          <div className="navbar-item">
+            <a className="button button-logout button-white-border" onClick={() => auth.logout()}>
                   <span className="is-narrow">
                     <span className="icon"><i className="fa fa-sign-out"/></span>
                     <span>Log Out</span>
                   </span>
-              </a>
-            </div>
+            </a>
           </div>
         </div>
       </div>

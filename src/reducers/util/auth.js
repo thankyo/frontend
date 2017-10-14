@@ -1,5 +1,6 @@
 import 'whatwg-fetch';
 import oboe from 'oboe';
+import { SubmissionError } from 'redux-form';
 
 class TokenStore {
   getToken = () => {
@@ -32,15 +33,29 @@ class AuthService {
     this.tokenStore = new TokenStore();
   }
 
-  authWithFacebook(search) {
-    let url = `/api/v1/auth/social/facebook${search}`;
-    return fetch(new Request(url, { credentials: 'same-origin' })).
-      then((res) => res.json()).
-      then(token => this.tokenStore.setToken(token));
+  doAuth(req, history) {
+    return fetch(req).
+      then((res) => {
+        if (res.status === 400) {
+          return res.
+            json().
+            then(( { field, error }) => {
+              throw new SubmissionError({ [field]: error })
+            });
+        }
+        return res.json();
+      }).
+      then(token => this.tokenStore.setToken(token)).
+      then(auth => history.push("/supporter/my"));
   }
 
-  signUp(req) {
-    let url = `/api/v1/auth/signUp`;
+  authWithFacebook(search, history) {
+    let url = `/api/v1/auth/social/facebook${search}`;
+    return this.doAuth(new Request(url, { credentials: 'same-origin' }), history);
+  }
+
+  signUp(req, history) {
+    let url = `/api/v1/auth/register`;
     let options = {
       method: "POST",
       headers: {
@@ -49,9 +64,20 @@ class AuthService {
       credentials: 'same-origin',
       body: JSON.stringify(req)
     };
-    return fetch(new Request(url, options)).
-      then((res) => res.json()).
-      then(token => this.tokenStore.setToken(token));
+    return this.doAuth(new Request(url, options), history);
+  }
+
+  login(req, history) {
+    let url = `/api/v1/auth/logIn`;
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(req)
+    };
+    return this.doAuth(new Request(url, options), history);
   }
 
   isAuthenticated = () => {
