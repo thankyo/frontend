@@ -18,7 +18,7 @@ export function get(user) {
     return (dispatch) => {
         dispatch(resourceRequested(user));
         authService.
-            signAndFetch(req, dispatch).
+            signAndFetch(req).
             then((resource) => dispatch(resourceSuccess(user, resource))).
             catch((error) => resourceFailed(user, error))
     }
@@ -43,7 +43,7 @@ export const verify = (user, resource) => (dispatch) => {
         body: JSON.stringify(resource),
     });
     authService.
-        signAndFetch(req, dispatch).
+        signAndFetch(req).
         then(verification => {
             dispatch(verificationSuccess(user, verification));
             dispatch(reset('verifyResource'));
@@ -64,7 +64,7 @@ export function cancelVerification(user) {
         dispatch(verificationCancelRequested(user));
         let req = new Request(`/api/v1/thank/${user}/resource/verification`, {method: "DELETE"});
         authService.
-            signAndFetch(req, dispatch).
+            signAndFetch(req).
             then(removed => dispatch(verificationCancelSuccess(user))).
             catch(error => dispatch(verificationCancelFailed(user, error)))
     }
@@ -83,7 +83,7 @@ export function confirm(user) {
         dispatch(confirmationRequested(user));
         let req = new Request(`/api/v1/thank/${user}/resource/verification`, {method: "PUT"});
         authService.
-            signAndFetch(req, dispatch).
+            signAndFetch(req).
             then(verification => dispatch(confirmationSuccess(user, verification))).
             catch(error => dispatch(confirmationError(user, error)))
     }

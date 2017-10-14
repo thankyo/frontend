@@ -15,7 +15,7 @@ export function getLimit() {
           'Content-Type': 'application/json'
         }
       });
-    let p = authService.signAndFetch(req, dispatch);
+    let p = authService.signAndFetch(req);
     dispatchPromise(p, GET_LIMIT, dispatch)
   }
 }
@@ -50,7 +50,7 @@ export function setLimit(limit) {
         },
         body: JSON.stringify(limit)
       });
-    let p = authService.signAndFetch(req, dispatch);
+    let p = authService.signAndFetch(req);
     dispatchPromise(p, SET_LIMIT, dispatch)
   }
 }

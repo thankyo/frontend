@@ -17,7 +17,7 @@ function processToken(token) {
         },
         body: JSON.stringify(token.id)
       });
-    let p = authService.signAndFetch(req, dispatch);
+    let p = authService.signAndFetch(req);
     dispatchPromise(p, CHARGE_ACCOUNT_SET, dispatch);
   }
 }
@@ -33,7 +33,7 @@ export function getChargeAccount() {
           'Content-Type': 'application/json'
         }
       });
-    let p = authService.signAndFetch(req, dispatch);
+    let p = authService.signAndFetch(req);
     dispatchPromise(p, CHARGE_ACCOUNT_GET, dispatch);
   }
 }

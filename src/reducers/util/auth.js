@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
 import oboe from 'oboe';
-import { SubmissionError } from 'redux-form';
+import { handleFetchResponse } from "./http";
 
 class TokenStore {
   getToken = () => {
@@ -35,22 +35,13 @@ class AuthService {
 
   doAuth(req, history) {
     return fetch(req).
-      then((res) => {
-        if (res.status === 400) {
-          return res.
-            json().
-            then(( { field, error }) => {
-              throw new SubmissionError({ [field]: error })
-            });
-        }
-        return res.json();
-      }).
+      then((res) => handleFetchResponse(res)).
       then(token => this.tokenStore.setToken(token)).
       then(auth => history.push("/supporter/my"));
   }
 
-  authWithFacebook(search, history) {
-    let url = `/api/v1/auth/social/facebook${search}`;
+  authWithFacebook(history) {
+    let url = `/api/v1/auth/social/facebook${history.location.search}`;
     return this.doAuth(new Request(url, { credentials: 'same-origin' }), history);
   }
 
@@ -80,19 +71,33 @@ class AuthService {
     return this.doAuth(new Request(url, options), history);
   }
 
+  forgot(req) {
+    let url = `/api/v1/auth/password/forgot`;
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(req)
+    };
+    return fetch(new Request(url, options)).
+      then(handleFetchResponse);
+  }
+
   isAuthenticated = () => {
     let token = this.tokenStore.getToken();
     return token !== undefined && token !== null;
   };
 
-  signAndFetch = (req, dispatch) => {
+  signAndFetch = (req) => {
     let token = this.tokenStore.getToken();
     if (this.isAuthenticated())
       req.headers.append('X-Auth-Token', token);
 
     return fetch(req).then(res => {
       if (res.status === 401 || res.status === 403) {
-        dispatch(logout());
+        this.logout();
       } else if (res.status === 400) {
         return res.json().then(err => {
           throw err

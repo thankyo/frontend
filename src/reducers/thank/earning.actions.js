@@ -15,7 +15,7 @@ export function thisMonthEarnings() {
           'Content-Type': 'application/json'
         }
       });
-    let p = authService.signAndFetch(req, dispatch);
+    let p = authService.signAndFetch(req);
     dispatchPromise(p, GET_EARNINGS, dispatch)
   }
 }

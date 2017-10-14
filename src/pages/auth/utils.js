@@ -5,14 +5,14 @@ export const renderField = ({
                               className,
                               placeholder,
                               type,
-                              meta: { asyncValidating, touched, error }
+                              meta: { touched, error }
                             }) => {
   let inputClassName = error && touched ? `${className} is-danger` : className;
   return (
     <div className="field">
       <div className="control">
         <input {...input} type={type} className={inputClassName} placeholder={placeholder}/>
-        {touched && error && <p className="help is-danger">{error}</p>}
+        {touched && error && <p className="help is-white">{error}</p>}
       </div>
     </div>
   )
