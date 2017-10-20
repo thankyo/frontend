@@ -23,6 +23,9 @@ class OwnedResource extends Component {
 }
 
 const ListOwnedResource = ({ own }) => {
+  if (!own) {
+    return null;
+  }
   return (
     <div className="content">
       <h4 className="title is-4">Owned</h4>

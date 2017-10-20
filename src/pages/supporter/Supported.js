@@ -1,32 +1,36 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { getSupportedByMe } from "../../reducers/thank/supported.actions";
 
-function Supported({ avatar, firstName, lastName, bio }) {
+function Supported({ avatar, firstName, lastName, bio, link, id }) {
   return (
-    <a href="#" className="media media-new-style">
+    <article className="media media-new-style">
       <div className="media-left">
-        <figure className="image">
-          <img src={avatar} width="50" height="50" alt="user picture"/>
-        </figure>
+        <Link to={`/creator/${id}`}>
+          <figure className="image">
+            <img src={avatar} width={50} height={50} alt="user picture"/>
+          </figure>
+        </Link>
       </div>
       <div className="media-content">
-        <div className="content">
-          <strong>{firstName} {lastName}</strong>
-          <p>{ bio }</p>
+        <div className="content is-inverted is-outlined">
+          <a href={link}><strong>{firstName} {lastName}</strong></a>
+          <p>{bio}</p>
         </div>
       </div>
-      <i className="fa fa-angle-right"/>
-    </a>
+    </article>
   );
 }
 
 const ListOfSupported = ({ supported }) => {
+  if (supported.length === 0) {
+    return null
+  }
   return (
-    <div className="message">
-      <div className="message-body">
-        {supported.map((supported, id) => <Supported key={id} {... supported}/>)}
-      </div>
+    <div>
+      <h1 className="subtitle">Supported projects</h1>
+      {supported.map((supported, id) => <Supported key={id} {...supported}/>)}
     </div>
   );
 };
