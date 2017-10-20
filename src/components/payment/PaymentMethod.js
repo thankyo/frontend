@@ -38,7 +38,7 @@ function PaymentMethod({ chargeAccount, updateChargeAccount }) {
       </div>
       <br/>
       <h5 className="subtitle payment-text"><b>All charges happen at the end of the month</b></h5>
-      <img className="pull-right" src="/img/stripe/powered_by_stripe.png"/>
+      <img className="is-pulled-right" src="/img/stripe/powered_by_stripe.png"/>
     </div>
   );
 }

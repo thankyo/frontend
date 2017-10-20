@@ -33,6 +33,17 @@ class AuthService {
     this.tokenStore = new TokenStore();
   }
 
+  withPostOptions = (req) => {
+    return {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(req)
+    };
+  };
+
   doAuth(req, history) {
     return fetch(req).
       then((res) => handleFetchResponse(res)).
@@ -47,42 +58,27 @@ class AuthService {
 
   signUp(req, history) {
     let url = `/api/v1/auth/register`;
-    let options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: 'same-origin',
-      body: JSON.stringify(req)
-    };
+    let options = this.withPostOptions(req);
     return this.doAuth(new Request(url, options), history);
   }
 
   login(req, history) {
     let url = `/api/v1/auth/logIn`;
-    let options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: 'same-origin',
-      body: JSON.stringify(req)
-    };
+    let options = this.withPostOptions(req);
     return this.doAuth(new Request(url, options), history);
   }
 
   forgot(req) {
     let url = `/api/v1/auth/password/forgot`;
-    let options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: 'same-origin',
-      body: JSON.stringify(req)
-    };
+    let options = this.withPostOptions(req);
     return fetch(new Request(url, options)).
       then(handleFetchResponse);
+  }
+
+  reset(req, token, history) {
+    let url = `/api/v1/auth/password/reset/${token}`;
+    let options = this.withPostOptions(req);
+    return this.doAuth(new Request(url, options), history);
   }
 
   isAuthenticated = () => {

@@ -1,5 +1,17 @@
 import React from "react";
 
+export function LoadingButton({ submitting, children }) {
+  return (
+    <p className="control">
+      <button className={`button is-info is-outlined is-inverted ${submitting && "is-loading"}`} type="submit">
+        {children}
+      </button>
+    </p>
+  )
+}
+
+export const required = value => value ? undefined : 'Required';
+
 export const renderField = ({
                               input,
                               className,

@@ -4,9 +4,25 @@ import AuthMenu from "./AuthMenu";
 import FacebookLogin from "./FacebookLogin";
 import { Link, Route, Switch } from 'react-router-dom';
 import auth from "../../reducers/util/auth";
-import { renderField } from "./utils";
+import { renderField, required, LoadingButton } from "./utils";
 
-const required = value => value ? undefined : 'Required';
+let ResetForm = ({ handleSubmit, submitting }) => {
+  return (
+    <Form onSubmit={handleSubmit} className="is-primary">
+      <Field name="password" component={renderField} type="password" className="input" placeholder="New Password"
+             validate={[required]} disabled={submitting}/>
+
+      <div className="field has-addons">
+        <LoadingButton submitting={submitting}>
+          <span className="icon is-small"><i className="fa fa-refresh"/></span>
+          <span>Restore</span>
+        </LoadingButton>
+      </div>
+    </Form>
+  );
+};
+
+let ReduxResetForm = reduxForm({ form: 'reset' })(ResetForm);
 
 let ForgotForm = ({ handleSubmit, submitting }) => {
   return (
@@ -15,12 +31,10 @@ let ForgotForm = ({ handleSubmit, submitting }) => {
              validate={[required]} disabled={submitting}/>
 
       <div className="field has-addons">
-        <p className="control">
-          <button className="button is-info is-outlined is-inverted" type="submit">
-            <span className="icon is-small"><i className="fa fa-send"/></span>
-            <span>Restore</span>
-          </button>
-        </p>
+        <LoadingButton submitting={submitting}>
+          <span className="icon is-small"><i className="fa fa-send"/></span>
+          <span>Send a password restore link</span>
+        </LoadingButton>
       </div>
     </Form>
   );
@@ -38,18 +52,10 @@ let LoginForm = ({ handleSubmit, submitting }) => {
              validate={[required]} disabled={submitting}/>
 
       <div className="field has-addons">
-        <p className="control">
-          <button className={`button is-info is-outlined is-inverted ${submitting && "is-loading"}`} type="submit">
-            <span className="icon is-small"><i className="fa fa-sign-in"/></span>
-            <span>Log in</span>
-          </button>
-        </p>
-        <p className="control">
-          <Link className="button is-info is-outlined is-inverted" to="/auth/forgot">
-            <span className="icon is-small"><i className="fa fa-question"/></span>
-            <span>Forgot password</span>
-          </Link>
-        </p>
+        <LoadingButton submitting={submitting}>
+          <span className="icon is-small"><i className="fa fa-sign-in"/></span>
+          <span>Log in</span>
+        </LoadingButton>
       </div>
     </Form>
   );
@@ -69,12 +75,10 @@ let RegisterForm = ({ handleSubmit, submitting }) => {
       <Field name="password" component={renderField} type="password" className="input" placeholder="Password"
              validate={[required]}/>
       <div className="field has-addons">
-        <p className="control">
-          <button className={`button is-info is-outlined is-inverted ${submitting && "is-loading"}`} type="submit">
-            <span className="icon is-small"><i className="fa fa-registered"/></span>
-            <span>Register</span>
-          </button>
-        </p>
+        <LoadingButton submitting={submitting}>
+          <span className="icon is-small"><i className="fa fa-registered"/></span>
+          <span>Register</span>
+        </LoadingButton>
       </div>
     </Form>
   );
@@ -100,6 +104,16 @@ function FacebookHeader() {
   );
 }
 
+function ForgotPasswordLink() {
+  return (
+    <p className="control">
+      <Link className="is-info is-outlined is-inverted is-pulled-right" to="/auth/forgot">
+        <span>Forgot password ?</span>
+      </Link>
+    </p>
+  )
+}
+
 export default function ({ history }) {
   return (
     <section className="hero is-fullheight is-primary register-page">
@@ -114,17 +128,26 @@ export default function ({ history }) {
                   <div>
                     <FacebookHeader/>
                     <ReduxRegistrationForm onSubmit={(regReq) => auth.signUp(regReq, history)}/>
+                    <ForgotPasswordLink/>
                   </div>
                 </Route>
                 <Route path="/auth/login">
                   <div>
                     <FacebookHeader/>
                     <ReduxLoginForm onSubmit={(logInReq) => auth.login(logInReq, history)}/>
+                    <ForgotPasswordLink/>
                   </div>
                 </Route>
-                <Route path="/auth/forgot">
-                  <ReduxForgotForm onSubmit={(forgotReq) => auth.forgot(forgotReq, history)}/>
+                <Route exact path="/auth/forgot">
+                  <ReduxForgotForm onSubmit={(forgotReq) => auth.forgot(forgotReq).then(res => history.push("/auth/forgot/success"))}/>
                 </Route>
+                <Route exact path="/auth/forgot/success">
+                  <h2 className="title">Check your email :)</h2>
+                </Route>
+                <Route path="/auth/reset/:token" children={({ match: { params: { token }} }) => (
+                  <ReduxResetForm onSubmit={(restoreReq) => auth.reset(restoreReq, token, history)}/>
+                 )}
+                />
               </Switch>
             </div>
           </div>
