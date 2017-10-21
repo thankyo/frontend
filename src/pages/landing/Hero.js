@@ -12,7 +12,7 @@ export default function () {
           </div>
 
           <div className="navbar-end">
-            <div className="field is-grouped">
+            <div className="field is-grouped is-hidden-mobile">
               <p className="control">
                 <Link to="/auth/login" className="button is-inverted is-primary">
                   <span>Log in</span>
