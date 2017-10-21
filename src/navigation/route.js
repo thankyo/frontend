@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 
-const AuthPage = (props) => <Async load={import('../pages/auth/RegisterPage')} componentProps={props}/>;
+const AuthRouter = (props) => <Async load={import('../pages/auth/AuthRouter')} componentProps={props}/>;
 
 const TermsOfUse = (props) => <Async load={import('../pages/legal/TermsOfUsePage')} componentProps={props}/>;
 const PrivacyPolicy = (props) => <Async load={import('../pages/legal/PrivacyPolicyPage')} componentProps={props}/>;
@@ -43,7 +43,7 @@ export default class MainApp extends Component {
             </Switch>
             <Switch>
               <Route exact path="/" component={LandingPageDefault}/>
-              <Route path="/auth" component={AuthPage}/>
+              <Route path="/auth" component={AuthRouter}/>
 
               <Route path="/legal/terms" component={TermsOfUse}/>
               <Route path="/legal/privacy" component={PrivacyPolicy}/>
