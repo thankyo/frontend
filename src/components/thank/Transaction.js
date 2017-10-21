@@ -4,13 +4,13 @@ import { listTransactions } from "../../reducers/thank/transaction.actions";
 import moment from 'moment';
 import Resource from "../Resource";
 
-function ThankTransaction({ resource, destination: { firstName, lastName, shortBio },created }) {
+function ThankTransaction({ resource, project: { firstName, lastName, avatar, bio },created }) {
   let dateStr = moment(created).format("MMMM Do");
   return (
     <li className="timeline-item">
       <div className="timeline-content">
         <p>{dateStr}</p>
-        <p><b>{firstName} {lastName}</b> <small>{shortBio}</small></p>
+        <p><b>{firstName} {lastName}</b> <small>{bio}</small></p>
         <Resource resource={resource}/>
       </div>
     </li>

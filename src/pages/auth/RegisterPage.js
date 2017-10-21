@@ -5,6 +5,7 @@ import FacebookLogin from "./FacebookLogin";
 import { Link, Route, Switch } from 'react-router-dom';
 import auth from "../../reducers/util/auth";
 import { renderField, required, LoadingButton } from "./utils";
+import FacebookAuthPage from "./FacebookAuthPage";
 
 let ResetForm = ({ handleSubmit, submitting }) => {
   return (
@@ -137,6 +138,9 @@ export default function ({ history }) {
                     <ReduxLoginForm onSubmit={(logInReq) => auth.login(logInReq, history)}/>
                     <ForgotPasswordLink/>
                   </div>
+                </Route>
+                <Route exact path="/auth/facebook">
+                  <FacebookAuthPage history={history}/>
                 </Route>
                 <Route exact path="/auth/forgot">
                   <ReduxForgotForm onSubmit={(forgotReq) => auth.forgot(forgotReq).then(res => history.push("/auth/forgot/success"))}/>
