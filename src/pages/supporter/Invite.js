@@ -11,11 +11,11 @@ function Invite({ handleSubmit, submitting }) {
       <h2 className="subtitle is-6">Put a link or email of the creator and we'll contact him</h2>
       <Form onSubmit={handleSubmit}>
         <div className="field has-addons">
-          <p className="control is-expanded has-icons-left">
+          <div className="control is-expanded has-icons-left">
             <Field name="linkOrEmail" component={renderField} validate={[required]} type="text"
-                   className="input is-inverted is-outlined" placeholder="Link or email"/>
+                   className="input" placeholder="Link or email"/>
             <span className="icon is-small is-left"><i className="fa fa-globe"/></span>
-          </p>
+          </div>
           <LoadingButton submitting={submitting} className={"button-green"}>
             <span className="is-narrow">
               <span className="icon"><i className="fa fa-hand-peace-o"/></span>

@@ -16,16 +16,37 @@ class Project extends Component {
     })
   };
   render() {
-    let { project: { firstName, lastName, avatar, link, id }, resources } = this.props;
+    let { project: { firstName, lastName, avatar, link, id }, dateStr, resources } = this.props;
     let { expanded } = this.state;
+    if (expanded) {
+      return [
+        (<li key="image" className="timeline-item is-primary">
+          <div className="timeline-marker is-primary is-image is-32x32">
+            <Link to={`/creator/${id}`}><img src={avatar} width={32} height={32}/></Link>
+          </div>
+          <div className="timeline-content">
+            <p className="heading">{resources.length} contributions</p>
+          </div>
+        </li>),
+        (<li key="header" className="timeline-header is-primary">
+          <a><span className="tag is-primary" onClick={this.handleExpand}>{firstName}&nbsp;{lastName}</span></a>
+        </li>)
+        ,
+        (<li key="content" className="timeline-item is-primary">
+          <div className="timeline-content">
+            {resources.map((res, i) => <p key={i}><Resource resource={res}/></p>)}
+          </div>
+        </li>)
+      ]
+    }
     return (
       <li className="timeline-item is-primary">
         <div className="timeline-marker is-primary is-image is-32x32">
           <Link to={`/creator/${id}`}><img src={avatar} width={32} height={32}/></Link>
         </div>
         <div className="timeline-content">
-          <p className="heading"><a href={link}>{firstName} {lastName}</a></p>
-          <p>{resources.length} contributions <a onClick={this.handleExpand}><span className={`fa fa-chevron-circle-${expanded ? "down" : "right"}`}/></a></p>
+          <p className="heading"><a onClick={this.handleExpand}>{firstName} {lastName}</a></p>
+          <p>{resources.length} contributions</p>
           {expanded && resources.map((res, i) => <p key={i}><Resource resource={res}/></p>)}
         </div>
       </li>

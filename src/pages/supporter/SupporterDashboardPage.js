@@ -4,7 +4,7 @@ import Profile from "../../common/Profile";
 
 import Supported from "./Supported";
 import Invite from "./Invite";
-import ThankTransactions from "./Transaction";
+import ThankTransactions from "./PendingTransaction";
 import PaymentLimit from "./PaymentLimit";
 import PaymentMethod from "./PaymentMethod";
 
