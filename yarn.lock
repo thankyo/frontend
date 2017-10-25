@@ -1315,6 +1315,10 @@ bulma-pageloader@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/bulma-pageloader/-/bulma-pageloader-0.0.2.tgz#6487d4ae8059e9500592e2b9c926c9e26852e88d"
 
+bulma-timeline@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/bulma-timeline/-/bulma-timeline-0.0.4.tgz#65a3285a162a22191b7eded75dce06b28e13fda6"
+
 bulma@0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.6.0.tgz#4f5c5de582810d11aa0cfb1f30aec8a792d0d92c"

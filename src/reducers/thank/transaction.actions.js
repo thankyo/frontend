@@ -21,11 +21,12 @@ function transactionSuccess(user, payload) {
 export function listTransactions(id) {
     return (dispatch) => {
         dispatch(transactionRequested({ id }));
-        authService.signAndStream(`/api/v1/payment/${id}/pending`, dispatch, (payment) => {
-            dispatch(transactionSuccess(id, payment));
-            if (id === "my") {
-                dispatch(transactionSuccess("my", payment));
-            }
-        })
+        authService.signAndFetch(new Request(`/api/v1/payment/${id}/pending`)).
+            then((payment) => {
+                dispatch(transactionSuccess(id, payment));
+                if (id === "my") {
+                    dispatch(transactionSuccess("my", payment));
+                }
+            })
     }
 }

@@ -17,6 +17,7 @@
     "bulma": "0.6.0",
     "bulma-divider": "^0.0.1",
     "bulma-pageloader": "0.0.2",
+    "bulma-timeline": "^0.0.4",
     "font-awesome": "4.7.0",
     "moment": "2.18.1",
     "oboe": "2.1.4",
