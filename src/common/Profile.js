@@ -5,16 +5,13 @@ import { connect } from "react-redux";
 
 function ImageProfile({ avatar, firstName, lastName, bio }) {
   return (
-    <div className="message">
-      <div className="message-body message-body-new-style">
-        <div className="image sui-avatar">
-          <figure className="image is-1by1 is-small">
-            <img src={avatar} width={100} height={100} className="is-centered"/>
-          </figure>
-        </div>
-        <div className="message-text">{firstName} {lastName}</div>
-        <div className="message-text message-text-small">{bio}</div>
+    <div className="profile has-text-centered">
+      <div className="image">
+        <figure className="image is-1by1 is-small">
+          <img src={avatar} width={100} height={100} className="is-centered"/>
+        </figure>
       </div>
+      <div className="subtitle">{firstName} {lastName}</div>
     </div>
   )
 }
