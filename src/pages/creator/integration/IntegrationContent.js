@@ -1,5 +1,5 @@
 import React from "react";
-import ManagedResources from "../thank/resource/ManagedResources";
+import ManagedResources from "./resource/ManagedResources";
 import JSIntegration from "./JSIntegration";
 
 export default function ({ id }) {

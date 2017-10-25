@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { get } from "../../../reducers/thank/resource.actions";
-import Resource from "../../Resource";
-import Icon from "../../Icon";
+import { get } from "../../../../reducers/thank/resource.actions";
+import Resource from "../../../../common/Resource";
+import Icon from "../../../../common/Icon";
 
 class OwnedResource extends Component {
   render() {

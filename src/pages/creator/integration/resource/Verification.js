@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {verify, cancelVerification, confirm} from "../../../reducers/thank/resource.actions";
+import {verify, cancelVerification, confirm} from "../../../../reducers/thank/resource.actions";
 import AddVerification from './AddVerification';
 import PendingVerification from './PendingVerification';
 

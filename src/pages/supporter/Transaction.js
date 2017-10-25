@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { listTransactions } from "../../reducers/thank/transaction.actions";
-import Resource from "../Resource";
+import Resource from "../../common/Resource";
 
 class Project extends Component {
   constructor(props) {

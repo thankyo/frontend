@@ -1,15 +1,16 @@
 import React from "react";
+
+import Profile from "../../common/Profile";
+
 import Supported from "./Supported";
 import Invite from "./Invite";
-import Profile from "../../components/Profile";
-import ThankTransactions from "../../components/thank/Transaction";
-import PaymentLimit from "../../components/payment/PaymentLimit";
-import PaymentMethod from "../../components/payment/PaymentMethod";
-import ComponentWrap from "../../components/ComponentWrap";
+import ThankTransactions from "./Transaction";
+import PaymentLimit from "./PaymentLimit";
+import PaymentMethod from "./PaymentMethod";
 
 export default function supporterDashboardPage({ match: { params: { id } } }) {
   return (
-    <ComponentWrap>
+    <section className="section container">
       <div className="columns">
         <div className="column is-one-quarter">
           <Profile id={id}/>
@@ -24,6 +25,6 @@ export default function supporterDashboardPage({ match: { params: { id } } }) {
           <PaymentMethod/>
         </div>
       </div>
-    </ComponentWrap>
+    </section>
   );
 }

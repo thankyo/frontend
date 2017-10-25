@@ -16,6 +16,6 @@ export function thisMonthEarnings() {
         }
       });
     let p = authService.signAndFetch(req);
-    dispatchPromise(p, GET_EARNINGS, dispatch)
+    return dispatchPromise(p, GET_EARNINGS, dispatch)
   }
 }

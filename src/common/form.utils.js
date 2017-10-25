@@ -1,13 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export function LoadingButton({ submitting, children }) {
+export function LoadingButton({ submitting, children, className = "is-info is-outlined is-inverted" }) {
   return (
     <p className="control">
-      <button className={`button is-info is-outlined is-inverted ${submitting && "is-loading"}`} type="submit">
+      <button className={`button ${className} ${submitting && "is-loading"}`} type="submit">
         {children}
       </button>
     </p>
   )
+}
+
+LoadingButton.propTypes = {
+  submitting: PropTypes.bool.isRequired
 }
 
 export const required = value => value ? undefined : 'Required';
@@ -24,8 +29,8 @@ export const renderField = ({
     <div className="field">
       <div className="control">
         <input {...input} type={type} className={inputClassName} placeholder={placeholder}/>
-        {touched && error && <p className="help is-white">{error}</p>}
       </div>
+      {touched && error && <p className="help is-white">{error}</p>}
     </div>
   )
 };

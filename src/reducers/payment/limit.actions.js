@@ -16,7 +16,7 @@ export function getLimit() {
         }
       });
     let p = authService.signAndFetch(req);
-    dispatchPromise(p, GET_LIMIT, dispatch)
+    return dispatchPromise(p, GET_LIMIT, dispatch)
   }
 }
 
@@ -51,6 +51,6 @@ export function setLimit(limit) {
         body: JSON.stringify(limit)
       });
     let p = authService.signAndFetch(req);
-    dispatchPromise(p, SET_LIMIT, dispatch)
+    return dispatchPromise(p, SET_LIMIT, dispatch)
   }
 }

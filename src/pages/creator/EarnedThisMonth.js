@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { thisMonthEarnings } from "../../reducers/thank/earning.actions";
-import MoneyToCoffeeIcon from "./MoneyToCoffeeIcon";
+import MoneyToCoffeeIcon from "../../common/payment/MoneyToCoffeeIcon";
 
 function EarnedThisMonth({ total }) {
   return (

@@ -7,6 +7,6 @@ export function getSupportedByMe() {
   return (dispatch) => {
     let url = new Request(`/api/v1/thank/my/supported`);
     let p = authService.signAndFetch(url);
-    dispatchPromise(p, GET_SUPPORTED, dispatch)
+    return dispatchPromise(p, GET_SUPPORTED, dispatch)
   }
 }

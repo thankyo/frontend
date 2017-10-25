@@ -7,6 +7,6 @@ export function fetchUser(id) {
     return (dispatch) => {
       let req = new Request(`/api/v1/user/${id}/profile`);
       let p = authService.signAndFetch(req);
-      dispatchPromise(p, GET_USER, dispatch);
+      return dispatchPromise(p, GET_USER, dispatch);
     }
 }

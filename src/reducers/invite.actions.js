@@ -17,7 +17,7 @@ export function invite(url) {
         body: JSON.stringify(url)
       });
     let p = authService.signAndFetch(req);
-    dispatchPromise(p, INVITE, dispatch).
+    return dispatchPromise(p, INVITE, dispatch).
       then((res) => dispatch(reset("invite")))
   }
 }

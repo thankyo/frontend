@@ -4,7 +4,7 @@ import AuthMenu from "./AuthMenu";
 import FacebookLogin from "./FacebookLogin";
 import { Link, Route, Switch } from 'react-router-dom';
 import auth from "../../reducers/util/auth";
-import { renderField, required, LoadingButton } from "./utils";
+import { renderField, required, LoadingButton } from "../../common/form.utils";
 import FacebookAuthPage from "./FacebookAuthPage";
 
 let ResetForm = ({ handleSubmit, submitting }) => {
@@ -31,7 +31,7 @@ let ForgotForm = ({ handleSubmit, submitting }) => {
       <Field name="email" component={renderField} type="email" className="input" placeholder="Email"
              validate={[required]} disabled={submitting}/>
 
-      <div className="field has-addons">
+      <div className="field">
         <LoadingButton submitting={submitting}>
           <span className="icon is-small"><i className="fa fa-send"/></span>
           <span>Send a password restore link</span>
@@ -89,7 +89,7 @@ let ReduxRegistrationForm = reduxForm({ form: 'register' })(RegisterForm);
 
 function FacebookHeader() {
   return (
-    <div>
+    <div className="has-text-centered">
       <FacebookLogin>
         <a className="button is-primary is-inverted is-outlined">
           <span className="fa fa-facebook-official"/>&nbsp;
@@ -123,7 +123,7 @@ export default function ({ history }) {
           <div className="columns">
             <div className="column is-two-thirds">
             </div>
-            <div className="column is-one-third has-text-centered">
+            <div className="column is-one-third">
               <Switch>
                 <Route exact path="/auth">
                   <div>

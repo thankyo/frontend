@@ -1,5 +1,5 @@
 import React from "react";
-import Brand from "../../components/Brand";
+import Brand from "../../common/Brand";
 import { Link } from 'react-router-dom';
 
 export default function () {
