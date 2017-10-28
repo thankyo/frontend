@@ -7,7 +7,7 @@ export default class PrivacyPolicy extends Component {
                 <section className="section">
                     <div className="container">
                         <div className="heading is-pulled-right">
-                            <h2>Last updated: February 17, 2017</h2>
+                            <h2 className="subtitle">Last updated: February 17, 2017</h2>
                         </div>
                     </div>
                 </section>

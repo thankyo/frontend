@@ -10,12 +10,13 @@ import Footer from "./Footer";
 import Navigation from "./Navigation";
 
 const AuthRouter = (props) => <Async load={import('../pages/auth/AuthRouter')} componentProps={props}/>;
+const IntroRouter = (props) => <Async load={import("../pages/introduction/IntroRouter")} componentProps={props}/>;
 
 const TermsOfUse = (props) => <Async load={import('../pages/legal/TermsOfUsePage')} componentProps={props}/>;
 const PrivacyPolicy = (props) => <Async load={import('../pages/legal/PrivacyPolicyPage')} componentProps={props}/>;
 const RoadMap = (props) => <Async load={import('../pages/roadmap/RoadMapPage')} componentProps={props}/>;
 
-const SupporterDashboard = (props) => <Async load={import("../pages/supporter/SupporterDashboardPage")}
+const SupporterRouter = (props) => <Async load={import("../pages/supporter/SupporterRouter")}
                                              componentProps={props}/>;
 const CreatorDashboard = (props) => <Async load={import("../pages/creator/CreatorDashboardPage")}
                                            componentProps={props}/>;
@@ -44,6 +45,8 @@ export default class MainApp extends Component {
             <Switch>
               <Route exact path="/" component={LandingPageDefault}/>
               <Route path="/auth" component={AuthRouter}/>
+              <Route path="/intro" component={IntroRouter}/>
+
 
               <Route path="/legal/terms" component={TermsOfUse}/>
               <Route path="/legal/privacy" component={PrivacyPolicy}/>
@@ -51,7 +54,7 @@ export default class MainApp extends Component {
 
               <Route path="/creator/:id" component={CreatorDashboard}/>
 
-              <Route path="/supporter/:id" component={SupporterDashboard}/>
+              <Route path="/supporter" component={SupporterRouter}/>
 
               <Route component={NotFound}/>
             </Switch>

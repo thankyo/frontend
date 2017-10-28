@@ -47,8 +47,14 @@ class AuthService {
   doAuth(req, history) {
     return fetch(req).
       then((res) => handleFetchResponse(res)).
-      then(token => this.tokenStore.setToken(token)).
-      then(auth => history.push("/supporter/my"));
+      then(authRes => {
+        this.tokenStore.setToken(authRes.token);
+        if (authRes.existing && !ALWAYS_INTRO) {
+          history.push("/supporter/my")
+        } else {
+          history.push("/intro")
+        }
+      })
   }
 
   authWithFacebook(history) {

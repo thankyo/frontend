@@ -8,20 +8,25 @@ import Pot from "./coffee/pot.svg";
 import Termos from "./coffee/termos.svg";
 
 
-export default function MoneyToCoffeeIcon({ amount }) {
+export default function MoneyToCoffeeIcon({ amount, fill = "#FFFFFF" }) {
+  let props = {
+    width: 100,
+    height: 100,
+    fill
+  };
   if (amount <= 5) {
-    return <Espresso width={100} height={100}/>;
+    return <Espresso {... props}/>;
   } else if (amount <= 10) {
-    return <Americano width={100} height={100}/>;
+    return <Americano {... props}/>;
   } else if (amount <= 15) {
-    return <Latte width={100} height={100}/>;
+    return <Latte {... props}/>;
   } else if (amount <= 20) {
-    return <Siphon width={100} height={100}/>;
+    return <Siphon {... props}/>;
   } else if (amount <= 25) {
-    return <Kettle width={100} height={100}/>;
+    return <Kettle {... props}/>;
   } else if (amount <= 30) {
-    return <Pot width={100} height={100}/>;
+    return <Pot {... props}/>;
   } else {
-    return <Termos width={100} height={100}/>;
+    return <Termos {... props}/>;
   }
 }

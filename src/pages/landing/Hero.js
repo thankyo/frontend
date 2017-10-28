@@ -1,6 +1,7 @@
 import React from "react";
 import Brand from "../../common/Brand";
 import { Link } from 'react-router-dom';
+import JoinButton from "./JoinButton";
 
 export default function () {
   return (
@@ -32,9 +33,7 @@ export default function () {
           <h1 className="title title-main-promo title-main-promo-left">
             Support creators with a single click
           </h1>
-          <Link to="/auth" className="button button-join">
-            Join
-          </Link>
+          <JoinButton/>
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ function NavigationLink({ name, icon, pathname }) {
   return (
     <div className="control">
       <Link to={pathname}>
-        <div className={isActive ? "button button-control button-control-active" : "button button-control"}>
+        <div className={`button button-control ${isActive && "button-control-active"}`}>
           <span className="icon"><i className={icon}/></span>
           <span>{name}</span>
         </div>
@@ -24,21 +24,23 @@ export default function Navigation({ links = [] }) {
         <div className="navbar-brand">
           <Brand/>
         </div>
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="field has-addons field-new-style">
-              {
-                links.map((link, i) => <NavigationLink key={i} {...link}/>)
-              }
+        <div className="navbar-menu">
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="field has-addons field-new-style">
+                {
+                  links.map((link, i) => <NavigationLink key={i} {...link}/>)
+                }
+              </div>
             </div>
-          </div>
-          <div className="navbar-item">
-            <a className="button button-logout button-white-border" onClick={() => auth.logout()}>
+            <div className="navbar-item is-mobile">
+              <a className="button button-logout button-white-border" onClick={() => auth.logout()}>
                   <span className="is-narrow">
                     <span className="icon"><i className="fa fa-sign-out"/></span>
                     <span>Log Out</span>
                   </span>
-            </a>
+              </a>
+            </div>
           </div>
         </div>
       </div>

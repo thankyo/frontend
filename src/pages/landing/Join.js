@@ -1,4 +1,5 @@
 import React from "react";
+import JoinButton from "./JoinButton";
 
 export default function () {
   return (
@@ -9,7 +10,7 @@ export default function () {
             Support creativity
           </h1>
           <p className="subtitle subtitle-promo">Just a dime, every time</p>
-          <a href="#" className="button button-join">Join</a>
+          <JoinButton/>
         </div>
       </div>
     </section>

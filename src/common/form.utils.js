@@ -13,7 +13,7 @@ export function LoadingButton({ submitting, children, className = "is-info is-ou
 
 LoadingButton.propTypes = {
   submitting: PropTypes.bool.isRequired
-}
+};
 
 export const required = value => value ? undefined : 'Required';
 
