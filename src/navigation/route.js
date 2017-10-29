@@ -23,6 +23,7 @@ const CreatorDashboard = (props) => <Async load={import("../pages/creator/Creato
 
 const LINKS = [
   { pathname: "/supporter/my", name: "Supporter", icon: "fa fa-user-circle-o" },
+  { pathname: "/settings", name: "Settings", icon: "fa fa-cogs" },
   { pathname: "/creator/my", name: "Creator", icon: "fa fa-paint-brush" }
 ];
 

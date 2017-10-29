@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Brand from '../common/Brand';
 import { Link } from 'react-router-dom';
 import auth from "../reducers/util/auth";
@@ -6,44 +6,51 @@ import auth from "../reducers/util/auth";
 function NavigationLink({ name, icon, pathname }) {
   let isActive = location.pathname === pathname;
   return (
-    <div className="control">
-      <Link to={pathname}>
-        <div className={`button button-control ${isActive && "button-control-active"}`}>
-          <span className="icon"><i className={icon}/></span>
-          <span>{name}</span>
-        </div>
-      </Link>
-    </div>
+    <Link to={pathname} className={`navbar-item ${isActive && "is-active"}`}>
+      <span className="icon"><i className={icon}/></span>
+      <span>{name}</span>
+    </Link>
   );
 }
 
-export default function Navigation({ links = [] }) {
-  return (
-    <nav className="navbar main-nav" role="navigation">
-      <div className="container">
+export default class Navigation extends Component{
+  constructor(props) {
+    super(props);
+
+    this.state = { active: false };
+  }
+
+  changeActive = () => {
+    this.setState((state) => ({ active: !state.active }))
+  };
+
+  render() {
+    let { links = [] } = this.props;
+    let { active } = this.state;
+    return (
+      <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <Brand/>
+          <div className="navbar-item">
+            <Brand/>
+          </div>
+          <button className={`button navbar-burger is-primary ${active && "is-active"}`} onClick={this.changeActive}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
-        <div className="navbar-menu">
+        <div className={`navbar-menu ${active && "is-active"}`} onClick={this.changeActive}>
           <div className="navbar-end">
-            <div className="navbar-item">
-              <div className="field has-addons field-new-style">
-                {
-                  links.map((link, i) => <NavigationLink key={i} {...link}/>)
-                }
-              </div>
-            </div>
-            <div className="navbar-item is-mobile">
-              <a className="button button-logout button-white-border" onClick={() => auth.logout()}>
-                  <span className="is-narrow">
-                    <span className="icon"><i className="fa fa-sign-out"/></span>
-                    <span>Log Out</span>
-                  </span>
-              </a>
-            </div>
+            {
+              links.map((link, i) => <NavigationLink key={i} {...link}/>)
+            }
+            <a onClick={() => auth.logout()} className="navbar-item">
+              <span className="icon"><i className="fa fa-sign-out"/></span>
+              <span>Log Out</span>
+            </a>
           </div>
         </div>
-      </div>
-    </nav>
-  )
+      </nav>
+    )
+  }
 }
