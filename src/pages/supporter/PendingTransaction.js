@@ -16,7 +16,7 @@ class Project extends Component {
     })
   };
   render() {
-    let { project: { firstName, lastName, avatar, link, id }, dateStr, resources } = this.props;
+    let { project: { firstName, lastName, avatar, id }, resources } = this.props;
     let { expanded } = this.state;
     if (expanded) {
       return [
@@ -92,7 +92,7 @@ class ThankTransaction extends Component {
             <p className="heading">
               <a onClick={this.handleExpand}>{dateStr}</a>
             </p>
-            <p>{total} contributions</p>
+            <p>{total} contributions - in {projects.length} projects</p>
           </div>
         </div>
       </li>

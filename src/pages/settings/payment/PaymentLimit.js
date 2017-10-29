@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { decrease, getLimit, increase } from "../../reducers/payment/limit.actions";
-import MoneyToCoffeeIcon from "../../common/payment/MoneyToCoffeeIcon";
-import Icon from "../../common/Icon";
+import { decrease, getLimit, increase } from "../../../reducers/payment/limit.actions";
+import MoneyToCoffeeIcon from "../../../common/payment/MoneyToCoffeeIcon";
+import Icon from "../../../common/Icon";
 
-function PaymentLimit({ limit, decrease, increase, fill = "#FFFFFF" }) {
+function PaymentLimit({ limit, decrease, increase, fill }) {
   let { amount, currency } = limit;
   let cups = amount / 5;
   return (

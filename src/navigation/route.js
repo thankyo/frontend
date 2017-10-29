@@ -14,17 +14,15 @@ const IntroRouter = (props) => <Async load={import("../pages/introduction/IntroR
 
 const TermsOfUse = (props) => <Async load={import('../pages/legal/TermsOfUsePage')} componentProps={props}/>;
 const PrivacyPolicy = (props) => <Async load={import('../pages/legal/PrivacyPolicyPage')} componentProps={props}/>;
-const RoadMap = (props) => <Async load={import('../pages/roadmap/RoadMapPage')} componentProps={props}/>;
 
-const SupporterRouter = (props) => <Async load={import("../pages/supporter/SupporterRouter")}
-                                             componentProps={props}/>;
-const CreatorDashboard = (props) => <Async load={import("../pages/creator/CreatorDashboardPage")}
-                                           componentProps={props}/>;
+const SupporterRouter = (props) => <Async load={import("../pages/supporter/SupporterRouter")} componentProps={props}/>;
+const CreatorDashboard = (props) => <Async load={import("../pages/creator/CreatorDashboardPage")} componentProps={props}/>;
+const SettingsRouter = (props) => <Async load={import("../pages/settings/SettingsRouter")} componentProps={props}/>;
 
 const LINKS = [
   { pathname: "/supporter/my", name: "Supporter", icon: "fa fa-user-circle-o" },
+  { pathname: "/creator/my", name: "Creator", icon: "fa fa-paint-brush" },
   { pathname: "/settings", name: "Settings", icon: "fa fa-cogs" },
-  { pathname: "/creator/my", name: "Creator", icon: "fa fa-paint-brush" }
 ];
 
 export default class MainApp extends Component {
@@ -36,10 +34,7 @@ export default class MainApp extends Component {
         <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div>
             <Switch>
-              <Route path="/supporter">
-                <Navigation links={LINKS}/>
-              </Route>
-              <Route path="/creator">
+              <Route path="/(creator|supporter|settings)">
                 <Navigation links={LINKS}/>
               </Route>
             </Switch>
@@ -51,11 +46,12 @@ export default class MainApp extends Component {
 
               <Route path="/legal/terms" component={TermsOfUse}/>
               <Route path="/legal/privacy" component={PrivacyPolicy}/>
-              <Route path="/roadmap" component={RoadMap}/>
 
               <Route path="/creator/:id" component={CreatorDashboard}/>
 
               <Route path="/supporter" component={SupporterRouter}/>
+
+              <Route path="/settings" component={SettingsRouter}/>
 
               <Route component={NotFound}/>
             </Switch>

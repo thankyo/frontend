@@ -8,7 +8,7 @@ import Pot from "./coffee/pot.svg";
 import Termos from "./coffee/termos.svg";
 
 
-export default function MoneyToCoffeeIcon({ amount, fill = "#FFFFFF" }) {
+export default function MoneyToCoffeeIcon({ amount, fill }) {
   let props = {
     width: 100,
     height: 100,

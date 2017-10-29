@@ -1,4 +1,6 @@
 import React from "react";
+import { getLimit } from "../../reducers/payment/limit.actions";
+import { connect } from "react-redux";
 
 function Card({ image, children }) {
   return (
@@ -15,7 +17,7 @@ function Card({ image, children }) {
   )
 }
 
-export default function () {
+function About() {
   return (
     <div className="columns">
       <div className="column is-one-third">
@@ -50,3 +52,14 @@ export default function () {
     </div>
   )
 }
+
+const mapDispatchToProps = (dispatch) => {
+  dispatch(getLimit());
+  return {}
+};
+
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(About);
+

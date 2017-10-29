@@ -7,7 +7,7 @@ export default function SupporterRouter() {
   return (
     <section className="section container">
       <Switch>
-        <Route path="/:id" render={(({ match: { params: { id } } }) => <SupporterDashboardPage id='my'/>)}/>
+        <Route path="/supporter/:id" render={(({ match: { params: { id } } }) => <SupporterDashboardPage id={id} />)}/>
       </Switch>
     </section>
   );

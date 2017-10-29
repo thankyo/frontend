@@ -1,14 +1,36 @@
 import React from "react";
 
-import { Route, Switch } from 'react-router-dom';
-import SupporterDashboardPage from "./SupporterDashboardPage";
+import { Redirect, Route, Switch } from 'react-router-dom';
+import SettingsMenu from "./SettingsMenu";
+import PaymentLimit from "./payment/PaymentLimit";
+import PaymentMethod from "./payment/PaymentMethod";
+import PayoutAccount from "./payment/PayoutAccount";
 
-export default function SupporterRouter() {
+
+export default function SettingsRouter() {
   return (
     <section className="section container">
-      <Switch>
-        <Route path="/:id" render={(({ match: { params: { id } } }) => <SupporterDashboardPage id='my'/>)}/>
-      </Switch>
+      <div className="columns">
+        <div className="column is-one-quarter">
+          <SettingsMenu/>
+        </div>
+        <div className="is-two-thirds column">
+          <Switch>
+            <Route exact path="/settings">
+              <Redirect to="/settings/limit"/>
+            </Route>
+            <Route path="/settings/limit">
+              <PaymentLimit fill="#000000"/>
+            </Route>
+            <Route path="/settings/payment">
+              <PaymentMethod/>
+            </Route>
+            <Route path="/settings/payout">
+              <PayoutAccount/>
+            </Route>
+          </Switch>
+        </div>
+      </div>
     </section>
   );
 }
