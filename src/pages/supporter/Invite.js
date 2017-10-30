@@ -3,6 +3,7 @@ import { invite } from "../../reducers/invite.actions";
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from "redux-form";
 import { LoadingButton, renderField, required } from "../../common/form.utils";
+import { IconWithText } from "../../common/Icon";
 
 function Invite({ handleSubmit, submitting }) {
   return (
@@ -17,10 +18,7 @@ function Invite({ handleSubmit, submitting }) {
             <span className="icon is-small is-left"><i className="fa fa-globe"/></span>
           </div>
           <LoadingButton submitting={submitting} className={"button-green"}>
-            <span className="is-narrow">
-              <span className="icon"><i className="fa fa-hand-peace-o"/></span>
-              <span>Invite</span>
-            </span>
+            <IconWithText className="fa fa-hand-peace-o" text="Invite"/>
           </LoadingButton>
         </div>
       </Form>

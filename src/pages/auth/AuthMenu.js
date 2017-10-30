@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Route } from 'react-router-dom';
+import { IconWithText } from "../../common/Icon";
 
 function NavItem({ children, to, exact }) {
   return (
@@ -16,12 +17,10 @@ export default function () {
     <div className="tabs is-fullwidth">
       <ul>
         <NavItem to="/auth" exact={true}>
-          <span className="icon is-small"><i className="fa fa-registered"/></span>
-          <span>Register</span>
+          <IconWithText className="fa fa-registered" text="Register"/>
         </NavItem>
         <NavItem to="/auth/login" exact={true}>
-          <span className="icon is-small"><i className="fa fa-sign-in"/></span>
-          <span>Log in</span>
+          <IconWithText className="fa fa-sign-in" text="Log in"/>
         </NavItem>
       </ul>
     </div>

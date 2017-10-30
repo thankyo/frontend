@@ -1,5 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { IconWithText } from "../../../../common/Icon";
+
 
 let AddVerification = ({ handleSubmit }) => {
   return (
@@ -14,12 +16,7 @@ let AddVerification = ({ handleSubmit }) => {
           </p>
           <p className="control has-icon-left">
             <button className="button button-green" type="submit" onClick={handleSubmit}>
-                <span className="is-narrow">
-                  <span className="icon">
-                    <i className="fa fa-check"/>
-                  </span>
-                  <span>Verify</span>
-                </span>
+              <IconWithText className="fa fa-check" text="Verify"/>
             </button>
           </p>
         </div>

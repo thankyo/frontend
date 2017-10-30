@@ -5,6 +5,7 @@ import FacebookLogin from "./FacebookLogin";
 import { Link, Route, Switch } from 'react-router-dom';
 import auth from "../../reducers/util/auth";
 import { renderField, required, LoadingButton } from "../../common/form.utils";
+import { IconWithText } from "../../common/Icon";
 import FacebookAuthPage from "./FacebookAuthPage";
 
 let ResetForm = ({ handleSubmit, submitting }) => {
@@ -15,8 +16,7 @@ let ResetForm = ({ handleSubmit, submitting }) => {
 
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
-          <span className="icon is-small"><i className="fa fa-refresh"/></span>
-          <span>Restore</span>
+          <IconWithText className="fa fa-refresh" text="Restore"/>
         </LoadingButton>
       </div>
     </Form>
@@ -33,8 +33,7 @@ let ForgotForm = ({ handleSubmit, submitting }) => {
 
       <div className="field">
         <LoadingButton submitting={submitting}>
-          <span className="icon is-small"><i className="fa fa-send"/></span>
-          <span>Send a password restore link</span>
+          <IconWithText className="fa fa-send" text="Send a password restore link"/>
         </LoadingButton>
       </div>
     </Form>
@@ -54,8 +53,7 @@ let LoginForm = ({ handleSubmit, submitting }) => {
 
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
-          <span className="icon is-small"><i className="fa fa-sign-in"/></span>
-          <span>Log in</span>
+          <IconWithText className="fa fa-sign-in" text="Log in"/>
         </LoadingButton>
       </div>
     </Form>
@@ -77,8 +75,7 @@ let RegisterForm = ({ handleSubmit, submitting }) => {
              validate={[required]}/>
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
-          <span className="icon is-small"><i className="fa fa-registered"/></span>
-          <span>Register</span>
+          <IconWithText className="fa fa-registered" text="Register"/>
         </LoadingButton>
       </div>
     </Form>

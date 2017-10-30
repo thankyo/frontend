@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { decrease, getLimit, increase } from "../../../reducers/payment/limit.actions";
 import MoneyToCoffeeIcon from "../../../common/payment/MoneyToCoffeeIcon";
-import Icon from "../../../common/Icon";
+import { Icon } from "../../../common/Icon";
 
 function PaymentLimit({ limit, decrease, increase, fill }) {
   let { amount, currency } = limit;
@@ -16,14 +16,14 @@ function PaymentLimit({ limit, decrease, increase, fill }) {
         </p>
         <p className="limit-count-block">
           <a className="limit-button" disabled={cups === 1} onClick={() => decrease(limit)}>
-            <Icon fa={"minus-circle"}/>
+            <Icon className="fa fa-minus-circle"/>
           </a>
           <span className="limit-count">
             &nbsp;<b>{amount}.0</b>&nbsp;
             <span>{currency}</span>
           </span>
           <a className="limit-button" onClick={() => increase(limit)}>
-            <Icon fa={"plus-circle"}/>
+            <Icon className="fa fa-plus-circle"/>
           </a>
         </p>
       </div>

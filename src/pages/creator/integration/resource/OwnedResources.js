@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { get } from "../../../../reducers/thank/resource.actions";
 import Resource from "../../../../common/Resource";
-import Icon from "../../../../common/Icon";
+import { Icon } from "../../../../common/Icon";
 
 class OwnedResource extends Component {
   render() {
     return (
       <tr>
         <td className="is-narrow">
-          <Icon fa="check"/>
+          <Icon className="fa fa-check"/>
         </td>
         <td>
           <Resource resource={this.props.resource}/>

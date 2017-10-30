@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../../../common/Icon";
+import { Icon } from "../../../common/Icon";
 
 export default function Card({ isMissing, brand, last4 }) {
   if (isMissing) {
@@ -11,7 +11,7 @@ export default function Card({ isMissing, brand, last4 }) {
   }
   return (
     <div className="subtitle">
-      <Icon fa={`cc-${brand.toLowerCase()}`}/>&nbsp;
+      <Icon className={`fa fa-cc-${brand.toLowerCase()}`}/>&nbsp;
       Card ending in {last4}
     </div>
   )

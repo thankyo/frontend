@@ -1,28 +1,16 @@
-import React, { Component } from "react";
-import Icon from "../../../../common/Icon";
+import React from "react";
+import { IconWithText } from "../../../../common/Icon";
 
-class VerificationStatus extends Component {
-  render() {
-    let icon = this.props.status;
-    switch (this.props.status) {
-      case 'notVerified' :
-        icon = <Icon fa="ban" text="Unverified"/>;
-        break;
-      case 'running':
-        icon = <Icon fa="spinner fa-spin" text="Checking"/>;
-        break;
-      case 'pending':
-        icon = <Icon fa="play" text="Ready"/>;
-        break;
-      case 'verified':
-        icon = <Icon fa="check" text="Verified"/>;
-        break;
-    }
-    return (
-      <div className="has-text-centered">
-        <b>{icon}</b>
-      </div>
-    )
+function VerificationStatus({ status }) {
+  switch (status) {
+    case 'notVerified' :
+      return <IconWithText className="fa fa-ban" text="Unverified"/>;
+    case 'running':
+      return <IconWithText className="fa fa-spinner fa-spin" text="Checking"/>;
+    case 'pending':
+      return <IconWithText className="fa fa-play" text="Ready"/>;
+    case 'verified':
+      return <IconWithText className="fa fa-check" text="Verified"/>;
   }
 }
 
@@ -38,7 +26,9 @@ export default function pendingVerification({ verificationCode, resource: { uri 
           <small>{metaText}</small>
         </b>
         <hr/>
-        <VerificationStatus status={status}/>
+        <div className="has-text-centered">
+          <VerificationStatus status={status}/>
+        </div>
         <hr/>
         <div className="field has-addons has-text-centered">
           <p className="control">
