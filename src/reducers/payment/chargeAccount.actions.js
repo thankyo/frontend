@@ -4,6 +4,7 @@ import { dispatchPromise } from '../util/promiseStates';
 
 export const CHARGE_ACCOUNT_GET = "CHARGE_ACCOUNT_GET";
 export const CHARGE_ACCOUNT_SET = "CHARGE_ACCOUNT_SET";
+export const CHARGE_ACCOUNT_DELETE = "CHARGE_ACCOUNT_DELETE";
 
 function processToken(token) {
   return (dispatch) => {
@@ -47,10 +48,25 @@ export function connectChargeAccount() {
         name: "Love It",
         image: "/favicon.png",
         description: "Support creators with a single click",
-        closed: resolve,
-        token: (token) => dispatch(processToken(token))
+        closed: () => reject(),
+        token: (token) => resolve(token)
       };
       StripeButton.open(conf);
-    }));
+    })).
+    then((token) => dispatch(processToken(token)));
+  }
+}
+
+export function deleteCard() {
+  return (dispatch) => {
+    let req = new Request("/api/v1/payment/my/account", {
+      method: "DELETE",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+    let p = authService.signAndFetch(req);
+    return dispatchPromise(p, CHARGE_ACCOUNT_DELETE, dispatch);
   }
 }

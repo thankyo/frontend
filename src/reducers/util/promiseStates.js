@@ -13,9 +13,9 @@ export function dispatchPromise(p, event, dispatch) {
 export function promiseReducer(
   event,
   initialState = {},
-  pending = (state, payload) => payload,
+  pending = (state, payload) => state,
   fulfilled = (state, payload) => payload,
-  rejected = (state, payload) => payload
+  rejected = (state, payload) => state
 ) {
   return function (state = initialState, { type, payload }) {
     switch (type) {
