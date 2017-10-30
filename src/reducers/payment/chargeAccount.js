@@ -1,13 +1,14 @@
 import { CHARGE_ACCOUNT_GET, CHARGE_ACCOUNT_SET } from './chargeAccount.actions';
-import { promiseReducer, combineReducersInSingle } from '../util/promiseStates';
+import { combineReducersInSingle, promiseReducer } from '../util/promiseStates';
 
 const initialState = {
-    brand: "Visa",
-    last4: "0000",
-    type: "stripe"
+  isMissing: true,
+  brand: "Visa",
+  last4: "0000",
+  type: "stripe"
 };
 
 export default combineReducersInSingle(
-    promiseReducer(CHARGE_ACCOUNT_GET, initialState),
-    promiseReducer(CHARGE_ACCOUNT_SET, initialState),
+  promiseReducer(CHARGE_ACCOUNT_GET, initialState),
+  promiseReducer(CHARGE_ACCOUNT_SET, initialState),
 );

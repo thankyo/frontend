@@ -2,24 +2,21 @@ import React, { Component } from "react";
 import { connectChargeAccount, getChargeAccount } from "../../../reducers/payment/chargeAccount.actions";
 import { connect } from "react-redux";
 import Icon from "../../../common/Icon";
+import Loading from "../../../common/Loading";
+import Card from "./Card";
 
 const PAYMENT_OPTIONS = ["visa", "mastercard", "discover", "amex", "paypal"];
 
-function NoCardConnected() {
-
-}
-
-function CreditCard({ brand, last4 }) {
+function AllPaymentOptions() {
   return (
-    <article className="message message-card has-text-centered">
-      <div className="message-body">
-        <div className="title is-4">
-          <Icon fa={`cc-${brand.toLowerCase()}`}/>
-          <span> ... </span>
-          <span>{last4}</span>
-        </div>
-      </div>
-    </article>
+    <div className="payment-variants">
+      {PAYMENT_OPTIONS.map((option, i) => (
+          <span key={i} className="payment-item">
+              <Icon fa={`cc-${option}`}/>
+            </span>
+        )
+      )}
+    </div>
   )
 }
 
@@ -53,36 +50,46 @@ class ConnectCardButton extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    connectChargeAccount: () => dispatch(connectChargeAccount())
+class ChargeAccount extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { loading: true };
   }
-};
-
-ConnectCardButton = connect(
-  undefined,
-  mapDispatchToProps
-)(ConnectCardButton);
-
-class PaymentMethod extends Component {
-  render() {
+  componentWillMount() {
     let { chargeAccount } = this.props;
+    if (chargeAccount.last4 && chargeAccount.last4 !== "0000") {
+      this.setState({ loading: false })
+    } else {
+      this.props.getChargeAccount().then(() => this.setState({ loading: false }));
+    }
+  }
+  render() {
+    let { loading } = this.state;
+    let { chargeAccount, connectChargeAccount } = this.props;
+
+    if ( loading ) {
+      return (
+        <div className="has-text-centered">
+          <p className="title is-5">Charge Account</p>
+          <Loading/>
+        </div>
+      )
+    }
     return (
       <div className="has-text-centered">
         <p className="title is-5">Charge Account</p>
-        <div className="columns">
-          <div className="column is-12">
-            <CreditCard {...chargeAccount}/>
-            <ConnectCardButton/>
+        <div className="level">
+          <div className="level-left">
+            <div className="level-item">
+              <Card {... chargeAccount}/>
+            </div>
           </div>
-        </div>
-        <div className="payment-variants">
-          {PAYMENT_OPTIONS.map((option, i) => (
-              <span key={i} className="payment-item">
-              <Icon fa={`cc-${option}`}/>
-            </span>
-            )
-          )}
+          <div className="level-right">
+            <div className="level-item">
+              {chargeAccount.isMissing && <ConnectCardButton connectChargeAccount={connectChargeAccount}/>}
+            </div>
+          </div>
         </div>
         <br/>
         <h5 className="subtitle payment-text"><b>All charges happen at the end of the month</b></h5>
@@ -97,10 +104,17 @@ const mapStateToProps = ({ payment: { chargeAccount } }) => {
   return { chargeAccount };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    connectChargeAccount: () => dispatch(connectChargeAccount()),
+    getChargeAccount: () => dispatch(getChargeAccount())
+  }
+};
+
 export default connect(
   mapStateToProps,
-  undefined
-)(PaymentMethod);
+  mapDispatchToProps
+)(ChargeAccount);
 
 
 
