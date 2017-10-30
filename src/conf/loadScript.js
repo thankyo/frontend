@@ -1,4 +1,9 @@
 export function loadScriptAsPromise(src) {
+  let loaded = Array.from(document.scripts).findIndex(script => script.src === src);
+  if (loaded !== -1) {
+    return Promise.resolve();
+  }
+
   return new Promise((resolve, reject) => {
     let a = document.createElement('script'), m = document.getElementsByTagName('script')[0];
     a.async = 1;

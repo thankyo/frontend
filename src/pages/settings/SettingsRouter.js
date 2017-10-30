@@ -3,7 +3,7 @@ import React from "react";
 import { Redirect, Route, Switch } from 'react-router-dom';
 import SettingsMenu from "./SettingsMenu";
 import PaymentLimit from "./payment/PaymentLimit";
-import PaymentMethod from "./payment/PaymentMethod";
+import ChargeAccount from "./payment/ChargeAccount";
 import PayoutAccount from "./payment/PayoutAccount";
 
 
@@ -22,8 +22,8 @@ export default function SettingsRouter() {
             <Route path="/settings/limit">
               <PaymentLimit fill="#000000"/>
             </Route>
-            <Route path="/settings/payment">
-              <PaymentMethod/>
+            <Route path="/settings/charge">
+              <ChargeAccount/>
             </Route>
             <Route path="/settings/payout">
               <PayoutAccount/>

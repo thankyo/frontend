@@ -8,9 +8,9 @@ export default function () {
         Payment
       </p>
       <ul className="menu-list">
-        <li><NavLink to="/settings/limit" activeClassName="is-active">Limits</NavLink></li>
-        <li><NavLink to="/settings/payment" activeClassName="is-active"><span className="icon"><i className="fa fa-credit-card"/></span><span>Payment Method</span></NavLink></li>
-        <li><NavLink to="/settings/payout" activeClassName="is-active"><span className="icon"><i className="fa fa-credit-card-alt"/></span><span>Payout Method</span></NavLink></li>
+        <li><NavLink to="/settings/limit" activeClassName="is-active"><span>Limits</span></NavLink></li>
+        <li><NavLink to="/settings/charge" activeClassName="is-active"><span>Charge</span></NavLink></li>
+        <li><NavLink to="/settings/payout" activeClassName="is-active"><span>Payout</span></NavLink></li>
       </ul>
     </aside>
   )

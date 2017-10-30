@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { decrease, getLimit, increase } from "../../reducers/payment/limit.actions";
+import { decrease, increase } from "../../reducers/payment/limit.actions";
 import MoneyToCoffeeIcon from "../../common/payment/MoneyToCoffeeIcon";
 import Icon from "../../common/Icon";
 
@@ -38,7 +38,6 @@ const mapStateToProps = ({ payment: { limit } }) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  dispatch(getLimit());
   return {
     increase: (limit) => dispatch(increase(limit)),
     decrease: (limit) => dispatch(decrease(limit))

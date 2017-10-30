@@ -1,4 +1,6 @@
 import React from "react";
+import { getLimit } from "../../reducers/payment/limit.actions";
+import { connect } from "react-redux";
 
 import { Link, Route, Switch } from 'react-router-dom';
 import Icon from "../../common/Icon";
@@ -62,7 +64,7 @@ function Next({ match: { params: { step = 0 } } }) {
   )
 }
 
-export default function IntroRouter() {
+function IntroRouter() {
   return (
     <section className="hero is-fullheight is-primary has-text-centered">
       <div className="hero-head">
@@ -89,3 +91,14 @@ export default function IntroRouter() {
     </section>
   );
 }
+
+
+const mapDispatchToProps = (dispatch) => {
+  dispatch(getLimit());
+  return {}
+};
+
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(IntroRouter);

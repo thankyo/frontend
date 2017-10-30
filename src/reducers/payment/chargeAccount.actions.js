@@ -24,15 +24,13 @@ function processToken(token) {
 
 export function getChargeAccount() {
   return (dispatch) => {
-    let req = new Request(
-      "/api/v1/payment/my/account",
-      {
-        method: "GET",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
+    let req = new Request("/api/v1/payment/my/account", {
+      method: "GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
     let p = authService.signAndFetch(req);
     return dispatchPromise(p, CHARGE_ACCOUNT_GET, dispatch);
   }
@@ -40,15 +38,19 @@ export function getChargeAccount() {
 
 export function connectChargeAccount() {
   return (dispatch) => {
-    loadScriptAsPromise("https://checkout.stripe.com/checkout.js").
-      then(() => {
-        let key = STRIPE_KEY;
-        let conf = {
-          key,
-          locale: 'auto',
-          token: (token) => dispatch(processToken(token))
-        };
-        StripeButton.open(conf);
-    });
+    return loadScriptAsPromise("https://checkout.stripe.com/checkout.js").
+    then(() => new Promise((resolve, reject) => {
+      let key = STRIPE_KEY;
+      let conf = {
+        key,
+        locale: 'auto',
+        name: "Love It",
+        image: "/favicon.png",
+        description: "Support creators with a single click",
+        closed: resolve,
+        token: (token) => dispatch(processToken(token))
+      };
+      StripeButton.open(conf);
+    }));
   }
 }
