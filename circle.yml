@@ -11,6 +11,10 @@ dependencies:
     - ~/.cache/yarn
   override:
     - NODE_ENV=development yarn install
+  pre:
+    - rm -rf ~/.yarn
+    - npm install -g yarn
+    - yarn -v
 
 test:
   override:
