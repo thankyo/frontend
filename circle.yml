@@ -4,7 +4,7 @@ machine:
   services:
     - docker
   node:
-    version: v6.11.0
+    version: v8.1.2
 
 dependencies:
   cache_directories:
