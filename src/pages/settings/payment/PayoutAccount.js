@@ -2,7 +2,31 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Loading from "../../../common/Loading";
 import { IconWithText } from "../../../common/Icon";
-import { getPayoutAccount, deletePayoutAccount } from "../../../reducers/payment/payoutAccount.actions";
+import { deletePayoutAccount, getPayoutAccount } from "../../../reducers/payment/payoutAccount.actions";
+
+function BankDetails({ payoutAccount }) {
+  if (!payoutAccount) {
+    return (
+      <div className="subtitle">
+         <span className="fa-stack fa-lg has-text-danger">
+          <i className="fa fa-circle fa-stack-2x"/>
+          <i className="fa fa-bank fa-stack-1x fa-inverse"/>
+        </span>
+        <span>Here could be your bank</span>
+      </div>
+    )
+  }
+  return (
+    <div className="subtitle">
+      <span className="fa-stack fa-lg has-text-primary">
+        <i className="fa fa-circle fa-stack-2x"/>
+        <i className="fa fa-cc-stripe fa-stack-1x fa-inverse"/>
+      </span>
+      <span>Connected</span>
+    </div>
+  )
+
+}
 
 function ConnectPayoutAccount() {
   return (
@@ -21,15 +45,13 @@ class DeleteAccountButton extends Component {
 
   handleDeleteAccount = () => {
     this.setState({ loading: true });
-    this.props.
-      deletePayoutAccount().
-      catch(() => this.setState({ loading: false }));
+    this.props.deletePayoutAccount().catch(() => this.setState({ loading: false }));
   };
 
   render() {
     let { loading } = this.state;
     return (
-      <a onClick={this.handleDeleteAccount} className={`button is-outlined is-primary ${loading && "is-loading"}`}>
+      <a onClick={this.handleDeleteAccount} className={`button is-outlined is-danger ${loading && "is-loading"}`}>
         Delete
       </a>
     )
@@ -42,6 +64,7 @@ class PayoutAccount extends Component {
 
     this.state = { loading: false };
   }
+
   componentWillMount() {
     let { payoutAccount } = this.props;
     if (!payoutAccount) {
@@ -49,9 +72,10 @@ class PayoutAccount extends Component {
       this.props.getPayoutAccount().then(() => this.setState({ loading: false }));
     }
   }
+
   render() {
     let { loading } = this.state;
-    if ( loading ) {
+    if (loading) {
       return (
         <div className="has-text-centered">
           <p className="title is-5">Payout Account</p>
@@ -68,10 +92,7 @@ class PayoutAccount extends Component {
         <div className="level">
           <div className="level-left">
             <div className="level-item">
-              <div className="subtitle">
-                {!payoutAccount && "No bank connected"}
-                {payoutAccount && "Bank Account Connected"}
-              </div>
+              <BankDetails payoutAccount={payoutAccount}/>
             </div>
           </div>
           <div className="level-right">

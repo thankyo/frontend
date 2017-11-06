@@ -46,7 +46,7 @@ class DeleteCardButton extends Component {
   render() {
     let { loading } = this.state;
     return (
-      <a onClick={this.handleDeleteCard} className={`button is-outlined is-primary ${loading && "is-loading"}`}>
+      <a onClick={this.handleDeleteCard} className={`button is-outlined is-danger ${loading && "is-loading"}`}>
         Delete
       </a>
     )
@@ -59,6 +59,7 @@ class ChargeAccount extends Component {
 
     this.state = { loading: true };
   }
+
   componentWillMount() {
     let { chargeAccount } = this.props;
     if (chargeAccount.last4 && chargeAccount.last4 !== "0000") {
@@ -67,6 +68,7 @@ class ChargeAccount extends Component {
       this.props.getChargeAccount().then(() => this.setState({ loading: false }));
     }
   }
+
   render() {
     let { loading } = this.state;
     if ( loading ) {
