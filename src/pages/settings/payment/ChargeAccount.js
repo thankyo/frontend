@@ -3,7 +3,7 @@ import { connectChargeAccount, getChargeAccount, deleteCard } from "../../../red
 import { connect } from "react-redux";
 import Loading from "../../../common/Loading";
 import Card from "./Card";
-
+import { IconWithText } from "../../../common/Icon";
 
 class ConnectCardButton extends Component {
   constructor(props) {
@@ -16,7 +16,6 @@ class ConnectCardButton extends Component {
     this.setState({ loading: true });
     this.props.
       connectChargeAccount().
-      then(() => this.setState({ loading: false })).
       catch(() => this.setState({ loading: false }));
   };
 
@@ -24,7 +23,7 @@ class ConnectCardButton extends Component {
     let { loading } = this.state;
     return (
       <a onClick={this.handleConnectCard} className={`button is-outlined is-primary ${loading && "is-loading"}`}>
-        Connect Card
+        <IconWithText className="fa fa-credit-card" text="Connect Card"/>
       </a>
     )
   }
@@ -37,7 +36,7 @@ class DeleteCardButton extends Component {
     this.state = { loading: false };
   }
 
-  handleConnectCard = () => {
+  handleDeleteCard = () => {
     this.setState({ loading: true });
     this.props.
       deleteCard().
@@ -47,7 +46,7 @@ class DeleteCardButton extends Component {
   render() {
     let { loading } = this.state;
     return (
-      <a onClick={this.handleConnectCard} className={`button is-outlined is-primary ${loading && "is-loading"}`}>
+      <a onClick={this.handleDeleteCard} className={`button is-outlined is-primary ${loading && "is-loading"}`}>
         Delete
       </a>
     )
@@ -70,8 +69,6 @@ class ChargeAccount extends Component {
   }
   render() {
     let { loading } = this.state;
-    let { chargeAccount, connectChargeAccount, deleteCard } = this.props;
-
     if ( loading ) {
       return (
         <div className="has-text-centered">
@@ -80,6 +77,8 @@ class ChargeAccount extends Component {
         </div>
       )
     }
+
+    let { chargeAccount, connectChargeAccount, deleteCard } = this.props;
     return (
       <div className="has-text-centered">
         <p className="title is-5">Charge Account</p>
