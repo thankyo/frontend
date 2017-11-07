@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export default function () {
   return (
-    <aside className="menu">
+    <aside className="menu is-hidden-mobile">
       <p className="menu-label">
         Payment
       </p>

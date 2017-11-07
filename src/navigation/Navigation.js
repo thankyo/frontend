@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import auth from "../reducers/util/auth";
 import { Icon, IconWithText } from "../common/Icon";
 
-function NavigationLink({ name, icon, pathname }) {
+function NavigationLink({ name, icon, pathname, isHiddenDesktop = false }) {
   let isActive = location.pathname.startsWith(pathname);
   return (
-    <Link to={pathname} className={`navbar-item ${isActive && "is-active"}`}>
+    <Link to={pathname} className={`navbar-item ${isActive && "is-active"} ${isHiddenDesktop && "is-hidden-desktop"}`}>
       <span className="icon"><i className={icon}/></span>
       <span>{name}</span>
     </Link>
@@ -29,7 +29,7 @@ export default class Navigation extends Component {
     let { links = [] } = this.props;
     let { active } = this.state;
     return (
-      <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+      <nav className="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <div className="navbar-item">
             <Link to="/supporter/my">

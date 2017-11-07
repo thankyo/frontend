@@ -23,6 +23,9 @@ const LINKS = [
   { pathname: "/supporter/my", name: "Supporter", icon: "fa fa-user-circle-o" },
   { pathname: "/creator/my", name: "Creator", icon: "fa fa-paint-brush" },
   { pathname: "/settings", name: "Settings", icon: "fa fa-cogs" },
+  { pathname: "/settings/limit", name: "Limits", isHiddenDesktop: true },
+  { pathname: "/settings/charge", name: "Charge", isHiddenDesktop: true },
+  { pathname: "/settings/payout", name: "Payout", isHiddenDesktop: true },
 ];
 
 export default class MainApp extends Component {
@@ -34,24 +37,23 @@ export default class MainApp extends Component {
         <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div>
             <Switch>
-              <Route path="/(creator|supporter|settings)">
-                <Navigation links={LINKS}/>
-              </Route>
-            </Switch>
-            <Switch>
               <Route exact path="/" component={LandingPageDefault}/>
               <Route path="/auth" component={AuthRouter}/>
               <Route path="/intro" component={IntroRouter}/>
 
-
               <Route path="/legal/terms" component={TermsOfUse}/>
               <Route path="/legal/privacy" component={PrivacyPolicy}/>
 
-              <Route path="/creator/:id" component={CreatorDashboard}/>
-
-              <Route path="/supporter" component={SupporterRouter}/>
-
-              <Route path="/settings" component={SettingsRouter}/>
+              <Route path="/(creator|supporter|settings)">
+                <div>
+                  <Navigation links={LINKS}/>
+                  <div style={{ paddingTop: 62 }}>
+                    <Route path="/creator/:id" component={CreatorDashboard}/>
+                    <Route path="/supporter" component={SupporterRouter}/>
+                    <Route path="/settings" component={SettingsRouter}/>
+                  </div>
+                </div>
+              </Route>
 
               <Route component={NotFound}/>
             </Switch>

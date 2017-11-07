@@ -54,7 +54,7 @@ const config = {
         loaders: [
           {
             loader: 'babel-loader',
-            query: { presets: ['es2015'] }
+            query: { presets: [ 'env'  ] }
           },
           {
             loader: 'react-svg-loader',
