@@ -2,35 +2,43 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSupportedByMe } from "../../reducers/thank/supported.actions";
+import { Icon } from "../../common/Icon";
 
-function Supported({ avatar, firstName, lastName, bio, link, id }) {
+function Project({ avatar, firstName, lastName, bio, link, id }) {
   return (
     <article className="media media-new-style">
       <div className="media-left">
-        <Link to={`/creator/${id}`}>
-          <figure className="image">
-            <img src={avatar} width={50} height={50} alt="user picture"/>
-          </figure>
-        </Link>
+        <figure className="image">
+          <img src={avatar} width={50} height={50} alt="user picture"/>
+        </figure>
       </div>
       <div className="media-content">
         <div className="content is-inverted is-outlined">
-          <a href={link}><strong>{firstName} {lastName}</strong></a>
+          <strong>{firstName} {lastName}</strong>
           <p>{bio}</p>
         </div>
       </div>
+      <a>
+        <Icon className="fa fa-edit"/>
+      </a>
     </article>
   );
 }
 
-const ListOfSupported = ({ supported }) => {
-  if (supported.length === 0) {
+const ListOfProjects = ({ supported: projects }) => {
+  if (projects.length === 0) {
     return null
   }
   return (
     <div>
-      <h1 className="subtitle">Supported projects</h1>
-      {supported.map((supported, id) => <Supported key={id} {...supported}/>)}
+      <h1 className="subtitle">Projects</h1>
+      {projects.map((supported, id) => <Project key={id} {...supported}/>)}
+      <hr/>
+      <div className="has-text-centered">
+        <a className="button is-primary">
+          Add project
+        </a>
+      </div>
     </div>
   );
 };
@@ -50,4 +58,4 @@ const mapDispatchToProps = (dispatch, { id }) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListOfSupported);
+)(ListOfProjects);

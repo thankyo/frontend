@@ -4,6 +4,7 @@ import Profile from "../../common/Profile";
 
 import Supported from "./Supported";
 import Invite from "./Invite";
+import Projects from "./Projects";
 import ThankTransactions from "./PendingTransaction";
 
 export default function supporterDashboardPage({ id }) {
@@ -18,6 +19,7 @@ export default function supporterDashboardPage({ id }) {
         <ThankTransactions id={id}/>
       </div>
       <div className="column is-one-quarter">
+        <Projects id={id}/>
       </div>
     </div>
   );

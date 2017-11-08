@@ -41,6 +41,7 @@ export default function (transactions = initialState, { type, user, payload }) {
         }, {});
         return { dateStr, created, total, projects: Object.values(byProject) }
       });
+      dateToProj.reverse();
 
       return Object.assign({}, transactions, { [user]: Object.values(dateToProj) });
     default:

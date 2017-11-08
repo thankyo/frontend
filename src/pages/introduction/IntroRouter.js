@@ -11,9 +11,9 @@ import DonePage from "./DonePage";
 function StepLink({ complete, title, pathname }) {
   let active = location.pathname === pathname;
   let icon = complete ? "fa fa-check" : active ? "fa fa-circle-o" : "none";
-  let element = complete ? "is-completed is-hidden-mobile" : active ? "is-active" : "is-hidden-mobile";
+  let element = complete ? "is-completed is-hidden-mobile" : active ? "is-active" : "is-active is-hidden-mobile";
   return (
-    <div className={`step-item ${element} is-primary `}>
+    <div className={`step-item ${element} is-primary`}>
       <Link to={pathname}>
         <div className="step-marker">
           <Icon className={icon}/>
