@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getSupportedByMe } from "../../reducers/thank/supported.actions";
 import { Icon } from "../../common/Icon";
+import { get } from "../../reducers/thank/resource.actions";
+
 
 function Project({ avatar, firstName, lastName, bio, link, id }) {
   return (
@@ -25,14 +26,20 @@ function Project({ avatar, firstName, lastName, bio, link, id }) {
   );
 }
 
-const ListOfProjects = ({ supported: projects }) => {
+const ListOfProjects = ({ projects }) => {
   if (projects.length === 0) {
-    return null
+    return (
+      <div className="has-text-centered">
+        <Link to="/integration" className="button is-primary">
+          Add project
+        </Link>
+      </div>
+    );
   }
   return (
     <div>
       <h1 className="subtitle">Projects</h1>
-      {projects.map((supported, id) => <Project key={id} {...supported}/>)}
+      {projects.map((project, id) => <Project key={id} {... project}/>)}
       <hr/>
       <div className="has-text-centered">
         <a className="button is-primary">
@@ -43,15 +50,15 @@ const ListOfProjects = ({ supported: projects }) => {
   );
 };
 
-const mapStateToProps = ({ thank: { supported } }) => {
-  supported = supported ? supported : [];
+const mapStateToProps = ({ thank: { resource } }, { id }) => {
+  let projects = resource[id] ? resource[id].owns : [];
   return {
-    supported
+    projects
   };
 };
 
 const mapDispatchToProps = (dispatch, { id }) => {
-  dispatch(getSupportedByMe(id));
+  dispatch(get(id));
   return {}
 };
 

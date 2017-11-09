@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import Async from 'react-code-splitting';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-import LandingPageDefault from "../pages/landing/LandingPage";
 import NotFound from "./NotFound";
 
 import { Helmet } from "react-helmet";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 
+import auth from "../reducers/util/auth";
+
+const LandingPage = (props) => <Async load={import("../pages/landing/LandingPage")} componentProps={props}/>;
+
 const AuthRouter = (props) => <Async load={import('../pages/auth/AuthRouter')} componentProps={props}/>;
 const IntroRouter = (props) => <Async load={import("../pages/introduction/IntroRouter")} componentProps={props}/>;
+const IntegrationRouter = (props) => <Async load={import("../pages/integration/IntegrationRouter")} componentProps={props}/>;
 
 const TermsOfUse = (props) => <Async load={import('../pages/legal/TermsOfUsePage')} componentProps={props}/>;
 const PrivacyPolicy = (props) => <Async load={import('../pages/legal/PrivacyPolicyPage')} componentProps={props}/>;
@@ -37,9 +41,19 @@ export default class MainApp extends Component {
         <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div>
             <Switch>
-              <Route exact path="/" component={LandingPageDefault}/>
+              <Route exact path="/" render={props => (
+                auth.restoreAuthentication() ? (
+                  <Redirect to={{
+                    pathname: '/supporter/my',
+                    state: { from: props.location }
+                  }}/>
+                ) : (
+                  <LandingPage/>
+                )
+              )}/>
               <Route path="/auth" component={AuthRouter}/>
               <Route path="/intro" component={IntroRouter}/>
+              <Route path="/integration" component={IntegrationRouter}/>
 
               <Route path="/legal/terms" component={TermsOfUse}/>
               <Route path="/legal/privacy" component={PrivacyPolicy}/>

@@ -8,13 +8,22 @@ class TokenStore {
   };
 
   setToken = (token) => {
+    localStorage.setItem("token", token.trim());
+
     let base64Url = token.split('.')[1];
     let base64 = base64Url.replace('-', '+').replace('_', '/');
-    let identity = JSON.parse(window.atob(base64));
-    localStorage.setItem("user", identity.id);
+    let {id, email} = JSON.parse(window.atob(base64));
 
-    localStorage.setItem("token", token.trim());
+    localStorage.setItem("user", id);
+    localStorage.setItem("email", email);
+
+    try {
+      Raven.setUserContext({ id, email });
+    } catch (err) {
+    }
   };
+
+  getUser = () => localStorage.getItem("user")
 
   isMy = (id) => {
     if (id === "my")
@@ -87,15 +96,19 @@ class AuthService {
     return this.doAuth(new Request(url, options), history);
   }
 
-  isAuthenticated = () => {
+  restoreAuthentication = () => {
     let token = this.tokenStore.getToken();
-    return token !== undefined && token !== null;
+    if (token !== undefined && token !== null) {
+      // TODO This is here in order to update Raven
+      this.tokenStore.setToken(token);
+      return true;
+    }
+    return false;
   };
 
   signAndFetch = (req) => {
     let token = this.tokenStore.getToken();
-    if (this.isAuthenticated())
-      req.headers.append('X-Auth-Token', token);
+    req.headers.append('X-Auth-Token', token);
 
     return fetch(req).then(res => {
       if (res.status === 401 || res.status === 403) {
