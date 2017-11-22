@@ -32,7 +32,7 @@ export default class Navigation extends Component {
       <nav className="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <div className="navbar-item">
-            <Link to="/supporter/my">
+            <Link to="/dashboard/my">
               <Brand/>
             </Link>
           </div>

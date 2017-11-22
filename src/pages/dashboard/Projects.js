@@ -26,26 +26,22 @@ function Project({ avatar, firstName, lastName, bio, link, id }) {
   );
 }
 
+function AddProject() {
+  return (
+    <div className="has-text-centered">
+      <Link to="/integration" className="button is-primary">
+        Add project
+      </Link>
+    </div>
+  );
+}
+
 const ListOfProjects = ({ projects }) => {
-  if (projects.length === 0) {
-    return (
-      <div className="has-text-centered">
-        <Link to="/integration" className="button is-primary">
-          Add project
-        </Link>
-      </div>
-    );
-  }
   return (
     <div>
       <h1 className="subtitle">Projects</h1>
       {projects.map((project, id) => <Project key={id} {... project}/>)}
-      <hr/>
-      <div className="has-text-centered">
-        <a className="button is-primary">
-          Add project
-        </a>
-      </div>
+      <AddProject/>
     </div>
   );
 };

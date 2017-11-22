@@ -1,5 +1,5 @@
 import React from "react";
-import { IconWithText, Icon } from "../../../../common/Icon";
+import { IconWithText, Icon } from "../../common/Icon";
 
 function VerificationStatus({ status }) {
   switch (status) {

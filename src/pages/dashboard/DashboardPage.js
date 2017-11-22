@@ -7,7 +7,7 @@ import Invite from "./Invite";
 import Projects from "./Projects";
 import ThankTransactions from "./PendingTransaction";
 
-export default function supporterDashboardPage({ id }) {
+export default function dashboardPage({ id }) {
   return (
     <div className="columns">
       <div className="column is-one-quarter">

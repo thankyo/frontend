@@ -19,13 +19,12 @@ const IntegrationRouter = (props) => <Async load={import("../pages/integration/I
 const TermsOfUse = (props) => <Async load={import('../pages/legal/TermsOfUsePage')} componentProps={props}/>;
 const PrivacyPolicy = (props) => <Async load={import('../pages/legal/PrivacyPolicyPage')} componentProps={props}/>;
 
-const SupporterRouter = (props) => <Async load={import("../pages/supporter/SupporterRouter")} componentProps={props}/>;
+const DashboardRouter = (props) => <Async load={import("../pages/dashboard/DashboardRouter")} componentProps={props}/>;
 const CreatorDashboard = (props) => <Async load={import("../pages/creator/CreatorDashboardPage")} componentProps={props}/>;
 const SettingsRouter = (props) => <Async load={import("../pages/settings/SettingsRouter")} componentProps={props}/>;
 
 const LINKS = [
-  { pathname: "/supporter/my", name: "Supporter", icon: "fa fa-user-circle-o" },
-  { pathname: "/creator/my", name: "Creator", icon: "fa fa-paint-brush" },
+  { pathname: "/dashboard/my", name: "Dashboard", icon: "fa fa-dashboard" },
   { pathname: "/settings", name: "Settings", icon: "fa fa-cogs" },
   { pathname: "/settings/limit", name: "Limits", isHiddenDesktop: true },
   { pathname: "/settings/charge", name: "Charge", isHiddenDesktop: true },
@@ -44,7 +43,7 @@ export default class MainApp extends Component {
               <Route exact path="/" render={props => (
                 auth.restoreAuthentication() ? (
                   <Redirect to={{
-                    pathname: '/supporter/my',
+                    pathname: '/dashboard/my',
                     state: { from: props.location }
                   }}/>
                 ) : (
@@ -58,12 +57,12 @@ export default class MainApp extends Component {
               <Route path="/legal/terms" component={TermsOfUse}/>
               <Route path="/legal/privacy" component={PrivacyPolicy}/>
 
-              <Route path="/(creator|supporter|settings)">
+              <Route path="/(creator|dashboard|settings)">
                 <div>
                   <Navigation links={LINKS}/>
                   <div style={{ paddingTop: 62 }}>
                     <Route path="/creator/:id" component={CreatorDashboard}/>
-                    <Route path="/supporter" component={SupporterRouter}/>
+                    <Route path="/dashboard" component={DashboardRouter}/>
                     <Route path="/settings" component={SettingsRouter}/>
                   </div>
                 </div>

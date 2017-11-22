@@ -59,7 +59,7 @@ class AuthService {
       then(authRes => {
         this.tokenStore.setToken(authRes.token);
         if (authRes.existing && !ALWAYS_INTRO) {
-          history.push("/supporter/my")
+          history.push("/dashboard/my")
         } else {
           history.push("/intro")
         }
