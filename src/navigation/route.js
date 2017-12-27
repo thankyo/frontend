@@ -13,7 +13,6 @@ import auth from "../reducers/util/auth";
 const LandingPage = (props) => <Async load={import("../pages/landing/LandingPage")} componentProps={props}/>;
 
 const AuthRouter = (props) => <Async load={import('../pages/auth/AuthRouter')} componentProps={props}/>;
-const IntroRouter = (props) => <Async load={import("../pages/introduction/IntroRouter")} componentProps={props}/>;
 const IntegrationRouter = (props) => <Async load={import("../pages/integration/IntegrationRouter")} componentProps={props}/>;
 
 const TermsOfUse = (props) => <Async load={import('../pages/legal/TermsOfUsePage')} componentProps={props}/>;
@@ -51,7 +50,6 @@ export default class MainApp extends Component {
                 )
               )}/>
               <Route path="/auth" component={AuthRouter}/>
-              <Route path="/intro" component={IntroRouter}/>
               <Route path="/integration" component={IntegrationRouter}/>
 
               <Route path="/legal/terms" component={TermsOfUse}/>

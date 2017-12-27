@@ -58,11 +58,7 @@ class AuthService {
       then((res) => handleFetchResponse(res)).
       then(authRes => {
         this.tokenStore.setToken(authRes.token);
-        if (authRes.existing && !ALWAYS_INTRO) {
-          history.push("/dashboard/my")
-        } else {
-          history.push("/intro")
-        }
+        history.push("/dashboard/my")
       })
   }
 
