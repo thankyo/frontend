@@ -137,7 +137,6 @@ if (process.env.NODE_ENV === 'production') {
   config.plugins = [
     new webpack.DefinePlugin({
       '__DEV__': true,
-      ALWAYS_INTRO: false,
       FACEBOOK_KEY: 1429718427098411,
       STRIPE_KEY: JSON.stringify("pk_live_dmgtat0UE6oSGz9OzmB3ch0A"),
       "process.env": {
