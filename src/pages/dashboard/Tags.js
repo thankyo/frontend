@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Field, Form, reduxForm } from "redux-form";
-import { addUserTag, fetchUserTags, saveMyTags } from "../../reducers/tag.actions";
+import { addUserTag, fetchUserTags, removeUserTag, saveMyTags } from "../../reducers/tag.actions";
 import { IconWithText } from "../../common/Icon";
 import { PromiseButton, renderField, required } from "../../common/form.utils";
 
@@ -26,8 +26,7 @@ let TagForm = ({ tags = [], handleSubmit }) => {
 
 const mapTagFormDispatchToProps = (dispatch, { id }) => {
   return {
-    onSubmit: ({ tag }) => dispatch(addUserTag(id, tag)),
-    saveUserTags: () => dispatch(saveMyTags(id))
+    onSubmit: ({ tag }) => dispatch(addUserTag(id, tag))
   }
 };
 
@@ -37,14 +36,21 @@ TagForm = connect(
 )(reduxForm({ form: "tag" })(TagForm));
 
 
-function Tags({ tags, saveUserTags, id }) {
+function Tags({ tags, saveUserTags, removeUserTag, id }) {
   return (
     <div>
       <h1 className="subtitle">Tags</h1>
       <TagForm id={id}/>
       <br/>
-      <div className="tags">
-        {tags.map((tag, i) => <span key={i} className="tag">{tag}</span>)}
+      <div className="field is-grouped is-grouped-multiline">
+        {tags.map((tag, i) => (
+          <div key={i} className="control">
+            <div className="tags has-addons">
+              <span className="tag">{tag}</span>
+              <a className="tag is-delete is-dark" onClick={() => removeUserTag(tag)}/>
+            </div>
+          </div>
+        ))}
       </div>
       <PromiseButton onClick={saveUserTags} className="is-primary" isCentered>
         <IconWithText className="fa fa-save" text="Save"/>
@@ -65,7 +71,8 @@ const mapStateToProps = ({ tag: { user } }, { id }) => {
 const mapDispatchToProps = (dispatch, { id }) => {
   dispatch(fetchUserTags(id));
   return {
-    saveUserTags: () => dispatch(saveMyTags(id))
+    saveUserTags: () => dispatch(saveMyTags(id)),
+    removeUserTag: (tag) => dispatch(removeUserTag(id, tag))
   }
 };
 

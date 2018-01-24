@@ -19,7 +19,7 @@ export class PromiseButton extends Component {
     let { children, className = "is-info is-outlined is-inverted", isCentered } = this.props;
 
     return (
-      <p className={`control ${isCentered && "has-text-centered"}`}>
+      <p className={`${isCentered && "has-text-centered"}`}>
         <a className={`button ${className} ${this.state.submitting && "is-loading"}`} type="submit" onClick={this.handleClick}>
           {children}
         </a>
