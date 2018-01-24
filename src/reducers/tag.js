@@ -1,4 +1,4 @@
-import { GET_USER_TAGS, REMOVE_USER_TAG, SAVE_USER_TAGS } from "./tag.actions";
+import { GET_USER_TAGS, REMOVE_USER_TAG, SAVE_USER_TAGS, ADD_USER_TAG } from "./tag.actions";
 
 const INITIAL_STATE = { user: {} };
 
@@ -11,7 +11,7 @@ export default function (state = INITIAL_STATE, { type, payload }) {
       if (!user[id]) {
         user[id] = []
       }
-      let userWithTag = Object.assign({}, user, { [id]: user[id].concat(tags) });
+      let userWithTag = Object.assign({}, user, { [id]: tags });
 
       return Object.assign({}, state, { user: userWithTag });
     }
@@ -25,6 +25,17 @@ export default function (state = INITIAL_STATE, { type, payload }) {
       let userWithoutTag = Object.assign({}, user, { [id]: user[id].filter(t => t !== tag) });
 
       return Object.assign({}, state, { user: userWithoutTag });
+    }
+    case ADD_USER_TAG: {
+      let { user } = state;
+
+      let { id, tag } = payload;
+      if (!user[id]) {
+        user[id] = []
+      }
+      let userWithTag = Object.assign({}, user, { [id]: user[id].concat(tag) });
+
+      return Object.assign({}, state, { user: userWithTag });
     }
     case `${GET_USER_TAGS}.fulfilled`: {
       let { user } = state;

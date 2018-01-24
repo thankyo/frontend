@@ -1,9 +1,36 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-export function LoadingButton({ submitting, children, className = "is-info is-outlined is-inverted" }) {
+export class PromiseButton extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { submitting: false };
+  }
+
+  handleClick = () => {
+    this.setState({ submitting: true });
+    this.props.onClick()
+      .then(() => this.setState({ submitting: false }))
+      .catch(() => this.setState({ submitting: false }));
+  };
+
+  render() {
+    let { children, className = "is-info is-outlined is-inverted", isCentered } = this.props;
+
+    return (
+      <p className={`control ${isCentered && "has-text-centered"}`}>
+        <a className={`button ${className} ${this.state.submitting && "is-loading"}`} type="submit" onClick={this.handleClick}>
+          {children}
+        </a>
+      </p>
+    )
+  }
+}
+
+export function LoadingButton({ submitting, children, className = "is-info is-outlined is-inverted", isCentered }) {
   return (
-    <p className="control">
+    <p className={`control ${isCentered && "has-text-centered"}`}>
       <button className={`button ${className} ${submitting && "is-loading"}`} type="submit">
         {children}
       </button>

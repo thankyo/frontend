@@ -1,51 +1,75 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Field, Form, reduxForm } from "redux-form";
-import { fetchUserTags } from "../../reducers/tag.actions";
+import { addUserTag, fetchUserTags, saveMyTags } from "../../reducers/tag.actions";
 import { IconWithText } from "../../common/Icon";
-import { renderField, required } from "../../common/form.utils";
+import { PromiseButton, renderField, required } from "../../common/form.utils";
 
-const Tags = ({ tags = [] }) => {
+let TagForm = ({ tags = [], handleSubmit }) => {
+  return (
+    <Form onSubmit={handleSubmit}>
+      <div className="field has-addons">
+        <div className="control is-expanded">
+          <Field name="tag" component={renderField} validate={[required]} type="text" className="input is-small"
+                 placeholder="Tag"/>
+        </div>
+        <p className="control">
+          <button className="button is-small" type="submit">
+            <IconWithText className="fa fa-plus-circle" text="Add"/>
+          </button>
+        </p>
+      </div>
+    </Form>
+  );
+};
+
+
+const mapTagFormDispatchToProps = (dispatch, { id }) => {
+  return {
+    onSubmit: ({ tag }) => dispatch(addUserTag(id, tag)),
+    saveUserTags: () => dispatch(saveMyTags(id))
+  }
+};
+
+TagForm = connect(
+  undefined,
+  mapTagFormDispatchToProps
+)(reduxForm({ form: "tag" })(TagForm));
+
+
+function Tags({ tags, saveUserTags, id }) {
   return (
     <div>
       <h1 className="subtitle">Tags</h1>
-      <Form onSubmit={() => console.log("Adding new tag")}>
-        <div className="field has-addons">
-          <div className="control is-expanded">
-            <Field name="tag" component={renderField} validate={[required]} type="text" className="input is-small" placeholder="Tag"/>
-          </div>
-          <p className="control">
-            <button className="button is-small" type="submit">
-              <IconWithText className="fa fa-plus-circle" text="Add"/>
-            </button>
-          </p>
-        </div>
-      </Form>
+      <TagForm id={id}/>
+      <br/>
       <div className="tags">
         {tags.map((tag, i) => <span key={i} className="tag">{tag}</span>)}
       </div>
-      <div className="has-text-centered">
-        <button className="button is-primary">Save</button>
-      </div>
+      <PromiseButton onClick={saveUserTags} className="is-primary" isCentered>
+        <IconWithText className="fa fa-save" text="Save"/>
+      </PromiseButton>
       <br/>
       <br/>
     </div>
   );
-};
+}
 
-const mapStateToProps = ({ thank: { supported } }) => {
-  supported = supported ? supported : [];
+const mapStateToProps = ({ tag: { user } }, { id }) => {
+  let tags = user[id] ? user[id] : [];
   return {
-    supported
+    tags
   };
 };
 
 const mapDispatchToProps = (dispatch, { id }) => {
   dispatch(fetchUserTags(id));
-  return {}
+  return {
+    saveUserTags: () => dispatch(saveMyTags(id))
+  }
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(reduxForm({ form: "tag" })(Tags));
+)(Tags);

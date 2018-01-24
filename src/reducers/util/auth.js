@@ -105,6 +105,7 @@ class AuthService {
   signAndFetch = (req) => {
     let token = this.tokenStore.getToken();
     req.headers.append('X-Auth-Token', token);
+    req.headers.append('Content-Type', 'application/json');
 
     return fetch(req).then(res => {
       if (res.status === 401 || res.status === 403) {
@@ -123,7 +124,8 @@ class AuthService {
     oboe({
       url,
       headers: {
-        'X-Auth-Token': this.tokenStore.getToken()
+        'X-Auth-Token': this.tokenStore.getToken(),
+        'Content-Type': 'application/json',
       }
     }).done((obj) => {
       let isEmpty = obj === undefined ||

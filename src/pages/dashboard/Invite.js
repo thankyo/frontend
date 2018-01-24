@@ -33,7 +33,6 @@ Invite = reduxForm({
 const InviteToReducer = ({ invite }) => {
   return (<Invite onSubmit={(linkOrEmail) => {
     let res = invite(linkOrEmail);
-    console.log(res);
     return res;
   }}/>)
 };
