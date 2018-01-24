@@ -2,6 +2,7 @@ import React from "react";
 
 import Profile from "../../common/Profile";
 
+import Tags from "./Tags";
 import Supported from "./Supported";
 import Invite from "./Invite";
 import Projects from "./Projects";
@@ -12,6 +13,7 @@ export default function dashboardPage({ id }) {
     <div className="columns">
       <div className="column is-one-quarter">
         <Profile id={id}/>
+        <Tags id={id}/>
         <Supported id={id}/>
       </div>
       <div className="column is-two-quarter">
