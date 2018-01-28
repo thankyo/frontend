@@ -7,7 +7,7 @@ function LoveItOGView({ title = "unknown", description = "missing", type = "unkn
     overflow: "hidden"
   };
   return (
-    <article className="tile is-child notification">
+    <article>
       <figure className="image" style={style}>
         <img src={url}/>
       </figure>
