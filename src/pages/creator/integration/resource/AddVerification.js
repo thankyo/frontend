@@ -15,7 +15,7 @@ let AddVerification = ({ handleSubmit }) => {
             <span className="icon is-small is-left"><i className="fa fa-globe"/></span>
           </p>
           <p className="control has-icon-left">
-            <button className="button button-green" type="submit" onClick={handleSubmit}>
+            <button className="button" type="submit" onClick={handleSubmit}>
               <IconWithText className="fa fa-check" text="Verify"/>
             </button>
           </p>

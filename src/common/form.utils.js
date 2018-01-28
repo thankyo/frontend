@@ -61,8 +61,10 @@ export const flatField = ({
   className,
   placeholder,
   type,
+  submitting,
   meta: { touched, error }
 }) => {
   let inputClassName = error && touched ? `${className} is-danger` : className;
+  if (submitting) inputClassName = `${inputClassName} is-loading`;
   return <input {...input} type={type} className={inputClassName} placeholder={placeholder}/>
 };

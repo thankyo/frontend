@@ -2,7 +2,7 @@ import React from "react";
 import { invite } from "../../reducers/invite.actions";
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from "redux-form";
-import { LoadingButton, renderField, required } from "../../common/form.utils";
+import { flatField, LoadingButton, renderField, required } from "../../common/form.utils";
 import { IconWithText } from "../../common/Icon";
 
 function Invite({ handleSubmit, submitting }) {
@@ -13,11 +13,10 @@ function Invite({ handleSubmit, submitting }) {
       <Form onSubmit={handleSubmit}>
         <div className="field has-addons">
           <div className="control is-expanded has-icons-left">
-            <Field name="linkOrEmail" component={renderField} validate={[required]} type="text"
-                   className="input" placeholder="Link or email"/>
+            <Field name="linkOrEmail" component={flatField} validate={[required]} type="text" className="input" placeholder="Link or email"/>
             <span className="icon is-small is-left"><i className="fa fa-globe"/></span>
           </div>
-          <LoadingButton submitting={submitting} className={"button-green"}>
+          <LoadingButton submitting={submitting}>
             <IconWithText className="fa fa-hand-peace-o" text="Invite"/>
           </LoadingButton>
         </div>
