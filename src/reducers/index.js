@@ -1,5 +1,6 @@
 import user from "./user";
 import payment from './payment';
+import search from "./search";
 import thank from "./thank";
 import tag from "./tag";
 import lastAction from './lastAction';
@@ -14,6 +15,7 @@ export default function(){
             user,
             tag,
             payment,
+            search,
             thank,
             form: formReducer,
             lastAction,

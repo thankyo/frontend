@@ -109,7 +109,7 @@ class AuthService {
 
     return fetch(req).then(res => {
       if (res.status === 401 || res.status === 403) {
-        this.logout();
+        // this.logout();
       } else if (res.status === 400) {
         return res.json().then(err => {
           throw err

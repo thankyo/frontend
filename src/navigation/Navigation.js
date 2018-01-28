@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Brand from '../common/Brand';
 import { Link } from 'react-router-dom';
 import auth from "../reducers/util/auth";
+import SearchPanel from "./SearchPanel";
 import { Icon, IconWithText } from "../common/Icon";
 
 function NavigationLink({ name, icon, pathname, isHiddenDesktop = false }) {
@@ -43,6 +44,7 @@ export default class Navigation extends Component {
           </button>
         </div>
         <div className={`navbar-menu ${active && "is-active"}`} onClick={this.changeActive}>
+          <SearchPanel/>
           <div className="navbar-end">
             <div className="navbar-item has-dropdown is-hoverable">
               <div className="navbar-link is-hidden-mobile">

@@ -44,20 +44,25 @@ LoadingButton.propTypes = {
 
 export const required = value => value ? undefined : 'Required';
 
-export const renderField = ({
-                              input,
-                              className,
-                              placeholder,
-                              type,
-                              meta: { touched, error }
-                            }) => {
-  let inputClassName = error && touched ? `${className} is-danger` : className;
+export const renderField = (props) => {
+  let { meta: { touched, error } } = props;
   return (
     <div className="field">
       <div className="control">
-        <input {...input} type={type} className={inputClassName} placeholder={placeholder}/>
+        {flatField(props)}
       </div>
       {touched && error && <p className="help is-white">{error}</p>}
     </div>
   )
+};
+
+export const flatField = ({
+  input,
+  className,
+  placeholder,
+  type,
+  meta: { touched, error }
+}) => {
+  let inputClassName = error && touched ? `${className} is-danger` : className;
+  return <input {...input} type={type} className={inputClassName} placeholder={placeholder}/>
 };

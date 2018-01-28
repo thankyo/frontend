@@ -7,7 +7,7 @@ export function thisMonthEarnings() {
   return (dispatch) => {
     let date = new Date();
     let req = new Request(
-      `/api/v1/thank/stat/my/${date.getFullYear()}/${date.getMonth()}`,
+      `/api/v1/thank/stat/my/${date.getFullYear()}/${date.getMonth() + 1}`,
       {
         method: "GET",
         headers: {
