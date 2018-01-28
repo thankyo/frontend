@@ -3,18 +3,17 @@ import { connect } from "react-redux";
 import { Field, Form, reduxForm } from "redux-form";
 import { addUserTag, fetchUserTags, removeUserTag, saveMyTags } from "../../reducers/tag.actions";
 import { IconWithText } from "../../common/Icon";
-import { PromiseButton, renderField, required } from "../../common/form.utils";
+import { flatField, PromiseButton, renderField, required } from "../../common/form.utils";
 
 let TagForm = ({ tags = [], handleSubmit }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <div className="field has-addons">
         <div className="control is-expanded">
-          <Field name="tag" component={renderField} validate={[required]} type="text" className="input is-small"
-                 placeholder="Tag"/>
+          <Field name="tag" component={flatField} type="text" className="input is-small" placeholder="Tag"/>
         </div>
         <p className="control">
-          <button className="button is-small" type="submit">
+          <button className="button is-small is-primary" type="submit">
             <IconWithText className="fa fa-plus-circle" text="Add"/>
           </button>
         </p>

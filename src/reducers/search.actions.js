@@ -14,7 +14,7 @@ export function searchByTag(tags) {
           'Content-Type': 'application/json'
         }
       });
-    let p = fetch(req);
+    let p = authService.signAndFetch(req);
     return dispatchPromise(p, SEARCH_BY_TAG, dispatch);
   }
 }

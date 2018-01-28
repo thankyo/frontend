@@ -22,6 +22,8 @@ const DashboardRouter = (props) => <Async load={import("../pages/dashboard/Dashb
 const CreatorDashboard = (props) => <Async load={import("../pages/creator/CreatorDashboardPage")} componentProps={props}/>;
 const SettingsRouter = (props) => <Async load={import("../pages/settings/SettingsRouter")} componentProps={props}/>;
 
+const SearchRouter = (props) => <Async load={import("../pages/search/SearchDashboard")} componentProps={props}/>;
+
 const LINKS = [
   { pathname: "/dashboard/my", name: "Dashboard", icon: "fa fa-dashboard" },
   { pathname: "/settings", name: "Settings", icon: "fa fa-cogs" },
@@ -55,13 +57,14 @@ export default class MainApp extends Component {
               <Route path="/legal/terms" component={TermsOfUse}/>
               <Route path="/legal/privacy" component={PrivacyPolicy}/>
 
-              <Route path="/(creator|dashboard|settings)">
+              <Route path="/(creator|dashboard|settings|search)">
                 <div>
                   <Navigation links={LINKS}/>
                   <div style={{ paddingTop: 62 }}>
                     <Route path="/creator/:id" component={CreatorDashboard}/>
                     <Route path="/dashboard" component={DashboardRouter}/>
                     <Route path="/settings" component={SettingsRouter}/>
+                    <Route path="/search" component={SearchRouter}/>
                   </div>
                 </div>
               </Route>
