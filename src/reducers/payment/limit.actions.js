@@ -6,15 +6,7 @@ export const GET_LIMIT = "GET_LIMIT";
 
 export function getLimit() {
   return (dispatch) => {
-    let req = new Request(
-      "/api/v1/payment/my/limit",
-      {
-        method: "GET",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
+    let req = new Request("/api/v1/payment/my/limit");
     let p = authService.signAndFetch(req);
     return dispatchPromise(p, GET_LIMIT, dispatch)
   }
@@ -40,14 +32,9 @@ export function decrease(limit) {
 
 export function setLimit(limit) {
   return (dispatch) => {
-    let req = new Request(
-      "/api/v1/payment/my/limit",
+    let req = new Request("/api/v1/payment/my/limit",
       {
         method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
         body: JSON.stringify(limit)
       });
     let p = authService.signAndFetch(req);

@@ -5,6 +5,8 @@ import auth from "../reducers/util/auth";
 import SearchPanel from "./SearchPanel";
 import { Icon, IconWithText } from "../common/Icon";
 
+import { connect } from "react-redux";
+
 function NavigationLink({ name, icon, pathname, isHiddenDesktop = false }) {
   let isActive = location.pathname.startsWith(pathname);
   return (
@@ -15,7 +17,7 @@ function NavigationLink({ name, icon, pathname, isHiddenDesktop = false }) {
   );
 }
 
-export default class Navigation extends Component {
+class Navigation extends Component {
   constructor(props) {
     super(props);
 
@@ -54,6 +56,9 @@ export default class Navigation extends Component {
                 {links.map((link, i) => <NavigationLink key={i} {...link}/>)}
                 <hr className={"navbar-divider"}/>
                 <a onClick={() => auth.logout()} className="navbar-item">
+                  <IconWithText className="fa fa-exchange" text="Creator Mode"/>
+                </a>
+                <a onClick={() => auth.logout()} className="navbar-item">
                   <IconWithText className="fa fa-sign-out" text="Log Out"/>
                 </a>
               </div>
@@ -64,3 +69,7 @@ export default class Navigation extends Component {
     )
   }
 }
+
+const mapStateToProps = ({ navigation: { links } }) => ({ links });
+
+export default connect(mapStateToProps)(Navigation);

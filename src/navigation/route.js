@@ -19,18 +19,10 @@ const TermsOfUse = (props) => <Async load={import('../pages/legal/TermsOfUsePage
 const PrivacyPolicy = (props) => <Async load={import('../pages/legal/PrivacyPolicyPage')} componentProps={props}/>;
 
 const DashboardRouter = (props) => <Async load={import("../pages/dashboard/DashboardRouter")} componentProps={props}/>;
-const CreatorDashboard = (props) => <Async load={import("../pages/creator/CreatorDashboardPage")} componentProps={props}/>;
+const CreatorDashboardRouter = (props) => <Async load={import("../pages/creator/CreatorDashboardRouter")} componentProps={props}/>;
 const SettingsRouter = (props) => <Async load={import("../pages/settings/SettingsRouter")} componentProps={props}/>;
 
 const SearchRouter = (props) => <Async load={import("../pages/search/SearchDashboard")} componentProps={props}/>;
-
-const LINKS = [
-  { pathname: "/dashboard/my", name: "Dashboard", icon: "fa fa-dashboard" },
-  { pathname: "/settings", name: "Settings", icon: "fa fa-cogs" },
-  { pathname: "/settings/limit", name: "Limits", isHiddenDesktop: true },
-  { pathname: "/settings/charge", name: "Charge", isHiddenDesktop: true },
-  { pathname: "/settings/payout", name: "Payout", isHiddenDesktop: true },
-];
 
 export default class MainApp extends Component {
   render() {
@@ -59,9 +51,9 @@ export default class MainApp extends Component {
 
               <Route path="/(creator|dashboard|settings|search)">
                 <div>
-                  <Navigation links={LINKS}/>
+                  <Navigation/>
                   <div style={{ paddingTop: 62 }}>
-                    <Route path="/creator/:id" component={CreatorDashboard}/>
+                    <Route path="/creator" component={CreatorDashboardRouter}/>
                     <Route path="/dashboard" component={DashboardRouter}/>
                     <Route path="/settings" component={SettingsRouter}/>
                     <Route path="/search" component={SearchRouter}/>

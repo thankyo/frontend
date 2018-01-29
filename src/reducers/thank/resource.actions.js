@@ -36,10 +36,6 @@ export const verify = (user, resource) => (dispatch) => {
     dispatch(verificationRequested(user, resource));
     let req = new Request(`/api/v1/thank/${user}/resource/verification`, {
         method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
         body: JSON.stringify(resource),
     });
     authService.

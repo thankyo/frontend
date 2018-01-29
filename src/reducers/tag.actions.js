@@ -37,9 +37,6 @@ export function saveMyTags(id) {
       `/api/v1/thank/${id}/tag`,
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
         body: JSON.stringify(userTags)
       }
     );

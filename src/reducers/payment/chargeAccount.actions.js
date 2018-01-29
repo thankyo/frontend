@@ -12,10 +12,6 @@ function processToken(token) {
       "/api/v1/payment/my/account",
       {
         method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
         body: JSON.stringify(token.id)
       });
     let p = authService.signAndFetch(req);
@@ -25,13 +21,7 @@ function processToken(token) {
 
 export function getChargeAccount() {
   return (dispatch) => {
-    let req = new Request("/api/v1/payment/my/account", {
-      method: "GET",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    });
+    let req = new Request("/api/v1/payment/my/account");
     let p = authService.signAndFetch(req);
     return dispatchPromise(p, CHARGE_ACCOUNT_GET, dispatch);
   }
@@ -59,13 +49,7 @@ export function connectChargeAccount() {
 
 export function deleteCard() {
   return (dispatch) => {
-    let req = new Request("/api/v1/payment/my/account", {
-      method: "DELETE",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    });
+    let req = new Request("/api/v1/payment/my/account", { method: "DELETE" });
     let p = authService.signAndFetch(req);
     return dispatchPromise(p, CHARGE_ACCOUNT_DELETE, dispatch);
   }

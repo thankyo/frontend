@@ -105,6 +105,7 @@ class AuthService {
   signAndFetch = (req) => {
     let token = this.tokenStore.getToken();
     req.headers.append('X-Auth-Token', token);
+    req.headers.append('Accept', 'application/json');
     req.headers.append('Content-Type', 'application/json');
 
     return fetch(req).then(res => {

@@ -8,7 +8,7 @@ export default function creatorDashboardPage({ id }) {
   return (
     <div className="columns">
       <div className="column is-one-quarter">
-        <Profile id={id}/>
+        <Profile id="my"/>
         <Tags id={id}/>
       </div>
       <div className="column is-two-quarter">

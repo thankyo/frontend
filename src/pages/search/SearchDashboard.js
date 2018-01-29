@@ -3,8 +3,8 @@ import OGTile from "./OGTile.jsx";
 import NoResults from "./NoResults.jsx";
 import { connect } from 'react-redux';
 
-function SearchDashboard({ search }) {
-  if (search.length === 0) {
+function SearchDashboard({ tags }) {
+  if (tags.length === 0) {
     return <NoResults/>
   }
 
@@ -14,21 +14,21 @@ function SearchDashboard({ search }) {
         <div className="tile is-vertical is-4">
           <div className="tile">
             <div className="tile is-parent is-vertical">
-              {search.map((post, i) => i % 3 === 0 && <OGTile key={i} {...post}/>)}
+              {tags.map((post, i) => i % 3 === 0 && <OGTile key={i} {...post}/>)}
             </div>
           </div>
         </div>
         <div className="tile is-vertical is-4">
           <div className="tile">
             <div className="tile is-parent is-vertical">
-              {search.map((post, i) => i % 3 === 1 && <OGTile key={i} {...post}/>)}
+              {tags.map((post, i) => i % 3 === 1 && <OGTile key={i} {...post}/>)}
             </div>
           </div>
         </div>
         <div className="tile is-vertical is-4">
           <div className="tile">
             <div className="tile is-parent is-vertical">
-              {search.map((post, i) => i % 3 === 2 && <OGTile key={i} {...post}/>)}
+              {tags.map((post, i) => i % 3 === 2 && <OGTile key={i} {...post}/>)}
             </div>
           </div>
         </div>
@@ -37,6 +37,6 @@ function SearchDashboard({ search }) {
   )
 }
 
-const mapStateToProps = ({ search }) => ({ search });
+const mapStateToProps = ({ search: { tags } }) => ({ tags });
 
 export default connect(mapStateToProps)(SearchDashboard);

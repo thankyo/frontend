@@ -3,7 +3,7 @@
   "description": "loveit.tips frontend",
   "private": true,
   "author": "Anton O.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "git+https://github.com/thankyo/thank-brunch.git",
   "scripts": {
     "start": "webpack-dev-server",
