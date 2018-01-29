@@ -5,7 +5,6 @@ import Profile from "../../common/Profile";
 import Tags from "./Tags";
 import Supported from "./Supported";
 import Invite from "./Invite";
-import Projects from "./Projects";
 import ThankTransactions from "./PendingTransaction";
 
 export default function dashboardPage({ id }) {
@@ -21,7 +20,6 @@ export default function dashboardPage({ id }) {
         <ThankTransactions id={id}/>
       </div>
       <div className="column is-one-quarter">
-        <Projects id={id}/>
       </div>
     </div>
   );

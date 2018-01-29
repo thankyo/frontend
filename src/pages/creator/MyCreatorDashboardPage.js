@@ -2,7 +2,8 @@ import React from "react";
 import Profile from "../../common/Profile";
 import EarnedThisMonth from "./EarnedThisMonth";
 import Tags from "./Tags";
-import Posts from "../search/Posts";
+import IntegrationContent from "./integration/IntegrationContent";
+import Projects from "./Projects";
 
 export default function creatorDashboardPage({ id }) {
   return (
@@ -12,10 +13,11 @@ export default function creatorDashboardPage({ id }) {
         <Tags id={id}/>
       </div>
       <div className="column is-two-quarter">
-        <Posts id={id}/>
+        <IntegrationContent id={id}/>
       </div>
       <div className="column is-one-quarter">
         <EarnedThisMonth/>
+        <Projects id={id}/>
       </div>
     </div>
   );
