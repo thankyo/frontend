@@ -25,7 +25,12 @@ let TagForm = ({ tags = [], handleSubmit }) => {
 
 const mapTagFormDispatchToProps = (dispatch, { id }) => {
   return {
-    onSubmit: ({ tag }) => dispatch(addUserTag(id, tag))
+    onSubmit: ({ tag }) => {
+      if (tag != null) {
+        dispatch(addUserTag(id, tag))
+        dispatch(saveMyTags(id))
+      }
+    }
   }
 };
 
@@ -39,8 +44,6 @@ function Tags({ tags, saveUserTags, removeUserTag, id }) {
   return (
     <div>
       <h1 className="subtitle">Tags</h1>
-      <TagForm id={id}/>
-      <br/>
       <div className="field is-grouped is-grouped-multiline">
         {tags.map((tag, i) => (
           <div key={i} className="control">
@@ -51,9 +54,8 @@ function Tags({ tags, saveUserTags, removeUserTag, id }) {
           </div>
         ))}
       </div>
-      <PromiseButton onClick={saveUserTags} className="is-primary" isCentered>
-        <IconWithText className="fa fa-save" text="Save"/>
-      </PromiseButton>
+      <br/>
+      <TagForm id={id}/>
       <br/>
       <br/>
     </div>
@@ -71,7 +73,10 @@ const mapDispatchToProps = (dispatch, { id }) => {
   dispatch(fetchUserTags(id));
   return {
     saveUserTags: () => dispatch(saveMyTags(id)),
-    removeUserTag: (tag) => dispatch(removeUserTag(id, tag))
+    removeUserTag: (tag) => {
+      dispatch(removeUserTag(id, tag));
+      dispatch(saveMyTags(id))
+    }
   }
 };
 
