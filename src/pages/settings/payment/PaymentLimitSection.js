@@ -5,7 +5,7 @@ import MoneyToCoffeeIcon from "../../../common/payment/MoneyToCoffeeIcon";
 import { Icon } from "../../../common/Icon";
 import Loading from "../../../common/Loading";
 
-class PaymentLimit extends Component {
+class PaymentLimitSection extends Component {
   constructor(props) {
     super(props);
 
@@ -75,7 +75,7 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PaymentLimit);
+)(PaymentLimitSection);
 
 
 

@@ -9,7 +9,7 @@ function Posts({ posts }) {
   </div>
 }
 
-const mapStateToProps = ({ search: { author } }, { id }) => ({ posts: author })
+const mapStateToProps = ({ search: { author } }, { id }) => author[id] || { posts: [] };
 
 const mapDispatchToProps = (dispatch, { id }) => {
   dispatch(searchByAuthor(id));

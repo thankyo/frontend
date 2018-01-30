@@ -15,7 +15,7 @@ export function searchByTag(tags) {
 export function searchByAuthor(user) {
   return (dispatch) => {
     let req = new Request(`/api/v1/thank/graph/author/${encodeURIComponent(user)}`);
-    let p = authService.signAndFetch(req);
+    let p = authService.signAndFetch(req).then(posts => ({ id: user, posts }));
     return dispatchPromise(p, SEARCH_BY_AUTHOR, dispatch);
   }
 }

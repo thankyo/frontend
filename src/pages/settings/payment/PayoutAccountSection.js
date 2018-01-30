@@ -58,7 +58,7 @@ class DeleteAccountButton extends Component {
   }
 }
 
-class PayoutAccount extends Component {
+class PayoutAccountSection extends Component {
   constructor(props) {
     super(props);
 
@@ -125,5 +125,5 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PayoutAccount);
+)(PayoutAccountSection);
 
