@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Field, Form, reduxForm } from "redux-form";
 import { addUserTag, fetchUserTags, removeUserTag, saveMyTags } from "../../reducers/tag.actions";
 import { IconWithText } from "../../common/Icon";
-import { flatField, PromiseButton, renderField, required } from "../../common/form.utils";
+import { flatField } from "../../common/form.utils";
 
 let TagForm = ({ tags = [], handleSubmit }) => {
   return (

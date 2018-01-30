@@ -1,41 +1,45 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { IconWithText } from "../../common/Icon";
 import { get } from "../../reducers/thank/resource.actions";
 
 
 function Project({ type, uri }) {
   return (
-    <article className="media media-new-style">
+    <li className="active">
       <a>{uri}</a>
-    </article>
+    </li>
   );
 }
 
 function AddProject() {
   return (
-    <div className="has-text-centered">
-      <Link to="/integration" className="button is-primary">
-        Add project
+    <li>
+      <Link to="/integration">
+        Add
       </Link>
-    </div>
+    </li>
   );
 }
 
-const ListOfProjects = ({ projects }) => {
+const ProjectNavigation = ({ resources }) => {
   return (
     <div>
       <h1 className="subtitle">Projects</h1>
-      {projects.map((project, id) => <Project key={id} {... project}/>)}
-      <AddProject/>
+      <div className="tabs">
+        {resources.map((resource, id) => <Project key={id} {... resource}/>)}
+        <AddProject/>
+      </div>
+      <br/>
     </div>
   );
 };
 
 const mapStateToProps = ({ thank: { resource } }, { id }) => {
-  let projects = resource[id] ? resource[id].owns : [];
+  let resources = resource.my ? resource.my.owns : [];
   return {
-    projects
+    resources
   };
 };
 
@@ -47,4 +51,4 @@ const mapDispatchToProps = (dispatch, { id }) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListOfProjects);
+)(ProjectNavigation);
