@@ -19,7 +19,7 @@ export default function SettingsRouter() {
         <div className="is-two-thirds column">
           <Switch>
             <Route exact path="/settings">
-              <Redirect to="/settings/limit"/>
+              <Redirect to="/settings/profile"/>
             </Route>
             <Route path="/settings/limit">
               <PaymentLimit fill="#000000"/>

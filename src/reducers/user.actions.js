@@ -14,7 +14,7 @@ export function fetchUser(id) {
 
 export function saveUser(user) {
   return (dispatch) => {
-    let req = new Request("/api/v1/user/my/profile", { method: POST, body: JSON.stringify(user)});
+    let req = new Request("/api/v1/user/my/profile", { method: 'PUT', body: JSON.stringify(user) });
     let p = authService.signAndFetch(req);
     return dispatchPromise(p, SAVE_USER, dispatch);
   }

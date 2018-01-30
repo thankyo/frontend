@@ -56,15 +56,32 @@ export const renderField = (props) => {
   )
 };
 
+export const fieldWithLabel = (props) => {
+  let { meta: { touched, error }, placeholder } = props;
+  return (
+    <div className="field">
+      <label className="label">{placeholder}</label>
+      <div className="control">
+        {flatField(props)}
+      </div>
+      {touched && error && <p className="help is-white">{error}</p>}
+    </div>
+  )
+};
+
 export const flatField = ({
   input,
   className,
   placeholder,
   type,
   submitting,
+  disabled,
   meta: { touched, error }
 }) => {
   let inputClassName = error && touched ? `${className} is-danger` : className;
   if (submitting) inputClassName = `${inputClassName} is-loading`;
-  return <input {...input} type={type} className={inputClassName} placeholder={placeholder}/>
+  if (type === "textarea") {
+    return <textarea {...input} type={type} className={inputClassName} placeholder={placeholder} disabled={disabled}/>
+  }
+  return <input {...input} type={type} className={inputClassName} placeholder={placeholder} disabled={disabled}/>
 };

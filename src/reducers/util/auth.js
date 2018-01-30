@@ -106,7 +106,7 @@ class AuthService {
     let token = this.tokenStore.getToken();
     req.headers.append('X-Auth-Token', token);
     req.headers.append('Accept', 'application/json');
-    req.headers.append('Content-Type', 'application/json');
+    req.headers.set('Content-Type', 'application/json');
 
     return fetch(req).then(res => {
       if (res.status === 401 || res.status === 403) {

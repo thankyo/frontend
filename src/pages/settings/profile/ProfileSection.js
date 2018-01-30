@@ -1,44 +1,107 @@
 import React, { Component } from "react";
-import { fetchUser } from "../../../reducers/user.actions";
+import { fetchUser, saveUser } from "../../../reducers/user.actions";
 import { connect } from "react-redux";
+import { Field, Form, reduxForm } from "redux-form";
+import moment from "moment";
 
-function ImageProfile({ avatar, firstName, lastName, bio }) {
-  return (
-    <div className="profile has-text-centered">
-      <div className="image">
-        <figure className="image is-1by1 is-small">
-          <img src={avatar} width={100} height={100} className="is-centered"/>
-        </figure>
-      </div>
-      <div className="subtitle">{firstName} {lastName}</div>
-    </div>
-  )
-}
+
+import Loading from "../../../common/Loading";
+import { fieldWithLabel, LoadingButton, required } from "../../../common/form.utils";
+import { IconWithText } from "../../../common/Icon";
 
 class ProfileSection extends Component {
 
-  static profileState(user) {
-    return ImageProfile(user);
+  componentWillMount() {
+    this.props.fetchMyProfile();
   }
 
   render() {
-    let { user } = this.props;
-    if (user === undefined) {
-      return ProfileSection.profileState({ firstName: "", lastName: "", bio: "loading"});
-    } else {
-      return ProfileSection.profileState(user)
+    let { initialValues, avatar, handleSubmit, submitting } = this.props;
+    if (initialValues === undefined) {
+      return (
+        <div className="has-text-centered">
+          <p className="title is-5">Profile</p>
+          <Loading/>
+        </div>
+      )
     }
+
+    return (
+      <div>
+        <p className="title is-5 has-text-centered">Profile</p>
+        <Form className="profile" onSubmit={handleSubmit}>
+          <div className="columns">
+            <div className="column is-one-third">
+              <div className="profile-image">
+                <figure className="image is-1by1 is-small">
+                  <img src={avatar} width={100} height={100} className="is-centered"/>
+                </figure>
+                <br/>
+              </div>
+            </div>
+            <div className="column is-two-third">
+              <Field name="avatar" component={fieldWithLabel} type="url" className="input" placeholder="Avatar URL"/>
+              <p className="subtitle is-6">We currently do not store profile images, but you can use <a href="https://gravatar.com">gravatar</a></p>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column is-half">
+
+              <Field name="firstName"
+                     component={fieldWithLabel}
+                     type="string"
+                     className="input"
+                     placeholder="First name"
+                     validate={[required]}/>
+            </div>
+            <div className="column is-half">
+              <Field name="lastName" component={fieldWithLabel} type="string" className="input"
+                     placeholder="Last name" validate={[required]}/>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column is-half">
+              <Field name="email" component={fieldWithLabel} type="email" className="input" placeholder="Email"
+                     validate={[required]}/>
+            </div>
+            <div className="column is-half">
+              <Field name="dateOfBirth" component={fieldWithLabel} type="date" className="input"
+                     placeholder="Date Of Birth" disabled/>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column">
+              <Field name="bio" component={fieldWithLabel} type="textarea" className="textarea" placeholder="Bio"/>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column">
+              <time className="is-small is-pulled-right" date={initialValues.created}>Registration date: {moment(initialValues.created).format('LL')}</time>
+            </div>
+          </div>
+          <div className="is-pulled-right">
+            <LoadingButton submitting={submitting} className="is-outlined is-primary">
+              <IconWithText className="fa fa-save" text="Save"/>
+            </LoadingButton>
+          </div>
+        </Form>
+      </div>
+    )
   }
 }
 
-const mapStateToProps = (state) => {
-  let user = state.user.my;
-  return { user };
+const mapStateToProps = ({ user: { my }, form: { profile: { values: { avatar } = {} } = {} } }) => {
+  return {
+    avatar,
+    initialValues: my
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  dispatch(fetchUser("my"));
-  return { };
+  return {
+    fetchMyProfile: () => dispatch(fetchUser("my")),
+    onSubmit: (user) => dispatch(saveUser(user))
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileSection)
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: "profile" })(ProfileSection))
