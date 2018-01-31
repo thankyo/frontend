@@ -1,14 +1,9 @@
 import React from "react";
 
-export default function OGTile({ ogObj: { title = "unknown", description = "missing", type = "unknown", image: { url = "" } = {}}, tags, children }) {
-  let style = {
-    width: 320,
-    height: 320,
-    overflow: "hidden"
-  };
+export default function OGTile({ ogObj: { title = "unknown", description = "missing", type = "unknown", image: { url = "" } = {}, tags = []}, children }) {
   return (
     <div>
-      <figure className="image" style={style}>
+      <figure className="image">
         <img src={url}/>
       </figure>
       <p className="title">{title}</p>

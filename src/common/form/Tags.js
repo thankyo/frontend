@@ -1,24 +1,50 @@
-import React from "react";
-import { Field, Form, reduxForm } from "redux-form";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { IconWithText } from "../Icon";
 
-function AddTagForm({ handleSubmit }) {
-  return (
-    <Form onSubmit={handleSubmit}>
+class AddTagForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { value: "" }
+  }
+
+  handleKeyDown = (evt) => {
+    if (evt.keyCode === 13) {
+      this.handleSubmit()
+    }
+  };
+
+  handleChange = (evt) => {
+    evt.preventDefault();
+
+    this.setState({ value: evt.currentTarget.value })
+  };
+
+  handleSubmit = () => {
+    let { value } = this.state;
+    let { onSubmit } = this.props;
+    if (value.trim() !== "") {
+      onSubmit({ tag: value.trim() });
+      this.setState({ value: "" });
+    }
+  };
+
+  render() {
+    return (
       <div className="field has-addons">
         <div className="control is-expanded">
-          <Field name="tag" component="input" type="text" className="input is-small" placeholder="Tag" autoComplete="off"/>
+          <input type="text" className="input is-small" value={this.state.value} placeholder="Tag" autoComplete="off" onKeyDown={this.handleKeyDown} onChange={this.handleChange}/>
         </div>
         <p className="control">
-          <button className="button is-small is-primary" type="submit">
+          <a className="button is-small is-primary" type="submit" onClick={this.handleSubmit}>
             <IconWithText className="fa fa-plus-circle" text="Add"/>
-          </button>
+          </a>
         </p>
       </div>
-    </Form>
-  );
+    );
+  }
 }
-AddTagForm = reduxForm({ form: "tag" })(AddTagForm);
 
 export default function Tags({ tags, addTag, removeTag }) {
   return (
@@ -38,3 +64,9 @@ export default function Tags({ tags, addTag, removeTag }) {
     </div>
   );
 }
+
+Tags.propTypes = {
+  tags: PropTypes.array.isRequired,
+  addTag: PropTypes.func.isRequired,
+  removeTag: PropTypes.func.isRequired
+};

@@ -80,6 +80,12 @@ export const flatField = ({
 }) => {
   let inputClassName = error && touched ? `${className} is-danger` : className;
   if (submitting) inputClassName = `${inputClassName} is-loading`;
+  if (type === "image") {
+    return [
+      <input {...input} type="text" className={inputClassName} placeholder={placeholder} disabled={disabled}/>,
+      <img src={input.value}/>,
+    ];
+  }
   if (type === "textarea") {
     return <textarea {...input} type={type} className={inputClassName} placeholder={placeholder} disabled={disabled}/>
   }

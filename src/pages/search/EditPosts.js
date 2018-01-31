@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import OGTile from "./OGTile.jsx";
 import { connect } from "react-redux";
 import { searchByAuthor } from "../../reducers/search.actions";
-import { Field, Form, reduxForm } from "redux-form";
+import { Field, Form, reduxForm, FieldArray } from "redux-form";
 import { IconWithText } from "../../common/Icon";
 import { fieldWithLabel, LoadingButton } from "../../common/form.utils";
 
-import { savePost } from "../../reducers/post";
-
+import { savePost } from "../../reducers/post.actions";
+import Tags from "../../common/form/Tags";
 
 const VIEW_MODE = 0;
 const EDIT_MODE = 1;
@@ -16,8 +16,21 @@ function PostEditMode({ submitting, handleSubmit }) {
   return (
     <Form onSubmit={handleSubmit}>
       <Field name="url" component={ fieldWithLabel } className="input" placeholder="Url" disabled/>
+      <hr/>
+      <Field name="image.url" component={fieldWithLabel} type="image" className="input" placeholder="Image"/>
+      <hr/>
       <Field name="title" component={ fieldWithLabel } className="input" placeholder="Title" />
       <Field name="description" component={ fieldWithLabel } className="textarea" type="textarea" placeholder="Description" />
+      <FieldArray name="tags" component={(props) => {
+        let { fields } = props;
+        let tags = fields.getAll() || [];
+        return (
+          <div className="field">
+            <label className="label">Tags</label>
+            <Tags tags={tags} removeTag={(tag) => { fields.remove(tags.indexOf(tag))}} addTag={({ tag }) => { fields.push(tag) }}/>
+          </div>
+        )
+      }}/>
       <LoadingButton submitting={submitting} className="is-primary is-pulled-right">
         <IconWithText className="fa fa-save" text="Save"/>
       </LoadingButton>
@@ -40,7 +53,8 @@ function PostViewMode(props) {
       <div className="column">
         <OGTile {... props}>
           <div>
-            <button className="button is-primary is-pulled-right" onClick={props.changeMode}><IconWithText className="fa fa-edit" text="Edit"/>
+            <button className="button is-primary is-pulled-right" onClick={props.changeMode}>
+              <IconWithText className="fa fa-edit" text="Edit"/>
             </button>
           </div>
         </OGTile>
