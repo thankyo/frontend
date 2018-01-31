@@ -5,7 +5,7 @@ import MyProjectNavigation from "./MyProjectNavigation";
 import EditPosts from "../search/EditPosts";
 import EditTags from "./EditTags";
 
-export default function creatorDashboardPage({ id }) {
+export default function myCreatorDashboardPage() {
   return (
     <div className="columns">
       <div className="column is-one-quarter">
