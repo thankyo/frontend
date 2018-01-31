@@ -5,7 +5,7 @@ import { searchByAuthor } from "../../reducers/search.actions";
 
 function Posts({ posts }) {
   return <div>
-    {posts.map((post, i) => <OGTile key={i} {...post}/>)}
+    {posts.map((post, i) => <article className="tile is-child notification" key={i}><OGTile {...post}/></article>)}
   </div>
 }
 

@@ -1,31 +1,27 @@
 import React from "react";
 
-function LoveItOGView({ title = "unknown", description = "missing", type = "unknown", image: { url = "" } = {}, tags }) {
+export default function OGTile({ ogObj: { title = "unknown", description = "missing", type = "unknown", image: { url = "" } = {}}, tags, children }) {
   let style = {
     width: 320,
     height: 320,
     overflow: "hidden"
   };
   return (
-    <article className="tile is-child notification">
+    <div>
       <figure className="image" style={style}>
         <img src={url}/>
       </figure>
       <p className="title">{title}</p>
-      <p className="subtitle">{type}</p>
       <div className="content">
-        {description}
+        <div>
+          {description}
+        </div>
         <div className="tags">
           {tags.map((tag, i) => <span key={i} className="tag is-primary">{tag}</span>)}
         </div>
+        <br/>
+        {children}
       </div>
-    </article>
+    </div>
   )
-}
-
-export default function LoveItInfo(props) {
-  let { ogObj, tags } = props;
-  return (
-    <LoveItOGView {...ogObj} tags={tags}/>
-  );
 }

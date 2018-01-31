@@ -54,10 +54,7 @@ class Navigation extends Component {
               </div>
               <div className="navbar-dropdown is-boxed is-right">
                 {links.map((link, i) => <NavigationLink key={i} {...link}/>)}
-                <hr className={"navbar-divider"}/>
-                <a onClick={() => auth.logout()} className="navbar-item">
-                  <IconWithText className="fa fa-exchange" text="Creator Mode"/>
-                </a>
+                <hr className="navbar-divider"/>
                 <a onClick={() => auth.logout()} className="navbar-item">
                   <IconWithText className="fa fa-sign-out" text="Log Out"/>
                 </a>

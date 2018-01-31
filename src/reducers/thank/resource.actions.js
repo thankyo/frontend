@@ -13,7 +13,7 @@ const resourceRequested = (user) => toAction(RESOURCE_REQUESTED, { user });
 const resourceSuccess = (user, resource) => toAction(RESOURCE_SUCCESS, { user, resource });
 const resourceFailed = (user, error) => toAction(RESOURCE_FAILED, { user, error });
 
-export function get(user) {
+export function getUserResources(user) {
     let req = new Request(`/api/v1/thank/${user}/resource`);
     return (dispatch) => {
         dispatch(resourceRequested(user));

@@ -1,9 +1,8 @@
 import React from "react";
 import Profile from "../../common/Profile";
 import EarnedThisMonth from "./EarnedThisMonth";
-import IntegrationContent from "./integration/IntegrationContent";
 import MyProjectNavigation from "./MyProjectNavigation";
-import Posts from "../search/Posts";
+import EditPosts from "../search/EditPosts";
 import EditTags from "./EditTags";
 
 export default function creatorDashboardPage({ id }) {
@@ -15,8 +14,7 @@ export default function creatorDashboardPage({ id }) {
       </div>
       <div className="column is-two-quarter">
         <MyProjectNavigation/>
-        <Posts id="my"/>
-        <IntegrationContent id="my"/>
+        <EditPosts id="my"/>
       </div>
       <div className="column is-one-quarter">
         <EarnedThisMonth/>

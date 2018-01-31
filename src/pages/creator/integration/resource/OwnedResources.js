@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { get } from "../../../../reducers/thank/resource.actions";
+import { getUserResources } from "../../../../reducers/thank/resource.actions";
 import Resource from "../../../../common/Resource";
 import { Icon } from "../../../../common/Icon";
 
@@ -60,7 +60,7 @@ const mapStateToProps = ({ thank: { resource } }, { id }) => {
 };
 
 const mapDispatchToProps = (dispatch, { id }) => {
-  dispatch(get(id));
+  dispatch(getUserResources(id));
   return {}
 };
 

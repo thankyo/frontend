@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { get } from "../../reducers/thank/resource.actions";
+import { getUserResources } from "../../reducers/thank/resource.actions";
 
 
 function Project({ type, uri }) {
@@ -35,16 +35,17 @@ const ProjectNavigation = ({ resources }) => {
   );
 };
 
-const mapStateToProps = ({ thank: { resource } }, { id }) => {
+const mapStateToProps = ({ thank: { resource } }) => {
   let resources = resource.my ? resource.my.owns : [];
   return {
     resources
   };
 };
 
-const mapDispatchToProps = (dispatch, { id }) => {
-  dispatch(get(id));
-  return {}
+const mapDispatchToProps = (dispatch) => {
+  dispatch(getUserResources("my"));
+  return {
+  }
 };
 
 export default connect(
