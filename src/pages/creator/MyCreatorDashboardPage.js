@@ -10,9 +10,9 @@ export default function myCreatorDashboardPage() {
     <div className="columns">
       <div className="column is-one-quarter">
         <Profile id="my"/>
+        <MyProjectNavigation/>
       </div>
       <div className="column is-two-quarter">
-        <MyProjectNavigation/>
         <EditPosts id="my"/>
       </div>
       <div className="column is-one-quarter">
