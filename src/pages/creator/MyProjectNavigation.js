@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUserResources } from "../../reducers/thank/resource.actions";
+import { getMyProjects } from "../../reducers/thank/project.actions";
+import { Icon } from "../../common/Icon";
 
 
-function Project({ type, uri }) {
+function Project({ resource: { type, uri } }) {
   return (
     <li className="active">
       <a>{uri}</a>
@@ -16,18 +17,18 @@ function AddProject() {
   return (
     <li>
       <Link to="/integration">
-        Add
+        <Icon className="fa fa-plus"/>
       </Link>
     </li>
   );
 }
 
-const ProjectNavigation = ({ resources }) => {
+const ProjectNavigation = ({ projects }) => {
   return (
     <div>
       <h1 className="subtitle">Projects</h1>
       <div className="tabs">
-        {resources.map((resource, id) => <Project key={id} {... resource}/>)}
+        {projects.map((project, id) => <Project key={id} {... project}/>)}
         <AddProject/>
       </div>
       <br/>
@@ -35,15 +36,10 @@ const ProjectNavigation = ({ resources }) => {
   );
 };
 
-const mapStateToProps = ({ thank: { resource } }) => {
-  let resources = resource.my ? resource.my.owns : [];
-  return {
-    resources
-  };
-};
+const mapStateToProps = ({ thank: { project: { my } } }) => ({ projects: my });
 
 const mapDispatchToProps = (dispatch) => {
-  dispatch(getUserResources("my"));
+  dispatch(getMyProjects());
   return {
   }
 };

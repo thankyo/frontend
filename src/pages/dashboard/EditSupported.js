@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSupportedByMe } from "../../reducers/thank/supported.actions";
 
-function Supported({ avatar, title, description, id }) {
+function Supported({ avatar, firstName, lastName, bio, link, id }) {
   return (
     <article className="media media-new-style">
       <div className="media-left">
@@ -15,10 +15,8 @@ function Supported({ avatar, title, description, id }) {
       </div>
       <div className="media-content">
         <div className="content is-inverted is-outlined">
-          <Link to={`/creator/${id}`}>
-            <strong>{title}</strong>
-            <p>{description}</p>
-          </Link>
+          <a href={link}><strong>{firstName} {lastName}</strong></a>
+          <p>{bio}</p>
         </div>
       </div>
     </article>
