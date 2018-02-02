@@ -16,20 +16,20 @@ class Project extends Component {
     })
   };
   render() {
-    let { project: { firstName, lastName, avatar, id }, resources } = this.props;
+    let { project: { user, title, description, avatar, _id }, resources } = this.props;
     let { expanded } = this.state;
     if (expanded) {
       return [
         (<li key="image" className="timeline-item is-primary">
           <div className="timeline-marker is-primary is-image is-32x32">
-            <Link to={`/creator/${id}`}><img src={avatar} width={32} height={32}/></Link>
+            <Link to={`/creator/${user}/project/${_id}`}><img src={avatar} width={32} height={32}/></Link>
           </div>
           <div className="timeline-content">
             <p className="heading">{resources.length} contributions</p>
           </div>
         </li>),
         (<li key="header" className="timeline-header is-primary">
-          <a><span className="tag is-primary" onClick={this.handleExpand}>{firstName}&nbsp;{lastName}</span></a>
+          <a><span className="tag is-primary" onClick={this.handleExpand}>{title}</span></a>
         </li>)
         ,
         (<li key="content" className="timeline-item is-primary">
@@ -42,10 +42,10 @@ class Project extends Component {
     return (
       <li className="timeline-item is-primary">
         <div className="timeline-marker is-primary is-image is-32x32">
-          <Link to={`/creator/${id}`}><img src={avatar} width={32} height={32}/></Link>
+          <Link to={`/creator/${user}/project/${_id}`}><img src={avatar} width={32} height={32}/></Link>
         </div>
         <div className="timeline-content">
-          <p className="heading"><a onClick={this.handleExpand}>{firstName} {lastName}</a></p>
+          <p className="heading"><a onClick={this.handleExpand}>{title}</a></p>
           <p>{resources.length} contributions</p>
           {expanded && resources.map((res, i) => <p key={i}><Resource resource={res}/></p>)}
         </div>
