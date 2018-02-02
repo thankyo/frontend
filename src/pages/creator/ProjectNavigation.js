@@ -2,15 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProjectsByUser } from "../../reducers/project.actions";
-import { IconWithText } from "../../common/Icon";
 
 // TODO same Supported in dashboard
-function Project({ project, isActive, user }) {
+function Project({ project, user, isActive }) {
   let { avatar, title, description, _id } = project;
+  let to = `/creator/${user}/project/${_id}`;
   return (
     <article className={`media media-new-style ${isActive && "is-active"}`}>
       <div className="media-left">
-        <Link to={`/creator/${user}/project/${_id}`}>
+        <Link to={to}>
           <figure className="image">
             <img src={avatar} width={50} height={50} alt="user picture"/>
           </figure>
@@ -18,7 +18,7 @@ function Project({ project, isActive, user }) {
       </div>
       <div className="media-content is-active">
         <div className="content is-inverted is-outlined">
-          <Link to={`/creator/${user}/project/${_id}`}>
+          <Link to={to}>
             <strong>{title}</strong>
             <p>{description}</p>
           </Link>
