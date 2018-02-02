@@ -10,7 +10,7 @@ export default function CreatorDashboardRouter() {
       <Switch>
         <Route exact path="/creator" render={(({ match: { params: { id } } }) => <MyCreatorDashboardPage/>)}/>
         <Route exact path="/creator/my/project/:project" render={(({ match: { params: { project } } }) => <MyCreatorDashboardPage project={project}/>)}/>
-        <Route path="/creator/:id" render={(({ match: { params: { id } } }) => <CreatorDashboardPage id={id} />)}/>
+        <Route path="/creator/:user/project/:project" render={(({ match: { params: { user, project } } }) => <CreatorDashboardPage id={user} project={project} />)}/>
       </Switch>
     </section>
   );

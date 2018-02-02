@@ -13,9 +13,11 @@ export default function myCreatorDashboardPage({ project }) {
         <MyProjectNavigation active={project}/>
       </div>
       <div className="column is-two-quarter">
-        <EditProject id={project}/>
-        <p className="title is-5">Posts</p>
-        <ProjectPosts id={project}/>
+        {!project && <h1>Select project you want to work on</h1>}
+        {project && [
+            <EditProject key={0} id={project}/>,
+            <ProjectPosts key={2} id={project}/>,
+          ]}
       </div>
       <div className="column is-one-quarter">
         <EarnedThisMonth/>

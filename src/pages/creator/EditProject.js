@@ -4,6 +4,7 @@ import Loading from "../../common/Loading";
 import { Field, Form, reduxForm, FieldArray } from "redux-form";
 import { fieldWithLabel, LoadingButton } from "../../common/form.utils";
 import { IconWithText } from "../../common/Icon";
+import { updateProject } from "../../reducers/project.actions";
 import Tags from "../../common/form/Tags";
 
 // TODO same Supported in dashboard
@@ -62,14 +63,14 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
 
 const mapStateToProps = ({ project: { byId }}, { id }) => {
   return {
-    initialValues: byId[id]
+    initialValues: byId[id],
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: (project) => { console.log(project) }
+    onSubmit: (project) => dispatch(updateProject(project))
   }
 };
 
-export default connect(mapStateToProps)(reduxForm({ form: "project" })(EditProject));
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: "project", enableReinitialize: true })(EditProject));

@@ -1,18 +1,20 @@
 import React from "react";
 import Profile from "../../common/Profile";
 import EarnedThisMonth from "./EarnedThisMonth";
-import Tags from "./Tags";
-import Posts from "../search/Posts";
+import ViewProject from "./ViewProject";
+import ProjectNavigation from "./ProjectNavigation";
+import ProjectPosts from "../search/ProjectPosts";
 
-export default function creatorDashboardPage({ id }) {
+export default function creatorDashboardPage({ id, project }) {
   return (
     <div className="columns">
       <div className="column is-one-quarter">
         <Profile id={id}/>
-        <Tags id={id}/>
+        <ProjectNavigation user={id}/>
       </div>
       <div className="column is-two-quarter">
-        <Posts id={id}/>
+        <ViewProject id={project}/>
+        <ProjectPosts id={project}/>
       </div>
       <div className="column is-one-quarter">
         <EarnedThisMonth/>
