@@ -2,18 +2,17 @@ import React from "react";
 import Profile from "../../common/Profile";
 import EarnedThisMonth from "./EarnedThisMonth";
 import MyProjectNavigation from "./MyProjectNavigation";
-import EditPosts from "../search/EditPosts";
-import EditTags from "./EditTags";
+import ProjectPosts from "../search/ProjectPosts";
 
-export default function myCreatorDashboardPage() {
+export default function myCreatorDashboardPage({ project }) {
   return (
     <div className="columns">
       <div className="column is-one-quarter">
         <Profile id="my"/>
-        <MyProjectNavigation/>
+        <MyProjectNavigation active={project}/>
       </div>
       <div className="column is-two-quarter">
-        <EditPosts id="my"/>
+        <ProjectPosts id={project}/>
       </div>
       <div className="column is-one-quarter">
         <EarnedThisMonth/>

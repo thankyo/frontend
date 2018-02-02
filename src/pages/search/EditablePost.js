@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import OGTile from "./OGTile.jsx";
 import { connect } from "react-redux";
-import { searchByAuthor } from "../../reducers/search.actions";
 import { Field, Form, reduxForm, FieldArray } from "redux-form";
 import { IconWithText } from "../../common/Icon";
 import { fieldWithLabel, LoadingButton } from "../../common/form.utils";
@@ -64,7 +63,7 @@ function PostViewMode(props) {
 }
 
 
-class MyPost extends Component {
+export default class EditablePost extends Component {
   constructor(props) {
     super(props);
     this.state = { mode: VIEW_MODE };
@@ -82,18 +81,3 @@ class MyPost extends Component {
     }
   }
 }
-
-function EditPosts({ posts }) {
-  return <div>
-    {posts.map((post, i) => <MyPost key={i} {...post}/>)}
-  </div>
-}
-
-const mapStateToProps = ({ search: { author } }, { id }) => author[id] || { posts: [] };
-
-const mapDispatchToProps = (dispatch, { id }) => {
-  dispatch(searchByAuthor(id));
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditPosts);
