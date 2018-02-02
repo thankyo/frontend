@@ -5,7 +5,7 @@ import { getMyProjects } from "../../reducers/project.actions";
 import { IconWithText } from "../../common/Icon";
 
 // TODO same Supported in dashboard
-function Project({ project, setActiveProject, isActive }) {
+function Project({ project, isActive }) {
   let { avatar, title, description, _id } = project;
   return (
     <article className={`media media-new-style ${isActive && "is-active"}`}>

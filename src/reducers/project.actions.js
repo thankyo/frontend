@@ -7,6 +7,6 @@ export function getMyProjects() {
   return (dispatch) => {
     let req = new Request(`/api/v1/thank/my/project`);
     let p = authService.signAndFetch(req);
-    dispatchPromise(p, GET_MY_PROJECTS, dispatch)
+    return dispatchPromise(p, GET_MY_PROJECTS, dispatch);
   }
 }

@@ -3,6 +3,7 @@ import Profile from "../../common/Profile";
 import EarnedThisMonth from "./EarnedThisMonth";
 import MyProjectNavigation from "./MyProjectNavigation";
 import ProjectPosts from "../search/ProjectPosts";
+import EditProject from "./EditProject";
 
 export default function myCreatorDashboardPage({ project }) {
   return (
@@ -12,6 +13,7 @@ export default function myCreatorDashboardPage({ project }) {
         <MyProjectNavigation active={project}/>
       </div>
       <div className="column is-two-quarter">
+        <EditProject id={project}/>
         <ProjectPosts id={project}/>
       </div>
       <div className="column is-one-quarter">
