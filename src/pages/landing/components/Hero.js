@@ -1,5 +1,5 @@
 import React from "react";
-import Brand from "../../common/Brand";
+import Brand from "../../../components/Brand";
 import { Link } from 'react-router-dom';
 import JoinButton from "./JoinButton";
 

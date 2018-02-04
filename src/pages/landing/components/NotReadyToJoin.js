@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Field, reduxForm} from "redux-form";
-import subscribe from '../../reducers/util/subscription';
+import subscribe from '../../../reducers/util/subscription';
 
 let SubscribeForm = ({ handleSubmit }) => {
     return (

@@ -1,8 +1,8 @@
 import React from "react";
 import { Field, Form, reduxForm } from "redux-form";
 import { connect } from 'react-redux';
-import { IconWithText } from "../../common/Icon";
-import { LoadingButton, renderField, required } from "../../common/form.utils";
+import { IconWithText } from "../../components/Icon";
+import { LoadingButton, renderField, required } from "../../components/form/form.utils";
 import { verify } from "../../reducers/thank/resource.actions";
 
 let VerificationPage = ({ submitting, verify }) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getProject } from "../../reducers/project.actions";
-import Loading from "../../common/Loading";
+import Loading from "../../components/Loading";
 
 function ViewProject({ avatar, title, description, user, _id, tags, resource }) {
   if (!_id) {

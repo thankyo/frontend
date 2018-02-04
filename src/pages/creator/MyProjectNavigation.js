@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getMyProjects } from "../../reducers/project.actions";
-import { IconWithText } from "../../common/Icon";
+import { IconWithText } from "../../components/Icon";
 
 // TODO same Supported in dashboard
 function Project({ project, isActive }) {

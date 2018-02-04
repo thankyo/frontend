@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-import Hero from "./Hero";
-import Join from "./Join";
-import HowItWorks from "./HowItWorks";
-import About from "./About";
-import Metaphor from "./Metaphor";
-import SkepticZone from "./SkepticZone";
+import Hero from "./components/Hero";
+import Join from "./components/Join";
+import HowItWorks from "./components/HowItWorks";
+import About from "./components/About";
+import Metaphor from "./components/Metaphor";
+import SkepticZone from "./components/SkepticZone";
 
 export default class Contributor extends Component {
   render() {

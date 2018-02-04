@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addUserTag, fetchUserTags, removeUserTag, saveMyTags } from "../../reducers/tag.actions";
 
-import Tags from "../../common/form/Tags";
+import Tags from "../../components/form/Tags";
 
 class UserEditTag extends Component {
   componentWillMount() {

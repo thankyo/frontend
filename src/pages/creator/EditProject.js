@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from "react-redux";
-import Loading from "../../common/Loading";
+import Loading from "../../components/Loading";
 import { Field, Form, reduxForm, FieldArray } from "redux-form";
-import { fieldWithLabel, LoadingButton } from "../../common/form.utils";
-import { IconWithText } from "../../common/Icon";
+import { fieldWithLabel, LoadingButton } from "../../components/form/form.utils";
+import { IconWithText } from "../../components/Icon";
 import { updateProject } from "../../reducers/project.actions";
-import Tags from "../../common/form/Tags";
+import Tags from "../../components/form/Tags";
 
 // TODO same Supported in dashboard
 function EditProject({ initialValues, submitting, handleSubmit }) {

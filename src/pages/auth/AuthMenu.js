@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Route } from 'react-router-dom';
-import { IconWithText } from "../../common/Icon";
+import { IconWithText } from "../../components/Icon";
 
 function NavItem({ children, to, exact }) {
   return (

@@ -3,7 +3,7 @@ import { fetchUser } from "../reducers/user.actions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-function ImageProfile({ avatar, firstName, lastName, bio }) {
+function ImageProfile({ avatar, firstName, lastName }) {
   return (
     <div className="profile has-text-centered">
       <div className="image">

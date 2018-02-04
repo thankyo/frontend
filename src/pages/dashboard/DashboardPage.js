@@ -1,6 +1,6 @@
 import React from "react";
 
-import Profile from "../../common/Profile";
+import Profile from "../../components/Profile";
 
 import Supported from "./Supported";
 import Invite from "./Invite";

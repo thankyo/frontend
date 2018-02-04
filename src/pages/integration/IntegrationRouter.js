@@ -6,7 +6,7 @@ import EmbedButtonPage from "./EmbedButtonPage";
 import DonePage from "./DonePage";
 
 import { Route, Switch } from 'react-router-dom';
-import { Steps, StepNavigation } from "../../common/Steps";
+import { Steps, StepNavigation } from "../../components/Steps";
 
 const LINKS = [
   { title: "Specify Resource", complete: false, pathname: "/integration" },

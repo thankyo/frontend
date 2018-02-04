@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import OGTile from "./OGTile.jsx";
 import { connect } from "react-redux";
 import { Field, Form, reduxForm, FieldArray } from "redux-form";
-import { IconWithText } from "../../common/Icon";
-import { fieldWithLabel, LoadingButton } from "../../common/form.utils";
+import { IconWithText } from "../../components/Icon";
+import { fieldWithLabel, LoadingButton } from "../../components/form/form.utils";
 
 import { savePost } from "../../reducers/post.actions";
-import Tags from "../../common/form/Tags";
+import Tags from "../../components/form/Tags";
 
 const VIEW_MODE = 0;
 const EDIT_MODE = 1;

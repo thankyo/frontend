@@ -1,5 +1,5 @@
 import React from "react";
-import Profile from "../../common/Profile";
+import Profile from "../../components/Profile";
 import EarnedThisMonth from "./EarnedThisMonth";
 import MyProjectNavigation from "./MyProjectNavigation";
 import ProjectPosts from "../search/ProjectPosts";
