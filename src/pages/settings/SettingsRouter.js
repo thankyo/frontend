@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Redirect, Route, Switch } from 'react-router-dom';
-import SettingsMenu from "./SettingsMenu";
+import SettingsMenu from "./SettingsNav";
 import PaymentLimit from "./payment/PaymentLimitSection";
 import ChargeAccount from "./payment/ChargeAccountSection";
 import PayoutAccount from "./payment/PayoutAccountSection";

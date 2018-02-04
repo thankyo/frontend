@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import OGTile from "./OGTile.jsx";
+import OGTile from "./OGTile";
 import { connect } from "react-redux";
 import { Field, Form, reduxForm, FieldArray } from "redux-form";
 import { IconWithText } from "components/Icon";

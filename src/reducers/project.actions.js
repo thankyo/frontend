@@ -2,7 +2,6 @@ import authService from "./util/auth";
 import { dispatchPromise } from "./util/promiseStates";
 
 export const GET_PROJECT = "GET_PROJECT";
-export const GET_MY_PROJECTS = "GET_MY_PROJECTS";
 export const GET_USER_PROJECTS = "GET_USER_PROJECTS";
 export const UPDATE_MY_PROJECT = "UPDATE_MY_PROJECT";
 
@@ -19,14 +18,6 @@ export function getProjectsByUser(user) {
     let req = new Request(`/api/v1/thank/user/${user}/project`);
     let p = authService.signAndFetch(req).then(projects => ({ id: user, projects }));
     return dispatchPromise(p, GET_USER_PROJECTS, dispatch);
-  }
-}
-
-export function getMyProjects() {
-  return (dispatch) => {
-    let req = new Request(`/api/v1/thank/my/project`);
-    let p = authService.signAndFetch(req);
-    return dispatchPromise(p, GET_MY_PROJECTS, dispatch);
   }
 }
 

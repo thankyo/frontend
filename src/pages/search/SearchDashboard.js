@@ -1,6 +1,6 @@
 import React from "react";
-import OGTile from "./OGTile.jsx";
-import NoResults from "./NoResults.jsx";
+import OGTile from "components/Posts/OGTile";
+import NoResults from "./NoResults";
 import { connect } from 'react-redux';
 
 function SearchDashboard({ tags }) {

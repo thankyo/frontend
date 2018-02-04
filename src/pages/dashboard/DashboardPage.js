@@ -2,7 +2,7 @@ import React from "react";
 
 import Profile from "components/Profile";
 
-import Supported from "./Supported";
+import Supported from "components/Projects/Project";
 import Invite from "./Invite";
 import ThankTransactions from "./PendingTransaction";
 

@@ -1,16 +1,16 @@
 import React from "react";
 import Profile from "components/Profile";
 import EarnedThisMonth from "./EarnedThisMonth";
-import MyProjectNavigation from "./MyProjectNavigation";
-import ProjectPosts from "../search/ProjectPosts";
-import EditProject from "./EditProject";
+import ProjectNavigation from "components/Projects/ProjectNavigation";
+import ProjectPosts from "components/Posts/ProjectPosts";
+import EditProject from "components/Projects/EditProject";
 
 export default function myCreatorDashboardPage({ project }) {
   return (
     <div className="columns">
       <div className="column is-one-quarter">
         <Profile id="my"/>
-        <MyProjectNavigation active={project}/>
+        <ProjectNavigation active={project} user="my"/>
       </div>
       <div className="column is-two-quarter">
         {!project && <h1>Select project you want to work on</h1>}

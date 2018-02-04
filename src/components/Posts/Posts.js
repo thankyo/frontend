@@ -1,7 +1,7 @@
 import React from "react";
-import OGTile from "./OGTile.jsx";
+import OGTile from "./OGTile";
 import { connect } from "react-redux";
-import { searchByProject } from "reducers/search.actions";
+import { searchByAuthor } from "reducers/search.actions";
 
 function Posts({ posts }) {
   return <div>
@@ -9,10 +9,10 @@ function Posts({ posts }) {
   </div>
 }
 
-const mapStateToProps = ({ search: { project } }, { id }) => project[id] || { posts: [] };
+const mapStateToProps = ({ search: { author } }, { id }) => author[id] || { posts: [] };
 
 const mapDispatchToProps = (dispatch, { id }) => {
-  dispatch(searchByProject(id));
+  dispatch(searchByAuthor(id));
   return {};
 };
 

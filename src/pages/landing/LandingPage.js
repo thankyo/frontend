@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-import Hero from "./components/Hero";
-import Join from "./components/Join";
-import HowItWorks from "./components/HowItWorks";
-import About from "./components/About";
-import Metaphor from "./components/Metaphor";
-import SkepticZone from "./components/SkepticZone";
+import Hero from "./section/Hero";
+import Join from "./section/Join";
+import HowItWorks from "./section/HowItWorks";
+import About from "./section/About";
+import Metaphor from "./section/Metaphor";
+import SkepticZone from "./section/SkepticZone";
 
-export default class Contributor extends Component {
+export default class LandingPage extends Component {
   render() {
     return (
       <div>
