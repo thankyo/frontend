@@ -1,5 +1,5 @@
 import React from "react";
-import { IconWithText, Icon } from "../../components/Icon";
+import { IconWithText, Icon } from "components/Icon";
 
 function VerificationStatus({ status }) {
   switch (status) {

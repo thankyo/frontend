@@ -1,6 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { IconWithText } from "../../../../components/Icon";
+import { IconWithText } from "components/Icon";
 
 
 let AddVerification = ({ handleSubmit }) => {

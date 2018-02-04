@@ -1,8 +1,8 @@
 import React from "react";
-import { flatField, LoadingButton } from "../components/form/form.utils";
+import { flatField, LoadingButton } from "components/form/form.utils";
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from "redux-form";
-import { IconWithText } from "../components/Icon";
+import { IconWithText } from "components/Icon";
 import { searchByTag } from "../reducers/search.actions";
 import { withRouter } from 'react-router-dom'
 

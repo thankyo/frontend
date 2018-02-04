@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { decrease, getLimit, increase } from "../../../reducers/payment/limit.actions";
-import MoneyToCoffeeIcon from "../../../components/payment/MoneyToCoffeeIcon";
-import { Icon } from "../../../components/Icon";
-import Loading from "../../../components/Loading";
+import MoneyToCoffeeIcon from "components/payment/MoneyToCoffeeIcon";
+import { Icon } from "components/Icon";
+import Loading from "components/Loading";
 
 class PaymentLimitSection extends Component {
   constructor(props) {

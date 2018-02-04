@@ -1,5 +1,5 @@
 import React from "react";
-import Brand from "../../../components/Brand";
+import Brand from "components/Brand";
 import { Link } from 'react-router-dom';
 import JoinButton from "./JoinButton";
 
@@ -28,6 +28,7 @@ export default function () {
           </div>
         </header>
       </div>
+
       <div className="hero-body">
         <div className="container has-text-centered">
           <h1 className="title title-main-promo title-main-promo-left">

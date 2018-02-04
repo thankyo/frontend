@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Loading from "../../../components/Loading";
-import { IconWithText } from "../../../components/Icon";
+import Loading from "components/Loading";
+import { IconWithText } from "components/Icon";
 import { deletePayoutAccount, getPayoutAccount } from "../../../reducers/payment/payoutAccount.actions";
 
 function BankDetails({ payoutAccount }) {

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connectChargeAccount, getChargeAccount, deleteCard } from "../../../reducers/payment/chargeAccount.actions";
 import { connect } from "react-redux";
-import Loading from "../../../components/Loading";
+import Loading from "components/Loading";
 import Card from "./Card";
-import { IconWithText } from "../../../components/Icon";
+import { IconWithText } from "components/Icon";
 
 class ConnectCardButton extends Component {
   constructor(props) {

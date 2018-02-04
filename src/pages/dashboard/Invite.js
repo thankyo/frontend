@@ -2,8 +2,8 @@ import React from "react";
 import { invite } from "../../reducers/invite.actions";
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from "redux-form";
-import { flatField, LoadingButton, required } from "../../components/form/form.utils";
-import { IconWithText } from "../../components/Icon";
+import { flatField, LoadingButton, required } from "components/form/form.utils";
+import { IconWithText } from "components/Icon";
 
 function Invite({ handleSubmit, submitting }) {
   return (

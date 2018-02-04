@@ -3,7 +3,7 @@ import Brand from '../components/Brand';
 import { Link } from 'react-router-dom';
 import auth from "../reducers/util/auth";
 import SearchPanel from "./SearchPanel";
-import { Icon, IconWithText } from "../components/Icon";
+import { Icon, IconWithText } from "components/Icon";
 
 import { connect } from "react-redux";
 

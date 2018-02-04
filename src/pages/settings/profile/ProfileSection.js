@@ -5,9 +5,9 @@ import { Field, Form, reduxForm } from "redux-form";
 import moment from "moment";
 
 
-import Loading from "../../../components/Loading";
-import { fieldWithLabel, LoadingButton, required } from "../../../components/form/form.utils";
-import { IconWithText } from "../../../components/Icon";
+import Loading from "components/Loading";
+import { fieldWithLabel, LoadingButton, required } from "components/form/form.utils";
+import { IconWithText } from "components/Icon";
 
 class ProfileSection extends Component {
 

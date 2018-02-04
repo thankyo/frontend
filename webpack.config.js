@@ -10,6 +10,11 @@ function isProduction() {
 const config = {
   devtool: "source-map",
   context: path.resolve(__dirname, 'src'),
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, 'src/components')
+    }
+  },
   entry: {
     app: "./index.js",
     vendor: [
