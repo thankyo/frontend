@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { searchByAuthor } from "../../reducers/search.actions";
+import { searchByAuthor } from "reducers/search.actions";
 import EditablePost from "./EditablePost";
 
 function AuthorPosts({ posts }) {

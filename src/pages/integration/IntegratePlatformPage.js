@@ -3,7 +3,7 @@ import { Field, Form, reduxForm } from "redux-form";
 import { connect } from 'react-redux';
 import { IconWithText } from "components/Icon";
 import { LoadingButton, renderField, required } from "components/form/form.utils";
-import { verify } from "../../reducers/thank/resource.actions";
+import { verify } from "reducers/thank/resource.actions";
 
 let VerificationPage = ({ submitting, verify }) => {
   return (

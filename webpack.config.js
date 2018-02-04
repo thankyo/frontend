@@ -12,7 +12,8 @@ const config = {
   context: path.resolve(__dirname, 'src'),
   resolve: {
     alias: {
-      components: path.resolve(__dirname, 'src/components')
+      components: path.resolve(__dirname, 'src/components'),
+      reducers: path.resolve(__dirname, 'src/reducers')
     }
   },
   entry: {

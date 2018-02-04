@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addUserTag, fetchUserTags, removeUserTag, saveMyTags } from "../../reducers/tag.actions";
+import { addUserTag, fetchUserTags, removeUserTag, saveMyTags } from "reducers/tag.actions";
 
 import Tags from "components/form/Tags";
 

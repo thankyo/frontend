@@ -5,7 +5,7 @@ import { Field, Form, reduxForm, FieldArray } from "redux-form";
 import { IconWithText } from "components/Icon";
 import { fieldWithLabel, LoadingButton } from "components/form/form.utils";
 
-import { savePost } from "../../reducers/post.actions";
+import { savePost } from "reducers/post.actions";
 import Tags from "components/form/Tags";
 
 const VIEW_MODE = 0;

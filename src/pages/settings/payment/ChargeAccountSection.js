@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connectChargeAccount, getChargeAccount, deleteCard } from "../../../reducers/payment/chargeAccount.actions";
+import { connectChargeAccount, getChargeAccount, deleteCard } from "reducers/payment/chargeAccount.actions";
 import { connect } from "react-redux";
 import Loading from "components/Loading";
 import Card from "./Card";

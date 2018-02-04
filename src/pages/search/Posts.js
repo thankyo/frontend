@@ -1,7 +1,7 @@
 import React from "react";
 import OGTile from "./OGTile.jsx";
 import { connect } from "react-redux";
-import { searchByAuthor } from "../../reducers/search.actions";
+import { searchByAuthor } from "reducers/search.actions";
 
 function Posts({ posts }) {
   return <div>

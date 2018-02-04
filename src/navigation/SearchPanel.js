@@ -3,7 +3,7 @@ import { flatField, LoadingButton } from "components/form/form.utils";
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from "redux-form";
 import { IconWithText } from "components/Icon";
-import { searchByTag } from "../reducers/search.actions";
+import { searchByTag } from "reducers/search.actions";
 import { withRouter } from 'react-router-dom'
 
 function SearchPanel({ handleSubmit, submitting }) {

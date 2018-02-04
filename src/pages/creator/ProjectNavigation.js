@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getProjectsByUser } from "../../reducers/project.actions";
+import { getProjectsByUser } from "reducers/project.actions";
 
 // TODO same Supported in dashboard
 function Project({ project, user, isActive }) {

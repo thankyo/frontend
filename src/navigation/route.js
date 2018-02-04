@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 
-import auth from "../reducers/util/auth";
+import auth from "reducers/util/auth";
 
 const LandingPage = (props) => <Async load={import("../pages/landing/LandingPage")} componentProps={props}/>;
 

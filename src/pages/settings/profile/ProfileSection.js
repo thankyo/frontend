@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fetchUser, saveUser } from "../../../reducers/user.actions";
+import { fetchUser, saveUser } from "reducers/user.actions";
 import { connect } from "react-redux";
 import { Field, Form, reduxForm } from "redux-form";
 import moment from "moment";

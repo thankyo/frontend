@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getSupportedByMe } from "../../reducers/thank/supported.actions";
+import { getSupportedByMe } from "reducers/thank/supported.actions";
 
 function Supported({ avatar, title, description, user, _id }) {
   return (

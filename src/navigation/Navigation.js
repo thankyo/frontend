@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import Brand from '../components/Brand';
-import { Link } from 'react-router-dom';
-import auth from "../reducers/util/auth";
-import SearchPanel from "./SearchPanel";
+
+import Brand from 'components/Brand';
 import { Icon, IconWithText } from "components/Icon";
+
+import { Link } from 'react-router-dom';
+import auth from "reducers/util/auth";
+import SearchPanel from "./SearchPanel";
 
 import { connect } from "react-redux";
 

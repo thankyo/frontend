@@ -3,7 +3,7 @@ import { Field, Form, reduxForm } from "redux-form";
 import AuthMenu from "./AuthMenu";
 import FacebookLogin from "./FacebookLogin";
 import { Link, Route, Switch } from 'react-router-dom';
-import auth from "../../reducers/util/auth";
+import auth from "reducers/util/auth";
 import { renderField, required, LoadingButton } from "components/form/form.utils";
 import { IconWithText } from "components/Icon";
 import FacebookAuthPage from "./FacebookAuthPage";

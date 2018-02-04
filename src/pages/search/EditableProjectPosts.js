@@ -1,5 +1,5 @@
 import React from "react";
-import { searchByProject } from "../../reducers/search.actions";
+import { searchByProject } from "reducers/search.actions";
 import { connect } from "react-redux";
 import EditablePost from "./EditablePost";
 

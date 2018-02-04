@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fetchUser } from "../reducers/user.actions";
+import { fetchUser } from "reducers/user.actions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
