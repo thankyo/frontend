@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getProject } from "reducers/project.actions";
+import { Link } from "react-router-dom";
 import Loading from "components/Loading";
 
 function ViewProject({ avatar, title, description, user, _id, tags, resource }) {
@@ -28,7 +29,7 @@ function ViewProject({ avatar, title, description, user, _id, tags, resource }) 
             <p className="subtitle is-6"><a href={`//${resource.uri}`}>{resource.uri}</a></p>
             <div className="field is-grouped is-grouped-multiline">
               <div className="tags">
-                {tags.map((tag, i) => (<span key={i} className="tag">{tag}</span>))}
+                {tags.map((tag, i) => (<Link key={i} to={`/search?query=${tag}`} className="tag is-black">{tag}</Link>))}
               </div>
             </div>
           </div>

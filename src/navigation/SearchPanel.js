@@ -3,7 +3,7 @@ import { flatField, LoadingButton } from "components/form/form.utils";
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from "redux-form";
 import { IconWithText } from "components/Icon";
-import { searchByTag } from "reducers/search.actions";
+import queryString from 'query-string';
 import { withRouter } from 'react-router-dom'
 
 function SearchPanel({ handleSubmit, submitting }) {
@@ -22,11 +22,20 @@ function SearchPanel({ handleSubmit, submitting }) {
   )
 }
 
+const mapStateToProps = (dispatch, { history: { location } }) => {
+  let params = queryString.parse(location.search);
+  return {
+    initialValues: {
+      tags: params.query
+    }
+  }
+};
+
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
-    onSubmit: ({ tags }) => dispatch(searchByTag(tags)).then(() => { history.push("/search") })
+    onSubmit: ({ tags }) => history.push(`/search?query=${tags}`)
   };
 };
 
 
-export default withRouter(connect(undefined, mapDispatchToProps)(reduxForm({ form: "search" })(SearchPanel)));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: "search", enableReinitialize: true })(SearchPanel)));

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function OGTile({ ogObj: { title = "unknown", description = "missing", type = "unknown", image: { url = "" } = {}, tags = []}, children }) {
   return (
@@ -12,7 +13,7 @@ export default function OGTile({ ogObj: { title = "unknown", description = "miss
           {description}
         </div>
         <div className="tags">
-          {tags.map((tag, i) => <span key={i} className="tag is-primary">{tag}</span>)}
+          {tags.map((tag, i) => <Link key={i} to={`/search?query=${tag}`} className="tag is-black">{tag}</Link>)}
         </div>
         <br/>
         {children}

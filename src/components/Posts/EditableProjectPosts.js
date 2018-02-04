@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 import EditablePost from "./EditablePost";
 
 function ProjectPosts({ posts }) {
-  return <div>
-    <p key={1} className="title is-5">Posts</p>,
-    {posts.map((post, i) => <EditablePost key={i} {...post}/>)}
-  </div>
+  return (
+    <div>
+      <p key={1} className="title is-5">Posts</p>,
+      {posts.map((post, i) => <EditablePost key={i} {...post}/>)}
+    </div>
+  )
 }
 
 const mapStateToProps = ({ search: { project } }, { id }) => {

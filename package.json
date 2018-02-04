@@ -23,6 +23,7 @@
     "moment": "^2.20.1",
     "oboe": "2.1.4",
     "prop-types": "^15.6.0",
+    "query-string": "^5.1.0",
     "react": "^16.2.0",
     "react-code-splitting": "1.2.1",
     "react-dom": "^16.2.0",

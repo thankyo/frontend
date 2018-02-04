@@ -4,9 +4,11 @@ import { searchByAuthor } from "reducers/search.actions";
 import EditablePost from "./EditablePost";
 
 function AuthorPosts({ posts }) {
-  return <div>
-    {posts.map((post, i) => <EditablePost key={i} {...post}/>)}
-  </div>
+  return (
+    <div>
+      {posts.map((post, i) => <EditablePost key={i} {...post}/>)}
+    </div>
+  )
 }
 
 const mapStateToProps = ({ search: { author } }, { id }) => author[id] || { posts: [] };

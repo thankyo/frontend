@@ -22,7 +22,7 @@ const DashboardRouter = (props) => <Async load={import("../pages/dashboard/Dashb
 const CreatorDashboardRouter = (props) => <Async load={import("../pages/creator/CreatorDashboardRouter")} componentProps={props}/>;
 const SettingsRouter = (props) => <Async load={import("../pages/settings/SettingsRouter")} componentProps={props}/>;
 
-const SearchRouter = (props) => <Async load={import("../pages/search/SearchDashboard")} componentProps={props}/>;
+const SearchRouter = (props) => <Async load={import("../pages/search/SearchRouter")} componentProps={props}/>;
 
 export default class MainApp extends Component {
   render() {
