@@ -28,7 +28,7 @@ export default function (transactions = initialState, { type, user, payload }) {
       let dateToProj = Object.values(dateToTrs).map(({ created, total, dateStr, transactions }) => {
         let byProject = transactions.reduce((agg, tr) => {
           let { project, resource } = tr;
-          let { id } = project;
+          let { _id: id } = project;
           if (!agg[id]) {
             agg[id] = {
               project,
