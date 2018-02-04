@@ -2,7 +2,7 @@ import React from "react";
 
 import Profile from "components/Profile";
 
-import Supported from "components/Projects/Project";
+import SupportedProjects from "./SupportedProjects";
 import Invite from "./Invite";
 import ThankTransactions from "./PendingTransaction";
 
@@ -11,7 +11,7 @@ export default function supportDashboardPage({ id }) {
     <div className="columns">
       <div className="column is-one-quarter">
         <Profile id={id}/>
-        <Supported id={id}/>
+        <SupportedProjects id={id}/>
       </div>
       <div className="column is-two-quarter">
         <Invite id={id}/>

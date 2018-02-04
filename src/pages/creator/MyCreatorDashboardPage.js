@@ -1,7 +1,7 @@
 import React from "react";
 import Profile from "components/Profile";
 import EarnedThisMonth from "./EarnedThisMonth";
-import ProjectNavigation from "components/Projects/ProjectNavigation";
+import ProjectNavigation from "./ProjectNavigation";
 import ProjectPosts from "components/Posts/ProjectPosts";
 import EditProject from "components/Projects/EditProject";
 

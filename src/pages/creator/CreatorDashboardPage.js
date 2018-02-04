@@ -1,9 +1,9 @@
 import React from "react";
+import ProjectNavigation from "./ProjectNavigation";
 import Profile from "components/Profile";
+import ViewProject from "components/Projects/ViewProject";
+import ProjectPosts from "components/Posts/ProjectPosts";
 import EarnedThisMonth from "./EarnedThisMonth";
-import ViewProject from "../../components/Projects/ViewProject";
-import ProjectNavigation from "../../components/Projects/ProjectNavigation";
-import ProjectPosts from "../../components/Posts/ProjectPosts";
 
 export default function creatorDashboardPage({ id, project }) {
   return (

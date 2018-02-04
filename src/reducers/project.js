@@ -1,4 +1,4 @@
-import { promiseReducer, promiseReducerDB } from "./util/promiseStates";
+import { promiseReducerDB } from "./util/promiseStates";
 import { combineReducers } from "redux"
 import { GET_PROJECT, GET_USER_PROJECTS } from "./project.actions";
 
