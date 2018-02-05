@@ -1,9 +1,10 @@
 import React from "react";
 import Profile from "components/Profile";
+import EditProject from "components/Projects/EditProject";
+
 import EarnedThisMonth from "./EarnedThisMonth";
 import ProjectNavigation from "./ProjectNavigation";
-import ProjectPosts from "components/Posts/ProjectPosts";
-import EditProject from "components/Projects/EditProject";
+import ProjectPosts from "./ProjectPosts";
 
 export default function myCreatorDashboardPage({ project }) {
   return (

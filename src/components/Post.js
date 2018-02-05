@@ -1,13 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
+import { lovePost, enableEdit, savePost } from "reducers/post.actions";
+import { connect } from "react-redux";
 
 import { IconWithText } from "components/Icon";
 import { fieldWithLabel, LoadingButton } from "components/form/form.utils";
 import Tags from "components/form/Tags";
-
-import { enableEdit, lovePost, savePost } from "reducers/post.actions";
 
 function EditPost({ submitting, initialValues, handleSubmit }) {
   return (
@@ -47,39 +46,45 @@ function EditPost({ submitting, initialValues, handleSubmit }) {
 
 EditPost = reduxForm()(EditPost);
 
-function PostView({ resource: { uri }, ogObj: { title, description, image: { url = "" } = {}, tags = [] }, project: { user }, children, onLove, isLoved, isMy }) {
-  return (
-    <div>
-      <figure className="image">
-        <img src={url}/>
-      </figure>
-      <p className="title">{title}</p>
-      <div className="content">
-        <div>
-          {description}
-        </div>
-        <div className="tags">
-          {tags.map((tag, i) => <Link key={i} to={`/search?query=${tag}`} className="tag is-black">{tag}</Link>)}
-        </div>
-        <br/>
-        <button className="button is-primary" onClick={() => onLove(uri)} disabled={isLoved}>Love it</button>
-        {children}
-      </div>
-    </div>
-  )
-}
-
-function MyPost(props) {
+function MyPost({ post, onEdit, onLove }) {
+  let { resource: { uri }, ogObj: { title, description, image: { url = "" } = {}, tags = [] }, project } = post;
   return (
     <div className="columns">
       <div className="column">
-        <PostView {...props}>
-          <div>
-            <button className="button is-primary is-pulled-right" onClick={props.onEdit}>
-              <IconWithText className="fa fa-edit" text="Edit"/>
-            </button>
+        <figure className="image">
+          <img src={url}/>
+        </figure>
+        <br/>
+        <article className="media media-new-style">
+          <figure className="media-left">
+            <p className="image is-64x64">
+              <img src={project.avatar}/>
+            </p>
+          </figure>
+          <div className="media-content">
+            <div className="content">
+              <p>
+                <strong>{title}</strong>
+                <br/>
+                {description}
+                {tags.map((tag, i) => <Link key={i} to={`/search?query=${tag}`}> #{tag}</Link>)}
+              </p>
+            </div>
+            <nav className="level is-mobile">
+              <div className="level-left">
+                <a className="level-item" onClick={() => onLove(uri)} disabled={post.isLoved}>
+                  <span className="icon is-small is-black"><i className="fa fa-heart"/></span>
+                </a>
+                {post.isMy && (
+                  <a className="level-item" onClick={onEdit}>
+                    <span className="icon is-small"><i className="fa fa-edit"/></span>
+                  </a>
+                  )
+                }
+              </div>
+            </nav>
           </div>
-        </PostView>
+        </article>
       </div>
     </div>
   );
@@ -87,14 +92,10 @@ function MyPost(props) {
 
 function Post(props) {
   let { post } = props;
-  if (post.isMy) {
-    if (!post.isEdit) {
-      return <MyPost {...post} onEdit={props.enableEdit} onLove={props.onLove}/>;
-    } else {
-      return <EditPost onSubmit={props.savePost} initialValues={post.ogObj} form={post._id}/>
-    }
+  if (!post.isEdit) {
+    return <MyPost {...props}/>;
   } else {
-    return <PostView {...post}/>
+    return <EditPost onSubmit={props.savePost} initialValues={post.ogObj} form={post._id}/>
   }
 }
 
@@ -105,9 +106,9 @@ const mapStateToProps = ({ post }, { id }) => ({
 
 const mapDispatchToProps = (dispatch, { id }) => {
   return {
-    enableEdit: () => dispatch(enableEdit(id)),
+    onEdit: () => dispatch(enableEdit(id)),
     onLove: (uri) => dispatch(lovePost(uri)),
-    savePost: (post) => dispatch(savePost(post))
+    savePost: (post) => dispatch(savePost(post, id))
   }
 };
 

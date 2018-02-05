@@ -1,5 +1,5 @@
 import React from "react";
-import Post from "./Post";
+import Post from "components/Post";
 import { connect } from "react-redux";
 import { searchByProject } from "reducers/search.actions";
 

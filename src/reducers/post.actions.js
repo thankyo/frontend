@@ -12,11 +12,11 @@ export function enableEdit(id) {
   }
 }
 
-export function savePost(post) {
+export function savePost(post, id) {
   return (dispatch) => {
     let req = new Request("/api/v1/thank/graph/my", { method: "POST", body: JSON.stringify(post)});
     let p = authService.signAndFetch(req);
-    p.then(() => dispatch(enableEdit(post._id)));
+    p.then(() => dispatch(enableEdit(id)));
     return dispatchPromise(p, SAVE_POST, dispatch);
   }
 }

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import Post from "components/Posts/Post";
-import NoResults from "./NoResults";
 import { connect } from 'react-redux';
+
+import Post from "components/Post";
 import { searchByTag } from "reducers/search.actions";
+
+import NoResults from "./NoResults";
 
 class SearchDashboard extends Component {
   componentWillMount() {

@@ -2,7 +2,7 @@ import React from "react";
 import ProjectNavigation from "./ProjectNavigation";
 import Profile from "components/Profile";
 import ViewProject from "components/Projects/ViewProject";
-import ProjectPosts from "components/Posts/ProjectPosts";
+import ProjectPosts from "./ProjectPosts";
 import EarnedThisMonth from "./EarnedThisMonth";
 
 export default function creatorDashboardPage({ id, project }) {
