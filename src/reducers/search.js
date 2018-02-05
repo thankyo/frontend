@@ -1,5 +1,5 @@
 import { promiseReducer, promiseReducerDB } from "./util/promiseStates";
-import { SEARCH_BY_TAG, SEARCH_BY_AUTHOR, SEARCH_BY_PROJECT } from "./search.actions";
+import { SEARCH_BY_TAG, SEARCH_BY_PROJECT } from "./search.actions";
 import { combineReducers } from "redux";
 import {LOCATION_CHANGE} from "react-router-redux";
 import queryString from "query-string";
@@ -19,7 +19,7 @@ function queryReducer(state = "", { type, payload }) {
 
 export default combineReducers({
   query: queryReducer,
-  tags: promiseReducer(SEARCH_BY_TAG, []),
-  author: promiseReducerDB(SEARCH_BY_AUTHOR),
+  tags: promiseReducer(SEARCH_BY_TAG, [], (state, _) => state, (state, payload) => payload.map(({ _id }) => _id),
+  ),
   project: promiseReducerDB(SEARCH_BY_PROJECT)
 });

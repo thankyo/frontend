@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Project({ project = {}, isActive = false}) {
-  let { avatar, title, description, user, _id } = project;
-  let to = `/creator/${user}/project/${_id}`;
+export default function Project({ project = {}, to, isActive = false}) {
+  let { avatar, title, description } = project;
   return (
     <article className={`media media-new-style ${isActive && "is-active"}`}>
       <div className="media-left">

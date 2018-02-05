@@ -13,7 +13,7 @@ export default function myCreatorDashboardPage({ project }) {
         <ProjectNavigation active={project} user="my"/>
       </div>
       <div className="column is-two-quarter">
-        {!project && <h1>Select project you want to work on</h1>}
+        {!project && <h1 className="title has-text-centered">Select a project</h1>}
         {project && [
             <EditProject key={0} id={project}/>,
             <ProjectPosts key={2} id={project}/>,

@@ -50,10 +50,10 @@ class SearchDashboard extends Component {
   }
 }
 
-const mapStateToProps = ({ search: { query, tags } }) => {
+const mapStateToProps = ({ search: { query, tags }, post }) => {
   return {
     query,
-    tags
+    tags: tags.map(_id => post[_id])
   };
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getSupportedByMe } from "reducers/thank/supported.actions";
 
-import Project from "components/Projects/ProjectNav";
+import ProjectNav from "components/Projects/ProjectNav";
 
 const ListOfSupported = ({ supported }) => {
   if (supported.length === 0) {
@@ -11,7 +11,7 @@ const ListOfSupported = ({ supported }) => {
   return (
     <div>
       <h1 className="subtitle">Supported projects</h1>
-      {supported.map((project, id) => <Project key={id} project={project} isActive={false}/>)}
+      {supported.map((project, id) => <ProjectNav key={id} project={project} isActive={false} to={`/creator/${project.user}/project/${project._id}`}/>)}
     </div>
   );
 };
