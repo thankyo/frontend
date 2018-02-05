@@ -1,13 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 
-export default function NoResults() {
+function NoResults({ query }) {
   return (
     <section className="hero is-large">
       <div className="hero-body">
         <div className="container">
-          <h1 className="title">
-            Noooooo, Results
-          </h1>
+          <h1 className="title">Noooooo, Results for "{query}"</h1>
           <h2 className="subtitle">
             Keep digging
           </h2>
@@ -16,3 +15,7 @@ export default function NoResults() {
     </section>
   )
 }
+
+const mapStateToProps = ({ search: { query }}) => ({ query });
+
+export default connect(mapStateToProps)(NoResults)
