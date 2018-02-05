@@ -1,12 +1,12 @@
 import React from "react";
-import OGTile from "./OGTile";
+import Post from "./Post";
 import { connect } from "react-redux";
 import { searchByProject } from "reducers/search.actions";
 
 function Posts({ posts }) {
   return (
     <div>
-      {posts.map((post, i) => <article className="tile is-child notification" key={i}><OGTile {...post}/></article>)}
+      {posts.map((post, i) => <article className="tile" key={i}><Post {...post}/></article>)}
     </div>
   )
 }

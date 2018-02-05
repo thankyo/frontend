@@ -1,5 +1,5 @@
 import React from "react";
-import OGTile from "./OGTile";
+import OGTile from "./Post";
 import { connect } from "react-redux";
 import { searchByAuthor } from "reducers/search.actions";
 

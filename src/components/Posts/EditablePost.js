@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import OGTile from "./OGTile";
+import Post from "./Post";
 import { connect } from "react-redux";
 import { Field, Form, reduxForm, FieldArray } from "redux-form";
 import { IconWithText } from "components/Icon";
@@ -50,13 +50,13 @@ function PostViewMode(props) {
   return  (
     <div className="columns">
       <div className="column">
-        <OGTile {... props}>
+        <Post {... props}>
           <div>
             <button className="button is-primary is-pulled-right" onClick={props.changeMode}>
               <IconWithText className="fa fa-edit" text="Edit"/>
             </button>
           </div>
-        </OGTile>
+        </Post>
       </div>
     </div>
   );

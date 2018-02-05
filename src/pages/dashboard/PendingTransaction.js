@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 import { listTransactions } from "reducers/thank/transaction.actions";
 import Resource from "components/Resource";
 
+function contributionsStr(contributions) {
+  if (contributions == 1) {
+    return `${contributions} contribution`
+  } else {
+    return `${contributions} contributions`
+  }
+}
+
+
 class Project extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +34,7 @@ class Project extends Component {
             <Link to={`/creator/${user}/project/${_id}`}><img src={avatar} width={32} height={32}/></Link>
           </div>
           <div className="timeline-content">
-            <p className="heading">{resources.length} contributions</p>
+            <p className="heading">{contributionsStr(resources.length)}</p>
           </div>
         </li>),
         (<li key="header" className="timeline-header is-primary">
@@ -46,7 +55,7 @@ class Project extends Component {
         </div>
         <div className="timeline-content">
           <p className="heading"><a onClick={this.handleExpand}>{title}</a></p>
-          <p>{resources.length} contributions</p>
+          <p>{contributionsStr(resources.length)}</p>
           {expanded && resources.map((res, i) => <p key={i}><Resource resource={res}/></p>)}
         </div>
       </li>
@@ -92,7 +101,7 @@ class ThankTransaction extends Component {
             <p className="heading">
               <a onClick={this.handleExpand}>{dateStr}</a>
             </p>
-            <p>{total} contributions - in {projects.length} projects</p>
+            <p>{total} contributions - in {projects.length} project{projects.length != 1 ? "s" : ""}</p>
           </div>
         </div>
       </li>

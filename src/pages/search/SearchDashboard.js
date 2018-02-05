@@ -1,51 +1,66 @@
-import React from "react";
-import OGTile from "components/Posts/OGTile";
+import React, { Component } from "react";
+import Post from "components/Posts/Post";
 import NoResults from "./NoResults";
 import { connect } from 'react-redux';
 import { searchByTag } from "reducers/search.actions";
-import queryString from "query-string";
 import { withRouter } from "react-router-dom";
 
-function SearchDashboard({ tags, searchByTag }) {
-  if (tags.length === 0) {
-    return <NoResults/>
+class SearchDashboard extends Component {
+  componentWillMount() {
+    let { query, searchByTag } = this.props;
+    searchByTag(query);
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.query !== this.props.query) {
+      this.props.searchByTag(nextProps.query);
+    }
   }
 
-  return (
-    <div className="tile is-ancestor">
-      <div className="tile is-vertical is-4">
-        <div className="tile">
-          <div className="tile is-parent is-vertical">
-            {tags.map((post, i) => i % 3 === 0 && <OGTile key={i} {...post}/>)}
+  render() {
+    const { tags } = this.props;
+    if (tags.length === 0) {
+      return <NoResults/>
+    }
+
+    return (
+      <div className="tile is-ancestor">
+        <div className="tile is-vertical is-4">
+          <div className="tile">
+            <div className="tile is-parent is-vertical">
+              {tags.map((post, i) => i % 3 === 0 && <Post key={i} {...post}/>)}
+            </div>
+          </div>
+        </div>
+        <div className="tile is-vertical is-4">
+          <div className="tile">
+            <div className="tile is-parent is-vertical">
+              {tags.map((post, i) => i % 3 === 1 && <Post key={i} {...post}/>)}
+            </div>
+          </div>
+        </div>
+        <div className="tile is-vertical is-4">
+          <div className="tile">
+            <div className="tile is-parent is-vertical">
+              {tags.map((post, i) => i % 3 === 2 && <Post key={i} {...post}/>)}
+            </div>
           </div>
         </div>
       </div>
-      <div className="tile is-vertical is-4">
-        <div className="tile">
-          <div className="tile is-parent is-vertical">
-            {tags.map((post, i) => i % 3 === 1 && <OGTile key={i} {...post}/>)}
-          </div>
-        </div>
-      </div>
-      <div className="tile is-vertical is-4">
-        <div className="tile">
-          <div className="tile is-parent is-vertical">
-            {tags.map((post, i) => i % 3 === 2 && <OGTile key={i} {...post}/>)}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
-const mapStateToProps = ({ search: { tags } }) => ({ tags });
+const mapStateToProps = ({ search: { query, tags } }) => {
+  return {
+    query,
+    tags
+  };
+};
 
-const mapDispatchToProps = (dispatch, { history: { location } }) => {
-  let params = queryString.parse(location.search);
-  dispatch(searchByTag(params.query));
+const mapDispatchToProps = (dispatch) => {
   return {
     searchByTag: (tags) => dispatch(searchByTag(tags))
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchDashboard));
+export default connect(mapStateToProps, mapDispatchToProps)(SearchDashboard);

@@ -30,7 +30,6 @@ export default class MainApp extends Component {
       <div>
         <Helmet>
         </Helmet>
-        <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div>
             <Switch>
               <Route exact path="/" render={props => (
@@ -72,7 +71,6 @@ export default class MainApp extends Component {
               </Route>
             </Switch>
           </div>
-        </BrowserRouter>
       </div>
     );
   }

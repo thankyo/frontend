@@ -3,7 +3,6 @@ import { flatField, LoadingButton } from "components/form/form.utils";
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from "redux-form";
 import { IconWithText } from "components/Icon";
-import queryString from 'query-string';
 import { withRouter } from 'react-router-dom'
 
 function SearchPanel({ handleSubmit, submitting }) {
@@ -22,11 +21,10 @@ function SearchPanel({ handleSubmit, submitting }) {
   )
 }
 
-const mapStateToProps = (dispatch, { history: { location } }) => {
-  let params = queryString.parse(location.search);
+const mapStateToProps = ({ search: { query }}, { history: { location } }) => {
   return {
     initialValues: {
-      tags: params.query
+      tags: query
     }
   }
 };
