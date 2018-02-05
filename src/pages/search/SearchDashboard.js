@@ -3,7 +3,6 @@ import Post from "components/Posts/Post";
 import NoResults from "./NoResults";
 import { connect } from 'react-redux';
 import { searchByTag } from "reducers/search.actions";
-import { withRouter } from "react-router-dom";
 
 class SearchDashboard extends Component {
   componentWillMount() {
@@ -27,21 +26,21 @@ class SearchDashboard extends Component {
         <div className="tile is-vertical is-4">
           <div className="tile">
             <div className="tile is-parent is-vertical">
-              {tags.map((post, i) => i % 3 === 0 && <Post key={i} {...post}/>)}
+              {tags.map((id, i) => i % 3 === 0 && <Post key={i} id={id}/>)}
             </div>
           </div>
         </div>
         <div className="tile is-vertical is-4">
           <div className="tile">
             <div className="tile is-parent is-vertical">
-              {tags.map((post, i) => i % 3 === 1 && <Post key={i} {...post}/>)}
+              {tags.map((id, i) => i % 3 === 1 && <Post key={i} id={id}/>)}
             </div>
           </div>
         </div>
         <div className="tile is-vertical is-4">
           <div className="tile">
             <div className="tile is-parent is-vertical">
-              {tags.map((post, i) => i % 3 === 2 && <Post key={i} {...post}/>)}
+              {tags.map((id, i) => i % 3 === 2 && <Post key={i} id={id}/>)}
             </div>
           </div>
         </div>
@@ -50,10 +49,10 @@ class SearchDashboard extends Component {
   }
 }
 
-const mapStateToProps = ({ search: { query, tags }, post }) => {
+const mapStateToProps = ({ search: { query, tags } }) => {
   return {
     query,
-    tags: tags.map(_id => post[_id])
+    tags
   };
 };
 

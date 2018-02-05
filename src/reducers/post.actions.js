@@ -1,13 +1,22 @@
 import authService from "./util/auth";
 import { dispatchPromise } from "./util/promiseStates";
+import { action } from "reducers/util/action";
 
 export const SAVE_POST = "SAVE_POST";
+export const EDIT_POST = "EDIT_POST";
 export const LOVE_POST = "LOVE_POST";
+
+export function enableEdit(id) {
+  return (dispatch) => {
+    dispatch(action(EDIT_POST, id))
+  }
+}
 
 export function savePost(post) {
   return (dispatch) => {
     let req = new Request("/api/v1/thank/graph/my", { method: "POST", body: JSON.stringify(post)});
     let p = authService.signAndFetch(req);
+    p.then(() => dispatch(enableEdit(post._id)));
     return dispatchPromise(p, SAVE_POST, dispatch);
   }
 }

@@ -6,12 +6,12 @@ import { searchByProject } from "reducers/search.actions";
 function Posts({ posts }) {
   return (
     <div>
-      {posts.map((post, i) => <article className="tile" key={i}><Post {...post}/></article>)}
+      {posts.map((id, i) => <article className="tile" key={i}><Post id={id}/></article>)}
     </div>
   )
 }
 
-const mapStateToProps = ({ search: { project } }, { id }) => project[id] || { posts: [] };
+const mapStateToProps = ({ search: { project } }, { id }) => ({ posts:  project[id] || [] });
 
 const mapDispatchToProps = (dispatch, { id }) => {
   dispatch(searchByProject(id));

@@ -17,9 +17,18 @@ function queryReducer(state = "", { type, payload }) {
   }
 }
 
+function projectReducer(state = {}, { type, payload }) {
+  switch (type) {
+    case `${SEARCH_BY_PROJECT}.fulfilled`:
+      let { id, posts } = payload;
+      return Object.assign({}, state, { [id]: posts.map(({ _id }) => _id) });
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   query: queryReducer,
-  tags: promiseReducer(SEARCH_BY_TAG, [], (state, _) => state, (state, payload) => payload.map(({ _id }) => _id),
-  ),
-  project: promiseReducerDB(SEARCH_BY_PROJECT)
+  tags: promiseReducer(SEARCH_BY_TAG, [], (state, _) => state, (state, payload) => payload.map(({ _id }) => _id)),
+  project: projectReducer
 });

@@ -23,12 +23,14 @@ class TokenStore {
     }
   };
 
-  getUser = () => localStorage.getItem("user")
+  getUser = () => {
+    return localStorage.getItem("user");
+  };
 
   isMy = (id) => {
     if (id === "my")
       return true;
-    return localStorage.getItem("user") === id;
+    return this.getUser() === id;
   };
 
   removeToken = () => {
@@ -141,6 +143,8 @@ class AuthService {
   };
 
   isMy = (id) => this.tokenStore.isMy(id);
+
+  getUser = () => this.tokenStore.getUser();
 
   logout = () => {
     this.tokenStore.removeToken();
