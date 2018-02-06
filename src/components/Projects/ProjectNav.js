@@ -16,7 +16,7 @@ export default function Project({ project = {}, to, isActive = false}) {
         <div className="content is-inverted is-outlined">
           <Link to={to}>
             <strong>{title}</strong>
-            <p>{description}</p>
+            <p className="subtitle">{description}</p>
           </Link>
         </div>
       </div>

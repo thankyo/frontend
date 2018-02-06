@@ -1,10 +1,11 @@
 import { promiseReducerDB } from "./util/promiseStates";
 import { combineReducers } from "redux"
-import { GET_PROJECT, GET_USER_PROJECTS } from "./project.actions";
+import { GET_PROJECT, GET_USER_PROJECTS, GET_SUPPORTED } from "./project.actions";
 
 function byIdReducer(state = {}, { type, payload }) {
   switch (type) {
     case `${GET_USER_PROJECTS}.fulfilled`:
+    case `${GET_SUPPORTED}.fulfilled`:
       let projectById = payload.projects.reduce((agg, project) => {
         agg[project._id] = project;
         return agg
@@ -17,7 +18,18 @@ function byIdReducer(state = {}, { type, payload }) {
   }
 }
 
+function byUserReducer(state = {}, { type, payload }) {
+  switch (type) {
+    case `${GET_USER_PROJECTS}.fulfilled`:
+      let { id: user, projects } = payload;
+      return Object.assign({}, state, { [user]: projects.map(({ _id }) => _id) });
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   byId: byIdReducer,
-  byUser: promiseReducerDB(GET_USER_PROJECTS)
+  byUser: byUserReducer,
+  supported: promiseReducerDB(GET_SUPPORTED, [])
 })

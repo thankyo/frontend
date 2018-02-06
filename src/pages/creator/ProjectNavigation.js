@@ -12,7 +12,10 @@ const ProjectNavigation = ({ projects, active, user }) => {
   );
 };
 
-const mapStateToProps = ({ project: { byUser } }, { user }) => byUser[user] || { projects: [] };
+const mapStateToProps = ({ project: { byUser, byId } }, { user }) => {
+  let projectIds = byUser[user] || [];
+  return { projects: projectIds.map(id => byId[id]) };
+};
 
 const mapDispatchToProps = (dispatch, { user }) => {
   dispatch(getProjectsByUser(user));
