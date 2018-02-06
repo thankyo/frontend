@@ -47,19 +47,13 @@ body
 .hero
   &.register-page
     font-size: 40px
-    background-color: $primary
-    background-image: url('../../assets/img/bg-register.jpg')
-    background-repeat: no-repeat
-    background-position: center center
+    background: $primary url('../../assets/img/bg-register.jpg') no-repeat center center
     background-size: cover
   &.page-promo
     font-size: 40px
     height: 692px
     color: #fff
-    background-color: $primary
-    background-image: url('../../assets/img/bg-book.jpg')
-    background-repeat: no-repeat
-    background-position: center center
+    background: $primary url('../../assets/img/bg-book.jpg') no-repeat center center
     background-size: cover
   &.page-promo-boy
     height: auto
@@ -90,8 +84,7 @@ body
       border-bottom-width: 0px
     &.is-active
       a
-        border-bottom-color: white
-        border-bottom-width: 3px
+        border-bottom: 3px $white
 
 .icon-on-white
   margin-bottom: 35px
@@ -252,12 +245,6 @@ body
   margin: 0 auto 15px
   border: 10px solid $primary
   border-radius: 50%
-
-.button-connect
-  font-size: 16px
-  width: 200px
-  min-height: 40px
-  text-align: center
 
 .field-new-style
   &:not(:last-child)
@@ -470,14 +457,6 @@ a:disabled
 .title:not(.is-spaced) + .subtitle
   margin-top: -.5rem
 
-.button-blue
-  color: #fff
-  border: none
-  background-color: $primary
-  &:hover
-    color: #fff
-    background-color: #33afe3
-
 .fw
   -ms-flex-wrap: wrap
   flex-wrap: wrap
@@ -511,10 +490,6 @@ pre
     .button .icon:first-child:not(:last-child)
       margin-right: .1875em
       margin-left: calc(-.375em - 1px)
-
-@media (min-width: 768px) and (max-width: 900px)
-  .button-connect
-    width: 100%
 
 @media screen and (min-width: 1260px)
   .container

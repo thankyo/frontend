@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getProjectsByUser } from "reducers/project.actions";
-import ProjectNav from "components/Projects/ProjectNav";
+import ProjectNav from "components/ProjectNav";
 
 const ProjectNavigation = ({ projects, active, user }) => {
   return (

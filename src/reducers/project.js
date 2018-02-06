@@ -1,6 +1,7 @@
 import { promiseReducerDB } from "./util/promiseStates";
 import { combineReducers } from "redux"
 import { GET_PROJECT, GET_USER_PROJECTS, GET_SUPPORTED } from "./project.actions";
+import { UPDATE_MY_PROJECT } from "reducers/project.actions";
 
 function byIdReducer(state = {}, { type, payload }) {
   switch (type) {
@@ -12,6 +13,8 @@ function byIdReducer(state = {}, { type, payload }) {
       }, {});
       return Object.assign({}, state, projectById);
     case `${GET_PROJECT}.fulfilled`:
+      return Object.assign({}, state, { [payload._id]: payload });
+    case `${UPDATE_MY_PROJECT}.fulfilled`:
       return Object.assign({}, state, { [payload._id]: payload });
     default:
       return state;

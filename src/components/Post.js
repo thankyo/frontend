@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
-import { lovePost, enableEdit, savePost } from "reducers/post.actions";
+import { enableEdit, lovePost, savePost } from "reducers/post.actions";
 import { connect } from "react-redux";
 
 import { IconWithText } from "components/Icon";
@@ -19,8 +19,7 @@ function EditPost({ submitting, initialValues, handleSubmit }) {
           <Field name="image.url" component={fieldWithLabel} type="image" className="input" placeholder="Image"/>
           <hr/>
           <Field name="title" component={fieldWithLabel} className="input" placeholder="Title"/>
-          <Field name="description" component={fieldWithLabel} className="textarea" type="textarea"
-                 placeholder="Description"/>
+          <Field name="description" component={fieldWithLabel} className="textarea" type="textarea" placeholder="Description"/>
           <FieldArray name="tags" component={(props) => {
             let { fields } = props;
             let tags = fields.getAll() || [];
@@ -46,8 +45,44 @@ function EditPost({ submitting, initialValues, handleSubmit }) {
 
 EditPost = reduxForm()(EditPost);
 
-function ViewPost({ post, onEdit, onLove }) {
-  let { resource: { uri }, ogObj: { title, description, image: { url = "" } = {}, tags = [] }, project } = post;
+function PostActionWrap({ children }){
+  return (
+    <nav className="level is-mobile">
+      <div className="level-left">
+        <div className="level-item">
+          {children}
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+function PostActions({ post, onEdit, onLove }) {
+  if (post.isMy) {
+    return (
+      <PostActionWrap>
+        <a className="icon is-small" onClick={onEdit}><i className="fa fa-edit"/></a>
+      </PostActionWrap>
+    )
+  }
+  if (post.isLoved) {
+    return (
+      <PostActionWrap>
+        <span className="icon is-small" disabled><i className="fa fa-heart"/></span>
+      </PostActionWrap>
+    );
+  }
+  return (
+    <PostActionWrap>
+      <a className="icon is-small" onClick={() => onLove(post.resource.uri)}><i className="fa fa-heart"/></a>}
+    </PostActionWrap>
+  )
+
+}
+
+function ViewPost(props) {
+  let { post } = props;
+  let { ogObj: { title, description, image: { url = "" } = {}, tags = [] }, project } = post;
   return (
     <div className="columns">
       <div className="column">
@@ -72,20 +107,7 @@ function ViewPost({ post, onEdit, onLove }) {
                 {tags.map((tag, i) => <Link key={i} to={`/search?query=${tag}`}> #{tag}</Link>)}
               </p>
             </div>
-            <nav className="level is-mobile">
-              <div className="level-left">
-                <div className="level-item">
-                  {post.isLoved && <span className="icon is-small"><i className="fa fa-heart"/></span>}
-                  {!post.isLoved && <a className="icon is-small" onClick={() => onLove(uri)}><i className="fa fa-heart"/></a>}
-                </div>
-                {post.isMy && (
-                  <a className="level-item" onClick={onEdit}>
-                    <span className="icon is-small"><i className="fa fa-edit"/></span>
-                  </a>
-                  )
-                }
-              </div>
-            </nav>
+            <PostActions {... props}/>
           </div>
         </article>
       </div>

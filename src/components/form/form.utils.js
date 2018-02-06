@@ -82,8 +82,8 @@ export const flatField = ({
   if (submitting) inputClassName = `${inputClassName} is-loading`;
   if (type === "image") {
     return [
-      <input {...input} type="text" className={inputClassName} placeholder={placeholder} disabled={disabled}/>,
-      <img src={input.value}/>,
+      <input key={0} {...input} type="text" className={inputClassName} placeholder={placeholder} disabled={disabled}/>,
+      <img key={1} src={input.value}/>,
     ];
   }
   if (type === "textarea") {

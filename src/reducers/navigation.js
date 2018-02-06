@@ -1,6 +1,6 @@
 const LINKS = [
   { pathname: "/dashboard/my", name: "Supporter Mode", icon: "fa fa-thumbs-o-up" },
-  { pathname: "/creator", name: "Creator Mode", icon: "fa fa-paint-brush" },
+  { pathname: "/creator/my", name: "Creator Mode", icon: "fa fa-paint-brush" },
   { pathname: "/settings", name: "Settings", icon: "fa fa-cogs" },
   { pathname: "/settings/limit", name: "Limits", isHiddenDesktop: true },
   { pathname: "/settings/charge", name: "Charge", isHiddenDesktop: true },

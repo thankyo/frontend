@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Async from 'react-code-splitting';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import NotFound from "./NotFound";
 
@@ -10,19 +9,18 @@ import Navigation from "./Navigation";
 
 import auth from "reducers/util/auth";
 
-const LandingPage = (props) => <Async load={import("../pages/landing/LandingPage")} componentProps={props}/>;
+import LandingPage from "../pages/landing/LandingPage";
 
-const AuthRouter = (props) => <Async load={import('../pages/auth/AuthRouter')} componentProps={props}/>;
-const IntegrationRouter = (props) => <Async load={import("../pages/integration/IntegrationRouter")} componentProps={props}/>;
+import AuthRouter from '../pages/auth/AuthRouter';
+import IntegrationRouter from "../pages/creator/integration/IntegrationRouter";
 
-const TermsOfUse = (props) => <Async load={import('../pages/legal/TermsOfUsePage')} componentProps={props}/>;
-const PrivacyPolicy = (props) => <Async load={import('../pages/legal/PrivacyPolicyPage')} componentProps={props}/>;
+import LegalRouter from '../pages/legal/LegalRouter';
 
-const DashboardRouter = (props) => <Async load={import("../pages/dashboard/DashboardRouter")} componentProps={props}/>;
-const CreatorDashboardRouter = (props) => <Async load={import("../pages/creator/CreatorDashboardRouter")} componentProps={props}/>;
-const SettingsRouter = (props) => <Async load={import("../pages/settings/SettingsRouter")} componentProps={props}/>;
+import DashboardRouter from "../pages/dashboard/DashboardRouter";
+import CreatorDashboardRouter from "../pages/creator/CreatorDashboardRouter";
+import SettingsRouter from "../pages/settings/SettingsRouter";
 
-const SearchRouter = (props) => <Async load={import("../pages/search/SearchRouter")} componentProps={props}/>;
+import SearchRouter from "../pages/search/SearchRouter";
 
 export default class MainApp extends Component {
   render() {
@@ -45,8 +43,7 @@ export default class MainApp extends Component {
               <Route path="/auth" component={AuthRouter}/>
               <Route path="/integration" component={IntegrationRouter}/>
 
-              <Route path="/legal/terms" component={TermsOfUse}/>
-              <Route path="/legal/privacy" component={PrivacyPolicy}/>
+              <Route path="/legal" component={LegalRouter}/>
 
               <Route path="/(creator|dashboard|settings|search)">
                 <div>

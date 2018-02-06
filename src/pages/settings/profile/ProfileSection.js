@@ -34,7 +34,7 @@ class ProfileSection extends Component {
             <div className="column is-one-third">
               <div className="profile-image">
                 <figure className="image is-1by1 is-small">
-                  <img src={avatar} width={100} height={100} className="is-centered"/>
+                  <img src={avatar} className="is-centered"/>
                 </figure>
                 <br/>
               </div>

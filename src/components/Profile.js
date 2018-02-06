@@ -8,7 +8,7 @@ function ImageProfile({ avatar, firstName, lastName }) {
     <div className="profile has-text-centered">
       <div className="image">
         <figure className="image is-1by1 is-small">
-          <img src={avatar} width={100} height={100} className="is-centered"/>
+          <img src={avatar} className="is-centered"/>
         </figure>
       </div>
       <div className="subtitle">{firstName} {lastName}</div>

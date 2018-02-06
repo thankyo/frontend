@@ -12,7 +12,7 @@ function EarnedThisMonth({ total }) {
           <div className="earn-image">
             <MoneyToCoffeeIcon amount={total}/>
           </div>
-          <span className="limit-count button button-blue">
+          <span className="is-primary is-inverted">
             <b>{total}.0</b>
             <span>USD</span>
           </span>

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getSupportedByMe } from "reducers/project.actions";
 
-import ProjectNav from "components/Projects/ProjectNav";
+import ProjectNav from "components/ProjectNav";
 
 const ListOfSupported = ({ projects = []}) => {
   if (projects.length === 0) {
