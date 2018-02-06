@@ -28,8 +28,18 @@ function byUserReducer(state = {}, { type, payload }) {
   }
 }
 
+function supportedReducer(state = {}, { type, payload }) {
+  switch (type) {
+    case `${GET_SUPPORTED}.fulfilled`:
+      let { id: user, projects } = payload;
+      return Object.assign({}, state, { [user]: projects.map(({ _id }) => _id) });
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   byId: byIdReducer,
   byUser: byUserReducer,
-  supported: promiseReducerDB(GET_SUPPORTED, [])
+  supported: supportedReducer
 })

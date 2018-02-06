@@ -16,7 +16,7 @@ const ListOfSupported = ({ projects = []}) => {
   );
 };
 
-const mapStateToProps = ({ project: { supported: { my = {} } } }) => my;
+const mapStateToProps = ({ project: { supported: { my = [] }, byId } }) => ({ projects: my.map(id => byId[id] )});
 
 const mapDispatchToProps = (dispatch, { id }) => {
   dispatch(getSupportedByMe(id));
