@@ -6,9 +6,11 @@ import Loading from "components/Loading";
 
 function ViewProject({ avatar, title, description, user, _id, tags, resource }) {
   if (!_id) {
-    return <div className="has-text-centered">
-      <Loading/>
-    </div>
+    return (
+      <div className="has-text-centered">
+        <Loading/>
+      </div>
+    )
   }
 
   return (

@@ -2,7 +2,6 @@ import user from "./user";
 import payment from './payment';
 import search from "./search";
 import thank from "./thank";
-import tag from "./tag";
 import navigation from "./navigation";
 import project from "./project";
 import post from "./post";
@@ -14,15 +13,14 @@ export default function () {
   return combineReducers(
     {
       routing,
+      form: formReducer,
       navigation,
       user,
-      tag,
       payment,
       search,
       post,
       thank,
       project,
-      form: formReducer
     }
   );
 }

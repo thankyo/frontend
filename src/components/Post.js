@@ -46,7 +46,7 @@ function EditPost({ submitting, initialValues, handleSubmit }) {
 
 EditPost = reduxForm()(EditPost);
 
-function MyPost({ post, onEdit, onLove }) {
+function ViewPost({ post, onEdit, onLove }) {
   let { resource: { uri }, ogObj: { title, description, image: { url = "" } = {}, tags = [] }, project } = post;
   return (
     <div className="columns">
@@ -57,9 +57,11 @@ function MyPost({ post, onEdit, onLove }) {
         <br/>
         <article className="media media-new-style">
           <figure className="media-left">
-            <p className="image is-64x64">
-              <img src={project.avatar}/>
-            </p>
+            <Link to={`/creator/${project.user}/project/${project._id}`}>
+              <p className="image is-64x64">
+                <img src={project.avatar}/>
+              </p>
+            </Link>
           </figure>
           <div className="media-content">
             <div className="content">
@@ -72,9 +74,10 @@ function MyPost({ post, onEdit, onLove }) {
             </div>
             <nav className="level is-mobile">
               <div className="level-left">
-                <a className="level-item" onClick={() => onLove(uri)} disabled={post.isLoved}>
-                  <span className="icon is-small is-black"><i className="fa fa-heart"/></span>
-                </a>
+                <div className="level-item">
+                  {post.isLoved && <span className="icon is-small"><i className="fa fa-heart"/></span>}
+                  {!post.isLoved && <a className="icon is-small" onClick={() => onLove(uri)}><i className="fa fa-heart"/></a>}
+                </div>
                 {post.isMy && (
                   <a className="level-item" onClick={onEdit}>
                     <span className="icon is-small"><i className="fa fa-edit"/></span>
@@ -91,11 +94,11 @@ function MyPost({ post, onEdit, onLove }) {
 }
 
 function Post(props) {
-  let { post } = props;
-  if (!post.isEdit) {
-    return <MyPost {...props}/>;
+  let { post: { isEdit, ogObj, _id } } = props;
+  if (!isEdit) {
+    return <ViewPost {...props}/>;
   } else {
-    return <EditPost onSubmit={props.savePost} initialValues={post.ogObj} form={post._id}/>
+    return <EditPost onSubmit={props.savePost} initialValues={ogObj} form={_id}/>
   }
 }
 

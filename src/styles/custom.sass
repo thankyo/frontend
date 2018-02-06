@@ -77,11 +77,11 @@ body
   min-width: 128px
   height: auto
   padding: 10px
-  color: #fff
+  color: $white
   border: 0
   background-color: $success
   &:hover
-    color: #fff
+    color: $white
     background-color: #96d044
 
 .register-page
@@ -438,26 +438,26 @@ body
   text-decoration: none
   -ms-flex-align: center
   align-items: center
-  &:hover
-    color: $primary
   .image
     overflow: hidden
     width: 56px
     height: 56px
     border: 3px solid $primary
     border-radius: 50%
+    &:hover
+      border: 3px solid $black
   strong
     font-size: 14px
   p
     font-size: 12px
-  a:disabled
-    color: $black-bis !important
+  &.is-active
+    strong
+      color: $black !important
+    .image
+      border: 3px solid $black !important
 
-.media-new-style.is-active
-  strong
-    color: $black !important
-  .image
-    border: 3px solid $black !important
+a:disabled
+  color: black !important
 
 .message-body
   .media-new-style:not(.button), .limit-button:not(.button)
@@ -496,11 +496,6 @@ pre
   word-wrap: break-word
   border: 1px solid #dbdbdb
   border-radius: 3px
-
-a
-  color: $success
-  &:hover
-    color: #96d044
 
 .subtitle-mb:not(:last-child)
   margin-bottom: .5rem
