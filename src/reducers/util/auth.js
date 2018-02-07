@@ -69,6 +69,11 @@ class AuthService {
     return this.doAuth(new Request(url, { credentials: 'same-origin' }), history);
   }
 
+  authWithGoogle(history) {
+    let url = `/api/v1/auth/social/google${history.location.search}`;
+    return this.doAuth(new Request(url, { credentials: 'same-origin' }), history);
+  }
+
   signUp(req, history) {
     let url = `/api/v1/auth/register`;
     let options = this.withPostOptions(req);

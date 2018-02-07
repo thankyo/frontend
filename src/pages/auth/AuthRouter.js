@@ -7,6 +7,8 @@ import auth from "reducers/util/auth";
 import { renderField, required, LoadingButton } from "components/form/form.utils";
 import { IconWithText } from "components/Icon";
 import FacebookAuthPage from "./FacebookAuthPage";
+import GoogleAuthPage from "./GoogleAuthPage";
+import GoogleLogin from "./GoogleLogin";
 
 let ResetForm = ({ handleSubmit, submitting }) => {
   return (
@@ -89,10 +91,14 @@ function FacebookHeader() {
     <div className="has-text-centered">
       <FacebookLogin>
         <a className="button is-primary is-inverted is-outlined">
-          <span className="fa fa-facebook-official"/>&nbsp;
-          <span>Connect with FB</span>
+          <IconWithText className="fa fa-facebook-official" text="Connect with FB"/>
         </a>
       </FacebookLogin>
+      <GoogleLogin>
+        <a className="button is-primary is-inverted is-outlined">
+          <IconWithText className="fa fa-google" text="Connect with Google"/>
+        </a>
+      </GoogleLogin>
       <br/>
       <br/>
       <h4 className="subtitle is-5">or</h4>
@@ -138,6 +144,9 @@ export default function ({ history }) {
                 </Route>
                 <Route exact path="/auth/facebook">
                   <FacebookAuthPage history={history}/>
+                </Route>
+                <Route exact path="/auth/google">
+                  <GoogleAuthPage history={history}/>
                 </Route>
                 <Route exact path="/auth/forgot">
                   <ReduxForgotForm onSubmit={(forgotReq) => auth.forgot(forgotReq).then(res => history.push("/auth/forgot/success"))}/>

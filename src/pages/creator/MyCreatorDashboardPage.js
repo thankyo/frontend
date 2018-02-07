@@ -5,6 +5,7 @@ import Project from "components/Project";
 import EarnedThisMonth from "./EarnedThisMonth";
 import ProjectNavigation from "./ProjectNavigation";
 import ProjectPosts from "./ProjectPosts";
+import AddProject from "./add/AddPage";
 import { Route, Switch, Link } from 'react-router-dom';
 import { IconWithText } from "components/Icon";
 
@@ -28,7 +29,7 @@ export default function myCreatorDashboardPage({ project }) {
             ])}
           />
           <Route exact path="/creator/my/add">
-            <h1>I'm here to add new project</h1>
+            <AddProject/>
           </Route>
         </Switch>
       </div>

@@ -1,7 +1,7 @@
-import { promiseReducerDB } from "./util/promiseStates";
 import { combineReducers } from "redux"
-import { GET_PROJECT, GET_USER_PROJECTS, GET_SUPPORTED } from "./project.actions";
+import { GET_PROJECT, GET_USER_PROJECTS, GET_SUPPORTED, ADD_PROJECT } from "./project.actions";
 import { UPDATE_MY_PROJECT } from "reducers/project.actions";
+import { promiseReducer } from "reducers/util/promiseStates";
 
 function byIdReducer(state = {}, { type, payload }) {
   switch (type) {
@@ -44,5 +44,6 @@ function supportedReducer(state = {}, { type, payload }) {
 export default combineReducers({
   byId: byIdReducer,
   byUser: byUserReducer,
-  supported: supportedReducer
+  supported: supportedReducer,
+  add: promiseReducer(ADD_PROJECT, [])
 })

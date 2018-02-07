@@ -6,6 +6,8 @@ export const GET_USER_PROJECTS = "GET_USER_PROJECTS";
 export const UPDATE_MY_PROJECT = "UPDATE_MY_PROJECT";
 export const GET_SUPPORTED = "GET_SUPPORTED";
 
+export const ADD_PROJECT = "ADD_PROJECT";
+
 export function getSupportedByMe() {
   return (dispatch) => {
     let url = new Request(`/api/v1/thank/my/supported`);
@@ -35,6 +37,14 @@ export function updateProject(project) {
     let req = new Request(`/api/v1/thank/my/project/${project._id}`, { method: 'PUT', body: JSON.stringify(project) });
     let p = authService.signAndFetch(req);
     return dispatchPromise(p, UPDATE_MY_PROJECT, dispatch);
+  }
+}
+
+export function addProject(project) {
+  return (dispatch) => {
+    let req = new Request(`/api/v1/thank/analyze/${project.url}`);
+    let p = fetch(req);
+    return dispatchPromise(p, ADD_PROJECT, dispatch)
   }
 }
 
