@@ -6,9 +6,9 @@ export default class GoogleLogin extends Component {
     let { host, protocol } = window.location;
     let url = `https://accounts.google.com/o/oauth2/auth?scope=profile email https://www.googleapis.com/auth/siteverification&client_id=${clientId}&redirect_uri=${protocol}//${host}/auth/google&response_type=code`;
     return (
-      <div onClick={() => window.location = url}>
+      <a href={url}>
         {this.props.children}
-      </div>
+      </a>
     )
   }
 };

@@ -89,16 +89,22 @@ let ReduxRegistrationForm = reduxForm({ form: 'register' })(RegisterForm);
 function FacebookHeader() {
   return (
     <div className="has-text-centered">
-      <FacebookLogin>
-        <a className="button is-primary is-inverted is-outlined">
-          <IconWithText className="fa fa-facebook-official" text="Connect with FB"/>
-        </a>
-      </FacebookLogin>
-      <GoogleLogin>
-        <a className="button is-primary is-inverted is-outlined">
-          <IconWithText className="fa fa-google" text="Connect with Google"/>
-        </a>
-      </GoogleLogin>
+      <div className="field has-addons">
+        <p className="control">
+          <FacebookLogin>
+            <div className="button is-primary is-inverted is-outlined">
+              <IconWithText className="fa fa-facebook-official" text="Connect with FB"/>
+            </div>
+          </FacebookLogin>
+        </p>
+        <p className="control">
+          <GoogleLogin>
+            <div className="button is-primary is-inverted is-outlined">
+              <IconWithText className="fa fa-google" text="Connect with Google"/>
+            </div>
+          </GoogleLogin>
+        </p>
+      </div>
       <br/>
       <br/>
       <h4 className="subtitle is-5">or</h4>
