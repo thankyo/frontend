@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ConnectedSocial from "./ConnectedSocial";
 import { fetchUser, saveUser } from "reducers/user.actions";
 import { connect } from "react-redux";
 import { Field, Form, reduxForm } from "redux-form";
@@ -72,6 +73,11 @@ class ProfileSection extends Component {
           <div className="columns">
             <div className="column">
               <Field name="bio" component={fieldWithLabel} type="textarea" className="textarea" placeholder="Bio"/>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column">
+              <ConnectedSocial profiles={initialValues.profiles}/>
             </div>
           </div>
           <div className="columns">
