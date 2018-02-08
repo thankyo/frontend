@@ -1,3 +1,5 @@
+import {LOCATION_CHANGE} from "react-router-redux";
+
 const LINKS = [
   { pathname: "/dashboard/my", name: "Supporter Mode", icon: "fa fa-thumbs-o-up" },
   { pathname: "/creator/my", name: "Creator Mode", icon: "fa fa-paint-brush" },
@@ -8,5 +10,9 @@ const LINKS = [
 ];
 
 export default function stateReducer(state = { links: LINKS }, { type, payload }) {
+  switch (type) {
+    case LOCATION_CHANGE:
+      window.scroll(0, 0)
+  }
   return state;
 }
