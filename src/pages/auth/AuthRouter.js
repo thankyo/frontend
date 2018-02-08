@@ -1,14 +1,13 @@
 import React from "react";
 import { Field, Form, reduxForm } from "redux-form";
 import AuthMenu from "./AuthMenu";
-import FacebookLogin from "./FacebookLogin";
+import { connect } from "react-redux";
 import { Link, Route, Switch } from 'react-router-dom';
 import auth from "reducers/util/auth";
 import { renderField, required, LoadingButton } from "components/form/form.utils";
 import { IconWithText } from "components/Icon";
 import FacebookAuthPage from "./FacebookAuthPage";
 import GoogleAuthPage from "./GoogleAuthPage";
-import GoogleLogin from "./GoogleLogin";
 
 let ResetForm = ({ handleSubmit, submitting }) => {
   return (
@@ -86,23 +85,19 @@ let RegisterForm = ({ handleSubmit, submitting }) => {
 
 let ReduxRegistrationForm = reduxForm({ form: 'register' })(RegisterForm);
 
-function FacebookHeader() {
+function SocialHeader({ facebook, google }) {
   return (
     <div className="has-text-centered">
       <div className="field has-addons">
         <p className="control">
-          <FacebookLogin>
-            <div className="button is-primary is-inverted is-outlined">
-              <IconWithText className="fa fa-facebook-official" text="Connect with FB"/>
-            </div>
-          </FacebookLogin>
+          <a className="button is-primary is-inverted is-outlined" href={facebook}>
+            <IconWithText className="fa fa-facebook-official" text="Connect with FB"/>
+          </a>
         </p>
         <p className="control">
-          <GoogleLogin>
-            <div className="button is-primary is-inverted is-outlined">
-              <IconWithText className="fa fa-google" text="Connect with Google"/>
-            </div>
-          </GoogleLogin>
+          <a className="button is-primary is-inverted is-outlined" href={google}>
+            <IconWithText className="fa fa-google" text="Connect with Google"/>
+          </a>
         </p>
       </div>
       <br/>
@@ -113,6 +108,8 @@ function FacebookHeader() {
     </div>
   );
 }
+
+SocialHeader = connect(({ auth: { url }}) => url)(SocialHeader);
 
 function ForgotPasswordLink() {
   return (
@@ -136,14 +133,14 @@ export default function ({ history }) {
               <Switch>
                 <Route exact path="/auth">
                   <div>
-                    <FacebookHeader/>
+                    <SocialHeader/>
                     <ReduxRegistrationForm onSubmit={(regReq) => auth.signUp(regReq, history)}/>
                     <ForgotPasswordLink/>
                   </div>
                 </Route>
                 <Route path="/auth/login">
                   <div>
-                    <FacebookHeader/>
+                    <SocialHeader/>
                     <ReduxLoginForm onSubmit={(logInReq) => auth.login(logInReq, history)}/>
                     <ForgotPasswordLink/>
                   </div>

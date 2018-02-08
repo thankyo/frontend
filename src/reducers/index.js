@@ -5,6 +5,8 @@ import thank from "./thank";
 import navigation from "./navigation";
 import project from "./project";
 import post from "./post";
+import auth from "./auth";
+
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
@@ -14,6 +16,7 @@ export default function () {
     {
       routing,
       form: formReducer,
+      auth,
       navigation,
       user,
       payment,

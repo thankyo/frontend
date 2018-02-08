@@ -17,7 +17,7 @@ class ProfileSection extends Component {
   }
 
   render() {
-    let { initialValues, avatar, handleSubmit, submitting } = this.props;
+    let { initialValues, avatar, handleSubmit, submitting, url } = this.props;
     if (initialValues === undefined) {
       return (
         <div className="has-text-centered">
@@ -77,7 +77,7 @@ class ProfileSection extends Component {
           </div>
           <div className="columns">
             <div className="column">
-              <ConnectedSocial profiles={initialValues.profiles}/>
+              <ConnectedSocial profiles={initialValues.profiles} url={url}/>
             </div>
           </div>
           <div className="columns">
@@ -96,9 +96,10 @@ class ProfileSection extends Component {
   }
 }
 
-const mapStateToProps = ({ user: { my }, form: { profile: { values: { avatar } = {} } = {} } }) => {
+const mapStateToProps = ({ user: { my }, auth: { url }, form: { profile: { values: { avatar } = {} } = {} } }) => {
   return {
     avatar,
+    url,
     initialValues: my
   };
 };
