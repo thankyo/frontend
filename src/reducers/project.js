@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-import { GET_PROJECT, GET_USER_PROJECTS, GET_SUPPORTED, ADD_PROJECT } from "./project.actions";
+import { GET_PROJECT, GET_USER_PROJECTS, GET_SUPPORTED, ADD_PROJECT, GET_PENDING_PROJECT } from "./project.actions";
 import { UPDATE_MY_PROJECT } from "reducers/project.actions";
 import { promiseReducer } from "reducers/util/promiseStates";
 
@@ -45,5 +45,6 @@ export default combineReducers({
   byId: byIdReducer,
   byUser: byUserReducer,
   supported: supportedReducer,
-  add: promiseReducer(ADD_PROJECT, [])
+  add: promiseReducer(ADD_PROJECT, []),
+  pending: promiseReducer(GET_PENDING_PROJECT, [])
 })

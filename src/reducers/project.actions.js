@@ -5,6 +5,7 @@ export const GET_PROJECT = "GET_PROJECT";
 export const GET_USER_PROJECTS = "GET_USER_PROJECTS";
 export const UPDATE_MY_PROJECT = "UPDATE_MY_PROJECT";
 export const GET_SUPPORTED = "GET_SUPPORTED";
+export const GET_PENDING_PROJECT = "GET_PENDING_PROJECT";
 
 export const ADD_PROJECT = "ADD_PROJECT";
 
@@ -48,3 +49,10 @@ export function addProject(project) {
   }
 }
 
+export function getPendingProjects() {
+  return (dispatch) => {
+    let req = new Request(`/api/v1/thank/my/project/pending`);
+    let p = authService.signAndFetch(req);
+    return dispatchPromise(p, GET_PENDING_PROJECT, dispatch);
+  }
+}

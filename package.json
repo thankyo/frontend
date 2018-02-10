@@ -18,6 +18,7 @@
     "bulma-divider": "^0.1.0",
     "bulma-pageloader": "^0.1.0",
     "bulma-steps": "^0.1.0",
+    "bulma-switch": "^0.1.12",
     "bulma-timeline": "^1.1.0",
     "font-awesome": "4.7.0",
     "moment": "^2.20.1",
