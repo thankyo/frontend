@@ -2,26 +2,18 @@ import authService from "./util/auth";
 import { dispatchPromise } from "./util/promiseStates";
 
 export const GET_PROJECT = "GET_PROJECT";
-export const GET_USER_PROJECTS = "GET_USER_PROJECTS";
-export const UPDATE_MY_PROJECT = "UPDATE_MY_PROJECT";
 export const GET_SUPPORTED = "GET_SUPPORTED";
-export const REFRESH_MY_PROJECTS = "REFRESH_MY_PROJECTS";
+export const GET_USER_PROJECTS = "GET_USER_PROJECTS";
 
-export const ADD_PROJECT = "ADD_PROJECT";
+export const REFRESH_MY_PROJECTS = "REFRESH_MY_PROJECTS";
+export const UPDATE_MY_PROJECT = "UPDATE_MY_PROJECT";
+export const GET_OWNED_PROJECTS = "GET_OWNED_PROJECTS";
 
 export function getSupportedByMe() {
   return (dispatch) => {
     let url = new Request(`/api/v1/thank/user/my/supported`);
     let p = authService.signAndFetch(url).then(projects => ({ id: "my", projects }));;
     return dispatchPromise(p, GET_SUPPORTED, dispatch)
-  }
-}
-
-export function getProject(id) {
-  return (dispatch) => {
-    let req = new Request(`/api/v1/thank/project/${id}`);
-    let p = authService.signAndFetch(req);
-    return dispatchPromise(p, GET_PROJECT, dispatch);
   }
 }
 
@@ -41,11 +33,11 @@ export function updateProject(project) {
   }
 }
 
-export function addProject(project) {
+export function getOwnedProjects() {
   return (dispatch) => {
-    let req = new Request(`/api/v1/thank/analyze/${project.url}`);
-    let p = fetch(req);
-    return dispatchPromise(p, ADD_PROJECT, dispatch)
+    let req = new Request(`/api/v1/thank/user/my/owned`);
+    let p = authService.signAndFetch(req).then(projects => ({ projects }));
+    return dispatchPromise(p, GET_OWNED_PROJECTS, dispatch);
   }
 }
 

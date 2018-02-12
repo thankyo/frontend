@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
-import { addProject, refreshMyProjects } from "reducers/project.actions";
+import { addProject, getOwnedProjects, refreshMyProjects } from "reducers/project.actions";
 import { IconWithText } from "components/Icon";
 import RefreshButton from "components/RefreshButton";
 import Project from "components/Project";
@@ -36,6 +36,7 @@ function MyProjects ({ pending, refresh }){
 
 const mapStateToProps = ({ project: { owned }}) => ({ pending: owned });
 const mapDispatchToProps = (dispatch) => {
+  dispatch(getOwnedProjects());
   return {
     refresh: () => dispatch(refreshMyProjects()),
     onSubmit: (project) => dispatch(addProject(project)),

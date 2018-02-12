@@ -10,7 +10,6 @@ import { fieldWithLabel, LoadingButton } from "./form/form.utils";
 import { IconWithText, WebStackIcon } from "./Icon";
 import Tags from "./form/Tags";
 import Resource from "./Resource";
-import { flatField } from "components/form/form.utils";
 import RefreshButton from "components/RefreshButton";
 import { Icon } from "components/Icon";
 
