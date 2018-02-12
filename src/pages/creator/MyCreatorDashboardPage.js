@@ -9,12 +9,15 @@ import MyProjects from "./MyProjects";
 import { Route, Switch } from 'react-router-dom';
 
 
-export default function myCreatorDashboardPage({ project }) {
+export default function myCreatorDashboardPage() {
   return (
     <div className="columns">
       <div className="column is-one-quarter">
         <Profile id="my"/>
-        <ProjectNavigation active={project} user="my"/>
+        <Switch>
+          <Route exact path="/creator/my"><ProjectNavigation user="my"/></Route>
+          <Route exact path="/creator/my/project/:project" render={(({ match: { params: { project } } }) => <ProjectNavigation user="my" active={project}/>)}/>
+        </Switch>
       </div>
       <div className="column is-two-quarter">
         <Switch>

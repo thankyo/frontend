@@ -68,13 +68,13 @@ function PostActions({ post, onEdit, onLove }) {
   if (post.isLoved) {
     return (
       <PostActionWrap>
-        <span className="icon is-small" disabled><i className="fa fa-heart"/></span>
+        <a className="icon is-small" disabled={true}><i className="fa fa-heart"/></a>
       </PostActionWrap>
     );
   }
   return (
     <PostActionWrap>
-      <a className="icon is-small" onClick={() => onLove(post.resource.uri)}><i className="fa fa-heart"/></a>}
+      <a className="icon is-small" onClick={() => onLove(post.resource.uri)}><i className="fa fa-heart fa-2x"/></a>
     </PostActionWrap>
   )
 
