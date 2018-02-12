@@ -5,9 +5,9 @@ import Project from "components/Project";
 import EarnedThisMonth from "./EarnedThisMonth";
 import ProjectNavigation from "./ProjectNavigation";
 import ProjectPosts from "./ProjectPosts";
-import AddProject from "./add/AddPage";
-import { Route, Switch, Link } from 'react-router-dom';
-import { IconWithText } from "components/Icon";
+import MyProjects from "./MyProjects";
+import { Route, Switch } from 'react-router-dom';
+
 
 export default function myCreatorDashboardPage({ project }) {
   return (
@@ -15,22 +15,17 @@ export default function myCreatorDashboardPage({ project }) {
       <div className="column is-one-quarter">
         <Profile id="my"/>
         <ProjectNavigation active={project} user="my"/>
-        <hr/>
-        <Link to='/creator/my/add' className="button is-primary is-outlined"><IconWithText className="fa fa-plus-circle" text="Add"/></Link>
       </div>
       <div className="column is-two-quarter">
         <Switch>
           <Route exact path="/creator/my">
-            <h1 className="title has-text-centered">Select a project</h1>
+            <MyProjects/>
           </Route>
           <Route exact path="/creator/my/project/:project" render={(({ match: { params: { project } } }) => [
               <Project key={0} id={project} edit={true}/>,
               <ProjectPosts key={2} id={project}/>,
             ])}
           />
-          <Route exact path="/creator/my/add">
-            <AddProject/>
-          </Route>
         </Switch>
       </div>
       <div className="column is-one-quarter">

@@ -24,3 +24,12 @@ IconWithText.propTypes = {
   className: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired
 };
+
+export function WebStackIcon({ webStack }) {
+  switch (webStack) {
+    case "WordPress":
+      return (<Icon className="fa fa-wordpress"/>);
+    default:
+      return (<Icon className="fa fa-code" />)
+  }
+}

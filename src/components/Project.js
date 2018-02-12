@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 
 import { updateProject } from "reducers/project.actions";
 
-import Loading from "components/Loading";
-import { fieldWithLabel, LoadingButton } from "components/form/form.utils";
-import { IconWithText } from "components/Icon";
-import Tags from "components/form/Tags";
+import Loading from "./Loading";
+import { fieldWithLabel, LoadingButton } from "./form/form.utils";
+import { IconWithText, WebStackIcon } from "./Icon";
+import Tags from "./form/Tags";
+import Resource from "./Resource";
+import { flatField } from "components/form/form.utils";
 
 function ViewProject({ avatar, title, description, user, _id, tags, resource }) {
   if (!_id) {
@@ -98,22 +100,41 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
     </div>
   );
 }
-EditProject = reduxForm({ form: "project", enableReinitialize: true })(EditProject);
+EditProject = reduxForm({ enableReinitialize: true })(EditProject);
 
-function Project({ edit, project, id, updateProject}) {
-  if (edit) {
-    return <EditProject initialValues={project} onSubmit={updateProject}/>
+function ProjectLine({ initialValues: { webStack, resource }, handleSubmit }) {
+  return (
+    <Form className="columns" onSubmit={handleSubmit}>
+      <div className="column is-9">
+        <WebStackIcon webStack={webStack}/>
+        <Resource resource={resource}/>
+      </div>
+      <div className="column is-3">
+        <Field name="enabled" component={flatField} type="checkbox" placeholder="Enabled"/>
+      </div>
+    </Form>
+  )
+}
+
+ProjectLine = reduxForm({ enableReinitialize: true })(ProjectLine);
+
+function Project({ edit, line, project, id, updateProject}) {
+  if (line) {
+    return <ProjectLine form={id} initialValues={project} onSubmit={updateProject}/>
+  } else if (edit) {
+    return <EditProject form={id} initialValues={project} onSubmit={updateProject}/>
   } else {
-    return <ViewProject {...project}/>
+    return <ViewProject initialValues={project} {...project}/>
   }
 }
 
 
 const mapStateToProps = ({ project: { byId }}, { id }) => ({ project: byId[id] });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, { id }) => {
   return {
-    updateProject: (project) => dispatch(updateProject(project))
+    updateProject: (project) => dispatch(updateProject(project)),
+    enableProject: (project) => dispatch(updateProject(project))
   }
 };
 

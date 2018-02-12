@@ -8,7 +8,7 @@ export default function Project({ project = {}, to, isActive = false}) {
       <div className="media-left">
         <Link to={to}>
           <figure className="image">
-            <img src={avatar} alt="user picture"/>
+            <img src={avatar || "http://via.placeholder.com/50x50"} alt="user picture"/>
           </figure>
         </Link>
       </div>

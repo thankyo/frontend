@@ -1,11 +1,11 @@
 import { combineReducers } from "redux"
-import { GET_PROJECT, GET_USER_PROJECTS, GET_SUPPORTED, ADD_PROJECT, GET_PENDING_PROJECT } from "./project.actions";
+import { GET_PROJECT, GET_USER_PROJECTS, GET_SUPPORTED, REFRESH_MY_PROJECTS } from "./project.actions";
 import { UPDATE_MY_PROJECT } from "reducers/project.actions";
-import { promiseReducer } from "reducers/util/promiseStates";
 
 function byIdReducer(state = {}, { type, payload }) {
   switch (type) {
     case `${GET_USER_PROJECTS}.fulfilled`:
+    case `${REFRESH_MY_PROJECTS}.fulfilled`:
     case `${GET_SUPPORTED}.fulfilled`:
       let projectById = payload.projects.reduce((agg, project) => {
         agg[project._id] = project;
@@ -41,10 +41,22 @@ function supportedReducer(state = {}, { type, payload }) {
   }
 }
 
+function ownedReducer(state = [], { type, payload }) {
+  switch (type) {
+    case `${GET_USER_PROJECTS}.fulfilled`:
+      if (payload.id !== "my") {
+        return state;
+      }
+    case `${REFRESH_MY_PROJECTS}.fulfilled`:
+      return payload.projects.map(({ _id }) => _id);
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   byId: byIdReducer,
   byUser: byUserReducer,
   supported: supportedReducer,
-  add: promiseReducer(ADD_PROJECT, []),
-  pending: promiseReducer(GET_PENDING_PROJECT, [])
+  owned: ownedReducer
 })

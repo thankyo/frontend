@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
-import { addProject, getPendingProjects } from "reducers/project.actions";
+import { addProject, refreshMyProjects } from "reducers/project.actions";
 import Resource from "components/Resource";
 import { LoadingButton } from "components/form/form.utils";
 import { Icon, IconWithText } from "components/Icon";
+import Project from "components/Project";
 
 // TODO single loading button logic
 class RefreshButton extends Component {
@@ -35,10 +36,19 @@ class RefreshButton extends Component {
 
 }
 
-function AddProject ({ pending, refresh }){
+function WebStackLink({ webStack }) {
+  switch (webStack) {
+    case "WordPress":
+      return (<Icon className="fa fa-wordpress"/>);
+    default:
+      return (<Icon className="fa fa-code" />)
+  }
+}
+
+function MyProjects ({ pending, refresh }){
   return (
     <section className="section">
-      <h1 className="title">Add project</h1>
+      <h1 className="title">My projects</h1>
       <h2 className="subtitle is-6">
         We are using <strong>Google Verification API</strong>.<br/>
         So all you need to do is <Link to="/settings/profile">link your Google</Link> account and we are good to go.
@@ -51,19 +61,7 @@ function AddProject ({ pending, refresh }){
           <RefreshButton onClick={refresh}/>
         </div>
       </div>
-      {pending.map(({ resource, _id }, i) => (
-        <div key={i} className="columns">
-          <div className="column is-9">
-            <Resource resource={resource}/>
-          </div>
-          <div className="column is-3">
-            <div className="field">
-              <input id={_id} type="checkbox" className="switch" onChange={() => {}}/>
-              <label htmlFor={_id}>Enabled</label>
-            </div>
-          </div>
-        </div>
-      ))}
+      {pending.map((id, i) => (<Project id={id} line={true} key={i}/>))}
       <h2 className="subtitle is-6">
         If you have no sites verified, please refer to <a href="https://support.google.com/webmasters/answer/35179?hl=en">Google</a>, or contact us at <a mailto="antono@lovei.tips">antono@loveit.tips</a>
       </h2>
@@ -71,13 +69,12 @@ function AddProject ({ pending, refresh }){
   );
 }
 
-const mapStateToProps = ({ project: { pending }}) => ({ pending })
+const mapStateToProps = ({ project: { owned }}) => ({ pending: owned });
 const mapDispatchToProps = (dispatch) => {
-  dispatch(getPendingProjects());
   return {
-    refresh: () => dispatch(getPendingProjects()),
+    refresh: () => dispatch(refreshMyProjects()),
     onSubmit: (project) => dispatch(addProject(project)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddProject);
+export default connect(mapStateToProps, mapDispatchToProps)(MyProjects);

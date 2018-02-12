@@ -86,6 +86,13 @@ export const flatField = ({
       <img key={1} src={input.value}/>,
     ];
   }
+  if (type === "checkbox" +
+    "") {
+    return [
+      <input key={0} {...input} type="checkbox" className="switch" disabled={disabled}/>,
+      <label key={1}>{placeholder}</label>,
+    ];
+  }
   if (type === "textarea") {
     return <textarea {...input} type={type} className={inputClassName} placeholder={placeholder} disabled={disabled}/>
   }
