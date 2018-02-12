@@ -74,27 +74,31 @@ export const flatField = ({
   className,
   placeholder,
   type,
+  label,
   submitting,
   disabled,
   meta: { touched, error }
 }) => {
   let inputClassName = error && touched ? `${className} is-danger` : className;
-  if (submitting) inputClassName = `${inputClassName} is-loading`;
+  if (submitting) {
+    inputClassName = `${inputClassName} is-loading`;
+  }
+
   if (type === "image") {
     return [
       <input key={0} {...input} type="text" className={inputClassName} placeholder={placeholder} disabled={disabled}/>,
       <img key={1} src={input.value}/>,
     ];
-  }
-  if (type === "checkbox" +
-    "") {
-    return [
-      <input key={0} {...input} type="checkbox" className="switch" disabled={disabled}/>,
-      <label key={1}>{placeholder}</label>,
-    ];
-  }
-  if (type === "textarea") {
+  } else if (type === "textarea") {
     return <textarea {...input} type={type} className={inputClassName} placeholder={placeholder} disabled={disabled}/>
+  } else {
+    if (label) {
+      return [
+        <label key={1}>{label}</label>,
+        <input key={0} {...input} type={type} className={inputClassName} placeholder={placeholder} disabled={disabled}/>,
+      ]
+    } else {
+      return <input {...input} type={type} className={inputClassName} placeholder={placeholder} disabled={disabled}/>
+    }
   }
-  return <input {...input} type={type} className={inputClassName} placeholder={placeholder} disabled={disabled}/>
 };

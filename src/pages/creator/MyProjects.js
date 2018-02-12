@@ -3,47 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
 import { addProject, refreshMyProjects } from "reducers/project.actions";
-import Resource from "components/Resource";
-import { LoadingButton } from "components/form/form.utils";
-import { Icon, IconWithText } from "components/Icon";
+import { IconWithText } from "components/Icon";
+import RefreshButton from "components/RefreshButton";
 import Project from "components/Project";
 
-// TODO single loading button logic
-class RefreshButton extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { submitting: false };
-  }
-
-  handleClick = () => {
-    this.setState({ submitting: true });
-    this.props
-      .onClick()
-      .then(() => this.setState({ submitting: false }))
-      .catch(() => this.setState({ submitting: false }))
-  };
-
-  render(){
-    return(
-      <div onClick={this.handleClick} className="is-pulled-right">
-        <LoadingButton submitting={this.state.submitting} className="is-primary">
-          <IconWithText className="fa fa-refresh" text="Refresh"/>
-        </LoadingButton>
-      </div>
-    )
-  }
-
-}
-
-function WebStackLink({ webStack }) {
-  switch (webStack) {
-    case "WordPress":
-      return (<Icon className="fa fa-wordpress"/>);
-    default:
-      return (<Icon className="fa fa-code" />)
-  }
-}
 
 function MyProjects ({ pending, refresh }){
   return (
@@ -58,7 +21,9 @@ function MyProjects ({ pending, refresh }){
           <p className="title is-5">Available projects</p>
         </div>
         <div className="column is-6">
-          <RefreshButton onClick={refresh}/>
+          <RefreshButton onClick={refresh}>
+            <IconWithText className="fa fa-refresh" text="Refresh"/>
+          </RefreshButton>
         </div>
       </div>
       {pending.map((id, i) => (<Project id={id} line={true} key={i}/>))}

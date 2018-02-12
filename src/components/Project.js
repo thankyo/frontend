@@ -11,6 +11,8 @@ import { IconWithText, WebStackIcon } from "./Icon";
 import Tags from "./form/Tags";
 import Resource from "./Resource";
 import { flatField } from "components/form/form.utils";
+import RefreshButton from "components/RefreshButton";
+import { Icon } from "components/Icon";
 
 function ViewProject({ avatar, title, description, user, _id, tags, resource }) {
   if (!_id) {
@@ -100,27 +102,31 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
     </div>
   );
 }
-EditProject = reduxForm({ enableReinitialize: true })(EditProject);
+EditProject = reduxForm({ form: "project", enableReinitialize: true })(EditProject);
 
-function ProjectLine({ initialValues: { webStack, resource }, handleSubmit }) {
+function ProjectLine({ project: { webStack, resource, _id, enabled }, onSubmit }) {
   return (
-    <Form className="columns" onSubmit={handleSubmit}>
-      <div className="column is-9">
+    <div className="columns">
+      <div className="column is-7">
         <WebStackIcon webStack={webStack}/>
         <Resource resource={resource}/>
       </div>
-      <div className="column is-3">
-        <Field name="enabled" component={flatField} type="checkbox" placeholder="Enabled"/>
+      <div className="column is-2">
+        {enabled ? "Enabled" : "Disabled"}
       </div>
-    </Form>
+      <div className="column is-3">
+
+        <RefreshButton onClick={onSubmit} className={enabled ? "is-primary" : "is-default"}>
+          {enabled ? <Icon className="fa fa-toggle-on"/> : <Icon className='fa fa-toggle-off'/>}
+        </RefreshButton>
+      </div>
+    </div>
   )
 }
 
-ProjectLine = reduxForm({ enableReinitialize: true })(ProjectLine);
-
 function Project({ edit, line, project, id, updateProject}) {
   if (line) {
-    return <ProjectLine form={id} initialValues={project} onSubmit={updateProject}/>
+    return <ProjectLine project={project} onSubmit={() => updateProject(Object.assign({}, project, { enabled: !project.enabled}))}/>
   } else if (edit) {
     return <EditProject form={id} initialValues={project} onSubmit={updateProject}/>
   } else {
@@ -131,10 +137,9 @@ function Project({ edit, line, project, id, updateProject}) {
 
 const mapStateToProps = ({ project: { byId }}, { id }) => ({ project: byId[id] });
 
-const mapDispatchToProps = (dispatch, { id }) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     updateProject: (project) => dispatch(updateProject(project)),
-    enableProject: (project) => dispatch(updateProject(project))
   }
 };
 
