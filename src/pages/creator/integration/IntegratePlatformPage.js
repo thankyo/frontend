@@ -11,7 +11,7 @@ let VerificationPage = ({ submitting, verify }) => {
       <h1 className="title is-2">Which url do you want to verify </h1>
       <br/>
       <h1 className="title is-5">Before starting you need to verify resource ownership</h1>
-      <Field name="uri" component={renderField} type="uri" className="input" placeholder="Link" validate={[required]} disabled={submitting}/>
+      <Field name="uri" component={renderField} type="uri" placeholder="Link" validate={[required]} disabled={submitting}/>
 
       <div className="field">
         <LoadingButton submitting={submitting}>

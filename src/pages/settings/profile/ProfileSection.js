@@ -41,7 +41,7 @@ class ProfileSection extends Component {
               </div>
             </div>
             <div className="column is-two-third">
-              <Field name="avatar" component={fieldWithLabel} type="url" className="input" placeholder="Avatar URL"/>
+              <Field name="avatar" component={fieldWithLabel} type="url" placeholder="Avatar URL"/>
               <p className="subtitle is-6">We currently do not store profile images, but you can use <a href="https://gravatar.com">gravatar</a></p>
             </div>
           </div>
@@ -51,23 +51,20 @@ class ProfileSection extends Component {
               <Field name="firstName"
                      component={fieldWithLabel}
                      type="string"
-                     className="input"
                      placeholder="First name"
                      validate={[required]}/>
             </div>
             <div className="column is-half">
-              <Field name="lastName" component={fieldWithLabel} type="string" className="input"
+              <Field name="lastName" component={fieldWithLabel} type="string"
                      placeholder="Last name" validate={[required]}/>
             </div>
           </div>
           <div className="columns">
             <div className="column is-half">
-              <Field name="email" component={fieldWithLabel} type="email" className="input" placeholder="Email"
-                     validate={[required]}/>
+              <Field name="email" component={fieldWithLabel} type="email" placeholder="Email" validate={[required]}/>
             </div>
             <div className="column is-half">
-              <Field name="dateOfBirth" component={fieldWithLabel} type="date" className="input"
-                     placeholder="Date Of Birth" disabled/>
+              <Field name="dateOfBirth" component={fieldWithLabel} type="date" placeholder="Date Of Birth" disabled/>
             </div>
           </div>
           <div className="columns">

@@ -13,7 +13,7 @@ function Invite({ handleSubmit, submitting }) {
       <Form onSubmit={handleSubmit}>
         <div className="field has-addons">
           <div className="control is-expanded has-icons-left">
-            <Field name="linkOrEmail" component={flatField} validate={[required]} type="text" className="input" placeholder="Link or email"/>
+            <Field name="linkOrEmail" component={flatField} validate={[required]} type="text" placeholder="Link or email"/>
             <span className="icon is-small is-left"><i className="fa fa-globe"/></span>
           </div>
           <LoadingButton submitting={submitting}>

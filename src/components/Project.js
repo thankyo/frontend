@@ -73,13 +73,14 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
             </div>
           </div>
           <div className="column is-two-third">
-            <Field name="avatar" component={fieldWithLabel} type="url" className="input" placeholder="Avatar URL"/>
+            <Field name="avatar" component={fieldWithLabel} type="url" placeholder="Avatar URL"/>
           </div>
         </div>
         <div className="columns">
           <div className="column">
-            <Field name="title" component={fieldWithLabel} type="input" className="input" placeholder="Title"/>
+            <Field name="title" component={fieldWithLabel} type="text" placeholder="Title"/>
             <Field name="description" component={fieldWithLabel} type="textarea" className="textarea" placeholder="Description"/>
+            <Field name="rss" component={fieldWithLabel} type="text" placeholder="RSS"/>
           </div>
         </div>
         <FieldArray name="tags" component={(props) => {

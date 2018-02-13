@@ -14,11 +14,11 @@ function EditPost({ submitting, initialValues, handleSubmit }) {
       <div className="column">
 
         <Form onSubmit={handleSubmit}>
-          <Field name="url" component={fieldWithLabel} className="input" placeholder="Url" disabled/>
+          <Field name="url" component={fieldWithLabel}  placeholder="Url" disabled/>
           <hr/>
-          <Field name="image.url" component={fieldWithLabel} type="image" className="input" placeholder="Image"/>
+          <Field name="image.url" component={fieldWithLabel} type="image" placeholder="Image"/>
           <hr/>
-          <Field name="title" component={fieldWithLabel} className="input" placeholder="Title"/>
+          <Field name="title" component={fieldWithLabel} placeholder="Title"/>
           <Field name="description" component={fieldWithLabel} className="textarea" type="textarea" placeholder="Description"/>
           <FieldArray name="tags" component={(props) => {
             let { fields } = props;

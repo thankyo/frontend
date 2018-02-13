@@ -12,7 +12,7 @@ import GoogleAuthPage from "./GoogleAuthPage";
 let ResetForm = ({ handleSubmit, submitting }) => {
   return (
     <Form onSubmit={handleSubmit} className="is-primary">
-      <Field name="password" component={renderField} type="password" className="input" placeholder="New Password"
+      <Field name="password" component={renderField} type="password" placeholder="New Password"
              validate={[required]} disabled={submitting}/>
 
       <div className="field has-addons">
@@ -29,7 +29,7 @@ let ReduxResetForm = reduxForm({ form: 'reset' })(ResetForm);
 let ForgotForm = ({ handleSubmit, submitting }) => {
   return (
     <Form onSubmit={handleSubmit} className="is-primary">
-      <Field name="email" component={renderField} type="email" className="input" placeholder="Email"
+      <Field name="email" component={renderField} type="email" placeholder="Email"
              validate={[required]} disabled={submitting}/>
 
       <div className="field">
@@ -47,9 +47,9 @@ let LoginForm = ({ handleSubmit, submitting }) => {
 
   return (
     <Form onSubmit={handleSubmit} className="is-primary">
-      <Field name="email" component={renderField} type="email" className="input" placeholder="Email"
+      <Field name="email" component={renderField} type="email" placeholder="Email"
              validate={[required]} disabled={submitting}/>
-      <Field name="password" component={renderField} type="password" className="input" placeholder="Password"
+      <Field name="password" component={renderField} type="password" placeholder="Password"
              validate={[required]} disabled={submitting}/>
 
       <div className="field has-addons">
@@ -66,13 +66,13 @@ let ReduxLoginForm = reduxForm({ form: 'login' })(LoginForm);
 let RegisterForm = ({ handleSubmit, submitting }) => {
   return (
     <Form onSubmit={handleSubmit}>
-      <Field name="firstName" component={renderField} type="string" className="input" placeholder="First name"
+      <Field name="firstName" component={renderField} type="string" placeholder="First name"
              validate={[required]}/>
-      <Field name="lastName" component={renderField} type="string" className="input" placeholder="Last name"
+      <Field name="lastName" component={renderField} type="string" placeholder="Last name"
              validate={[required]}/>
-      <Field name="email" component={renderField} type="email" className="input" placeholder="Email"
+      <Field name="email" component={renderField} type="email" placeholder="Email"
              validate={[required]}/>
-      <Field name="password" component={renderField} type="password" className="input" placeholder="Password"
+      <Field name="password" component={renderField} type="password" placeholder="Password"
              validate={[required]}/>
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
