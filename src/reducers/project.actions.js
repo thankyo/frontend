@@ -37,7 +37,7 @@ export function updateProject(project) {
 export function refreshProjectFeed(project) {
   return (dispatch) => {
     let req = new Request(`/api/v1/thank/project/${project}/feed`);
-    let p = authService.signAndFetch(req);
+    let p = authService.signAndFetch(req).then(posts => ({ id: project, posts }));
     return dispatchPromise(p, REFRESH_PROJECT_FEED, dispatch);
   }
 }
