@@ -1,12 +1,9 @@
 import React from "react";
-import ManagedResources from "./resource/ManagedResources";
 import JSIntegration from "./JSIntegration";
 
-export default function ({ id }) {
+export default function () {
   return (
     <div>
-      <ManagedResources id={id}/>
-      <br/>
       <JSIntegration/>
       <br/>
       <h3 className="title is-6">Did not work? <a

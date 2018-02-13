@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Field, Form, reduxForm, FieldArray } from "redux-form";
 import { Link } from "react-router-dom";
 
-import { updateProject } from "reducers/project.actions";
+import { refreshProjectFeed, updateProject } from "reducers/project.actions";
 
 import Loading from "./Loading";
 import { fieldWithLabel, LoadingButton } from "./form/form.utils";
@@ -11,7 +11,9 @@ import { IconWithText, WebStackIcon } from "./Icon";
 import Tags from "./form/Tags";
 import Resource from "./Resource";
 import RefreshButton from "components/RefreshButton";
+import RefreshLink from "components/RefreshLink";
 import { Icon } from "components/Icon";
+import { flatField } from "components/form/form.utils";
 
 function ViewProject({ avatar, title, description, user, _id, tags, resource }) {
   if (!_id) {
@@ -50,7 +52,7 @@ function ViewProject({ avatar, title, description, user, _id, tags, resource }) 
   );
 }
 
-function EditProject({ initialValues, submitting, handleSubmit }) {
+function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
   if (!initialValues)
     return (
       <div className="has-text-centered">
@@ -78,9 +80,8 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
         </div>
         <div className="columns">
           <div className="column">
-            <Field name="title" component={fieldWithLabel} type="text" placeholder="Title"/>
+            <Field name="title" component={fieldWithLabel} placeholder="Title"/>
             <Field name="description" component={fieldWithLabel} type="textarea" className="textarea" placeholder="Description"/>
-            <Field name="rss" component={fieldWithLabel} type="text" placeholder="RSS"/>
           </div>
         </div>
         <FieldArray name="tags" component={(props) => {
@@ -93,6 +94,18 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
             </div>
           )
         }}/>
+        <hr/>
+        <p className="title is-6">RSS</p>
+        <div className="columns">
+          <div className="column is-9">
+            <Field name="rss" component={flatField} type="url" placeholder="RSS"/>
+          </div>
+          <div className="column is-3">
+            <RefreshLink onClick={refreshFeed}>
+              <IconWithText className="fa fa-refresh" text="Refresh"/>
+            </RefreshLink>
+          </div>
+        </div>
         <div className="is-pulled-right">
           <LoadingButton submitting={submitting} className="is-outlined is-primary">
             <IconWithText className="fa fa-save" text="Save"/>
@@ -124,11 +137,11 @@ function ProjectLine({ project: { webStack, resource, _id, enabled }, onSubmit }
   )
 }
 
-function Project({ edit, line, project, id, updateProject}) {
+function Project({ edit, line, project, id, updateProject, refreshFeed}) {
   if (line) {
     return <ProjectLine project={project} onSubmit={() => updateProject(Object.assign({}, project, { enabled: !project.enabled}))}/>
   } else if (edit) {
-    return <EditProject form={id} initialValues={project} onSubmit={updateProject}/>
+    return <EditProject form={id} initialValues={project} onSubmit={updateProject} refreshFeed={refreshFeed}/>
   } else {
     return <ViewProject initialValues={project} {...project}/>
   }
@@ -137,9 +150,10 @@ function Project({ edit, line, project, id, updateProject}) {
 
 const mapStateToProps = ({ project: { byId }}, { id }) => ({ project: byId[id] });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, { id }) => {
   return {
     updateProject: (project) => dispatch(updateProject(project)),
+    refreshFeed: () => dispatch(refreshProjectFeed(id))
   }
 };
 

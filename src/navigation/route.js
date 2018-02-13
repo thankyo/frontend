@@ -12,7 +12,6 @@ import auth from "reducers/util/auth";
 import LandingPage from "../pages/landing/LandingPage";
 
 import AuthRouter from '../pages/auth/AuthRouter';
-import IntegrationRouter from "../pages/creator/integration/IntegrationRouter";
 
 import LegalRouter from '../pages/legal/LegalRouter';
 
@@ -41,7 +40,6 @@ export default class MainApp extends Component {
                 )
               )}/>
               <Route path="/auth" component={AuthRouter}/>
-              <Route path="/integration" component={IntegrationRouter}/>
 
               <Route path="/legal" component={LegalRouter}/>
 

@@ -1,8 +1,13 @@
 import { promiseReducer } from "./util/promiseStates";
 import { SEARCH_BY_TAG, SEARCH_BY_PROJECT } from "./search.actions";
+import { REFRESH_PROJECT_FEED } from "reducers/project.actions";
 import { combineReducers } from "redux";
 import {LOCATION_CHANGE} from "react-router-redux";
 import queryString from "query-string";
+
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
 
 function queryReducer(state = "", { type, payload }) {
   switch (type) {
@@ -20,8 +25,11 @@ function queryReducer(state = "", { type, payload }) {
 function projectReducer(state = {}, { type, payload }) {
   switch (type) {
     case `${SEARCH_BY_PROJECT}.fulfilled`:
+    case `${REFRESH_PROJECT_FEED}.fulfilled`:
       let { id, posts } = payload;
-      return Object.assign({}, state, { [id]: posts.map(({ _id }) => _id) });
+      let prjIds = posts.map(({ _id }) => _id).concat(state[id] || []).filter(onlyUnique);
+
+      return Object.assign({}, state, { [id]: prjIds });
     default:
       return state;
   }

@@ -8,6 +8,7 @@ export const GET_USER_PROJECTS = "GET_USER_PROJECTS";
 export const REFRESH_MY_PROJECTS = "REFRESH_MY_PROJECTS";
 export const UPDATE_MY_PROJECT = "UPDATE_MY_PROJECT";
 export const GET_OWNED_PROJECTS = "GET_OWNED_PROJECTS";
+export const REFRESH_PROJECT_FEED = "REFRESH_PROJECT_FEED"
 
 export function getSupportedByMe() {
   return (dispatch) => {
@@ -30,6 +31,14 @@ export function updateProject(project) {
     let req = new Request(`/api/v1/thank/project/${project._id}`, { method: 'PUT', body: JSON.stringify(project) });
     let p = authService.signAndFetch(req);
     return dispatchPromise(p, UPDATE_MY_PROJECT, dispatch);
+  }
+}
+
+export function refreshProjectFeed(project) {
+  return (dispatch) => {
+    let req = new Request(`/api/v1/thank/project/${project}/feed`);
+    let p = authService.signAndFetch(req);
+    return dispatchPromise(p, REFRESH_PROJECT_FEED, dispatch);
   }
 }
 

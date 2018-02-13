@@ -1,5 +1,6 @@
 import { SEARCH_BY_PROJECT, SEARCH_BY_TAG } from "./search.actions";
 import { LOVE_POST, SAVE_POST, EDIT_POST } from "./post.actions";
+import { REFRESH_PROJECT_FEED } from "./project.actions";
 import authService from "reducers/util/auth";
 
 function markLoved(post) {
@@ -15,6 +16,7 @@ export default function postReducer(stateMap = {}, { type, payload }) {
       let id = payload;
       let post = Object.assign({}, stateMap[id], { isEdit: !stateMap[id].isEdit });
       return Object.assign({}, stateMap, { [id]: post });
+    case `${REFRESH_PROJECT_FEED}.fulfilled`:
     case `${SEARCH_BY_PROJECT}.fulfilled`: {
       let { posts } = payload;
       posts.forEach(markLoved);

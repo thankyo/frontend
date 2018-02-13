@@ -10,7 +10,7 @@ function SearchPanel({ handleSubmit, submitting }) {
     <Form className="navbar-item is-expanded" onSubmit={handleSubmit}>
       <div className="field has-addons" style={{ flexGrow: 1 }}>
         <div className="control" style={{ flexGrow: 1 }}>
-          <Field name="tags" component={flatField} submitting={submitting} type="text" placeholder="Search" autocomplete={false}/>
+          <Field name="tags" component={flatField} placeholder="Search" autocomplete={false}/>
         </div>
         <LoadingButton submitting={submitting}>
           <IconWithText className="fa fa-search" text="Search"/>

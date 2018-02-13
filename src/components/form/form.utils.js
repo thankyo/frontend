@@ -73,18 +73,14 @@ export const flatField = ({
   input,
   className,
   placeholder,
-  type,
+  type = "text",
   label,
-  submitting,
   disabled,
   meta: { touched, error }
 }) => {
   className += " input";
   if (error && touched) {
     className += " is-danger"
-  }
-  if (submitting) {
-    className += ` is-loading`;
   }
 
   if (type === "image") {
