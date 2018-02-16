@@ -5,7 +5,8 @@ import SettingsMenu from "./SettingsNav";
 import PaymentLimit from "./payment/PaymentLimitSection";
 import ChargeAccount from "./payment/ChargeAccountSection";
 import PayoutAccount from "./payment/PayoutAccountSection";
-import PendingTransaction from "./transaction/PendingSection";
+import OutgoingTransaction from "./transaction/OutgoingSection";
+import IncomingTransaction from "./transaction/IncomingSection";
 import CompleteTransaction from "./transaction/CompleteSection";
 
 
@@ -36,8 +37,11 @@ export default function SettingsRouter() {
             <Route path="/settings/profile">
               <Profile/>
             </Route>
-            <Route path="/settings/transaction/pending">
-              <PendingTransaction/>
+            <Route path="/settings/transaction/outgoing">
+              <OutgoingTransaction/>
+            </Route>
+            <Route path="/settings/transaction/incoming">
+              <IncomingTransaction/>
             </Route>
             <Route path="/settings/transaction/complete">
               <CompleteTransaction/>

@@ -10,6 +10,14 @@ export const UPDATE_MY_PROJECT = "UPDATE_MY_PROJECT";
 export const GET_OWNED_PROJECTS = "GET_OWNED_PROJECTS";
 export const REFRESH_PROJECT_FEED = "REFRESH_PROJECT_FEED"
 
+export function getProject(id) {
+  return (dispatch) => {
+    let req = new Request(`/api/v1/thank/project/${id}`);
+    let p = authService.signAndFetch(req);
+    return dispatchPromise(p, GET_PROJECT, dispatch);
+  }
+}
+
 export function getSupportedByMe() {
   return (dispatch) => {
     let url = new Request(`/api/v1/thank/user/my/supported`);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { listTransactions } from "reducers/payment/transaction.actions";
+import { getPendingTransactions } from "reducers/payment/transaction.actions";
 import Resource from "components/Resource";
 
 function contributionsStr(contributions) {
@@ -25,7 +25,7 @@ class Project extends Component {
     })
   };
   render() {
-    let { project: { user, title, description, avatar, _id }, resources } = this.props;
+    let { project: { user, title, avatar, _id }, resources } = this.props;
     let { expanded } = this.state;
     if (expanded) {
       return [
@@ -120,13 +120,13 @@ const ThankTransactions = ({ transactions }) => {
   );
 };
 
-const mapStateToProps = ({ payment: { transaction } }, { id }) => {
-  let transactions = transaction[id] ? transaction[id] : [];
+const mapStateToProps = ({ payment: { transaction: { byDate } } }, { id }) => {
+  let transactions = byDate[id] ? byDate[id] : [];
   return { transactions };
 };
 
 const mapDispatchToProps = (dispatch, { id }) => {
-  dispatch(listTransactions(id));
+  dispatch(getPendingTransactions(id));
   return {}
 };
 

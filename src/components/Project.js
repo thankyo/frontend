@@ -3,14 +3,13 @@ import { connect } from "react-redux";
 import { Field, Form, reduxForm, FieldArray } from "redux-form";
 import { Link } from "react-router-dom";
 
-import { refreshProjectFeed, updateProject } from "reducers/project.actions";
+import { getProject, refreshProjectFeed, updateProject } from "reducers/project.actions";
 
 import Loading from "./Loading";
 import { fieldWithLabel, LoadingButton } from "./form/form.utils";
 import { IconWithText, WebStackIcon } from "./Icon";
 import Tags from "./form/Tags";
 import Resource from "./Resource";
-import RefreshButton from "components/RefreshButton";
 import RefreshLink from "components/RefreshLink";
 import { Icon } from "components/Icon";
 import { flatField } from "components/form/form.utils";
@@ -150,6 +149,7 @@ function Project({ edit, line, project, id, updateProject, refreshFeed}) {
 const mapStateToProps = ({ project: { byId }}, { id }) => ({ project: byId[id] });
 
 const mapDispatchToProps = (dispatch, { id }) => {
+  dispatch(getProject(id));
   return {
     updateProject: (project) => dispatch(updateProject(project)),
     refreshFeed: () => dispatch(refreshProjectFeed(id))

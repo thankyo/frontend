@@ -1,32 +1,12 @@
 import authService from '../util/auth';
+import { dispatchPromise } from "reducers/util/promiseStates";
 
-export const THANK_TRANSACTION_REQUESTED   = "THANK_TRANSACTION_REQUESTED";
-export const THANK_TRANSACTION_SUCCESS   = "THANK_TRANSACTION_SUCCESS";
+export const GET_PENDING_TRANSACTION = "GET_PENDING_TRANSACTION";
 
-function transactionRequested(payload) {
-    return {
-        type: THANK_TRANSACTION_REQUESTED,
-        payload
-    }
-}
-
-function transactionSuccess(user, payload) {
-    return {
-        type: THANK_TRANSACTION_SUCCESS,
-        user,
-        payload
-    }
-}
-
-export function listTransactions(id) {
-    return (dispatch) => {
-        dispatch(transactionRequested({ id }));
-        authService.signAndFetch(new Request(`/api/v1/payment/${id}/pending`)).
-            then((payment) => {
-                dispatch(transactionSuccess(id, payment));
-                if (id === "my") {
-                    dispatch(transactionSuccess("my", payment));
-                }
-            })
-    }
+export function getPendingTransactions(id) {
+  return (dispatch) => {
+    let req = new Request(`/api/v1/payment/${id}/pending`);
+    let p = authService.signAndFetch(req).then(transactions => ({ id, transactions }));
+    dispatchPromise(p, GET_PENDING_TRANSACTION, dispatch);
+  }
 }

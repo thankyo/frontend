@@ -22,7 +22,8 @@ export default function () {
         Transactions
       </p>
       <ul className="menu-list">
-        <li><NavLink to="/settings/transaction/pending" activeClassName="is-active"><span>Pending</span></NavLink></li>
+        <li><NavLink to="/settings/transaction/outgoing" activeClassName="is-active"><span>Outgoing</span></NavLink></li>
+        <li><NavLink to="/settings/transaction/incoming" activeClassName="is-active"><span>Incoming</span></NavLink></li>
         <li><NavLink to="/settings/transaction/complete" activeClassName="is-active"><span>Complete</span></NavLink></li>
       </ul>
     </aside>
