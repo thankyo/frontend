@@ -1,18 +1,19 @@
 import authService from '../util/auth';
 
-export const PAYMENT_TRANSACTION_REQUESTED   = "PAYMENT_TRANSACTION_REQUESTED";
-export const PAYMENT_TRANSACTION_SUCCESS = "PAYMENT_TRANSACTION_SUCCESS";
+export const THANK_TRANSACTION_REQUESTED   = "THANK_TRANSACTION_REQUESTED";
+export const THANK_TRANSACTION_SUCCESS   = "THANK_TRANSACTION_SUCCESS";
 
-function transactionRequested(payload){
+function transactionRequested(payload) {
     return {
-        type: PAYMENT_TRANSACTION_REQUESTED,
+        type: THANK_TRANSACTION_REQUESTED,
         payload
     }
 }
 
-function transactionSuccess(payload) {
+function transactionSuccess(user, payload) {
     return {
-        type: PAYMENT_TRANSACTION_SUCCESS,
+        type: THANK_TRANSACTION_SUCCESS,
+        user,
         payload
     }
 }
@@ -20,9 +21,12 @@ function transactionSuccess(payload) {
 export function listTransactions(id) {
     return (dispatch) => {
         dispatch(transactionRequested({ id }));
-        authService.signAndStream(`/api/v1/payment/${id}/pending`, dispatch, (payment) => {
-            dispatch(transactionSuccess(payment));
-            if (id === "my") dispatch(transactionSuccess(Object.assign({}, payment, { "user": "my"})))
-        })
+        authService.signAndFetch(new Request(`/api/v1/payment/${id}/pending`)).
+            then((payment) => {
+                dispatch(transactionSuccess(id, payment));
+                if (id === "my") {
+                    dispatch(transactionSuccess("my", payment));
+                }
+            })
     }
 }

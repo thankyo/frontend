@@ -101,7 +101,7 @@ function ViewPost(props) {
           <div className="media-content">
             <div className="content">
               <p>
-                <strong>{title}</strong>
+                <a href={post.ogObj.url}><strong>{title}</strong></a>
                 <br/>
                 {description}
                 {tags.map((tag, i) => <Link key={i} to={`/search?query=${tag}`}> #{tag}</Link>)}

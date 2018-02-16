@@ -18,6 +18,13 @@ export default function () {
         <li><NavLink to="/settings/charge" activeClassName="is-active"><span>Charge</span></NavLink></li>
         <li><NavLink to="/settings/payout" activeClassName="is-active"><span>Payout</span></NavLink></li>
       </ul>
+      <p className="menu-label">
+        Transactions
+      </p>
+      <ul className="menu-list">
+        <li><NavLink to="/settings/transaction/pending" activeClassName="is-active"><span>Pending</span></NavLink></li>
+        <li><NavLink to="/settings/transaction/complete" activeClassName="is-active"><span>Complete</span></NavLink></li>
+      </ul>
     </aside>
   )
 }

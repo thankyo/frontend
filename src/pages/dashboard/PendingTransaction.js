@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { listTransactions } from "reducers/thank/transaction.actions";
+import { listTransactions } from "reducers/payment/transaction.actions";
 import Resource from "components/Resource";
 
 function contributionsStr(contributions) {
@@ -120,7 +120,7 @@ const ThankTransactions = ({ transactions }) => {
   );
 };
 
-const mapStateToProps = ({ thank: { transaction } }, { id }) => {
+const mapStateToProps = ({ payment: { transaction } }, { id }) => {
   let transactions = transaction[id] ? transaction[id] : [];
   return { transactions };
 };

@@ -128,10 +128,9 @@ function ProjectLine({ project: { webStack, resource, _id, enabled }, onSubmit }
         {enabled ? "Enabled" : "Disabled"}
       </div>
       <div className="column is-3">
-
-        <RefreshButton onClick={onSubmit} className={enabled ? "is-primary" : "is-default"}>
+        <RefreshLink onClick={onSubmit} className={enabled ? "is-primary" : "is-default"}>
           {enabled ? <Icon className="fa fa-toggle-on"/> : <Icon className='fa fa-toggle-off'/>}
-        </RefreshButton>
+        </RefreshLink>
       </div>
     </div>
   )

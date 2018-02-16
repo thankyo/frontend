@@ -5,6 +5,9 @@ import SettingsMenu from "./SettingsNav";
 import PaymentLimit from "./payment/PaymentLimitSection";
 import ChargeAccount from "./payment/ChargeAccountSection";
 import PayoutAccount from "./payment/PayoutAccountSection";
+import PendingTransaction from "./transaction/PendingSection";
+import CompleteTransaction from "./transaction/CompleteSection";
+
 
 import Profile from "./profile/ProfileSection";
 
@@ -13,10 +16,10 @@ export default function SettingsRouter() {
   return (
     <section className="section container">
       <div className="columns">
-        <div className="column is-one-quarter">
+        <div className="column is-3">
           <SettingsMenu/>
         </div>
-        <div className="is-two-thirds column">
+        <div className="column is-9">
           <Switch>
             <Route exact path="/settings">
               <Redirect to="/settings/profile"/>
@@ -32,6 +35,12 @@ export default function SettingsRouter() {
             </Route>
             <Route path="/settings/profile">
               <Profile/>
+            </Route>
+            <Route path="/settings/transaction/pending">
+              <PendingTransaction/>
+            </Route>
+            <Route path="/settings/transaction/complete">
+              <CompleteTransaction/>
             </Route>
           </Switch>
         </div>
