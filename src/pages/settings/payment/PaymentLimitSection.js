@@ -35,7 +35,7 @@ class PaymentLimitSection extends Component {
     return (
       <div className="has-text-centered">
         <p className="title is-5">Monthly Limit</p>
-        <MoneyToCoffeeIcon amount={amount} fill={fill} className="has-text-success"/>
+        <MoneyToCoffeeIcon amount={amount * 10} fill={fill} className="has-text-success"/>
         <div>
           <p className="title limit-cups">
             <span>{cups} cup{cups > 1 && "s"} of coffee</span>
