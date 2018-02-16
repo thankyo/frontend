@@ -3,7 +3,7 @@ import moment from "moment";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getPendingTransactions } from "reducers/payment/transaction.actions";
+import { getOutgoingTransactions } from "reducers/payment/transaction.actions";
 import Resource from "components/Resource";
 
 
@@ -43,7 +43,7 @@ const mapStateToProps = ({ payment: { transaction: { byUser: { my: { transaction
 };
 
 const mapDispatchToProps = (dispatch) => {
-  dispatch(getPendingTransactions("my"));
+  dispatch(getOutgoingTransactions("my"));
   return {}
 };
 

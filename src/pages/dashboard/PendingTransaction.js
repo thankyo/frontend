@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getPendingTransactions } from "reducers/payment/transaction.actions";
+import { getOutgoingTransactions } from "reducers/payment/transaction.actions";
 import Resource from "components/Resource";
 
 function contributionsStr(contributions) {
@@ -126,7 +126,7 @@ const mapStateToProps = ({ payment: { transaction: { byDate } } }, { id }) => {
 };
 
 const mapDispatchToProps = (dispatch, { id }) => {
-  dispatch(getPendingTransactions(id));
+  dispatch(getOutgoingTransactions(id));
   return {}
 };
 

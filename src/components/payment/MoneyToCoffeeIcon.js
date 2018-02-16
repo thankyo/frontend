@@ -14,17 +14,17 @@ export default function MoneyToCoffeeIcon({ amount, fill }) {
     height: 100,
     fill
   };
-  if (amount <= 5) {
+  if (amount <= 50) {
     return <Espresso {... props}/>;
-  } else if (amount <= 10) {
+  } else if (amount <= 100) {
     return <Americano {... props}/>;
-  } else if (amount <= 15) {
+  } else if (amount <= 150) {
     return <Latte {... props}/>;
-  } else if (amount <= 20) {
+  } else if (amount <= 200) {
     return <Siphon {... props}/>;
-  } else if (amount <= 25) {
+  } else if (amount <= 250) {
     return <Kettle {... props}/>;
-  } else if (amount <= 30) {
+  } else if (amount <= 300) {
     return <Pot {... props}/>;
   } else {
     return <Termos {... props}/>;
