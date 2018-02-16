@@ -12,12 +12,9 @@ export default function creatorDashboardPage({ id, project }) {
         <Profile id={id}/>
         <ProjectNavigation user={id} active={project}/>
       </div>
-      <div className="column is-two-quarter">
+      <div className="column is-three-quarter">
         <Project id={project}/>
         <ProjectPosts id={project}/>
-      </div>
-      <div className="column is-one-quarter">
-        <EarnedThisMonth/>
       </div>
     </div>
   );

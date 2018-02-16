@@ -26,7 +26,7 @@ function EarnedThisMonth({ total }) {
 );
 }
 
-const mapStateToProps = ({payment: {earning}}) => {
+const mapStateToProps = ({payment: { earning }}) => {
   return earning;
 };
 
