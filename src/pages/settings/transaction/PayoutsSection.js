@@ -7,12 +7,13 @@ import { getIncomingTransactions, getOutgoingTransactions, getPayouts } from "re
 import Resource from "components/Resource";
 import EOMChargeStatus from "components/payment/EOMChargeStatus";
 import Money from "components/Money";
+import EOMPayoutStatus from "components/payment/EOMPayoutStatus";
 
 
 function EOMPayout({ project, status, amount, yom }){
   return (
     <tr>
-      <td><EOMChargeStatus status={status}/></td>
+      <td><EOMPayoutStatus status={status}/></td>
       <td>{moment(yom).format("MMMM YY")}</td>
       <td><Money {... amount}/></td>
     </tr>
