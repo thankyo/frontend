@@ -1,36 +1,36 @@
 import React from "react";
 import moment from "moment";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
-import { getCharges, getIncomingTransactions, getOutgoingTransactions } from "reducers/payment/transaction.actions";
-import Resource from "components/Resource";
+import { getCharges } from "reducers/payment/transaction.actions";
+import Money from "components/Money";
+import EOMChargeStatus from "components/payment/EOMChargeStatus";
 
 
-function Transaction({ project, resource, created }){
+function EOMCharge({ project, status, amount, yom }){
   return (
     <tr>
-      <td><Link to={`/creator/${project.user}/project/${project._id}`}>{project.title}</Link></td>
-      <td><Resource resource={resource}/></td>
-      <td>{moment(created).format("MMMM Do")}</td>
+      <td><EOMChargeStatus status={status}/></td>
+      <td>{moment(yom).format("MMMM YY")}</td>
+      <td><Money {... amount}/></td>
     </tr>
   );
 }
 
-function OutgoingSection({ transactions }) {
+function ChargesSection({ charges }) {
   return (
     <div className="has-text-centered">
-      <p className="title is-5">Incoming Transactions</p>
+      <p className="title is-5">Charges</p>
       <table className="table is-fullwidth">
         <thead>
         <tr>
-          <td className="is-3">Project</td>
-          <td className="is-6">Link</td>
-          <td className="is-3">Date</td>
+          <td className="is-1">Status</td>
+          <td className="is-2">Date</td>
+          <td className="is-9">Amount</td>
         </tr>
         </thead>
         <tbody>
-        {transactions.map((transaction, i) =>  <Transaction key={i} {... transaction}/>)}
+        {charges.map((charge, i) =>  <EOMCharge key={i} {... charge}/>)}
         </tbody>
       </table>
     </div>
@@ -38,8 +38,8 @@ function OutgoingSection({ transactions }) {
 }
 
 
-const mapStateToProps = ({ payment: { transaction: { incoming: { byUser: { my: { transactions = [] } = {} } } } }}) => {
-  return { transactions };
+const mapStateToProps = ({ payment: { transaction: { charge: { my: { charges = []} = {} } } }}) => {
+  return { charges };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -50,4 +50,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(OutgoingSection);
+)(ChargesSection);

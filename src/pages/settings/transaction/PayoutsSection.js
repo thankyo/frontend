@@ -5,32 +5,34 @@ import { Link } from "react-router-dom";
 
 import { getIncomingTransactions, getOutgoingTransactions, getPayouts } from "reducers/payment/transaction.actions";
 import Resource from "components/Resource";
+import EOMChargeStatus from "components/payment/EOMChargeStatus";
+import Money from "components/Money";
 
 
-function Transaction({ project, resource, created }){
+function EOMPayout({ project, status, amount, yom }){
   return (
     <tr>
-      <td><Link to={`/creator/${project.user}/project/${project._id}`}>{project.title}</Link></td>
-      <td><Resource resource={resource}/></td>
-      <td>{moment(created).format("MMMM Do")}</td>
+      <td><EOMChargeStatus status={status}/></td>
+      <td>{moment(yom).format("MMMM YY")}</td>
+      <td><Money {... amount}/></td>
     </tr>
   );
 }
 
-function OutgoingSection({ transactions }) {
+function PayoutSection({ payouts }) {
   return (
     <div className="has-text-centered">
-      <p className="title is-5">Incoming Transactions</p>
+      <p className="title is-5">Payouts</p>
       <table className="table is-fullwidth">
         <thead>
         <tr>
-          <td className="is-3">Project</td>
-          <td className="is-6">Link</td>
-          <td className="is-3">Date</td>
+          <td className="is-1">Status</td>
+          <td className="is-2">Date</td>
+          <td className="is-9">Amount</td>
         </tr>
         </thead>
         <tbody>
-        {transactions.map((transaction, i) =>  <Transaction key={i} {... transaction}/>)}
+        {payouts.map((payout, i) =>  <EOMPayout key={i} {... payout}/>)}
         </tbody>
       </table>
     </div>
@@ -38,8 +40,8 @@ function OutgoingSection({ transactions }) {
 }
 
 
-const mapStateToProps = ({ payment: { transaction: { incoming: { byUser: { my: { transactions = [] } = {} } } } }}) => {
-  return { transactions };
+const mapStateToProps = ({ payment: { transaction: { payout: { my: { payouts = [] } = {} } } }}) => {
+  return { payouts };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -50,4 +52,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(OutgoingSection);
+)(PayoutSection);
