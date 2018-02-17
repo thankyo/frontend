@@ -1,13 +1,10 @@
 import React from "react";
 import moment from "moment";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
-import { getIncomingTransactions, getOutgoingTransactions, getPayouts } from "reducers/payment/transaction.actions";
-import Resource from "components/Resource";
-import EOMChargeStatus from "components/payment/EOMChargeStatus";
+import { getPayouts } from "reducers/payment/payout/transaction.actions";
 import Money from "components/Money";
-import EOMPayoutStatus from "components/payment/EOMPayoutStatus";
+import EOMPayoutStatus from "./EOMPayoutStatus";
 
 
 function EOMPayout({ project, status, amount, yom }){
@@ -41,7 +38,7 @@ function PayoutSection({ payouts }) {
 }
 
 
-const mapStateToProps = ({ payment: { transaction: { payout: { my: { payouts = [] } = {} } } }}) => {
+const mapStateToProps = ({ payment: { payout: { transaction: { payout: { my: { payouts = [] } = {} } } } } }) => {
   return { payouts };
 };
 

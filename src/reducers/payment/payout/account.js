@@ -1,5 +1,6 @@
-import { PAYOUT_ACCOUNT_GET, PAYOUT_ACCOUNT_DELETE } from './payoutAccount.actions';
-import { combineReducersInSingle, promiseReducer } from '../util/promiseStates';
+import { combineReducersInSingle, promiseReducer } from 'reducers/util/promiseStates';
+
+import { PAYOUT_ACCOUNT_GET, PAYOUT_ACCOUNT_DELETE } from './account.actions';
 
 const initialState = false;
 

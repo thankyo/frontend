@@ -2,9 +2,9 @@ import React from "react";
 import moment from "moment";
 import { connect } from "react-redux";
 
-import { getCharges } from "reducers/payment/transaction.actions";
+import { getCharges } from "reducers/payment/charge/transaction.actions";
 import Money from "components/Money";
-import EOMChargeStatus from "components/payment/EOMChargeStatus";
+import EOMChargeStatus from "./EOMChargeStatus";
 
 
 function EOMCharge({ project, status, amount, yom }){
@@ -38,7 +38,7 @@ function ChargesSection({ charges }) {
 }
 
 
-const mapStateToProps = ({ payment: { transaction: { charge: { my: { charges = []} = {} } } }}) => {
+const mapStateToProps = ({ payment: { charge: { transaction: { charge: { my: { charges = []} = {} } } } } }) => {
   return { charges };
 };
 

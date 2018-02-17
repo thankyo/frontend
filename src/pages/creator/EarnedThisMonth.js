@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { thisMonthEarnings } from "reducers/payment/earning.actions";
+import { thisMonthEarnings } from "reducers/payment/payout/earning.actions";
 import MoneyToCoffeeIcon from "components/payment/MoneyToCoffeeIcon";
 
 function EarnedThisMonth({ total }) {
@@ -26,7 +26,7 @@ function EarnedThisMonth({ total }) {
 );
 }
 
-const mapStateToProps = ({payment: { earning }}) => {
+const mapStateToProps = ({payment: { payout: { earning }}}) => {
   return earning;
 };
 

@@ -1,18 +1,11 @@
 import { combineReducers } from 'redux';
 
-import limit from './limit';
-import chargeAccount from './chargeAccount';
-import payoutAccount from './payoutAccount';
-
-import earning from "./earning";
-import transaction from "./transaction";
+import charge from './charge';
+import payout from './payout';
 
 export default combineReducers(
   {
-    chargeAccount,
-    payoutAccount,
-    limit,
-    earning,
-    transaction,
+    charge,
+    payout,
   }
 );

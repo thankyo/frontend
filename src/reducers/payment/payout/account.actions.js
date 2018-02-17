@@ -1,5 +1,5 @@
-import authService from "../util/auth";
-import { dispatchPromise } from '../util/promiseStates';
+import authService from "../../util/auth";
+import { dispatchPromise } from '../../util/promiseStates';
 
 export const PAYOUT_ACCOUNT_GET = "PAYOUT_ACCOUNT_GET";
 export const PAYOUT_ACCOUNT_DELETE = "PAYOUT_ACCOUNT_DELETE";

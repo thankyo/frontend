@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getOutgoingTransactions } from "reducers/payment/transaction.actions";
+import { getOutgoingTransactions } from "reducers/payment/charge/transaction.actions";
 import Resource from "components/Resource";
 
 function contributionsStr(contributions) {
@@ -120,7 +120,7 @@ const ThankTransactions = ({ transactions }) => {
   );
 };
 
-const mapStateToProps = ({ payment: { transaction: { byDate } } }, { id }) => {
+const mapStateToProps = ({ payment: { charge: { transaction: { byDate } } } }, { id }) => {
   let transactions = byDate[id] ? byDate[id] : [];
   return { transactions };
 };

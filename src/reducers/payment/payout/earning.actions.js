@@ -1,5 +1,5 @@
-import authService from '../util/auth';
-import { dispatchPromise } from '../util/promiseStates';
+import authService from '../../util/auth';
+import { dispatchPromise } from '../../util/promiseStates';
 
 export const GET_EARNINGS = "GET_EARNINGS";
 

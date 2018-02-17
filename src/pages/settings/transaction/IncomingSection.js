@@ -3,7 +3,7 @@ import moment from "moment";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getIncomingTransactions, getOutgoingTransactions } from "reducers/payment/transaction.actions";
+import { getIncomingTransactions } from "reducers/payment/payout/transaction.actions";
 import Resource from "components/Resource";
 
 
@@ -38,7 +38,7 @@ function OutgoingSection({ transactions }) {
 }
 
 
-const mapStateToProps = ({ payment: { transaction: { incoming: { byUser: { my: { transactions = [] } = {} } } } }}) => {
+const mapStateToProps = ({ payment: { payout: { transaction: { byUser: { my: { transactions = [] } = {} } } } } }) => {
   return { transactions };
 };
 

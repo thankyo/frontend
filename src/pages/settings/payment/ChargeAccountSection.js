@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { connectChargeAccount, getChargeAccount, deleteCard } from "reducers/payment/chargeAccount.actions";
+import { connectChargeAccount, getChargeAccount, deleteCard } from "reducers/payment/charge/account.actions";
 import { connect } from "react-redux";
 import Loading from "components/Loading";
 import { IconWithText } from "components/Icon";
-import EOMChargeStatus from "components/payment/EOMChargeStatus";
+import EOMChargeStatus from "../transaction/EOMChargeStatus";
 
 function Card({ isMissing, brand, last4 }) {
   if (isMissing) {
@@ -126,7 +126,7 @@ class ChargeAccountSection extends Component {
 }
 
 
-const mapStateToProps = ({ payment: { chargeAccount } }) => {
+const mapStateToProps = ({ payment: { charge: { account: chargeAccount } } }) => {
   return { chargeAccount };
 };
 

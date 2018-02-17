@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Loading from "components/Loading";
 import { IconWithText } from "components/Icon";
-import { deletePayoutAccount, getPayoutAccount } from "reducers/payment/payoutAccount.actions";
+import { deletePayoutAccount, getPayoutAccount } from "reducers/payment/payout/account.actions";
 
 function BankDetails({ payoutAccount }) {
   if (!payoutAccount) {
@@ -111,7 +111,7 @@ class PayoutAccountSection extends Component {
 };
 
 
-const mapStateToProps = ({ payment: { payoutAccount } }) => {
+const mapStateToProps = ({ payment: { payout: { account: payoutAccount } } }) => {
   return { payoutAccount };
 };
 
