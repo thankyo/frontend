@@ -1,9 +1,9 @@
 import moment from "moment";
 import { combineReducers } from "redux";
 
-import { GET_OUTGOING_TRANSACTION } from './transaction.actions';
+import { GET_OUTGOING_TRANSACTIONS } from './transaction.actions';
 import { promiseReducerDB } from "reducers/util/promiseStates";
-import { GET_INCOMING_TRANSACTION } from "reducers/payment/transaction.actions";
+import { GET_CHARGES, GET_INCOMING_TRANSACTIONS, GET_PAYOUTS } from "reducers/payment/transaction.actions";
 
 const initialState = {};
 
@@ -49,7 +49,7 @@ function mergeByDateAndProject(transactions){
 
 function byDateReducer(transactions = initialState, { type, payload }) {
   switch (type) {
-    case `${GET_OUTGOING_TRANSACTION}.fulfilled`:
+    case `${GET_OUTGOING_TRANSACTIONS}.fulfilled`:
       let dateToPrj = mergeByDateAndProject(payload.transactions);
       return Object.assign({}, transactions, { [payload.id]: Object.values(dateToPrj) });
     default:
@@ -61,8 +61,10 @@ function byDateReducer(transactions = initialState, { type, payload }) {
 
 export default combineReducers({
   byDate: byDateReducer,
-  byUser: promiseReducerDB(GET_OUTGOING_TRANSACTION),
+  byUser: promiseReducerDB(GET_OUTGOING_TRANSACTIONS),
   incoming: combineReducers({
-    byUser: promiseReducerDB(GET_INCOMING_TRANSACTION),
-  })
+    byUser: promiseReducerDB(GET_INCOMING_TRANSACTIONS),
+  }),
+  charge: promiseReducerDB(GET_CHARGES),
+  payout: promiseReducerDB(GET_PAYOUTS),
 })

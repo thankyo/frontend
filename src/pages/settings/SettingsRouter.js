@@ -7,7 +7,8 @@ import ChargeAccount from "./payment/ChargeAccountSection";
 import PayoutAccount from "./payment/PayoutAccountSection";
 import OutgoingTransaction from "./transaction/OutgoingSection";
 import IncomingTransaction from "./transaction/IncomingSection";
-import CompleteTransaction from "./transaction/CompleteSection";
+import ChargesSection from "./transaction/ChargesSection";
+import PayoutSection from "./transaction/PayoutsSection";
 
 
 import Profile from "./profile/ProfileSection";
@@ -43,8 +44,11 @@ export default function SettingsRouter() {
             <Route path="/settings/transaction/incoming">
               <IncomingTransaction/>
             </Route>
-            <Route path="/settings/transaction/complete">
-              <CompleteTransaction/>
+            <Route path="/settings/transaction/charge">
+              <ChargesSection/>
+            </Route>
+            <Route path="/settings/transaction/payout">
+              <PayoutSection/>
             </Route>
           </Switch>
         </div>

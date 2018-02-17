@@ -24,7 +24,8 @@ export default function () {
       <ul className="menu-list">
         <li><NavLink to="/settings/transaction/outgoing" activeClassName="is-active"><span>Outgoing</span></NavLink></li>
         <li><NavLink to="/settings/transaction/incoming" activeClassName="is-active"><span>Incoming</span></NavLink></li>
-        <li><NavLink to="/settings/transaction/complete" activeClassName="is-active"><span>Complete</span></NavLink></li>
+        <li><NavLink to="/settings/transaction/charge" activeClassName="is-active"><span>Charges</span></NavLink></li>
+        <li><NavLink to="/settings/transaction/payout" activeClassName="is-active"><span>Payouts</span></NavLink></li>
       </ul>
     </aside>
   )
