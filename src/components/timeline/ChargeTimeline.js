@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Resource from "components/Resource";
-import { asPlural, expandableComponent, mergeByDateAndProject } from "./util";
+import { asPlural, expandableComponent, mergeCharges } from "./util";
 
 function CollapsedProjectDetails({ project: { user, title, avatar, _id }, resources, handleExpand }) {
   return (
@@ -24,8 +24,8 @@ function ExpandedProjectDetails({ project: { user, title, avatar, _id }, resourc
         <div className="timeline-marker is-primary is-image is-32x32">
           <Link to={`/creator/${user}/project/${_id}`}><img src={avatar} width={32} height={32}/></Link>
         </div>
-        <div className="timeline-content">
-          <p className="heading">{resources.length} {asPlural("contribution", resources.length)}</p>
+        <div className="timeline-content" onClick={handleExpand}>
+          <a className="heading">{resources.length} {asPlural("contribution", resources.length)}</a>
         </div>
       </li>
       <li className="timeline-header is-primary">
@@ -72,7 +72,7 @@ const TimelineEvent = expandableComponent(ExpandedDateView, CollapsedDateView);
 const ChargeTimeline = ({ transactions }) => {
   return (
     <ul className="timeline">
-      {mergeByDateAndProject(transactions).map((transaction, i) => <TimelineEvent key={i} {...transaction}/>)}
+      {mergeCharges(transactions).map((transaction, i) => <TimelineEvent key={i} {...transaction}/>)}
     </ul>
   );
 };

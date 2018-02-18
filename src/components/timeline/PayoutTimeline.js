@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Resource from "components/Resource";
-import { asPlural, expandableComponent, mergeByDateAndProject } from "components/timeline/util";
+import { asPlural, expandableComponent, mergePayouts, mergeCharges } from "components/timeline/util";
 
-function CollapsedProjectDetails({ project: { user, title, avatar, _id }, resources, handleExpand }) {
+function CollapsedProjectDetails({ project: { user, title, avatar, _id }, resources, total, handleExpand }) {
   return (
     <li className="timeline-item is-primary">
       <div className="timeline-marker is-primary is-image is-32x32">
@@ -11,21 +11,21 @@ function CollapsedProjectDetails({ project: { user, title, avatar, _id }, resour
       </div>
       <div className="timeline-content">
         <p className="heading"><a onClick={handleExpand}>{title}</a></p>
-        <p>{resources.length} {asPlural("contribution", resources.length)}</p>
+        <p>{total} {asPlural("contribution", total)}</p>
       </div>
     </li>
   );
 }
 
-function ExpandedProjectDetails({ project: { user, title, avatar, _id }, resources, handleExpand }) {
+function ExpandedProjectDetails({ project: { user, title, avatar, _id }, resources, total, handleExpand }) {
   return (
     <Fragment>
       <li className="timeline-item is-primary">
         <div className="timeline-marker is-primary is-image is-32x32">
           <Link to={`/creator/${user}/project/${_id}`}><img src={avatar} width={32} height={32}/></Link>
         </div>
-        <div className="timeline-content">
-          <p className="heading">{resources.length} {asPlural("contribution", resources.length)}</p>
+        <div className="timeline-content" onClick={handleExpand}>
+          <a className="heading">{total} {asPlural("contribution", total)}</a>
         </div>
       </li>
       <li className="timeline-header is-primary">
@@ -33,7 +33,7 @@ function ExpandedProjectDetails({ project: { user, title, avatar, _id }, resourc
       </li>
       <li className="timeline-item is-primary">
         <div className="timeline-content">
-          {resources.map((res, i) => <p key={i}><Resource resource={res}/></p>)}
+          {resources.map(({ resource, total }, i) => <p key={i}><Resource resource={resource}/> - {total}</p>)}
         </div>
       </li>
     </Fragment>
@@ -72,7 +72,7 @@ const TimelineEvent = expandableComponent(ExpandedDateView, CollapsedDateView);
 const PayoutTimeline = ({ transactions }) => {
   return (
     <ul className="timeline">
-      {mergeByDateAndProject(transactions).map((transaction, i) => <TimelineEvent key={i} {...transaction}/>)}
+      {mergePayouts(transactions).map((transaction, i) => <TimelineEvent key={i} {...transaction}/>)}
     </ul>
   );
 };
