@@ -1,9 +1,9 @@
 import React from "react";
 import moment from "moment/moment";
-import EOMChargeStatus from "./EOMChargeStatus";
 import Money from "components/Money";
+import EOMPayoutStatus from "./EOMPayoutStatus";
 
-function EOMCharge({ yom, amount, status, handleExpand }) {
+function EOMPayout({ yom, amount, status, handleExpand }) {
   return (
     <li className="timeline-item is-primary">
       <div className="timeline-marker is-medium is-primary"/>
@@ -15,21 +15,21 @@ function EOMCharge({ yom, amount, status, handleExpand }) {
           <Money {... amount}/>
         </p>
         <p>
-          <EOMChargeStatus status={status}/>
+          <EOMPayoutStatus status={status}/>
         </p>
       </div>
     </li>
   );
 }
 
-export default ({ charges }) => {
-  charges.sort((a, b) => {
+export default function EOMPayoutTimeline({ payouts }) {
+  payouts.sort((a, b) => {
     return moment(b.yom).format("X") - moment(a.yom).format("X")
   });
 
   return (
     <ul className="timeline">
-      {charges.map((charge, i) => <EOMCharge key={i} {... charge}/>)}
+      {payouts.map((charge, i) => <EOMPayout key={i} {... charge}/>)}
     </ul>
   );
 };
