@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Resource from "components/Resource";
 import { asPlural, expandableComponent, mergeCharges } from "./util";
 
-function CollapsedProjectDetails({ project: { user, title, avatar, _id }, resources, handleExpand }) {
+function ProjectDayChargeCollapsed({ project: { user, title, avatar, _id }, resources, handleExpand }) {
   return (
     <li className="timeline-item is-primary">
       <div className="timeline-marker is-primary is-image is-32x32">
@@ -17,7 +17,7 @@ function CollapsedProjectDetails({ project: { user, title, avatar, _id }, resour
   );
 }
 
-function ExpandedProjectDetails({ project: { user, title, avatar, _id }, resources, handleExpand }) {
+function ProjectDayChargeExpanded({ project: { user, title, avatar, _id }, resources, handleExpand }) {
   return (
     <Fragment>
       <li className="timeline-item is-primary">
@@ -40,20 +40,20 @@ function ExpandedProjectDetails({ project: { user, title, avatar, _id }, resourc
   );
 }
 
-const TimelineDetails = expandableComponent(ExpandedProjectDetails, CollapsedProjectDetails);
+const ProjectDayCharge = expandableComponent(ProjectDayChargeExpanded, ProjectDayChargeCollapsed);
 
-function ExpandedDateView({ dateStr, projects, handleExpand }) {
+function DayChargeExpanded({ dateStr, projects, handleExpand }) {
   return (
     <Fragment>
       <li className="timeline-header is-primary">
         <a><span className="tag is-primary" onClick={handleExpand}>{dateStr}</span></a>
       </li>
-      {projects.map((project, i) => <TimelineDetails key={i} {...project}/>)}
+      {projects.map((project, i) => <ProjectDayCharge key={i} {...project}/>)}
     </Fragment>
   )
 }
 
-function CollapsedDateView({ dateStr, projects, total, handleExpand }) {
+function DayChargeCollapsed({ dateStr, projects, total, handleExpand }) {
   return (
     <li className="timeline-item is-primary">
       <div className="timeline-marker is-medium is-primary"/>
@@ -67,14 +67,12 @@ function CollapsedDateView({ dateStr, projects, total, handleExpand }) {
   );
 }
 
-const TimelineEvent = expandableComponent(ExpandedDateView, CollapsedDateView);
+const DayCharge = expandableComponent(DayChargeExpanded, DayChargeCollapsed);
 
-const ChargeTimeline = ({ transactions }) => {
+export default ({ transactions }) => {
   return (
     <ul className="timeline">
-      {mergeCharges(transactions).map((transaction, i) => <TimelineEvent key={i} {...transaction}/>)}
+      {mergeCharges(transactions).map((transaction, i) => <DayCharge key={i} {...transaction}/>)}
     </ul>
   );
 };
-
-export default ChargeTimeline

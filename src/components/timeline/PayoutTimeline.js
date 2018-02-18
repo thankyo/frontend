@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Resource from "components/Resource";
-import { asPlural, expandableComponent, mergePayouts, mergeCharges } from "components/timeline/util";
+import { asPlural, expandableComponent, mergePayouts } from "components/timeline/util";
 
-function CollapsedProjectDetails({ project: { user, title, avatar, _id }, resources, total, handleExpand }) {
+function ProjectDayPayoutCollapsed({ project: { user, title, avatar, _id }, resources, total, handleExpand }) {
   return (
     <li className="timeline-item is-primary">
       <div className="timeline-marker is-primary is-image is-32x32">
@@ -17,7 +17,7 @@ function CollapsedProjectDetails({ project: { user, title, avatar, _id }, resour
   );
 }
 
-function ExpandedProjectDetails({ project: { user, title, avatar, _id }, resources, total, handleExpand }) {
+function ProjectDayPayoutExpanded({ project: { user, title, avatar, _id }, resources, total, handleExpand }) {
   return (
     <Fragment>
       <li className="timeline-item is-primary">
@@ -40,20 +40,20 @@ function ExpandedProjectDetails({ project: { user, title, avatar, _id }, resourc
   );
 }
 
-const TimelineDetails = expandableComponent(ExpandedProjectDetails, CollapsedProjectDetails);
+const ProjectDayPayout = expandableComponent(ProjectDayPayoutExpanded, ProjectDayPayoutCollapsed);
 
-function ExpandedDateView({ dateStr, projects, handleExpand }) {
+function DayPayoutExpanded({ dateStr, projects, handleExpand }) {
   return (
     <Fragment>
       <li className="timeline-header is-primary">
         <a><span className="tag is-primary" onClick={handleExpand}>{dateStr}</span></a>
       </li>
-      {projects.map((project, i) => <TimelineDetails key={i} {...project}/>)}
+      {projects.map((project, i) => <ProjectDayPayout key={i} {...project}/>)}
     </Fragment>
   )
 }
 
-function CollapsedDateView({ dateStr, projects, total, handleExpand }) {
+function DayPayoutCollapsed({ dateStr, projects, total, handleExpand }) {
   return (
     <li className="timeline-item is-primary">
       <div className="timeline-marker is-medium is-primary"/>
@@ -67,12 +67,12 @@ function CollapsedDateView({ dateStr, projects, total, handleExpand }) {
   );
 }
 
-const TimelineEvent = expandableComponent(ExpandedDateView, CollapsedDateView);
+const DayPayout = expandableComponent(DayPayoutExpanded, DayPayoutCollapsed);
 
 const PayoutTimeline = ({ transactions }) => {
   return (
     <ul className="timeline">
-      {mergePayouts(transactions).map((transaction, i) => <TimelineEvent key={i} {...transaction}/>)}
+      {mergePayouts(transactions).map((transaction, i) => <DayPayout key={i} {...transaction}/>)}
     </ul>
   );
 };
