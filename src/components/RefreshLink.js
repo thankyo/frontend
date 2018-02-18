@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { LoadingButton } from "components/form/form.utils";
 
 export default class RefreshLink extends Component {
   constructor(props) {

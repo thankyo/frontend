@@ -2,9 +2,9 @@ import authService from "../../util/auth";
 import { loadScriptAsPromise } from '../../../conf/loadScript';
 import { dispatchPromise } from '../../util/promiseStates';
 
-export const CHARGE_ACCOUNT_GET = "CHARGE_ACCOUNT_GET";
-export const CHARGE_ACCOUNT_SET = "CHARGE_ACCOUNT_SET";
-export const CHARGE_ACCOUNT_DELETE = "CHARGE_ACCOUNT_DELETE";
+export const CHARGE_CARD_GET = "CHARGE_CARD_GET";
+export const CHARGE_CARD_SET = "CHARGE_CARD_SET";
+export const CHARGE_CARD_DELETE = "CHARGE_CARD_DELETE";
 
 function processToken(token) {
   return (dispatch) => {
@@ -15,7 +15,7 @@ function processToken(token) {
         body: JSON.stringify(token.id)
       });
     let p = authService.signAndFetch(req);
-    return dispatchPromise(p, CHARGE_ACCOUNT_SET, dispatch);
+    return dispatchPromise(p, CHARGE_CARD_SET, dispatch);
   }
 }
 
@@ -23,7 +23,7 @@ export function getChargeAccount() {
   return (dispatch) => {
     let req = new Request("/api/v1/payment/my/account");
     let p = authService.signAndFetch(req);
-    return dispatchPromise(p, CHARGE_ACCOUNT_GET, dispatch);
+    return dispatchPromise(p, CHARGE_CARD_GET, dispatch);
   }
 }
 
@@ -51,6 +51,6 @@ export function deleteCard() {
   return (dispatch) => {
     let req = new Request("/api/v1/payment/my/account", { method: "DELETE" });
     let p = authService.signAndFetch(req);
-    return dispatchPromise(p, CHARGE_ACCOUNT_DELETE, dispatch);
+    return dispatchPromise(p, CHARGE_CARD_DELETE, dispatch);
   }
 }

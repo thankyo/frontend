@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connectChargeAccount, getChargeAccount, deleteCard } from "reducers/payment/charge/account.actions";
+import { connectChargeAccount, getChargeAccount, deleteCard } from "reducers/payment/charge/card.actions";
 import { connect } from "react-redux";
 import Loading from "components/Loading";
 import { IconWithText } from "components/Icon";
@@ -81,8 +81,8 @@ class ChargeAccountSection extends Component {
   }
 
   componentWillMount() {
-    let { chargeAccount } = this.props;
-    if (chargeAccount.last4 && chargeAccount.last4 !== "0000") {
+    let { card } = this.props;
+    if (card.last4 && card.last4 !== "0000") {
       this.setState({ loading: false })
     } else {
       this.props.getChargeAccount().then(() => this.setState({ loading: false }));
@@ -100,20 +100,20 @@ class ChargeAccountSection extends Component {
       )
     }
 
-    let { chargeAccount, connectChargeAccount, deleteCard } = this.props;
+    let { card, connectChargeAccount, deleteCard } = this.props;
     return (
       <div className="has-text-centered">
         <p className="title is-5">Charge Account</p>
         <div className="level">
           <div className="level-left">
             <div className="level-item">
-              <Card {... chargeAccount}/>
+              <Card {... card}/>
             </div>
           </div>
           <div className="level-right">
             <div className="level-item">
-              {chargeAccount.isMissing && <ConnectCardButton connectChargeAccount={connectChargeAccount}/>}
-              {!chargeAccount.isMissing && <DeleteCardButton deleteCard={deleteCard}/>}
+              {card.isMissing && <ConnectCardButton connectChargeAccount={connectChargeAccount}/>}
+              {!card.isMissing && <DeleteCardButton deleteCard={deleteCard}/>}
             </div>
           </div>
         </div>
@@ -126,8 +126,8 @@ class ChargeAccountSection extends Component {
 }
 
 
-const mapStateToProps = ({ payment: { charge: { account: chargeAccount } } }) => {
-  return { chargeAccount };
+const mapStateToProps = ({ payment: { charge: { card } } }) => {
+  return { card };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,44 +1,20 @@
-import React from "react";
-import moment from "moment";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { getIncomingTransactions } from "reducers/payment/payout/transaction.actions";
-import Resource from "components/Resource";
-
-
-function Transaction({ project, resource, created }){
-  return (
-    <tr>
-      <td><Link to={`/creator/${project.user}/project/${project._id}`}>{project.title}</Link></td>
-      <td><Resource resource={resource}/></td>
-      <td>{moment(created).format("MMMM Do")}</td>
-    </tr>
-  );
-}
+import PayoutTimeline from "components/timeline/PayoutTimeline";
 
 function OutgoingSection({ transactions }) {
   return (
-    <div className="has-text-centered">
-      <p className="title is-5">Incoming Transactions</p>
-      <table className="table is-fullwidth">
-        <thead>
-        <tr>
-          <td className="is-3">Project</td>
-          <td className="is-6">Link</td>
-          <td className="is-3">Date</td>
-        </tr>
-        </thead>
-        <tbody>
-        {transactions.map((transaction, i) =>  <Transaction key={i} {... transaction}/>)}
-        </tbody>
-      </table>
-    </div>
+    <Fragment>
+      <p className="title is-5 has-text-centered">Incoming Transactions</p>
+      <PayoutTimeline transactions={transactions}/>
+    </Fragment>
   );
 }
 
 
-const mapStateToProps = ({ payment: { payout: { transaction: { byUser: { my: { transactions = [] } = {} } } } } }) => {
+const mapStateToProps = ({ payment: { payout: { transaction: { byUser: { my: { transactions = [] } = {}} } } } }) => {
   return { transactions };
 };
 
