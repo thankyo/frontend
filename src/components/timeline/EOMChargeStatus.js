@@ -1,10 +1,12 @@
-// Pending, Running, Success, Failed, UnderMin, NoBankDetails, FailedToCreate
+// Pending, Running, Success, Failed, UnderMin, NoBankDetails, FailedToCreate, NoContributions
 
 import React, { Fragment } from "react";
 import { IconWithText } from "components/Icon";
 
 export default function EOMChargeStatus({ status }) {
   switch (status) {
+    case "NoContributions":
+      return <span>No contributions</span>
     case "NoBankDetails":
       return (
         <Fragment>

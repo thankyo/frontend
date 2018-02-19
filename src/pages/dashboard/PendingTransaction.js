@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getOutgoingTransactions } from "reducers/payment/charge/transaction.actions";
+import { getPendingCharges } from "reducers/payment/charge/transaction.actions";
 import ChargeTimeline from "components/timeline/ChargeTimeline";
 
 const PendingTransactions = ({ transactions }) => {
@@ -18,7 +18,7 @@ const mapStateToProps = ({ payment: { charge: { transaction: { byUser } } } }, {
 };
 
 const mapDispatchToProps = (dispatch, { id }) => {
-  dispatch(getOutgoingTransactions(id));
+  dispatch(getPendingCharges(id));
   return {}
 };
 

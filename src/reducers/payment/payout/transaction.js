@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 import { promiseReducerDB } from "reducers/util/promiseStates";
 
-import { GET_INCOMING_TRANSACTIONS, GET_PAYOUTS } from "./transaction.actions";
+import { GET_PENDING_PAYOUTS, GET_PAYOUTS } from "./transaction.actions";
 
 export default combineReducers({
-  byUser: promiseReducerDB(GET_INCOMING_TRANSACTIONS),
+  byUser: promiseReducerDB(GET_PENDING_PAYOUTS),
   payout: promiseReducerDB(GET_PAYOUTS),
 })

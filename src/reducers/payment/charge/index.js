@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { combineReducersInSingle, promiseReducer, promiseReducerDB } from 'reducers/util/promiseStates';
 
-import { GET_CHARGES, GET_OUTGOING_TRANSACTIONS } from "./transaction.actions";
+import { GET_CHARGES, GET_PENDING_CHARGES } from "./transaction.actions";
 import { CHARGE_CARD_GET, CHARGE_CARD_SET, CHARGE_CARD_DELETE } from './card.actions';
 import { GET_LIMIT, SET_LIMIT } from "./limit.actions";
 
@@ -43,6 +43,6 @@ export default combineReducers({
   limit: limitReducer,
   transaction: combineReducers({
     charge: promiseReducerDB(GET_CHARGES),
-    byUser: promiseReducerDB(GET_OUTGOING_TRANSACTIONS)
+    byUser: promiseReducerDB(GET_PENDING_CHARGES)
   })
 })
