@@ -2,17 +2,10 @@ import React from "react";
 
 import { Redirect, Route, Switch } from 'react-router-dom';
 import SettingsMenu from "./SettingsNav";
-import PaymentLimit from "./payment/PaymentLimitSection";
-import ChargeAccount from "./payment/ChargePage";
-import PayoutAccount from "./payment/PayoutPage";
-import OutgoingTransaction from "./payment/OutgoingSection";
-import IncomingTransaction from "./payment/IncomingSection";
-import ChargesSection from "./payment/ChargesSection";
-import PayoutSection from "./payment/PayoutsSection";
 
-
-import Profile from "./profile/ProfileSection";
-
+import ChargePage from "./payment/ChargePage";
+import PayoutPage from "./payment/PayoutPage";
+import ProfilePage from "./profile/ProfilePage";
 
 export default function SettingsRouter() {
   return (
@@ -27,13 +20,13 @@ export default function SettingsRouter() {
               <Redirect to="/settings/profile"/>
             </Route>
             <Route path="/settings/charge">
-              <ChargeAccount/>
+              <ChargePage/>
             </Route>
             <Route path="/settings/payout">
-              <PayoutAccount/>
+              <PayoutPage/>
             </Route>
             <Route path="/settings/profile">
-              <Profile/>
+              <ProfilePage/>
             </Route>
           </Switch>
         </div>

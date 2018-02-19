@@ -1,5 +1,4 @@
 import 'whatwg-fetch';
-import oboe from 'oboe';
 import { handleFetchResponse } from "./http";
 
 class TokenStore {
@@ -109,7 +108,7 @@ class AuthService {
     return false;
   };
 
-  signAndFetch = (req) => {
+  signAndFetch = (req, isJson = true) => {
     let token = this.tokenStore.getToken();
     req.headers.append('X-Auth-Token', token);
     req.headers.append('Accept', 'application/json');
@@ -122,29 +121,12 @@ class AuthService {
         return res.json().then(err => {
           throw err
         });
-      } else {
+      } else if (isJson) {
         return res.json()
+      } else {
+        return res;
       }
     });
-  };
-
-  signAndStream = (url, dispatch, callback) => {
-    oboe({
-      url,
-      headers: {
-        'X-Auth-Token': this.tokenStore.getToken(),
-        'Content-Type': 'application/json',
-      }
-    }).done((obj) => {
-      let isEmpty = obj === undefined ||
-        obj === null ||
-        (Object.keys(obj).length === 0 && obj.constructor === Object);
-      if (!isEmpty) callback(obj)
-    }).fail((errorReport) => {
-      if (errorReport.statusCode === 401 || errorReport.statusCode === 403) {
-        dispatch(logout());
-      }
-    })
   };
 
   isMy = (id) => this.tokenStore.isMy(id);
