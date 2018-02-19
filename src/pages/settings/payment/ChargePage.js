@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import ChargeAccountSection from "./ChargeAccountSection";
-import ChargeSection from "./ChargesSection";
+import EOMChargeSection from "./EOMChargesSection";
 import PaymentLimitSection from "./PaymentLimitSection";
 import OutgoingSection from "./OutgoingSection";
 
@@ -10,7 +10,7 @@ export default function ChargePage() {
       <ChargeAccountSection/>
       <PaymentLimitSection/>
       <OutgoingSection/>
-      <ChargeSection/>
+      <EOMChargeSection/>
     </Fragment>
   )
 }

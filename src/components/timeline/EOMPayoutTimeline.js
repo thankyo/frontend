@@ -3,13 +3,13 @@ import moment from "moment/moment";
 import Money from "components/Money";
 import EOMPayoutStatus from "./EOMPayoutStatus";
 
-function EOMPayout({ yom, amount, status, handleExpand }) {
+function EOMPayout({ yom, amount, status }) {
   return (
     <li className="timeline-item is-primary">
       <div className="timeline-marker is-medium is-primary"/>
       <div className="timeline-content">
         <p className="heading">
-          <a onClick={handleExpand}>{moment(yom).format("MMMM YY")}</a>
+          {moment(yom).format("MMMM YY")}
         </p>
         <p>
           <Money {... amount}/>

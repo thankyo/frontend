@@ -6,7 +6,7 @@ export const GET_LIMIT = "GET_LIMIT";
 
 export function getLimit() {
   return (dispatch) => {
-    let req = new Request("/api/v1/payment/my/limit");
+    let req = new Request("/api/v1/payment/my/charge/limit");
     let p = authService.signAndFetch(req);
     return dispatchPromise(p, GET_LIMIT, dispatch)
   }
@@ -32,7 +32,7 @@ export function decrease(limit) {
 
 export function setLimit(limit) {
   return (dispatch) => {
-    let req = new Request("/api/v1/payment/my/limit",
+    let req = new Request("/api/v1/payment/my/charge/limit",
       {
         method: "POST",
         body: JSON.stringify(limit)
