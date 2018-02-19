@@ -77,35 +77,39 @@ class PayoutAccountSection extends Component {
     let { loading } = this.state;
     if (loading) {
       return (
-        <div className="has-text-centered">
-          <p className="title is-5">Payout Account</p>
-          <Loading/>
-        </div>
+        <section className="section">
+          <div className="has-text-centered">
+            <p className="title is-5">Account</p>
+            <Loading/>
+          </div>
+        </section>
       )
     }
 
     let { payoutAccount } = this.props;
 
     return (
-      <div className="has-text-centered">
-        <p className="title is-5">Payout Account</p>
-        <div className="level">
-          <div className="level-left">
-            <div className="level-item">
-              <BankDetails payoutAccount={payoutAccount}/>
+      <section className="section">
+        <div className="has-text-centered">
+          <p className="title is-5">Account</p>
+          <div className="level">
+            <div className="level-left">
+              <div className="level-item">
+                <BankDetails payoutAccount={payoutAccount}/>
+              </div>
+            </div>
+            <div className="level-right">
+              <div className="level-item">
+                {payoutAccount && <DeleteAccountButton deletePayoutAccount={this.props.deletePayoutAccount}/>}
+                {!payoutAccount && <ConnectPayoutAccount/>}
+              </div>
             </div>
           </div>
-          <div className="level-right">
-            <div className="level-item">
-              {payoutAccount && <DeleteAccountButton deletePayoutAccount={this.props.deletePayoutAccount}/>}
-              {!payoutAccount && <ConnectPayoutAccount/>}
-            </div>
-          </div>
+          <br/>
+          <h5 className="subtitle payment-text"><b>All payouts happen at the end of the month</b></h5>
+          <img className="is-pulled-right" src="/img/stripe/powered_by_stripe.png"/>
         </div>
-        <br/>
-        <h5 className="subtitle payment-text"><b>All payouts happen at the end of the month</b></h5>
-        <img className="is-pulled-right" src="/img/stripe/powered_by_stripe.png"/>
-      </div>
+      </section>
     )
   }
 };

@@ -6,10 +6,10 @@ import ChargeTimeline from "components/timeline/ChargeTimeline";
 
 function OutgoingSection({ transactions }) {
   return (
-    <Fragment>
-      <p className="title is-5 has-text-centered">Outgoing Transactions</p>
+    <section className="section">
+      <p className="title is-5 has-text-centered">Contributions</p>
       <ChargeTimeline transactions={transactions}/>
-    </Fragment>
+    </section>
   );
 }
 

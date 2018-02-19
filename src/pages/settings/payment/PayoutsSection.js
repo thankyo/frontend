@@ -6,10 +6,10 @@ import EOMPayoutTimeline from "components/timeline/EOMPayoutTimeline";
 
 function PayoutSection({ payouts }) {
   return (
-    <div>
+    <section className="section">
       <p className="title is-5 has-text-centered">Payouts</p>
       <EOMPayoutTimeline payouts={payouts}/>
-    </div>
+    </section>
   );
 }
 

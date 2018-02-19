@@ -95,34 +95,38 @@ class ChargeAccountSection extends Component {
     let { loading } = this.state;
     if ( loading ) {
       return (
+        <section className="section">
         <div className="has-text-centered">
-          <p className="title is-5">Charge Account</p>
+          <p className="title is-5">Card</p>
           <Loading/>
         </div>
+        </section>
       )
     }
 
     let { card, connectChargeAccount, deleteCard } = this.props;
     return (
-      <div className="has-text-centered">
-        <p className="title is-5">Charge Account</p>
-        <div className="level">
-          <div className="level-left">
-            <div className="level-item">
-              <Card {... card}/>
+      <section className="section">
+        <div className="has-text-centered">
+          <p className="title is-5">Card</p>
+          <div className="level">
+            <div className="level-left">
+              <div className="level-item">
+                <Card {... card}/>
+              </div>
+            </div>
+            <div className="level-right">
+              <div className="level-item">
+                {card.isMissing && <ConnectCardButton connectChargeAccount={connectChargeAccount}/>}
+                {!card.isMissing && <DeleteCardButton deleteCard={deleteCard}/>}
+              </div>
             </div>
           </div>
-          <div className="level-right">
-            <div className="level-item">
-              {card.isMissing && <ConnectCardButton connectChargeAccount={connectChargeAccount}/>}
-              {!card.isMissing && <DeleteCardButton deleteCard={deleteCard}/>}
-            </div>
-          </div>
+          <br/>
+          <h5 className="subtitle payment-text"><b>All charges happen at the end of the month</b></h5>
+          <img className="is-pulled-right" src="/img/stripe/powered_by_stripe.png"/>
         </div>
-        <br/>
-        <h5 className="subtitle payment-text"><b>All charges happen at the end of the month</b></h5>
-        <img className="is-pulled-right" src="/img/stripe/powered_by_stripe.png"/>
-      </div>
+      </section>
     );
   }
 }

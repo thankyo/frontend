@@ -6,10 +6,10 @@ import PayoutTimeline from "components/timeline/PayoutTimeline";
 
 function OutgoingSection({ transactions }) {
   return (
-    <Fragment>
-      <p className="title is-5 has-text-centered">Incoming Transactions</p>
+    <section className="section">
+      <p className="title is-5 has-text-centered">Pending</p>
       <PayoutTimeline transactions={transactions}/>
-    </Fragment>
+    </section>
   );
 }
 

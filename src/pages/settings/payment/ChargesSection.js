@@ -6,10 +6,10 @@ import EOMChargeTimeline from "components/timeline/EOMChargesTimeline";
 
 function ChargesSection({ charges }) {
   return (
-    <Fragment>
+    <section className="section">
       <p className="title is-5 has-text-centered">Charges</p>
       <EOMChargeTimeline charges={charges}/>
-    </Fragment>
+    </section>
   );
 }
 
