@@ -4,12 +4,13 @@ import { saveAs } from "file-saver";
 
 export const GET_PENDING_PAYOUTS = "GET_PENDING_PAYOUTS";
 export const GET_PENDING_PAYOUTS_CSV = "GET_PENDING_PAYOUTS_CSV";
+
 export const GET_PAYOUTS = "GET_PAYOUTS";
 export const GET_PAYOUTS_CSV = "GET_PAYOUTS_CSV";
 
 export function getPendingPayouts(id) {
   return (dispatch) => {
-    let req = new Request(`/api/v1/payment/${id}/charge/pending`);
+    let req = new Request(`/api/v1/payment/${id}/payout/pending`);
     let p = authService.signAndFetch(req).then(transactions => ({ id, transactions }));
     return dispatchPromise(p, GET_PENDING_PAYOUTS, dispatch);
   }
