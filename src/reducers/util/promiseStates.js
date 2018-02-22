@@ -1,12 +1,20 @@
 import authService from "./auth";
 
+export function event(name) {
+  return {
+    fulfilled: `${name}.fulfilled`,
+    pending: `${name}.pending`,
+    rejected: `${name}.rejected`
+  }
+}
+
 export function dispatchPromise(p, event, dispatch) {
-  dispatch({ type: `${event}.pending`, payload: {} });
+  dispatch({ type: event.pending, payload: {} });
   return p.then((res) => {
-    dispatch({ type: `${event}.fulfilled`, payload: res });
+    dispatch({ type: event.fulfilled, payload: res });
     return res;
   }).catch((err) => {
-    dispatch({ type: `${event}.rejected`, payload: err });
+    dispatch({ type: event.rejected, payload: err });
   })
 }
 
@@ -19,11 +27,11 @@ export function promiseReducer(
 ) {
   return function (state = initialState, { type, payload }) {
     switch (type) {
-      case `${event}.pending`:
+      case event.pending:
         return pending(state, payload);
-      case `${event}.fulfilled`:
+      case event.fulfilled:
         return fulfilled(state, payload);
-      case `${event}.rejected`:
+      case event.rejected:
         return rejected(state, payload);
       default:
         return state;
@@ -31,18 +39,18 @@ export function promiseReducer(
   };
 }
 
-export function promiseReducerDB(event, initialState = {}, id = "id") {
-  return function (state = initialState, { type, payload }) {
+export function promiseReducerDB(event) {
+  return function (state = {}, { type, payload }) {
     switch (type) {
-      case `${event}.pending`:
+      case event.pending:
         return state;
-      case `${event}.fulfilled`:
-        if (authService.isMy(payload[id])) {
-          return Object.assign({}, state, { [payload[id]] : payload, my: payload });
+      case event.fulfilled:
+        if (authService.isMy(payload.id)) {
+          return Object.assign({}, state, { [payload.id] : payload, my: payload });
         } else {
-          return Object.assign({}, state, { [payload[id]]: payload });
+          return Object.assign({}, state, { [payload.id]: payload });
         }
-      case `${event}.rejected`:
+      case event.rejected:
         return state;
       default:
         return state;

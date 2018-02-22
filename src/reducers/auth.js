@@ -10,6 +10,6 @@ function initialState() {
   };
 }
 
-export default function authReducer(state = initialState(), action) {
+export default function authReducer(state = initialState()) {
   return state;
 }

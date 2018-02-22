@@ -1,12 +1,12 @@
 import authService from 'reducers/util/auth';
-import { dispatchPromise } from "reducers/util/promiseStates";
-import { saveAs } from "file-saver";
+import { dispatchPromise, event } from "reducers/util/promiseStates";
+import { handleCSVResponce } from "reducers/util/http";
 
-export const GET_PENDING_PAYOUTS = "GET_PENDING_PAYOUTS";
-export const GET_PENDING_PAYOUTS_CSV = "GET_PENDING_PAYOUTS_CSV";
+export const GET_PENDING_PAYOUTS = event("GET_PENDING_PAYOUTS");
+export const GET_PENDING_PAYOUTS_CSV = event("GET_PENDING_PAYOUTS_CSV");
 
-export const GET_PAYOUTS = "GET_PAYOUTS";
-export const GET_PAYOUTS_CSV = "GET_PAYOUTS_CSV";
+export const GET_PAYOUTS = event("GET_PAYOUTS");
+export const GET_PAYOUTS_CSV = event("GET_PAYOUTS_CSV");
 
 export function getPendingPayouts(id) {
   return (dispatch) => {
@@ -19,12 +19,7 @@ export function getPendingPayouts(id) {
 export function getPendingPayoutsCsv(id) {
   return (dispatch) => {
     let req = new Request(`/api/v1/payment/${id}/payout/pending/csv`);
-    let p = authService.signAndFetch(req, false)
-      .then(res => res.text())
-      .then(text => {
-        let csv = new Blob([text], { type: "text/csv;charset=utf-8" });
-        saveAs(csv, "pending_payout.csv")
-      });
+    let p = authService.signAndFetch(req, false).then(handleCSVResponce("pending_payout.csv"));
     return dispatchPromise(p, GET_PENDING_PAYOUTS_CSV, dispatch);
   }
 }
@@ -40,12 +35,7 @@ export function getPayouts(id) {
 export function getPayoutsCSV(id) {
   return (dispatch) => {
     let req = new Request(`/api/v1/payment/${id}/payout/csv`);
-    let p = authService.signAndFetch(req, false)
-      .then(res => res.text())
-      .then(text => {
-        let csv = new Blob([text], { type: "text/csv;charset=utf-8" });
-        saveAs(csv, "payouts.csv")
-      });
+    let p = authService.signAndFetch(req, false).then(handleCSVResponce("payouts.csv"));
     return dispatchPromise(p, GET_PAYOUTS_CSV, dispatch)
   }
 }

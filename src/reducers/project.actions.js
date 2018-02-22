@@ -1,14 +1,14 @@
 import authService from "./util/auth";
-import { dispatchPromise } from "./util/promiseStates";
+import { dispatchPromise, event } from "./util/promiseStates";
 
-export const GET_PROJECT = "GET_PROJECT";
-export const GET_SUPPORTED = "GET_SUPPORTED";
-export const GET_USER_PROJECTS = "GET_USER_PROJECTS";
+export const GET_PROJECT = event("GET_PROJECT");
+export const GET_SUPPORTED = event("GET_SUPPORTED");
+export const GET_USER_PROJECTS = event("GET_USER_PROJECTS");
 
-export const REFRESH_MY_PROJECTS = "REFRESH_MY_PROJECTS";
-export const UPDATE_MY_PROJECT = "UPDATE_MY_PROJECT";
-export const GET_OWNED_PROJECTS = "GET_OWNED_PROJECTS";
-export const REFRESH_PROJECT_FEED = "REFRESH_PROJECT_FEED"
+export const REFRESH_MY_PROJECTS = event("REFRESH_MY_PROJECTS");
+export const UPDATE_MY_PROJECT = event("UPDATE_MY_PROJECT");
+export const GET_OWNED_PROJECTS = event("GET_OWNED_PROJECTS");
+export const REFRESH_PROJECT_FEED = event("REFRESH_PROJECT_FEED");
 
 export function getProject(id) {
   return (dispatch) => {

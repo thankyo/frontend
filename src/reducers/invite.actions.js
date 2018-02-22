@@ -1,8 +1,8 @@
 import authService from './util/auth';
-import { dispatchPromise } from './util/promiseStates';
+import { dispatchPromise, event } from './util/promiseStates';
 import { reset } from 'redux-form';
 
-export const INVITE = "INVITE";
+export const INVITE = event("INVITE");
 
 export function invite(url) {
   return (dispatch) => {

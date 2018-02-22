@@ -1,10 +1,10 @@
 import authService from "../../util/auth";
 import { loadScriptAsPromise } from '../../../conf/loadScript';
-import { dispatchPromise } from '../../util/promiseStates';
+import { dispatchPromise, event } from '../../util/promiseStates';
 
-export const CHARGE_CARD_GET = "CHARGE_CARD_GET";
-export const CHARGE_CARD_SET = "CHARGE_CARD_SET";
-export const CHARGE_CARD_DELETE = "CHARGE_CARD_DELETE";
+export const CHARGE_CARD_GET = event("CHARGE_CARD_GET");
+export const CHARGE_CARD_SET = event("CHARGE_CARD_SET");
+export const CHARGE_CARD_DELETE = event("CHARGE_CARD_DELETE");
 
 function processToken(token) {
   return (dispatch) => {

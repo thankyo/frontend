@@ -1,8 +1,8 @@
 import authService from "../../util/auth";
-import { dispatchPromise } from '../../util/promiseStates';
+import { dispatchPromise, event } from '../../util/promiseStates';
 
-export const PAYOUT_ACCOUNT_GET = "PAYOUT_ACCOUNT_GET";
-export const PAYOUT_ACCOUNT_DELETE = "PAYOUT_ACCOUNT_DELETE";
+export const PAYOUT_ACCOUNT_GET = event("PAYOUT_ACCOUNT_GET");
+export const PAYOUT_ACCOUNT_DELETE = event("PAYOUT_ACCOUNT_DELETE");
 
 export function getPayoutAccount() {
   return (dispatch) => {

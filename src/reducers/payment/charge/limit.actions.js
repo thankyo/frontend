@@ -1,8 +1,8 @@
 import authService from '../../util/auth';
-import { dispatchPromise } from '../../util/promiseStates';
+import { dispatchPromise, event } from '../../util/promiseStates';
 
-export const SET_LIMIT = "SET_LIMIT";
-export const GET_LIMIT = "GET_LIMIT";
+export const SET_LIMIT = event("SET_LIMIT");
+export const GET_LIMIT = event("GET_LIMIT");
 
 export function getLimit() {
   return (dispatch) => {

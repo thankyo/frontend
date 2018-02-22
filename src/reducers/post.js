@@ -16,8 +16,8 @@ export default function postReducer(stateMap = {}, { type, payload }) {
       let id = payload;
       let post = Object.assign({}, stateMap[id], { isEdit: !stateMap[id].isEdit });
       return Object.assign({}, stateMap, { [id]: post });
-    case `${REFRESH_PROJECT_FEED}.fulfilled`:
-    case `${SEARCH_BY_PROJECT}.fulfilled`: {
+    case REFRESH_PROJECT_FEED.fulfilled:
+    case SEARCH_BY_PROJECT.fulfilled: {
       let { posts } = payload;
       posts.forEach(markLoved);
       let postToId = posts.reduce((agg, post) => {
@@ -26,15 +26,15 @@ export default function postReducer(stateMap = {}, { type, payload }) {
       }, {});
       return Object.assign({}, stateMap, postToId);
     }
-    case `${SEARCH_BY_TAG}.fulfilled`: {
+    case SEARCH_BY_TAG.fulfilled: {
       let postToId = payload.reduce((agg, post) => {
         agg[post._id] = markLoved(post);
         return agg;
       }, {});
       return Object.assign({}, stateMap, postToId);
     }
-    case `${SAVE_POST}.fulfilled`:
-    case `${LOVE_POST}.fulfilled`:
+    case SAVE_POST.fulfilled:
+    case LOVE_POST.fulfilled:
       return Object.assign({}, stateMap, { [payload._id]: markLoved(payload) });
     default:
       return stateMap;

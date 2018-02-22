@@ -1,8 +1,8 @@
 import authService from './util/auth';
-import { dispatchPromise } from './util/promiseStates';
+import { dispatchPromise, event } from './util/promiseStates';
 
-export const GET_USER = "GET_USER";
-export const SAVE_USER = "SAVE_USER";
+export const GET_USER = event("GET_USER");
+export const SAVE_USER = event("SAVE_USER");
 
 export function fetchUser(id) {
     return (dispatch) => {

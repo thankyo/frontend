@@ -1,8 +1,11 @@
+import { combineReducers } from "redux";
+import { LOCATION_CHANGE } from "react-router-redux";
+
 import { promiseReducer } from "./util/promiseStates";
+
 import { SEARCH_BY_TAG, SEARCH_BY_PROJECT } from "./search.actions";
 import { REFRESH_PROJECT_FEED } from "reducers/project.actions";
-import { combineReducers } from "redux";
-import {LOCATION_CHANGE} from "react-router-redux";
+
 import queryString from "query-string";
 
 function onlyUnique(value, index, self) {
@@ -24,8 +27,8 @@ function queryReducer(state = "", { type, payload }) {
 
 function projectReducer(state = {}, { type, payload }) {
   switch (type) {
-    case `${SEARCH_BY_PROJECT}.fulfilled`:
-    case `${REFRESH_PROJECT_FEED}.fulfilled`:
+    case SEARCH_BY_PROJECT.fulfilled:
+    case REFRESH_PROJECT_FEED.fulfilled:
       let { id, posts } = payload;
       let prjIds = posts.map(({ _id }) => _id).concat(state[id] || []).filter(onlyUnique);
 

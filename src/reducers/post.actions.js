@@ -1,10 +1,10 @@
 import authService from "./util/auth";
-import { dispatchPromise } from "./util/promiseStates";
+import { dispatchPromise, event } from "./util/promiseStates";
 import { action } from "reducers/util/action";
 
-export const SAVE_POST = "SAVE_POST";
+export const SAVE_POST = event("SAVE_POST");
 export const EDIT_POST = "EDIT_POST";
-export const LOVE_POST = "LOVE_POST";
+export const LOVE_POST = event("LOVE_POST");
 
 export function enableEdit(id) {
   return (dispatch) => {

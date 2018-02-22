@@ -1,12 +1,13 @@
 import authService from 'reducers/util/auth';
-import { dispatchPromise } from "reducers/util/promiseStates";
-import { saveAs } from "file-saver";
 
-export const GET_PENDING_CHARGES = "GET_PENDING_CHARGES";
-export const GET_PENDING_CHARGES_CSV = "GET_PENDING_CHARGES_CSV";
+import { dispatchPromise, event } from "reducers/util/promiseStates";
+import { handleCSVResponce } from "reducers/util/http";
 
-export const GET_CHARGES = "GET_CHARGES";
-export const GET_CHARGES_CSV = "GET_CHARGES_CSV";
+export const GET_PENDING_CHARGES = event("GET_PENDING_CHARGES");
+export const GET_PENDING_CHARGES_CSV = event("GET_PENDING_CHARGES_CSV");
+
+export const GET_CHARGES = event("GET_CHARGES");
+export const GET_CHARGES_CSV = event("GET_CHARGES_CSV");
 
 export function getPendingCharges(id) {
   return (dispatch) => {
@@ -19,12 +20,7 @@ export function getPendingCharges(id) {
 export function getPendingChargesCsv(id) {
   return (dispatch) => {
     let req = new Request(`/api/v1/payment/${id}/charge/pending/csv`);
-    let p = authService.signAndFetch(req, false)
-      .then(res => res.text())
-      .then(text => {
-        let csv = new Blob([text], { type: "text/csv;charset=utf-8" });
-        saveAs(csv, "pending_charges.csv")
-      });
+    let p = authService.signAndFetch(req, false).then(handleCSVResponce("pending_charges.csv"));
     return dispatchPromise(p, GET_PENDING_CHARGES_CSV, dispatch);
   }
 }
@@ -40,12 +36,7 @@ export function getCharges(id) {
 export function getChargesCSV(id) {
   return (dispatch) => {
     let req = new Request(`/api/v1/payment/${id}/charge/csv`);
-    let p = authService.signAndFetch(req, false)
-      .then(res => res.text())
-      .then(text => {
-        let csv = new Blob([text], { type: "text/csv;charset=utf-8" });
-        saveAs(csv, "charges.csv")
-      });
+    let p = authService.signAndFetch(req, false).then(handleCSVResponce("charges.csv"));
     return dispatchPromise(p, GET_CHARGES_CSV, dispatch)
   }
 }

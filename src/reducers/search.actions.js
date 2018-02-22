@@ -1,8 +1,8 @@
 import authService from "./util/auth";
-import { dispatchPromise } from "./util/promiseStates";
+import { dispatchPromise, event } from "./util/promiseStates";
 
-export const SEARCH_BY_TAG = "SEARCH_BY_TAG";
-export const SEARCH_BY_PROJECT = "SEARCH_BY_PROJECT";
+export const SEARCH_BY_TAG = event("SEARCH_BY_TAG");
+export const SEARCH_BY_PROJECT = event("SEARCH_BY_PROJECT");
 
 export function searchByTag(tags) {
   return (dispatch) => {
