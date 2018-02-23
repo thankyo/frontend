@@ -1,17 +1,11 @@
-import authService from "../../util/auth";
-import { loadScriptAsPromise } from '../../../conf/loadScript';
-import { dispatchPromise, event } from '../../util/promiseStates';
+import { loadScriptAsPromise } from 'conf/loadScript';
+
+import { dispatchPromise, event } from 'reducers/util/promiseStates';
+import authService from "reducers/util/auth";
 
 export const CHARGE_CARD_GET = event("CHARGE_CARD_GET");
 export const CHARGE_CARD_SET = event("CHARGE_CARD_SET");
 export const CHARGE_CARD_DELETE = event("CHARGE_CARD_DELETE");
-
-function processToken(token) {
-  return (dispatch) => {
-    let p = authService.post("/api/v1/payment/my/charge/account", token.id);
-    return dispatchPromise(p, CHARGE_CARD_SET, dispatch);
-  }
-}
 
 export function getChargeAccount() {
   return (dispatch) => {
@@ -36,7 +30,10 @@ export function connectChargeAccount() {
       };
       StripeButton.open(conf);
     })).
-    then((token) => dispatch(processToken(token)));
+    then((token) => {
+      let p = authService.post("/api/v1/payment/my/charge/account", token.id);
+      return dispatchPromise(p, CHARGE_CARD_SET, dispatch);
+    });
   }
 }
 
