@@ -1,11 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import Loading from "components/Loading";
 import { IconWithText } from "components/Icon";
 import { deletePayoutAccount, getPayoutAccount } from "reducers/payment/payout/account.actions";
+import { componentFactory } from "components/loadingComponent";
+import spinnerFactory from "components/spinnerFactory";
+import RefreshButton from "components/RefreshButton";
 
-function BankDetails({ payoutAccount }) {
-  if (!payoutAccount) {
+function BankDetails({ account }) {
+  if (!account) {
     return (
       <div className="subtitle">
          <span className="fa-stack fa-lg has-text-danger">
@@ -36,90 +38,39 @@ function ConnectPayoutAccount() {
   )
 }
 
-class DeleteAccountButton extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { loading: false };
-  }
-
-  handleDeleteAccount = () => {
-    this.setState({ loading: true });
-    this.props.deletePayoutAccount().catch(() => this.setState({ loading: false }));
-  };
-
-  render() {
-    let { loading } = this.state;
-    return (
-      <a onClick={this.handleDeleteAccount} className={`button is-outlined is-danger ${loading && "is-loading"}`}>
-        Delete
-      </a>
-    )
-  }
-}
-
-class PayoutAccountSection extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { loading: false };
-  }
-
-  componentWillMount() {
-    let { payoutAccount } = this.props;
-    if (!payoutAccount) {
-      this.setState({ loading: true });
-      this.props.getPayoutAccount().then(() => this.setState({ loading: false }));
-    }
-  }
-
-  render() {
-    let { loading } = this.state;
-    if (loading) {
-      return (
-        <section className="section">
-          <div className="has-text-centered">
-            <p className="title is-5">Account</p>
-            <Loading/>
-          </div>
-        </section>
-      )
-    }
-
-    let { payoutAccount } = this.props;
-
-    return (
-      <section className="section">
-        <div className="has-text-centered">
-          <p className="title is-5">Account</p>
-          <div className="level">
-            <div className="level-left">
-              <div className="level-item">
-                <BankDetails payoutAccount={payoutAccount}/>
-              </div>
-            </div>
-            <div className="level-right">
-              <div className="level-item">
-                {payoutAccount && <DeleteAccountButton deletePayoutAccount={this.props.deletePayoutAccount}/>}
-                {!payoutAccount && <ConnectPayoutAccount/>}
-              </div>
+function PayoutAccountSection({ account, deletePayoutAccount, isMissing }) {
+  return (
+    <section className="section">
+      <div className="has-text-centered">
+        <p className="title is-5">Account</p>
+        <div className="level">
+          <div className="level-left">
+            <div className="level-item">
+              <BankDetails account={account}/>
             </div>
           </div>
-          <br/>
-          <h5 className="subtitle payment-text"><b>All payouts happen at the end of the month</b></h5>
-          <img className="is-pulled-right" src="/img/stripe/powered_by_stripe.png"/>
+          <div className="level-right">
+            <div className="level-item">
+              {isMissing && <ConnectPayoutAccount/>}
+              {!isMissing && <RefreshButton onClick={deletePayoutAccount} className="is-danger">Delete</RefreshButton>}
+            </div>
+          </div>
         </div>
-      </section>
-    )
-  }
+        <br/>
+        <h5 className="subtitle payment-text"><b>All payouts happen at the end of the month</b></h5>
+        <img className="is-pulled-right" src="/img/stripe/powered_by_stripe.png"/>
+      </div>
+    </section>
+  )
 };
 
 
-const mapStateToProps = ({ payment: { payout: { account: payoutAccount } } }) => {
-  return { payoutAccount };
+const mapStateToProps = ({ payment: { payout: { account } } }) => {
+  return account;
 };
 
 const mapDispatchToProps = (dispatch) => {
+  dispatch(getPayoutAccount());
   return {
     getPayoutAccount: () => dispatch(getPayoutAccount()),
     deletePayoutAccount: () => dispatch(deletePayoutAccount()),
@@ -129,5 +80,5 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PayoutAccountSection);
+)(componentFactory(PayoutAccountSection, spinnerFactory(284)));
 

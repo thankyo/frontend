@@ -12,7 +12,7 @@ const DEFAULT_LIMIT_STATE = {
 
 const setLimitReducer = (state = DEFAULT_LIMIT_STATE, { type, payload }) => {
   switch (type) {
-    case CHARGE_LIMIT_SET:
+    case "CHARGE_LIMIT_SET":
       return payload;
     default:
       return state;

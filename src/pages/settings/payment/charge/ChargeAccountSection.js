@@ -65,7 +65,7 @@ function ChargeAccountSection({ isMissing, brand, last4, connectChargeAccount, d
           <div className="level-right">
             <div className="level-item">
               {isMissing && <RefreshButton onClick={connectChargeAccount}><IconWithText className="fa fa-credit-card" text="Connect Card"/></RefreshButton>}
-              {!isMissing && <RefreshButton onClick={deleteCard} className={"is-danger"}>Delete</RefreshButton>}
+              {!isMissing && <RefreshButton onClick={deleteCard} className="is-danger">Delete</RefreshButton>}
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(componentFactory(ChargeAccountSection, spinnerFactory(288)));
+)(componentFactory(ChargeAccountSection, spinnerFactory(284)));
 
 
 
