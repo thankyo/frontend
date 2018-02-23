@@ -1,6 +1,5 @@
 import user from "./user";
 import payment from './payment';
-import search from "./search";
 import navigation from "./navigation";
 import project from "./project";
 import post from "./post";
@@ -19,7 +18,6 @@ export default function () {
       navigation,
       user,
       payment,
-      search,
       post,
       project,
     }

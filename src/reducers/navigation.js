@@ -1,4 +1,6 @@
+import { combineReducers } from "redux";
 import {LOCATION_CHANGE} from "react-router-redux";
+import queryString from "query-string";
 
 const LINKS = [
   { pathname: "/dashboard/my", name: "Supporter Mode", icon: "fa fa-thumbs-o-up" },
@@ -9,10 +11,28 @@ const LINKS = [
   { pathname: "/settings/payout", name: "Payout", isHiddenDesktop: true },
 ];
 
-export default function stateReducer(state = { links: LINKS }, { type, payload }) {
+function linksReducer(state = LINKS, { type}) {
   switch (type) {
     case LOCATION_CHANGE:
       window.scroll(0, 0)
   }
   return state;
 }
+
+function queryReducer(state = "", { type, payload }) {
+  switch (type) {
+    case (LOCATION_CHANGE):
+      let { pathname, search } = payload;
+      if (pathname === "/search") {
+        return queryString.parse(search).query;
+      }
+      return state;
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({
+  links: linksReducer,
+  query: queryReducer
+})

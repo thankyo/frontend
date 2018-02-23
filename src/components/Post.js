@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
-import { enableEdit, lovePost, savePost } from "reducers/post.actions";
+import { enableEdit, lovePost, savePost } from "reducers/post/post.actions";
 import { connect } from "react-redux";
 
 import { IconWithText } from "components/Icon";
@@ -125,8 +125,8 @@ function Post(props) {
 }
 
 
-const mapStateToProps = ({ post }, { id }) => ({
-  post: post[id]
+const mapStateToProps = ({ post: { byId } }, { id }) => ({
+  post: byId[id]
 });
 
 const mapDispatchToProps = (dispatch, { id }) => {

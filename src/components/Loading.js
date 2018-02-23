@@ -1,25 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
-export function loadingComponent(loader, Component) {
-  class LoadingComponent extends Component {
-    constructor(props) {
-      super(props);
-
-      this.state = { loading: true }
-    }
-    componentWillMount() {
-      loader().then(() => this.setState({ loading: false }));
-    }
-    render() {
-      if (this.state.loading) {
-        return <Loading/>
-      } else {
-        return <Component/>
-      }
-    }
-  }
-
-  return LoadingComponent;
+export function LoadingSVG({ width = 100, height = 100 }) {
+  return (
+    <div style={{ width, height }}>
+      <Loading/>
+    </div>
+  )
 }
 
 export default function Loading() {

@@ -20,7 +20,7 @@ function SearchPanel({ handleSubmit, submitting }) {
   )
 }
 
-const mapStateToProps = ({ search: { query }}, { history: { location } }) => {
+const mapStateToProps = ({ navigation: { query }}) => {
   return {
     initialValues: {
       tags: query

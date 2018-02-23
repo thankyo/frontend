@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 
 import Post from "components/Post";
-import { searchByTag } from "reducers/search.actions";
+import { searchByTag } from "reducers/post/post.actions";
 
 import NoResults from "./NoResults";
 
@@ -51,10 +51,10 @@ class SearchDashboard extends Component {
   }
 }
 
-const mapStateToProps = ({ search: { query, tags } }) => {
+const mapStateToProps = ({ navigation: { query }, post: { byTag } }) => {
   return {
     query,
-    tags
+    tags: byTag
   };
 };
 

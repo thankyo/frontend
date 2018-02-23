@@ -10,20 +10,22 @@ export function event(name) {
 
 export function dispatchPromise(p, event, dispatch) {
   dispatch({ type: event.pending, payload: {} });
+  // return new Promise((resolve) => setTimeout(resolve, 30000))
+  //   .then(() => p)
   return p.then((res) => {
-    dispatch({ type: event.fulfilled, payload: res });
-    return res;
-  }).catch((err) => {
-    dispatch({ type: event.rejected, payload: err });
-  })
+      dispatch({ type: event.fulfilled, payload: res });
+      return res;
+    }).catch((err) => {
+      dispatch({ type: event.rejected, payload: err });
+    })
 }
 
 export function promiseReducer(
   event,
   initialState = {},
-  pending = (state, payload) => state,
+  pending = (state) => state,
   fulfilled = (state, payload) => payload,
-  rejected = (state, payload) => state
+  rejected = (state) => state
 ) {
   return function (state = initialState, { type, payload }) {
     switch (type) {
@@ -33,6 +35,32 @@ export function promiseReducer(
         return fulfilled(state, payload);
       case event.rejected:
         return rejected(state, payload);
+      default:
+        return state;
+    }
+  };
+}
+
+export function loadingPromiseReducer(event, initialState = {}) {
+  return function (state = { data: initialState, isFetching: false }, { type, payload }) {
+    switch (type) {
+      case event.pending:
+        return {
+          ... state,
+          isFetching: true
+        };
+      case event.fulfilled:
+        return {
+          data: payload,
+          isFetching: false
+        };
+      case event.rejected:
+        return {
+          ... state,
+          isFetching: false,
+          isError: true,
+          error: payload
+        };
       default:
         return state;
     }
@@ -58,7 +86,7 @@ export function promiseReducerDB(event) {
   };
 }
 
-export function combineReducersInSingle() {
+export function asSingleReducer() {
   let reducers = Array.prototype.slice.call(arguments);
   return function (state, action) {
     return reducers.reduce(function (updState, reducer) {

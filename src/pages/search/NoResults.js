@@ -16,6 +16,6 @@ function NoResults({ query }) {
   )
 }
 
-const mapStateToProps = ({ search: { query }}) => ({ query });
+const mapStateToProps = ({ navigation: { query }}) => ({ query });
 
 export default connect(mapStateToProps)(NoResults)

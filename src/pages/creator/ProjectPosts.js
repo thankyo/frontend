@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "components/Post";
 import { connect } from "react-redux";
-import { searchByProject } from "reducers/search.actions";
+import { searchByProject } from "reducers/post/post.actions";
 
 function Posts({ posts }) {
   return (
@@ -11,7 +11,7 @@ function Posts({ posts }) {
   )
 }
 
-const mapStateToProps = ({ search: { project } }, { id }) => ({ posts:  project[id] || [] });
+const mapStateToProps = ({ post: { byProject } }, { id }) => ({ posts:  byProject[id] || [] });
 
 const mapDispatchToProps = (dispatch, { id }) => {
   dispatch(searchByProject(id));
