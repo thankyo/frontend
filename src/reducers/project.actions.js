@@ -12,56 +12,49 @@ export const REFRESH_PROJECT_FEED = event("REFRESH_PROJECT_FEED");
 
 export function getProject(id) {
   return (dispatch) => {
-    let req = new Request(`/api/v1/thank/project/${id}`);
-    let p = authService.signAndFetch(req);
+    let p = authService.get(`/api/v1/thank/project/${id}`);
     return dispatchPromise(p, GET_PROJECT, dispatch);
   }
 }
 
 export function getSupportedByMe() {
   return (dispatch) => {
-    let url = new Request(`/api/v1/thank/user/my/supported`);
-    let p = authService.signAndFetch(url).then(projects => ({ id: "my", projects }));;
+    let p = authService.get(`/api/v1/thank/user/my/supported`).then(projects => ({ id: "my", projects }));;
     return dispatchPromise(p, GET_SUPPORTED, dispatch)
   }
 }
 
 export function getProjectsByUser(user) {
   return (dispatch) => {
-    let req = new Request(`/api/v1/thank/user/${user}/project`);
-    let p = authService.signAndFetch(req).then(projects => ({ id: user, projects }));
+    let p = authService.get(`/api/v1/thank/user/${user}/project`).then(projects => ({ id: user, projects }));
     return dispatchPromise(p, GET_USER_PROJECTS, dispatch);
   }
 }
 
 export function updateProject(project) {
   return (dispatch) => {
-    let req = new Request(`/api/v1/thank/project/${project._id}`, { method: 'PUT', body: JSON.stringify(project) });
-    let p = authService.signAndFetch(req);
+    let p = authService.put(`/api/v1/thank/project/${project._id}`, project);
     return dispatchPromise(p, UPDATE_MY_PROJECT, dispatch);
   }
 }
 
 export function refreshProjectFeed(project) {
   return (dispatch) => {
-    let req = new Request(`/api/v1/thank/project/${project}/feed`);
-    let p = authService.signAndFetch(req).then(posts => ({ id: project, posts }));
+    let p = authService.get(`/api/v1/thank/project/${project}/feed`).then(posts => ({ id: project, posts }));
     return dispatchPromise(p, REFRESH_PROJECT_FEED, dispatch);
   }
 }
 
 export function getOwnedProjects() {
   return (dispatch) => {
-    let req = new Request(`/api/v1/thank/user/my/owned`);
-    let p = authService.signAndFetch(req).then(projects => ({ projects }));
+    let p = authService.get(`/api/v1/thank/user/my/owned`).then(projects => ({ projects }));
     return dispatchPromise(p, GET_OWNED_PROJECTS, dispatch);
   }
 }
 
 export function refreshMyProjects() {
   return (dispatch) => {
-    let req = new Request(`/api/v1/thank/user/my/project`, { method: "PUT" });
-    let p = authService.signAndFetch(req).then(projects => ({ projects }));
+    let p = authService.put(`/api/v1/thank/user/my/project`, {}).then(projects => ({ projects }));
     return dispatchPromise(p, REFRESH_MY_PROJECTS, dispatch);
   }
 }

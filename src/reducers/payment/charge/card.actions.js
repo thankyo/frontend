@@ -8,21 +8,14 @@ export const CHARGE_CARD_DELETE = event("CHARGE_CARD_DELETE");
 
 function processToken(token) {
   return (dispatch) => {
-    let req = new Request(
-      "/api/v1/payment/my/charge/account",
-      {
-        method: "POST",
-        body: JSON.stringify(token.id)
-      });
-    let p = authService.signAndFetch(req);
+    let p = authService.post("/api/v1/payment/my/charge/account", token.id);
     return dispatchPromise(p, CHARGE_CARD_SET, dispatch);
   }
 }
 
 export function getChargeAccount() {
   return (dispatch) => {
-    let req = new Request("/api/v1/payment/my/charge/account");
-    let p = authService.signAndFetch(req);
+    let p = authService.get("/api/v1/payment/my/charge/account");
     return dispatchPromise(p, CHARGE_CARD_GET, dispatch);
   }
 }
@@ -49,8 +42,7 @@ export function connectChargeAccount() {
 
 export function deleteCard() {
   return (dispatch) => {
-    let req = new Request("/api/v1/payment/my/charge/account", { method: "DELETE" });
-    let p = authService.signAndFetch(req);
+    let p = authService.remove("/api/v1/payment/my/charge/account");
     return dispatchPromise(p, CHARGE_CARD_DELETE, dispatch);
   }
 }

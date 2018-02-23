@@ -6,11 +6,7 @@ export const INVITE = event("INVITE");
 
 export function invite(url) {
   return (dispatch) => {
-    let req = new Request("/api/v1/user/invite", {
-      method: "POST",
-      body: JSON.stringify(url)
-    });
-    let p = authService.signAndFetch(req);
+    let p = authService.post("/api/v1/user/invite", url);
     return dispatchPromise(p, INVITE, dispatch).then((res) => dispatch(reset("invite")))
   }
 }

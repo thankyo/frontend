@@ -6,8 +6,7 @@ export const CHARGE_LIMIT_GET = event("CHARGE_LIMIT_GET");
 
 export function getLimit() {
   return (dispatch) => {
-    let req = new Request("/api/v1/payment/my/charge/limit");
-    let p = authService.signAndFetch(req);
+    let p = authService.get("/api/v1/payment/my/charge/limit");
     return dispatchPromise(p, CHARGE_LIMIT_GET, dispatch)
   }
 }
@@ -32,12 +31,7 @@ export function decrease(limit) {
 
 export function setLimit(limit) {
   return (dispatch) => {
-    let req = new Request("/api/v1/payment/my/charge/limit",
-      {
-        method: "POST",
-        body: JSON.stringify(limit)
-      });
-    let p = authService.signAndFetch(req);
+    let p = authService.post("/api/v1/payment/my/charge/limit", limit);
     return dispatchPromise(p, CHARGE_LIMIT_SET, dispatch)
   }
 }

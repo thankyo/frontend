@@ -6,16 +6,14 @@ export const PAYOUT_ACCOUNT_DELETE = event("PAYOUT_ACCOUNT_DELETE");
 
 export function getPayoutAccount() {
   return (dispatch) => {
-    let req = new Request("/api/v1/payment/my/payout/account");
-    let p = authService.signAndFetch(req);
+    let p = authService.get("/api/v1/payment/my/payout/account");
     return dispatchPromise(p, PAYOUT_ACCOUNT_GET, dispatch);
   }
 }
 
 export function deletePayoutAccount() {
   return (dispatch) => {
-    let req = new Request("/api/v1/payment/my/payout/account", { method: "DELETE" });
-    let p = authService.signAndFetch(req);
+    let p = authService.remove("/api/v1/payment/my/payout/account");
     return dispatchPromise(p, PAYOUT_ACCOUNT_DELETE, dispatch);
   }
 }

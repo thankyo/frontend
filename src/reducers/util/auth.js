@@ -108,6 +108,14 @@ class AuthService {
     return false;
   };
 
+  post = (url, body) => this.signAndFetch(new Request(url, { method: "POST", body: JSON.stringify(body) }));
+
+  put = (url, body) => this.signAndFetch(new Request(url, { method: "PUT", body: JSON.stringify(body) }));
+
+  get = (url) => this.signAndFetch(new Request(url));
+
+  remove = (url) => this.signAndFetch(url, { method: 'DELETE' });
+
   signAndFetch = (req, isJson = true) => {
     let token = this.tokenStore.getToken();
     req.headers.append('X-Auth-Token', token);

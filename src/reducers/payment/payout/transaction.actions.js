@@ -10,8 +10,7 @@ export const GET_PAYOUTS_CSV = event("GET_PAYOUTS_CSV");
 
 export function getPendingPayouts(id) {
   return (dispatch) => {
-    let req = new Request(`/api/v1/payment/${id}/payout/pending`);
-    let p = authService.signAndFetch(req).then(transactions => ({ id, transactions }));
+    let p = authService.get(`/api/v1/payment/${id}/payout/pending`).then(transactions => ({ id, transactions }));
     return dispatchPromise(p, GET_PENDING_PAYOUTS, dispatch);
   }
 }
@@ -26,8 +25,7 @@ export function getPendingPayoutsCsv(id) {
 
 export function getPayouts(id) {
   return (dispatch) => {
-    let req = new Request(`/api/v1/payment/${id}/payout`);
-    let p = authService.signAndFetch(req).then(payouts => ({ id, payouts }));
+    let p = authService.get(`/api/v1/payment/${id}/payout`).then(payouts => ({ id, payouts }));
     dispatchPromise(p, GET_PAYOUTS, dispatch)
   }
 }

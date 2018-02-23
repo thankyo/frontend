@@ -6,16 +6,14 @@ export const SAVE_USER = event("SAVE_USER");
 
 export function fetchUser(id) {
     return (dispatch) => {
-      let req = new Request(`/api/v1/user/${id}/profile`);
-      let p = authService.signAndFetch(req);
+      let p = authService.get(`/api/v1/user/${id}/profile`);
       return dispatchPromise(p, GET_USER, dispatch);
     }
 }
 
 export function saveUser(user) {
   return (dispatch) => {
-    let req = new Request("/api/v1/user/my/profile", { method: 'PUT', body: JSON.stringify(user) });
-    let p = authService.signAndFetch(req);
+    let p = authService.put("/api/v1/user/my/profile", user);
     return dispatchPromise(p, SAVE_USER, dispatch);
   }
 }
