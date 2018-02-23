@@ -1,7 +1,7 @@
 import authService from "./util/auth";
 import { dispatchPromise, event } from "./util/promiseStates";
 
-export const GET_PROJECT = event("GET_PROJECT");
+export const PROJECT_GET = event("PROJECT_GET");
 export const GET_SUPPORTED = event("GET_SUPPORTED");
 export const GET_USER_PROJECTS = event("GET_USER_PROJECTS");
 
@@ -10,12 +10,7 @@ export const UPDATE_MY_PROJECT = event("UPDATE_MY_PROJECT");
 export const GET_OWNED_PROJECTS = event("GET_OWNED_PROJECTS");
 export const REFRESH_PROJECT_FEED = event("REFRESH_PROJECT_FEED");
 
-export function getProject(id) {
-  return (dispatch) => {
-    let p = authService.get(`/api/v1/thank/project/${id}`);
-    return dispatchPromise(p, GET_PROJECT, dispatch);
-  }
-}
+export const getProject = PROJECT_GET.getById("/api/v1/thank/project/$id");
 
 export function getSupportedByMe() {
   return (dispatch) => {

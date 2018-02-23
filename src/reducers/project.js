@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-import { GET_PROJECT, GET_USER_PROJECTS, GET_SUPPORTED, REFRESH_MY_PROJECTS } from "./project.actions";
+import { PROJECT_GET, GET_USER_PROJECTS, GET_SUPPORTED, REFRESH_MY_PROJECTS } from "./project.actions";
 import { GET_OWNED_PROJECTS, UPDATE_MY_PROJECT } from "reducers/project.actions";
 
 function byIdReducer(state = {}, { type, payload }) {
@@ -13,7 +13,7 @@ function byIdReducer(state = {}, { type, payload }) {
         return agg
       }, {});
       return Object.assign({}, state, projectById);
-    case GET_PROJECT.fulfilled:
+    case PROJECT_GET.fulfilled:
       return Object.assign({}, state, { [payload._id]: payload });
     case UPDATE_MY_PROJECT.fulfilled:
       return Object.assign({}, state, { [payload._id]: payload });

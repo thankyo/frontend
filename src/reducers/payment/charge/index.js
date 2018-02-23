@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { asSingleReducer, promiseReducer, promiseReducerDB } from 'reducers/util/promiseStates';
 
 import { GET_CHARGES, GET_PENDING_CHARGES } from "./transaction.actions";
-import { CHARGE_CARD_GET, CHARGE_CARD_SET, CHARGE_CARD_DELETE } from './card.actions';
+import { GET_CHARGE_CARD, UPDATE_CHARGE_CARD, DELETE_CHARGE_CARD } from './card.actions';
 import { CHARGE_LIMIT_GET, CHARGE_LIMIT_SET } from "./limit.actions";
 
 const DEFAULT_LIMIT_STATE = {
@@ -33,9 +33,9 @@ const DEFAULT_CARD = {
 };
 
 const cardReducer = asSingleReducer(
-  promiseReducer(CHARGE_CARD_GET, DEFAULT_CARD),
-  promiseReducer(CHARGE_CARD_SET, DEFAULT_CARD),
-  promiseReducer(CHARGE_CARD_DELETE, DEFAULT_CARD, (state) => state, (state, payload) => DEFAULT_CARD),
+  promiseReducer(GET_CHARGE_CARD, DEFAULT_CARD),
+  promiseReducer(UPDATE_CHARGE_CARD, DEFAULT_CARD),
+  promiseReducer(DELETE_CHARGE_CARD, DEFAULT_CARD, (state) => state, (state, payload) => DEFAULT_CARD),
 );
 
 export default combineReducers({

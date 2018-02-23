@@ -1,4 +1,4 @@
-import { promiseReducerDB } from "./util/promiseStates";
 import { GET_USER } from "./user.actions";
+import { loadingPromiseReducerDB } from "reducers/util/promiseStates";
 
-export default promiseReducerDB(GET_USER);
+export default loadingPromiseReducerDB(GET_USER);

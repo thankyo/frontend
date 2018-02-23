@@ -4,12 +4,7 @@ import { dispatchPromise, event } from '../../util/promiseStates';
 export const CHARGE_LIMIT_SET = event("CHARGE_LIMIT_SET");
 export const CHARGE_LIMIT_GET = event("CHARGE_LIMIT_GET");
 
-export function getLimit() {
-  return (dispatch) => {
-    let p = authService.get("/api/v1/payment/my/charge/limit");
-    return dispatchPromise(p, CHARGE_LIMIT_GET, dispatch)
-  }
-}
+export const getLimit = CHARGE_LIMIT_GET.getMy("/api/v1/payment/$id/charge/limit");
 
 export function increase(limit) {
   return (dispatch) => {

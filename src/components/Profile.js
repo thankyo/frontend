@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { fetchUser } from "reducers/user.actions";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { componentFactory } from "components/loadingComponent";
+import spinnerFactory from "components/spinnerFactory";
 
 function ImageProfile({ avatar, firstName, lastName }) {
   return (
@@ -16,35 +17,12 @@ function ImageProfile({ avatar, firstName, lastName }) {
   )
 }
 
-class Profile extends Component {
-
-  static profileState(user) {
-    return ImageProfile(user);
-  }
-
-  render() {
-    let { user } = this.props;
-    if (user === undefined) {
-      return Profile.profileState({ firstName: "", lastName: "", bio: "loading"});
-    } else {
-      return Profile.profileState(user)
-    }
-  }
-}
-
-Profile.propTypes = {
-  id: PropTypes.string.isRequired,
-  user: PropTypes.object
-};
-
-const mapStateToProps = (state, { id }) => {
-  let user = state.user[id];
-  return { user };
-};
+const mapStateToProps = (state, { id }) => state.user[id];
 
 const mapDispatchToProps = (dispatch, { id }) => {
   dispatch(fetchUser(id));
   return { };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+//TODO magic numbers are never good
+export default connect(mapStateToProps, mapDispatchToProps)(componentFactory(ImageProfile, spinnerFactory(236, "profile has-text-centered")))

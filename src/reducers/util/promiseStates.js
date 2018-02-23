@@ -1,11 +1,33 @@
 import authService from "./auth";
 
+function dispatchPromiseWith(p, event, id, dispatch) {
+  dispatch({ type: event.pending, id, payload: {} });
+  return p.then((res) => {
+    dispatch({ type: event.fulfilled, id, payload: res });
+    return res;
+  }).catch((err) => {
+    dispatch({ type: event.rejected, id, payload: err });
+  })
+}
+
 export function event(name) {
-  return {
+  let event =  {
     fulfilled: `${name}.fulfilled`,
     pending: `${name}.pending`,
-    rejected: `${name}.rejected`
-  }
+    rejected: `${name}.rejected`,
+    getMy: (url) => () => event.getById(url)("my"),
+    getById: (url) => (id) => (dispatch) => {
+      let p = authService.get(url.replace("$id", id));
+      return dispatchPromiseWith(p, event, id, dispatch);
+    },
+    putMy: (url) => (body) => event.getById(url)("my", body),
+    putById: (url) => (id, body) => (dispatch) => {
+      let p = authService.put(url.replace("$id", id), body);
+      return dispatchPromiseWith(p, event, id, dispatch);
+    }
+  };
+
+  return event;
 }
 
 export function dispatchPromise(p, event, dispatch) {
@@ -41,32 +63,6 @@ export function promiseReducer(
   };
 }
 
-export function loadingPromiseReducer(event, initialState = {}) {
-  return function (state = { data: initialState, isFetching: false }, { type, payload }) {
-    switch (type) {
-      case event.pending:
-        return {
-          ... state,
-          isFetching: true
-        };
-      case event.fulfilled:
-        return {
-          data: payload,
-          isFetching: false
-        };
-      case event.rejected:
-        return {
-          ... state,
-          isFetching: false,
-          isError: true,
-          error: payload
-        };
-      default:
-        return state;
-    }
-  };
-}
-
 export function promiseReducerDB(event) {
   return function (state = {}, { type, payload }) {
     switch (type) {
@@ -84,6 +80,51 @@ export function promiseReducerDB(event) {
         return state;
     }
   };
+}
+
+export function loadingPromiseReducer(event, initialState = {}) {
+  return function (state = { data: initialState, isFetching: true, isError: false }, { type, payload }) {
+    switch (type) {
+      case event.pending:
+        return {
+          ... state,
+          isFetching: true
+        };
+      case event.fulfilled:
+        return {
+          data: payload,
+          isFetching: false,
+          isError: false
+        };
+      case event.rejected:
+        return {
+          ... state,
+          isFetching: false,
+          isError: true,
+          error: payload
+        };
+      default:
+        return state;
+    }
+  };
+}
+
+export function loadingPromiseReducerDB(event) {
+  return function (state = { }, action) {
+    switch (action.type) {
+      case event.pending:
+      case event.fulfilled:
+      case event.rejected:
+        let elState = loadingPromiseReducer(event)(state[action.id], action);
+        return {
+          ... state,
+          [action.id]: elState
+        };
+      default:
+        return state;
+    }
+  }
+
 }
 
 export function asSingleReducer() {

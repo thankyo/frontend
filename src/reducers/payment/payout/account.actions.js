@@ -4,12 +4,7 @@ import { dispatchPromise, event } from '../../util/promiseStates';
 export const PAYOUT_ACCOUNT_GET = event("PAYOUT_ACCOUNT_GET");
 export const PAYOUT_ACCOUNT_DELETE = event("PAYOUT_ACCOUNT_DELETE");
 
-export function getPayoutAccount() {
-  return (dispatch) => {
-    let p = authService.get("/api/v1/payment/my/payout/account");
-    return dispatchPromise(p, PAYOUT_ACCOUNT_GET, dispatch);
-  }
-}
+export const getPayoutAccount = PAYOUT_ACCOUNT_GET.getMy("/api/v1/payment/$id/payout/account");
 
 export function deletePayoutAccount() {
   return (dispatch) => {
