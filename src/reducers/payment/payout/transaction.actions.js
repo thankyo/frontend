@@ -1,6 +1,5 @@
 import authService from 'reducers/util/auth';
 import { dispatchPromise, event } from "reducers/util/promiseStates";
-import { handleCSVResponce } from "reducers/util/http";
 
 export const GET_PENDING_PAYOUTS = event("GET_PENDING_PAYOUTS");
 export const GET_PENDING_PAYOUTS_CSV = event("GET_PENDING_PAYOUTS_CSV");
@@ -17,8 +16,7 @@ export function getPendingPayouts(id) {
 
 export function getPendingPayoutsCsv(id) {
   return (dispatch) => {
-    let req = new Request(`/api/v1/payment/${id}/payout/pending/csv`);
-    let p = authService.signAndFetch(req, false).then(handleCSVResponce("pending_payout.csv"));
+    let p = authService.getCSV(`/api/v1/payment/${id}/payout/pending/csv`, "pending_payout.csv");
     return dispatchPromise(p, GET_PENDING_PAYOUTS_CSV, dispatch);
   }
 }
@@ -32,8 +30,7 @@ export function getPayouts(id) {
 
 export function getPayoutsCSV(id) {
   return (dispatch) => {
-    let req = new Request(`/api/v1/payment/${id}/payout/csv`);
-    let p = authService.signAndFetch(req, false).then(handleCSVResponce("payouts.csv"));
+    let p = authService.getCSV(`/api/v1/payment/${id}/payout/csv`, "payouts.csv");
     return dispatchPromise(p, GET_PAYOUTS_CSV, dispatch)
   }
 }

@@ -1,5 +1,25 @@
 import 'whatwg-fetch';
-import { handleFetchResponse } from "./http";
+import { saveAs } from "file-saver";
+import { SubmissionError } from "redux-form";
+
+function handleFetchResponse(res) {
+  if (res.status === 400) {
+    return res.json().then(({ field, error }) => {
+      throw new SubmissionError({ [field]: error })
+    });
+  }
+  return res.json();
+}
+
+function handleCSVResponce(fileName){
+  return (res) => {
+    res.text().then(text => {
+      let csv = new Blob([text], { type: "text/csv;charset=utf-8" });
+      return saveAs(csv, fileName);
+    });
+  }
+
+}
 
 class TokenStore {
   getToken = () => {
@@ -113,6 +133,10 @@ class AuthService {
   put = (url, body) => this.signAndFetch(new Request(url, { method: "PUT", body: JSON.stringify(body) }));
 
   get = (url) => this.signAndFetch(new Request(url));
+
+  getCSV = (url, fileName) => (
+    this.signAndFetch(url, false).then(handleCSVResponce(fileName))
+  );
 
   remove = (url) => this.signAndFetch(url, { method: 'DELETE' });
 
