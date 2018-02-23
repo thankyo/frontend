@@ -3,8 +3,8 @@ import React from "react";
 import { Redirect, Route, Switch } from 'react-router-dom';
 import SettingsMenu from "./SettingsNav";
 
-import ChargePage from "./payment/ChargePage";
-import PayoutPage from "./payment/PayoutPage";
+import ChargePage from "./payment/charge/ChargePage";
+import PayoutPage from "./payment/payout/PayoutPage";
 import ProfilePage from "./profile/ProfilePage";
 
 export default function SettingsRouter() {

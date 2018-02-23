@@ -1,6 +1,6 @@
 import React from "react";
 import ConnectedSocial from "./ConnectedSocial";
-import { fetchUser, saveUser } from "reducers/user.actions";
+import { getUser, updateUser } from "reducers/user.actions";
 import { connect } from "react-redux";
 import { Field, Form, reduxForm } from "redux-form";
 import moment from "moment";
@@ -88,7 +88,7 @@ const mapStateToEditProps = ({ user: { my: { data } = {} }, auth: { url }, form:
 
 const mapDispatchToEditProps = (dispatch) => {
   return {
-    onSubmit: (user) => dispatch(saveUser(user))
+    onSubmit: (user) => dispatch(updateUser(user))
   };
 };
 
@@ -100,7 +100,7 @@ const ProfileSection = () => (<ProfileEdit/>);
 const mapStateToSectionProps = ({ user: { my = {} }}) => my;
 
 const mapDispatchToSectionProps = (dispatch) => {
-  dispatch(fetchUser("my"));
+  dispatch(getUser("my"));
   return {}
 };
 

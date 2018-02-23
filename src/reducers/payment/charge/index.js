@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { asSingleReducer, promiseReducer, promiseReducerDB } from 'reducers/util/promiseStates';
+import { asSingleReducer, loadingPromiseReducer, promiseReducer, promiseReducerDB } from 'reducers/util/promiseStates';
 
 import { GET_CHARGES, GET_PENDING_CHARGES } from "./transaction.actions";
-import { GET_CHARGE_CARD, UPDATE_CHARGE_CARD, DELETE_CHARGE_CARD } from './card.actions';
+import { CHARGE_CARD_GET, CHARGE_CARD_UPDATE, CHARGE_CARD_DELETE } from './card.actions';
 import { CHARGE_LIMIT_GET, CHARGE_LIMIT_SET } from "./limit.actions";
 
 const DEFAULT_LIMIT_STATE = {
@@ -25,17 +25,10 @@ const limitReducer = asSingleReducer(
   setLimitReducer
 );
 
-const DEFAULT_CARD = {
-  isMissing: true,
-  brand: "Visa",
-  last4: "0000",
-  type: "stripe"
-};
-
 const cardReducer = asSingleReducer(
-  promiseReducer(GET_CHARGE_CARD, DEFAULT_CARD),
-  promiseReducer(UPDATE_CHARGE_CARD, DEFAULT_CARD),
-  promiseReducer(DELETE_CHARGE_CARD, DEFAULT_CARD, (state) => state, (state, payload) => DEFAULT_CARD),
+  loadingPromiseReducer(CHARGE_CARD_GET),
+  loadingPromiseReducer(CHARGE_CARD_UPDATE),
+  loadingPromiseReducer(CHARGE_CARD_DELETE),
 );
 
 export default combineReducers({

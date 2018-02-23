@@ -1,13 +1,12 @@
 import { loadScriptAsPromise } from 'conf/loadScript';
 
-import { dispatchPromise, event } from 'reducers/util/promiseStates';
-import authService from "reducers/util/auth";
+import { event } from 'reducers/util/promiseStates';
 
-export const GET_CHARGE_CARD = event("GET_CHARGE_CARD");
-export const UPDATE_CHARGE_CARD = event("UPDATE_CHARGE_CARD");
-export const DELETE_CHARGE_CARD = event("DELETE_CHARGE_CARD");
+export const CHARGE_CARD_GET = event("CHARGE_CARD_GET");
+export const CHARGE_CARD_UPDATE = event("CHARGE_CARD_UPDATE");
+export const CHARGE_CARD_DELETE = event("CHARGE_CARD_DELETE");
 
-export const getChargeAccount = GET_CHARGE_CARD.getMy("/api/v1/payment/$id/charge/account");
+export const getChargeAccount = CHARGE_CARD_GET.getMy("/api/v1/payment/$id/charge/account");
 
 export function connectChargeAccount() {
   return (dispatch) => {
@@ -26,15 +25,9 @@ export function connectChargeAccount() {
       StripeButton.open(conf);
     })).
     then((token) => {
-      let p = authService.post("/api/v1/payment/my/charge/account", token.id);
-      return dispatchPromise(p, UPDATE_CHARGE_CARD, dispatch);
+      return CHARGE_CARD_UPDATE.postMy("/api/v1/payment/$id/charge/account")(token.id)(dispatch);
     });
   }
 }
 
-export function deleteCard() {
-  return (dispatch) => {
-    let p = authService.remove("/api/v1/payment/my/charge/account");
-    return dispatchPromise(p, DELETE_CHARGE_CARD, dispatch);
-  }
-}
+export const deleteCard = CHARGE_CARD_DELETE.removeMy("/api/v1/payment/$id/charge/account");

@@ -138,7 +138,7 @@ class AuthService {
     this.signAndFetch(url, false).then(handleCSVResponce(fileName))
   );
 
-  remove = (url) => this.signAndFetch(url, { method: 'DELETE' });
+  remove = (url) => this.signAndFetch(new Request(url, { method: 'DELETE' }));
 
   signAndFetch = (req, isJson = true) => {
     let token = this.tokenStore.getToken();
@@ -154,7 +154,11 @@ class AuthService {
           throw err
         });
       } else if (isJson) {
-        return res.json()
+        if (res.status === 204) {
+          return { isMissing: true }
+        } else {
+          return res.json()
+        }
       } else {
         return res;
       }

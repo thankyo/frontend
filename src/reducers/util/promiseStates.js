@@ -20,9 +20,19 @@ export function event(name) {
       let p = authService.get(url.replace("$id", id));
       return dispatchPromiseWith(p, event, id, dispatch);
     },
-    putMy: (url) => (body) => event.getById(url)("my", body),
+    putMy: (url) => (body) => event.putById(url)("my", body),
     putById: (url) => (id, body) => (dispatch) => {
       let p = authService.put(url.replace("$id", id), body);
+      return dispatchPromiseWith(p, event, id, dispatch);
+    },
+    postMy: (url) => (body) => event.postById(url)("my", body),
+    postById: (url) => (id, body) => (dispatch) => {
+      let p = authService.post(url.replace("$id", id), body);
+      return dispatchPromiseWith(p, event, id, dispatch);
+    },
+    removeMy: (url) => event.removeById(url)("my"),
+    removeById: (url) => (id) => (dispatch) => {
+      let p = authService.remove(url.replace("$id", id));
       return dispatchPromiseWith(p, event, id, dispatch);
     }
   };

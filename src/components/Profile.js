@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchUser } from "reducers/user.actions";
+import { getUser } from "reducers/user.actions";
 import { connect } from "react-redux";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
@@ -17,10 +17,10 @@ function ImageProfile({ avatar, firstName, lastName }) {
   )
 }
 
-const mapStateToProps = (state, { id }) => state.user[id];
+const mapStateToProps = (state, { id }) => state.user[id] || {};
 
 const mapDispatchToProps = (dispatch, { id }) => {
-  dispatch(fetchUser(id));
+  dispatch(getUser(id));
   return { };
 };
 
