@@ -1,10 +1,12 @@
 import React from "react";
-import WordPress from "../settings/installation/Wordpress"
+import WordPress from "./installation/Wordpress"
+import Manual from "./installation/Manual";
 
-export default function InstallationPage({ url }) {
+export default function InstallPage({ url }) {
   return (
     <div className="section">
       <WordPress url={url}/>
+      <Manual url={url}/>
     </div>
   )
 }

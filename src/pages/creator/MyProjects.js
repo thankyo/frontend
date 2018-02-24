@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
 import { getOwnedProjects, refreshMyProjects } from "reducers/project.actions";
-import { Icon, IconWithText, WebStackIcon } from "components/Icon";
+import { IconWithText } from "components/Icon";
 import RefreshButton from "components/RefreshButton";
 import Project from "components/Project";
 

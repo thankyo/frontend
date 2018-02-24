@@ -129,7 +129,7 @@ function ProjectLine({ project: { webStack, resource, _id, enabled }, onSubmit }
       <div className="column is-3">
         <div className="is-pulled-right">
           <Link to={`/creator/my/install/${resource.uri}`}>
-            <button className="button is-primary is-outlined">
+            <button className="button is-primary is-outlined is-small">
               <IconWithText className='fa fa-toggle-off' text="Install"/>
             </button>
           </Link>

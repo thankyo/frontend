@@ -17,12 +17,6 @@ export default function () {
         <li><NavLink to="/settings/charge" activeClassName="is-active"><span>Charge</span></NavLink></li>
         <li><NavLink to="/settings/payout" activeClassName="is-active"><span>Payout</span></NavLink></li>
       </ul>
-      <p className="menu-label">
-        Installation
-      </p>
-      <ul className="menu-list">
-        <li><NavLink to="/settings/installation" activeClassName="is-active"><span>Installation</span></NavLink></li>
-      </ul>
     </aside>
   )
 }

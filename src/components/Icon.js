@@ -28,8 +28,8 @@ IconWithText.propTypes = {
 export function WebStackIcon({ webStack }) {
   switch (webStack) {
     case "WordPress":
-      return (<Icon className="fa fa-wordpress"/>);
+      return (<IconWithText className="fa fa-wordpress"/>);
     default:
-      return (<Icon className="fa fa-code"/>)
+      return (<IconWithText className="fa fa-code"/>)
   }
 }

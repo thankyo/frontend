@@ -1,10 +1,12 @@
 import React, { Fragment } from "react";
-import Wordpress from "./Wordpress";
+import WordPress from "./Wordpress";
+import Manual from "./Manual";
 
 export default function InstallationPage() {
   return (
     <Fragment>
-      <Wordpress/>
+      <WordPress/>
+      <Manual/>
     </Fragment>
   )
 }

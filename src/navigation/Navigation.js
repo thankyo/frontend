@@ -52,7 +52,7 @@ class Navigation extends Component {
           <div className="navbar-end">
             <div className="navbar-item has-dropdown is-hoverable">
               <div className="navbar-link is-hidden-mobile">
-                <Icon className="fa fa-compass fa-2x"/>
+                <IconWithText className="fa fa-compass fa-2x"/>
               </div>
               <div className="navbar-dropdown is-boxed is-right">
                 {links.map((link, i) => <NavigationLink key={i} {...link}/>)}

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function WordPressInstallation({ url }) {
+export default function WordPress({ url }) {
   return (
     <section className="section">
       <h1 className="title">Ready for installation</h1>
@@ -28,7 +28,7 @@ export default function WordPressInstallation({ url }) {
 
             <div>
               <a className="button is-primary"
-                 href={`${url}/wp-login.php?redirect_to=/wp-admin/plugin-install.php`}
+                 href={`//${url}/wp-login.php?redirect_to=/wp-admin/plugin-install.php`}
                  target="_blank">
                 Install Now
               </a>
