@@ -3,7 +3,6 @@ import ProjectNavigation from "./ProjectNavigation";
 import Profile from "components/Profile";
 import Project from "components/Project";
 import ProjectPosts from "./ProjectPosts";
-import EarnedThisMonth from "./EarnedThisMonth";
 
 export default function creatorDashboardPage({ id, project }) {
   return (

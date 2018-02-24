@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
 import { getOwnedProjects, refreshMyProjects } from "reducers/project.actions";
-import { IconWithText } from "components/Icon";
+import { Icon, IconWithText, WebStackIcon } from "components/Icon";
 import RefreshButton from "components/RefreshButton";
 import Project from "components/Project";
-
 
 function MyProjects ({ pending, refresh }){
   return (
@@ -28,7 +27,7 @@ function MyProjects ({ pending, refresh }){
       </div>
       {pending.map((id, i) => (<Project id={id} line={true} key={i}/>))}
       <h2 className="subtitle is-6">
-        If you have no sites verified, please refer to <a href="https://support.google.com/webmasters/answer/35179?hl=en">Google</a>, or contact us at <a mailto="antono@lovei.tips">antono@loveit.tips</a>
+        If you have no sites verified, please refer to <a href="https://support.google.com/webmasters/answer/35179?hl=en">Google</a>, or <a mailto="antono@lovei.tips">contact us</a>.
       </h2>
     </section>
   );

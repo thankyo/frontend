@@ -14,7 +14,6 @@ export default function supportDashboardPage({ id }) {
         <SupportedProjects id={id}/>
       </div>
       <div className="column is-two-quarter">
-        <Invite id={id}/>
         <ThankTransactions id={id}/>
       </div>
       <div className="column is-one-quarter">

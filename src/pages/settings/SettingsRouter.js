@@ -5,7 +5,9 @@ import SettingsMenu from "./SettingsNav";
 
 import ChargePage from "./payment/charge/ChargePage";
 import PayoutPage from "./payment/payout/PayoutPage";
+import InstallationPage from "./installation/InstallationPage";
 import ProfilePage from "./profile/ProfilePage";
+
 
 export default function SettingsRouter() {
   return (
@@ -27,6 +29,9 @@ export default function SettingsRouter() {
             </Route>
             <Route path="/settings/profile">
               <ProfilePage/>
+            </Route>
+            <Route path="/settings/installation">
+              <InstallationPage/>
             </Route>
           </Switch>
         </div>

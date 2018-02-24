@@ -11,7 +11,6 @@ import { IconWithText, WebStackIcon } from "./Icon";
 import Tags from "./form/Tags";
 import Resource from "./Resource";
 import RefreshLink from "components/RefreshLink";
-import { Icon } from "components/Icon";
 import { flatField } from "components/form/form.utils";
 
 function ViewProject({ avatar, title, description, user, _id, tags, resource }) {
@@ -100,9 +99,11 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
             <Field name="rss" component={flatField} type="url" placeholder="RSS"/>
           </div>
           <div className="column is-3">
-            <RefreshLink onClick={refreshFeed}>
-              <IconWithText className="fa fa-refresh" text="Refresh"/>
-            </RefreshLink>
+            <div className="is-pulled-right">
+              <RefreshLink onClick={refreshFeed}>
+                <IconWithText className="fa fa-refresh" text="Refresh"/>
+              </RefreshLink>
+            </div>
           </div>
         </div>
         <div className="is-pulled-right">
@@ -119,17 +120,20 @@ EditProject = reduxForm({ form: "project", enableReinitialize: true })(EditProje
 function ProjectLine({ project: { webStack, resource, _id, enabled }, onSubmit }) {
   return (
     <div className="columns">
-      <div className="column is-7">
-        <WebStackIcon webStack={webStack}/>
-        <Resource resource={resource}/>
-      </div>
-      <div className="column is-2">
-        {enabled ? "Enabled" : "Disabled"}
+      <div className="column is-9">
+        <p className="control">
+          <WebStackIcon webStack={webStack}/>
+          <Resource resource={resource}/>
+        </p>
       </div>
       <div className="column is-3">
-        <RefreshLink onClick={onSubmit} className={enabled ? "is-primary" : "is-default"}>
-          {enabled ? <Icon className="fa fa-toggle-on"/> : <Icon className='fa fa-toggle-off'/>}
-        </RefreshLink>
+        <div className="is-pulled-right">
+          <Link to={`/creator/my/install/${resource.uri}`}>
+            <button className="button is-primary is-outlined">
+              <IconWithText className='fa fa-toggle-off' text="Install"/>
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   )

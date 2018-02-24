@@ -17,13 +17,11 @@ export default class RefreshLink extends Component {
 
   render(){
     return(
-      <div onClick={this.handleClick} className="is-pulled-right">
-        <p className="control">
-          <a className={`${this.props.className || "button"} ${this.state.submitting && "is-loading"}`}>
-            {this.props.children}
-          </a>
-        </p>
-      </div>
+      <p className="control">
+        <a className={`${this.props.className || "button"} ${this.state.submitting && "is-loading"}`} onClick={this.handleClick} >
+          {this.props.children}
+        </a>
+      </p>
     )
   }
 
