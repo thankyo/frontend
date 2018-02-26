@@ -28,8 +28,8 @@ class TokenStore {
 
   setToken = (token) => {
     localStorage.setItem("token", token.trim());
-
     let base64Url = token.split('.')[1];
+
     let base64 = base64Url.replace('-', '+').replace('_', '/');
     let {id, email} = JSON.parse(window.atob(base64));
 
@@ -38,8 +38,10 @@ class TokenStore {
 
     try {
       Raven.setUserContext({ id, email });
-    } catch (err) {
-    }
+    } catch (err) { }
+    try {
+      $crisp.push(["set", "user:email", [ email ]])
+    } catch (err) { }
   };
 
   getUser = () => {
