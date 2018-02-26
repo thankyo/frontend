@@ -4,7 +4,7 @@ import { IconWithText } from "components/Icon";
 import { deletePayoutAccount, getPayoutAccount } from "reducers/payment/payout/account.actions";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
-import RefreshButton from "components/RefreshButton";
+import RefreshLink from "components/RefreshLink";
 
 function BankDetails({ account }) {
   if (!account) {
@@ -52,7 +52,7 @@ function PayoutAccountSection({ account, deletePayoutAccount, isMissing }) {
           <div className="level-right">
             <div className="level-item">
               {isMissing && <ConnectPayoutAccount/>}
-              {!isMissing && <RefreshButton onClick={deletePayoutAccount} className="is-danger">Delete</RefreshButton>}
+              {!isMissing && <RefreshLink onClick={deletePayoutAccount} className="is-danger">Delete</RefreshLink>}
             </div>
           </div>
         </div>

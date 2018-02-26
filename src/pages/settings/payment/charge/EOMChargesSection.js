@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 
 import { getChargesCSV, getCharges } from "reducers/payment/charge/transaction.actions";
 import EOMChargeTimeline from "components/timeline/EOMChargesTimeline";
-import RefreshButton from "components/RefreshButton";
+import RefreshLink from "components/RefreshLink";
 
 function ChargesSection({ charges, getChargesCSV }) {
   return (
     <section className="section">
       <p className="title is-5 has-text-centered">Charges</p>
       <div className="is-pulled-left">
-        <RefreshButton submitting={false} className="is-info" onClick={getChargesCSV}>Download CSV</RefreshButton>
+        <RefreshLink submitting={false} className="is-info" onClick={getChargesCSV}>Download CSV</RefreshLink>
       </div>
       <EOMChargeTimeline charges={charges}/>
     </section>

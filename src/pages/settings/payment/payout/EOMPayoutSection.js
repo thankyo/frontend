@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 
 import { getPayouts, getPayoutsCSV } from "reducers/payment/payout/transaction.actions";
 import EOMPayoutTimeline from "components/timeline/EOMPayoutTimeline";
-import RefreshButton from "components/RefreshButton";
+import RefreshLink from "components/RefreshLink";
 
 function PayoutSection({ payouts, getPayoutsCsv }) {
   return (
     <section className="section">
       <p className="title is-5 has-text-centered">Payouts</p>
       <div className="is-pulled-left">
-        <RefreshButton submitting={false} className="is-info" onClick={getPayoutsCsv}>Download CSV</RefreshButton>
+        <RefreshLink submitting={false} className="is-info" onClick={getPayoutsCsv}>Download CSV</RefreshLink>
       </div>
       <EOMPayoutTimeline payouts={payouts}/>
     </section>

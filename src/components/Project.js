@@ -128,7 +128,7 @@ function ProjectLine({ project: { webStack, resource, _id, enabled }, onSubmit }
       </div>
       <div className="column is-3">
         <div className="is-pulled-right">
-          <Link to={`/creator/my/install/${resource.uri}`}>
+          <Link to={`/creator/my/install/${_id}`}>
             <button className="button is-primary is-outlined is-small">
               <IconWithText className='fa fa-toggle-off' text="Install"/>
             </button>
@@ -153,7 +153,6 @@ function Project({ edit, line, project, id, updateProject, refreshFeed}) {
 const mapStateToProps = ({ project: { byId }}, { id }) => ({ project: byId[id] });
 
 const mapDispatchToProps = (dispatch, { id }) => {
-  dispatch(getProject(id));
   return {
     updateProject: (project) => dispatch(updateProject(project)),
     refreshFeed: () => dispatch(refreshProjectFeed(id))

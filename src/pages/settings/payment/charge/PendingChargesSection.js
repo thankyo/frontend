@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 
 import { getPendingCharges, getPendingChargesCsv } from "reducers/payment/charge/transaction.actions";
 import ChargeTimeline from "components/timeline/ChargeTimeline";
-import RefreshButton from "components/RefreshButton";
+import RefreshLink from "components/RefreshLink";
 
 function OutgoingSection({ transactions, getPendingChargesCsv }) {
   return (
     <section className="section">
       <p className="title is-5 has-text-centered">Contributions</p>
       <div className="is-pulled-left">
-        <RefreshButton submitting={false} className="is-info" onClick={getPendingChargesCsv}>Download CSV</RefreshButton>
+        <RefreshLink submitting={false} className="is-info" onClick={getPendingChargesCsv}>Download CSV</RefreshLink>
       </div>
       <ChargeTimeline transactions={transactions}/>
     </section>

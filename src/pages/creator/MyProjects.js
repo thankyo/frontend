@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 import { getOwnedProjects, refreshMyProjects } from "reducers/project.actions";
 import { IconWithText } from "components/Icon";
-import RefreshButton from "components/RefreshButton";
 import Project from "components/Project";
+import RefreshLink from "components/RefreshLink";
 
 function MyProjects ({ pending, refresh }){
   return (
@@ -20,9 +20,9 @@ function MyProjects ({ pending, refresh }){
           <p className="title is-5">Available projects</p>
         </div>
         <div className="column is-6">
-          <RefreshButton onClick={refresh}>
+          <RefreshLink onClick={refresh}>
             <IconWithText className="fa fa-refresh" text="Refresh"/>
-          </RefreshButton>
+          </RefreshLink>
         </div>
       </div>
       {pending.map((id, i) => (<Project id={id} line={true} key={i}/>))}

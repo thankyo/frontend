@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { IconWithText } from "components/Icon";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
-import RefreshButton from "components/RefreshButton";
+import RefreshLink from "components/RefreshLink";
 
 function Card({ isMissing, brand, last4 }) {
   if (isMissing) {
@@ -64,8 +64,8 @@ function ChargeAccountSection({ isMissing, brand, last4, connectChargeAccount, d
           </div>
           <div className="level-right">
             <div className="level-item">
-              {isMissing && <RefreshButton onClick={connectChargeAccount}><IconWithText className="fa fa-credit-card" text="Connect Card"/></RefreshButton>}
-              {!isMissing && <RefreshButton onClick={deleteCard} className="is-danger">Delete</RefreshButton>}
+              {isMissing && <RefreshLink onClick={connectChargeAccount}><IconWithText className="fa fa-credit-card" text="Connect Card"/></RefreshLink>}
+              {!isMissing && <RefreshLink onClick={deleteCard} className="is-danger">Delete</RefreshLink>}
             </div>
           </div>
         </div>
