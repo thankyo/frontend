@@ -4,7 +4,7 @@ import Logo from './logo.svg';
 export default class Brand extends Component {
   render() {
     return (
-      <Logo width={100} height={32} alt="LoveIt logotype"/>
+      <Logo width={38} height={38} alt="LoveIt logotype" className="fab-is-loved"/>
     )
   }
 }

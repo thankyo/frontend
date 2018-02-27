@@ -37,10 +37,11 @@ class Navigation extends Component {
       <nav className="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <div className="navbar-item">
-            <Link to="/dashboard/my">
+            <Link to="/dashboard/my" style={{ height: "38px" }}>
               <Brand/>
             </Link>
           </div>
+          <SearchPanel/>
           <button className={`button navbar-burger is-primary ${active && "is-active"}`} onClick={this.changeActive}>
             <span/>
             <span/>
@@ -48,7 +49,6 @@ class Navigation extends Component {
           </button>
         </div>
         <div className={`navbar-menu ${active && "is-active"}`} onClick={this.changeActive}>
-          <SearchPanel/>
           <div className="navbar-end">
             <div className="navbar-item has-dropdown is-hoverable">
               <div className="navbar-link is-hidden-mobile">

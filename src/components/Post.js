@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { IconWithText } from "components/Icon";
 import { fieldWithLabel, LoadingButton } from "components/form/form.utils";
 import Tags from "components/form/Tags";
+import LoveItButton from "components/LoveItButton";
 
 function EditPost({ submitting, initialValues, handleSubmit }) {
   return (
@@ -65,19 +66,7 @@ function PostActions({ post, onEdit, onLove }) {
       </PostActionWrap>
     )
   }
-  if (post.isLoved) {
-    return (
-      <PostActionWrap>
-        <a className="icon is-small" disabled={true}><i className="fa fa-heart"/></a>
-      </PostActionWrap>
-    );
-  }
-  return (
-    <PostActionWrap>
-      <a className="icon is-small" onClick={() => onLove(post.resource.uri)}><i className="fa fa-heart fa-2x"/></a>
-    </PostActionWrap>
-  )
-
+  return <LoveItButton isLoved={post.isLoved} onLove={() => onLove(post.resource.uri)}/>
 }
 
 function ViewPost(props) {

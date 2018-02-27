@@ -1,0 +1,31 @@
+@import "bulma-custom"
+
+.loveit-fab
+  width: 40px
+  height: 40px
+  background-color: $white
+  border-radius: 50%
+  box-shadow: 0 1px 1px 0 $grey-light
+
+  //position: fixed
+  right: 40px
+  bottom: 40px
+
+  transition: all 0.2s ease-in-out
+
+.loveit-fab:hover
+  box-shadow: 0 6px 14px 0 #666
+  transform: scale(1.2)
+
+svg
+  fill: $primary
+
+.fab-is-loved
+  border-radius: 50%
+  background-color: $primary
+  fill: $white
+
+.fab-is-error
+  fill: $white
+  border-radius: 50%
+  background-color: $red
