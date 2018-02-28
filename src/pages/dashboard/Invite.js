@@ -17,7 +17,7 @@ function Invite({ handleSubmit, submitting }) {
             <span className="icon is-small is-left"><i className="fa fa-globe"/></span>
           </div>
           <LoadingButton submitting={submitting}>
-            <IconWithText className="fa fa-hand-peace-o" text="Invite"/>
+            <IconWithText className="fa fa-hand-peace-o">Invite</IconWithText>
           </LoadingButton>
         </div>
       </Form>

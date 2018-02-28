@@ -101,14 +101,14 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
           <div className="column is-3">
             <div className="is-pulled-right">
               <RefreshLink onClick={refreshFeed}>
-                <IconWithText className="fa fa-refresh" text="Refresh"/>
+                <IconWithText className="fa fa-refresh">Refresh</IconWithText>
               </RefreshLink>
             </div>
           </div>
         </div>
         <div className="is-pulled-right">
           <LoadingButton submitting={submitting} className="is-outlined is-primary">
-            <IconWithText className="fa fa-save" text="Save"/>
+            <IconWithText className="fa fa-save">Save</IconWithText>
           </LoadingButton>
         </div>
       </Form>
@@ -130,7 +130,7 @@ function ProjectLine({ project: { webStack, resource, _id, enabled }, onSubmit }
         <div className="is-pulled-right">
           <Link to={`/creator/my/install/${_id}`}>
             <button className="button is-primary is-outlined is-small">
-              <IconWithText className='fa fa-toggle-off' text="Install"/>
+              <IconWithText className='fa fa-toggle-off'>Install</IconWithText>
             </button>
           </Link>
         </div>

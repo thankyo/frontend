@@ -63,7 +63,7 @@ class Navigation extends Component {
                 {links.map((link, i) => <NavigationLink key={i} {...link}/>)}
                 <hr className="navbar-divider"/>
                 <a onClick={() => auth.logout()} className="navbar-item">
-                  <IconWithText className="fa fa-sign-out" text="Log Out"/>
+                  <IconWithText className="fa fa-sign-out">Log Out</IconWithText>
                 </a>
               </div>
             </div>

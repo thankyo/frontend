@@ -36,7 +36,7 @@ function EditPost({ submitting, initialValues, handleSubmit }) {
             )
           }}/>
           <LoadingButton submitting={submitting} className="is-primary is-pulled-right">
-            <IconWithText className="fa fa-save" text="Save"/>
+            <IconWithText className="fa fa-save">Save</IconWithText>
           </LoadingButton>
         </Form>
       </div>

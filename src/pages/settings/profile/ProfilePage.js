@@ -70,7 +70,7 @@ function ProfileEdit({ avatar, handleSubmit, submitting, url, initialValues }) {
         </div>
         <div className="is-pulled-right">
           <LoadingButton submitting={submitting} className="is-outlined is-primary">
-            <IconWithText className="fa fa-save" text="Save"/>
+            <IconWithText className="fa fa-save">Save</IconWithText>
           </LoadingButton>
         </div>
       </Form>

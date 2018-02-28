@@ -33,7 +33,7 @@ function BankDetails({ account }) {
 function ConnectPayoutAccount() {
   return (
     <a className="button is-outlined is-primary" href="/api/v1/payment/my/payout/account/connect">
-      <IconWithText className="fa fa-cc-stripe" text="Connect your Bank"/>
+      <IconWithText className="fa fa-cc-stripe">Connect your Bank</IconWithText>
     </a>
   )
 }

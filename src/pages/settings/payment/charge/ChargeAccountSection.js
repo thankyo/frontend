@@ -45,7 +45,7 @@ class ConnectCardButton extends Component {
     let { loading } = this.state;
     return (
       <a onClick={this.handleConnectCard} className={`button is-outlined is-primary ${loading && "is-loading"}`}>
-        <IconWithText className="fa fa-credit-card" text="Connect Card"/>
+        <IconWithText className="fa fa-credit-card">Connect Card</IconWithText>
       </a>
     )
   }
@@ -64,7 +64,7 @@ function ChargeAccountSection({ isMissing, brand, last4, connectChargeAccount, d
           </div>
           <div className="level-right">
             <div className="level-item">
-              {isMissing && <RefreshLink onClick={connectChargeAccount}><IconWithText className="fa fa-credit-card" text="Connect Card"/></RefreshLink>}
+              {isMissing && <RefreshLink onClick={connectChargeAccount}><IconWithText className="fa fa-credit-card">Connect Card</IconWithText></RefreshLink>}
               {!isMissing && <RefreshLink onClick={deleteCard} className="is-danger">Delete</RefreshLink>}
             </div>
           </div>

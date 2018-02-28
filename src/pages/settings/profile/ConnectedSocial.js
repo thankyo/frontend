@@ -6,7 +6,7 @@ function SocialConnection({ providerKey, name, icon, href }) {
     return (
       <p className="control">
         <a className="button is-inverted is-outlined" href={href}>
-          <IconWithText className={icon} text={`Connect with ${name}`}/>
+          <IconWithText className={icon}>Connect with {name}</IconWithText>
         </a>
       </p>
     )
@@ -14,8 +14,8 @@ function SocialConnection({ providerKey, name, icon, href }) {
 
   return (
     <p className="control">
-      <a className="button is-primary" disabled={true}>
-        <IconWithText className={icon} text={`Connected with ${name}`}/>
+      <a className="button is-primary" disabled>
+        <IconWithText className={icon}>Connected with {name}</IconWithText>
       </a>
     </p>
   )

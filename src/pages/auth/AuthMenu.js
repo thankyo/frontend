@@ -17,10 +17,10 @@ export default function () {
     <div className="tabs is-fullwidth">
       <ul>
         <NavItem to="/auth" exact={true}>
-          <IconWithText className="fa fa-registered" text="Register"/>
+          <IconWithText className="fa fa-registered">Register</IconWithText>
         </NavItem>
         <NavItem to="/auth/login" exact={true}>
-          <IconWithText className="fa fa-sign-in" text="Log in"/>
+          <IconWithText className="fa fa-sign-in">Log in</IconWithText>
         </NavItem>
       </ul>
     </div>

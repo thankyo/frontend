@@ -14,10 +14,10 @@ function SearchPanel({ handleSubmit, submitting }) {
         </div>
         <LoadingButton submitting={submitting}>
           <div className="is-hidden-mobile">
-            <IconWithText className="fa fa-search" text="Search"/>
+            <IconWithText className="fa fa-search">Search</IconWithText>
           </div>
           <div className="is-mobile is-hidden-tablet is-hidden-desktop">
-            <IconWithText className="fa fa-search" text=""/>
+            <IconWithText className="fa fa-search"/>
           </div>
         </LoadingButton>
       </div>

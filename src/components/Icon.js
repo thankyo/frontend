@@ -11,8 +11,8 @@ Icon.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export function IconWithText({ className, text }) {
-  if (!text) {
+export function IconWithText({ className, children }) {
+  if (!children) {
     return (
       <span className="is-narrow">
         <span className="icon"><i className={className}/></span>
@@ -22,7 +22,7 @@ export function IconWithText({ className, text }) {
     return (
       <span className="is-narrow">
         <span className="icon"><i className={className}/></span>
-        <span>{text}</span>
+        <span>{children}</span>
       </span>
     )
   }
@@ -30,7 +30,6 @@ export function IconWithText({ className, text }) {
 
 IconWithText.propTypes = {
   className: PropTypes.string.isRequired,
-  text: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]).isRequired
 };
 
 export function WebStackIcon({ webStack }) {

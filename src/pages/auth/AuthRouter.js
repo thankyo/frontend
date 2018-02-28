@@ -17,7 +17,7 @@ let ResetForm = ({ handleSubmit, submitting }) => {
 
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
-          <IconWithText className="fa fa-refresh" text="Restore"/>
+          <IconWithText className="fa fa-refresh">Restore</IconWithText>
         </LoadingButton>
       </div>
     </Form>
@@ -34,7 +34,7 @@ let ForgotForm = ({ handleSubmit, submitting }) => {
 
       <div className="field">
         <LoadingButton submitting={submitting}>
-          <IconWithText className="fa fa-send" text="Send a password restore link"/>
+          <IconWithText className="fa fa-send">Send a password restore link</IconWithText>
         </LoadingButton>
       </div>
     </Form>
@@ -54,7 +54,7 @@ let LoginForm = ({ handleSubmit, submitting }) => {
 
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
-          <IconWithText className="fa fa-sign-in" text="Log in"/>
+          <IconWithText className="fa fa-sign-in">Log in</IconWithText>
         </LoadingButton>
       </div>
     </Form>
@@ -76,7 +76,7 @@ let RegisterForm = ({ handleSubmit, submitting }) => {
              validate={[required]}/>
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
-          <IconWithText className="fa fa-registered" text="Register"/>
+          <IconWithText className="fa fa-registered">Register</IconWithText>
         </LoadingButton>
       </div>
     </Form>
@@ -91,12 +91,12 @@ function SocialHeader({ facebook, google }) {
       <div className="field has-addons">
         <p className="control">
           <a className="button is-primary is-inverted is-outlined" href={facebook}>
-            <IconWithText className="fa fa-facebook-official" text="Connect with FB"/>
+            <IconWithText className="fa fa-facebook-official">Connect with FB</IconWithText>
           </a>
         </p>
         <p className="control">
           <a className="button is-primary is-inverted is-outlined" href={google}>
-            <IconWithText className="fa fa-google" text="Connect with Google"/>
+            <IconWithText className="fa fa-google">Connect with Google</IconWithText>
           </a>
         </p>
       </div>

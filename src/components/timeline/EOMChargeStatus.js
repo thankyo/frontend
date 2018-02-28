@@ -19,7 +19,7 @@ export default function EOMChargeStatus({ status }) {
       );
     case "UnderMin":
       return (
-        <IconWithText className="fa fa-exclamation-circle" text="Below minimum, contributions transferred to the next month"/>
+        <IconWithText className="fa fa-exclamation-circle">Below minimum, contributions transferred to the next month</IconWithText>
       );
     default:
       return <span>{status}</span>

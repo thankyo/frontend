@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { decrease, getLimit, increase } from "reducers/payment/charge/limit.actions";
 
 import MoneyToCoffeeIcon from "components/payment/MoneyToCoffeeIcon";
-import { Icon, IconWithText } from "components/Icon";
+import { IconWithText } from "components/Icon";
 import Loading from "components/Loading";
 
 class PaymentLimitSection extends Component {

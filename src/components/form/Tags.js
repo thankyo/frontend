@@ -38,7 +38,7 @@ class AddTagForm extends Component {
         </div>
         <p className="control">
           <a className="button is-small is-primary" type="submit" onClick={this.handleSubmit}>
-            <IconWithText className="fa fa-plus-circle" text="Add"/>
+            <IconWithText className="fa fa-plus-circle">Add</IconWithText>
           </a>
         </p>
       </div>

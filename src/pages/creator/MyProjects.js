@@ -21,7 +21,7 @@ function MyProjects ({ pending, refresh }){
         </div>
         <div className="column is-6">
           <RefreshLink onClick={refresh}>
-            <IconWithText className="fa fa-refresh" text="Refresh"/>
+            <IconWithText className="fa fa-refresh">Refresh</IconWithText>
           </RefreshLink>
         </div>
       </div>
