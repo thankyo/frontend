@@ -7,13 +7,18 @@ import { withRouter } from 'react-router-dom'
 
 function SearchPanel({ handleSubmit, submitting }) {
   return (
-    <Form className="navbar-item is-expanded" onSubmit={handleSubmit}>
+    <Form className="is-fullwidth" onSubmit={handleSubmit} style={{ width: "100%" }}>
       <div className="field has-addons" style={{ flexGrow: 1 }}>
         <div className="control" style={{ flexGrow: 1 }}>
           <Field name="tags" component={flatField} placeholder="Search" autocomplete={false}/>
         </div>
         <LoadingButton submitting={submitting}>
-          <IconWithText className="fa fa-search" text="Search"/>
+          <div className="is-hidden-mobile">
+            <IconWithText className="fa fa-search" text="Search"/>
+          </div>
+          <div className="is-mobile is-hidden-tablet is-hidden-desktop">
+            <IconWithText className="fa fa-search" text=""/>
+          </div>
         </LoadingButton>
       </div>
     </Form>

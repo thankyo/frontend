@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Brand from 'components/Brand';
-import { Icon, IconWithText } from "components/Icon";
+import { IconWithText } from "components/Icon";
 
 import { Link } from 'react-router-dom';
 import auth from "reducers/util/auth";
@@ -41,7 +41,9 @@ class Navigation extends Component {
               <Brand/>
             </Link>
           </div>
-          <SearchPanel/>
+          <div className="navbar-item is-expanded is-hidden-desktop">
+            <SearchPanel/>
+          </div>
           <button className={`button navbar-burger is-primary ${active && "is-active"}`} onClick={this.changeActive}>
             <span/>
             <span/>
@@ -49,6 +51,9 @@ class Navigation extends Component {
           </button>
         </div>
         <div className={`navbar-menu ${active && "is-active"}`} onClick={this.changeActive}>
+          <div className="navbar-item is-expanded is-hidden-mobile">
+            <SearchPanel/>
+          </div>
           <div className="navbar-end">
             <div className="navbar-item has-dropdown is-hoverable">
               <div className="navbar-link is-hidden-mobile">

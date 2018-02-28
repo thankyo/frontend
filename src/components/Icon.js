@@ -12,12 +12,20 @@ Icon.propTypes = {
 };
 
 export function IconWithText({ className, text }) {
-  return (
-    <span className="is-narrow">
-      <span className="icon"><i className={className}/></span>
-      <span>{text}</span>
-    </span>
-  )
+  if (!text) {
+    return (
+      <span className="is-narrow">
+        <span className="icon"><i className={className}/></span>
+      </span>
+    );
+  } else {
+    return (
+      <span className="is-narrow">
+        <span className="icon"><i className={className}/></span>
+        <span>{text}</span>
+      </span>
+    )
+  }
 }
 
 IconWithText.propTypes = {

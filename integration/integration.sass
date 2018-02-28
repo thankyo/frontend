@@ -1,0 +1,31 @@
+$primary: #48c8fe
+$white:        hsl(0, 0%, 100%) !default
+$grey-light:   hsl(0, 0%, 71%) !default
+$red:          hsl(348, 100%, 61%) !default
+
+.loveit-fab
+  width: 50px
+  height: 50px
+  background-color: $white
+  border-radius: 50%
+  box-shadow: 0 5px 7px 0 $grey-light
+
+  transition: all 0.2s ease-in-out
+  padding: 0 0 0 0
+
+.loveit-fab:hover
+  box-shadow: 0 4px 5px 0 #666
+  transform: scale(1.2)
+
+svg
+  fill: $primary
+
+.fab-is-loved
+  border-radius: 50%
+  background-color: $primary
+  fill: $white
+
+.fab-is-error
+  fill: $white
+  border-radius: 50%
+  background-color: $red
