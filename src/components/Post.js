@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { enableEdit, lovePost, savePost } from "reducers/post/post.actions";
 import { connect } from "react-redux";
 
-import { IconWithText } from "components/Icon";
+import { Icon } from "components/Icon";
 import { fieldWithLabel, LoadingButton } from "components/form/form.utils";
 import Tags from "components/form/Tags";
 import LoveItButton from "components/LoveItButton";
@@ -36,7 +36,7 @@ function EditPost({ submitting, initialValues, handleSubmit }) {
             )
           }}/>
           <LoadingButton submitting={submitting} className="is-primary is-pulled-right">
-            <IconWithText className="fa fa-save">Save</IconWithText>
+            <Icon className="fa fa-save">Save</Icon>
           </LoadingButton>
         </Form>
       </div>

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { IconWithText } from "./Icon";
+import { Icon } from "./Icon";
 
-const HttpResourceIcon = (uri) => (<IconWithText className="fa fa-html5">{uri}</IconWithText>)
+const HttpResourceIcon = (uri) => (<Icon className="fa fa-html5">{uri}</Icon>)
 
 HttpResourceIcon.propTypes = {
   uri: PropTypes.string.isRequired
@@ -16,7 +16,7 @@ export default class Resource extends Component {
   }
 
   static social(provider, uri) {
-    return (<IconWithText className={`fa fa-${provider}`}>{uri}</IconWithText>)
+    return (<Icon className={`fa fa-${provider}`}>{uri}</Icon>)
   }
 
   render() {

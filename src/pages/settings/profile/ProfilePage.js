@@ -6,7 +6,7 @@ import { Field, Form, reduxForm } from "redux-form";
 import moment from "moment";
 
 import { fieldWithLabel, LoadingButton, required } from "components/form/form.utils";
-import { IconWithText } from "components/Icon";
+import { Icon } from "components/Icon";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
 
@@ -70,7 +70,7 @@ function ProfileEdit({ avatar, handleSubmit, submitting, url, initialValues }) {
         </div>
         <div className="is-pulled-right">
           <LoadingButton submitting={submitting} className="is-outlined is-primary">
-            <IconWithText className="fa fa-save">Save</IconWithText>
+            <Icon className="fa fa-save">Save</Icon>
           </LoadingButton>
         </div>
       </Form>

@@ -1,12 +1,12 @@
 import React from "react";
-import { IconWithText } from "components/Icon";
+import { Icon } from "components/Icon";
 
 function SocialConnection({ providerKey, name, icon, href }) {
   if (!providerKey) {
     return (
       <p className="control">
         <a className="button is-inverted is-outlined" href={href}>
-          <IconWithText className={icon}>Connect with {name}</IconWithText>
+          <Icon className={icon}>Connect with {name}</Icon>
         </a>
       </p>
     )
@@ -15,7 +15,7 @@ function SocialConnection({ providerKey, name, icon, href }) {
   return (
     <p className="control">
       <a className="button is-primary" disabled>
-        <IconWithText className={icon}>Connected with {name}</IconWithText>
+        <Icon className={icon}>Connected with {name}</Icon>
       </a>
     </p>
   )

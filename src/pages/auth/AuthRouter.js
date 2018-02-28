@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Link, Route, Switch } from 'react-router-dom';
 import auth from "reducers/util/auth";
 import { renderField, required, LoadingButton } from "components/form/form.utils";
-import { IconWithText } from "components/Icon";
+import { Icon } from "components/Icon";
 import FacebookAuthPage from "./FacebookAuthPage";
 import GoogleAuthPage from "./GoogleAuthPage";
 
@@ -17,7 +17,7 @@ let ResetForm = ({ handleSubmit, submitting }) => {
 
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
-          <IconWithText className="fa fa-refresh">Restore</IconWithText>
+          <Icon className="fa fa-refresh">Restore</Icon>
         </LoadingButton>
       </div>
     </Form>
@@ -34,7 +34,7 @@ let ForgotForm = ({ handleSubmit, submitting }) => {
 
       <div className="field">
         <LoadingButton submitting={submitting}>
-          <IconWithText className="fa fa-send">Send a password restore link</IconWithText>
+          <Icon className="fa fa-send">Send a password restore link</Icon>
         </LoadingButton>
       </div>
     </Form>
@@ -54,7 +54,7 @@ let LoginForm = ({ handleSubmit, submitting }) => {
 
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
-          <IconWithText className="fa fa-sign-in">Log in</IconWithText>
+          <Icon className="fa fa-sign-in">Log in</Icon>
         </LoadingButton>
       </div>
     </Form>
@@ -76,7 +76,7 @@ let RegisterForm = ({ handleSubmit, submitting }) => {
              validate={[required]}/>
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
-          <IconWithText className="fa fa-registered">Register</IconWithText>
+          <Icon className="fa fa-registered">Register</Icon>
         </LoadingButton>
       </div>
     </Form>
@@ -91,12 +91,12 @@ function SocialHeader({ facebook, google }) {
       <div className="field has-addons">
         <p className="control">
           <a className="button is-primary is-inverted is-outlined" href={facebook}>
-            <IconWithText className="fa fa-facebook-official">Connect with FB</IconWithText>
+            <Icon className="fa fa-facebook-official">Connect with FB</Icon>
           </a>
         </p>
         <p className="control">
           <a className="button is-primary is-inverted is-outlined" href={google}>
-            <IconWithText className="fa fa-google">Connect with Google</IconWithText>
+            <Icon className="fa fa-google">Connect with Google</Icon>
           </a>
         </p>
       </div>

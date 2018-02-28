@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { decrease, getLimit, increase } from "reducers/payment/charge/limit.actions";
 
 import MoneyToCoffeeIcon from "components/payment/MoneyToCoffeeIcon";
-import { IconWithText } from "components/Icon";
+import { Icon } from "components/Icon";
 import Loading from "components/Loading";
 
 class PaymentLimitSection extends Component {
@@ -44,14 +44,14 @@ class PaymentLimitSection extends Component {
           </p>
           <p className="limit-count-block">
             <a className="limit-button" disabled={cups === 1} onClick={() => decrease(limit)}>
-              <IconWithText className="fa fa-minus-circle"/>
+              <Icon className="fa fa-minus-circle"/>
             </a>
             <span className="limit-count">
             &nbsp;<b>{amount}.0</b>&nbsp;
               <span>{currency}</span>
           </span>
             <a className="limit-button" onClick={() => increase(limit)}>
-              <IconWithText className="fa fa-plus-circle"/>
+              <Icon className="fa fa-plus-circle"/>
             </a>
           </p>
         </div>

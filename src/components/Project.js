@@ -7,7 +7,7 @@ import { getProject, refreshProjectFeed, updateProject } from "reducers/project.
 
 import Loading from "./Loading";
 import { fieldWithLabel, LoadingButton } from "./form/form.utils";
-import { IconWithText, WebStackIcon } from "./Icon";
+import { Icon, WebStackIcon } from "./Icon";
 import Tags from "./form/Tags";
 import Resource from "./Resource";
 import RefreshLink from "components/RefreshLink";
@@ -101,14 +101,14 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
           <div className="column is-3">
             <div className="is-pulled-right">
               <RefreshLink onClick={refreshFeed}>
-                <IconWithText className="fa fa-refresh">Refresh</IconWithText>
+                <Icon className="fa fa-refresh">Refresh</Icon>
               </RefreshLink>
             </div>
           </div>
         </div>
         <div className="is-pulled-right">
           <LoadingButton submitting={submitting} className="is-outlined is-primary">
-            <IconWithText className="fa fa-save">Save</IconWithText>
+            <Icon className="fa fa-save">Save</Icon>
           </LoadingButton>
         </div>
       </Form>
@@ -130,7 +130,7 @@ function ProjectLine({ project: { webStack, resource, _id, enabled }, onSubmit }
         <div className="is-pulled-right">
           <Link to={`/creator/my/install/${_id}`}>
             <button className="button is-primary is-outlined is-small">
-              <IconWithText className='fa fa-toggle-off'>Install</IconWithText>
+              <Icon className='fa fa-toggle-off'>Install</Icon>
             </button>
           </Link>
         </div>

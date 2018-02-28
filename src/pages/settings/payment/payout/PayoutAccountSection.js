@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { IconWithText } from "components/Icon";
+import { Icon } from "components/Icon";
 import { deletePayoutAccount, getPayoutAccount } from "reducers/payment/payout/account.actions";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
@@ -33,7 +33,7 @@ function BankDetails({ account }) {
 function ConnectPayoutAccount() {
   return (
     <a className="button is-outlined is-primary" href="/api/v1/payment/my/payout/account/connect">
-      <IconWithText className="fa fa-cc-stripe">Connect your Bank</IconWithText>
+      <Icon className="fa fa-cc-stripe">Connect your Bank</Icon>
     </a>
   )
 }
