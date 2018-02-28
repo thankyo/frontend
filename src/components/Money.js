@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import { Icon } from "./Icon";
+import { USDIcon } from "components/Icon";
 
 export default class Money extends Component {
     static usd(amount) {
         return (
-          <Icon className="fa fa-usd">{amount}</Icon>
+          <USDIcon>{amount}</USDIcon>
         )
     }
     static currency(currency, amount) {

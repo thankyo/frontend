@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Icon } from "../Icon";
+import { IncrementIcon } from "components/Icon";
 
 class AddTagForm extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class AddTagForm extends Component {
         </div>
         <p className="control">
           <a className="button is-small is-primary" type="submit" onClick={this.handleSubmit}>
-            <Icon className="fa fa-plus-circle">Add</Icon>
+            <IncrementIcon>Add</IncrementIcon>
           </a>
         </p>
       </div>

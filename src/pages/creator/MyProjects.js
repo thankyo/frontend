@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
 import { getOwnedProjects, refreshMyProjects } from "reducers/project.actions";
-import { Icon } from "components/Icon";
+import { RefreshIcon } from "components/Icon";
 import Project from "components/Project";
 import RefreshLink from "components/RefreshLink";
 
@@ -21,7 +21,7 @@ function MyProjects ({ pending, refresh }){
         </div>
         <div className="column is-6">
           <RefreshLink onClick={refresh}>
-            <Icon className="fa fa-refresh">Refresh</Icon>
+            <RefreshIcon>Refresh</RefreshIcon>
           </RefreshLink>
         </div>
       </div>

@@ -1,6 +1,6 @@
 // Pending, Running, Success, Failed, NoBankAccount, NoSuccessfulCharges
 import React, { Fragment } from "react";
-import { Icon } from "components/Icon";
+import { ErrorIcon, SuccessIcon } from "components/Icon";
 
 export default function EOMPayoutStatus({ status }) {
   switch (status) {
@@ -11,13 +11,13 @@ export default function EOMPayoutStatus({ status }) {
             <i className="fa fa-circle fa-stack-2x"/>
             <i className="fa fa-bank fa-stack-1x fa-inverse"/>
           </span>
-          No Bank Account specified
+          <ErrorIcon>No Bank Account specified</ErrorIcon>
         </Fragment>
       );
     case "NoSuccessfulCharges":
-      return <span>No Successful Charges</span>;
+      return <ErrorIcon>No Successful Charges</ErrorIcon>;
     case "Success":
-      return <Icon className="fa fa-check-circle">Success</Icon>;
+      return <SuccessIcon>Success</SuccessIcon>;
     default:
       return <span>{status}</span>
   }

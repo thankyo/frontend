@@ -1,31 +1,23 @@
 import React from "react";
-import { Icon } from "components/Icon";
+import { FacebookIcon, GoogleIcon } from "components/Icon";
 
-function SocialConnection({ providerKey, name, icon, href }) {
-  if (!providerKey) {
-    return (
-      <p className="control">
-        <a className="button is-inverted is-outlined" href={href}>
-          <Icon className={icon}>Connect with {name}</Icon>
-        </a>
-      </p>
-    )
-  }
-
-  return (
-    <p className="control">
-      <a className="button is-primary" disabled>
-        <Icon className={icon}>Connected with {name}</Icon>
-      </a>
-    </p>
-  )
-}
+const SocialConnection = ({ providerKey, name, icon, href, children }) => (
+  <p className="control">
+    <a className="button is-primary" disabled={providerKey} href={providerKey ? "" : href}>
+      {children}
+    </a>
+  </p>
+);
 
 export default function ConnectedSocial({ profiles, url }) {
   return <div>
     <div className="field has-addons">
-      <SocialConnection providerKey={profiles.facebook} icon="fa fa-facebook-official" name="FB" href={url.facebook}/>
-      <SocialConnection providerKey={profiles.google} icon="fa fa-google" name="Google" href={url.google}/>
+      <SocialConnection providerKey={profiles.facebook} href={url.facebook}>
+        <FacebookIcon>Connect with FB</FacebookIcon>
+      </SocialConnection>
+      <SocialConnection providerKey={profiles.google} href={url.google}>
+        <GoogleIcon>Connect with Google</GoogleIcon>
+      </SocialConnection>
     </div>
   </div>
 }

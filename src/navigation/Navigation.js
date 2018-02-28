@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Brand from 'components/Brand';
-import { Icon } from "components/Icon";
+import { LogOutIcon, NavigationIcon } from "components/Icon";
 
 import { Link } from 'react-router-dom';
 import auth from "reducers/util/auth";
@@ -57,13 +57,13 @@ class Navigation extends Component {
           <div className="navbar-end">
             <div className="navbar-item has-dropdown is-hoverable">
               <div className="navbar-link is-hidden-mobile">
-                <Icon className="fa fa-compass fa-2x"/>
+                <NavigationIcon/>
               </div>
               <div className="navbar-dropdown is-boxed is-right">
                 {links.map((link, i) => <NavigationLink key={i} {...link}/>)}
                 <hr className="navbar-divider"/>
                 <a onClick={() => auth.logout()} className="navbar-item">
-                  <Icon className="fa fa-sign-out">Log Out</Icon>
+                  <LogOutIcon>Log Out</LogOutIcon>
                 </a>
               </div>
             </div>

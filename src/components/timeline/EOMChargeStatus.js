@@ -1,7 +1,7 @@
 // Pending, Running, Success, Failed, UnderMin, NoBankDetails, FailedToCreate, NoContributions
 
 import React, { Fragment } from "react";
-import { Icon } from "components/Icon";
+import { ErrorIcon } from "components/Icon";
 
 export default function EOMChargeStatus({ status }) {
   switch (status) {
@@ -19,7 +19,7 @@ export default function EOMChargeStatus({ status }) {
       );
     case "UnderMin":
       return (
-        <Icon className="fa fa-exclamation-circle">Below minimum, contributions transferred to the next month</Icon>
+        <ErrorIcon>Below minimum, contributions transferred to the next month</ErrorIcon>
       );
     default:
       return <span>{status}</span>

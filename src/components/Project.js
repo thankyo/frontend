@@ -7,11 +7,12 @@ import { getProject, refreshProjectFeed, updateProject } from "reducers/project.
 
 import Loading from "./Loading";
 import { fieldWithLabel, LoadingButton } from "./form/form.utils";
-import { Icon, WebStackIcon } from "./Icon";
+import { WebStackIcon } from "./Icon";
 import Tags from "./form/Tags";
 import Resource from "./Resource";
 import RefreshLink from "components/RefreshLink";
 import { flatField } from "components/form/form.utils";
+import { InstallIcon, RefreshIcon, SaveIcon } from "components/Icon";
 
 function ViewProject({ avatar, title, description, user, _id, tags, resource }) {
   if (!_id) {
@@ -101,14 +102,14 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
           <div className="column is-3">
             <div className="is-pulled-right">
               <RefreshLink onClick={refreshFeed}>
-                <Icon className="fa fa-refresh">Refresh</Icon>
+                <RefreshIcon>Refresh</RefreshIcon>
               </RefreshLink>
             </div>
           </div>
         </div>
         <div className="is-pulled-right">
           <LoadingButton submitting={submitting} className="is-outlined is-primary">
-            <Icon className="fa fa-save">Save</Icon>
+            <SaveIcon>Save</SaveIcon>
           </LoadingButton>
         </div>
       </Form>
@@ -130,7 +131,7 @@ function ProjectLine({ project: { webStack, resource, _id, enabled }, onSubmit }
         <div className="is-pulled-right">
           <Link to={`/creator/my/install/${_id}`}>
             <button className="button is-primary is-outlined is-small">
-              <Icon className='fa fa-toggle-off'>Install</Icon>
+              <InstallIcon>Install</InstallIcon>
             </button>
           </Link>
         </div>

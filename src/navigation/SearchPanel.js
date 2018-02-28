@@ -2,7 +2,7 @@ import React from "react";
 import { flatField, LoadingButton } from "components/form/form.utils";
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from "redux-form";
-import { Icon } from "components/Icon";
+import { SearchIcon } from "components/Icon";
 import { withRouter } from 'react-router-dom'
 
 function SearchPanel({ handleSubmit, submitting }) {
@@ -14,10 +14,10 @@ function SearchPanel({ handleSubmit, submitting }) {
         </div>
         <LoadingButton submitting={submitting}>
           <div className="is-hidden-mobile">
-            <Icon className="fa fa-search">Search</Icon>
+            <SearchIcon>Search</SearchIcon>
           </div>
           <div className="is-mobile is-hidden-tablet is-hidden-desktop">
-            <Icon className="fa fa-search"/>
+            <SearchIcon/>
           </div>
         </LoadingButton>
       </div>

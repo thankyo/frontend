@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connectChargeAccount, deleteCard, getChargeAccount } from "reducers/payment/charge/card.actions";
 import { connect } from "react-redux";
-import { Icon } from "components/Icon";
+import { CreditCardIcon } from "components/Icon";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
 import RefreshLink from "components/RefreshLink";
@@ -45,7 +45,7 @@ class ConnectCardButton extends Component {
     let { loading } = this.state;
     return (
       <a onClick={this.handleConnectCard} className={`button is-outlined is-primary ${loading && "is-loading"}`}>
-        <Icon className="fa fa-credit-card">Connect Card</Icon>
+        <CreditCardIcon>Connect Card</CreditCardIcon>
       </a>
     )
   }
@@ -64,8 +64,16 @@ function ChargeAccountSection({ isMissing, brand, last4, connectChargeAccount, d
           </div>
           <div className="level-right">
             <div className="level-item">
-              {isMissing && <RefreshLink onClick={connectChargeAccount}><Icon className="fa fa-credit-card">Connect Card</Icon></RefreshLink>}
-              {!isMissing && <RefreshLink onClick={deleteCard} className="is-danger">Delete</RefreshLink>}
+              {isMissing && (
+                <RefreshLink onClick={connectChargeAccount}>
+                  <CreditCardIcon>Connect Card</CreditCardIcon>
+                </RefreshLink>
+              )}
+              {!isMissing && (
+                <RefreshLink onClick={deleteCard} className="is-danger">
+                  Delete
+                </RefreshLink>)
+              }
             </div>
           </div>
         </div>
