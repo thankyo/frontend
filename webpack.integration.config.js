@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
+  devtool: "source-map",
   context: path.resolve(__dirname, 'integration'),
   entry: "./index.js",
   module: {
@@ -61,6 +62,11 @@ const config = {
     overlay: {
       warnings: true,
       errors: true
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, PUT",
+      "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, X-Auth-Token"
     },
     proxy: {
       delay: 2000,

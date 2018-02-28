@@ -1,34 +1,50 @@
 import "./integration.sass";
+(function () {
+  var token = localStorage.getItem("token");
+  var isUser = token !== null;
+  var element = document.getElementById("button");
 
-function tip(){
-  function singIn() {
-    window.top.location = "https://loveit.tips"
+  if (isUser) {
+    fetch("/api/v1/thank/graph/my/support?url=" + encodeURIComponent(document.referrer),
+      { headers: { 'X-Auth-Token': token } }
+    ).then((res) => {
+        if (res.ok) {
+          res.json().then((loved) => {
+            if (loved) {
+              markLoved()
+            }
+          });
+        } else {
+          markError();
+        }
+      });
   }
-  function doTip(token) {
-    const url = "/api/v1/thank/http/@res.uri";
-    var req = new Request(url, {
-      method: "PUT",
-      headers: {
-        'X-Auth-Token': token
-      }
-    });
-    fetch(req).
-    then(function(res) {
+
+  function markLoved() {
+    element.setAttribute("class", "fab-is-loved");
+  }
+
+  function markError() {
+    element.setAttribute("class", "fab-is-error");
+  }
+
+  function redirectToRegister() {
+    top.location = window.location.origin
+  }
+
+  function lovePost() {
+    markLoved();
+    fetch(
+      new Request("/api/v1/thank/graph/my/support",
+      { method: "POST", headers: { 'X-Auth-Token': token, "Content-Type": "application/json" }, body: JSON.stringify({ url: document.referrer }) })
+    ).then(function (res) {
       if (res.ok) {
-        return res.json()
+        markLoved();
       } else {
-        singIn();
+        markError();
       }
-    }).
-    then(function() {
-      document.getElementById("SPAN_1").style.backgroundColor = "#00D1B2";
     })
   }
 
-  var token = localStorage.getItem("token");
-  if (token === undefined || token === null) {
-    //singIn()
-  } else {
-    //doTip(token)
-  }
-};
+  element.onclick = isUser ? lovePost : redirectToRegister;
+})();
