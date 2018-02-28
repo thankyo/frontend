@@ -26,35 +26,23 @@ const config = {
             sourceMap: true
           } // compiles Sass to CSS
         }]
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.svg$/,
-        loaders: [
-          {
-            loader: 'babel-loader',
-            query: { presets: [ 'env'  ] }
-          },
-          {
-            loader: 'react-svg-loader',
-            query: { jsx: true }
-          }
-        ]
       }
     ]
   },
   output: {
     path: path.join(__dirname, "public-integration"),
     filename: '[name].bundle.js',
-    publicPath: "/"
+    publicPath: "/integration"
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.ejs',
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    contentBase: path.join(__dirname, "assets"),
+    contentBase: path.join(__dirname, "integration"),
+    publicPath: '/integration',
     historyApiFallback: true,
     hot: true,
     lazy: false,
@@ -63,49 +51,8 @@ const config = {
       warnings: true,
       errors: true
     },
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, PUT",
-      "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, X-Auth-Token"
-    },
-    proxy: {
-      delay: 2000,
-      '/api': {
-        target: 'http://localhost:9000/',
-        secure: false,
-      },
-    }
+    port: 8000
   },
 };
-
-/* Production */
-if (process.env.NODE_ENV === 'production') {
-  const CompressionPlugin = require("compression-webpack-plugin");
-
-  config.output.filename = '[name].[chunkhash].js';
-  config.output.chunkFilename = '[name].[chunkhash].js';
-  config.plugins = [
-    ...config.plugins, // ES6 array destructuring, available in Node 5+
-    new HtmlWebpackPlugin({
-      template: './index.ejs',
-      inlineSource: '.(js|css)$'
-    }),
-    new CompressionPlugin({
-      asset: "[path].gz[query]",
-      algorithm: "gzip",
-      test: /\.(js|html)$/,
-      threshold: 10240,
-      minRatio: 0.8
-    })
-  ];
-} else {
-  config.plugins = [
-    new HtmlWebpackPlugin({
-      template: './index.ejs',
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    ...config.plugins,
-  ]
-}
 
 module.exports = config;

@@ -122,11 +122,14 @@ const config = {
       errors: true
     },
     proxy: {
-      delay: 2000,
       '/api': {
         target: 'http://localhost:9000/',
         secure: false,
       },
+      '/integration': {
+        target: 'http://localhost:8000/',
+        secure: false,
+      }
     }
   },
 };
