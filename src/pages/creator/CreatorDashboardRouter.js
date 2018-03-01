@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CreatorDashboardPage from "./CreatorDashboardPage";
-import MyCreatorDashboardPage from "./MyCreatorDashboardPage";
+import MyCreatorDashboardPage from "./MyCreatorDashboardRouter";
 import { Route, Switch } from 'react-router-dom';
 
 export default function CreatorDashboardRouter() {

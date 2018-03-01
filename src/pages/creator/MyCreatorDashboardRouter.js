@@ -5,11 +5,11 @@ import Project from "components/Project";
 import ProjectNavigation from "./ProjectNavigation";
 import ProjectPosts from "./ProjectPosts";
 import MyProjects from "./MyProjects";
-import InstallPage from "./InstallPage";
+import InstallPage from "./installation";
 import { Route, Switch } from 'react-router-dom';
 
 
-export default function myCreatorDashboardPage() {
+export default function myCreatorDashboardRouter() {
   return (
     <div className="columns">
       <div className="column is-one-quarter">
@@ -25,8 +25,8 @@ export default function myCreatorDashboardPage() {
           <Route exact path="/creator/my">
             <MyProjects/>
           </Route>
-          <Route path="/creator/my/install/:url"
-                 render={(({ match: { params: { url } } }) => (<InstallPage url={url}/>))}/>
+          <Route path="/creator/my/install/:id"
+                 render={(({ match: { params: { id } } }) => (<InstallPage id={id}/>))}/>
           <Route exact path="/creator/my/project/:project" render={(({ match: { params: { project } } }) => [
             <Project key={0} id={project} edit={true}/>,
             <ProjectPosts key={2} id={project}/>,

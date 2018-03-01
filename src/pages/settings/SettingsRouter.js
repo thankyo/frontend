@@ -5,7 +5,6 @@ import SettingsMenu from "./SettingsNav";
 
 import ChargePage from "./payment/charge/ChargePage";
 import PayoutPage from "./payment/payout/PayoutPage";
-import InstallationPage from "../creator/installation/InstallationPage";
 import ProfilePage from "./profile/ProfilePage";
 
 

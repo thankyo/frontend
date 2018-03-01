@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function WordPress({ url }) {
+const WORD_PRESS_INSTALLATION = encodeURI("/wp-admin/plugin-install.php?tab=plugin-information&plugin=loveit-integration&reauth=1");
+
+const WordPress = ({ url }) => {
   return (
     <section className="section">
       <h1 className="title">Ready for installation</h1>
@@ -9,26 +11,15 @@ export default function WordPress({ url }) {
       <div className="content">
 
         <div className="columns">
-          <div className="column is-4">
+          <div className="column is-6">
             <div className="content">
-              <h4 className="title">1. Download the plugin.</h4>
-              Press download button to download zip plugin.
-            </div>
-            <div>
-              <a className="is-primary button" href='/loveit_integration.zip' target="_blank">
-                Download plugin
-              </a>
-            </div>
-          </div>
-          <div className="column is-4">
-            <div className="content">
-            <h4 className="subtitle">2. Install LoveIt plugin.</h4>
+            <h4 className="subtitle">1. Install LoveIt integration plugin.</h4>
               You will be redirected to your site's admin dashboard to install the LoveIt plugin.
             </div>
 
             <div>
               <a className="button is-primary"
-                 href={`//${url}/wp-login.php?redirect_to=/wp-admin/plugin-install.php`}
+                 href={`http://${url}${WORD_PRESS_INSTALLATION}`}
                  target="_blank">
                 Install Now
               </a>
@@ -36,7 +27,7 @@ export default function WordPress({ url }) {
           </div>
           <div className="column is-4">
             <div className="content">
-              <h4 className="title">3. Activate it</h4>
+              <h4 className="title">2. Activate it</h4>
               Then you'll click the blue <strong>Activate</strong> link to activate the LoveIt plugin.
             </div>
           </div>
@@ -45,3 +36,5 @@ export default function WordPress({ url }) {
     </section>
   );
 };
+
+export default WordPress;
