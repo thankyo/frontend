@@ -1,6 +1,6 @@
 import React from "react";
 
-const WORD_PRESS_INSTALLATION = encodeURI("/wp-admin/plugin-install.php?tab=plugin-information&plugin=loveit-integration&reauth=1");
+const WORD_PRESS_INSTALLATION = encodeURI("/wp-admin/plugin-install.php?tab=plugin-information&plugin=loveit-integration");
 
 const WordPress = ({ url }) => {
   return (
@@ -19,7 +19,7 @@ const WordPress = ({ url }) => {
 
             <div>
               <a className="button is-primary"
-                 href={`http://${url}${WORD_PRESS_INSTALLATION}`}
+                 href={`${url}${WORD_PRESS_INSTALLATION}`}
                  target="_blank">
                 Install Now
               </a>
