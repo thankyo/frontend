@@ -46,7 +46,7 @@ export default class MainApp extends Component {
               <Route path="/(creator|dashboard|settings|search)">
                 <div>
                   <Navigation/>
-                  <div style={{ paddingTop: 62 }}>
+                  <div style={{ paddingTop: 54 }}>
                     <Route path="/creator" component={CreatorDashboardRouter}/>
                     <Route path="/dashboard" component={DashboardRouter}/>
                     <Route path="/settings" component={SettingsRouter}/>

@@ -35,6 +35,7 @@ class Navigation extends Component {
     let { active } = this.state;
     return (
       <nav className="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
+        <div className="container">
         <div className="navbar-brand">
           <div className="navbar-item">
             <Link to="/dashboard/my" style={{ height: "38px" }}>
@@ -68,6 +69,7 @@ class Navigation extends Component {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </nav>
     )

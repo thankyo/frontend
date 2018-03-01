@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Field, Form, reduxForm, FieldArray } from "redux-form";
+import { Field, FieldArray, Form, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 
-import { getProject, refreshProjectFeed, updateProject } from "reducers/project.actions";
+import { refreshProjectFeed, updateProject } from "reducers/project.actions";
 
 import Loading from "./Loading";
 import { fieldWithLabel, LoadingButton } from "./form/form.utils";
-import { WebStackIcon } from "./Icon";
 import Tags from "./form/Tags";
 import Resource from "./Resource";
 import RefreshLink from "components/RefreshLink";
@@ -41,7 +40,8 @@ function ViewProject({ avatar, title, description, user, _id, tags, url }) {
             <p className="subtitle is-6"><a href={`//${url}`}>{url}</a></p>
             <div className="field is-grouped is-grouped-multiline">
               <div className="tags">
-                {tags.map((tag, i) => (<Link key={i} to={`/search?query=${tag}`} className="tag is-black">{tag}</Link>))}
+                {tags.map((tag, i) => (
+                  <Link key={i} to={`/search?query=${tag}`} className="tag is-black">{tag}</Link>))}
               </div>
             </div>
           </div>
@@ -80,7 +80,8 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
         <div className="columns">
           <div className="column">
             <Field name="title" component={fieldWithLabel} placeholder="Title"/>
-            <Field name="description" component={fieldWithLabel} type="textarea" className="textarea" placeholder="Description"/>
+            <Field name="description" component={fieldWithLabel} type="textarea" className="textarea"
+                   placeholder="Description"/>
           </div>
         </div>
         <FieldArray name="tags" component={(props) => {
@@ -89,7 +90,11 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
           return (
             <div className="field">
               <label className="label">Tags</label>
-              <Tags tags={tags} removeTag={(tag) => { fields.remove(tags.indexOf(tag))}} addTag={({ tag }) => { fields.push(tag) }}/>
+              <Tags tags={tags} removeTag={(tag) => {
+                fields.remove(tags.indexOf(tag))
+              }} addTag={({ tag }) => {
+                fields.push(tag)
+              }}/>
             </div>
           )
         }}/>
@@ -116,34 +121,11 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
     </div>
   );
 }
+
 EditProject = reduxForm({ form: "project", enableReinitialize: true })(EditProject);
 
-function ProjectLine({ project: { webStack, url, _id, enabled }, onSubmit }) {
-  return (
-    <div className="columns">
-      <div className="column is-9">
-        <p className="control">
-          <WebStackIcon webStack={webStack}/>
-          <Resource url={url}/>
-        </p>
-      </div>
-      <div className="column is-3">
-        <div className="is-pulled-right">
-          <Link to={`/creator/my/install/${_id}`}>
-            <button className="button is-primary is-outlined is-small">
-              <InstallIcon>Install</InstallIcon>
-            </button>
-          </Link>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function Project({ edit, line, project, id, updateProject, refreshFeed}) {
-  if (line) {
-    return <ProjectLine project={project} onSubmit={() => updateProject(Object.assign({}, project, { enabled: !project.enabled}))}/>
-  } else if (edit) {
+function Project({ edit, line, project, id, updateProject, refreshFeed }) {
+  if (edit) {
     return <EditProject form={id} initialValues={project} onSubmit={updateProject} refreshFeed={refreshFeed}/>
   } else {
     return <ViewProject initialValues={project} {...project}/>
@@ -151,7 +133,7 @@ function Project({ edit, line, project, id, updateProject, refreshFeed}) {
 }
 
 
-const mapStateToProps = ({ project: { byId }}, { id }) => ({ project: byId[id] });
+const mapStateToProps = ({ project: { byId } }, { id }) => ({ project: byId[id] });
 
 const mapDispatchToProps = (dispatch, { id }) => {
   return {

@@ -37,7 +37,7 @@ export const SearchIcon = ({ children }) => <Icon className='fa fa-search'>{chil
 export const LogOutIcon = ({ children }) => <Icon className="fa fa-sign-out">{children}</Icon>;
 export const NavigationIcon = ({ children }) => <Icon className="fa fa-compass fa-2x">{children}</Icon>;
 export const StripeIcon = ({ children }) => <Icon className="fa fa-cc-stripe">{children}</Icon>;
-export const InstallIcon = ({ children }) => <Icon className="fa fa-toggle-off">{children}</Icon>;
+export const InstallIcon = ({ children }) => <Icon className="fa fa-power-off">{children}</Icon>;
 export const EditIcon = ({ children }) => <Icon className="fa fa-edit">{children}</Icon>
 
 Icon.propTypes = {

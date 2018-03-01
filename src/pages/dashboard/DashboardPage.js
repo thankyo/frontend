@@ -3,7 +3,6 @@ import React from "react";
 import Profile from "components/Profile";
 
 import SupportedProjects from "./SupportedProjects";
-import Invite from "./Invite";
 import ThankTransactions from "./PendingTransaction";
 
 export default function supportDashboardPage({ id }) {
