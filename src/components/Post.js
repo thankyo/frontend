@@ -66,7 +66,7 @@ function PostActions({ post, onEdit, onLove }) {
       </PostActionWrap>
     )
   }
-  return <LoveItButton isLoved={post.isLoved} onLove={() => onLove(post.resource.uri)}/>
+  return <LoveItButton isLoved={post.isLoved} onLove={() => onLove(post.url)}/>
 }
 
 function ViewPost(props) {

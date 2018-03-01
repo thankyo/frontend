@@ -1,6 +1,5 @@
 import React from "react";
-import { ResourceIcon } from "components/Icon";
 
-const Resource = ({ resource }) => (<ResourceIcon>{resource}</ResourceIcon>);
+const Resource = ({ resource }) => (<a href={resource}>{resource}</a>);
 
 export default Resource;

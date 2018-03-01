@@ -33,7 +33,7 @@ function ProjectDayPayoutExpanded({ project: { user, title, avatar, _id }, resou
       </li>
       <li className="timeline-item is-primary">
         <div className="timeline-content">
-          {resources.map(({ resource, total }, i) => <p key={i}><Resource resource={resource}/> - {total}</p>)}
+          {resources.map(({ url, total }, i) => <p key={i}><Resource resource={url}/> - {total}</p>)}
         </div>
       </li>
     </Fragment>

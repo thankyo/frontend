@@ -14,7 +14,7 @@ import RefreshLink from "components/RefreshLink";
 import { flatField } from "components/form/form.utils";
 import { InstallIcon, RefreshIcon, SaveIcon } from "components/Icon";
 
-function ViewProject({ avatar, title, description, user, _id, tags, resource }) {
+function ViewProject({ avatar, title, description, user, _id, tags, url }) {
   if (!_id) {
     return (
       <div className="has-text-centered">
@@ -38,7 +38,7 @@ function ViewProject({ avatar, title, description, user, _id, tags, resource }) 
           <div className="column is-two-third">
             <p className="title">{title}</p>
             <p className="subtitle">{description}</p>
-            <p className="subtitle is-6"><a href={`//${resource.uri}`}>{resource.uri}</a></p>
+            <p className="subtitle is-6"><a href={`//${url}`}>{url}</a></p>
             <div className="field is-grouped is-grouped-multiline">
               <div className="tags">
                 {tags.map((tag, i) => (<Link key={i} to={`/search?query=${tag}`} className="tag is-black">{tag}</Link>))}
@@ -62,7 +62,7 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
   return (
     <div>
       <p className="title is-5">Project</p>
-      <p className="subtitle is-6"><a href={`//${initialValues.resource.uri}`}>{initialValues.resource.uri}</a></p>
+      <p className="subtitle is-6"><a href={`//${initialValues.url}`}>{initialValues.url}</a></p>
       <Form className="profile" onSubmit={handleSubmit}>
         <div className="columns">
           <div className="column is-one-third">

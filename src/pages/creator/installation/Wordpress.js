@@ -1,6 +1,6 @@
 import React from "react";
 
-const WORD_PRESS_INSTALLATION = encodeURI("/wp-admin/plugin-install.php?tab=plugin-information&plugin=loveit-integration");
+const WORD_PRESS_INSTALLATION = encodeURI("wp-admin/plugin-install.php?tab=plugin-information&plugin=loveit-integration&reauth=1");
 
 const WordPress = ({ url }) => {
   return (

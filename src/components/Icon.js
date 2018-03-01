@@ -34,7 +34,6 @@ export const InviteIcon = ({ children }) => <Icon className="fa fa-hand-peace-o"
 export const USDIcon = ({ children }) => <Icon className="fa fa-usd">{children}</Icon>;
 export const RefreshIcon = ({ children }) => <Icon className='fa fa-refresh'>{children}</Icon>;
 export const SearchIcon = ({ children }) => <Icon className='fa fa-search'>{children}</Icon>;
-export const ResourceIcon = ({ children }) => <Icon className="fa fa-html5">{children}</Icon>;
 export const LogOutIcon = ({ children }) => <Icon className="fa fa-sign-out">{children}</Icon>;
 export const NavigationIcon = ({ children }) => <Icon className="fa fa-compass fa-2x">{children}</Icon>;
 export const StripeIcon = ({ children }) => <Icon className="fa fa-cc-stripe">{children}</Icon>;

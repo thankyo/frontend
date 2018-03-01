@@ -4,10 +4,10 @@ import WordPress from "./Wordpress";
 import Manual from "./Manual";
 import { getProject } from "reducers/project.actions";
 
-const InstallationPage = ({ resource }) => (
+const InstallationPage = ({ url }) => (
   <Fragment>
-    <WordPress url={resource}/>
-    <Manual url={resource}/>
+    <WordPress url={url}/>
+    <Manual url={url}/>
   </Fragment>
 );
 
