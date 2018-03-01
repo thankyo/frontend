@@ -56,15 +56,15 @@ export function mergeCharges(transactions){
 
   let mergedByProject = mergedByDate.map(({ created, total, dateStr, transactions }) => {
     let byProject = transactions.reduce((agg, tr) => {
-      let { project, resource } = tr;
+      let { project, url } = tr;
       let { _id: id } = project;
       if (!agg[id]) {
         agg[id] = {
           project,
-          resources: [resource]
+          urls: [url]
         }
       } else {
-        agg[id]['resources'].push(resource)
+        agg[id]['urls'].push(url)
       }
       return agg;
     }, {});
@@ -81,19 +81,19 @@ export function mergePayouts(transactions) {
 
   let mergedByProject = mergedByDate.map(({ created, total, dateStr, transactions }) => {
     let byProject = transactions.reduce((agg, tr) => {
-      let { project, resource } = tr;
+      let { project, url } = tr;
       let { _id: id } = project;
       if (!agg[id]) {
         agg[id] = {
           project,
-          resources: [ { resource, total: 1 }],
+          urls: [ { url, total: 1 }],
           total: 1
         }
       } else {
-        let stat = agg[id]['resources'];
-        let entry = stat.find(el => el.resource.uri === resource.uri);
+        let stat = agg[id]['urls'];
+        let entry = stat.find(el => el.url === url);
         if (!entry) {
-          stat.push({ resource, total: 1 })
+          stat.push({ url, total: 1 })
         } else {
           entry.total += 1;
         }

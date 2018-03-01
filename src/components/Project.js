@@ -118,13 +118,13 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
 }
 EditProject = reduxForm({ form: "project", enableReinitialize: true })(EditProject);
 
-function ProjectLine({ project: { webStack, resource, _id, enabled }, onSubmit }) {
+function ProjectLine({ project: { webStack, url, _id, enabled }, onSubmit }) {
   return (
     <div className="columns">
       <div className="column is-9">
         <p className="control">
           <WebStackIcon webStack={webStack}/>
-          <Resource resource={resource}/>
+          <Resource url={url}/>
         </p>
       </div>
       <div className="column is-3">

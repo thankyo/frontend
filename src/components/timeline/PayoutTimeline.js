@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Resource from "components/Resource";
 import { asPlural, expandableComponent, mergePayouts } from "components/timeline/util";
 
-function ProjectDayPayoutCollapsed({ project: { user, title, avatar, _id }, resources, total, handleExpand }) {
+function ProjectDayPayoutCollapsed({ project: { user, title, avatar, _id }, urls, total, handleExpand }) {
   return (
     <li className="timeline-item is-primary">
       <div className="timeline-marker is-primary is-image is-32x32">
@@ -17,7 +17,7 @@ function ProjectDayPayoutCollapsed({ project: { user, title, avatar, _id }, reso
   );
 }
 
-function ProjectDayPayoutExpanded({ project: { user, title, avatar, _id }, resources, total, handleExpand }) {
+function ProjectDayPayoutExpanded({ project: { user, title, avatar, _id }, urls, total, handleExpand }) {
   return (
     <Fragment>
       <li className="timeline-item is-primary">
@@ -33,7 +33,7 @@ function ProjectDayPayoutExpanded({ project: { user, title, avatar, _id }, resou
       </li>
       <li className="timeline-item is-primary">
         <div className="timeline-content">
-          {resources.map(({ url, total }, i) => <p key={i}><Resource resource={url}/> - {total}</p>)}
+          {urls.map(({ url, total }, i) => <p key={i}><Resource url={url}/> - {total}</p>)}
         </div>
       </li>
     </Fragment>

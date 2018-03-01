@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Resource from "components/Resource";
 import { asPlural, expandableComponent, mergeCharges } from "./util";
 
-function ProjectDayChargeCollapsed({ project: { user, title, avatar, _id }, resources, handleExpand }) {
+function ProjectDayChargeCollapsed({ project: { user, title, avatar, _id }, urls, handleExpand }) {
   return (
     <li className="timeline-item is-primary">
       <div className="timeline-marker is-primary is-image is-32x32">
@@ -11,13 +11,13 @@ function ProjectDayChargeCollapsed({ project: { user, title, avatar, _id }, reso
       </div>
       <div className="timeline-content">
         <p className="heading"><a onClick={handleExpand}>{title}</a></p>
-        <p>{resources.length} {asPlural("contribution", resources.length)}</p>
+        <p>{urls.length} {asPlural("contribution", urls.length)}</p>
       </div>
     </li>
   );
 }
 
-function ProjectDayChargeExpanded({ project: { user, title, avatar, _id }, resources, handleExpand }) {
+function ProjectDayChargeExpanded({ project: { user, title, avatar, _id }, urls, handleExpand }) {
   return (
     <Fragment>
       <li className="timeline-item is-primary">
@@ -25,7 +25,7 @@ function ProjectDayChargeExpanded({ project: { user, title, avatar, _id }, resou
           <Link to={`/creator/${user}/project/${_id}`}><img src={avatar} width={32} height={32}/></Link>
         </div>
         <div className="timeline-content" onClick={handleExpand}>
-          <a className="heading">{resources.length} {asPlural("contribution", resources.length)}</a>
+          <a className="heading">{urls.length} {asPlural("contribution", urls.length)}</a>
         </div>
       </li>
       <li className="timeline-header is-primary">
@@ -33,7 +33,7 @@ function ProjectDayChargeExpanded({ project: { user, title, avatar, _id }, resou
       </li>
       <li className="timeline-item is-primary">
         <div className="timeline-content">
-          {resources.map((res, i) => <p key={i}><Resource resource={res}/></p>)}
+          {urls.map((url, i) => <p key={i}><Resource url={url}/></p>)}
         </div>
       </li>
     </Fragment>
