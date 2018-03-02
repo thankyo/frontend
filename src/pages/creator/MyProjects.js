@@ -20,6 +20,7 @@ function MyProjects({ pending, installed }) {
           <br/>
           <ul className="timeline">
             <PendingProjects projects={pending}/>
+            <li className="timeline-item is-primary"/>
             <InstalledProjects projects={installed}/>
           </ul>
         </div>

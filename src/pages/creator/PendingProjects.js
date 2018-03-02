@@ -1,12 +1,13 @@
 import React, { Fragment } from "react";
 import Resource from "components/Resource";
-import { InstallIcon, PendingIcon } from "components/Icon";
+import { CancelIcon, InstallIcon, PendingIcon } from "components/Icon";
 import { expandableComponent } from "components/timeline/util";
 import InstallationPage from "./installation";
 
 const PendingProjectExpanded = ({ webStack, url, _id, enabled, handleExpand }) => (
   <Fragment>
     <li className="timeline-item is-primary is-large">
+      <div className="timeline-marker is-medium is-primary"/>
       <div className="timeline-content">
         <p className="heading">
           <Resource url={url}/>
@@ -15,9 +16,11 @@ const PendingProjectExpanded = ({ webStack, url, _id, enabled, handleExpand }) =
       </div>
     </li>
     <li className="timeline-header is-success">
+      <a>
         <span className="tag is-primary" onClick={handleExpand}>
-          <InstallIcon>Install</InstallIcon>
+          <CancelIcon>Cancel</CancelIcon>
         </span>
+      </a>
     </li>
   </Fragment>
 );

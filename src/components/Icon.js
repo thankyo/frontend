@@ -38,6 +38,7 @@ export const LogOutIcon = ({ children }) => <Icon className="fa fa-sign-out">{ch
 export const NavigationIcon = ({ children }) => <Icon className="fa fa-compass fa-2x">{children}</Icon>;
 export const StripeIcon = ({ children }) => <Icon className="fa fa-cc-stripe">{children}</Icon>;
 export const InstallIcon = ({ children }) => <Icon className="fa fa-play-circle">{children}</Icon>;
+export const CancelIcon = ({ children }) => <Icon className="fa fa-remove">{children}</Icon>;
 export const EditIcon = ({ children }) => <Icon className="fa fa-edit">{children}</Icon>
 export const PendingIcon = ({ children }) => <Icon className="fa fa-pause-circle">{children}</Icon>;
 
