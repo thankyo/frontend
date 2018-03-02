@@ -4,8 +4,9 @@ import { GET_OWNED_PROJECTS, UPDATE_MY_PROJECT } from "reducers/project.actions"
 
 function byIdReducer(state = {}, { type, payload }) {
   switch (type) {
-    case GET_USER_PROJECTS.fulfilled:
     case GET_OWNED_PROJECTS.fulfilled:
+      payload = { projects: payload.installed.concat(payload.pending) };
+    case GET_USER_PROJECTS.fulfilled:
     case REFRESH_MY_PROJECTS.fulfilled:
     case GET_SUPPORTED.fulfilled:
       let projectById = payload.projects.reduce((agg, project) => {
@@ -53,11 +54,13 @@ function supportedReducer(state = {}, { type, payload }) {
   }
 }
 
-function ownedReducer(state = [], { type, payload }) {
+function ownedReducer(state = { installed: [], pending: [] }, { type, payload }) {
   switch (type) {
     case GET_OWNED_PROJECTS.fulfilled:
-    case REFRESH_MY_PROJECTS.fulfilled:
-      return payload.projects.map(({ _id }) => _id);
+      return {
+        installed: payload.installed.map(({ _id }) => _id),
+        pending: payload.pending.map(({ _id }) => _id)
+      };
     default:
       return state;
   }

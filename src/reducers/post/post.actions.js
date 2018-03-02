@@ -20,9 +20,9 @@ export function savePost(post, id) {
   }
 }
 
-export function lovePost(uri) {
+export function lovePost(url) {
   return (dispatch) => {
-    let p = authService.put(`/api/v1/thank/http/${uri}`, {});
+    let p = authService.post(`/api/v1/thank//graph/my/support`, { url });
     return dispatchPromise(p, POST_LOVE, dispatch);
   }
 }

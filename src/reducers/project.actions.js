@@ -42,7 +42,7 @@ export function refreshProjectFeed(project) {
 
 export function getOwnedProjects() {
   return (dispatch) => {
-    let p = authService.get(`/api/v1/thank/user/my/owned`).then(projects => ({ projects }));
+    let p = authService.get(`/api/v1/thank/user/my/owned`);
     return dispatchPromise(p, GET_OWNED_PROJECTS, dispatch);
   }
 }

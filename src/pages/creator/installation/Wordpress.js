@@ -4,7 +4,7 @@ const WORD_PRESS_INSTALLATION = encodeURI("wp-admin/plugin-install.php?tab=plugi
 
 const WordPress = ({ url }) => {
   return (
-    <section className="section">
+    <div>
       <h1 className="title">Ready for installation</h1>
       <h2 className="subtitle">We'll need to send you to your site admin dashboard on {url} for a few manual steps.</h2>
 
@@ -33,7 +33,7 @@ const WordPress = ({ url }) => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

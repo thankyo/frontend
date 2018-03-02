@@ -21,36 +21,36 @@ export default class Manual extends Component {
   }
 
   render() {
-    let { url } = this.props;
-
     return (
-      <section className="section">
-        <h1 className="title">Ready for installation</h1>
-        <h2 className="subtitle">This is the code for {url}. Copy & paste the following before the
-          closing {"</head>"} tag
-          of every page. This is a one time setup.</h2>
+      <div>
+        <h1 className="title is-5">Ready for installation</h1>
+        <h2 className="subtitle is-6">
+          Copy & paste the following before the
+          closing {"</body>"} tag
+          of every page.
+        </h2>
 
         <figure className="highlight">
-        <pre>
-          <code className="language-html" data-lang="html">
-            <span className="nt">{"<iframe"}</span><br/>
-            <span className="na">    src=</span><span className="s">"https://loveit.tips/integration"</span><br/>
-            <span className="na">    width=</span><span className="s">"80"</span><br/>
-            <span className="na">    height=</span><span className="s">"80"</span><br/>
-            <span className="na">    frameBorder=</span><span className="s">"0"</span><br/>
-            <span className="na">    style=</span><span
-            className="s">"position: fixed; right: 10px; bottom: 10px"</span>
-            <span className="nt">{">"}</span><br/>
-            <span className="nt">{"</iframe>"}</span><br/>
-          </code>
-        </pre>
+          <pre>
+            <code className="language-html" data-lang="html">
+              <span className="nt">{"<iframe"}</span><br/>
+              <span className="na">    src=</span><span className="s">"https://loveit.tips/integration"</span><br/>
+              <span className="na">    width=</span><span className="s">"80"</span><br/>
+              <span className="na">    height=</span><span className="s">"80"</span><br/>
+              <span className="na">    frameBorder=</span><span className="s">"0"</span><br/>
+              <span className="na">    style=</span><span
+              className="s">"position: fixed; right: 10px; bottom: 10px"</span>
+              <span className="nt">{">"}</span><br/>
+              <span className="nt">{"</iframe>"}</span><br/>
+            </code>
+          </pre>
           <CopyToClipboard
             onCopy={this.markCopied}
             text={iFrameText}>
             <button className="button is-small bd-copy">{this.state.copied ? "Copied" : "Copy"}</button>
           </CopyToClipboard>
         </figure>
-      </section>
+      </div>
     );
   }
 }
