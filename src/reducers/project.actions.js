@@ -7,6 +7,7 @@ export const GET_USER_PROJECTS = event("GET_USER_PROJECTS");
 
 export const REFRESH_MY_PROJECTS = event("REFRESH_MY_PROJECTS");
 export const UPDATE_MY_PROJECT = event("UPDATE_MY_PROJECT");
+export const ENRICH_PROJECT = event("ENRICH_PROJECT");
 export const GET_OWNED_PROJECTS = event("GET_OWNED_PROJECTS");
 export const REFRESH_PROJECT_FEED = event("REFRESH_PROJECT_FEED");
 
@@ -30,6 +31,13 @@ export function updateProject(project) {
   return (dispatch) => {
     let p = authService.put(`/api/v1/thank/project/${project._id}`, project);
     return dispatchPromise(p, UPDATE_MY_PROJECT, dispatch);
+  }
+}
+
+export function enrichProject(project) {
+  return (dispatch) => {
+    let p = authService.get(`/api/v1/thank/enrich?url=${project.url}`);
+    return dispatchPromise(p, ENRICH_PROJECT, dispatch);
   }
 }
 

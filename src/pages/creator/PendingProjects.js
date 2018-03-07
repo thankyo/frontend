@@ -1,8 +1,11 @@
 import React, { Fragment } from "react";
+import { connect } from "react-redux";
+import { enrichProject } from "reducers/project.actions";
 import Resource from "components/Resource";
 import { CancelIcon, InstallIcon, PendingIcon } from "components/Icon";
 import { expandableComponent } from "components/timeline/util";
 import InstallationPage from "./installation";
+import RefreshLink from "components/RefreshLink";
 
 const PendingProjectExpanded = ({ webStack, url, _id, enabled, handleExpand }) => (
   <Fragment>
@@ -26,20 +29,22 @@ const PendingProjectExpanded = ({ webStack, url, _id, enabled, handleExpand }) =
 );
 
 
-const PendingProjectCollapsed = ({ webStack, url, _id, enabled, handleExpand }) => (
+let PendingProjectCollapsed = ({ webStack, url, _id, enabled, enrich, handleExpand }) => (
   <li className="timeline-item is-primary">
     <div className="timeline-marker is-medium is-primary"/>
     <div className="timeline-content">
-      <a className="heading" onClick={handleExpand}>
+      <p className="heading">
         <Resource url={url}/>
-      </a>
-      <p>
-        <button className="button is-small is-primary" onClick={handleExpand}><InstallIcon>Install</InstallIcon>
-        </button>
       </p>
+      <RefreshLink className="button is-small is-primary" onClick={() => enrich().then(handleExpand)}>
+        <InstallIcon>Install</InstallIcon>
+      </RefreshLink>
     </div>
   </li>
 );
+
+PendingProjectCollapsed = connect(undefined, (dispatch, project) => ({ enrich: () => dispatch(enrichProject(project))}) )(PendingProjectCollapsed);
+
 
 const PendingProject = expandableComponent(PendingProjectExpanded, PendingProjectCollapsed);
 

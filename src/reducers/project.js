@@ -1,6 +1,6 @@
 import { combineReducers } from "redux"
 import { PROJECT_GET, GET_USER_PROJECTS, GET_SUPPORTED, REFRESH_MY_PROJECTS } from "./project.actions";
-import { GET_OWNED_PROJECTS, UPDATE_MY_PROJECT } from "reducers/project.actions";
+import { GET_OWNED_PROJECTS, UPDATE_MY_PROJECT, ENRICH_PROJECT } from "reducers/project.actions";
 
 function byIdReducer(state = {}, { type, payload }) {
   switch (type) {
@@ -16,6 +16,10 @@ function byIdReducer(state = {}, { type, payload }) {
       return Object.assign({}, state, projectById);
     case PROJECT_GET.fulfilled:
       return Object.assign({}, state, { [payload._id]: payload });
+    case ENRICH_PROJECT.fulfilled:
+      let prj = Object.values(state).find(({ url }) => url === payload.url) || payload;
+      prj = Object.assign({}, payload, { _id: prj._id });
+      return Object.assign({}, state, { [prj._id]: prj });
     case UPDATE_MY_PROJECT.fulfilled:
       return Object.assign({}, state, { [payload._id]: payload });
     default:
