@@ -2,12 +2,13 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { enrichProject } from "reducers/project.actions";
 import Resource from "components/Resource";
-import { CancelIcon, InstallIcon, PendingIcon } from "components/Icon";
+import { InstallIcon, PendingIcon } from "components/Icon";
 import { expandableComponent } from "components/timeline/util";
 import InstallationPage from "./installation";
 import RefreshLink from "components/RefreshLink";
+import Project from "components/Project";
 
-const PendingProjectExpanded = ({ webStack, url, _id, enabled, handleExpand }) => (
+const PendingProjectStep2 = ({ webStack, url, _id }) => (
   <Fragment>
     <li className="timeline-item is-primary is-large">
       <div className="timeline-marker is-medium is-primary"/>
@@ -15,18 +16,29 @@ const PendingProjectExpanded = ({ webStack, url, _id, enabled, handleExpand }) =
         <p className="heading">
           <Resource url={url}/>
         </p>
-        <InstallationPage url={url} webStack={webStack}/>
+        <Project id={_id} edit/>
       </div>
-    </li>
-    <li className="timeline-header is-success">
-      <a>
-        <span className="tag is-primary" onClick={handleExpand}>
-          <CancelIcon>Cancel</CancelIcon>
-        </span>
-      </a>
     </li>
   </Fragment>
 );
+
+const PendingProjectStep1 = ({ webStack, url, _id, enabled, handleExpand }) => (
+    <li className="timeline-item is-primary is-large">
+      <div className="timeline-marker is-medium is-primary"/>
+      <div className="timeline-content">
+        <p className="heading">
+          <Resource url={url}/>
+        </p>
+        <InstallationPage url={url} webStack={webStack}/>
+        <hr/>
+        <div className="button is-small is-primary" onClick={handleExpand}>
+          <InstallIcon>Next</InstallIcon>
+        </div>
+      </div>
+    </li>
+);
+
+const PendingProjectInstallation = expandableComponent(PendingProjectStep2, PendingProjectStep1);
 
 
 let PendingProjectCollapsed = ({ webStack, url, _id, enabled, enrich, handleExpand }) => (
@@ -46,7 +58,7 @@ let PendingProjectCollapsed = ({ webStack, url, _id, enabled, enrich, handleExpa
 PendingProjectCollapsed = connect(undefined, (dispatch, project) => ({ enrich: () => dispatch(enrichProject(project))}) )(PendingProjectCollapsed);
 
 
-const PendingProject = expandableComponent(PendingProjectExpanded, PendingProjectCollapsed);
+const PendingProject = expandableComponent(PendingProjectInstallation, PendingProjectCollapsed);
 
 const NoPending = () => (
   <li className="timeline-item is-primary">

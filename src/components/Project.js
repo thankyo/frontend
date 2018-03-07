@@ -124,7 +124,7 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
 
 EditProject = reduxForm({ form: "project", enableReinitialize: true })(EditProject);
 
-function Project({ edit, line, project, id, updateProject, refreshFeed }) {
+function Project({ edit, project, id, updateProject, refreshFeed }) {
   if (edit) {
     return <EditProject form={id} initialValues={project} onSubmit={updateProject} refreshFeed={refreshFeed}/>
   } else {
