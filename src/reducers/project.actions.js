@@ -36,6 +36,9 @@ export function updateProject(project) {
 
 export function enrichProject(project) {
   return (dispatch) => {
+    if (project.webStack !== undefined) {
+      return Promise.resolve();
+    }
     let p = authService.get(`/api/v1/thank/enrich?url=${project.url}`);
     return dispatchPromise(p, ENRICH_PROJECT, dispatch);
   }
