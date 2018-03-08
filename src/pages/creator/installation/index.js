@@ -36,7 +36,9 @@ export default class InstallationPage extends Component{
     return (
       <div>
         <WebStackSelector webStack={webStack} onWebStackChange={this.handleWebStackChange}/>
+        <div style={{ width: "538px"}}>
         {webStack === "WordPress" ? <WordPress url={url}/> : <Manual/>}
+        </div>
       </div>
     );
   }

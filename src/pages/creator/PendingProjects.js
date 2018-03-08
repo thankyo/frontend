@@ -30,7 +30,7 @@ const PendingProjectStep1 = ({ webStack, url, _id, enabled, handleExpand }) => (
           <Resource url={url}/>
         </p>
         <InstallationPage url={url} webStack={webStack}/>
-        <hr/>
+        <br/>
         <div className="button is-small is-primary" onClick={handleExpand}>
           <InstallIcon>Next</InstallIcon>
         </div>

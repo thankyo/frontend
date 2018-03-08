@@ -1,38 +1,30 @@
 import React from "react";
+import { InstallIcon } from "components/Icon";
 
 const WORD_PRESS_INSTALLATION = encodeURI("wp-admin/plugin-install.php?tab=plugin-information&plugin=loveit-integration&reauth=1");
 
 const WordPress = ({ url }) => {
   return (
     <div>
-      <h1 className="title">Ready for installation</h1>
-      <h2 className="subtitle">We'll need to send you to your site admin dashboard on {url} for a few manual steps.</h2>
+      <h2 className="subtitle is-6">First you'll need to do few manual steps in your site admin dashboard.</h2>
 
       <div className="content">
+        <ol>
+          <li>
+            <h4 className="title is-6">Install <b>LoveIt integration</b> plugin.</h4>
 
-        <div className="columns">
-          <div className="column is-6">
-            <div className="content">
-            <h4 className="subtitle">1. Install LoveIt integration plugin.</h4>
-              You will be redirected to your site's admin dashboard to install the LoveIt plugin.
-            </div>
-
-            <div>
-              <a className="button is-primary"
-                 href={`${url}${WORD_PRESS_INSTALLATION}`}
-                 target="_blank">
-                Install Now
-              </a>
-            </div>
-          </div>
-          <div className="column is-4">
-            <div className="content">
-              <h4 className="title">2. Activate it</h4>
-              Then you'll click the blue <strong>Activate</strong> link to activate the LoveIt plugin.
-            </div>
-          </div>
-        </div>
+            <a className="button is-primary is-small" href={`${url}${WORD_PRESS_INSTALLATION}`} target="_blank">
+              <InstallIcon>Install Plugin</InstallIcon>
+            </a>
+            <br/>
+            <br/>
+          </li>
+          <li>
+            <h4 className="title is-6"> Activate it</h4>
+          </li>
+        </ol>
       </div>
+      <h2 className="subtitle is-6">That's it now every post will have a LoveIt button</h2>
     </div>
   );
 };

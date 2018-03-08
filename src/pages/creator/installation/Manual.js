@@ -23,11 +23,10 @@ export default class Manual extends Component {
   render() {
     return (
       <div>
-        <h1 className="title is-5">Ready for installation</h1>
         <h2 className="subtitle is-6">
-          Copy & paste the following before the
+          First <strong>copy & paste</strong> the following before the
           closing {"</body>"} tag
-          of every page.
+          of page.
         </h2>
 
         <figure className="highlight">
