@@ -17,6 +17,9 @@ const PendingProjectStep2 = ({ webStack, url, _id }) => (
           <Resource url={url}/>
         </p>
         <Project id={_id} edit/>
+        <RefreshLink className="button is-small is-primary is-outlined" onClick={() => Promise.resolve(false)}>
+          <InstallIcon>Finish</InstallIcon>
+        </RefreshLink>
       </div>
     </li>
   </Fragment>
@@ -31,7 +34,7 @@ const PendingProjectStep1 = ({ webStack, url, _id, enabled, handleExpand }) => (
         </p>
         <InstallationPage url={url} webStack={webStack}/>
         <br/>
-        <div className="button is-small is-primary" onClick={handleExpand}>
+        <div className="button is-small is-primary is-outlined" onClick={handleExpand}>
           <InstallIcon>Next</InstallIcon>
         </div>
       </div>

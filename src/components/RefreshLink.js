@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { makeCancelable } from "components/util";
 
 export default class RefreshLink extends Component {
   constructor(props) {
@@ -9,11 +10,15 @@ export default class RefreshLink extends Component {
 
   handleClick = () => {
     this.setState({ submitting: true });
-    this.props
-      .onClick()
+    this.clickProcess = makeCancelable(this.props.onClick());
+    this.clickProcess.promise
       .then(() => this.setState({ submitting: false }))
-      .catch(() => this.setState({ submitting: false }))
+      .catch(({ isCanceled }) => !isCanceled && this.setState({ submitting: false }))
   };
+
+  componentWillUnmount() {
+    this.clickProcess.cancel();
+  }
 
   render(){
     return(

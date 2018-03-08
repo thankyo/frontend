@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
@@ -60,9 +60,7 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
     );
 
   return (
-    <div>
-      <p className="title is-5">Project</p>
-      <p className="subtitle is-6"><a href={`//${initialValues.url}`}>{initialValues.url}</a></p>
+    <Fragment>
       <Form className="profile" onSubmit={handleSubmit}>
         <div className="columns">
           <div className="column is-one-third">
@@ -112,13 +110,8 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
             </div>
           </div>
         </div>
-        <div className="is-pulled-right">
-          <LoadingButton submitting={submitting} className="is-outlined is-primary">
-            <SaveIcon>Save</SaveIcon>
-          </LoadingButton>
-        </div>
       </Form>
-    </div>
+    </Fragment>
   );
 }
 
