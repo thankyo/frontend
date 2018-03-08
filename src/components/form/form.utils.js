@@ -44,6 +44,20 @@ export const fieldWithLabel = (props) => {
   )
 };
 
+export const smallFieldWithLabel = (props) => {
+  let { meta: { touched, error }, placeholder } = props;
+  let flatFieldProps = Object.assign({}, props, { className: props.className ? `${props.className} is-small`: `is-small` });
+  return (
+    <div className="field">
+      <label className="label is-small">{placeholder}</label>
+      <div className="control">
+        {flatField(flatFieldProps)}
+      </div>
+      {touched && error && <p className="help is-white">{error}</p>}
+    </div>
+  )
+};
+
 export const flatField = ({
   input,
   className,
@@ -64,7 +78,7 @@ export const flatField = ({
       <img key={1} src={input.value}/>,
     ];
   } else if (type === "textarea") {
-    return <textarea {...input} type={type} className={className} placeholder={placeholder} disabled={disabled}/>
+    return <textarea {...input} type={type} className={className} placeholder={placeholder} disabled={disabled} rows={3}/>
   } else {
     if (label) {
       return [

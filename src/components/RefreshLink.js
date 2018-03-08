@@ -17,7 +17,9 @@ export default class RefreshLink extends Component {
   };
 
   componentWillUnmount() {
-    this.clickProcess.cancel();
+    if (this.clickProcess) {
+      this.clickProcess.cancel();
+    }
   }
 
   render(){

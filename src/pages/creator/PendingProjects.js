@@ -7,16 +7,60 @@ import { expandableComponent } from "components/timeline/util";
 import InstallationPage from "./installation";
 import RefreshLink from "components/RefreshLink";
 import Project from "components/Project";
+import { Field, FieldArray, Form, reduxForm } from "redux-form";
+import { smallFieldWithLabel } from "components/form/form.utils";
+import Tags from "components/form/Tags";
 
-const PendingProjectStep2 = ({ webStack, url, _id }) => (
+function EditProject({ initialValues, submitting, handleSubmit }) {
+  return (
+    <Fragment>
+      <Form className="profile" onSubmit={handleSubmit}>
+        <div className="columns">
+          <div className="column is-one-quarter">
+            <div className="project-image">
+              <figure className="image is-1by1 is-small">
+                <img src={initialValues.avatar} className="is-centered"/>
+              </figure>
+              <br/>
+            </div>
+          </div>
+          <div className="column is-two-third">
+            <Field name="avatar" component={smallFieldWithLabel} type="url" placeholder="Avatar URL"/>
+            <Field name="title" component={smallFieldWithLabel} placeholder="Title"/>
+            <Field name="description" component={smallFieldWithLabel} type="textarea" className="textarea" placeholder="Description"/>
+            <Field name="rss" component={smallFieldWithLabel} type="url" placeholder="RSS"/>
+            <FieldArray name="tags" component={(props) => {
+              let { fields } = props;
+              let tags = fields.getAll() || [];
+              return (
+                <div className="field">
+                  <label className="label is-small">Tags</label>
+                  <Tags tags={tags} removeTag={(tag) => {fields.remove(tags.indexOf(tag))}} addTag={({ tag }) => {fields.push(tag)}}/>
+                </div>
+              )
+            }}/>
+          </div>
+        </div>
+        <div className="columns">
+          <div className="column">
+          </div>
+        </div>
+      </Form>
+    </Fragment>
+  );
+}
+
+EditProject = reduxForm({ })(EditProject)
+
+const PendingProjectStep2 = (project) => (
   <Fragment>
     <li className="timeline-item is-primary is-large">
       <div className="timeline-marker is-medium is-primary"/>
       <div className="timeline-content">
         <p className="heading">
-          <Resource url={url}/>
+          <Resource url={project.url}/>
         </p>
-        <Project id={_id} edit/>
+        <EditProject initialValues={project} form={project.url}/>
         <RefreshLink className="button is-small is-primary is-outlined" onClick={() => Promise.resolve(false)}>
           <InstallIcon>Finish</InstallIcon>
         </RefreshLink>

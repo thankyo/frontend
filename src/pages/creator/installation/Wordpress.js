@@ -13,7 +13,7 @@ const WordPress = ({ url }) => {
           <li>
             <h4 className="title is-6">Install <b>LoveIt integration</b> plugin.</h4>
 
-            <a className="button is-primary is-small" href={`${url}${WORD_PRESS_INSTALLATION}`} target="_blank">
+            <a className="button is-primary is-outlined is-small" href={`${url}${WORD_PRESS_INSTALLATION}`} target="_blank">
               <InstallIcon>Install Plugin</InstallIcon>
             </a>
             <br/>

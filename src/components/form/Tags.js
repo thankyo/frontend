@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { IncrementIcon } from "components/Icon";
 
@@ -37,7 +37,7 @@ class AddTagForm extends Component {
           <input type="text" className="input is-small" value={this.state.value} placeholder="Tag" autoComplete="off" onKeyDown={this.handleKeyDown} onChange={this.handleChange}/>
         </div>
         <p className="control">
-          <a className="button is-small is-primary" type="submit" onClick={this.handleSubmit}>
+          <a className="button is-small is-primary is-outlined" type="submit" onClick={this.handleSubmit}>
             <IncrementIcon>Add</IncrementIcon>
           </a>
         </p>
@@ -48,7 +48,8 @@ class AddTagForm extends Component {
 
 export default function Tags({ tags, addTag, removeTag }) {
   return (
-    <div>
+    <Fragment>
+      <AddTagForm onSubmit={addTag}/>
       <div className="field is-grouped is-grouped-multiline">
         {tags.map((tag, i) => (
           <div key={i} className="control">
@@ -60,8 +61,7 @@ export default function Tags({ tags, addTag, removeTag }) {
         ))}
       </div>
       <br/>
-      <AddTagForm onSubmit={addTag}/>
-    </div>
+    </Fragment>
   );
 }
 

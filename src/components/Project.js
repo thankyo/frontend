@@ -110,6 +110,11 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
             </div>
           </div>
         </div>
+        <div className="is-pulled-right">
+          <LoadingButton submitting={submitting} className="is-outlined is-primary">
+            <SaveIcon>Save</SaveIcon>
+          </LoadingButton>
+        </div>
       </Form>
     </Fragment>
   );
