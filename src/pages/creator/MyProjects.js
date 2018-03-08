@@ -31,8 +31,9 @@ function MyProjects({ pending, installed }) {
 
 const mapStateToProps = ({ project: { owned, byId } }) => ({
   installed: owned.installed.map(id => byId[id]),
-  pending: owned.pending.map(id => byId[id])
+  pending: owned.pending.map(url => ({ url }))
 });
+
 const mapDispatchToProps = (dispatch) => {
   dispatch(getOwnedProjects());
   return {

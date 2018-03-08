@@ -5,7 +5,7 @@ import { WebStackIcon } from "components/Icon";
 
 const WebStackElement = ({ webStack, onSelect,  disabled }) => (
   <p className="control">
-    <a className="button is-primary is-small is-outlined" onClick={onSelect} disabled={disabled}>
+    <a className="button is-primary is-small" onClick={onSelect} disabled={disabled}>
       <WebStackIcon webStack={webStack}>{webStack}</WebStackIcon>
     </a>
   </p>

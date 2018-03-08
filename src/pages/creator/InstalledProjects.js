@@ -1,39 +1,49 @@
 import React, { Fragment } from "react";
 import Resource from "components/Resource";
-import { EditIcon, InstallIcon } from "components/Icon";
+import { CancelIcon, InstallIcon } from "components/Icon";
 import { expandableComponent } from "components/timeline/util";
-import InstallationPage from "./installation";
+import { connect } from "react-redux";
+import RefreshLink from "components/RefreshLink";
+import { bindActionCreators } from "redux";
+import * as actions from "reducers/project.actions";
 
-const InstalledProjectExpanded = ({ webStack, url, _id, enabled, handleExpand }) => (
+let InstalledProjectExpanded = ({ project, handleExpand, deleteProject }) => (
   <Fragment>
     <li className="timeline-item is-primary is-large">
       <div className="timeline-content">
         <p className="heading">
-          <Resource url={url}/>
+          <Resource url={project.url}/>
         </p>
-        <InstallationPage url={url} webStack={webStack}/>
+        <h3 className="subtitle is-6">This will remove all project related data from the system, are you sure?</h3>
+        <div className="field has-addons">
+          <span className="button is-small is-primary is-inverted" onClick={handleExpand}>
+            Cancel
+          </span>
+          <RefreshLink className="button is-small is-danger is-outlined" onClick={() => deleteProject(project)}>
+            <CancelIcon>Delete</CancelIcon>
+          </RefreshLink>
+        </div>
       </div>
     </li>
     <li className="timeline-header is-success">
-        <span className="tag is-primary" onClick={handleExpand}>
-          <InstallIcon>Install</InstallIcon>
-        </span>
     </li>
   </Fragment>
 );
 
+InstalledProjectExpanded = connect(({ project: { byId } }, { _id }) => ({ project: byId[_id] }), (dispatch, { _id }) => bindActionCreators(actions, dispatch))(InstalledProjectExpanded);
 
-const InstalledProjectCollapsed = ({ webStack, url, _id, enabled, user, avatar, handleExpand }) => (
+const InstalledProjectCollapsed = ({ webStack, url, _id, user, avatar, handleExpand }) => (
   <li className="timeline-item is-primary">
     <div className="timeline-marker is-primary is-image is-32x32">
       <img src={avatar} width={32} height={32}/>
     </div>
     <div className="timeline-content">
-      <a className="heading" onClick={handleExpand}>
+      <p className="heading">
         <Resource url={url}/>
-      </a>
+      </p>
       <p>
-        <button className="button is-small is-primary" onClick={handleExpand}><EditIcon>Edit</EditIcon>
+        <button className="button is-small is-danger is-outlined" onClick={handleExpand}>
+          <CancelIcon>Delete</CancelIcon>
         </button>
       </p>
     </div>

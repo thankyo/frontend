@@ -1,58 +1,60 @@
 import React, { Fragment } from "react";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { enrichProject } from "reducers/project.actions";
+import { createProject, enrichProject } from "reducers/project.actions";
 import Resource from "components/Resource";
 import { InstallIcon, PendingIcon } from "components/Icon";
 import { expandableComponent } from "components/timeline/util";
 import InstallationPage from "./installation";
 import RefreshLink from "components/RefreshLink";
-import Project from "components/Project";
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
-import { smallFieldWithLabel } from "components/form/form.utils";
+import { LoadingButton, smallFieldWithLabel } from "components/form/form.utils";
 import Tags from "components/form/Tags";
 
 function EditProject({ initialValues, submitting, handleSubmit }) {
   return (
-    <Fragment>
-      <Form className="profile" onSubmit={handleSubmit}>
-        <div className="columns">
-          <div className="column is-one-quarter">
-            <div className="project-image">
-              <figure className="image is-1by1 is-small">
-                <img src={initialValues.avatar} className="is-centered"/>
-              </figure>
-              <br/>
-            </div>
-          </div>
-          <div className="column is-two-third">
-            <Field name="avatar" component={smallFieldWithLabel} type="url" placeholder="Avatar URL"/>
-            <Field name="title" component={smallFieldWithLabel} placeholder="Title"/>
-            <Field name="description" component={smallFieldWithLabel} type="textarea" className="textarea" placeholder="Description"/>
-            <Field name="rss" component={smallFieldWithLabel} type="url" placeholder="RSS"/>
-            <FieldArray name="tags" component={(props) => {
-              let { fields } = props;
-              let tags = fields.getAll() || [];
-              return (
-                <div className="field">
-                  <label className="label is-small">Tags</label>
-                  <Tags tags={tags} removeTag={(tag) => {fields.remove(tags.indexOf(tag))}} addTag={({ tag }) => {fields.push(tag)}}/>
-                </div>
-              )
-            }}/>
+    <Form className="profile" onSubmit={handleSubmit}>
+      <div className="columns">
+        <div className="column is-one-quarter">
+          <div className="project-image">
+            <figure className="image is-1by1 is-small">
+              <img src={initialValues.avatar} className="is-centered"/>
+            </figure>
+            <br/>
           </div>
         </div>
-        <div className="columns">
-          <div className="column">
-          </div>
+        <div className="column is-two-third">
+          <Field name="avatar" component={smallFieldWithLabel} type="url" placeholder="Avatar URL"/>
+          <Field name="title" component={smallFieldWithLabel} placeholder="Title"/>
+          <Field name="description" component={smallFieldWithLabel} type="textarea" className="textarea"
+                 placeholder="Description"/>
+          <Field name="rss" component={smallFieldWithLabel} type="url" placeholder="RSS"/>
+          <FieldArray name="tags" component={(props) => {
+            let { fields } = props;
+            let tags = fields.getAll() || [];
+            return (
+              <div className="field">
+                <label className="label is-small">Tags</label>
+                <Tags tags={tags} removeTag={(tag) => {
+                  fields.remove(tags.indexOf(tag))
+                }} addTag={({ tag }) => {
+                  fields.push(tag)
+                }}/>
+              </div>
+            )
+          }}/>
         </div>
-      </Form>
-    </Fragment>
+      </div>
+      <LoadingButton className="button is-small is-primary is-outlined" submitting={submitting}>
+        <InstallIcon>Finish</InstallIcon>
+      </LoadingButton>
+    </Form>
   );
 }
 
-EditProject = reduxForm({ })(EditProject)
+EditProject = reduxForm({})(EditProject);
 
-const PendingProjectStep2 = (project) => (
+let PendingProjectStep2 = ({ project, createProject }) => (
   <Fragment>
     <li className="timeline-item is-primary is-large">
       <div className="timeline-marker is-medium is-primary"/>
@@ -60,49 +62,50 @@ const PendingProjectStep2 = (project) => (
         <p className="heading">
           <Resource url={project.url}/>
         </p>
-        <EditProject initialValues={project} form={project.url}/>
-        <RefreshLink className="button is-small is-primary is-outlined" onClick={() => Promise.resolve(false)}>
-          <InstallIcon>Finish</InstallIcon>
-        </RefreshLink>
+        <EditProject initialValues={project} form={`new-project-${project.url}`} onSubmit={(project) => createProject(project)}/>
       </div>
     </li>
   </Fragment>
 );
 
-const PendingProjectStep1 = ({ webStack, url, _id, enabled, handleExpand }) => (
-    <li className="timeline-item is-primary is-large">
-      <div className="timeline-marker is-medium is-primary"/>
-      <div className="timeline-content">
-        <p className="heading">
-          <Resource url={url}/>
-        </p>
-        <InstallationPage url={url} webStack={webStack}/>
-        <br/>
-        <div className="button is-small is-primary is-outlined" onClick={handleExpand}>
-          <InstallIcon>Next</InstallIcon>
-        </div>
+PendingProjectStep2 = connect(({ project: { pending }}, { url }) => ({ project: pending[url] || { url }}), (dispatch) => bindActionCreators({ createProject }, dispatch))(PendingProjectStep2);
+
+let PendingProjectStep1 = ({ project, handleExpand }) => (
+  <li className="timeline-item is-primary is-large">
+    <div className="timeline-marker is-medium is-primary"/>
+    <div className="timeline-content">
+      <p className="heading">
+        <Resource url={project.url}/>
+      </p>
+      <InstallationPage url={project.url} webStack={project.webStack}/>
+      <br/>
+      <div className="button is-small is-primary is-outlined" onClick={handleExpand}>
+        <InstallIcon>Next</InstallIcon>
       </div>
-    </li>
+    </div>
+  </li>
 );
+
+PendingProjectStep1 = connect(({ project: { pending }}, { url }) => ({ project: pending[url] || { url }}))(PendingProjectStep1);
 
 const PendingProjectInstallation = expandableComponent(PendingProjectStep2, PendingProjectStep1);
 
 
-let PendingProjectCollapsed = ({ webStack, url, _id, enabled, enrich, handleExpand }) => (
+let PendingProjectCollapsed = ({ url, handleExpand, enrichProject }) => (
   <li className="timeline-item is-primary">
     <div className="timeline-marker is-medium is-primary"/>
     <div className="timeline-content">
       <p className="heading">
         <Resource url={url}/>
       </p>
-      <RefreshLink className="button is-small is-primary" onClick={() => enrich().then(handleExpand)}>
+      <RefreshLink className="button is-small is-primary" onClick={() => enrichProject(url).then(handleExpand)}>
         <InstallIcon>Install</InstallIcon>
       </RefreshLink>
     </div>
   </li>
 );
 
-PendingProjectCollapsed = connect(undefined, (dispatch, project) => ({ enrich: () => dispatch(enrichProject(project))}) )(PendingProjectCollapsed);
+PendingProjectCollapsed = connect(undefined, (dispatch) => bindActionCreators({ enrichProject }, dispatch))(PendingProjectCollapsed);
 
 
 const PendingProject = expandableComponent(PendingProjectInstallation, PendingProjectCollapsed);

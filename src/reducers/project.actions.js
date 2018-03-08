@@ -5,6 +5,8 @@ export const PROJECT_GET = event("PROJECT_GET");
 export const GET_SUPPORTED = event("GET_SUPPORTED");
 export const GET_USER_PROJECTS = event("GET_USER_PROJECTS");
 
+export const CREATE_PROJECT = event("CREATE_PROJECT");
+export const DELETE_PROJECT = event("DELETE_PROJECT");
 export const REFRESH_MY_PROJECTS = event("REFRESH_MY_PROJECTS");
 export const UPDATE_MY_PROJECT = event("UPDATE_MY_PROJECT");
 export const ENRICH_PROJECT = event("ENRICH_PROJECT");
@@ -34,12 +36,9 @@ export function updateProject(project) {
   }
 }
 
-export function enrichProject(project) {
+export function enrichProject(url) {
   return (dispatch) => {
-    if (project.webStack !== undefined) {
-      return Promise.resolve();
-    }
-    let p = authService.get(`/api/v1/thank/enrich?url=${project.url}`);
+    let p = authService.get(`/api/v1/thank/enrich?url=${url}`);
     return dispatchPromise(p, ENRICH_PROJECT, dispatch);
   }
 }
@@ -62,5 +61,19 @@ export function refreshMyProjects() {
   return (dispatch) => {
     let p = authService.put(`/api/v1/thank/user/my/project`, {}).then(projects => ({ projects }));
     return dispatchPromise(p, REFRESH_MY_PROJECTS, dispatch);
+  }
+}
+
+export function createProject(project) {
+  return (dispatch) => {
+    let p = authService.post(`/api/v1/thank/project`, project);
+    return dispatchPromise(p, CREATE_PROJECT, dispatch);
+  }
+}
+
+export function deleteProject(project) {
+  return (dispatch) => {
+    let p = authService.remove(`/api/v1/thank/project/${project._id}`).then(() => project);
+    return dispatchPromise(p, DELETE_PROJECT, dispatch);
   }
 }
