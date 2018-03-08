@@ -46,11 +46,15 @@ Icon.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export function WebStackIcon({ webStack }) {
+export function WebStackIcon({ webStack, children }) {
   switch (webStack) {
     case "WordPress":
-      return (<Icon className="fa fa-wordpress"/>);
+      return (<Icon className="fa fa-wordpress">{children}</Icon>);
     default:
-      return (<Icon className="fa fa-code"/>)
+      return (<Icon className="fa fa-code">{children}</Icon>)
   }
+}
+
+WebStackIcon.props = {
+  webStack: PropTypes.oneOf(["WordPress", undefined])
 }
