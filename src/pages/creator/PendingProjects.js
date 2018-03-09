@@ -8,7 +8,7 @@ import { expandableComponent } from "components/timeline/util";
 import InstallationPage from "./installation";
 import RefreshLink from "components/RefreshLink";
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
-import { LoadingButton, smallFieldWithLabel } from "components/form/form.utils";
+import { LoadingButton, required, smallFieldWithLabel } from "components/form/form.utils";
 import Tags from "components/form/Tags";
 
 function EditProject({ initialValues, submitting, handleSubmit }) {
@@ -25,9 +25,8 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
         </div>
         <div className="column is-two-third">
           <Field name="avatar" component={smallFieldWithLabel} type="url" placeholder="Avatar URL"/>
-          <Field name="title" component={smallFieldWithLabel} placeholder="Title"/>
-          <Field name="description" component={smallFieldWithLabel} type="textarea" className="textarea"
-                 placeholder="Description"/>
+          <Field name="title" component={smallFieldWithLabel} placeholder="Title" validate={[required]}/>
+          <Field name="description" component={smallFieldWithLabel} type="textarea" className="textarea" placeholder="Description" validate={[required]}/>
           <Field name="rss" component={smallFieldWithLabel} type="url" placeholder="RSS"/>
           <FieldArray name="tags" component={(props) => {
             let { fields } = props;

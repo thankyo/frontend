@@ -10,7 +10,7 @@ import { fieldWithLabel, LoadingButton } from "./form/form.utils";
 import Tags from "./form/Tags";
 import Resource from "./Resource";
 import RefreshLink from "components/RefreshLink";
-import { flatField } from "components/form/form.utils";
+import { flatField, required } from "components/form/form.utils";
 import { InstallIcon, RefreshIcon, SaveIcon } from "components/Icon";
 
 function ViewProject({ avatar, title, description, user, _id, tags, url }) {
@@ -77,9 +77,8 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
         </div>
         <div className="columns">
           <div className="column">
-            <Field name="title" component={fieldWithLabel} placeholder="Title"/>
-            <Field name="description" component={fieldWithLabel} type="textarea" className="textarea"
-                   placeholder="Description"/>
+            <Field name="title" component={fieldWithLabel} placeholder="Title" validate={[required]}/>
+            <Field name="description" component={fieldWithLabel} type="textarea" className="textarea" placeholder="Description" validate={[required]}/>
           </div>
         </div>
         <FieldArray name="tags" component={(props) => {

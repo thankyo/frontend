@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React, { Component, Fragment } from "react";
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import NotFound from "./NotFound";
 
@@ -24,47 +24,39 @@ import SearchRouter from "../pages/search/SearchRouter";
 export default class MainApp extends Component {
   render() {
     return (
-      <div>
-        <Helmet>
-        </Helmet>
-          <div>
-            <Switch>
-              <Route exact path="/" render={props => (
-                auth.restoreAuthentication() ? (
-                  <Redirect to={{
-                    pathname: '/dashboard/my',
-                    state: { from: props.location }
-                  }}/>
-                ) : (
-                  <LandingPage/>
-                )
-              )}/>
-              <Route path="/auth" component={AuthRouter}/>
+      <Fragment>
+        <Helmet/>
+        <Switch>
+          <Route exact path="/" render={props => (
+            auth.restoreAuthentication() ? (
+              <Redirect to={{
+                pathname: '/dashboard/my',
+                state: { from: props.location }
+              }}/>
+            ) : (
+              <LandingPage/>
+            )
+          )}/>
+          <Route path="/auth" component={AuthRouter}/>
 
-              <Route path="/legal" component={LegalRouter}/>
+          <Route path="/legal" component={LegalRouter}/>
 
-              <Route path="/(creator|dashboard|settings|search)">
-                <div>
-                  <Navigation/>
-                  <Route path="/creator" component={CreatorDashboardRouter}/>
-                  <Route path="/dashboard" component={DashboardRouter}/>
-                  <Route path="/settings" component={SettingsRouter}/>
-                  <Route path="/search" component={SearchRouter}/>
-                </div>
-              </Route>
+          <Route path="/(creator|dashboard|settings|search)">
+            <Fragment>
+              <Navigation/>
+              <Route path="/creator" component={CreatorDashboardRouter}/>
+              <Route path="/dashboard" component={DashboardRouter}/>
+              <Route path="/settings" component={SettingsRouter}/>
+              <Route path="/search" component={SearchRouter}/>
+            </Fragment>
+          </Route>
 
-              <Route component={NotFound}/>
-            </Switch>
-            <Switch>
-              <Route exact path="/">
-                <Footer/>
-              </Route>
-              <Route path="/legal">
-                <Footer/>
-              </Route>
-            </Switch>
-          </div>
-      </div>
+          <Route component={NotFound}/>
+        </Switch>
+        <Switch>
+          <Route exact path="/(|legal)"><Footer/></Route>
+        </Switch>
+      </Fragment>
     );
   }
 }

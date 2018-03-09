@@ -1,21 +1,23 @@
 import React, { Fragment } from "react";
 
 import { Route, Switch } from 'react-router-dom';
-import SearchDashboard from "./SearchDashboard";
+import SearchResults from "./SearchResults";
 import SearchPanel from "./SearchPanel";
 
 
 export default function SearchRouter() {
   return (
-    <section className="section container">
-      <Switch>
-        <Route path="/search">
-          <Fragment>
+    <Switch>
+      <Route path="/search">
+        <Fragment>
+          <section className="section container">
             <SearchPanel/>
-            <SearchDashboard/>
-          </Fragment>
-        </Route>
-      </Switch>
-    </section>
+          </section>
+          <section className="section container">
+            <SearchResults/>
+          </section>
+        </Fragment>
+      </Route>
+    </Switch>
   );
 }

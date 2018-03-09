@@ -3,19 +3,13 @@ import { connect } from "react-redux";
 
 function NoResults({ query }) {
   return (
-    <section className="hero is-large">
-      <div className="hero-body">
-        <div className="container">
-          <h1 className="title">Noooooo, Results for "{query}"</h1>
-          <h2 className="subtitle">
-            Keep digging
-          </h2>
-        </div>
-      </div>
-    </section>
+    <div className="container">
+      <h1 className="title is-6">Noooooo, Results for "{query}"</h1>
+      <h2 className="subtitle is-6">Keep digging</h2>
+    </div>
   )
 }
 
-const mapStateToProps = ({ navigation: { query }}) => ({ query });
+const mapStateToProps = ({ navigation: { query } }) => ({ query });
 
 export default connect(mapStateToProps)(NoResults)
