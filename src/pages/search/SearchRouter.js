@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { Route, Switch } from 'react-router-dom';
 import SearchDashboard from "./SearchDashboard";
+import SearchPanel from "./SearchPanel";
 
 
 export default function SearchRouter() {
@@ -9,7 +10,10 @@ export default function SearchRouter() {
     <section className="section container">
       <Switch>
         <Route path="/search">
-          <SearchDashboard/>
+          <Fragment>
+            <SearchPanel/>
+            <SearchDashboard/>
+          </Fragment>
         </Route>
       </Switch>
     </section>

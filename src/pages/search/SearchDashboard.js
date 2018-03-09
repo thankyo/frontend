@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
 
 import Post from "components/Post";
@@ -12,8 +13,9 @@ class SearchDashboard extends Component {
     searchByTag(query);
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.query !== this.props.query) {
-      this.props.searchByTag(nextProps.query);
+    let { query, searchByTag } = this.props;
+    if (nextProps.query !== query) {
+      searchByTag(nextProps.query);
     }
   }
 
@@ -58,10 +60,6 @@ const mapStateToProps = ({ navigation: { query }, post: { byTag } }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    searchByTag: (tags) => dispatch(searchByTag(tags))
-  };
-};
+const mapDispatchToProps = (dispatch) => bindActionCreators({ searchByTag }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchDashboard);

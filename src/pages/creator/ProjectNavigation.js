@@ -1,14 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { getProjectsByUser } from "reducers/project.actions";
 import ProjectNav from "components/ProjectNav";
 
 const ProjectNavigation = ({ projects, active, user }) => {
   return (
-    <div>
-      <h1 className="subtitle">Projects</h1>
+    <Fragment>
+      <h1 className="subtitle">Active</h1>
       {projects.map((project, i) => <ProjectNav key={i} project={project} user={user} isActive={project._id === active} to={`/creator/${user}/project/${project._id}`}/>)}
-    </div>
+    </Fragment>
   );
 };
 

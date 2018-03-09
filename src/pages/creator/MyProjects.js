@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { getOwnedProjects } from "reducers/project.actions";
@@ -31,20 +31,17 @@ function UserProjects({ pending, installed }) {
 
 function MyProjects({ pending, installed, isLoading }) {
   return (
-    <section className="hero">
-      <div className="hero-body">
-        <h3 className="title">Projects</h3>
-        <h2 className="subtitle">
-          We are using <strong>Google Verification API</strong>.<br/>
-          So all you need to do is <Link to="/settings/profile">link your Google</Link> account and we are good to
-          go.<br/>
-          If you have no sites verified, please refer to <a
-          href="https://support.google.com/webmasters/answer/35179?hl=en">Google</a>.
-        </h2>
-        <br/>
-        {isLoading ? <Spinner/> : <UserProjects pending={pending} installed={installed}/>}
-      </div>
-    </section>
+    <Fragment>
+      <h1 className="subtitle">Projects</h1>
+      <h2 className="subtitle is-6">
+        We are using <strong>Google Verification API</strong>.<br/>
+        So all you need to do is <Link to="/settings/profile">link your Google</Link> account and we are good to
+        go.<br/>
+        If you have no sites verified, please refer to <a
+        href="https://support.google.com/webmasters/answer/35179?hl=en">Google</a>.
+      </h2>
+      {isLoading ? <Spinner/> : <UserProjects pending={pending} installed={installed}/>}
+    </Fragment>
   );
 }
 

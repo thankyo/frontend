@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
 
-function ImageProfile({ avatar, firstName, lastName }) {
+function Profile({ avatar, firstName, lastName }) {
   return (
     <div className="profile has-text-centered">
       <div className="image">
@@ -25,4 +25,4 @@ const mapDispatchToProps = (dispatch, { id }) => {
 };
 
 //TODO magic numbers are never good
-export default connect(mapStateToProps, mapDispatchToProps)(componentFactory(ImageProfile, spinnerFactory(236, "profile has-text-centered")))
+export default connect(mapStateToProps, mapDispatchToProps)(componentFactory(Profile, spinnerFactory(236, "profile has-text-centered")))

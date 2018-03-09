@@ -12,7 +12,6 @@ export default function myCreatorDashboardRouter() {
   return (
     <div className="columns">
       <div className="column is-one-quarter">
-        <Profile id="my"/>
         <Switch>
           <Route exact path="/creator/my"><ProjectNavigation user="my"/></Route>
           <Route exact path="/creator/my/project/:project"

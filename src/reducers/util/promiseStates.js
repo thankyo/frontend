@@ -1,6 +1,6 @@
 import authService from "./auth";
 
-function dispatchPromiseWith(p, event, id, dispatch) {
+export function dispatchPromiseWith(p, event, id, dispatch) {
   dispatch({ type: event.pending, id, payload: {} });
   return p.then((res) => {
     dispatch({ type: event.fulfilled, id, payload: res });
