@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Profile from "components/Profile";
 import Project from "components/Project";
 
@@ -7,7 +7,6 @@ import ProjectPosts from "./ProjectPosts";
 import MyProjects from "./MyProjects";
 import InstallPage from "./installation";
 import { Route, Switch } from 'react-router-dom';
-
 
 export default function myCreatorDashboardRouter() {
   return (
@@ -27,10 +26,12 @@ export default function myCreatorDashboardRouter() {
           </Route>
           <Route path="/creator/my/install/:id"
                  render={(({ match: { params: { id } } }) => (<InstallPage id={id}/>))}/>
-          <Route exact path="/creator/my/project/:project" render={(({ match: { params: { project } } }) => [
-            <Project key={0} id={project} edit={true}/>,
-            <ProjectPosts key={2} id={project}/>,
-          ])}
+          <Route exact path="/creator/my/project/:project" render={(({ match: { params: { project } } }) => (
+            <Fragment>
+              <Project id={project} edit={true}/>,
+              <ProjectPosts id={project}/>,
+            </Fragment>
+          ))}
           />
         </Switch>
       </div>

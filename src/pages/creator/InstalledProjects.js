@@ -14,7 +14,8 @@ let InstalledProjectExpanded = ({ project, handleExpand, deleteProject }) => (
         <p className="heading">
           <Resource url={project.url}/>
         </p>
-        <h3 className="subtitle is-6">This will remove all project related data from the system, are you sure?</h3>
+        <h5 className="subtitle is-6">This will remove all project related data from the system.</h5>
+        <h4 className="title is-6">Are you sure?</h4>
         <div className="field has-addons">
           <span className="button is-small is-primary is-inverted" onClick={handleExpand}>
             Cancel
@@ -68,7 +69,7 @@ const InstalledProjects = ({ projects }) => {
         <InstallIcon>Installed</InstallIcon>
       </span>
     </li>
-    {projects.map((project, i) => (<InstalledProject key={i} {...project}/>))}
+    {projects.map((project) => (<InstalledProject key={project._id} {...project}/>))}
     {projects.length === 0 && <NoInstalled/>}
   </Fragment>;
 };

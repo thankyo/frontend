@@ -33,7 +33,7 @@ function ProjectDayChargeExpanded({ project: { user, title, avatar, _id }, urls,
       </li>
       <li className="timeline-item is-primary">
         <div className="timeline-content">
-          {urls.map((url, i) => <p key={i}><Resource url={url}/></p>)}
+          {urls.map((url) => <p key={url}><Resource url={url}/></p>)}
         </div>
       </li>
     </Fragment>

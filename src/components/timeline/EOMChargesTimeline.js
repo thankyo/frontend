@@ -29,7 +29,7 @@ export default ({ charges }) => {
 
   return (
     <ul className="timeline">
-      {charges.map((charge, i) => <EOMCharge key={i} {... charge}/>)}
+      {charges.map((charge) => <EOMCharge key={charge.yom} {... charge}/>)}
     </ul>
   );
 };

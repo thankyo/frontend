@@ -45,9 +45,9 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
           }}/>
         </div>
       </div>
-      <LoadingButton className="button is-small is-primary is-outlined" submitting={submitting}>
+      <button className={`button is-small is-primary ${submitting && "is-loading"}`} type="submit">
         <InstallIcon>Finish</InstallIcon>
-      </LoadingButton>
+      </button>
     </Form>
   );
 }
@@ -126,7 +126,7 @@ const PendingProjects = ({ projects }) => {
           <PendingIcon>Pending</PendingIcon>
         </span>
     </li>
-    {projects.map((project, i) => (<PendingProject key={i} {...project}/>))}
+    {projects.map((project) => (<PendingProject key={project.url} {...project}/>))}
     {projects.length === 0 && <NoPending/>}
   </Fragment>;
 };
