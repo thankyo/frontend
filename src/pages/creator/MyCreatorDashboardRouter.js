@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import Profile from "components/Profile";
 import Project from "components/Project";
 
 import ProjectNavigation from "./ProjectNavigation";

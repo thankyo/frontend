@@ -7,6 +7,7 @@ import Brand from "components/Brand";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
 import { getUser } from "reducers/user.actions";
+import { getContributions } from "reducers/statistic.actions";
 
 let UserImage = ({ avatar }) => {
   return (
@@ -33,7 +34,7 @@ function NavigationLink({ name, icon, pathname, isActive, isHiddenDesktop = fals
   );
 }
 
-function Navigation({ links }) {
+function Navigation({ links, contributions }) {
   return (
     <section className="hero is-primary is-small">
       <div className="hero-head">
@@ -68,22 +69,10 @@ function Navigation({ links }) {
             <div className="level-item is-pulled-left">
               <UserImage/>
             </div>
-            {/*<div className="level-item has-text-centered">*/}
-              {/*<div>*/}
-                {/*<p className="heading">Supporters</p>*/}
-                {/*<p className="title">456K</p>*/}
-              {/*</div>*/}
-            {/*</div>*/}
-            {/*<div className="level-item has-text-centered">*/}
-              {/*<div>*/}
-                {/*<p className="heading">Supporters</p>*/}
-                {/*<p className="title">20K</p>*/}
-              {/*</div>*/}
-            {/*</div>*/}
             <div className="level-item has-text-centered">
               <div>
                 <p className="heading">Contributions</p>
-                <p className="title">33</p>
+                <p className="title">{contributions}</p>
               </div>
             </div>
           </nav>
@@ -103,4 +92,13 @@ function Navigation({ links }) {
   );
 }
 
-export default connect(({ navigation: { links } }) => ({ links }))(Navigation);
+const mapStateToProps = ({ navigation: { links }, statistic: { contribution: { my = {} } } }) => (
+  { links, contributions: my.contributions || 0 }
+);
+
+const mapDispatchToProps = (dispatch) => {
+  dispatch(getContributions("my"));
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

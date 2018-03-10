@@ -4,6 +4,7 @@ import navigation from "./navigation";
 import project from "./project";
 import post from "./post";
 import auth from "./auth";
+import statistic from "./statistic";
 
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
@@ -20,6 +21,7 @@ export default function () {
       payment,
       post,
       project,
+      statistic
     }
   );
 }
