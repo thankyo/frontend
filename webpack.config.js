@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
 
 function isProduction() {
   return process.env.NODE_ENV === 'production';
@@ -85,10 +84,6 @@ const config = {
       name: 'vendor',
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new OfflinePlugin({ // should be last
-      AppCache: false,
-      ServiceWorker: { events: true },
-    }),
     new HtmlWebpackPlugin({
       inject: true,
       template: './index.ejs',
@@ -140,7 +135,6 @@ if (process.env.NODE_ENV === 'production') {
   const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
   const CopyWebpackPlugin = require('copy-webpack-plugin');
   const WebpackMd5Hash = require('webpack-md5-hash');
-
 
   config.output.filename = '[name].[chunkhash].js';
   config.output.chunkFilename = '[name].[chunkhash].js';
