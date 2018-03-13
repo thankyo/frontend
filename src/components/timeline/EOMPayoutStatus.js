@@ -1,15 +1,11 @@
 // Pending, Running, Success, Failed, NoBankAccount, NoSuccessfulCharges
 import React, { Fragment } from "react";
-import { ErrorIcon, PayoutAccountMissing, SuccessIcon } from "components/Icon";
+import { ErrorIcon, SuccessIcon } from "components/Icon";
 
 export default function EOMPayoutStatus({ status }) {
   switch (status) {
     case "NoBankAccount":
-      return (
-        <PayoutAccountMissing>
-          <ErrorIcon>No Bank Account specified</ErrorIcon>
-        </PayoutAccountMissing>
-      );
+      return <ErrorIcon>No Bank Account specified</ErrorIcon>;
     case "NoSuccessfulCharges":
       return <ErrorIcon>No Successful Charges</ErrorIcon>;
     case "Success":

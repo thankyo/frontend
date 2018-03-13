@@ -6,18 +6,6 @@ import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
 import RefreshLink from "components/RefreshLink";
 
-function BankDetails({ account }) {
-  if (!account) {
-    return (
-      <PayoutAccountMissing>Here could be your bank</PayoutAccountMissing>
-    )
-  }
-  return (
-    <PayoutAccountAssociated>Connected</PayoutAccountAssociated>
-  )
-
-}
-
 function ConnectPayoutAccount() {
   return (
     <a className="button is-outlined is-primary" href="/api/v1/payment/my/payout/account/connect">

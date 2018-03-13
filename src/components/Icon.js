@@ -8,6 +8,7 @@ import {
   faCompass,
   faCreditCard,
   faDollarSign,
+  faDownload,
   faEdit,
   faExclamationCircle,
   faHandPeace,
@@ -83,6 +84,7 @@ export const InstallIcon = ({ children }) => <FAIcon icon={faPlayCircle}>{childr
 export const CancelIcon = ({ children }) => <FAIcon icon={faTimes}>{children}</FAIcon>;
 export const DeleteIcon = ({ children }) => <FAIcon icon={faTimes}>{children}</FAIcon>;
 export const PendingIcon = ({ children }) => <FAIcon icon={faPauseCircle}>{children}</FAIcon>;
+export const DownloadIcon = ({ children }) => <FAIcon icon={faDownload}>{children}</FAIcon>
 
 export const CreditCardMissing = ({ children }) => (
   <Fragment>

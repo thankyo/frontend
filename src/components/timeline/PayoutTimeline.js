@@ -72,6 +72,7 @@ const DayPayout = expandableComponent(DayPayoutExpanded, DayPayoutCollapsed);
 const PayoutTimeline = ({ transactions }) => {
   return (
     <ul className="timeline">
+      <li className="timeline-item is-primary"/>
       {mergePayouts(transactions).map((transaction, i) => <DayPayout key={i} {...transaction}/>)}
     </ul>
   );

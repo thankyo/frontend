@@ -137,7 +137,7 @@ class AuthService {
   get = (url) => this.signAndFetch(new Request(url));
 
   getCSV = (url, fileName) => (
-    this.signAndFetch(url, false).then(handleCSVResponce(fileName))
+    this.signAndFetch(new Request(url), false).then(handleCSVResponce(fileName))
   );
 
   remove = (url) => this.signAndFetch(new Request(url, { method: 'DELETE' }));

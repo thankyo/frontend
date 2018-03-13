@@ -6,7 +6,12 @@ import ProjectNav from "components/ProjectNav";
 
 const ListOfSupported = ({ projects = []}) => {
   if (projects.length === 0) {
-    return null
+    return (
+      <div>
+        <h1 className="subtitle">Supported projects</h1>
+        <h2 className="subtitle is-6">Not just yet</h2>
+      </div>
+    )
   }
   return (
     <div>

@@ -29,6 +29,7 @@ export default function EOMPayoutTimeline({ payouts }) {
 
   return (
     <ul className="timeline">
+      <li className="timeline-item is-primary"/>
       {payouts.map((charge, i) => <EOMPayout key={charge.yom} {... charge}/>)}
     </ul>
   );

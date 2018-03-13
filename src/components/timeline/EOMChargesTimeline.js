@@ -29,6 +29,7 @@ export default ({ charges }) => {
 
   return (
     <ul className="timeline">
+      <li className="timeline-item is-primary"/>
       {charges.map((charge) => <EOMCharge key={charge.yom} {... charge}/>)}
     </ul>
   );

@@ -3,15 +3,13 @@ import { connect } from "react-redux";
 
 import { getPendingPayouts, getPendingPayoutsCsv } from "reducers/payment/payout/transaction.actions";
 import PayoutTimeline from "components/timeline/PayoutTimeline";
-import RefreshLink from "components/RefreshLink";
+import DownloadCSVButton from "components/DownloadCSVButton";
 
 function OutgoingSection({ transactions, getPendingPayoutsCsv }) {
   return (
     <section className="section">
       <p className="title is-5 has-text-centered">Pending</p>
-      <div className="is-pulled-left">
-        <RefreshLink submitting={false} className="is-info" onClick={getPendingPayoutsCsv}>Download CSV</RefreshLink>
-      </div>
+      <DownloadCSVButton onClick={getPendingPayoutsCsv}/>
       <PayoutTimeline transactions={transactions}/>
     </section>
   );

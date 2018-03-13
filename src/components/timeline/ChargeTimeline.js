@@ -72,6 +72,7 @@ const DayCharge = expandableComponent(DayChargeExpanded, DayChargeCollapsed);
 export default ({ transactions }) => {
   return (
     <ul className="timeline">
+      <li className="timeline-item is-primary"/>
       {mergeCharges(transactions).map((transaction, i) => <DayCharge key={i} {...transaction}/>)}
     </ul>
   );
