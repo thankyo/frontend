@@ -1,79 +1,35 @@
-import React, { Component } from "react";
+import React from "react";
 import { connectChargeAccount, deleteCard, getChargeAccount } from "reducers/payment/charge/card.actions";
 import { connect } from "react-redux";
-import { CreditCardIcon } from "components/Icon";
+import { CreditCardAssociated, CreditCardIcon, CreditCardMissing, DeleteIcon } from "components/Icon";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
 import RefreshLink from "components/RefreshLink";
-
-function Card({ isMissing, brand, last4 }) {
-  if (isMissing) {
-    return (
-      <div className="subtitle">
-        <span className="fa-stack fa-lg has-text-danger is-small">
-          <i className="fa fa-circle fa-stack-2x"/>
-          <i className="fa fa-credit-card fa-stack-1x fa-inverse"/>
-        </span>
-        <span>Here can be your card</span>
-      </div>
-    )
-  }
-  return (
-    <div className="subtitle">
-        <span className="fa-stack fa-lg has-text-primary">
-          <i className="fa fa-circle fa-stack-2x is-primary"/>
-          <i className={`fa fa-cc-${brand.toLowerCase()} fa-stack-1x fa-inverse`}/>
-        </span>
-      <span>Card ending in {last4}</span>
-    </div>
-  )
-}
-
-class ConnectCardButton extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { loading: false };
-  }
-
-  handleConnectCard = () => {
-    this.setState({ loading: true });
-    this.props.connectChargeAccount().catch(() => this.setState({ loading: false }));
-  };
-
-  render() {
-    let { loading } = this.state;
-    return (
-      <a onClick={this.handleConnectCard} className={`button is-outlined is-primary ${loading && "is-loading"}`}>
-        <CreditCardIcon>Connect Card</CreditCardIcon>
-      </a>
-    )
-  }
-}
 
 function ChargeAccountSection({ isMissing, brand, last4, connectChargeAccount, deleteCard }) {
   return (
     <section className="section">
       <div className="has-text-centered">
         <p className="title is-5">Card</p>
-        <div className="level">
-          <div className="level-left">
-            <div className="level-item">
-              <Card isMissing={isMissing} brand={brand} last4={last4}/>
-            </div>
+        <div className="columns">
+          <div className="column is-one-third">
+            {isMissing ? <CreditCardMissing/> : <CreditCardAssociated/>}
           </div>
-          <div className="level-right">
-            <div className="level-item">
-              {isMissing && (
-                <RefreshLink onClick={connectChargeAccount}>
-                  <CreditCardIcon>Connect Card</CreditCardIcon>
-                </RefreshLink>
-              )}
-              {!isMissing && (
-                <RefreshLink onClick={deleteCard} className="is-danger">
-                  Delete
-                </RefreshLink>)
-              }
+          <div className="column is-one-third">
+            <h2 className="subtitle">{isMissing ? "Here can be your card" : `Card ending in ${last4}`}</h2>
+          </div>
+          <div className="column is-one-third">
+            <div className="is-pulled-right">
+            {isMissing && (
+              <RefreshLink onClick={connectChargeAccount} className="button is-primary is-outlined">
+                <CreditCardIcon>Connect Card</CreditCardIcon>
+              </RefreshLink>
+            )}
+            {!isMissing && (
+              <RefreshLink onClick={deleteCard} className="button is-danger is-outlined">
+                <DeleteIcon>Delete</DeleteIcon>
+              </RefreshLink>)
+            }
             </div>
           </div>
         </div>

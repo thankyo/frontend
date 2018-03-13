@@ -2,9 +2,29 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faCcStripe, faGoogle, faFacebook, faTelegramPlane } from '@fortawesome/fontawesome-free-brands';
-import { faTimes, faEdit, faSave, faRegistered, faSync, faSearch, faCompass, faMinusCircle, faPlusCircle, faExclamationCircle, faCheckCircle, faHandPeace, faPlayCircle, faPauseCircle, faCreditCard } from '@fortawesome/fontawesome-free-solid';
-import { faSignInAlt, faSignOutAlt, faDollarSign } from '@fortawesome/fontawesome-free-solid';
+import { faCcStripe, faFacebook, faGoogle, faTelegramPlane, faWordpressSimple } from '@fortawesome/fontawesome-free-brands';
+import {
+  faCheckCircle,
+  faCompass,
+  faCreditCard,
+  faDollarSign,
+  faEdit,
+  faExclamationCircle,
+  faHandPeace,
+  faMinusCircle,
+  faPauseCircle,
+  faPlayCircle,
+  faPlusCircle,
+  faRegistered,
+  faSave,
+  faSearch,
+  faSignInAlt,
+  faSignOutAlt,
+  faSync,
+  faTimes,
+  faCode,
+  faUniversity
+} from '@fortawesome/fontawesome-free-solid';
 
 export function Icon({ className, children }) {
   if (!children) {
@@ -23,7 +43,7 @@ export function Icon({ className, children }) {
   }
 }
 
-export const FAIcon = ({ icon, children }) =>{
+export const FAIcon = ({ icon, children }) => {
   if (!children) {
     return (
       <Fragment>
@@ -61,12 +81,45 @@ export const NavigationIcon = ({ children }) => <FAIcon icon={faCompass}>{childr
 export const StripeIcon = ({ children }) => <FAIcon icon={faCcStripe}>{children}</FAIcon>;
 export const InstallIcon = ({ children }) => <FAIcon icon={faPlayCircle}>{children}</FAIcon>;
 export const CancelIcon = ({ children }) => <FAIcon icon={faTimes}>{children}</FAIcon>;
+export const DeleteIcon = ({ children }) => <FAIcon icon={faTimes}>{children}</FAIcon>;
 export const PendingIcon = ({ children }) => <FAIcon icon={faPauseCircle}>{children}</FAIcon>;
 
-export const EditIcon = ({ children }) => <Icon className="fa fa-edit fa-2x">{children}</Icon>
+export const CreditCardMissing = ({ children }) => (
+  <Fragment>
+    <span className="icon has-text-danger">
+      <FontAwesomeIcon icon={faCreditCard} size="2x"/>
+    </span>
+    <span className="subtitle">&nbsp;&nbsp;{children}</span>
+  </Fragment>
+);
+export const CreditCardAssociated = ({ children }) => (
+  <Fragment>
+    <span className="icon has-text-primary">
+      <FontAwesomeIcon icon={faCreditCard} size="2x"/>
+    </span>
+    <span className="subtitle">&nbsp;&nbsp;{children}</span>
+  </Fragment>
+);
+
+export const PayoutAccountMissing = ({ children }) => (
+  <Fragment>
+    <span className="icon has-text-danger">
+      <FontAwesomeIcon icon={faUniversity} size="2x"/>
+    </span>
+    <span className="subtitle">&nbsp;&nbsp;{children}</span>
+  </Fragment>
+);
+export const PayoutAccountAssociated = ({ children }) => (
+  <Fragment>
+    <span className="icon has-text-primary">
+      <FontAwesomeIcon icon={faUniversity} size="2x"/>
+    </span>
+    <span className="subtitle">{children}</span>
+  </Fragment>
+);
 
 export const EditButton = ({ children, onClick }) => (
-  <a className="loveit-fab" onClick={onClick} style={{ width: 40, height: 40}}>
+  <a className="loveit-fab" onClick={onClick} style={{ width: 40, height: 40 }}>
     <FontAwesomeIcon icon={faEdit} size="lg">{children}</FontAwesomeIcon>
   </a>
 );
@@ -78,9 +131,9 @@ Icon.propTypes = {
 export function WebStackIcon({ webStack, children }) {
   switch (webStack) {
     case "WordPress":
-      return (<Icon className="fa fa-wordpress">{children}</Icon>);
+      return (<FAIcon icon={faWordpressSimple}>{children}</FAIcon>);
     default:
-      return (<Icon className="fa fa-code">{children}</Icon>)
+      return (<FAIcon icon={faCode}>{children}</FAIcon>)
   }
 }
 

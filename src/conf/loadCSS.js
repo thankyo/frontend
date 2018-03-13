@@ -34,13 +34,7 @@ export function loadCSS(remote, local, integrity) {
 }
 
 function configure() {
-  let loadFontAwesome = loadCSS(
-    "https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css",
-    "/css/font-awesome.css",
-    "sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
-  );
-
-  return Promise.all([ loadFontAwesome ]);
+  return Promise.all([ ]);
 }
 
 export default configure;

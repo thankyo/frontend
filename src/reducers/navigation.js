@@ -3,10 +3,10 @@ import {LOCATION_CHANGE} from "react-router-redux";
 import queryString from "query-string";
 
 const LINKS = [
-  { pathname: "/search", name: "Discover", icon: "fa fa-thumbs-o-up" },
-  { pathname: "/dashboard/my", name: "Contributions", icon: "fa fa-thumbs-o-up" },
-  { pathname: "/creator/my", name: "Projects", icon: "fa fa-paint-brush" },
-  { pathname: "/settings", name: "Settings", icon: "fa fa-cogs" },
+  { pathname: "/search", name: "Discover" },
+  { pathname: "/dashboard/my", name: "Contributions" },
+  { pathname: "/creator/my", name: "Projects" },
+  { pathname: "/settings", name: "Settings" },
   { pathname: "/settings/limit", name: "Limits", isHiddenDesktop: true },
   { pathname: "/settings/charge", name: "Charge", isHiddenDesktop: true },
   { pathname: "/settings/payout", name: "Payout", isHiddenDesktop: true },

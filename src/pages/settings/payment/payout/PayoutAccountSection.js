@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { StripeIcon } from "components/Icon";
+import { DeleteIcon, PayoutAccountAssociated, PayoutAccountMissing, StripeIcon } from "components/Icon";
 import { deletePayoutAccount, getPayoutAccount } from "reducers/payment/payout/account.actions";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
@@ -9,23 +9,11 @@ import RefreshLink from "components/RefreshLink";
 function BankDetails({ account }) {
   if (!account) {
     return (
-      <div className="subtitle">
-        <span className="fa-stack fa-lg has-text-danger">
-          <i className="fa fa-circle fa-stack-2x"/>
-          <i className="fa fa-bank fa-stack-1x fa-inverse"/>
-        </span>
-        <span>Here could be your bank</span>
-      </div>
+      <PayoutAccountMissing>Here could be your bank</PayoutAccountMissing>
     )
   }
   return (
-    <div className="subtitle">
-      <span className="fa-stack fa-lg has-text-primary">
-        <i className="fa fa-circle fa-stack-2x"/>
-        <i className="fa fa-cc-stripe fa-stack-1x fa-inverse"/>
-      </span>
-      <span>Connected</span>
-    </div>
+    <PayoutAccountAssociated>Connected</PayoutAccountAssociated>
   )
 
 }
@@ -43,16 +31,19 @@ function PayoutAccountSection({ account, deletePayoutAccount, isMissing }) {
     <section className="section">
       <div className="has-text-centered">
         <p className="title is-5">Account</p>
-        <div className="level">
-          <div className="level-left">
-            <div className="level-item">
-              <BankDetails account={account}/>
+        <div className="columns">
+          <div className="column is-one-third">
+            {account ? <PayoutAccountAssociated/> : <PayoutAccountMissing/>}
+          </div>
+          <div className="column is-one-third">
+            <div className="subtitle">
+              {account ? "Connected" : "Here could be your bank"}
             </div>
           </div>
-          <div className="level-right">
-            <div className="level-item">
+          <div className="column is-one-third">
+            <div className="is-pulled-right">
               {isMissing && <ConnectPayoutAccount/>}
-              {!isMissing && <RefreshLink onClick={deletePayoutAccount} className="is-danger">Delete</RefreshLink>}
+              {!isMissing && <RefreshLink onClick={deletePayoutAccount} className="button is-danger is-outlined"><DeleteIcon>Delete</DeleteIcon></RefreshLink>}
             </div>
           </div>
         </div>
@@ -63,15 +54,13 @@ function PayoutAccountSection({ account, deletePayoutAccount, isMissing }) {
 };
 
 
-const mapStateToProps = ({ payment: { payout: { account } } }) => {
-  return account;
-};
+const mapStateToProps = ({ payment: { payout: { account } } }) => account;
 
 const mapDispatchToProps = (dispatch) => {
   dispatch(getPayoutAccount());
   return {
     getPayoutAccount: () => dispatch(getPayoutAccount()),
-    deletePayoutAccount: () => dispatch(deletePayoutAccount()),
+    deletePayoutAccount: () => dispatch(deletePayoutAccount),
   }
 };
 

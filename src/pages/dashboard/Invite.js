@@ -14,7 +14,6 @@ function Invite({ handleSubmit, submitting }) {
         <div className="field has-addons">
           <div className="control is-expanded has-icons-left">
             <Field name="linkOrEmail" component={flatField} validate={[required]} placeholder="Link or email"/>
-            <span className="icon is-small is-left"><i className="fa fa-globe"/></span>
           </div>
           <LoadingButton submitting={submitting}>
             <InviteIcon>Invite</InviteIcon>

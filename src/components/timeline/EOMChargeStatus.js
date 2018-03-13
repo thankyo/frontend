@@ -1,7 +1,7 @@
 // Pending, Running, Success, Failed, UnderMin, NoBankDetails, FailedToCreate, NoContributions
 
 import React, { Fragment } from "react";
-import { ErrorIcon } from "components/Icon";
+import { CreditCardMissing, ErrorIcon } from "components/Icon";
 
 export default function EOMChargeStatus({ status }) {
   switch (status) {
@@ -10,11 +10,7 @@ export default function EOMChargeStatus({ status }) {
     case "NoBankDetails":
       return (
         <Fragment>
-          <span className="fa-stack fa-lg has-text-danger is-small">
-            <i className="fa fa-circle fa-stack-2x"/>
-            <i className="fa fa-credit-card fa-stack-1x fa-inverse"/>
-          </span>
-          No Card Provided
+          <CreditCardMissing>No Card Provided</CreditCardMissing>
         </Fragment>
       );
     case "UnderMin":
