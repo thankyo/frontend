@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { enableEdit, lovePost, savePost } from "reducers/post/post.actions";
 import { connect } from "react-redux";
 
-import { EditIcon, SaveIcon } from "components/Icon";
+import { EditButton, SaveIcon } from "components/Icon";
 import { fieldWithLabel, LoadingButton } from "components/form/form.utils";
 import Tags from "components/form/Tags";
 import LoveItButton from "components/LoveItButton";
@@ -62,7 +62,7 @@ function PostActions({ post, onEdit, onLove }) {
   if (post.isMy) {
     return (
       <PostActionWrap>
-        <a className="icon is-small" onClick={onEdit}><EditIcon/></a>
+        <EditButton onClick={onEdit}/>
       </PostActionWrap>
     )
   }

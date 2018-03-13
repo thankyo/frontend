@@ -1,5 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faCcStripe, faGoogle, faFacebook, faTelegramPlane } from '@fortawesome/fontawesome-free-brands';
+import { faTimes, faEdit, faSave, faRegistered, faSync, faSearch, faCompass, faMinusCircle, faPlusCircle, faExclamationCircle, faCheckCircle, faHandPeace, faPlayCircle, faPauseCircle, faCreditCard } from '@fortawesome/fontawesome-free-solid';
+import { faSignInAlt, faSignOutAlt, faDollarSign } from '@fortawesome/fontawesome-free-solid';
 
 export function Icon({ className, children }) {
   if (!children) {
@@ -18,29 +23,53 @@ export function Icon({ className, children }) {
   }
 }
 
-export const SaveIcon = ({ children }) => <Icon className="fa fa-save">{children}</Icon>;
-export const RegisterIcon = ({ children }) => <Icon className="fa fa-registered">{children}</Icon>;
-export const LoginIcon = ({ children }) => <Icon className="fa fa-sign-in">{children}</Icon>;
-export const RestoreIcon = ({ children }) => <Icon className="fa fa-refresh">{children}</Icon>;
-export const SendIcon = ({ children }) => <Icon className="fa fa-send">{children}</Icon>;
-export const CreditCardIcon = ({ children }) => <Icon className="fa fa-credit-card">{children}</Icon>;
-export const GoogleIcon = ({ children }) => <Icon className="fa fa-google">{children}</Icon>;
-export const FacebookIcon = ({ children }) => <Icon className="fa fa-facebook-official">{children}</Icon>;
-export const DecrementIcon = ({ children }) => <Icon className="fa fa-minus-circle">{children}</Icon>;
-export const IncrementIcon = ({ children }) => <Icon className="fa fa-plus-circle">{children}</Icon>;
-export const ErrorIcon = ({ children }) => <Icon className="fa fa-exclamation-circle">{children}</Icon>;
-export const SuccessIcon = ({ children }) => <Icon className="fa fa-check-circle">{children}</Icon>;
-export const InviteIcon = ({ children }) => <Icon className="fa fa-hand-peace-o">{children}</Icon>;
-export const USDIcon = ({ children }) => <Icon className="fa fa-usd">{children}</Icon>;
-export const RefreshIcon = ({ children }) => <Icon className='fa fa-refresh'>{children}</Icon>;
-export const SearchIcon = ({ children }) => <Icon className='fa fa-search'>{children}</Icon>;
-export const LogOutIcon = ({ children }) => <Icon className="fa fa-sign-out">{children}</Icon>;
-export const NavigationIcon = ({ children }) => <Icon className="fa fa-compass fa-2x">{children}</Icon>;
-export const StripeIcon = ({ children }) => <Icon className="fa fa-cc-stripe">{children}</Icon>;
-export const InstallIcon = ({ children }) => <Icon className="fa fa-play-circle">{children}</Icon>;
-export const CancelIcon = ({ children }) => <Icon className="fa fa-remove">{children}</Icon>;
-export const EditIcon = ({ children }) => <Icon className="fa fa-edit">{children}</Icon>
-export const PendingIcon = ({ children }) => <Icon className="fa fa-pause-circle">{children}</Icon>;
+export const FAIcon = ({ icon, children }) =>{
+  if (!children) {
+    return (
+      <Fragment>
+        <span className="icon"><FontAwesomeIcon icon={icon}/></span>
+      </Fragment>
+    );
+  } else {
+    return (
+      <Fragment>
+        <span className="icon"><FontAwesomeIcon icon={icon}/></span>
+        <span>{children}</span>
+      </Fragment>
+    )
+  }
+};
+
+export const SaveIcon = ({ children }) => <FAIcon icon={faSave}>{children}</FAIcon>;
+export const RegisterIcon = ({ children }) => <FAIcon icon={faRegistered}>{children}</FAIcon>;
+export const LoginIcon = ({ children }) => <FAIcon icon={faSignInAlt}>{children}</FAIcon>;
+export const RestoreIcon = ({ children }) => <FAIcon icon={faSync}>{children}</FAIcon>;
+export const SendIcon = ({ children }) => <FAIcon icon={faTelegramPlane}>{children}</FAIcon>;
+export const CreditCardIcon = ({ children }) => <FAIcon icon={faCreditCard}>{children}</FAIcon>;
+export const GoogleIcon = ({ children }) => <FAIcon icon={faGoogle}>{children}</FAIcon>;
+export const FacebookIcon = ({ children }) => <FAIcon icon={faFacebook}>{children}</FAIcon>;
+export const DecrementIcon = ({ children }) => <FAIcon icon={faMinusCircle}>{children}</FAIcon>;
+export const IncrementIcon = ({ children }) => <FAIcon icon={faPlusCircle}>{children}</FAIcon>;
+export const ErrorIcon = ({ children }) => <FAIcon icon={faExclamationCircle}>{children}</FAIcon>;
+export const SuccessIcon = ({ children }) => <FAIcon icon={faCheckCircle}>{children}</FAIcon>;
+export const InviteIcon = ({ children }) => <FAIcon className={faHandPeace}>{children}</FAIcon>;
+export const USDIcon = ({ children }) => <FAIcon icon={faDollarSign}>{children}</FAIcon>;
+export const RefreshIcon = ({ children }) => <FAIcon icon={faSync}>{children}</FAIcon>;
+export const SearchIcon = ({ children }) => <FAIcon icon={faSearch}>{children}</FAIcon>;
+export const LogOutIcon = ({ children }) => <FAIcon icon={faSignOutAlt}>{children}</FAIcon>;
+export const NavigationIcon = ({ children }) => <FAIcon icon={faCompass}>{children}</FAIcon>;
+export const StripeIcon = ({ children }) => <FAIcon icon={faCcStripe}>{children}</FAIcon>;
+export const InstallIcon = ({ children }) => <FAIcon icon={faPlayCircle}>{children}</FAIcon>;
+export const CancelIcon = ({ children }) => <FAIcon icon={faTimes}>{children}</FAIcon>;
+export const PendingIcon = ({ children }) => <FAIcon icon={faPauseCircle}>{children}</FAIcon>;
+
+export const EditIcon = ({ children }) => <Icon className="fa fa-edit fa-2x">{children}</Icon>
+
+export const EditButton = ({ children, onClick }) => (
+  <a className="loveit-fab" onClick={onClick} style={{ width: 40, height: 40}}>
+    <FontAwesomeIcon icon={faEdit} size="lg">{children}</FontAwesomeIcon>
+  </a>
+);
 
 Icon.propTypes = {
   className: PropTypes.string.isRequired,
@@ -57,4 +86,4 @@ export function WebStackIcon({ webStack, children }) {
 
 WebStackIcon.props = {
   webStack: PropTypes.oneOf(["WordPress", undefined])
-}
+};

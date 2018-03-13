@@ -77,9 +77,7 @@ function ChargeAccountSection({ isMissing, brand, last4, connectChargeAccount, d
             </div>
           </div>
         </div>
-        <br/>
         <h5 className="subtitle payment-text"><b>All charges happen at the end of the month</b></h5>
-        <img className="is-pulled-right" src="/img/stripe/powered_by_stripe.png"/>
       </div>
     </section>
   );

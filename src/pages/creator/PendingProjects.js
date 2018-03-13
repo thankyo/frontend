@@ -8,7 +8,7 @@ import { expandableComponent } from "components/timeline/util";
 import InstallationPage from "./installation";
 import RefreshLink from "components/RefreshLink";
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
-import { LoadingButton, required, smallFieldWithLabel } from "components/form/form.utils";
+import { LoadingButton, maxSize, required, smallFieldWithLabel } from "components/form/form.utils";
 import Tags from "components/form/Tags";
 
 function EditProject({ initialValues, submitting, handleSubmit }) {
@@ -24,10 +24,28 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
           </div>
         </div>
         <div className="column is-two-third">
-          <Field name="avatar" component={smallFieldWithLabel} type="url" placeholder="Avatar URL"/>
-          <Field name="title" component={smallFieldWithLabel} placeholder="Title" validate={[required]}/>
+          <Field
+            name="avatar"
+            component={smallFieldWithLabel}
+            type="url"
+            placeholder="Avatar URL"
+            help="Url that will be used for your project"
+          />
+          <Field
+            name="title"
+            component={smallFieldWithLabel}
+            placeholder="Title"
+            validate={[required, maxSize(32)]}
+            help="Title not more than 32 symbols"
+          />
           <Field name="description" component={smallFieldWithLabel} type="textarea" className="textarea" placeholder="Description" validate={[required]}/>
-          <Field name="rss" component={smallFieldWithLabel} type="url" placeholder="RSS"/>
+          <Field
+            name="rss"
+            component={smallFieldWithLabel}
+            type="url"
+            placeholder="RSS"
+            help="that will be used to automatically add new posts"
+          />
           <FieldArray name="tags" component={(props) => {
             let { fields } = props;
             let tags = fields.getAll() || [];
@@ -39,6 +57,7 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
                 }} addTag={({ tag }) => {
                   fields.push(tag)
                 }}/>
+                <p className="help">that will be added to every post in this project</p>
               </div>
             )
           }}/>

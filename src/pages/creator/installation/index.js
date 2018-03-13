@@ -3,9 +3,9 @@ import WordPress from "./Wordpress";
 import Manual from "./Manual";
 import { WebStackIcon } from "components/Icon";
 
-const WebStackElement = ({ webStack, onSelect,  disabled }) => (
+const WebStackElement = ({ webStack, onSelect,  active }) => (
   <p className="control">
-    <a className="button is-primary is-small" onClick={onSelect} disabled={disabled}>
+    <a className={`button ${active ? "is-primary" : ""}  is-small`} onClick={onSelect}>
       <WebStackIcon webStack={webStack}>{webStack}</WebStackIcon>
     </a>
   </p>
@@ -13,8 +13,8 @@ const WebStackElement = ({ webStack, onSelect,  disabled }) => (
 
 const WebStackSelector = ({ webStack, onWebStackChange }) => (
   <div className="field has-addons is-small">
-    <WebStackElement webStack="WordPress" onSelect={() => onWebStackChange("WordPress")} disabled={webStack === "WordPress"}/>
-    <WebStackElement webStack="Other" onSelect={() => onWebStackChange(undefined)} disabled={webStack === undefined}/>
+    <WebStackElement webStack="WordPress" onSelect={() => onWebStackChange("WordPress")} active={webStack === "WordPress"}/>
+    <WebStackElement webStack="Other" onSelect={() => onWebStackChange(undefined)} active={webStack === undefined}/>
   </div>
 );
 

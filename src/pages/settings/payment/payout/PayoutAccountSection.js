@@ -56,9 +56,7 @@ function PayoutAccountSection({ account, deletePayoutAccount, isMissing }) {
             </div>
           </div>
         </div>
-        <br/>
         <h5 className="subtitle payment-text"><b>All payouts happen at the end of the month</b></h5>
-        <img className="is-pulled-right" src="/img/stripe/powered_by_stripe.png"/>
       </div>
     </section>
   )
