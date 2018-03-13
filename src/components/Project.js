@@ -8,7 +8,7 @@ import { refreshProjectFeed, updateProject } from "reducers/project.actions";
 import Loading from "./Loading";
 import { LoadingButton } from "./form/form.utils";
 import Tags from "./form/Tags";
-import { maxSize, required, smallFieldWithLabel } from "components/form/form.utils";
+import { max27, max32, max64, maxSize, required, smallFieldWithLabel } from "components/form/form.utils";
 import { EditButton, RefreshIcon, SaveIcon } from "components/Icon";
 import RefreshLink from "components/RefreshLink";
 
@@ -46,7 +46,9 @@ function ViewProject({ avatar, title, description, user, _id, tags, url, isMy, s
           </div>
         </div>
       </div>
+      <div className="is-pulled-right">
       {isMy && <EditButton onClick={switchToEdit}/>}
+      </div>
     </div>
   );
 }
@@ -54,7 +56,7 @@ function ViewProject({ avatar, title, description, user, _id, tags, url, isMy, s
 function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
   if (!initialValues)
     return (
-      <div className="has-text-centered">
+      <div className="profile has-text-centered">
         <Loading/>
       </div>
     );
@@ -75,24 +77,31 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
             name="avatar"
             component={smallFieldWithLabel}
             type="url"
-            placeholder="Avatar URL"
-            help="Url that will be used for your project"
+            placeholder="Project Avatar"
+            help="magnificent project avatar"
           />
           <Field
             name="title"
             component={smallFieldWithLabel}
             placeholder="Title"
-            validate={[required, maxSize(32)]}
-            help="Title not more than 32 symbols"
+            validate={[required, max27]}
+            help="27 symbols of awesomeness"
           />
-          <Field name="description" component={smallFieldWithLabel} type="textarea" className="textarea"
-                 placeholder="Description" validate={[required]}/>
+          <Field
+            name="description"
+            component={smallFieldWithLabel}
+            type="textarea"
+            className="textarea"
+            placeholder="Description"
+            validate={[required, max64]}
+            help={"blow their mind"}
+          />
           <Field
             name="rss"
             component={smallFieldWithLabel}
             type="url"
             placeholder="RSS"
-            help="that will be used to automatically add new posts"
+            help="we'll be watching every post you make"
           />
           <FieldArray name="tags" component={(props) => {
             let { fields } = props;
@@ -111,12 +120,14 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
           }}/>
         </div>
       </div>
-      <LoadingButton submitting={submitting} className="is-outlined is-primary">
-        <SaveIcon>Save</SaveIcon>
-      </LoadingButton>
-      <RefreshLink onClick={refreshFeed}>
-        <RefreshIcon>Refresh Feed</RefreshIcon>
-      </RefreshLink>
+      <div className="field has-addons is-pulled-right">
+        <LoadingButton submitting={submitting} className="is-outlined is-primary">
+          <SaveIcon>Save</SaveIcon>
+        </LoadingButton>
+        <RefreshLink onClick={refreshFeed} className="button is-outlined">
+          <RefreshIcon>Refresh Feed</RefreshIcon>
+        </RefreshLink>
+      </div>
     </Form>
   );
 }
@@ -137,7 +148,7 @@ class Project extends Component {
     let { edit } = this.state;
 
     if (edit) {
-      return <EditProject form={id} initialValues={project} onSubmit={updateProject} refreshFeed={refreshFeed}/>
+      return <EditProject form={id} initialValues={project} onSubmit={(project) => updateProject(project).then(this.handleModeChange)} refreshFeed={refreshFeed}/>
     } else {
       return <ViewProject {...project} switchToEdit={this.handleModeChange}/>
     }

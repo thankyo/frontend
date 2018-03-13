@@ -18,7 +18,11 @@ LoadingButton.propTypes = {
 };
 
 export const required = value => value ? undefined : 'Required';
-export const maxSize = (max) => value => value && value.length < max ? undefined : `max size is ${max}`;
+export const maxSize = (max) => value => value && value.length > max ? `Must be ${max} characters or less` : undefined;
+
+export const max27 = maxSize(27);
+export const max32 = maxSize(32);
+export const max64 = maxSize(64);
 
 export const renderField = (props) => {
   let { meta: { touched, error } } = props;
@@ -46,16 +50,15 @@ export const fieldWithLabel = (props) => {
 };
 
 export const smallFieldWithLabel = (props) => {
-  let { meta: { touched, error }, placeholder, help } = props;
-  let flatFieldProps = Object.assign({}, props, { className: props.className ? `${props.className} is-small`: `is-small` });
+  let { meta: { error }, placeholder, help, className = "" } = props;
+  let flatFieldProps = Object.assign({}, props, { className: `${className} is-small`});
   return (
     <div className="field">
       <label className="label is-small">{placeholder}</label>
       <div className="control">
         {flatField(flatFieldProps)}
       </div>
-      {touched && error && <p className="help is-danger">{error}</p>}
-      {!error && help && <p className="help">{help}</p>}
+      {error ? <p className="help is-danger">{error}</p> : <p className="help">{help}</p>}
     </div>
   )
 };

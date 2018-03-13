@@ -26,8 +26,10 @@ export default function myCreatorDashboardRouter() {
                  render={(({ match: { params: { id } } }) => (<InstallPage id={id}/>))}/>
           <Route exact path="/creator/my/project/:project" render={(({ match: { params: { project } } }) => (
             <Fragment>
-              <Project key={project} id={project} edit={true}/>,
-              <ProjectPosts key={`${project}-posts`} id={project}/>,
+              <section className="section">
+                <Project key={project} id={project} edit={true}/>
+              </section>
+              <ProjectPosts key={`${project}-posts`} id={project}/>
             </Fragment>
           ))}
           />

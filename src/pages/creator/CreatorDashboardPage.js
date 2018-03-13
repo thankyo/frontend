@@ -12,7 +12,9 @@ export default function creatorDashboardPage({ id, project }) {
         <ProjectNavigation user={id} active={project}/>
       </div>
       <div className="column is-three-quarter">
-        <Project id={project}/>
+        <section className="section">
+          <Project id={project}/>
+        </section>
         <ProjectPosts id={project}/>
       </div>
     </div>

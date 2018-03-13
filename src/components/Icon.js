@@ -1,19 +1,28 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
+import Logo from "./logo.svg";
+
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faCcStripe, faFacebook, faGoogle, faTelegramPlane, faWordpressSimple } from '@fortawesome/fontawesome-free-brands';
+import {
+  faCcStripe,
+  faFacebook,
+  faGoogle,
+  faTelegramPlane,
+  faWordpressSimple
+} from '@fortawesome/fontawesome-free-brands';
 import {
   faCheckCircle,
+  faCode,
   faCompass,
   faCreditCard,
   faDollarSign,
   faDownload,
-  faEdit,
   faExclamationCircle,
   faHandPeace,
   faMinusCircle,
   faPauseCircle,
+  faEdit,
   faPlayCircle,
   faPlusCircle,
   faRegistered,
@@ -23,7 +32,6 @@ import {
   faSignOutAlt,
   faSync,
   faTimes,
-  faCode,
   faUniversity
 } from '@fortawesome/fontawesome-free-solid';
 
@@ -121,10 +129,30 @@ export const PayoutAccountAssociated = ({ children }) => (
 );
 
 export const EditButton = ({ children, onClick }) => (
-  <a className="loveit-fab" onClick={onClick} style={{ width: 40, height: 40 }}>
-    <FontAwesomeIcon icon={faEdit} size="lg">{children}</FontAwesomeIcon>
-  </a>
+  <nav className="level is-mobile">
+    <div className="level-left">
+      <div className="level-item">
+        <a className="button is-primary is-outlined" onClick={onClick}>
+          <FAIcon icon={faEdit}>Edit</FAIcon>
+        </a>
+      </div>
+    </div>
+  </nav>
 );
+
+export function LoveItButton({ isLoved, onLove }) {
+  return (
+    <nav className="level is-mobile">
+      <div className="level-left">
+        <div className="level-item">
+          <a className="loveit-fab" disabled={isLoved} onClick={onLove}>
+            <Logo width={40} height={40} className={isLoved ? "fab-is-loved" : ""}/>
+          </a>
+        </div>
+      </div>
+    </nav>
+  );
+}
 
 Icon.propTypes = {
   className: PropTypes.string.isRequired,

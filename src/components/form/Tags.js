@@ -60,7 +60,6 @@ export default function Tags({ tags, addTag, removeTag }) {
           </div>
         ))}
       </div>
-      <br/>
     </Fragment>
   );
 }

@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { EditButton, SaveIcon } from "components/Icon";
 import { fieldWithLabel, LoadingButton } from "components/form/form.utils";
 import Tags from "components/form/Tags";
-import LoveItButton from "components/LoveItButton";
+import { LoveItButton } from "components/Icon";
 
 function EditPost({ submitting, initialValues, handleSubmit }) {
   return (

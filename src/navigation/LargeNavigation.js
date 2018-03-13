@@ -53,7 +53,7 @@ function Navigation({ links, contributions }) {
             <div className="navbar-menu">
               <div className="navbar-end">
                 <span className="navbar-item">
-                  <a onClick={() => auth.logout()} className="button is-info is-inverted is-outlined">
+                  <a onClick={() => auth.logout()} className="button is-primary is-inverted is-outlined">
                     <LogOutIcon>Log Out</LogOutIcon>
                   </a>
                 </span>

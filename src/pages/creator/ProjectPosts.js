@@ -1,13 +1,13 @@
-import React from "react";
-import Post from "components/Post";
+import React, { Fragment } from "react";
+import PostOnTimeline from "components/PostOnTimeline";
 import { connect } from "react-redux";
 import { searchByProject } from "reducers/post/post.actions";
 
 function Posts({ posts }) {
   return (
-    <div>
-      {posts.map((id, i) => <article className="tile" key={i}><Post id={id}/></article>)}
-    </div>
+    <ul className="timeline">
+      {posts.map((id, i) => <PostOnTimeline key={i} id={id}/>)}
+    </ul>
   )
 }
 
