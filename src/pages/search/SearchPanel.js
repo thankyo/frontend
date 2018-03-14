@@ -14,12 +14,7 @@ function SearchPanel({ handleSubmit, submitting }) {
         </p>
         <p className="control">
           <button type="submit" className={`button is-primary ${submitting ? "is-loading" : ""}`}>
-            <div className="is-hidden-mobile">
               <SearchIcon>Search</SearchIcon>
-            </div>
-            <div className="is-mobile is-hidden-tablet is-hidden-desktop">
-              <SearchIcon/>
-            </div>
           </button>
         </p>
       </div>
