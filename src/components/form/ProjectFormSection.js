@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { max27, max64, required, smallFieldWithLabel } from "components/form/form.utils";
+import React from "react";
+import { max27, max54, required, smallFieldWithLabel } from "components/form/form.utils";
 import { Field, FieldArray, FormSection } from "redux-form";
 import Tags from "components/form/Tags";
 
@@ -24,7 +24,7 @@ export default function () {
         name="shortDescription"
         component={smallFieldWithLabel}
         placeholder="Short Description"
-        validate={[required, max64]}
+        validate={[required, max54]}
         help={"something juicy"}
       />
       <Field

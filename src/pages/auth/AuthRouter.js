@@ -4,8 +4,8 @@ import AuthMenu from "./AuthMenu";
 import { connect } from "react-redux";
 import { Link, Route, Switch } from 'react-router-dom';
 import auth from "reducers/util/auth";
-import { renderField, required, LoadingButton } from "components/form/form.utils";
-import { FacebookIcon, GoogleIcon, LoginIcon, RegisterIcon, RestoreIcon, SendIcon } from "components/Icon";
+import { renderField, required, LoadingButton, max64 } from "components/form/form.utils";
+import { FacebookIcon, LoginIcon, RegisterIcon, RestoreIcon, SendIcon } from "components/Icon";
 import FacebookAuthPage from "./FacebookAuthPage";
 import GoogleAuthPage from "./GoogleAuthPage";
 
@@ -13,7 +13,7 @@ let ResetForm = ({ handleSubmit, submitting }) => {
   return (
     <Form onSubmit={handleSubmit} className="is-primary">
       <Field name="password" component={renderField} type="password" placeholder="New Password"
-             validate={[required]} disabled={submitting}/>
+             validate={[required, max64]} disabled={submitting}/>
 
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
@@ -50,7 +50,7 @@ let LoginForm = ({ handleSubmit, submitting }) => {
       <Field name="email" component={renderField} type="email" placeholder="Email"
              validate={[required]} disabled={submitting}/>
       <Field name="password" component={renderField} type="password" placeholder="Password"
-             validate={[required]} disabled={submitting}/>
+             validate={[required, max64]} disabled={submitting}/>
 
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>

@@ -22,6 +22,7 @@ export const maxSize = (max) => value => value && value.length > max ? `Must be 
 
 export const max27 = maxSize(27);
 export const max64 = maxSize(64);
+export const max54 = maxSize(54);
 
 export const renderField = (props) => {
   let { meta: { touched, error } } = props;
