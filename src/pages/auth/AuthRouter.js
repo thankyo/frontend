@@ -88,21 +88,14 @@ let ReduxRegistrationForm = reduxForm({ form: 'register' })(RegisterForm);
 function SocialHeader({ facebook, google }) {
   return (
     <div className="has-text-centered">
-      <div className="field has-addons">
-        <p className="control">
-          <a className="button is-primary is-inverted is-outlined" href={facebook}>
-            <FacebookIcon>Connect with FB</FacebookIcon>
-          </a>
-        </p>
-        <p className="control">
-          <a className="button is-primary is-inverted is-outlined" href={google}>
-            <GoogleIcon>Connect with Google</GoogleIcon>
-          </a>
-        </p>
-      </div>
+      <p className="control has-text-centered">
+        <a className="button is-primary is-inverted is-outlined" href={facebook}>
+          <FacebookIcon>Connect with FB</FacebookIcon>
+        </a>
+      </p>
       <br/>
       <br/>
-      <h4 className="subtitle is-5">or</h4>
+      <h4 className="subtitle is-5 has-text-centered">or</h4>
       <AuthMenu/>
       <br/>
     </div>
