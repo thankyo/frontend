@@ -1,15 +1,14 @@
 import React, { Fragment } from "react";
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { expandableComponent } from "components/timeline/util";
 import { createProject, enrichProject } from "reducers/project.actions";
 import Resource from "components/Resource";
 import { InstallIcon, PendingIcon } from "components/Icon";
-import { expandableComponent } from "components/timeline/util";
 import InstallationPage from "./installation";
 import RefreshLink from "components/RefreshLink";
-import { Field, FieldArray, Form, reduxForm } from "redux-form";
-import { LoadingButton, maxSize, required, smallFieldWithLabel } from "components/form/form.utils";
-import Tags from "components/form/Tags";
+import { Form, reduxForm } from "redux-form";
+import ProjectFormSection from "components/form/ProjectFormSection";
 
 function EditProject({ initialValues, submitting, handleSubmit }) {
   return (
@@ -18,49 +17,13 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
         <div className="column is-one-quarter">
           <div className="project-image">
             <figure className="image is-1by1 is-small">
-              <img src={initialValues.avatar} className="is-centered"/>
+              <img src={initialValues.project.avatar} className="is-centered"/>
             </figure>
             <br/>
           </div>
         </div>
         <div className="column is-two-third">
-          <Field
-            name="avatar"
-            component={smallFieldWithLabel}
-            type="url"
-            placeholder="Avatar URL"
-            help="Url that will be used for your project"
-          />
-          <Field
-            name="title"
-            component={smallFieldWithLabel}
-            placeholder="Title"
-            validate={[required, maxSize(32)]}
-            help="Title not more than 32 symbols"
-          />
-          <Field name="description" component={smallFieldWithLabel} type="textarea" className="textarea" placeholder="Description" validate={[required]}/>
-          <Field
-            name="rss"
-            component={smallFieldWithLabel}
-            type="url"
-            placeholder="RSS"
-            help="that will be used to automatically add new posts"
-          />
-          <FieldArray name="tags" component={(props) => {
-            let { fields } = props;
-            let tags = fields.getAll() || [];
-            return (
-              <div className="field">
-                <label className="label is-small">Tags</label>
-                <Tags tags={tags} removeTag={(tag) => {
-                  fields.remove(tags.indexOf(tag))
-                }} addTag={({ tag }) => {
-                  fields.push(tag)
-                }}/>
-                <p className="help">that will be added to every post in this project</p>
-              </div>
-            )
-          }}/>
+          <ProjectFormSection/>
         </div>
       </div>
       <button className={`button is-small is-primary ${submitting && "is-loading"}`} type="submit">
@@ -80,7 +43,7 @@ let PendingProjectStep2 = ({ project, createProject }) => (
         <p className="heading">
           <Resource url={project.url}/>
         </p>
-        <EditProject initialValues={project} form={`new-project-${project.url}`} onSubmit={(project) => createProject(project)}/>
+        <EditProject initialValues={{ project }} form={`new-project-${project.url}`} onSubmit={({ project }) => createProject(project)}/>
       </div>
     </li>
   </Fragment>

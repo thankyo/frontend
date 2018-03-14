@@ -1,13 +1,16 @@
 import auth from "./auth";
 
-export const markMy = (req) => {
-  if (Array.isArray(req)) {
-    return req.map(markMy)
+export const markMy = (res) => {
+  if (Array.isArray(res)) {
+    return res.map(markMy)
   } else {
     return {
-      ... req,
-      isMy: auth.isMy(req.user),
+      ... res,
+      isMy: auth.isMy(res.user),
     }
   }
+};
 
-}
+export const isMyObj = (obj) => {
+  return obj && auth.isMy(obj.user);
+};

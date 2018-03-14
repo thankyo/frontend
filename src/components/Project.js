@@ -7,9 +7,8 @@ import { refreshProjectFeed, updateProject } from "reducers/project.actions";
 
 import Loading from "./Loading";
 import { LoadingButton } from "./form/form.utils";
-import Tags from "./form/Tags";
-import { max27, max32, max64, maxSize, required, smallFieldWithLabel } from "components/form/form.utils";
 import { EditButton, RefreshIcon, SaveIcon } from "components/Icon";
+import ProjectFormSection from "./form/ProjectFormSection";
 import RefreshLink from "components/RefreshLink";
 
 function ViewProject({ avatar, title, description, user, _id, tags, url, isMy, switchToEdit }) {
@@ -67,57 +66,13 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
         <div className="column is-one-quarter">
           <div className="project-image">
             <figure className="image is-1by1 is-small">
-              <img src={initialValues.avatar} className="is-centered"/>
+              <img src={initialValues.project.avatar} className="is-centered"/>
             </figure>
             <br/>
           </div>
         </div>
         <div className="column is-two-third">
-          <Field
-            name="avatar"
-            component={smallFieldWithLabel}
-            type="url"
-            placeholder="Project Avatar"
-            help="magnificent project avatar"
-          />
-          <Field
-            name="title"
-            component={smallFieldWithLabel}
-            placeholder="Title"
-            validate={[required, max27]}
-            help="27 symbols of awesomeness"
-          />
-          <Field
-            name="description"
-            component={smallFieldWithLabel}
-            type="textarea"
-            className="textarea"
-            placeholder="Description"
-            validate={[required, max64]}
-            help={"blow their mind"}
-          />
-          <Field
-            name="rss"
-            component={smallFieldWithLabel}
-            type="url"
-            placeholder="RSS"
-            help="we'll be watching every post you make"
-          />
-          <FieldArray name="tags" component={(props) => {
-            let { fields } = props;
-            let tags = fields.getAll() || [];
-            return (
-              <div className="field">
-                <label className="label is-small">Tags</label>
-                <Tags tags={tags} removeTag={(tag) => {
-                  fields.remove(tags.indexOf(tag))
-                }} addTag={({ tag }) => {
-                  fields.push(tag)
-                }}/>
-                <p className="help">that will be added to every post in this project</p>
-              </div>
-            )
-          }}/>
+          <ProjectFormSection/>
         </div>
       </div>
       <div className="field has-addons is-pulled-right">
@@ -148,7 +103,7 @@ class Project extends Component {
     let { edit } = this.state;
 
     if (edit) {
-      return <EditProject form={id} initialValues={project} onSubmit={(project) => updateProject(project).then(this.handleModeChange)} refreshFeed={refreshFeed}/>
+      return <EditProject form={id} initialValues={{ project }} onSubmit={(project) => updateProject(project).then(this.handleModeChange)} refreshFeed={refreshFeed}/>
     } else {
       return <ViewProject {...project} switchToEdit={this.handleModeChange}/>
     }
@@ -160,7 +115,7 @@ const mapStateToProps = ({ project: { byId } }, { id }) => ({ project: byId[id] 
 
 const mapDispatchToProps = (dispatch, { id }) => {
   return {
-    updateProject: (project) => dispatch(updateProject(project)),
+    updateProject: ({ project }) => dispatch(updateProject(project)),
     refreshFeed: () => dispatch(refreshProjectFeed(id))
   }
 };
