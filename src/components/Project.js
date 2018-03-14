@@ -90,7 +90,7 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
   );
 }
 
-EditProject = reduxForm({ form: "project", enableReinitialize: true })(EditProject);
+EditProject = reduxForm({ enableReinitialize: true })(EditProject);
 
 class Project extends Component {
   constructor(props) {

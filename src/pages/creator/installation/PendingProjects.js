@@ -5,7 +5,7 @@ import { expandableComponent } from "components/timeline/util";
 import { createProject, enrichProject } from "reducers/project.actions";
 import Resource from "components/Resource";
 import { InstallIcon, PendingIcon } from "components/Icon";
-import InstallationPage from "./installation";
+import Instructions from "./instruction";
 import RefreshLink from "components/RefreshLink";
 import { Form, reduxForm } from "redux-form";
 import ProjectFormSection from "components/form/ProjectFormSection";
@@ -58,7 +58,7 @@ let PendingProjectStep1 = ({ project, handleExpand }) => (
       <p className="heading">
         <Resource url={project.url}/>
       </p>
-      <InstallationPage url={project.url} webStack={project.webStack}/>
+      <Instructions url={project.url} webStack={project.webStack}/>
       <br/>
       <div className="button is-small is-primary" onClick={handleExpand}>
         <InstallIcon>Next</InstallIcon>
