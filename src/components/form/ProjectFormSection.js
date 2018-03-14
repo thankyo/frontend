@@ -48,11 +48,7 @@ export default function () {
         return (
           <div className="field">
             <label className="label is-small">Tags</label>
-            <Tags tags={tags} removeTag={(tag) => {
-              fields.remove(tags.indexOf(tag))
-            }} addTag={({ tag }) => {
-              fields.push(tag)
-            }}/>
+            <Tags tags={tags} removeTag={(tag) => {fields.remove(tags.indexOf(tag))}} addTag={({ tag }) => {fields.push(tag)}}/>
             <p className="help">that will be added to every post in this project</p>
           </div>
         )

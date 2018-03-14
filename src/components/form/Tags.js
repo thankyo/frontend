@@ -11,6 +11,7 @@ class AddTagForm extends Component {
 
   handleKeyDown = (evt) => {
     if (evt.keyCode === 13) {
+      evt.preventDefault();
       this.handleSubmit()
     }
   };

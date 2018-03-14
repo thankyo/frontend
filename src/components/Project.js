@@ -32,12 +32,11 @@ function ViewProject({ avatar, title, shortDescription, description, user, _id, 
             </div>
           </div>
           <div className="column is-two-third">
-            <p className="title">{title}</p>
+            <h1 className="title"><a href={url}>{title}</a></h1>
             <p className="subtitle">{shortDescription}</p>
             <p className='content'>
               {description}
             </p>
-            <p className="subtitle is-6"><a href={`//${url}`}>{url}</a></p>
             <div className="field is-grouped is-grouped-multiline">
               <div className="tags">
                 {tags.map((tag, i) => (
