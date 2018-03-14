@@ -46,25 +46,9 @@ function EditPost({ submitting, initialValues, handleSubmit }) {
 
 EditPost = reduxForm()(EditPost);
 
-function PostActionWrap({ children }){
-  return (
-    <nav className="level is-mobile">
-      <div className="level-left">
-        <div className="level-item">
-          {children}
-        </div>
-      </div>
-    </nav>
-  )
-}
-
 function PostActions({ post, onEdit, onLove }) {
   if (post.isMy) {
-    return (
-      <PostActionWrap>
-        <EditButton onClick={onEdit}/>
-      </PostActionWrap>
-    )
+    return <EditButton onClick={onEdit}/>
   }
   return <LoveItButton isLoved={post.isLoved} onLove={() => onLove(post.url)}/>
 }
