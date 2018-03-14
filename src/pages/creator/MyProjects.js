@@ -56,7 +56,7 @@ function MyProjects({ pending, owned, installed, isLoading, isGoogleConnected, g
       <GoogleStatus connected={isGoogleConnected} url={googleUrl}/>
       <br/>
       <br/>
-      <ResourceOwnershipStatus connected={isGoogleConnected} owned={owned}/>
+      {!isLoading && <ResourceOwnershipStatus connected={isGoogleConnected} owned={owned}/>}
       <br/>
       {isLoading ? <Spinner/> : <UserProjects pending={pending} installed={installed}/>}
     </Fragment>
