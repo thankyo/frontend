@@ -21,12 +21,18 @@ export default function () {
         help="27 symbols of awesomeness"
       />
       <Field
+        name="shortDescription"
+        component={smallFieldWithLabel}
+        placeholder="Short Description"
+        validate={[required, max64]}
+        help={"Something a bit more descriptive"}
+      />
+      <Field
         name="description"
         component={smallFieldWithLabel}
         type="textarea"
         className="textarea"
         placeholder="Description"
-        validate={[required, max64]}
         help={"blow their mind"}
       />
       <Field

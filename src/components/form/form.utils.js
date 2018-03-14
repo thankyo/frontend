@@ -21,7 +21,6 @@ export const required = value => value ? undefined : 'Required';
 export const maxSize = (max) => value => value && value.length > max ? `Must be ${max} characters or less` : undefined;
 
 export const max27 = maxSize(27);
-export const max32 = maxSize(32);
 export const max64 = maxSize(64);
 
 export const renderField = (props) => {

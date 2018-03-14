@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Field, FieldArray, Form, reduxForm } from "redux-form";
+import { Form, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 
 import { refreshProjectFeed, updateProject } from "reducers/project.actions";
 
 import Loading from "./Loading";
-import { LoadingButton } from "./form/form.utils";
 import { EditButton, RefreshIcon, SaveIcon } from "components/Icon";
 import ProjectFormSection from "./form/ProjectFormSection";
 import RefreshLink from "components/RefreshLink";
 
-function ViewProject({ avatar, title, description, user, _id, tags, url, isMy, switchToEdit }) {
+function ViewProject({ avatar, title, shortDescription, description, user, _id, tags, url, isMy, switchToEdit }) {
   if (!_id) {
     return (
       <div className="has-text-centered">
@@ -34,7 +33,10 @@ function ViewProject({ avatar, title, description, user, _id, tags, url, isMy, s
           </div>
           <div className="column is-two-third">
             <p className="title">{title}</p>
-            <p className="subtitle">{description}</p>
+            <p className="subtitle">{shortDescription}</p>
+            <p className='content'>
+              {description}
+            </p>
             <p className="subtitle is-6"><a href={`//${url}`}>{url}</a></p>
             <div className="field is-grouped is-grouped-multiline">
               <div className="tags">
@@ -76,9 +78,11 @@ function EditProject({ initialValues, submitting, handleSubmit, refreshFeed }) {
         </div>
       </div>
       <div className="field has-addons is-pulled-right">
-        <LoadingButton submitting={submitting} className="is-outlined is-primary">
-          <SaveIcon>Save</SaveIcon>
-        </LoadingButton>
+        <p className="control">
+          <button type="submit" className={`${submitting ? "is-loading" : ""} button is-primary`}>
+            <SaveIcon>Save</SaveIcon>
+          </button>
+        </p>
         <RefreshLink onClick={refreshFeed} className="button is-outlined">
           <RefreshIcon>Refresh Feed</RefreshIcon>
         </RefreshLink>

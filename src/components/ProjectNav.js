@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Project({ project = {}, to, isActive = false}) {
-  let { avatar, title, description } = project;
+export default function ProjectNav({ project = {}, to, isActive = false}) {
+  let { avatar, title, shortDescription } = project;
   return (
     <article className={`media media-new-style ${isActive && "is-active"}`}>
       <div className="media-left">
@@ -16,7 +16,7 @@ export default function Project({ project = {}, to, isActive = false}) {
         <div className="content is-inverted is-outlined">
           <Link to={to}>
             <strong>{title}</strong>
-            <p className="subtitle">{description}</p>
+            <p className="subtitle">{shortDescription}</p>
           </Link>
         </div>
       </div>
