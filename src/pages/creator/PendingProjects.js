@@ -60,7 +60,7 @@ let PendingProjectStep1 = ({ project, handleExpand }) => (
       </p>
       <InstallationPage url={project.url} webStack={project.webStack}/>
       <br/>
-      <div className="button is-small is-primary is-outlined" onClick={handleExpand}>
+      <div className="button is-small is-primary" onClick={handleExpand}>
         <InstallIcon>Next</InstallIcon>
       </div>
     </div>

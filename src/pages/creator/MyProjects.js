@@ -5,6 +5,7 @@ import { getOwnedProjects } from "reducers/project.actions";
 import PendingProjects from "./PendingProjects";
 import InstalledProjects from "./InstalledProjects";
 import spinnerFactory from "components/spinnerFactory";
+import { CheckedIcon, GoogleIcon } from "components/Icon";
 
 const Spinner = spinnerFactory(260);
 
@@ -29,26 +30,46 @@ function UserProjects({ pending, installed }) {
   )
 }
 
-function MyProjects({ pending, installed, isLoading }) {
+function GoogleStatus({ connected, url }) {
+  if (connected) {
+    return <a className="button is-small" disabled><CheckedIcon>Google Connected</CheckedIcon></a>
+  } else {
+    return <a className="button is-small is-primary" href={url}><GoogleIcon>Connect Google</GoogleIcon></a>
+  }
+}
+
+function ResourceOwnershipStatus({ connected, owned }) {
+  if (!connected) {
+    return <div/>
+  }
+
+  return owned.length === 0
+    ? <div className="is-small">Google does not have any site data, please refer to <a href="https://support.google.com/webmasters/answer/35179?hl=en">this</a> article or contact us.</div>
+    : <div className="is-size-7">We see <strong>{owned.join(", ")}</strong> from Google</div>
+}
+
+function MyProjects({ pending, owned, installed, isLoading, isGoogleConnected, googleUrl }) {
   return (
     <Fragment>
-      <h1 className="subtitle">Projects</h1>
-      <h2 className="subtitle is-6">
-        We are using <strong>Google Verification API</strong>.<br/>
-        So all you need to do is <Link to="/settings/profile">link your Google</Link> account and we are good to
-        go.<br/>
-        If you have no sites verified, please refer to <a
-        href="https://support.google.com/webmasters/answer/35179?hl=en">Google</a>.
-      </h2>
+      <h1 className="subtitle">Installation</h1>
+      <h6 className="subtitle is-6">We are using <strong>Google Verification</strong> to verify your site ownership.</h6>
+      <GoogleStatus connected={isGoogleConnected} url={googleUrl}/>
+      <br/>
+      <br/>
+      <ResourceOwnershipStatus connected={isGoogleConnected} owned={owned}/>
+      <br/>
       {isLoading ? <Spinner/> : <UserProjects pending={pending} installed={installed}/>}
     </Fragment>
   );
 }
 
-const mapStateToProps = ({ project: { owned, byId } }) => ({
+const mapStateToProps = ({ project: { owned, byId }, user: { my : { data: { profiles = {} } } }, auth: { url: { google }} } ) => ({
   installed: owned.installed.map(id => byId[id]),
+  owned: owned.owned || [],
   pending: owned.pending.map(url => ({ url })),
-  isLoading: owned.isLoading
+  isLoading: owned.isLoading,
+  isGoogleConnected: profiles.google,
+  googleUrl: google
 });
 
 const mapDispatchToProps = (dispatch) => {

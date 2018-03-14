@@ -1,7 +1,7 @@
 import React from "react";
 import { FacebookIcon, GoogleIcon } from "components/Icon";
 
-const SocialConnection = ({ providerKey, name, icon, href, children }) => (
+export const SocialConnection = ({ providerKey, name, icon, href, children }) => (
   <p className="control">
     <a className="button is-primary" disabled={providerKey} href={providerKey ? "" : href}>
       {children}

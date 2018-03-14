@@ -35,23 +35,6 @@ import {
   faUniversity
 } from '@fortawesome/fontawesome-free-solid';
 
-export function Icon({ className, children }) {
-  if (!children) {
-    return (
-      <span className="is-narrow">
-        <span className="icon"><i className={className}/></span>
-      </span>
-    );
-  } else {
-    return (
-      <span className="is-narrow">
-        <span className="icon"><i className={className}/></span>
-        <span>{children}</span>
-      </span>
-    )
-  }
-}
-
 export const FAIcon = ({ icon, children }) => {
   if (!children) {
     return (
@@ -83,6 +66,7 @@ export const ErrorIcon = ({ children }) => <FAIcon icon={faExclamationCircle}>{c
 export const SuccessIcon = ({ children }) => <FAIcon icon={faCheckCircle}>{children}</FAIcon>;
 export const InviteIcon = ({ children }) => <FAIcon className={faHandPeace}>{children}</FAIcon>;
 export const USDIcon = ({ children }) => <FAIcon icon={faDollarSign}>{children}</FAIcon>;
+export const CheckedIcon = ({ children }) => <FAIcon icon={faCheckCircle}>{children}</FAIcon>
 export const RefreshIcon = ({ children }) => <FAIcon icon={faSync}>{children}</FAIcon>;
 export const SearchIcon = ({ children }) => <FAIcon icon={faSearch}>{children}</FAIcon>;
 export const LogOutIcon = ({ children }) => <FAIcon icon={faSignOutAlt}>{children}</FAIcon>;
@@ -153,10 +137,6 @@ export function LoveItButton({ isLoved, onLove }) {
     </nav>
   );
 }
-
-Icon.propTypes = {
-  className: PropTypes.string.isRequired,
-};
 
 export function WebStackIcon({ webStack, children }) {
   switch (webStack) {

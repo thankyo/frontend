@@ -17,9 +17,11 @@ let InstalledProjectExpanded = ({ project, handleExpand, deleteProject }) => (
         <h5 className="subtitle is-6">This will remove all project related data from the system.</h5>
         <h4 className="title is-6">Are you sure?</h4>
         <div className="field has-addons">
-          <span className="button is-small is-primary is-inverted" onClick={handleExpand}>
-            Cancel
-          </span>
+          <p className="control">
+            <span className="button is-small is-primary is-outlined" onClick={handleExpand}>
+              Cancel
+            </span>
+          </p>
           <RefreshLink className="button is-small is-danger is-outlined" onClick={() => deleteProject(project)}>
             <CancelIcon>Delete</CancelIcon>
           </RefreshLink>

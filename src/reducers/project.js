@@ -61,7 +61,7 @@ function supportedReducer(state = {}, { type, payload }) {
   }
 }
 
-function ownedReducer(state = { installed: [], pending: [], isLoading: false }, { type, payload }) {
+function ownedReducer(state = { installed: [], pending: [], owned: [], isLoading: false }, { type, payload }) {
   switch (type) {
     case GET_OWNED_PROJECTS.pending: {
       return Object.assign({}, state, { isLoading: true })
@@ -70,11 +70,12 @@ function ownedReducer(state = { installed: [], pending: [], isLoading: false }, 
       return Object.assign({}, state, { isLoading: false })
     }
     case GET_OWNED_PROJECTS.fulfilled: {
-      let { installed, pending } = payload;
-      let pendingNotInstalled = pending.filter(url => installed.find(inl => inl.url === url) === undefined);
+      let { installed, owned } = payload;
+      let pending = owned.filter(url => installed.find(inl => inl.url === url) === undefined);
       return {
         installed: installed.map(({ _id }) => _id),
-        pending: pendingNotInstalled,
+        owned,
+        pending,
         isLoading: false
       };
     }

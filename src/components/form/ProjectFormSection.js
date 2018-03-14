@@ -25,7 +25,7 @@ export default function () {
         component={smallFieldWithLabel}
         placeholder="Short Description"
         validate={[required, max64]}
-        help={"Something a bit more descriptive"}
+        help={"something juicy"}
       />
       <Field
         name="description"
@@ -49,7 +49,7 @@ export default function () {
           <div className="field">
             <label className="label is-small">Tags</label>
             <Tags tags={tags} removeTag={(tag) => {fields.remove(tags.indexOf(tag))}} addTag={({ tag }) => {fields.push(tag)}}/>
-            <p className="help">that will be added to every post in this project</p>
+            <p className="help">every post in a project will have them, <strong>choose wisely</strong></p>
           </div>
         )
       }}/>
