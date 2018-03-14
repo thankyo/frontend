@@ -73,7 +73,7 @@ let RegisterForm = ({ handleSubmit, submitting }) => {
       <Field name="email" component={renderField} type="email" placeholder="Email"
              validate={[required]}/>
       <Field name="password" component={renderField} type="password" placeholder="Password"
-             validate={[required]}/>
+             validate={[required, max64]}/>
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
           <RegisterIcon>Register</RegisterIcon>
@@ -85,7 +85,7 @@ let RegisterForm = ({ handleSubmit, submitting }) => {
 
 let ReduxRegistrationForm = reduxForm({ form: 'register' })(RegisterForm);
 
-function SocialHeader({ facebook, google }) {
+function SocialHeader({ facebook }) {
   return (
     <div className="has-text-centered">
       <p className="control has-text-centered">
