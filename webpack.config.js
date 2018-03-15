@@ -16,18 +16,11 @@ const config = {
       conf: path.resolve(__dirname, 'src/conf')
     }
   },
-  entry: {
-    app: "./index.js",
-    vendor: [
-      'react',
-      'react-dom',
-      'react-router',
-      'prop-types',
-      'react-redux',
-      'redux',
-      'redux-thunk',
-      'redux-form'
-    ]
+  entry: "./index.js",
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
   },
   module: {
     rules: [
@@ -132,26 +125,6 @@ if (process.env.NODE_ENV === 'production') {
   const WebpackMd5Hash = require('webpack-md5-hash');
 
   config.mode = "production";
-
-  config.optimization = {
-    runtimeChunk: {
-      name: 'vendor'
-    },
-    splitChunks: {
-      cacheGroups: {
-      default: false,
-          commons: {
-          test: /node_modules/,
-            name: "vendor",
-            chunks: "initial",
-            minSize: 1
-        }
-      }
-    }
-  };
-
-  config.output.filename = '[name].[chunkhash].js';
-  config.output.chunkFilename = '[name].[chunkhash].js';
   config.plugins = [
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.DefinePlugin({

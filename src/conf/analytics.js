@@ -15,16 +15,15 @@ function recordLoadTime() {
 }
 
 export default function configure(history) {
-    return loadGA().
-        then(() => {
-          ga('create', 'UA-96949345-1', 'auto');
-          ga('send', 'pageview', location.pathname);
-          // history.listen(function (location) {
-          //   ga('send', 'pageview', location.pathname)
-          // });
-          recordLoadTime();
-          return ga;
-        }).catch((err) => {
-          console.error(`Failed to load analytics ${err}`)
-        });
+  return loadGA().then(() => {
+    ga('create', 'UA-96949345-1', 'auto');
+    ga('send', 'pageview', location.pathname);
+    // history.listen(function (location) {
+    //   ga('send', 'pageview', location.pathname)
+    // });
+    recordLoadTime();
+    return ga;
+  }).catch((err) => {
+    console.error(`Failed to load analytics ${err}`)
+  });
 };

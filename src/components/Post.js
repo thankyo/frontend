@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
-import { EditButton, LoveItButton, SaveIcon, SmallEditButton } from "components/Icon";
+import { LoveItButton, SaveIcon, SmallEditButton } from "components/Icon";
 import moment from "moment/moment";
 import { smallFieldWithLabel } from "components/form/form.utils";
 import Tags from "components/form/Tags";
@@ -80,9 +80,7 @@ function PostOnTimeline({ post, lovePost, switchToEdit }) {
           <img src={url}/>
         </figure>
         <br/>
-        <div className="media-content">
-          {isMy ? <SmallEditButton onClick={switchToEdit}/> : <LoveItButton isLoved={post.isLoved} onLove={() => lovePost(post.url)}/>}
-        </div>
+        {isMy ? <SmallEditButton onClick={switchToEdit}/> : <LoveItButton isLoved={post.isLoved} onLove={() => lovePost(post.url)}/>}
       </div>
     </li>
   );

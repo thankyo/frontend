@@ -1,23 +1,53 @@
-import React from "react";
-import { FacebookIcon, GoogleIcon } from "components/Icon";
+import React, { Fragment } from "react";
+import { CancelIcon, FacebookIcon, GoogleIcon, } from "components/Icon";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { deleteSocialConnection } from "reducers/user.actions";
 
-export const SocialConnection = ({ providerKey, name, icon, href, children }) => (
-  <p className="control">
-    <a className="button is-primary" disabled={providerKey} href={providerKey ? "" : href}>
-      {children}
-    </a>
-  </p>
-);
-
-export default function ConnectedSocial({ profiles, url }) {
-  return <div>
-    <div className="field has-addons">
-      <SocialConnection providerKey={profiles.facebook} href={url.facebook}>
-        <FacebookIcon>Connect with FB</FacebookIcon>
-      </SocialConnection>
-      <SocialConnection providerKey={profiles.google} href={url.google}>
-        <GoogleIcon>Connect with Google</GoogleIcon>
-      </SocialConnection>
-    </div>
-  </div>
+let ProviderIcon = ({ provider, children }) => {
+  switch (provider) {
+    case "facebook":
+      return <FacebookIcon>{children}</FacebookIcon>
+    case "google":
+      return <GoogleIcon>{children}</GoogleIcon>
+  }
 }
+
+let SocialConnection = ({ isConnected, provider, url, deleteSocialConnection }) => {
+  if (isConnected) {
+    return (
+      <div className="field has-addons">
+        <p className="control">
+          <div className="button is-success">
+            <ProviderIcon provider={provider}>Connected</ProviderIcon>
+          </div>
+        </p>
+        <p className="control">
+          <div className="button is-pulled-right is-danger" onClick={() => deleteSocialConnection(provider)}>
+            <CancelIcon>Disconnect</CancelIcon>
+          </div>
+        </p>
+      </div>
+    )
+  }
+  return (
+    <div className="field has-addons">
+      <a className="button is-primary" href={url}>
+        <ProviderIcon provider={provider}>Connect</ProviderIcon>
+      </a>
+    </div>
+  )
+};
+
+const mapStateToProps = ({ user: { my: { data: { profiles } }}, auth: { url }}, { provider }) => ({ url: url[provider], isConnected: profiles[provider] })
+const mapDispatchToProps = (dispatch) => bindActionCreators({ deleteSocialConnection }, dispatch);
+
+SocialConnection = connect(mapStateToProps, mapDispatchToProps)(SocialConnection);
+
+export default function ConnectedSocial() {
+  return <Fragment>
+    <SocialConnection provider="facebook"/>
+    <SocialConnection provider="google"/>
+  </Fragment>
+}
+
