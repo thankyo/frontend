@@ -7,7 +7,7 @@
   "repository": "git+https://github.com/thankyo/thank-brunch.git",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
-    "build": "rimraf public && NODE_ENV=production webpack -p",
+    "build": "rimraf public && NODE_ENV=production webpack -p --optimize-minimize",
     "start-integration": "webpack-dev-server --config webpack.integration.config.js",
     "build-integration": "rimraf public && NODE_ENV=production webpack -p --config webpack.integration.config.js"
   },
@@ -74,6 +74,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.3",
     "svg-inline-loader": "^0.8.0",
+    "webapp-webpack-plugin": "^1.1.2",
     "webpack": "^4.1.1",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-chunk-hash": "^0.5.0",

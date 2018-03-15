@@ -144,7 +144,7 @@ const config = {
 /* Production */
 if (process.env.NODE_ENV === 'production') {
   const CompressionPlugin = require("compression-webpack-plugin");
-  const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+  const WebappWebpackPlugin = require('webapp-webpack-plugin');
   const CopyWebpackPlugin = require('copy-webpack-plugin');
   const WebpackMd5Hash = require('webpack-md5-hash');
 
@@ -163,7 +163,6 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     ...config.plugins, // ES6 array destructuring, available in Node 5+
-    new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
     new webpack.HashedModuleIdsPlugin(),
     new WebpackMd5Hash(),
     // new ChunkManifestPlugin({
@@ -172,7 +171,10 @@ if (process.env.NODE_ENV === 'production') {
     //   inlineManifest: true,
     // }),
     new CopyWebpackPlugin([{ from: '../assets' }]),
-    new FaviconsWebpackPlugin('../assets/favicon.png'),
+    new WebappWebpackPlugin({
+      inject: true,
+      logo: '../assets/favicon.png'
+    }),
     new CompressionPlugin({
       asset: "[path].gz[query]",
       algorithm: "gzip",
