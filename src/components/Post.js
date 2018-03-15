@@ -35,7 +35,7 @@ function Post(props) {
                 {tags.map((tag, i) => <Link key={i} to={`/search?query=${tag}`}> #{tag}</Link>)}
               </p>
             </div>
-            {!isMy ? <LoveItButton isLoved={post.isLoved} onLove={() => lovePost(post.url)}/> : <Link to={`/creator/my/post/${post._id}`}><EditButton/></Link>}
+            {!isMy ? <LoveItButton isLoved={post.isLoved} onLove={() => lovePost(post.url)}/> : <Link to={`/post/${post._id}`}><EditButton/></Link>}
           </div>
         </article>
       </div>

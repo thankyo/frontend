@@ -101,6 +101,10 @@ class Post extends Component {
     let { post, lovePost, savePost } = this.props;
     let { edit } = this.state;
 
+    if (!post) {
+      return <div>Loading</div>
+    }
+
     if (edit) {
       return <EditPostOnTimeline form={post._id} initialValues={post.ogObj} project={post.project} onSubmit={(ogObj) => savePost(ogObj).then(this.handleModeChange)}/>
     } else {

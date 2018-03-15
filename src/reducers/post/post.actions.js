@@ -1,21 +1,23 @@
 import authService from "../util/auth";
 import { dispatchPromise, event } from "../util/promiseStates";
-import { action } from "reducers/util/action";
 
+export const POST_GET = event("POST_GET");
 export const POST_SAVE = event("POST_SAVE");
-export const POST_EDIT = "POST_EDIT";
 export const POST_LOVE = event("POST_LOVE");
 
-export function enableEdit(id) {
-  return (dispatch) => {
-    dispatch(action(POST_EDIT, id))
+export function getPost(id) {
+  return (dispatch, getState) => {
+    let { post: { byId } } = getState();
+    if (byId[id] === undefined) {
+      let p = authService.get(`/api/v1/thank/post/${id}`);
+      return dispatchPromise(p, POST_GET, dispatch);
+    }
   }
 }
 
-export function savePost(post, id) {
+export function savePost(post) {
   return (dispatch) => {
     let p = authService.post("/api/v1/thank/graph/my", post);
-    p.then(() => dispatch(enableEdit(id)));
     return dispatchPromise(p, POST_SAVE, dispatch);
   }
 }

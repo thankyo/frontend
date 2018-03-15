@@ -9,8 +9,10 @@ import Loading from "./Loading";
 import { EditButton, RefreshIcon, SaveIcon } from "components/Icon";
 import ProjectFormSection from "./form/ProjectFormSection";
 import RefreshLink from "components/RefreshLink";
+import { isMyObj } from "reducers/util/markMy";
+import auth from "reducers/util/auth";
 
-function ViewProject({ avatar, title, shortDescription, description, user, _id, tags, url, isMy, switchToEdit }) {
+function ViewProject({ avatar, title, shortDescription, description, user, _id, tags, url, switchToEdit }) {
   if (!_id) {
     return (
       <div className="has-text-centered">
@@ -18,6 +20,7 @@ function ViewProject({ avatar, title, shortDescription, description, user, _id, 
       </div>
     )
   }
+  let isMy = auth.isMy(user);
 
   return (
     <div>

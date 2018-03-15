@@ -3,7 +3,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 let iFrameText = "<iframe src='https://loveit.tips/integration' width='80' height='80' frameBorder='0' style='position: fixed; right: 10px; bottom: 10px'></iframe>";
 
-export default class Manual extends Component {
+class Manual extends Component {
   constructor(props) {
     super(props);
 
@@ -53,3 +53,5 @@ export default class Manual extends Component {
     );
   }
 }
+
+export default Manual;

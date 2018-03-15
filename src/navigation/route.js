@@ -18,6 +18,7 @@ import LegalRouter from '../pages/legal/LegalRouter';
 import DashboardRouter from "../pages/dashboard/DashboardRouter";
 import CreatorDashboardRouter from "../pages/creator/CreatorDashboardRouter";
 import SettingsRouter from "../pages/settings/SettingsRouter";
+import PostRouter from "../pages/post/PostRouter";
 
 import SearchRouter from "../pages/search/SearchRouter";
 
@@ -41,13 +42,14 @@ export default class MainApp extends Component {
 
           <Route path="/legal" component={LegalRouter}/>
 
-          <Route path="/(creator|dashboard|settings|search)">
+          <Route path="/(creator|dashboard|settings|search|post)">
             <Fragment>
               <Navigation/>
               <Route path="/creator" component={CreatorDashboardRouter}/>
               <Route path="/dashboard" component={DashboardRouter}/>
               <Route path="/settings" component={SettingsRouter}/>
               <Route path="/search" component={SearchRouter}/>
+              <Route path="/post" component={PostRouter}/>
             </Fragment>
           </Route>
 

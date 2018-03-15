@@ -18,7 +18,7 @@ const WebStackSelector = ({ webStack, onWebStackChange }) => (
   </div>
 );
 
-export default class InstallationPage extends Component{
+class InstructionPage extends Component{
   constructor(props) {
     super(props);
 
@@ -43,3 +43,5 @@ export default class InstallationPage extends Component{
     );
   }
 }
+
+export default InstructionPage;
