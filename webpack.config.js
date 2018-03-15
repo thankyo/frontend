@@ -78,24 +78,7 @@ const config = {
     filename: '[name].bundle.js',
     publicPath: "/"
   },
-  optimization: {
-    runtimeChunk: {
-      name: 'vendor'
-    },
-    splitChunks: {
-      cacheGroups: {
-        default: false,
-        commons: {
-          test: /node_modules/,
-          name: "vendor",
-          chunks: "initial",
-          minSize: 1
-        }
-      }
-    }
-  },
   plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       template: './index.ejs',
@@ -150,9 +133,27 @@ if (process.env.NODE_ENV === 'production') {
 
   config.mode = "production";
 
+  config.optimization = {
+    runtimeChunk: {
+      name: 'vendor'
+    },
+    splitChunks: {
+      cacheGroups: {
+      default: false,
+          commons: {
+          test: /node_modules/,
+            name: "vendor",
+            chunks: "initial",
+            minSize: 1
+        }
+      }
+    }
+  };
+
   config.output.filename = '[name].[chunkhash].js';
   config.output.chunkFilename = '[name].[chunkhash].js';
   config.plugins = [
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.DefinePlugin({
       '__DEV__': true,
       FACEBOOK_KEY: 1429718427098411,
@@ -193,7 +194,6 @@ if (process.env.NODE_ENV !== 'production') {
   config.plugins = [
     new webpack.DefinePlugin({
       '__DEV__': true,
-      ALWAYS_INTRO: true,
       FACEBOOK_KEY: 1429230027124287,
       GOOGLE_KEY: JSON.stringify('950975724697-72b9ga3ag50f9m7kknemnbpn74h422v7.apps.googleusercontent.com'),
       STRIPE_KEY: JSON.stringify("pk_test_l8X6IIKp6dumjWWwqsuowf5p"),
