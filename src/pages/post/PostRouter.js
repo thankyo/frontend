@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
 
-import Post from "components/PostOnTimeline";
+import Post from "components/Post";
 
 import { Route, Switch } from 'react-router-dom';
 import { getPost } from "reducers/post/post.actions";

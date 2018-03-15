@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
-import PostOnTimeline from "components/PostOnTimeline";
+import React from "react";
+import Post from "components/Post";
 import { connect } from "react-redux";
 import { searchByProject } from "reducers/post/post.actions";
 
-function Posts({ posts }) {
+function ProjectPosts({ posts }) {
   return (
     <ul className="timeline">
-      {posts.map((id, i) => <PostOnTimeline key={i} id={id}/>)}
+      {posts.map((id, i) => <Post key={i} id={id}/>)}
     </ul>
   )
 }
@@ -18,4 +18,4 @@ const mapDispatchToProps = (dispatch, { id }) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectPosts);

@@ -35,7 +35,7 @@ class SearchDashboard extends Component {
 
   render() {
     const { isLoading } = this.state;
-    if (isLoading ) {
+    if (isLoading) {
       return <Loading/>
     }
 
@@ -46,27 +46,13 @@ class SearchDashboard extends Component {
       return <NoResults/>
     } else {
       return (
-        <div className="tile is-ancestor">
-          <div className="tile is-vertical is-4">
-            <div className="tile">
-              <div className="tile is-parent is-vertical">
-                {tags.map((id, i) => i % 3 === 0 && <Post key={i} id={id}/>)}
-              </div>
-            </div>
+        <div className="columns">
+          <div className="column is-one-third">
           </div>
-          <div className="tile is-vertical is-4">
-            <div className="tile">
-              <div className="tile is-parent is-vertical">
-                {tags.map((id, i) => i % 3 === 1 && <Post key={i} id={id}/>)}
-              </div>
-            </div>
-          </div>
-          <div className="tile is-vertical is-4">
-            <div className="tile">
-              <div className="tile is-parent is-vertical">
-                {tags.map((id, i) => i % 3 === 2 && <Post key={i} id={id}/>)}
-              </div>
-            </div>
+          <div className="column is-three-third">
+            <ul className="timeline">
+              {tags.map((id) => <Post key={id} id={id}/>)}
+            </ul>
           </div>
         </div>
       )
