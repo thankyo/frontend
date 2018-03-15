@@ -124,6 +124,18 @@ export const EditButton = ({ children, onClick }) => (
   </nav>
 );
 
+export const SmallEditButton = ({ children, onClick }) => (
+  <nav className="level is-mobile">
+    <div className="level-left">
+      <div className="level-item">
+        <a className="button is-primary is-outlined is-small" onClick={onClick}>
+          <FAIcon icon={faEdit}>Edit</FAIcon>
+        </a>
+      </div>
+    </div>
+  </nav>
+);
+
 export function LoveItButton({ isLoved, onLove }) {
   return (
     <nav className="level is-mobile">
