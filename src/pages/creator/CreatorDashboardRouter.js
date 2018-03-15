@@ -57,9 +57,9 @@ export default function CreatorDashboardRouter() {
             <Switch>
               <Route exact path="/creator/my" component={InstallationPage}/>
               <Route path="/creator/:user/project/:project" render={(({ match: { params: { user, project } } }) => (
-                <Fragment>
+                <Fragment key={project}>
                   <section className="section">
-                    <Project id={project}/>
+                    <Project id={project} />
                   </section>
                   <ProjectPosts id={project}/>
                 </Fragment>

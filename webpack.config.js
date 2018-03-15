@@ -19,7 +19,6 @@ const config = {
   entry: {
     app: "./index.js",
     vendor: [
-      'offline-plugin/runtime',
       'react',
       'react-dom',
       'react-router',
