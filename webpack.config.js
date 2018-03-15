@@ -78,10 +78,23 @@ const config = {
     filename: '[name].bundle.js',
     publicPath: "/"
   },
+  optimization: {
+    runtimeChunk: {
+      name: 'vendor'
+    },
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        commons: {
+          test: /node_modules/,
+          name: "vendor",
+          chunks: "initial",
+          minSize: 1
+        }
+      }
+    }
+  },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-    }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
@@ -135,6 +148,8 @@ if (process.env.NODE_ENV === 'production') {
   const CopyWebpackPlugin = require('copy-webpack-plugin');
   const WebpackMd5Hash = require('webpack-md5-hash');
 
+  config.mode = "production";
+
   config.output.filename = '[name].[chunkhash].js';
   config.output.chunkFilename = '[name].[chunkhash].js';
   config.plugins = [
@@ -170,6 +185,9 @@ if (process.env.NODE_ENV === 'production') {
 
 
 if (process.env.NODE_ENV !== 'production') {
+
+  config.mode = "development";
+
   config.plugins = [
     new webpack.DefinePlugin({
       '__DEV__': true,
