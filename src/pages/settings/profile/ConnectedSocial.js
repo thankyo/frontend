@@ -4,29 +4,29 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { deleteSocialConnection } from "reducers/user.actions";
 
-let ProviderIcon = ({ provider, children }) => {
+const ProviderIcon = ({ provider, children }) => {
   switch (provider) {
     case "facebook":
-      return <FacebookIcon>{children}</FacebookIcon>
+      return <FacebookIcon>{children}</FacebookIcon>;
     case "google":
-      return <GoogleIcon>{children}</GoogleIcon>
+      return <GoogleIcon>{children}</GoogleIcon>;
   }
-}
+};
 
 let SocialConnection = ({ isConnected, provider, url, deleteSocialConnection }) => {
   if (isConnected) {
     return (
       <div className="field has-addons">
-        <p className="control">
+        <div className="control">
           <div className="button is-success">
             <ProviderIcon provider={provider}>Connected</ProviderIcon>
           </div>
-        </p>
-        <p className="control">
+        </div>
+        <div className="control">
           <div className="button is-pulled-right is-danger" onClick={() => deleteSocialConnection(provider)}>
             <CancelIcon>Disconnect</CancelIcon>
           </div>
-        </p>
+        </div>
       </div>
     )
   }

@@ -9,6 +9,7 @@ import { fieldWithLabel, LoadingButton, required } from "components/form/form.ut
 import { SaveIcon } from "components/Icon";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
+import Date from "components/form/Date";
 
 function ProfileEdit({ avatar, handleSubmit, submitting, url, initialValues }) {
   return (
@@ -49,7 +50,7 @@ function ProfileEdit({ avatar, handleSubmit, submitting, url, initialValues }) {
             <Field name="email" component={fieldWithLabel} type="email" placeholder="Email" validate={[required]}/>
           </div>
           <div className="column is-half">
-            <Field name="dateOfBirth" component={fieldWithLabel} type="date" placeholder="Date Of Birth" disabled/>
+            <Field name="dateOfBirth" component={Date} type="date" placeholder="Date Of Birth" />
           </div>
         </div>
         <div className="columns">
@@ -64,8 +65,9 @@ function ProfileEdit({ avatar, handleSubmit, submitting, url, initialValues }) {
         </div>
         <div className="columns">
           <div className="column">
-            <time className="is-small is-pulled-right" date={initialValues.created}>Registration
-              date: {moment(initialValues.created).format('LL')}</time>
+            <time className="is-small is-pulled-right" date={initialValues.created}>
+              Registration date: {moment(initialValues.created).format('LL')}
+              </time>
           </div>
         </div>
         <div className="is-pulled-right">
@@ -97,7 +99,7 @@ ProfileEdit = connect(mapStateToEditProps, mapDispatchToEditProps)(reduxForm({ f
 const ProfileSection = () => (<ProfileEdit/>);
 
 
-const mapStateToSectionProps = ({ user: { my = {} }}) => my;
+const mapStateToSectionProps = ({ user: { my = {} } }) => my;
 
 const mapDispatchToSectionProps = (dispatch) => {
   dispatch(getUser("my"));
