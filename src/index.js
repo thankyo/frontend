@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import React from "react";
 import ReactDOM from "react-dom";
-import createHistory from 'history/createBrowserHistory'
+import createHistory from 'history/createBrowserHistory';
 import { Provider } from "react-redux";
 import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux'
 
@@ -21,12 +21,11 @@ let loaded = new Promise((resolve) => {
     resolve();
   } else {
     window.onload = resolve;
-
   }
 });
 
 
-Promise.all([ loaded, conf(history, store) ]).then(() => {
+Promise.all([ loaded, conf() ]).then(() => {
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>

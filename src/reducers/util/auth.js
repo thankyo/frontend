@@ -37,7 +37,12 @@ class TokenStore {
     localStorage.setItem("email", email);
 
     try {
-      Raven.setUserContext({ id, email });
+      if (Raven) {
+        Raven.setUserContext({ id, email });
+      }
+      if (ga) {
+        ga('set', 'userId', id)
+      }
     } catch (err) { }
     try {
       $crisp.push(["set", "user:email", [ email ]])
