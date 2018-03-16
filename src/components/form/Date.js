@@ -1,15 +1,15 @@
 import React, { Fragment, Component } from "react";
 import moment from "moment";
 
-const DATE_FORMAT = "YYYY-M-D";
-const DEFAULT_DATE = "1980-1-1";
+const DATE_FORMAT = "YYYY-MM-DD";
+const DEFAULT_DATE = "1980-01-01";
 
 class Date extends Component {
   constructor(props) {
     super(props);
-    let {  input: { value = DEFAULT_DATE } } = this.props;
+    let {  input: { value } } = this.props;
 
-    let date = moment(value, DATE_FORMAT);
+    let date = moment(value || DEFAULT_DATE, DATE_FORMAT);
     this.state = {
       date,
       day: date.date(),
@@ -36,6 +36,12 @@ class Date extends Component {
     onChange(moment(`${year}-${month}-${day}`, "YYYY-MMMM-D").format(DATE_FORMAT));
   };
 
+  handleKeyDown = (key) => {
+    if (key.keyCode === 13) {
+      this.handleBlur();
+    }
+  };
+
   render() {
     let { meta: { touched, error }, placeholder } = this.props;
     let { day, month, year } = this.state;
@@ -44,11 +50,11 @@ class Date extends Component {
         <label className="label">{placeholder}</label>
         <div className="field has-addons">
           <div className="control">
-            <input type="number" className="input" min={1} max={32} value={day} onChange={this.handleDayChange} onBlur={this.handleBlur}/>
+            <input type="number" className="input" min={1} max={32} value={day} onChange={this.handleDayChange} onBlur={this.handleBlur} onKeyDown={this.handleKeyDown}/>
           </div>
           <div className="control">
             <div className="select">
-              <select name="month" value={month} onChange={this.handleMonthChange} onBlur={this.handleBlur}>
+              <select name="month" value={month} onChange={this.handleMonthChange} onBlur={this.handleBlur} onKeyDown={this.handleKeyDown}>
                 <option value="January">January</option>
                 <option value="February">February</option>
                 <option value="March">March</option>
@@ -65,7 +71,7 @@ class Date extends Component {
             </div>
           </div>
           <div className="control is-expanded">
-            <input type="number" className="input" value={year} onChange={this.handleYearChange} onBlur={this.handleBlur}/>
+            <input type="number" className="input" value={year} onChange={this.handleYearChange} onBlur={this.handleBlur} onKeyDown={this.handleKeyDown}/>
           </div>
           {touched && error && <p className="help is-white">{error}</p>}
         </div>
