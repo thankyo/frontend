@@ -34,6 +34,9 @@ export const POST_SEARCH_BY_PROJECT = event("POST_SEARCH_BY_PROJECT");
 
 export function searchByTag(tags) {
   return (dispatch) => {
+    if (!tags || tags.trim().length === 0) {
+      return Promise.resolve();
+    }
     let p = authService.get(`/api/v1/thank/graph/search?tags=${encodeURIComponent(tags)}`);
     return dispatchPromise(p, POST_SEARCH_BY_TAG, dispatch);
   }

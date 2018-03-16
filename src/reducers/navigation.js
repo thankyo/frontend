@@ -6,10 +6,7 @@ const LINKS = [
   { pathname: "/search", name: "Discover" },
   { pathname: "/dashboard/my", name: "Contributions" },
   { pathname: "/creator/my", name: "Projects" },
-  { pathname: "/settings", name: "Settings" },
-  { pathname: "/settings/limit", name: "Limits", isHiddenDesktop: true },
-  { pathname: "/settings/charge", name: "Charge", isHiddenDesktop: true },
-  { pathname: "/settings/payout", name: "Payout", isHiddenDesktop: true },
+  { pathname: "/settings/profile", name: "Settings" },
 ];
 
 function linksReducer(state = LINKS, { type, payload }) {
@@ -17,9 +14,6 @@ function linksReducer(state = LINKS, { type, payload }) {
     case LOCATION_CHANGE:
       window.scroll(0, 0);
       let { pathname } = payload;
-      if (ga) {
-        ga('send', 'pageview', pathname);
-      }
       return LINKS.map(link => Object.assign({}, link, { isActive: pathname.startsWith(link.pathname) }));
   }
   return state;

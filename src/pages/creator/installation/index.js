@@ -16,7 +16,6 @@ function UserProjects({ pending, installed }) {
         <div className="timeline-marker is-medium is-primary"/>
         <div className="timeline-content">
           <p className="heading">No resources registered</p>
-          <p>Connect your <Link to="/settings/profile">google account</Link> or contact us.</p>
         </div>
       </li>
     </ul>
