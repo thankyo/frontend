@@ -47,8 +47,9 @@ function toEvent({ type, payload }) {
 }
 
 export default function analyticsReducer(state = [], action) {
-  let event = toEvent(action)
+  let event = toEvent(action);
   if (event !== undefined) {
+    if (ga) ga('send', event)
     return state.concat(event)
   } else {
     return state;
