@@ -36,7 +36,7 @@ class InstructionPage extends Component{
     return (
       <div>
         <WebStackSelector webStack={webStack} onWebStackChange={this.handleWebStackChange}/>
-        <div style={{ width: "538px"}}>
+        <div>
         {webStack === "WordPress" ? <WordPress url={url}/> : <Manual/>}
         </div>
       </div>

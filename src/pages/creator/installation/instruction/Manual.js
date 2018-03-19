@@ -23,11 +23,11 @@ class Manual extends Component {
   render() {
     return (
       <div>
-        <h2 className="subtitle is-6">
+        <div className="subtitle is-size-6">
           First <strong>copy & paste</strong> the following before the
           closing {"</body>"} tag
           of page.
-        </h2>
+        </div>
 
         <figure className="highlight">
           <pre>
