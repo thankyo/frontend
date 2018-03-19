@@ -33,7 +33,8 @@ function ChargeAccountSection({ isMissing, brand, last4, connectChargeAccount, d
             </div>
           </div>
         </div>
-        <h5 className="subtitle payment-text"><b>All charges happen at the end of the month</b></h5>
+        <br/>
+        <p className="subtitle is-size-7"><b>All charges happen at the end of the month</b></p>
       </div>
     </section>
   );

@@ -24,10 +24,11 @@ const mapUserImageToProps = (dispatch) => {
 
 UserImage = connect(({ user: { my }}) => my, mapUserImageToProps)(componentFactory(UserImage, spinnerFactory(124)));
 
-function NavigationLink({ name, icon, pathname, isActive, isHiddenDesktop = false }) {
+function NavigationLink({ name, icon, pathname, isActive, isMobile }) {
+  let linkClassName = isMobile === true ? "is-mobile is-hidden-tablet is-hidden-desktop" : isMobile === false ? "is-hidden-mobile" : "";
   return (
     <li className={isActive ? "is-active" : ""}>
-      <Link to={pathname} className={isHiddenDesktop ? "is-hidden-desktop" : ""}>
+      <Link to={pathname} className={linkClassName}>
         {name}
       </Link>
     </li>
@@ -44,16 +45,16 @@ function Navigation({ links, contributions }) {
               <Link to="/dashboard/my" style={{ paddingTop: "7px" }}>
                 <Brand/>
               </Link>
-              <span className="navbar-burger burger">
+              <a className="navbar-burger burger is-active" onClick={auth.logout}>
                 <span/>
                 <span/>
                 <span/>
-              </span>
+              </a>
             </div>
             <div className="navbar-menu">
               <div className="navbar-end">
                 <span className="navbar-item">
-                  <a onClick={() => auth.logout()} className="button is-primary is-inverted is-outlined">
+                  <a onClick={auth.logout} className="button is-primary is-inverted is-outlined">
                     <LogOutIcon>Log Out</LogOutIcon>
                   </a>
                 </span>

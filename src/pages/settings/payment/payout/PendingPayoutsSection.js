@@ -8,8 +8,10 @@ import DownloadCSVButton from "components/DownloadCSVButton";
 function OutgoingSection({ transactions, getPendingPayoutsCsv }) {
   return (
     <section className="section">
-      <p className="title is-5 has-text-centered">Pending</p>
-      <DownloadCSVButton onClick={getPendingPayoutsCsv}/>
+      <p className="title is-5 has-text-centered">
+        <DownloadCSVButton onClick={getPendingPayoutsCsv}/>
+        Pending
+      </p>
       <PayoutTimeline transactions={transactions}/>
     </section>
   );

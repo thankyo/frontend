@@ -8,8 +8,10 @@ import DownloadCSVButton from "components/DownloadCSVButton";
 function PayoutSection({ payouts, getPayoutsCsv }) {
   return (
     <section className="section">
-      <p className="title is-5 has-text-centered">Payouts</p>
-      <DownloadCSVButton onClick={getPayoutsCsv}/>
+      <p className="title is-5 has-text-centered">
+        <DownloadCSVButton onClick={getPayoutsCsv}/>
+        Payouts
+      </p>
       <EOMPayoutTimeline payouts={payouts}/>
     </section>
   );

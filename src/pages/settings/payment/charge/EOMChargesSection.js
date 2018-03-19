@@ -8,8 +8,10 @@ import DownloadCSVButton from "components/DownloadCSVButton";
 function ChargesSection({ charges, getChargesCSV }) {
   return (
     <section className="section">
-      <p className="title is-5 has-text-centered">Charges</p>
-      <DownloadCSVButton onClick={getChargesCSV}/>
+      <p className="title is-5 has-text-centered">
+        <DownloadCSVButton onClick={getChargesCSV}/>
+        Charges
+      </p>
       <EOMChargeTimeline charges={charges}/>
     </section>
   );

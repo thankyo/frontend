@@ -12,10 +12,10 @@ export default function SettingsRouter() {
   return (
     <section className="section container">
       <div className="columns">
-        <div className="column is-3">
+        <div className="column is-3 is-hidden-mobile">
           <SettingsMenu/>
         </div>
-        <div className="column is-9">
+        <div className="column is-9 is-12-mobile">
           <Switch>
             <Route exact path="/settings">
               <Redirect to="/settings/profile"/>

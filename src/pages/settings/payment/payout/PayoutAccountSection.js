@@ -35,7 +35,8 @@ function PayoutAccountSection({ account, deletePayoutAccount, isMissing }) {
             </div>
           </div>
         </div>
-        <h5 className="subtitle payment-text"><b>All payouts happen at the end of the month</b></h5>
+        <br/>
+        <p className="subtitle is-size-7"><b>All payouts happen at the end of the month</b></p>
       </div>
     </section>
   )
