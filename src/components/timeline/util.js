@@ -104,6 +104,7 @@ export function mergePayouts(transactions) {
 
     return { dateStr, created, total, projects: Object.values(byProject) }
   });
+  mergedByProject.reverse()
 
   return mergedByProject;
 }
