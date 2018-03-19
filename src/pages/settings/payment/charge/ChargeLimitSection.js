@@ -44,14 +44,14 @@ class PaymentLimitSection extends Component {
           </p>
           <p className="limit-count-block">
             <a className="limit-button" disabled={cups === 1} onClick={() => decrease(limit)}>
-              <IncrementIcon/>
+              <DecrementIcon/>
             </a>
             <span className="limit-count">
             &nbsp;<b>{amount}.0</b>&nbsp;
               <span>{currency}</span>
           </span>
             <a className="limit-button" onClick={() => increase(limit)}>
-              <DecrementIcon/>
+              <IncrementIcon/>
             </a>
           </p>
         </div>
