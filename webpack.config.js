@@ -7,7 +7,6 @@ function isProduction() {
 }
 
 const config = {
-  devtool: "source-map",
   context: path.resolve(__dirname, 'src'),
   resolve: {
     alias: {
@@ -17,9 +16,15 @@ const config = {
     }
   },
   entry: "./index.js",
+  output: {
+    path: path.join(__dirname, "public"),
+    filename: '[name].[chunkhash].js',
+    publicPath: "/"
+  },
   optimization: {
     splitChunks: {
-      chunks: "all"
+      chunks: "all",
+      filename: "[name].[chunkhash].js"
     }
   },
   module: {
@@ -65,11 +70,6 @@ const config = {
         use: ["file-loader"]
       }
     ]
-  },
-  output: {
-    path: path.join(__dirname, "public"),
-    filename: '[name].bundle.js',
-    publicPath: "/"
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -122,7 +122,6 @@ if (process.env.NODE_ENV === 'production') {
   const CompressionPlugin = require("compression-webpack-plugin");
   const WebappWebpackPlugin = require('webapp-webpack-plugin');
   const CopyWebpackPlugin = require('copy-webpack-plugin');
-  const WebpackMd5Hash = require('webpack-md5-hash');
 
   config.mode = "production";
   config.plugins = [
@@ -138,7 +137,6 @@ if (process.env.NODE_ENV === 'production') {
     }),
     ...config.plugins, // ES6 array destructuring, available in Node 5+
     new webpack.HashedModuleIdsPlugin(),
-    new WebpackMd5Hash(),
     // new ChunkManifestPlugin({
     //   filename: 'chunk-manifest.json',
     //   manifestVariable: 'webpackManifest',
