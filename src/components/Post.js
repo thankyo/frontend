@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { lovePost, savePost } from "reducers/post/post.actions";
+import { lovePost, savePost, deletePost } from "reducers/post/post.actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
-import { LoveItButton, SaveIcon, SmallEditButton } from "components/Icon";
+import { DeleteIcon, LoveItButton, SaveIcon, SmallEditButton } from "components/Icon";
 import moment from "moment/moment";
 import { smallFieldWithLabel } from "components/form/form.utils";
 import Tags from "components/form/Tags";
 import { isMyObj } from "reducers/util/markMy";
+import RefreshLink from "components/RefreshLink";
 
-function EditPostOnTimeline({ submitting, initialValues, project, handleSubmit }) {
+function EditPostOnTimeline({ submitting, initialValues, project, handleSubmit, onDelete }) {
   return (
     <li className="timeline-item is-primary">
       <div className="timeline-marker is-medium is-primary">
@@ -42,11 +43,18 @@ function EditPostOnTimeline({ submitting, initialValues, project, handleSubmit }
             )
           }}/>
           <Field name="image.url" component={smallFieldWithLabel} type="image" placeholder="Image"/>
-          <p className="control">
-            <button type="submit" className={`${submitting ? "is-loading" : ""} button is-primary is-small`}>
-              <SaveIcon>Save</SaveIcon>
-            </button>
-          </p>
+          <div className="field has-addons">
+            <div className="control">
+              <button type="submit" className={`${submitting ? "is-loading" : ""} button is-primary is-small`}>
+                <SaveIcon>Save</SaveIcon>
+              </button>
+            </div>
+            <div className="control">
+              <RefreshLink className="button is-small is-danger" onClick={onDelete}>
+                <DeleteIcon>Delete</DeleteIcon>
+              </RefreshLink>
+            </div>
+          </div>
         </Form>
       </div>
     </li>
@@ -96,7 +104,7 @@ class Post extends Component {
   handleModeChange = () => this.setState((state) => ({ edit: !state.edit }));
 
   render() {
-    let { post, lovePost, savePost } = this.props;
+    let { post, lovePost, savePost, deletePost } = this.props;
     let { edit } = this.state;
 
     if (!post) {
@@ -104,7 +112,11 @@ class Post extends Component {
     }
 
     if (edit) {
-      return <EditPostOnTimeline form={post._id} initialValues={post.ogObj} project={post.project} onSubmit={(ogObj) => savePost(ogObj).then(this.handleModeChange)}/>
+      return <EditPostOnTimeline form={post._id}
+                                 initialValues={post.ogObj}
+                                 project={post.project}
+                                 onSubmit={(ogObj) => savePost(ogObj).then(this.handleModeChange)}
+                                 onDelete={() => deletePost(post).then(this.handleModeChange)}/>
     } else {
       return <PostOnTimeline post={post} lovePost={lovePost} switchToEdit={this.handleModeChange}/>
     }
@@ -114,6 +126,6 @@ class Post extends Component {
 
 const mapStateToProps = ({ post: { byId } }, { id }) => ({ post: byId[id] });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ lovePost, savePost }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ lovePost, savePost, deletePost }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post)

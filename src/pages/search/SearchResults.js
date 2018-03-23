@@ -23,7 +23,7 @@ class SearchDashboard extends Component {
     searchByTag(query).then(() => this.setState({ isLoading: false }));
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.search(this.props.query);
   }
 

@@ -162,6 +162,7 @@ if (process.env.NODE_ENV !== 'production') {
 
   config.mode = "development";
 
+  config.output.filename = '[name].bundle.js';
   config.plugins = [
     new webpack.DefinePlugin({
       '__DEV__': true,

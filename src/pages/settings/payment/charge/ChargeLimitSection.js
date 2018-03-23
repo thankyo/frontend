@@ -13,7 +13,8 @@ class PaymentLimitSection extends Component {
 
     this.state = { loading: true };
   }
-  componentWillMount() {
+
+  componentDidMount() {
     let { limit: {  amount } } = this.props;
     if (amount !== 0) {
       this.setState({ loading: false })
@@ -21,6 +22,7 @@ class PaymentLimitSection extends Component {
       this.props.getLimit().then(() => this.setState({ loading: false }));
     }
   }
+
   render() {
     if (this.state.loading) {
       return (

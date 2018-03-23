@@ -4,6 +4,7 @@ import { dispatchPromise, event } from "../util/promiseStates";
 export const POST_GET = event("POST_GET");
 export const POST_SAVE = event("POST_SAVE");
 export const POST_LOVE = event("POST_LOVE");
+export const POST_DELETE = event("POST_DELETE");
 
 export function getPost(id) {
   return (dispatch, getState) => {
@@ -19,6 +20,13 @@ export function savePost(post) {
   return (dispatch) => {
     let p = authService.post("/api/v1/thank/graph/my", post);
     return dispatchPromise(p, POST_SAVE, dispatch);
+  }
+}
+
+export function deletePost(post) {
+  return (dispatch) => {
+    let p = authService.remove(`/api/v1/thank/post/${post._id}`).then(() => post);
+    return dispatchPromise(p, POST_DELETE, dispatch);
   }
 }
 

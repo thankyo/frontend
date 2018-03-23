@@ -5,6 +5,7 @@ import { REFRESH_PROJECT_FEED } from "../project.actions";
 
 import authService from "reducers/util/auth";
 import { promiseReducer } from "reducers/util/promiseStates";
+import { POST_DELETE } from "reducers/post/post.actions";
 
 function markLoved(post) {
   let user = authService.getUser();
@@ -36,6 +37,10 @@ function byIdReducer(stateMap = {}, { type, payload }) {
     case POST_GET.fulfilled:
     case POST_LOVE.fulfilled:
       return Object.assign({}, stateMap, { [payload._id]: markLoved(payload) });
+    case POST_DELETE.fulfilled:
+      let newState =  Object.assign({}, stateMap);
+      delete newState[payload._id];
+      return newState;
     default:
       return stateMap;
   }
@@ -51,8 +56,13 @@ function byProjectReducer(state = {}, { type, payload }) {
     case REFRESH_PROJECT_FEED.fulfilled:
       let { id, posts } = payload;
       let prjIds = posts.map(({ _id }) => _id).concat(state[id] || []).filter(onlyUnique);
-
       return Object.assign({}, state, { [id]: prjIds });
+    case POST_DELETE.fulfilled: {
+      let { project, _id } = payload;
+      let projectId = project._id;
+      let posts = state[projectId].filter(id => id !== _id);
+      return Object.assign({}, state, { [projectId]: posts });
+    }
     default:
       return state;
   }

@@ -17,7 +17,7 @@ const history = createHistory();
 const store = createStore(reducers(), composeWithDevTools(applyMiddleware(routerMiddleware(history), thunk)));
 
 let loaded = new Promise((resolve) => {
-  if (document.readyState === 'complete') {
+  if (document.readyState === 'complete' || document.readyState === "interactive") {
     resolve();
   } else {
     window.onload = resolve;
