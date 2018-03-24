@@ -5,10 +5,10 @@ import { AboutIcon } from "./SkepticZone";
 
 export default function () {
   return (
-    <section className="section hero has-text-centered about-project about-project-blue">
+    <section className="section hero has-text-centered is-primary">
       <div className="hero-body">
         <div className="container">
-          <h1 className="title title-light">How microtip works</h1>
+          <h1 className="title is-white">How microtip works</h1>
           <div className="columns">
             <div className="column is-one-third">
               <div className="about-project-item">

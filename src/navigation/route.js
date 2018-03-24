@@ -59,7 +59,8 @@ export default class MainApp extends Component {
           <Route component={NotFound}/>
         </Switch>
         <Switch>
-          <Route exact path="/(legal|landing/creator|)/"><Footer/></Route>
+          <Route exact path="/"><Footer/></Route>
+          <Route path="/(legal|landing)/"><Footer/></Route>
         </Switch>
       </Fragment>
     );

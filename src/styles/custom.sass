@@ -95,8 +95,7 @@ body
     width: 293px
     height: 8px
     content: ''
-    background-image: url('../../assets/img/underline.svg')
-    background-repeat: no-repeat
+    background: url('../../assets/img/underline.svg') no-repeat
 
 .title-promo
   font-size: 52px
@@ -160,6 +159,14 @@ body
 .page-footer
   padding: 3rem 1.5rem 3rem
   background-color: $primary
+  color: $white
+  a
+    color: $white
+    border-color: $white !important
+    text-underline: white
+
+.page-footer.title
+  color: $white !important
 
 .page-links
   line-height: 22px
@@ -467,8 +474,6 @@ pre
   .title-main-promo-left
     width: 276px
     text-align: left
-  .title-dark, .title-light
-    font-size: 28px
   .button-join
     padding: 5px
   .hero

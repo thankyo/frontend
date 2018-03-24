@@ -17,7 +17,7 @@ export default function () {
     <section className="section hero has-text-centered about-project about-project-white">
       <div className="hero-body">
         <div className="container">
-          <h1 className="title title-dark">Why Loveit</h1>
+          <h1 className="title is-2">Why Loveit</h1>
 
           <div className="columns">
             <div className="column is-one-third">

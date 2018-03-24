@@ -4,22 +4,25 @@ import { Link } from "react-router-dom";
 export default class Footer extends Component {
   render() {
     return (
-      <footer className="footer is-primary">
+      <footer className="footer page-footer">
         <div className="container">
           <div className="columns">
             <div className="column is-4">
-              <h5 className="title is-6">Legal</h5>
-              <Link to="/legal/terms">Terms of Use</Link>
+              <h5 className="is-size-5 is-white">Legal</h5>
               <br/>
-              <Link to="/legal/privacy">Privacy Policy</Link>
+              <Link to="/legal/terms" className="page-links">Terms of Use</Link>
+              <br/>
+              <Link to="/legal/privacy" className="page-links">Privacy Policy</Link>
             </div>
             <div className="column is-4">
-              <h5 className="title is-6">For creators</h5>
-              <Link to="/landing/creator">Why</Link>
+              <h5 className="is-size-5">For creators</h5>
+              <br/>
+              <Link to="/landing/creator" className="page-links">Why</Link>
             </div>
             <div className="column is-4">
-              <h5 className="title is-6">For supporters</h5>
-              <Link to="/">Why</Link>
+              <h5 className="is-size-5">For supporters</h5>
+              <br/>
+              <Link to="/" className="page-links">Why</Link>
             </div>
           </div>
         </div>
