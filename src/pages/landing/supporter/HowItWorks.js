@@ -8,7 +8,7 @@ export default function () {
     <section className="section hero has-text-centered about-project about-project-blue">
       <div className="hero-body">
         <div className="container">
-          <h1 className="title title-light">How microtip works</h1>
+          <h1 className="title title-light">How it works</h1>
           <div className="columns">
             <div className="column is-one-third">
               <div className="about-project-item">

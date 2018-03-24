@@ -19,6 +19,12 @@ body
     color: #fff
     background: $primary url('../../assets/img/bg-book.jpg') no-repeat center center
     background-size: cover
+  &.creator-promo
+    font-size: 40px
+    height: 692px
+    color: #fff
+    background: $primary url('../../assets/img/bg-register.jpg') no-repeat center center
+    background-size: cover
   &.page-promo-boy
     height: auto
     background-image: url('../../assets/img/bg-boy.jpg')
@@ -78,15 +84,18 @@ body
 .main-nav a.nav-item:not(.button)
   display: -ms-flexbox
   display: flex
-  color: #fff
+  color: $white
 
-.title-main-promo
+.title-landing
   font-size: 52px
   font-weight: 700
   position: relative
-  max-width: 480px
   margin: 0 auto
-  color: #fff
+  color: $white
+
+
+.title-main-promo
+  max-width: 480px
   &::after
     position: absolute
     right: 0
@@ -96,6 +105,10 @@ body
     height: 8px
     content: ''
     background: url('../../assets/img/underline.svg') no-repeat
+
+.title-creator-promo
+  max-width: 720px
+
 
 .title-promo
   font-size: 52px

@@ -31,7 +31,7 @@ export default function () {
 
       <div className="hero-body">
         <div className="container has-text-centered">
-          <h1 className="title title-main-promo title-main-promo-left">
+          <h1 className="title title-main-promo title-main-promo-left title-landing">
             Support creators with a single click
           </h1>
           <JoinButton/>

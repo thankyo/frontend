@@ -1,5 +1,5 @@
 import React from "react";
-import { faHeart as faSolidHeart, faCalendar } from '@fortawesome/fontawesome-free-solid';
+import { faHeart as faSolidHeart, faCalendar, faPlug } from '@fortawesome/fontawesome-free-solid';
 import { faHeart } from '@fortawesome/fontawesome-free-regular';
 import { AboutIcon } from "./SkepticZone";
 
@@ -8,15 +8,15 @@ export default function () {
     <section className="section hero has-text-centered is-primary">
       <div className="hero-body">
         <div className="container">
-          <h1 className="title is-white">How microtip works</h1>
+          <h1 className="title is-white">How it works</h1>
           <div className="columns">
             <div className="column is-one-third">
               <div className="about-project-item">
-                <AboutIcon icon={faHeart} isWhite={false}/>
+                <AboutIcon icon={faPlug} isWhite={false}/>
                 <h2 className="about-project-subtitle">
-                  <b>Creators put Loveit button on every&nbsp;piece&nbsp;they&nbsp; create</b>
+                  <b>Integrate with Loveit</b>
                 </h2>
-                <p>It can be a song, poem, photo, blog, basically anything on the web can have this button</p>
+                <p>It should take you less then 5 minutes</p>
               </div>
             </div>
             <div className="column is-one-third">
