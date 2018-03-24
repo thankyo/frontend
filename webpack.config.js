@@ -7,6 +7,7 @@ function isProduction() {
 }
 
 const config = {
+  devtool: "source-map",
   context: path.resolve(__dirname, 'src'),
   resolve: {
     alias: {

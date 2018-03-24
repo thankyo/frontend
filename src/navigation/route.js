@@ -9,7 +9,8 @@ import Navigation from "./Navigation";
 
 import auth from "reducers/util/auth";
 
-import LandingPage from "../pages/landing/LandingPage";
+import SupporterLandingPage from "../pages/landing/SupporterLandingPage";
+import CreatorLandingPage from "../pages/landing/CreatorLandingPage";
 
 import AuthRouter from '../pages/auth/AuthRouter';
 
@@ -35,11 +36,13 @@ export default class MainApp extends Component {
                 state: { from: props.location }
               }}/>
             ) : (
-              <LandingPage/>
+              <SupporterLandingPage/>
             )
           )}/>
-          <Route path="/auth" component={AuthRouter}/>
 
+          <Route path="/landing/creator" component={CreatorLandingPage}/>
+
+          <Route path="/auth" component={AuthRouter}/>
           <Route path="/legal" component={LegalRouter}/>
 
           <Route path="/(creator|dashboard|settings|search|post)">
@@ -56,7 +59,7 @@ export default class MainApp extends Component {
           <Route component={NotFound}/>
         </Switch>
         <Switch>
-          <Route exact path="/(|legal)"><Footer/></Route>
+          <Route exact path="/(legal|landing/creator|)/"><Footer/></Route>
         </Switch>
       </Fragment>
     );

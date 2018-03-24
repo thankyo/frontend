@@ -4,12 +4,23 @@ import { Link } from "react-router-dom";
 export default class Footer extends Component {
   render() {
     return (
-      <footer className="footer page-footer">
+      <footer className="footer is-primary">
         <div className="container">
-          <div className="content is-pulled-left">
-            <Link className="is-inverted is-outlined is-primary page-links" to="/legal/terms">Terms of Use</Link>
-            &nbsp;
-            <Link className="is-inverted is-outlined is-primary page-links" to="/legal/privacy">Privacy Policy</Link>
+          <div className="columns">
+            <div className="column is-4">
+              <h5 className="title is-6">Legal</h5>
+              <Link to="/legal/terms">Terms of Use</Link>
+              <br/>
+              <Link to="/legal/privacy">Privacy Policy</Link>
+            </div>
+            <div className="column is-4">
+              <h5 className="title is-6">For creators</h5>
+              <Link to="/landing/creator">Why</Link>
+            </div>
+            <div className="column is-4">
+              <h5 className="title is-6">For supporters</h5>
+              <Link to="/">Why</Link>
+            </div>
           </div>
         </div>
       </footer>
