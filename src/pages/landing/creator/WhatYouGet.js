@@ -29,9 +29,9 @@ export default function () {
             <div className="column is-one-third">
               <div className="about-project-item">
                 <AboutIcon icon={faSun} isWhite={false}/>
-                <h2 className="about-project-subtitle"><b>Do what you do, nothing more</b>
+                <h2 className="about-project-subtitle"><b>No additional work</b>
                 </h2>
-                <p>You don't need to create any additional content. What you publish will be immediately added to our platform</p>
+                <p>You don't need to create any additional content, do what you do and we'll take care of the rest.</p>
               </div>
             </div>
           </div>

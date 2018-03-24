@@ -13,7 +13,7 @@ export default function () {
               <div className="about-project-item">
                 <AboutIcon icon={faThumbsUp}/>
                 <h2 className="about-project-subtitle"><b>Loveit is a simple <i>tip</i> platform</b></h2>
-                <p>It works the same way as Facebook Like, but you know with a bit more meaning</p>
+                <p>It works the same way as Facebook Like, but besides sendig love, it also sends small tip to the creator.</p>
               </div>
             </div>
             <div className="column is-one-third">

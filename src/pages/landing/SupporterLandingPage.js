@@ -14,7 +14,6 @@ export default class SupporterLandingPage extends Component {
         <Hero/>
         <About/>
         <HowItWorks/>
-        <Metaphor/>
         <Join/>
         <SkepticZone/>
       </Fragment>

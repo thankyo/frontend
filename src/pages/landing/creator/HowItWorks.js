@@ -16,23 +16,22 @@ export default function () {
                 <h2 className="about-project-subtitle">
                   <b>Integrate with Loveit</b>
                 </h2>
-                <p>It should take you less then 5 minutes</p>
+                <p>It should take you less then 5 minutes.</p>
               </div>
             </div>
             <div className="column is-one-third">
               <div className="about-project-item">
                 <AboutIcon icon={faSolidHeart} isWhite={false}/>
-                <h2 className="about-project-subtitle"><b>Whenever you click it, we register&nbsp;your&nbsp;tip</b>
+                <h2 className="about-project-subtitle"><b>Your posts will have LoveIt button</b>
                 </h2>
-                <p>We track your support throughout the month and charge you total at the end of it</p>
+                <p>When ever it's clicked we register a tip from your audience.</p>
               </div>
             </div>
             <div className="column is-one-third">
               <div className="about-project-item">
                 <AboutIcon icon={faCalendar} isWhite={false}/>
-                <h2 className="about-project-subtitle"><b>At the end of the month we combine your tips</b></h2>
-                <p>You are in full control of how much you spend - set your own limits and we won't charge you more,
-                  than that</p>
+                <h2 className="about-project-subtitle"><b>Get paid at the end of the month</b></h2>
+                <p>We combine tips from all of your fans and send it your way.</p>
               </div>
             </div>
           </div>
