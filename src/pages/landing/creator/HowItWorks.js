@@ -1,7 +1,7 @@
 import React from "react";
-import { faHeart as faSolidHeart, faCalendar, faPlug } from '@fortawesome/fontawesome-free-solid';
-import { faHeart } from '@fortawesome/fontawesome-free-regular';
+import { faCalendar, faPlug } from '@fortawesome/fontawesome-free-solid';
 import { AboutIcon } from "./SkepticZone";
+import Logo from "components/logo.svg"
 
 export default function () {
   return (
@@ -21,7 +21,11 @@ export default function () {
             </div>
             <div className="column is-one-third">
               <div className="about-project-item">
-                <AboutIcon icon={faSolidHeart} isWhite={true}/>
+                <span className="is-narrow">
+                  <span className="icon icon-on-blue is-large loveit-fab">
+                    <Logo width={40} height={40}/>
+                  </span>
+                </span>
                 <h2 className="about-project-subtitle"><b>Your posts will have LoveIt button</b>
                 </h2>
                 <p>When ever it's clicked we register a tip.</p>

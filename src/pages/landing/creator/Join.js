@@ -7,7 +7,7 @@ export default function () {
       <div className="hero-body">
         <div className="container has-text-centered">
           <h1 className="title title-promo">
-            Plug and Play
+            Just try it out
           </h1>
           <JoinButton/>
         </div>
