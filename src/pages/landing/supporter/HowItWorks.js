@@ -16,7 +16,7 @@ export default function () {
                 <h2 className="about-project-subtitle">
                   <b>Creators put Loveit button on every&nbsp;piece&nbsp;they&nbsp; create</b>
                 </h2>
-                <p>It can be a song, poem, photo, blog, basically anything on the web can have this button</p>
+                <p>It can be a comic, drawing, photo, blog, basically anything on the web can have this button</p>
               </div>
             </div>
             <div className="column is-one-third">
@@ -31,8 +31,7 @@ export default function () {
               <div className="about-project-item">
                 <AboutIcon icon={faCalendar} isWhite={false}/>
                 <h2 className="about-project-subtitle"><b>At the end of the month we combine your tips</b></h2>
-                <p>You are in full control of how much you spend - set your own limits and we won't charge you more,
-                  than that</p>
+                <p>You are in full control of how much you spend - set your own limits.</p>
               </div>
             </div>
           </div>

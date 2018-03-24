@@ -12,22 +12,22 @@ export default function () {
             <div className="column is-one-third">
               <div className="about-project-item">
                 <AboutIcon icon={faThumbsUp}/>
-                <h2 className="about-project-subtitle"><b>Loveit is a simple <i>tip</i> platform</b></h2>
-                <p>It works the same way as Facebook Like, but besides sendig love, it also sends small tip to the creator.</p>
+                <h2 className="about-project-subtitle"><b>Loveit is a <i>smart tip</i> platform</b></h2>
+                <p>It works the same way as Facebook Like, but besides sending your love, it also sends small tip to the creator.</p>
               </div>
             </div>
             <div className="column is-one-third">
               <div className="about-project-item">
                 <AboutIcon icon={faCircle}/>
-                <h2 className="about-project-subtitle"><b><i>Tip</i> - is &nbsp;just&nbsp;a&nbsp;dime</b></h2>
-                <p>It's made small on purpose, so that you could use it without harming your budget</p>
+                <h2 className="about-project-subtitle"><b>Tip - is <i>&nbsp;just&nbsp;a&nbsp;dime</i></b></h2>
+                <p>It's made small on purpose, so that you could use it without regard</p>
               </div>
             </div>
             <div className="column is-one-third">
               <div className="about-project-item">
                 <AboutIcon icon={faHandPeace}/>
-                <h2 className="about-project-subtitle"><b>Easiest way to support what you love</b></h2>
-                <p>Supporting creative freedom we make world a better place</p>
+                <h2 className="about-project-subtitle"><b><i>Easiest</i> way to support creators</b></h2>
+                <p>Just a click, is all it takes.</p>
               </div>
             </div>
           </div>
