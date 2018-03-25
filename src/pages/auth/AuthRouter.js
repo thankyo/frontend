@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Field, Form, reduxForm } from "redux-form";
-import AuthMenu from "./AuthMenu";
+import AuthNavigation from "./AuthNavigation";
 import { connect } from "react-redux";
 import { Link, Route, Switch } from 'react-router-dom';
 import auth from "reducers/util/auth";
@@ -93,11 +93,6 @@ function SocialHeader({ facebook }) {
           <FacebookIcon>Connect with FB</FacebookIcon>
         </a>
       </p>
-      <br/>
-      <br/>
-      <h4 className="subtitle is-5 has-text-centered">or</h4>
-      <AuthMenu/>
-      <br/>
     </div>
   );
 }
@@ -125,18 +120,28 @@ export default function ({ history }) {
             <div className="column is-one-third">
               <Switch>
                 <Route exact path="/auth">
-                  <div>
+                  <Fragment>
                     <SocialHeader/>
+                    <br/>
+                    <br/>
+                    <h4 className="subtitle is-5 has-text-centered">or</h4>
+                    <AuthNavigation/>
+                    <br/>
                     <ReduxRegistrationForm onSubmit={(regReq) => auth.signUp(regReq, history)}/>
                     <ForgotPasswordLink/>
-                  </div>
+                  </Fragment>
                 </Route>
                 <Route path="/auth/login">
-                  <div>
+                  <Fragment>
                     <SocialHeader/>
+                    <br/>
+                    <br/>
+                    <h4 className="subtitle is-5 has-text-centered">or</h4>
+                    <AuthNavigation/>
+                    <br/>
                     <ReduxLoginForm onSubmit={(logInReq) => auth.login(logInReq, history)}/>
                     <ForgotPasswordLink/>
-                  </div>
+                  </Fragment>
                 </Route>
                 <Route exact path="/auth/facebook">
                   <FacebookAuthPage history={history}/>

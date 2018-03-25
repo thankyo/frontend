@@ -33,6 +33,15 @@ body
     min-height: 400px
     background-image: url('../../assets/img/bg-creator-join.jpg')
 
+.register-page
+  li
+    a
+      border-bottom-width: 0px
+    &.is-active
+      a
+        border-bottom-color: white
+        border-bottom-width: 3px
+
 .button-join
   font-size: 24px
   line-height: 1.2
@@ -47,13 +56,10 @@ body
     color: $white
     background-color: #96d044
 
-.register-page
+.auth-nav
   li
-    a
-      border-bottom-width: 0px
     &.is-active
-      a
-        border-bottom: 3px $white
+      border-bottom: 3px $white !important
 
 .icon-on-white
   margin-bottom: 35px
