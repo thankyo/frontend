@@ -1,7 +1,6 @@
 import React from "react";
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faDollarSign, faShieldAlt, faChartPie, faPlay } from '@fortawesome/fontawesome-free-solid';
-import { faPaypal } from '@fortawesome/fontawesome-free-brands';
+import { faDollarSign, faShieldAlt, faPlay } from '@fortawesome/fontawesome-free-solid';
 
 export const AboutIcon = ({ icon, isWhite = true }) => (
   <span className="is-narrow">

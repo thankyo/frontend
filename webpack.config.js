@@ -130,7 +130,7 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.DefinePlugin({
       '__DEV__': true,
       FACEBOOK_KEY: 1429718427098411,
-      GOOGLE_KEY: JSON.stringify('950975724697-72b9ga3ag50f9m7kknemnbpn74h422v7.apps.googleusercontent.com'),
+      GOOGLE_KEY: JSON.stringify('906965357296-ke83mui9tc3773fb0ga0lgp4a60jcc87.apps.googleusercontent.com'),
       STRIPE_KEY: JSON.stringify("pk_live_dmgtat0UE6oSGz9OzmB3ch0A"),
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
@@ -168,7 +168,7 @@ if (process.env.NODE_ENV !== 'production') {
     new webpack.DefinePlugin({
       '__DEV__': true,
       FACEBOOK_KEY: 1429230027124287,
-      GOOGLE_KEY: JSON.stringify('950975724697-72b9ga3ag50f9m7kknemnbpn74h422v7.apps.googleusercontent.com'),
+      GOOGLE_KEY: JSON.stringify('906965357296-ke83mui9tc3773fb0ga0lgp4a60jcc87.apps.googleusercontent.com'),
       STRIPE_KEY: JSON.stringify("pk_test_l8X6IIKp6dumjWWwqsuowf5p"),
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') // default value if not specified
