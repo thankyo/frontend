@@ -77,7 +77,12 @@ import "./integration.sass";
     };
 
     fetch(new Request("/api/v1/thank/graph/my/support", options))
-      .then(res => { if (!res.ok) markError() })
+      .then(res => {
+        if (!res.ok) {
+          markError();
+          updateCounter(count--);
+        }
+      })
   }
 
   function buttonClicked(evt) {
