@@ -1,7 +1,15 @@
-$primary:      #48c8fe
-$white:        hsl(0, 0%, 100%) !default
-$grey-light:   hsl(0, 0%, 71%) !default
-$red:          hsl(348, 100%, 61%) !default
+@import "../src/styles/bulma-custom"
+@import "../node_modules/bulma/sass/utilities/mixins"
+
+body
+  font-family: $family-sans-serif
+  font-size: 0.75rem
+
+.has-text-centered
+  text-align: center !important
+
+.is-unselectable
+  +unselectable
 
 .loveit-fab
   width: 50px
