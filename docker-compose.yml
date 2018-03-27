@@ -2,14 +2,14 @@ mongo:
   image: mongo:3.4.2
 
 backend:
-  image: mavarazy/thanks-backend:latest
+  image: loveit/backend:latest
   environment:
     - APPLICATION_SECRET=T1[a`5pd?fI<E<;<QG<rUg@ZS8o6`KjuJME6Pd/[MN3nz:aBMW8v:a0lKT`Zk;bD
   links:
     - mongo
 
 frontend:
-  image: mavarazy/thank-frontend:latest
+  image: loveit/frontend:latest
   ports:
     - "80:80"
     - "443:443"
