@@ -14,8 +14,7 @@ dependencies:
   pre:
     - rm -rf ~/.yarn
     - npm install -g yarn
-    - npm install parcel -g
-    - yarn -v
+    - yarn global add parcel-bundler
 
 test:
   override:
