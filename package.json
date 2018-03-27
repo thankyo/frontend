@@ -8,8 +8,8 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
     "build": "rimraf public && NODE_ENV=production webpack -p --optimize-minimize",
-    "start-integration": "webpack-dev-server --config webpack.integration.config.js",
-    "build-integration": "rimraf public && NODE_ENV=production webpack -p --config webpack.integration.config.js"
+    "start-integration": "parcel ./integration/index.html",
+    "build-integration": "rimraf assets/integration && parcel build ./integration/index.html -d assets/integration"
   },
   "engines": {
     "npm": "^5.0.4",

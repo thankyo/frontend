@@ -14,10 +14,12 @@ dependencies:
   pre:
     - rm -rf ~/.yarn
     - npm install -g yarn
+    - npm install parcel -g
     - yarn -v
 
 test:
   override:
+    - yarn run build-integration
     - yarn run build
 
 deployment:
