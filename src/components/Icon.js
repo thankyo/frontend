@@ -136,17 +136,16 @@ export const SmallEditButton = ({ children, onClick }) => (
   </nav>
 );
 
-export function LoveItButton({ isLoved, onLove }) {
+export function LoveItButton({ isLoved, thank, onLove }) {
   return (
-    <nav className="level is-mobile">
-      <div className="level-left">
-        <div className="level-item">
-          <a className="loveit-fab" disabled={isLoved} onClick={onLove}>
-            <Logo width={40} height={40} className={isLoved ? "fab-is-loved" : ""}/>
-          </a>
-        </div>
+    <div className="is-flex">
+      <a className="is-one-quarter loveit-fab is-unselectable" onClick={onLove}>
+        <Logo width={40} height={40} className={isLoved ? "fab-is-loved" : ""}/>
+      </a>
+      <div className="is-three-quarters is-unselectable" style={{ paddingLeft: 10, paddingTop: 10 }}>
+        {thank.given}
       </div>
-    </nav>
+    </div>
   );
 }
 

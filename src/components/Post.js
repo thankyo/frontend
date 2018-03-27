@@ -88,7 +88,7 @@ function PostOnTimeline({ post, lovePost, switchToEdit }) {
           <img src={url}/>
         </figure>
         <br/>
-        {isMy ? <SmallEditButton onClick={switchToEdit}/> : <LoveItButton isLoved={post.isLoved} onLove={() => lovePost(post.url)}/>}
+        {isMy ? <SmallEditButton onClick={switchToEdit}/> : <LoveItButton isLoved={post.isLoved} thank={post.thank} onLove={() => lovePost(post.url)}/>}
       </div>
     </li>
   );
