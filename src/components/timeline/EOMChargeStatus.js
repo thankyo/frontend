@@ -11,7 +11,7 @@ export default function EOMChargeStatus({ status }) {
       return <ErrorIcon>No Card Provided</ErrorIcon>;
     case "UnderMin":
       return (
-        <ErrorIcon>Below minimum, contributions transferred to the next month</ErrorIcon>
+        <ErrorIcon>Below minimum of 5$. <span className="is-danger">Contributions transferred to the next month</span> </ErrorIcon>
       );
     default:
       return <span>{status}</span>
