@@ -2,7 +2,10 @@ import "./integration.sass";
 
 (function () {
 
-  let buttonElement = document.getElementsByTagName("svg")[0];
+  let svgElement = document.getElementsByTagName("svg")[0];
+  // This was removed due to svg generation in production, spent too much time on it
+  svgElement.setAttribute("viewBox", "0 0 512 512");
+
   let counterElement = document.getElementById("counter");
 
   let count = 0;
@@ -12,11 +15,11 @@ import "./integration.sass";
   }
 
   function markLoved() {
-    buttonElement.setAttribute("class", "fab-is-loved is-unselectable");
+    svgElement.setAttribute("class", "fab-is-loved is-unselectable");
   }
 
   function markError() {
-    buttonElement.setAttribute("class", "fab-is-error is-unselectable");
+    svgElement.setAttribute("class", "fab-is-error is-unselectable");
   }
 
   function parseUserId(token) {
@@ -91,5 +94,5 @@ import "./integration.sass";
     }
   }
 
-  buttonElement.onclick = buttonClicked;
+  svgElement.onclick = buttonClicked;
 })();
