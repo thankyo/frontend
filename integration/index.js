@@ -40,11 +40,7 @@ import "./integration.sass";
 
   function fetchPostState() {
     let url = "/api/v1/thank/graph?url=" + encodeURIComponent(document.referrer);
-    let options = {
-      headers: { 'X-Auth-Token': token }
-    };
-
-    fetch(url, options).then((res) => {
+    fetch(url).then((res) => {
       if (res.ok) {
         res.json().then(({ thank: { given, supporters } }) => {
           count = given;
