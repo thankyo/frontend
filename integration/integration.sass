@@ -21,20 +21,19 @@ body
 
   transition: all 0.2s ease-in-out
   padding: 0 0 0 0
-
-.loveit-fab:hover
-  box-shadow: 0 4px 5px 0 #666
-  transform: scale(1.2)
+  &:hover
+    box-shadow: 0 4px 5px 0 #666
+    transform: scale(1.2)
+  &:active
+    transform: scale(0.8)
 
 svg
   fill: $primary
 
 .fab-is-loved
-  border-radius: 50%
-  background-color: $primary
   fill: $white
+  background-color: $primary
 
 .fab-is-error
   fill: $white
-  border-radius: 50%
   background-color: $red
