@@ -7,6 +7,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import {
   faCcStripe,
   faFacebook,
+  faGithub,
   faGoogle,
   faTelegramPlane,
   faWordpressSimple
@@ -58,6 +59,7 @@ export const LoginIcon = ({ children }) => <FAIcon icon={faSignInAlt}>{children}
 export const RestoreIcon = ({ children }) => <FAIcon icon={faSync}>{children}</FAIcon>;
 export const SendIcon = ({ children }) => <FAIcon icon={faTelegramPlane}>{children}</FAIcon>;
 export const CreditCardIcon = ({ children }) => <FAIcon icon={faCreditCard}>{children}</FAIcon>;
+export const GitHubIcon = ({ children }) => <FAIcon icon={faGithub}>{children}</FAIcon>
 export const GoogleIcon = ({ children }) => <FAIcon icon={faGoogle}>{children}</FAIcon>;
 export const FacebookIcon = ({ children }) => <FAIcon icon={faFacebook}>{children}</FAIcon>;
 export const DecrementIcon = ({ children }) => <FAIcon icon={faMinusCircle}>{children}</FAIcon>;
