@@ -16,10 +16,9 @@ jobs:
 
       - run:
           name: Install packages
-          command:
-            - yarn
+          command: yarn
 
-      - run
+      - run:
           name: Install parcel
           command:
             - yarn global add parcel-bundler
