@@ -12,18 +12,18 @@ jobs:
 
       - restore_cache:
           keys:
-            - frontend-{{ checksum "yarn.lock" }}
+            - frontend-cache-{{ checksum "yarn.lock" }}
 
       - run:
           name: Install packages
-          command: yarn
+          command: yarn install --production=false
 
       - run:
           name: Install parcel
           command: yarn global add parcel-bundler
 
       - save_cache:
-          key: frontend-{{ checksum "yarn.lock" }}
+          key: frontend-cache-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
 
