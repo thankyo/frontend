@@ -5,8 +5,9 @@ import { PendingIcon } from "components/Icon";
 import StartInstallation from "./pending/StartInstallation";
 import ChooseWebStack from "./pending/ChooseWebStack";
 import FinishInstallation from "./pending/FinishInstallation";
+import PostAddingExplanation from "./pending/PostAddingExplanation";
 
-const PendingProject = stepByStep(StartInstallation, ChooseWebStack, FinishInstallation);
+const PendingProject = stepByStep(StartInstallation, ChooseWebStack, PostAddingExplanation, FinishInstallation);
 
 const NoPending = () => (
   <li className="timeline-item is-primary">

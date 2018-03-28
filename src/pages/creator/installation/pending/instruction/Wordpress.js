@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { InstallIcon } from "components/Icon";
 
 const WORD_PRESS_INSTALLATION = encodeURI("wp-admin/plugin-install.php?tab=plugin-information&plugin=loveit-integration&reauth=1");
 
 const WordPress = ({ url }) => {
   return (
-    <div>
+    <Fragment>
       <h2 className="subtitle is-6">First you'll need to do few manual steps in your site admin dashboard.</h2>
 
       <div className="content">
@@ -25,7 +25,7 @@ const WordPress = ({ url }) => {
         </ol>
       </div>
       <h2 className="subtitle is-6">That's it now every post will have a LoveIt button</h2>
-    </div>
+    </Fragment>
   );
 };
 

@@ -14,6 +14,7 @@ import {
 } from '@fortawesome/fontawesome-free-brands';
 import {
   faCheckCircle,
+  faArrowCircleLeft,
   faCode,
   faCompass,
   faCreditCard,
@@ -76,6 +77,7 @@ export const NavigationIcon = ({ children }) => <FAIcon icon={faCompass}>{childr
 export const StripeIcon = ({ children }) => <FAIcon icon={faCcStripe}>{children}</FAIcon>;
 export const InstallIcon = ({ children }) => <FAIcon icon={faPlayCircle}>{children}</FAIcon>;
 export const CancelIcon = ({ children }) => <FAIcon icon={faTimes}>{children}</FAIcon>;
+export const BackIcon = ({ children }) => <FAIcon icon={faArrowCircleLeft}>{children}</FAIcon>
 export const DeleteIcon = ({ children }) => <FAIcon icon={faTimes}>{children}</FAIcon>;
 export const PendingIcon = ({ children }) => <FAIcon icon={faPauseCircle}>{children}</FAIcon>;
 export const DownloadIcon = ({ children }) => <FAIcon icon={faDownload}>{children}</FAIcon>

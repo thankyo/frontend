@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 let iFrameText = "<iframe src='https://loveit.tips/integration' width='80' height='80' frameBorder='0' style='position: fixed; right: 10px; bottom: 10px'></iframe>";
@@ -22,7 +22,7 @@ class Manual extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <div className="subtitle is-size-6">
           First <strong>copy & paste</strong> the following before the
           closing {"</body>"} tag
@@ -49,7 +49,7 @@ class Manual extends Component {
             <button className="button is-small bd-copy">{this.state.copied ? "Copied" : "Copy"}</button>
           </CopyToClipboard>
         </figure>
-      </div>
+      </Fragment>
     );
   }
 }

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { createProject } from "reducers/project.actions";
 import Resource from "components/Resource";
-import { InstallIcon } from "components/Icon";
+import { BackIcon, InstallIcon } from "components/Icon";
 import { Form, reduxForm } from "redux-form";
 import ProjectFormSection from "components/form/ProjectFormSection";
 
@@ -32,7 +32,7 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
 
 EditProject = reduxForm({})(EditProject);
 
-const FinishInstallation = ({ project, createProject }) => (
+const FinishInstallation = ({ project, createProject, previous }) => (
   <Fragment>
     <li className="timeline-item is-primary is-large">
       <div className="timeline-marker is-medium is-primary"/>
@@ -42,6 +42,11 @@ const FinishInstallation = ({ project, createProject }) => (
         </p>
         <EditProject initialValues={{ project }} form={`new-project-${project.url}`} onSubmit={({ project }) => createProject(project)}/>
       </div>
+    </li>
+    <li className="timeline-header is-success">
+      <a className="tag is-primary" onClick={previous}>
+        <BackIcon>Back</BackIcon>
+      </a>
     </li>
   </Fragment>
 );
