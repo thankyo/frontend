@@ -1,5 +1,7 @@
 import React from "react";
 import { AboutIcon } from "./SkepticZone";
+import Brain from "./brain.svg";
+import Cent from "./cent.svg";
 import { faThumbsUp, faCircle, faHandPeace } from '@fortawesome/fontawesome-free-solid';
 
 export default function () {
@@ -11,7 +13,9 @@ export default function () {
           <div className="columns">
             <div className="column is-one-third">
               <div className="about-project-item">
-                <AboutIcon icon={faThumbsUp}/>
+                <span className="icon icon-on-blue is-large loveit-fab">
+                  <Brain height={48}/>
+                </span>
                 <h2 className="about-project-subtitle"><b>Loveit is a <i>smart tip</i> platform</b></h2>
                 <p>
                   It works the same way as Facebook Like, but besides sending your love, creator also gets a small tip
@@ -20,10 +24,12 @@ export default function () {
             </div>
             <div className="column is-one-third">
               <div className="about-project-item">
-                <AboutIcon icon={faCircle}/>
+                <span className="icon icon-on-blue is-large loveit-fab">
+                  <Cent height={48} />
+                </span>
                 <h2 className="about-project-subtitle"><b>Tip is really <i>&nbsp;just&nbsp;a&nbsp;dime</i></b></h2>
                 <p>
-                  It's made small on purpose, so that you could tip without regard
+                  It's made small on purpose, so that you could tip without harming your budget.
                 </p>
               </div>
             </div>
