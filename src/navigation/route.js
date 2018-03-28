@@ -16,6 +16,8 @@ import AuthRouter from '../pages/auth/AuthRouter';
 
 import LegalRouter from '../pages/legal/LegalRouter';
 
+import AboutRouter from "../pages/about/AboutRouter";
+
 import DashboardRouter from "../pages/dashboard/DashboardRouter";
 import CreatorDashboardRouter from "../pages/creator/CreatorDashboardRouter";
 import SettingsRouter from "../pages/settings/SettingsRouter";
@@ -40,6 +42,8 @@ export default class MainApp extends Component {
             )
           )}/>
 
+          <Route path="/about" component={AboutRouter}/>
+
           <Route path="/landing/creator" component={CreatorLandingPage}/>
 
           <Route path="/auth" component={AuthRouter}/>
@@ -60,7 +64,7 @@ export default class MainApp extends Component {
         </Switch>
         <Switch>
           <Route exact path="/"><Footer/></Route>
-          <Route path="/(legal|landing)/"><Footer/></Route>
+          <Route path="/(legal|landing|about)/"><Footer/></Route>
         </Switch>
       </Fragment>
     );
