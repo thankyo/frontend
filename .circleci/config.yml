@@ -36,5 +36,10 @@ jobs:
 
 
       - run:
-          name: Publish Docker image
-          command: docker build -t loveit/frontend . | docker push loveit/frontend
+          name: Create Docker image
+          command: docker build -t loveit/frontend .
+
+      - run:
+          name: Push updated Docker image
+          command: docker push loveit/frontend
+
