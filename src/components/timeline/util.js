@@ -1,9 +1,59 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import moment from "moment/moment";
 
 export function asPlural(word, count) {
   return count === 1 ? word : `${word}s`
 }
+
+
+export function stepByStep(... steps) {
+
+  class StepByStep extends Component {
+    constructor(props) {
+      super(props);
+
+      this.state = { currentStep: 0 };
+    }
+
+    handleNext = () => {
+      const { currentStep } = this.state;
+      const { onDone } = this.props;
+
+      const nextPosition = currentStep + 1;
+
+      if (nextPosition === steps.length) {
+        onDone();
+      } else {
+        this.setState({ currentStep: nextPosition })
+      }
+    };
+
+    handlePrevious = () => {
+      const { currentStep } = this.state;
+
+      const previousPosition = currentStep - 1;
+
+      if (previousPosition < 0) {
+        this.props.onCancel()
+      } else {
+        this.setState({ currentStep: previousPosition })
+      }
+    };
+
+    render() {
+      let { currentStep } = this.state;
+
+      let CurrentStep = steps[currentStep];
+
+      return <CurrentStep next={this.handleNext} previous={this.handlePrevious} {... this.props}/>
+    }
+
+  }
+
+  return StepByStep
+}
+
 
 export function expandableComponent(ExpandedView, CollapsedView) {
   class ExpandableComponent extends Component {

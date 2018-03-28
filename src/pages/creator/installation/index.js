@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
 import { getOwnedProjects } from "reducers/project.actions";
 import PendingProjects from "./PendingProjects";
 import InstalledProjects from "./InstalledProjects";
