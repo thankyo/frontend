@@ -20,8 +20,7 @@ jobs:
 
       - run:
           name: Install parcel
-          command:
-            - yarn global add parcel-bundler
+          command: yarn global add parcel-bundler
 
       - save_cache:
           key: frontend-{{ checksum "yarn.lock" }}
@@ -29,18 +28,13 @@ jobs:
             - node_modules
 
       - run:
-          command:
-            - yarn run build-integration
-            - yarn run build
+          command: yarn run build-integration | yarn run build
 
       - run:
           name: Login to Docker
-          command:
-            - docker login -u $DOCKER_USER -p $DOCKER_PASS
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
 
 
       - run:
           name: Publish Docker image
-          command:
-            - docker build -t loveit/frontend .
-            - docker push loveit/frontend
+          command: docker build -t loveit/frontend . | docker push loveit/frontend
