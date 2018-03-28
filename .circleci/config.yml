@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: Install packages
-          command: yarn install --production=false
+          command: NODE_ENV=development yarn install
 
       - run:
           name: Install parcel
