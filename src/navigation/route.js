@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from "react";
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import NotFound from "./NotFound";
 
-import { Helmet } from "react-helmet";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 
@@ -27,7 +26,6 @@ export default class MainApp extends Component {
   render() {
     return (
       <Fragment>
-        <Helmet/>
         <Switch>
           <Route exact path="/" component={SupporterLandingPage}/>
 
