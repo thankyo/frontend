@@ -3,7 +3,7 @@ import React from "react";
 import SupportedProjects from "./SupportedProjects";
 import ThankTransactions from "./PendingTransaction";
 
-export default function supportDashboardPage({ id }) {
+export default function ContributionPage({ id }) {
   return (
     <div className="columns">
       <div className="column is-one-quarter">

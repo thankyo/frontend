@@ -18,10 +18,9 @@ import LegalRouter from '../pages/legal/LegalRouter';
 
 import AboutRouter from "../pages/about/AboutRouter";
 
-import DashboardRouter from "../pages/dashboard/DashboardRouter";
-import CreatorDashboardRouter from "../pages/creator/CreatorDashboardRouter";
+import ContributionRouter from "../pages/contribution/ContributionRouter";
+import CreatorRouter from "../pages/creator/CreatorRouter";
 import SettingsRouter from "../pages/settings/SettingsRouter";
-import PostRouter from "../pages/post/PostRouter";
 
 import SearchRouter from "../pages/search/SearchRouter";
 
@@ -34,7 +33,7 @@ export default class MainApp extends Component {
           <Route exact path="/" render={props => (
             auth.restoreAuthentication() ? (
               <Redirect to={{
-                pathname: '/dashboard/my',
+                pathname: '/contribution/my',
                 state: { from: props.location }
               }}/>
             ) : (
@@ -49,14 +48,13 @@ export default class MainApp extends Component {
           <Route path="/auth" component={AuthRouter}/>
           <Route path="/legal" component={LegalRouter}/>
 
-          <Route path="/(creator|dashboard|settings|search|post)">
+          <Route path="/(creator|contribution|settings|search|post)">
             <Fragment>
               <Navigation/>
-              <Route path="/creator" component={CreatorDashboardRouter}/>
-              <Route path="/dashboard" component={DashboardRouter}/>
+              <Route path="/creator" component={CreatorRouter}/>
+              <Route path="/contribution" component={ContributionRouter}/>
               <Route path="/settings" component={SettingsRouter}/>
               <Route path="/search" component={SearchRouter}/>
-              <Route path="/post" component={PostRouter}/>
             </Fragment>
           </Route>
 

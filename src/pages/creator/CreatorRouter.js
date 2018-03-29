@@ -23,7 +23,7 @@ function InstallationLink() {
   );
 }
 
-export default function CreatorDashboardRouter() {
+export default function CreatorRouter() {
   return (
     <section className="section">
       <div className="container">

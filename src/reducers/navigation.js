@@ -4,9 +4,9 @@ import queryString from "query-string";
 
 const LINKS = [
   { pathname: "/search", name: "Discover" },
-  { pathname: "/dashboard/my", name: "Contributions" },
+  { pathname: "/contribution/my", name: "Contributions" },
   { pathname: "/creator/my", name: "Projects" },
-  { pathname: "/settings/profile", name: "Settings", isMobile: false },
+  { pathname: "/settings", name: "Settings", isMobile: false },
   { pathname: "/settings/profile", name: "Profile", isMobile: true  },
   { pathname: "/settings/charge", name: "Charges", isMobile: true  },
   { pathname: "/settings/payout", name: "Payouts", isMobile: true  },

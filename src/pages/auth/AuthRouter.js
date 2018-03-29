@@ -9,12 +9,17 @@ import { FacebookIcon, LoginIcon, RegisterIcon, RestoreIcon, SendIcon } from "co
 import FacebookAuthPage from "./FacebookAuthPage";
 import GoogleAuthPage from "./GoogleAuthPage";
 
-let ResetForm = ({ handleSubmit, submitting }) => {
+const ResetForm = ({ handleSubmit, submitting }) => {
   return (
     <Form onSubmit={handleSubmit} className="is-primary">
-      <Field name="password" component={renderField} type="password" placeholder="New Password"
-             validate={[required, max64]} disabled={submitting}/>
-
+      <Field
+        name="password"
+        component={renderField}
+        type="password"
+        placeholder="New Password"
+        validate={[required, max64]}
+        disabled={submitting}
+      />
       <div className="field has-addons">
         <LoadingButton submitting={submitting}>
           <RestoreIcon>Restore</RestoreIcon>
@@ -24,9 +29,9 @@ let ResetForm = ({ handleSubmit, submitting }) => {
   );
 };
 
-let ReduxResetForm = reduxForm({ form: 'reset' })(ResetForm);
+const ReduxResetForm = reduxForm({ form: 'reset' })(ResetForm);
 
-let ForgotForm = ({ handleSubmit, submitting }) => {
+const ForgotForm = ({ handleSubmit, submitting }) => {
   return (
     <Form onSubmit={handleSubmit} className="is-primary">
       <Field name="email" component={renderField} type="email" placeholder="Email"
@@ -41,10 +46,9 @@ let ForgotForm = ({ handleSubmit, submitting }) => {
   );
 };
 
-let ReduxForgotForm = reduxForm({ form: 'forgot' })(ForgotForm);
+const ReduxForgotForm = reduxForm({ form: 'forgot' })(ForgotForm);
 
-let LoginForm = ({ handleSubmit, submitting }) => {
-
+const LoginForm = ({ handleSubmit, submitting }) => {
   return (
     <Form onSubmit={handleSubmit} className="is-primary">
       <Field name="email" component={renderField} type="email" placeholder="Email"
@@ -61,9 +65,9 @@ let LoginForm = ({ handleSubmit, submitting }) => {
   );
 };
 
-let ReduxLoginForm = reduxForm({ form: 'login' })(LoginForm);
+const ReduxLoginForm = reduxForm({ form: 'login' })(LoginForm);
 
-let RegisterForm = ({ handleSubmit, submitting }) => {
+const RegisterForm = ({ handleSubmit, submitting }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Field name="firstName" component={renderField} type="string" placeholder="First name"
@@ -83,10 +87,9 @@ let RegisterForm = ({ handleSubmit, submitting }) => {
   );
 };
 
-let ReduxRegistrationForm = reduxForm({ form: 'register' })(RegisterForm);
+const ReduxRegistrationForm = reduxForm({ form: 'register' })(RegisterForm);
 
-function SocialHeader({ facebook }) {
-  return (
+let SocialHeader = ({ facebook }) => (
     <div className="has-text-centered">
       <p className="control has-text-centered">
         <a className="button is-primary is-inverted is-outlined" href={facebook}>
@@ -95,7 +98,6 @@ function SocialHeader({ facebook }) {
       </p>
     </div>
   );
-}
 
 SocialHeader = connect(({ auth: { url }}) => url)(SocialHeader);
 

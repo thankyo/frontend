@@ -8,6 +8,7 @@ import {
   faCcStripe,
   faFacebook,
   faGithub,
+  faTwitter,
   faGoogle,
   faTelegramPlane,
   faWordpressSimple
@@ -63,6 +64,7 @@ export const CreditCardIcon = ({ children }) => <FAIcon icon={faCreditCard}>{chi
 export const GitHubIcon = ({ children }) => <FAIcon icon={faGithub}>{children}</FAIcon>
 export const GoogleIcon = ({ children }) => <FAIcon icon={faGoogle}>{children}</FAIcon>;
 export const FacebookIcon = ({ children }) => <FAIcon icon={faFacebook}>{children}</FAIcon>;
+export const TwitterIcon = ({ children }) => <FAIcon icon={faTwitter}>{children}</FAIcon>
 export const DecrementIcon = ({ children }) => <FAIcon icon={faMinusCircle}>{children}</FAIcon>;
 export const IncrementIcon = ({ children }) => <FAIcon icon={faPlusCircle}>{children}</FAIcon>;
 export const ErrorIcon = ({ children }) => <FAIcon icon={faExclamationCircle}>{children}</FAIcon>;

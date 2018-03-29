@@ -42,7 +42,7 @@ function Navigation({ links, contributions }) {
         <nav className="navbar">
           <div className="container">
             <div className="navbar-brand">
-              <Link to="/dashboard/my" style={{ paddingTop: "7px" }}>
+              <Link to="/contribution/my" style={{ paddingTop: "7px" }}>
                 <Brand/>
               </Link>
               <a className="navbar-burger burger is-active" onClick={auth.logout}>

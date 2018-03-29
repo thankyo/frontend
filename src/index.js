@@ -28,7 +28,7 @@ let loaded = new Promise((resolve) => {
 // let isAuthenticated = auth.restoreAuthentication()
 // if (isAuthenticated) {
 //   if (location.pathname === "/") {
-//     history.push("/dashboard/my");
+//     history.push("/contribution/my");
 //   }
 // } else if (location.pathname !== "/" || location.pathname.startsWith("/auth")) {
 //   history.push("/");

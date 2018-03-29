@@ -1,14 +1,14 @@
 import React from "react";
 
 import { Route, Switch } from 'react-router-dom';
-import SupporterDashboardPage from "./DashboardPage";
+import ContributionPage from "./ContributionPage";
 
-export default function DashboardRouter() {
+export default function ContributionRouter() {
   return (
     <section className="section">
       <div className="container">
         <Switch>
-          <Route path="/dashboard/:id" render={(({ match: { params: { id } } }) => <SupporterDashboardPage id={id} />)}/>
+          <Route path="/contribution/:id" render={(({ match: { params: { id } } }) => <ContributionPage id={id} />)}/>
         </Switch>
       </div>
     </section>

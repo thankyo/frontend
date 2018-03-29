@@ -86,7 +86,7 @@ class AuthService {
       then((res) => handleFetchResponse(res)).
       then(authRes => {
         this.tokenStore.setToken(authRes.token);
-        history.push("/dashboard/my")
+        history.push("/contribution/my")
       })
   }
 

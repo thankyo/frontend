@@ -1,3 +1,5 @@
 import React from "react";
 
-export default ({ url }) => (<a href={url}>{url}</a>);
+const Resource = ({ url }) => (<a href={url}>{url}</a>);
+
+export default Resource;

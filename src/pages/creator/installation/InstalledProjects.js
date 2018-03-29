@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Resource from "components/Resource";
-import { CancelIcon, InstallIcon } from "components/Icon";
+import { CancelIcon, FacebookIcon, InstallIcon, TwitterIcon } from "components/Icon";
 import { expandableComponent } from "components/timeline/util";
 import { connect } from "react-redux";
 import RefreshLink from "components/RefreshLink";
@@ -35,7 +35,26 @@ let InstalledProjectExpanded = ({ project, handleExpand, deleteProject }) => (
 
 InstalledProjectExpanded = connect(({ project: { byId } }, { _id }) => ({ project: byId[_id] }), (dispatch, { _id }) => bindActionCreators(actions, dispatch))(InstalledProjectExpanded);
 
-const InstalledProjectCollapsed = ({ webStack, url, _id, user, avatar, handleExpand }) => (
+const ShareButtons = ({ url, tags }) => {
+  let tweetText = `I'm launching LoveIt project for ${url}, check it out.`;
+  let tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&hashtags=${tags.join(",")}`;
+  return (
+    <p className="field has-addons">
+      <p className="control">
+        <a className="button is-small is-primary is-outlined">
+          <FacebookIcon>share</FacebookIcon>
+        </a>
+      </p>
+      <p className="control">
+        <a className="button is-small is-primary is-outlined" href={tweetUrl}>
+          <TwitterIcon>tweet</TwitterIcon>
+        </a>
+      </p>
+    </p>
+  );
+};
+
+const InstalledProjectCollapsed = ({ webStack, url, _id, user, avatar, tags, handleExpand }) => (
   <li className="timeline-item is-primary">
     <div className="timeline-marker is-primary is-image is-32x32">
       <img src={avatar} width={32} height={32}/>
@@ -44,11 +63,10 @@ const InstalledProjectCollapsed = ({ webStack, url, _id, user, avatar, handleExp
       <p className="heading">
         <Resource url={url}/>
       </p>
-      <p>
-        <button className="button is-small is-danger is-outlined" onClick={handleExpand}>
-          <CancelIcon>Delete</CancelIcon>
-        </button>
-      </p>
+      <ShareButtons url={url} tags={tags}/>
+      <button className="button is-small is-danger is-outlined" onClick={handleExpand}>
+        <CancelIcon>Delete</CancelIcon>
+      </button>
     </div>
   </li>
 );
