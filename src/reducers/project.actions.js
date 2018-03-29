@@ -1,6 +1,7 @@
 import authService from "./util/auth";
 import { dispatchPromise, event } from "./util/promiseStates";
 import { markMy } from "reducers/util/markMy";
+import { dispatchPromiseWith } from "reducers/util/promiseStates";
 
 export const PROJECT_GET = event("PROJECT_GET");
 export const GET_SUPPORTED = event("GET_SUPPORTED");
@@ -14,7 +15,10 @@ export const ENRICH_PROJECT = event("ENRICH_PROJECT");
 export const GET_OWNED_PROJECTS = event("GET_OWNED_PROJECTS");
 export const REFRESH_PROJECT_FEED = event("REFRESH_PROJECT_FEED");
 
-export const getProject = PROJECT_GET.getById("/api/v1/thank/project/$id");
+export const getProject = (id) => (dispatch) => {
+  let p = fetch(`/api/v1/thank/project/${id}`).then(res => res.json())
+  dispatchPromiseWith(p, PROJECT_GET, id, dispatch)
+}
 
 export function getSupportedByMe() {
   return (dispatch) => {

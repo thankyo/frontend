@@ -7,8 +7,6 @@ import { Helmet } from "react-helmet";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 
-import auth from "reducers/util/auth";
-
 import SupporterLandingPage from "../pages/landing/SupporterLandingPage";
 import CreatorLandingPage from "../pages/landing/CreatorLandingPage";
 
@@ -31,16 +29,7 @@ export default class MainApp extends Component {
       <Fragment>
         <Helmet/>
         <Switch>
-          <Route exact path="/" render={props => (
-            auth.restoreAuthentication() ? (
-              <Redirect to={{
-                pathname: '/contribution/my',
-                state: { from: props.location }
-              }}/>
-            ) : (
-              <SupporterLandingPage/>
-            )
-          )}/>
+          <Route exact path="/" component={SupporterLandingPage}/>
 
           <Route path="/about" component={AboutRouter}/>
 
