@@ -3,13 +3,12 @@ import { connect } from "react-redux";
 import { Form, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 
-import { refreshProjectFeed, updateProject } from "reducers/project.actions";
+import { refreshProjectFeed, updateProject, getProject } from "reducers/project.actions";
 
 import Loading from "./Loading";
 import { EditButton, RefreshIcon, SaveIcon } from "components/Icon";
 import ProjectFormSection from "./form/ProjectFormSection";
 import RefreshLink from "components/RefreshLink";
-import { isMyObj } from "reducers/util/markMy";
 import auth from "reducers/util/auth";
 
 function ViewProject({ avatar, title, shortDescription, description, user, _id, tags, url, switchToEdit }) {
@@ -120,10 +119,13 @@ class Project extends Component {
 const mapStateToProps = ({ project: { byId } }, { id }) => ({ project: byId[id] });
 
 const mapDispatchToProps = (dispatch, { id }) => {
+  dispatch(getProject(id));
   return {
     updateProject: ({ project }) => dispatch(updateProject(project)),
     refreshFeed: () => dispatch(refreshProjectFeed(id))
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Project)
+Project = connect(mapStateToProps, mapDispatchToProps)(Project);
+
+export default Project;

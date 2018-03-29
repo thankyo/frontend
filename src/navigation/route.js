@@ -23,6 +23,7 @@ import CreatorRouter from "../pages/creator/CreatorRouter";
 import SettingsRouter from "../pages/settings/SettingsRouter";
 
 import SearchRouter from "../pages/search/SearchRouter";
+import ProjectRouter from "../pages/project/ProjectRouter";
 
 export default class MainApp extends Component {
   render() {
@@ -47,6 +48,8 @@ export default class MainApp extends Component {
 
           <Route path="/auth" component={AuthRouter}/>
           <Route path="/legal" component={LegalRouter}/>
+
+          <Route path="/project" component={ProjectRouter}/>
 
           <Route path="/(creator|contribution|settings|search|post)">
             <Fragment>

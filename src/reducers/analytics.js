@@ -47,9 +47,10 @@ function toEvent({ type, payload }) {
 }
 
 export default function analyticsReducer(state = [], action) {
-  let event = toEvent(action);
+  const event = toEvent(action);
+  const isLocalhost = location.hostname === "localhost";
   if (event !== undefined) {
-    if (ga) ga('send', event)
+    if (ga && !isLocalhost) ga('send', event)
     return state.concat(event)
   } else {
     return state;

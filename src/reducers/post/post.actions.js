@@ -52,7 +52,9 @@ export function searchByTag(tags) {
 
 export function searchByProject(project) {
   return (dispatch) => {
-    let p = authService.get(`/api/v1/thank/graph/project/${encodeURIComponent(project)}`).then(posts => ({ id: project, posts }));
+    let p = fetch(`/api/v1/thank/graph/project/${encodeURIComponent(project)}`)
+      .then(res => res.json())
+      .then(posts => ({ id: project, posts }));
     return dispatchPromise(p, POST_SEARCH_BY_PROJECT, dispatch);
   }
 }
