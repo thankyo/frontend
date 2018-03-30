@@ -15,7 +15,7 @@ const ProjectMetaView = ({ project = {} }) => (
     <meta name="og:title" content={project.title}/>
     <meta name="og:description" content={project.description}/>
     <meta name="og:image" content={project.avatar}/>
-    
+
   </Helmet>
 );
 
