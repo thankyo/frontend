@@ -2,6 +2,7 @@ import React from "react";
 import Brand from "components/Brand";
 import { Link } from 'react-router-dom';
 import JoinButton from "./JoinButton";
+import ClickOrTapWord from "./ClickOrTapWord";
 
 export default function () {
   return (
@@ -32,7 +33,7 @@ export default function () {
       <div className="hero-body">
         <div className="container has-text-centered">
           <h1 className="title title-main-promo title-main-promo-left title-landing">
-            Support creators with a single click
+            Support creators with a single <ClickOrTapWord/>
           </h1>
           <JoinButton/>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { faHeart as faSolidHeart, faCalendar } from '@fortawesome/fontawesome-free-solid';
-import { faHeart } from '@fortawesome/fontawesome-free-regular';
+import ClickOrTapWord from "./ClickOrTapWord";
 import { AboutIcon } from "./SkepticZone";
 import Logo from "components/logo.svg";
 
@@ -33,7 +33,7 @@ export default function () {
                     <Logo width={40} height={40} className="fab-is-loved"/>
                   </span>
                 </span>
-                <h2 className="about-project-subtitle"><b>Whenever you click it, we register&nbsp;your&nbsp;tip</b></h2>
+                <h2 className="about-project-subtitle"><b>Whenever you <ClickOrTapWord/> it, we register&nbsp;your&nbsp;tip</b></h2>
                 <p>
                   We track your support throughout the month
                 </p>

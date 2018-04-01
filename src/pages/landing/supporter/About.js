@@ -2,7 +2,8 @@ import React from "react";
 import { AboutIcon } from "./SkepticZone";
 import Brain from "./brain.svg";
 import Cent from "./cent.svg";
-import { faThumbsUp, faCircle, faHandPeace } from '@fortawesome/fontawesome-free-solid';
+import { faHandPeace } from '@fortawesome/fontawesome-free-solid';
+import ClickOrTapWord from "./ClickOrTapWord";
 
 export default function () {
   return (
@@ -38,7 +39,7 @@ export default function () {
                 <AboutIcon icon={faHandPeace}/>
                 <h2 className="about-project-subtitle"><b><i>Easiest</i> way to support creators</b></h2>
                 <p>
-                  A click, is all it takes.
+                  A <ClickOrTapWord/>, is all it takes.
                 </p>
               </div>
             </div>
