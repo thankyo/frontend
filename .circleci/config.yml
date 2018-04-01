@@ -28,7 +28,13 @@ jobs:
             - node_modules
 
       - run:
-          command: yarn run build-integration | yarn run build
+          name: Build integration
+          command: yarn run build-integration
+
+
+      - run:
+          name: Build main project
+          command: yarn run build
 
       - run:
           name: Login to Docker
