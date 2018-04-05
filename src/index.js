@@ -11,8 +11,7 @@ import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux'
 
 import conf from "./conf";
 import reducers from "./reducers";
-import MainApp from "./navigation/route";
-import auth from "reducers/util/auth";
+import AppRouter from "./AppRouter";
 
 const history = createHistory();
 const store = createStore(reducers(), composeWithDevTools(applyMiddleware(routerMiddleware(history), thunk)));
@@ -25,21 +24,11 @@ let loaded = new Promise((resolve) => {
   }
 });
 
-// let isAuthenticated = auth.restoreAuthentication()
-// if (isAuthenticated) {
-//   if (location.pathname === "/") {
-//     history.push("/contribution/my");
-//   }
-// } else if (location.pathname !== "/" || location.pathname.startsWith("/auth")) {
-//   history.push("/");
-// }
-
-
 Promise.all([ loaded, conf() ]).then(() => {
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <MainApp/>
+        <AppRouter/>
       </ConnectedRouter>
     </Provider>,
     document.getElementById('app')

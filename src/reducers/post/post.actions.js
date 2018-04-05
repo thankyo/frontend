@@ -45,7 +45,7 @@ export function searchByTag(tags) {
     if (!tags || tags.trim().length === 0) {
       return Promise.resolve();
     }
-    let p = authService.get(`/api/v1/thank/graph/search?tags=${encodeURIComponent(tags)}`);
+    let p = fetch(`/api/v1/thank/graph/search?tags=${encodeURIComponent(tags)}`).then(res => res.json());
     return dispatchPromise(p, POST_SEARCH_BY_TAG, dispatch);
   }
 }

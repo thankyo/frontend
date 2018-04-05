@@ -63,7 +63,6 @@ const InstalledProjectCollapsed = ({ webStack, url, _id, user, avatar, tags, han
       <p className="heading">
         <Resource url={url}/>
       </p>
-      <ShareButtons url={url} tags={tags}/>
       <button className="button is-small is-danger is-outlined" onClick={handleExpand}>
         <CancelIcon>Delete</CancelIcon>
       </button>

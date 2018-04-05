@@ -2,6 +2,8 @@ import 'whatwg-fetch';
 import { saveAs } from "file-saver";
 import { SubmissionError } from "redux-form";
 
+import tokenStore from "./JWTTokenStore";
+
 function handleFetchResponse(res) {
   if (res.status === 400) {
     return res.json().then(({ field, error }) => {
@@ -21,55 +23,7 @@ function handleCSVResponce(fileName){
 
 }
 
-class TokenStore {
-  getToken = () => {
-    return localStorage.getItem("token");
-  };
-
-  setToken = (token) => {
-    localStorage.setItem("token", token.trim());
-    let base64Url = token.split('.')[1];
-
-    let base64 = base64Url.replace('-', '+').replace('_', '/');
-    let {id, email} = JSON.parse(window.atob(base64));
-
-    localStorage.setItem("user", id);
-    localStorage.setItem("email", email);
-
-    try {
-      if (Raven) {
-        Raven.setUserContext({ id, email });
-      }
-      if (ga) {
-        ga('set', 'userId', id)
-      }
-    } catch (err) { }
-    try {
-      $crisp.push(["set", "user:email", [ email ]])
-    } catch (err) { }
-  };
-
-  getUser = () => {
-    return localStorage.getItem("user");
-  };
-
-  isMy = (id) => {
-    if (id === "my")
-      return true;
-    return this.getUser() === id;
-  };
-
-  removeToken = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-  };
-}
-
 class AuthService {
-  constructor() {
-    this.tokenStore = new TokenStore();
-  }
-
   withPostOptions = (req) => {
     return {
       method: "POST",
@@ -85,7 +39,7 @@ class AuthService {
     return fetch(req).
       then((res) => handleFetchResponse(res)).
       then(authRes => {
-        this.tokenStore.setToken(authRes.token);
+        tokenStore.setToken(authRes.token);
         history.push("/contribution/my")
       })
   }
@@ -126,10 +80,10 @@ class AuthService {
   }
 
   restoreAuthentication = () => {
-    let token = this.tokenStore.getToken();
+    let token = tokenStore.getToken();
     if (token !== undefined && token !== null) {
       // TODO This is here in order to update Raven
-      this.tokenStore.setToken(token);
+      tokenStore.setToken(token);
       return true;
     }
     return false;
@@ -148,7 +102,7 @@ class AuthService {
   remove = (url) => this.signAndFetch(new Request(url, { method: 'DELETE' }));
 
   signAndFetch = (req, isJson = true) => {
-    let token = this.tokenStore.getToken();
+    let token = tokenStore.getToken();
     req.headers.append('X-Auth-Token', token);
     req.headers.append('Accept', 'application/json');
     req.headers.set('Content-Type', 'application/json');
@@ -172,12 +126,12 @@ class AuthService {
     });
   };
 
-  isMy = (id) => this.tokenStore.isMy(id);
+  isMy = (id) => tokenStore.isMy(id);
 
-  getUser = () => this.tokenStore.getUser();
+  getUser = () => tokenStore.getUser();
 
   logout = () => {
-    this.tokenStore.removeToken();
+    tokenStore.removeToken();
     window.location = '/api/v1/auth/logout';
   }
 }
