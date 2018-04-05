@@ -29,12 +29,12 @@ jobs:
 
       - run:
           name: Build integration
-          command: yarn run build-integration
+          command: yarn build-integration
 
 
       - run:
           name: Build main project
-          command: yarn run build
+          command: yarn build
 
       - run:
           name: Login to Docker
