@@ -2,6 +2,8 @@ import React from "react";
 import { Field, Form, reduxForm } from "redux-form";
 import { LoadingButton, renderField, required, max64 } from "components/form/form.utils";
 import { RestoreIcon } from "components/Icon";
+import { reset } from "reducers/auth.actions";
+import { connect } from "react-redux";
 
 let ResetForm = ({ handleSubmit, submitting }) => {
   return (
@@ -23,6 +25,10 @@ let ResetForm = ({ handleSubmit, submitting }) => {
   );
 };
 
-ResetForm = reduxForm({ form: 'reset' })(ResetForm);
+const mapDispatchToProps = (dispatch, { token }) => ({
+  onSubmit: (forgotForm) => dispatch(reset(forgotForm, token))
+});
+
+ResetForm = connect(undefined, mapDispatchToProps)(reduxForm({ form: 'reset' })(ResetForm));
 
 export default ResetForm;

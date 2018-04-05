@@ -8,9 +8,9 @@ import FacebookAuthPage from "./FacebookAuthPage";
 import GoogleAuthPage from "./GoogleAuthPage";
 
 import RegistrationForm from "./RegistrationForm";
-import LoginForm from "./LoginForm";
 import ResetForm from "./ResetForm";
 import ForgotForm from "./ForgotForm";
+import LoginForm from "./LoginForm";
 
 let SocialHeader = ({ facebook }) => (
     <div className="has-text-centered">
@@ -52,7 +52,7 @@ export default function ({ history }) {
                     <h4 className="subtitle is-5 has-text-centered">or</h4>
                     <AuthNavigation/>
                     <br/>
-                    <RegistrationForm onSubmit={(regReq) => auth.signUp(regReq, history)}/>
+                    <RegistrationForm/>
                     <ForgotPasswordLink/>
                   </Fragment>
                 </Route>
@@ -64,24 +64,24 @@ export default function ({ history }) {
                     <h4 className="subtitle is-5 has-text-centered">or</h4>
                     <AuthNavigation/>
                     <br/>
-                    <LoginForm onSubmit={(logInReq) => auth.login(logInReq, history)}/>
+                    <LoginForm />
                     <ForgotPasswordLink/>
                   </Fragment>
                 </Route>
                 <Route exact path="/auth/facebook">
-                  <FacebookAuthPage history={history}/>
+                  <FacebookAuthPage/>
                 </Route>
                 <Route exact path="/auth/google">
-                  <GoogleAuthPage history={history}/>
+                  <GoogleAuthPage/>
                 </Route>
                 <Route exact path="/auth/forgot">
-                  <ForgotForm onSubmit={(forgotReq) => auth.forgot(forgotReq).then(res => history.push("/auth/forgot/success"))}/>
+                  <ForgotForm/>
                 </Route>
                 <Route exact path="/auth/forgot/success">
                   <h2 className="title">Check your email :)</h2>
                 </Route>
                 <Route path="/auth/reset/:token" children={({ match: { params: { token }} }) => (
-                  <ResetForm onSubmit={(restoreReq) => auth.reset(restoreReq, token, history)}/>
+                  <ResetForm token={token}/>
                  )}
                 />
               </Switch>

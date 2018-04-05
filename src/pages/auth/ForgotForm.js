@@ -1,7 +1,9 @@
 import React from "react";
 import { Field, Form, reduxForm } from "redux-form";
-import { LoadingButton, required } from "components/form/form.utils";
+import { LoadingButton, renderField, required } from "components/form/form.utils";
 import { SendIcon } from "components/Icon";
+import { connect } from "react-redux";
+import { forgot } from "reducers/auth.actions";
 
 let ForgotForm = ({ handleSubmit, submitting }) => {
   return (
@@ -18,6 +20,10 @@ let ForgotForm = ({ handleSubmit, submitting }) => {
   );
 };
 
-ForgotForm = reduxForm({ form: 'forgot' })(ForgotForm);
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (forgotForm) => dispatch(forgot(forgotForm))
+});
+
+ForgotForm = connect(undefined, mapDispatchToProps)(reduxForm({ form: 'forgot' })(ForgotForm));
 
 export default ForgotForm;

@@ -2,6 +2,8 @@ import React from "react";
 import { Field, Form, reduxForm } from "redux-form";
 import { LoadingButton, max64, renderField, required } from "components/form/form.utils";
 import { RegisterIcon } from "components/Icon";
+import { connect } from "react-redux";
+import { signUp } from "reducers/auth.actions";
 
 let RegistrationForm = ({ handleSubmit, submitting }) => {
   return (
@@ -23,6 +25,11 @@ let RegistrationForm = ({ handleSubmit, submitting }) => {
   );
 };
 
-RegistrationForm = reduxForm({ form: 'register' })(RegistrationForm);
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (forgotForm) => dispatch(signUp(forgotForm))
+});
+
+
+RegistrationForm = connect(undefined, mapDispatchToProps)(reduxForm({ form: 'register' })(RegistrationForm));
 
 export default RegistrationForm;

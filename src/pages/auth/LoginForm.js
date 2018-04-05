@@ -2,6 +2,8 @@ import React from "react";
 import { Field, Form, reduxForm } from "redux-form";
 import { LoadingButton, max64, renderField, required } from "components/form/form.utils";
 import { LoginIcon } from "components/Icon";
+import { login } from "reducers/auth.actions";
+import { connect } from 'react-redux';
 
 let LoginForm = ({ handleSubmit, submitting }) => {
   return (
@@ -20,6 +22,11 @@ let LoginForm = ({ handleSubmit, submitting }) => {
   );
 };
 
-LoginForm = reduxForm({ form: 'login' })(LoginForm);
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (forgotForm) => dispatch(login(forgotForm))
+});
+
+LoginForm = connect(undefined, mapDispatchToProps)(reduxForm({ form: 'login' })(LoginForm));
 
 export default LoginForm;

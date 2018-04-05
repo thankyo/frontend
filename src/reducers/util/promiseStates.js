@@ -42,13 +42,12 @@ export function event(name) {
 
 export function dispatchPromise(p, event, dispatch) {
   dispatch({ type: event.pending, payload: {} });
-  // return new Promise((resolve) => setTimeout(resolve, 30000))
-  //   .then(() => p)
   return p.then((res) => {
       dispatch({ type: event.fulfilled, payload: res });
       return res;
     }).catch((err) => {
       dispatch({ type: event.rejected, payload: err });
+      return Promise.reject(err);
     })
 }
 

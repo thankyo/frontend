@@ -27,7 +27,8 @@ function withPostOptions(form) {
 }
 
 const doAuth = (req, dispatch) => {
-  let p = fetch(req).then((res) => handleFetchResponse(res))
+  let p = fetch(req)
+    .then(handleFetchResponse)
     .then(authRes => {
       tokenStore.setToken(authRes.token);
       dispatch(push("/contribution/my"));
@@ -58,29 +59,16 @@ export const login = (loginForm) => (dispatch) => {
   return doAuth(new Request(url, options), dispatch);
 };
 
-export const forgot = (forgotForm) => {
+export const forgot = (forgotForm) => (dispatch) => {
   let url = `/api/v1/auth/password/forgot`;
   let options = withPostOptions(forgotForm);
-  return fetch(new Request(url, options)).then(handleFetchResponse);
+  return fetch(new Request(url, options))
+    .then(handleFetchResponse)
+    .then(() => dispatch(push("/auth/forgot/success")));
 };
 
 export const reset = (resetForm, token) => (dispatch) => {
   let url = `/api/v1/auth/password/reset/${token}`;
   let options = withPostOptions(resetForm);
   return doAuth(new Request(url, options), dispatch);
-};
-
-export const restoreAuthentication = (dispatch) => {
-  let token = tokenStore.getToken();
-  if (token !== undefined && token !== null) {
-    // TODO This is here in order to update Raven
-    tokenStore.setToken(token);
-    return true;
-  }
-  return false;
-};
-
-export const logout = (dispatch) => {
-  tokenStore.removeToken();
-  window.location = '/api/v1/auth/logout';
 };
