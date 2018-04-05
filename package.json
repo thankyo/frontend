@@ -9,7 +9,7 @@
     "start": "NODE_ENV=development webpack-dev-server",
     "build": "rimraf public && NODE_ENV=production webpack -p --optimize-minimize",
     "start-integration": "parcel ./integration/index.html",
-    "build-integration": "rimraf assets/integration && parcel build ./integration/index.html -d assets/integration"
+    "build-integration": "rimraf assets/integration && parcel build ./integration/index.html -d assets/integration --public-url /integration/"
   },
   "engines": {
     "npm": "^5.0.4",

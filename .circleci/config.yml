@@ -20,7 +20,7 @@ jobs:
 
       - run:
           name: Install parcel
-          command: yarn global add parcel-bundler
+          command: yarn global add parcel-bundler@1.7.0
 
       - save_cache:
           key: frontend-cache-{{ checksum "yarn.lock" }}
