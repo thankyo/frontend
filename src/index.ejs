@@ -20,6 +20,158 @@
       //]]>
     </script>
 
+    <style type="text/css">
+        * {
+            box-sizing: inherit;
+        }
+
+        *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .pageloader {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            position: fixed;
+            padding-top: 2em;
+            background: #48c8fe;
+            z-index: 999998;
+            transition: transform .35s ease-out, -webkit-transform .35s ease-out;
+            will-change: transform;
+        }
+
+        .pageloader:not(.is-left-to-right), .pageloader:not(.is-right-to-left) {
+            -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+        }
+
+        .pageloader.is-active:not(.is-left-to-right), .pageloader.is-active:not(.is-right-to-left) {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        .pageloader::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: block;
+            border-radius: 100%;
+            content: '';
+            z-index: 9999;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            box-sizing: border-box;
+            border: 0 solid white;
+            -webkit-animation: loader-figure 1.15s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+            animation: loader-figure 1.15s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        /*! CSS Used keyframes */
+        @-webkit-keyframes loader-figure {
+            0% {
+                height: 0;
+                width: 0;
+                background-color: white;
+            }
+            29% {
+                background-color: white;
+            }
+            30% {
+                height: 2em;
+                width: 2em;
+                background-color: transparent;
+                border-width: 1em;
+                opacity: 1;
+            }
+            100% {
+                height: 2em;
+                width: 2em;
+                border-width: 0;
+                opacity: 0;
+                background-color: transparent;
+            }
+        }
+
+        @-moz-keyframes loader-figure {
+            0% {
+                height: 0;
+                width: 0;
+                background-color: white;
+            }
+            29% {
+                background-color: white;
+            }
+            30% {
+                height: 2em;
+                width: 2em;
+                background-color: transparent;
+                border-width: 1em;
+                opacity: 1;
+            }
+            100% {
+                height: 2em;
+                width: 2em;
+                border-width: 0;
+                opacity: 0;
+                background-color: transparent;
+            }
+        }
+
+        @-o-keyframes loader-figure {
+            0% {
+                height: 0;
+                width: 0;
+                background-color: white;
+            }
+            29% {
+                background-color: white;
+            }
+            30% {
+                height: 2em;
+                width: 2em;
+                background-color: transparent;
+                border-width: 1em;
+                opacity: 1;
+            }
+            100% {
+                height: 2em;
+                width: 2em;
+                border-width: 0;
+                opacity: 0;
+                background-color: transparent;
+            }
+        }
+
+        @keyframes loader-figure {
+            0% {
+                height: 0;
+                width: 0;
+                background-color: white;
+            }
+            29% {
+                background-color: white;
+            }
+            30% {
+                height: 2em;
+                width: 2em;
+                background-color: transparent;
+                border-width: 1em;
+                opacity: 1;
+            }
+            100% {
+                height: 2em;
+                width: 2em;
+                border-width: 0;
+                opacity: 0;
+                background-color: transparent;
+            }
+        }
+    </style>
+
     <script>
       function configureSentry() {
         if (location.hostname !== "localhost") {
@@ -27,13 +179,18 @@
         }
       }
     </script>
-    <script type="text/javascript" src="https://cdn.ravenjs.com/3.17.0/raven.min.js" crossorigin="anonymous" onload="configureSentry()"></script>
+    <script type="text/javascript" src="https://cdn.ravenjs.com/3.17.0/raven.min.js" crossorigin="anonymous"
+            onload="configureSentry()"></script>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96949345-1"/>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96949345-1">
+    </script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
       gtag('js', new Date());
 
       gtag('config', 'UA-96949345-1');
@@ -41,20 +198,29 @@
 
 
     <!-- Crisp chat -->
-    <script>window.$crisp=[];window.CRISP_WEBSITE_ID="8eefdd9d-a79e-43b8-a2e1-3e54574fc0e8";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+    <script>window.$crisp = [];
+      window.CRISP_WEBSITE_ID = "8eefdd9d-a79e-43b8-a2e1-3e54574fc0e8";
+      (function () {
+        d = document;
+        s = d.createElement("script");
+        s.src = "https://client.crisp.chat/l.js";
+        s.async = 1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+      })();
+    </script>
 
 </head>
 <body>
-    <div id="app">
-        <div class="pageloader is-active"/>
-    </div>
+<div id="app">
+    <div class="pageloader is-active"/>
+</div>
 
-    <noscript>
-        Your browser does not support JavaScript! We have no offline version so far
-        <div style="display:none;">
-            <img src="//pixel.quantserve.com/pixel/p-7vP8g9XSPrnMP.gif" border="0" height="1" width="1" alt="Quantcast"/>
-        </div>
-    </noscript>
+<noscript>
+    Your browser does not support JavaScript! We have no offline version so far
+    <div style="display:none;">
+        <img src="//pixel.quantserve.com/pixel/p-7vP8g9XSPrnMP.gif" border="0" height="1" width="1" alt="Quantcast"/>
+    </div>
+</noscript>
 
 </body>
 </html>
