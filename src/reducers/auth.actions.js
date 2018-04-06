@@ -2,7 +2,7 @@ import 'whatwg-fetch';
 import { SubmissionError } from "redux-form";
 import { dispatchPromise, event } from "reducers/util/promiseStates";
 import tokenStore from "reducers/util/JWTTokenStore";
-import { push } from "react-router-redux/actions"
+import { goToContributions, goToForgotAuth } from "reducers/navigation.actions";
 
 export const AUTHENTICATION = event("AUTHENTICATION");
 
@@ -43,7 +43,7 @@ const doAuth = (req, dispatch) => {
       return auth;
     });
 
-  return dispatchPromise(p, AUTHENTICATION, dispatch).then(() => dispatch(push("/contribution/my")));
+  return dispatchPromise(p, AUTHENTICATION, dispatch).then(() => dispatch(goToContributions));
 };
 
 export const authWithFacebook = () => (dispatch) => {
@@ -73,7 +73,7 @@ export const forgot = (forgotForm) => (dispatch) => {
   let options = withPostOptions(forgotForm);
   return fetch(new Request(url, options))
     .then(handleFetchResponse)
-    .then(() => dispatch(push("/auth/forgot/success")));
+    .then(() => dispatch(goToForgotAuth));
 };
 
 export const reset = (resetForm, token) => (dispatch) => {

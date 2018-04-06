@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { lovePost, savePost, deletePost } from "reducers/post/post.actions";
+import { goToAuth } from "reducers/navigation.actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 
@@ -63,7 +64,7 @@ function EditPostOnTimeline({ submitting, initialValues, project, handleSubmit, 
 
 EditPostOnTimeline = reduxForm({ enableReinitialize: true })(EditPostOnTimeline);
 
-function PostOnTimeline({ post, lovePost, switchToEdit }) {
+function PostOnTimeline({ post, isAuthenticated, goToAuth, lovePost, switchToEdit }) {
   let isMy = isMyObj(post.project);
   let { ogObj: { title, description, image: { url = "" } = {}, tags = [], pubDate }, project } = post;
   return (
@@ -88,7 +89,7 @@ function PostOnTimeline({ post, lovePost, switchToEdit }) {
           <img src={url}/>
         </figure>
         <br/>
-        {isMy ? <SmallEditButton onClick={switchToEdit}/> : <LoveItButton isLoved={post.isLoved} thank={post.thank} onLove={() => lovePost(post.url)}/>}
+        {isMy ? <SmallEditButton onClick={switchToEdit}/> : <LoveItButton isLoved={post.isLoved} thank={post.thank} onLove={() => isAuthenticated ? lovePost(post.url) : goToAuth()}/>}
       </div>
     </li>
   );
@@ -104,7 +105,7 @@ class Post extends Component {
   handleModeChange = () => this.setState((state) => ({ edit: !state.edit }));
 
   render() {
-    let { post, lovePost, savePost, deletePost } = this.props;
+    let { post, savePost, deletePost } = this.props;
     let { edit } = this.state;
 
     if (!post) {
@@ -118,14 +119,14 @@ class Post extends Component {
                                  onSubmit={(ogObj) => savePost(ogObj).then(this.handleModeChange)}
                                  onDelete={() => deletePost(post).then(this.handleModeChange)}/>
     } else {
-      return <PostOnTimeline post={post} lovePost={lovePost} switchToEdit={this.handleModeChange}/>
+      return <PostOnTimeline {... this.props} switchToEdit={this.handleModeChange}/>
     }
   }
 }
 
 
-const mapStateToProps = ({ post: { byId } }, { id }) => ({ post: byId[id] });
+const mapStateToProps = ({ post: { byId }, auth: { isAuthenticated } }, { id }) => ({ post: byId[id], isAuthenticated });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ lovePost, savePost, deletePost }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ lovePost, savePost, deletePost, goToAuth }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post)
