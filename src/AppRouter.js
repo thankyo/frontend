@@ -27,7 +27,11 @@ const AppRouter = () => (
     <Switch>
       <Route exact path="/"/>
       <Route path="/(landing|auth)/"/>
-      <Route component={Navigation}/>
+      <Route>
+        <section className="hero is-small is-primary">
+          <Navigation/>
+        </section>
+      </Route>
     </Switch>
 
     <Switch>

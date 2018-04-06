@@ -1,12 +1,12 @@
 import React from "react";
 import JoinButton from "./JoinButton";
 import ClickOrTapWord from "./ClickOrTapWord";
-import AnonymousNavigation from "../../../navigation/AnonymousNavigation";
+import Navigation from "../../../navigation/Navigation";
 
 export default function () {
   return (
     <section className="hero is-medium is-fullheight page-promo is-primary">
-      <AnonymousNavigation/>
+      <Navigation/>
 
       <div className="hero-body">
         <div className="container has-text-centered">

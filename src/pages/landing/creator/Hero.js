@@ -1,11 +1,11 @@
 import React from "react";
-import AnonymousNavigation from "../../../navigation/AnonymousNavigation";
+import Navigation from "../../../navigation/Navigation";
 import JoinButton from "./JoinButton";
 
 export default function () {
   return (
     <section className="hero is-medium is-fullheight creator-promo is-primary">
-      <AnonymousNavigation/>
+      <Navigation/>
 
       <div className="hero-body">
         <div className="container has-text-centered">

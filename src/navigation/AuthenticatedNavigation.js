@@ -78,11 +78,6 @@ const mapStateToProps = ({ navigation: { links }, statistic: { contribution: { m
   { links, contributions: my.contributions || 0 }
 );
 
-const mapDispatchToProps = (dispatch) => {
-  dispatch(getContributions("my"));
-  return {};
-};
-
-AuthenticatedNavigation =  connect(mapStateToProps, mapDispatchToProps)(AuthenticatedNavigation);
+AuthenticatedNavigation =  connect(mapStateToProps)(AuthenticatedNavigation);
 
 export default AuthenticatedNavigation;
