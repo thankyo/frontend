@@ -35,7 +35,7 @@ class Manual extends Component {
               <span className="nt">{"<iframe"}</span><br/>
               <span className="na">    src=</span><span className="s">"https://loveit.tips/integration"</span><br/>
               <span className="na">    width=</span><span className="s">"80"</span><br/>
-              <span className="na">    height=</span><span className="s">"80"</span><br/>
+              <span className="na">    height=</span><span className="s">"100"</span><br/>
               <span className="na">    frameBorder=</span><span className="s">"0"</span><br/>
               <span className="na">    style=</span><span
               className="s">"position: fixed; right: 10px; bottom: 10px"</span>

@@ -5,7 +5,7 @@ const About = () => (
     <div className="hero-body">
       <div className="container">
         <p className="title">About (for now me, but hopefully us soon)</p>
-        <img src="https://s.gravatar.com/avatar/293f86043bc0fb6dba1190ad388c9d27?s=80" className="profile-image"></img>
+        <img src="https://s.gravatar.com/avatar/293f86043bc0fb6dba1190ad388c9d27?s=180" className="profile-image"/>
         <p>
           Hi, my name is Anton, I'm a creator of LoveIt.
           <br/>
@@ -18,7 +18,7 @@ const About = () => (
         <br/>
         <h2 className="is-size-6 is-marginless">Email <a href="mailto:antono@loveit.tips">antono@loveit.tips</a></h2>
         <h2 className="is-size-6 is-marginless">Skype <a href="skype:oparin.anton">oparin.anton</a></h2>
-        <h2 className="is-size-6 is-marginless">Twitter <a href="https://twitter.com/@mavarazy">@mavarazy</a></h2>
+        <h2 className="is-size-6 is-marginless">Twitter <a href="https://twitter.com/@mavarazy">@loveittips</a></h2>
       </div>
     </div>
   </div>
