@@ -1,6 +1,9 @@
 import React from "react";
 import AuthenticatedNavigation from "./AuthenticatedNavigation";
+import { connect } from "react-redux";
+import AnonymousNavigation from "./AnonymousNavigation";
 
-const Navigation = () => <AuthenticatedNavigation/>;
+let Navigation = ({ isAuthenticated }) => isAuthenticated ? <AuthenticatedNavigation/> : <AnonymousNavigation/>;
 
-export default Navigation;
+
+export default connect(({ auth }) => auth)(Navigation);
