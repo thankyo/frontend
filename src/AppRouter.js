@@ -25,32 +25,35 @@ import ProjectRouter from "./pages/project/ProjectRouter";
 const AppRouter = () => (
   <Fragment>
     <Switch>
+      <Route exact path="/"/>
+      <Route path="/(landing|auth)/"/>
+      <Route component={Navigation}/>
+    </Switch>
+
+    <Switch>
       <Route exact path="/" component={SupporterLandingPage}/>
+      <Route path="/landing/creator" component={CreatorLandingPage}/>
+      <Route path="/auth" component={AuthRouter}/>
 
       <Route path="/about" component={AboutRouter}/>
-
-      <Route path="/landing/creator" component={CreatorLandingPage}/>
-
-      <Route path="/auth" component={AuthRouter}/>
       <Route path="/legal" component={LegalRouter}/>
-
       <Route path="/project" component={ProjectRouter}/>
 
-      <Route path="/(creator|contribution|settings|search|post)">
-        <Fragment>
-          <Navigation/>
-          <Route path="/creator" component={CreatorRouter}/>
-          <Route path="/contribution" component={ContributionRouter}/>
-          <Route path="/settings" component={SettingsRouter}/>
-          <Route path="/search" component={SearchRouter}/>
-        </Fragment>
-      </Route>
+      <Route path="/creator" component={CreatorRouter}/>
+      <Route path="/contribution" component={ContributionRouter}/>
+      <Route path="/settings" component={SettingsRouter}/>
+      <Route path="/search" component={SearchRouter}/>
 
       <Route component={NotFound}/>
     </Switch>
+
     <Switch>
-      <Route exact path="/"><Footer/></Route>
-      <Route path="/(legal|landing|about)/"><Footer/></Route>
+      <Route exact path="/">
+        <Footer/>
+      </Route>
+      <Route path="/(legal|landing|about)/">
+        <Footer/>
+      </Route>
     </Switch>
   </Fragment>
 );

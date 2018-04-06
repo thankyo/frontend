@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import auth from "reducers/util/auth";
 import { LogOutIcon } from "components/Icon";
@@ -19,7 +19,7 @@ const NavigationLink = ({ name, icon, pathname, isActive, isMobile }) => {
 };
 
 let AuthenticatedNavigation = ({ links, contributions }) => (
-  <section className="hero is-primary is-small">
+  <Fragment>
     <div className="hero-head">
       <nav className="navbar">
         <div className="container">
@@ -71,7 +71,7 @@ let AuthenticatedNavigation = ({ links, contributions }) => (
         </nav>
       </div>
     </div>
-  </section>
+  </Fragment>
 );
 
 const mapStateToProps = ({ navigation: { links }, statistic: { contribution: { my = {} } } }) => (
