@@ -26,15 +26,24 @@ function withPostOptions(form) {
   };
 }
 
+export function decodeToken(token) {
+  let base64Url = token.split('.')[1];
+
+  let base64 = base64Url.replace('-', '+').replace('_', '/');
+  return JSON.parse(window.atob(base64));
+}
+
 const doAuth = (req, dispatch) => {
   let p = fetch(req)
     .then(handleFetchResponse)
     .then(authRes => {
-      tokenStore.setToken(authRes.token);
-      dispatch(push("/contribution/my"));
+      let details = decodeToken(authRes.token);
+      let auth = { ... authRes, details };
+      tokenStore.setToken(auth);
+      return auth;
     });
 
-  return dispatchPromise(p, AUTHENTICATION, dispatch);
+  return dispatchPromise(p, AUTHENTICATION, dispatch).then(() => dispatch(push("/contribution/my")));
 };
 
 export const authWithFacebook = () => (dispatch) => {

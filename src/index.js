@@ -16,6 +16,12 @@ import AppRouter from "./AppRouter";
 const history = createHistory();
 const store = createStore(reducers(), composeWithDevTools(applyMiddleware(routerMiddleware(history), thunk)));
 
+let { auth: { isAuthenticated }} = store.getState();
+if (isAuthenticated) {
+
+}
+console.log(isAuthenticated);
+
 let loaded = new Promise((resolve) => {
   if (document.readyState === 'complete' || document.readyState === "interactive") {
     resolve();
