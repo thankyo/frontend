@@ -1,6 +1,7 @@
 import React from "react";
 import Brand from "components/Brand";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { LoginIcon, RegisterIcon, SearchIcon } from "components/Icon";
 
 const AnonymousNavigation = () => (
   <div className="hero-head">
@@ -11,16 +12,22 @@ const AnonymousNavigation = () => (
         </Link>
       </div>
 
+
       <div className="navbar-end">
-        <div className="field is-grouped is-hidden-mobile">
+        <div className="field navbar-item has-addons is-hidden-mobile">
           <p className="control">
-            <Link to="/auth/login" className="button is-inverted is-primary">
-              <span>Log in</span>
+            <Link className="button is-inverted is-outlined is-primary" to="/search">
+              <SearchIcon>Discover</SearchIcon>
             </Link>
           </p>
           <p className="control">
+            <NavLink to="/auth/login" className="button is-inverted is-outlined is-primary" activeClassName="is-active">
+              <LoginIcon>Log in</LoginIcon>
+            </NavLink>
+          </p>
+          <p className="control">
             <Link to="/auth" className="button is-inverted is-outlined is-primary">
-              <span>Register</span>
+              <RegisterIcon>Register</RegisterIcon>
             </Link>
           </p>
         </div>
