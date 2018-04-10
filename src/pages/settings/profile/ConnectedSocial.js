@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { CancelIcon, FacebookIcon, GoogleIcon, } from "components/Icon";
+import { CancelIcon, FacebookIcon, GoogleIcon, TumblrIcon, } from "components/Icon";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { deleteSocialConnection } from "reducers/user.actions";
@@ -10,6 +10,8 @@ const ProviderIcon = ({ provider, children }) => {
       return <FacebookIcon>{children}</FacebookIcon>;
     case "google":
       return <GoogleIcon>{children}</GoogleIcon>;
+    case "tumblr":
+      return <TumblrIcon>{children}</TumblrIcon>;
   }
 };
 
@@ -48,6 +50,7 @@ export default function ConnectedSocial() {
   return <Fragment>
     <SocialConnection provider="facebook"/>
     <SocialConnection provider="google"/>
+    <SocialConnection provider="tumblr"/>
   </Fragment>
 }
 

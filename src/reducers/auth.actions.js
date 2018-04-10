@@ -46,13 +46,8 @@ const doAuth = (req, dispatch) => {
   return dispatchPromise(p, AUTHENTICATION, dispatch).then(() => dispatch(goToContributions));
 };
 
-export const authWithFacebook = () => (dispatch) => {
-  let url = `/api/v1/auth/social/facebook${location.search}`;
-  return doAuth(new Request(url, { credentials: 'same-origin' }), dispatch);
-};
-
-export const authWithGoogle = () => (dispatch) => {
-  let url = `/api/v1/auth/social/google${location.search}`;
+export const authWithSocial = (provider) => (dispatch) => {
+  let url = `/api/v1/auth/social/${provider}${location.search}`;
   return doAuth(new Request(url, { credentials: 'same-origin' }), dispatch);
 };
 

@@ -2,15 +2,13 @@ import React, { Fragment } from "react";
 import AuthNavigation from "./AuthNavigation";
 import { connect } from "react-redux";
 import { Link, Route, Switch } from 'react-router-dom';
-import auth from "reducers/util/auth";
 import { FacebookIcon } from "components/Icon";
-import FacebookAuthPage from "./FacebookAuthPage";
-import GoogleAuthPage from "./GoogleAuthPage";
 
 import RegistrationForm from "./RegistrationForm";
 import ResetForm from "./ResetForm";
 import ForgotForm from "./ForgotForm";
 import LoginForm from "./LoginForm";
+import SocialAuthPage from "./SocialAuthPage";
 
 let SocialHeader = ({ facebook }) => (
     <div className="has-text-centered">
@@ -68,12 +66,6 @@ export default function ({ history }) {
                     <ForgotPasswordLink/>
                   </Fragment>
                 </Route>
-                <Route exact path="/auth/facebook">
-                  <FacebookAuthPage/>
-                </Route>
-                <Route exact path="/auth/google">
-                  <GoogleAuthPage/>
-                </Route>
                 <Route exact path="/auth/forgot">
                   <ForgotForm/>
                 </Route>
@@ -84,6 +76,15 @@ export default function ({ history }) {
                   <ResetForm token={token}/>
                  )}
                 />
+                <Route exact path="/auth/google">
+                  <SocialAuthPage provider="google"/>
+                </Route>
+                <Route exact path="/auth/facebook">
+                  <SocialAuthPage provider="facebook"/>
+                </Route>
+                <Route exact path="/auth/tumblr">
+                  <SocialAuthPage provider="tumblr"/>
+                </Route>
               </Switch>
             </div>
           </div>

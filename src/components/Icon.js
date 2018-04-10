@@ -10,6 +10,7 @@ import {
   faGithub,
   faTwitter,
   faGoogle,
+  faTumblr,
   faTelegramPlane,
   faWordpressSimple
 } from '@fortawesome/fontawesome-free-brands';
@@ -63,6 +64,7 @@ export const SendIcon = ({ children }) => <FAIcon icon={faTelegramPlane}>{childr
 export const CreditCardIcon = ({ children }) => <FAIcon icon={faCreditCard}>{children}</FAIcon>;
 export const GitHubIcon = ({ children }) => <FAIcon icon={faGithub}>{children}</FAIcon>
 export const GoogleIcon = ({ children }) => <FAIcon icon={faGoogle}>{children}</FAIcon>;
+export const TumblrIcon = ({ children }) => <FAIcon icon={faTumblr}>{children}</FAIcon>
 export const FacebookIcon = ({ children }) => <FAIcon icon={faFacebook}>{children}</FAIcon>;
 export const TwitterIcon = ({ children }) => <FAIcon icon={faTwitter}>{children}</FAIcon>
 export const DecrementIcon = ({ children }) => <FAIcon icon={faMinusCircle}>{children}</FAIcon>;
