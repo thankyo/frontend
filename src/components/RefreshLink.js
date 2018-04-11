@@ -24,11 +24,11 @@ export default class RefreshLink extends Component {
 
   render(){
     return(
-      <p className="control">
+      <div className="control">
         <a className={`${this.props.className || "button"} ${this.state.submitting && "is-loading"}`} onClick={this.handleClick} >
           {this.props.children}
         </a>
-      </p>
+      </div>
     )
   }
 

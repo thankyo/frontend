@@ -5,13 +5,13 @@ import { getPayouts, getPayoutsCSV } from "reducers/payment/payout/transaction.a
 import EOMPayoutTimeline from "components/timeline/EOMPayoutTimeline";
 import DownloadCSVButton from "components/DownloadCSVButton";
 
-function PayoutSection({ payouts, getPayoutsCsv }) {
+function EOMPayoutSection({ payouts, getPayoutsCsv }) {
   return (
     <section className="section">
-      <p className="title is-5 has-text-centered">
+      <div className="title is-5 has-text-centered">
         <DownloadCSVButton onClick={getPayoutsCsv}/>
         Payouts
-      </p>
+      </div>
       <EOMPayoutTimeline payouts={payouts}/>
     </section>
   );
@@ -32,4 +32,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PayoutSection);
+)(EOMPayoutSection);
