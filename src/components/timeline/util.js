@@ -46,7 +46,7 @@ export function stepByStep(... steps) {
 
       let CurrentStep = steps[currentStep];
 
-      return <CurrentStep next={this.handleNext} previous={this.handlePrevious} {... this.props}/>
+      return <CurrentStep next={this.handleNext} previous={this.handlePrevious} data={this.props}/>
     }
 
   }

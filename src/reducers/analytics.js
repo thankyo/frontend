@@ -1,5 +1,5 @@
 import {LOCATION_CHANGE} from "react-router-redux";
-import { CREATE_PROJECT, DELETE_PROJECT, ENRICH_PROJECT } from "reducers/project.actions";
+import { CREATE_PROJECT, DELETE_PROJECT } from "reducers/project.actions";
 import { POST_SEARCH_BY_TAG } from "reducers/post/post.actions";
 import queryString from "query-string";
 
@@ -12,13 +12,6 @@ function toEvent({ type, payload }) {
       return {
         hitType: 'pageview',
         page: pathname
-      };
-    case ENRICH_PROJECT.fulfilled:
-      return {
-        hitType: 'event',
-        eventCategory: 'Install',
-        eventAction: 'start',
-        eventLabel: payload.url
       };
     case CREATE_PROJECT.fulfilled:
       return {

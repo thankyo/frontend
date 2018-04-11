@@ -6,6 +6,7 @@ import Resource from "components/Resource";
 import { BackIcon, InstallIcon } from "components/Icon";
 import { Form, reduxForm } from "redux-form";
 import ProjectFormSection from "components/form/ProjectFormSection";
+import WebStackMarker from "./WebStackMarker";
 
 function EditProject({ initialValues, submitting, handleSubmit }) {
   return (
@@ -32,10 +33,10 @@ function EditProject({ initialValues, submitting, handleSubmit }) {
 
 EditProject = reduxForm({})(EditProject);
 
-const FinishInstallation = ({ project, createProject, previous }) => (
+const FinishInstallation = ({ data: project, createProject, previous }) => (
   <Fragment>
     <li className="timeline-item is-primary is-large">
-      <div className="timeline-marker is-medium is-primary"/>
+      <WebStackMarker webStack={project.webStack}/>
       <div className="timeline-content">
         <p className="heading">
           <Resource url={project.url}/>
@@ -51,4 +52,4 @@ const FinishInstallation = ({ project, createProject, previous }) => (
   </Fragment>
 );
 
-export default connect(({ project: { pending }}, { url }) => ({ project: pending[url] || { url }}), (dispatch) => bindActionCreators({ createProject }, dispatch))(FinishInstallation);
+export default connect(undefined, (dispatch) => bindActionCreators({ createProject }, dispatch))(FinishInstallation);

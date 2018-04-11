@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { CancelIcon, FacebookIcon, GoogleIcon, TumblrIcon, } from "components/Icon";
+import { DeleteIcon, FacebookIcon, GoogleIcon, TumblrIcon, } from "components/Icon";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { deleteSocialConnection } from "reducers/user.actions";
@@ -26,7 +26,7 @@ let SocialConnection = ({ isConnected, provider, url, deleteSocialConnection }) 
         </div>
         <div className="control">
           <div className="button is-pulled-right is-danger" onClick={() => deleteSocialConnection(provider)}>
-            <CancelIcon>Disconnect</CancelIcon>
+            <DeleteIcon>Disconnect</DeleteIcon>
           </div>
         </div>
       </div>

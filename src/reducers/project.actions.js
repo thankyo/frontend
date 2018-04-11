@@ -11,14 +11,13 @@ export const CREATE_PROJECT = event("CREATE_PROJECT");
 export const DELETE_PROJECT = event("DELETE_PROJECT");
 export const REFRESH_MY_PROJECTS = event("REFRESH_MY_PROJECTS");
 export const UPDATE_MY_PROJECT = event("UPDATE_MY_PROJECT");
-export const ENRICH_PROJECT = event("ENRICH_PROJECT");
 export const GET_OWNED_PROJECTS = event("GET_OWNED_PROJECTS");
 export const REFRESH_PROJECT_FEED = event("REFRESH_PROJECT_FEED");
 
 export const getProject = (id) => (dispatch) => {
   let p = fetch(`/api/v1/thank/project/${id}`).then(res => res.json())
   dispatchPromiseWith(p, PROJECT_GET, id, dispatch)
-}
+};
 
 export function getSupportedByMe() {
   return (dispatch) => {
@@ -38,13 +37,6 @@ export function updateProject(project) {
   return (dispatch) => {
     let p = authService.put(`/api/v1/thank/project/${project._id}`, project).then(markMy);
     return dispatchPromise(p, UPDATE_MY_PROJECT, dispatch);
-  }
-}
-
-export function enrichProject(url) {
-  return (dispatch) => {
-    let p = authService.get(`/api/v1/thank/enrich?url=${url}`);
-    return dispatchPromise(p, ENRICH_PROJECT, dispatch);
   }
 }
 

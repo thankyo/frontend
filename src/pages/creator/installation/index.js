@@ -4,7 +4,7 @@ import { getOwnedProjects } from "reducers/project.actions";
 import PendingProjects from "./PendingProjects";
 import InstalledProjects from "./InstalledProjects";
 import spinnerFactory from "components/spinnerFactory";
-import { CheckedIcon, GoogleIcon } from "components/Icon";
+import { CheckedIcon, GoogleIcon, TumblrIcon } from "components/Icon";
 
 const Spinner = spinnerFactory(260);
 
@@ -40,7 +40,7 @@ function TumblrStatus({ connected, url }) {
   if (connected) {
     return <a className="button is-small is-disabled" disabled><CheckedIcon>Tumblr Connected</CheckedIcon></a>
   } else {
-    return <a className="button is-small is-primary" href={url}><GoogleIcon>Connect Tumblr</GoogleIcon></a>
+    return <a className="button is-small is-primary" href={url}><TumblrIcon>Connect Tumblr</TumblrIcon></a>
   }
 }
 
@@ -51,7 +51,7 @@ function ResourceOwnershipStatus({ connected, owned }) {
 
   return owned.length === 0
     ? <div className="is-small">We do not see any site data, please contact us, we are here to help.</div>
-    : <div className="is-size-7">We see <strong>{owned.join(", ")}</strong></div>
+    : <div className="is-size-7">We see <strong>{owned.map(({ url }) => url).join(", ")}</strong></div>
 }
 
 function InstallationPage({ pending, owned, installed, isLoading, google, tumblr }) {
@@ -78,7 +78,7 @@ function InstallationPage({ pending, owned, installed, isLoading, google, tumblr
 const mapStateToProps = ({ project: { owned, byId }, user: { my : { data: { profiles = {} } } }, auth: { url } } ) => ({
   installed: owned.installed.map(id => byId[id]),
   owned: owned.owned || [],
-  pending: owned.pending.map(url => ({ url })),
+  pending: owned.pending,
   isLoading: owned.isLoading,
   google: {
     connected: profiles.google,

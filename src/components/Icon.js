@@ -21,6 +21,7 @@ import {
   faCreditCard,
   faDollarSign,
   faDownload,
+  faTrash,
   faExclamationCircle,
   faMinusCircle,
   faPauseCircle,
@@ -80,7 +81,7 @@ export const StripeIcon = iconFactory(faCcStripe);
 export const InstallIcon = iconFactory(faPlayCircle);
 export const CancelIcon = iconFactory(faTimes);
 export const BackIcon = iconFactory(faArrowCircleLeft);
-export const DeleteIcon = iconFactory(faTimes);
+export const DeleteIcon = iconFactory(faTrash);
 export const PendingIcon = iconFactory(faPauseCircle);
 export const DownloadIcon = iconFactory(faDownload);
 
@@ -166,6 +167,17 @@ export function WebStackIcon({ webStack, children }) {
       return (<TumblrIcon>{children}</TumblrIcon>);
     default:
       return (<OtherIcon>{children}</OtherIcon>)
+  }
+}
+
+export function WebStackImage({ webStack, size, color }) {
+  switch (webStack) {
+    case "WordPress":
+      return (<FontAwesomeIcon icon={faWordpressSimple} size={size} color={color}/>);
+    case "Tumblr":
+      return (<FontAwesomeIcon icon={faTumblr} size={size} color={color}/>);
+    default:
+      return (<FontAwesomeIcon icon={faCode} size={size} color={color}/>)
   }
 }
 

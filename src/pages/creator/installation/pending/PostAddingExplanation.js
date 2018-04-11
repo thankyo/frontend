@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import { BackIcon, InstallIcon } from "components/Icon";
+import WebStackMarker from "./WebStackMarker";
 
-const PostAddingExplanation = ({ next, previous }) => (
+const PostAddingExplanation = ({ data: { webStack }, next, previous }) => (
   <Fragment>
     <li className="timeline-item is-primary is-large">
-      <div className="timeline-marker is-medium is-primary"/>
+      <WebStackMarker webStack={webStack}/>
       <div className="timeline-content">
         <div className="content">
           <p className="heading">Adding new Posts</p>

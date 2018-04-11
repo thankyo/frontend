@@ -1,7 +1,7 @@
 import { combineReducers } from "redux"
 import { PROJECT_GET, GET_USER_PROJECTS, GET_SUPPORTED, REFRESH_MY_PROJECTS } from "./project.actions";
 import {
-  GET_OWNED_PROJECTS, UPDATE_MY_PROJECT, ENRICH_PROJECT, CREATE_PROJECT,
+  GET_OWNED_PROJECTS, UPDATE_MY_PROJECT, CREATE_PROJECT,
   DELETE_PROJECT
 } from "reducers/project.actions";
 
@@ -71,7 +71,7 @@ function ownedReducer(state = { installed: [], pending: [], owned: [], isLoading
     }
     case GET_OWNED_PROJECTS.fulfilled: {
       let { installed, owned } = payload;
-      let pending = owned.filter(url => installed.find(inl => inl.url === url) === undefined);
+      let pending = owned.filter(prj => installed.find(inl => inl.url === prj.url) === undefined);
       return {
         installed: installed.map(({ _id }) => _id),
         owned,
@@ -80,24 +80,18 @@ function ownedReducer(state = { installed: [], pending: [], owned: [], isLoading
       };
     }
     case DELETE_PROJECT.fulfilled:
+      let removed = Object.assign({}, payload);
+      delete removed.user;
+      delete removed._id;
       return Object.assign({}, state, {
         installed: state.installed.filter(id => id !== payload._id),
-        pending: state.pending.concat(payload.url),
+        pending: state.pending.concat(removed),
       });
     case CREATE_PROJECT.fulfilled:
       return {
         installed: state.installed.concat(payload._id),
-        pending: state.pending.filter(url => url !== payload.url)
+        pending: state.pending.filter(({ url }) => url !== payload.url)
       };
-    default:
-      return state;
-  }
-}
-
-function pendingReducer(state = {}, { type, payload }) {
-  switch (type) {
-    case ENRICH_PROJECT.fulfilled:
-      return Object.assign({}, state, { [payload.url]: payload });
     default:
       return state;
   }
@@ -107,6 +101,5 @@ export default combineReducers({
   byId: byIdReducer,
   byUser: byUserReducer,
   supported: supportedReducer,
-  owned: ownedReducer,
-  pending: pendingReducer,
+  owned: ownedReducer
 })

@@ -1,18 +1,18 @@
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
 import Resource from "components/Resource";
 import { BackIcon, InstallIcon } from "components/Icon";
 import Instructions from "./instruction";
+import WebStackMarker from "./WebStackMarker";
 
-const InstallationStep2 = ({ project, next, previous }) => (
+const ChooseWebStack = ({ data: { url, webStack }, next, previous }) => (
   <Fragment>
     <li className="timeline-item is-primary is-large">
-      <div className="timeline-marker is-medium is-primary"/>
+      <WebStackMarker webStack={webStack}/>
       <div className="timeline-content">
         <p className="heading">
-          <Resource url={project.url}/>
+          <Resource url={url}/>
         </p>
-        <Instructions url={project.url} webStack={project.webStack}/>
+        <Instructions url={url} webStack={webStack}/>
         <br/>
         <div className="button is-small is-primary" onClick={next}>
           <InstallIcon>Next</InstallIcon>
@@ -27,4 +27,4 @@ const InstallationStep2 = ({ project, next, previous }) => (
   </Fragment>
 );
 
-export default connect(({ project: { pending } }, { url }) => ({ project: pending[url] || { url } }))(InstallationStep2);
+export default ChooseWebStack;
