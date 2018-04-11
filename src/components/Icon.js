@@ -18,12 +18,10 @@ import {
   faCheckCircle,
   faArrowCircleLeft,
   faCode,
-  faCompass,
   faCreditCard,
   faDollarSign,
   faDownload,
   faExclamationCircle,
-  faHandPeace,
   faMinusCircle,
   faPauseCircle,
   faEdit,
@@ -56,35 +54,35 @@ export const FAIcon = ({ icon, children }) => {
   }
 };
 
-export const SaveIcon = ({ children }) => <FAIcon icon={faSave}>{children}</FAIcon>;
-export const RegisterIcon = ({ children }) => <FAIcon icon={faRegistered}>{children}</FAIcon>;
-export const LoginIcon = ({ children }) => <FAIcon icon={faSignInAlt}>{children}</FAIcon>;
-export const RestoreIcon = ({ children }) => <FAIcon icon={faSync}>{children}</FAIcon>;
-export const SendIcon = ({ children }) => <FAIcon icon={faTelegramPlane}>{children}</FAIcon>;
-export const CreditCardIcon = ({ children }) => <FAIcon icon={faCreditCard}>{children}</FAIcon>;
-export const GitHubIcon = ({ children }) => <FAIcon icon={faGithub}>{children}</FAIcon>
-export const GoogleIcon = ({ children }) => <FAIcon icon={faGoogle}>{children}</FAIcon>;
-export const TumblrIcon = ({ children }) => <FAIcon icon={faTumblr}>{children}</FAIcon>
-export const FacebookIcon = ({ children }) => <FAIcon icon={faFacebook}>{children}</FAIcon>;
-export const TwitterIcon = ({ children }) => <FAIcon icon={faTwitter}>{children}</FAIcon>
-export const DecrementIcon = ({ children }) => <FAIcon icon={faMinusCircle}>{children}</FAIcon>;
-export const IncrementIcon = ({ children }) => <FAIcon icon={faPlusCircle}>{children}</FAIcon>;
-export const ErrorIcon = ({ children }) => <FAIcon icon={faExclamationCircle}>{children}</FAIcon>;
-export const SuccessIcon = ({ children }) => <FAIcon icon={faCheckCircle}>{children}</FAIcon>;
-export const InviteIcon = ({ children }) => <FAIcon className={faHandPeace}>{children}</FAIcon>;
-export const USDIcon = ({ children }) => <FAIcon icon={faDollarSign}>{children}</FAIcon>;
-export const CheckedIcon = ({ children }) => <FAIcon icon={faCheckCircle}>{children}</FAIcon>
-export const RefreshIcon = ({ children }) => <FAIcon icon={faSync}>{children}</FAIcon>;
-export const SearchIcon = ({ children }) => <FAIcon icon={faSearch}>{children}</FAIcon>;
-export const LogOutIcon = ({ children }) => <FAIcon icon={faSignOutAlt}>{children}</FAIcon>;
-export const NavigationIcon = ({ children }) => <FAIcon icon={faCompass}>{children}</FAIcon>;
-export const StripeIcon = ({ children }) => <FAIcon icon={faCcStripe}>{children}</FAIcon>;
-export const InstallIcon = ({ children }) => <FAIcon icon={faPlayCircle}>{children}</FAIcon>;
-export const CancelIcon = ({ children }) => <FAIcon icon={faTimes}>{children}</FAIcon>;
-export const BackIcon = ({ children }) => <FAIcon icon={faArrowCircleLeft}>{children}</FAIcon>
-export const DeleteIcon = ({ children }) => <FAIcon icon={faTimes}>{children}</FAIcon>;
-export const PendingIcon = ({ children }) => <FAIcon icon={faPauseCircle}>{children}</FAIcon>;
-export const DownloadIcon = ({ children }) => <FAIcon icon={faDownload}>{children}</FAIcon>
+const iconFactory = (icon) => ({ children }) => <FAIcon icon={icon}>{children}</FAIcon>
+
+export const SaveIcon = iconFactory(faSave);
+export const RegisterIcon = iconFactory(faRegistered);
+export const LoginIcon = iconFactory(faSignInAlt);
+export const RestoreIcon = iconFactory(faSync);
+export const SendIcon = iconFactory(faTelegramPlane);
+export const CreditCardIcon = iconFactory(faCreditCard);
+export const GitHubIcon = iconFactory(faGithub);
+export const GoogleIcon = iconFactory(faGoogle);
+export const TumblrIcon = iconFactory(faTumblr);
+export const FacebookIcon = iconFactory(faFacebook);
+export const TwitterIcon = iconFactory(faTwitter);
+export const DecrementIcon = iconFactory(faMinusCircle);
+export const IncrementIcon = iconFactory(faPlusCircle);
+export const ErrorIcon = iconFactory(faExclamationCircle);
+export const SuccessIcon = iconFactory(faCheckCircle);
+export const USDIcon = iconFactory(faDollarSign);
+export const CheckedIcon = iconFactory(faCheckCircle);
+export const RefreshIcon = iconFactory(faSync);
+export const SearchIcon = iconFactory(faSearch);
+export const LogOutIcon = iconFactory(faSignOutAlt);
+export const StripeIcon = iconFactory(faCcStripe);
+export const InstallIcon = iconFactory(faPlayCircle);
+export const CancelIcon = iconFactory(faTimes);
+export const BackIcon = iconFactory(faArrowCircleLeft);
+export const DeleteIcon = iconFactory(faTimes);
+export const PendingIcon = iconFactory(faPauseCircle);
+export const DownloadIcon = iconFactory(faDownload);
 
 export const CreditCardMissing = ({ children }) => (
   <Fragment>
@@ -157,15 +155,20 @@ export function LoveItButton({ isLoved, thank, onLove }) {
   );
 }
 
+const WordPressIcon = iconFactory(faWordpressSimple);
+const OtherIcon = iconFactory(faCode);
+
 export function WebStackIcon({ webStack, children }) {
   switch (webStack) {
     case "WordPress":
-      return (<FAIcon icon={faWordpressSimple}>{children}</FAIcon>);
+      return (<WordPressIcon>{children}</WordPressIcon>);
+    case "Tumblr":
+      return (<TumblrIcon>{children}</TumblrIcon>);
     default:
-      return (<FAIcon icon={faCode}>{children}</FAIcon>)
+      return (<OtherIcon>{children}</OtherIcon>)
   }
 }
 
 WebStackIcon.props = {
-  webStack: PropTypes.oneOf(["WordPress", undefined])
+  webStack: PropTypes.oneOf(["WordPress", "Tumblr", undefined])
 };
