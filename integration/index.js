@@ -10,6 +10,12 @@ import "./integration.sass";
 
   let count = 0;
 
+  function getPostUrl() {
+    let originalReferrer = document.referrer;
+    let subPath = location.search.replace(/\?/g, "/").replace(/=/g, "/").replace(/&/g, "/");
+    return originalReferrer + subPath;
+  }
+
   function updateCounter() {
     counterElement.innerText = count.toString();
   }
@@ -39,7 +45,7 @@ import "./integration.sass";
   let userId = token !== null ? parseUserId(token) : null;
 
   function fetchPostState() {
-    let url = "/api/v1/thank/graph?url=" + encodeURIComponent(document.referrer);
+    let url = "/api/v1/thank/graph?url=" + encodeURIComponent(getPostUrl());
     fetch(url).then((res) => {
       if (res.ok) {
         res.json().then(({ thank: { given, supporters } }) => {
@@ -73,7 +79,7 @@ import "./integration.sass";
         'X-Auth-Token': token,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ url: document.referrer })
+      body: JSON.stringify({ url: getPostUrl() })
     };
 
     fetch(new Request("/api/v1/thank/graph/my/support", options))
