@@ -84,6 +84,7 @@ export const BackIcon = iconFactory(faArrowCircleLeft);
 export const DeleteIcon = iconFactory(faTrash);
 export const PendingIcon = iconFactory(faPauseCircle);
 export const DownloadIcon = iconFactory(faDownload);
+export const EditIcon = iconFactory(faEdit);
 
 export const CreditCardMissing = ({ children }) => (
   <Fragment>
@@ -117,18 +118,6 @@ export const PayoutAccountAssociated = ({ children }) => (
     </span>
     <span className="subtitle">{children}</span>
   </Fragment>
-);
-
-export const EditButton = ({ children, onClick }) => (
-  <nav className="level is-mobile">
-    <div className="level-left">
-      <div className="level-item">
-        <a className="button is-primary is-outlined" onClick={onClick}>
-          <FAIcon icon={faEdit}>Edit</FAIcon>
-        </a>
-      </div>
-    </div>
-  </nav>
 );
 
 export const SmallEditButton = ({ children, onClick }) => (

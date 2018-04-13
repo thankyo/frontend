@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import { refreshProjectFeed, updateProject, getProject } from "reducers/project.actions";
 
 import Loading from "./Loading";
-import { EditButton, RefreshIcon, SaveIcon } from "components/Icon";
+import { EditIcon, RefreshIcon, SaveIcon } from "components/Icon";
 import ProjectFormSection from "./form/ProjectFormSection";
 import RefreshLink from "components/RefreshLink";
 import auth from "reducers/util/auth";
 
-function ViewProject({ avatar, title, shortDescription, description, user, _id, tags, url, switchToEdit }) {
+function ViewProject({ avatar, title, shortDescription, description, user, _id, tags, url, switchToEdit, refreshFeed }) {
   if (!_id) {
     return (
       <div className="has-text-centered">
@@ -49,7 +49,20 @@ function ViewProject({ avatar, title, shortDescription, description, user, _id, 
         </div>
       </div>
       <div className="is-pulled-right">
-      {isMy && <EditButton onClick={switchToEdit}/>}
+      {isMy &&
+        <div className="field has-addons">
+          <div className="control">
+            <a className="button is-outlined is-primary is-small" onClick={switchToEdit}>
+              <EditIcon>Edit</EditIcon>
+            </a>
+          </div>
+          <div className="control">
+            <RefreshLink onClick={refreshFeed} className="button is-primary is-outlined is-small">
+              <RefreshIcon>Refresh Feed</RefreshIcon>
+            </RefreshLink>
+          </div>
+        </div>
+      }
       </div>
     </div>
   );
@@ -110,7 +123,7 @@ class Project extends Component {
     if (edit) {
       return <EditProject form={id} initialValues={{ project }} onSubmit={(project) => updateProject(project).then(this.handleModeChange)} refreshFeed={refreshFeed}/>
     } else {
-      return <ViewProject {...project} switchToEdit={this.handleModeChange}/>
+      return <ViewProject {...project} switchToEdit={this.handleModeChange} refreshFeed={refreshFeed}/>
     }
   }
 }
