@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { BackIcon, InstallIcon } from "components/Icon";
 import WebStackMarker from "./WebStackMarker";
 
-const PostAddingExplanation = ({ data: { webStack }, next, previous }) => (
+const HtmlAddingExplanation = ({ webStack, next, previous }) => (
   <Fragment>
     <li className="timeline-item is-primary is-large">
       <WebStackMarker webStack={webStack}/>
@@ -30,6 +30,35 @@ const PostAddingExplanation = ({ data: { webStack }, next, previous }) => (
       </a>
     </li>
   </Fragment>
+);
+
+const TumblrAddingExplanation = ({ next, previous }) => (
+  <Fragment>
+    <li className="timeline-item is-primary is-large">
+      <WebStackMarker webStack="Tumblr"/>
+      <div className="timeline-content">
+        <div className="content">
+          <p className="heading">Adding new Posts with Tumblr</p>
+          Tumblr provides automatic RSS feed.<br/>
+          We are tracking it regularly to add LoveIt button to every public post you make.
+        </div>
+        <div className="button is-small is-primary" onClick={next}>
+          <InstallIcon>Next</InstallIcon>
+        </div>
+      </div>
+    </li>
+    <li className="timeline-header is-success">
+      <a className="tag is-primary" onClick={previous}>
+        <BackIcon>Back</BackIcon>
+      </a>
+    </li>
+  </Fragment>
+);
+
+const PostAddingExplanation = ({ data: { webStack }, next, previous }) => (
+  webStack === "Tumblr"
+    ? <TumblrAddingExplanation next={next} previous={previous}/>
+    : <HtmlAddingExplanation next={next} previoius={previous} webStack={webStack}/>
 );
 
 export default PostAddingExplanation;
