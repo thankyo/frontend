@@ -49,3 +49,10 @@ jobs:
           name: Push updated Docker image
           command: docker push loveit/frontend
 
+      - run:
+          name: Update Sentry Release
+          command: >
+            curl https://sentry.io/api/hooks/release/builtin/197694/8c2e43bf0fac4808b04256bd1ffa9f9ef6900f97d687b3a8d38e57e1042b4192/
+            -X POST
+            -H 'Content-Type: application/json'
+            -d '{"version": "'$CIRCLE_BUILD_NUM'"}'
