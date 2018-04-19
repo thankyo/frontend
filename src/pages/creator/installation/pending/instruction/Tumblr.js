@@ -9,6 +9,9 @@ const TumblrInstruction = () => (
     We are not doing any modifications, of your posts without you knowing.<br/>
     <br/>
     We support only <strong>photo</strong> posts as of the moment, we'll be adding more post types soon.
+    <br/>
+    <br/>
+    <a href="http://tumblr.loveit.tips" target="_blank" className="is-small">example</a>
   </div>
 );
 

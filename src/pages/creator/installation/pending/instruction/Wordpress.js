@@ -12,7 +12,6 @@ const WordPress = ({ url }) => {
         <ol>
           <li>
             <div className="title is-size-6">Install <b>LoveIt integration</b> plugin.</div>
-
             <a className="button is-primary is-outlined is-small" href={`${url}/${WORD_PRESS_INSTALLATION}`} target="_blank">
               <InstallIcon>Install Plugin</InstallIcon>
             </a>
@@ -25,6 +24,7 @@ const WordPress = ({ url }) => {
         </ol>
       </div>
       <h2 className="subtitle is-6">That's it now every post will have a LoveIt button</h2>
+      <a href="http://worpdress.loveit.tips" className="is-small" target="_blank">example</a>
     </Fragment>
   );
 };

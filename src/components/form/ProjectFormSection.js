@@ -25,7 +25,7 @@ export default function () {
         component={smallFieldWithLabel}
         placeholder="Short Description"
         validate={[required, max54]}
-        help={"something juicy"}
+        help={"something juicy, in 54 chars"}
       />
       <Field
         name="description"

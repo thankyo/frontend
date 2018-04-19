@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 import Logo from "./logo.svg";
+import LandingLion from "./icons/landinglion.svg";
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import {
@@ -156,6 +157,13 @@ export function WebStackIcon({ webStack, children }) {
       return (<WordPressIcon>{children}</WordPressIcon>);
     case "Tumblr":
       return (<TumblrIcon>{children}</TumblrIcon>);
+    case "LandingLion":
+      return (
+        <Fragment>
+          <span className="icon"><LandingLion/></span>
+          <span>{children}</span>
+        </Fragment>
+      );
     default:
       return (<OtherIcon>{children}</OtherIcon>)
   }
@@ -167,6 +175,8 @@ export function WebStackImage({ webStack, size, color }) {
       return (<FontAwesomeIcon icon={faWordpressSimple} size={size} color={color}/>);
     case "Tumblr":
       return (<FontAwesomeIcon icon={faTumblr} size={size} color={color}/>);
+    case "LandingLion":
+      return (<LandingLion/>);
     default:
       return (<FontAwesomeIcon icon={faCode} size={size} color={color}/>)
   }

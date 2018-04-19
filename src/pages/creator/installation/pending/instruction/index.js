@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TumblrInstruction from "./Tumblr";
 import WordPress from "./Wordpress";
+import LandingLionInstruction from "./LandingLion";
 import Manual from "./Manual";
 import { WebStackIcon } from "components/Icon";
 
@@ -16,6 +17,7 @@ const WebStackSelector = ({ webStack, onWebStackChange }) => (
   <div className="field has-addons is-small">
     <WebStackElement webStack="Tumblr" onSelect={() => onWebStackChange("Tumblr")} active={webStack === "Tumblr"}/>
     <WebStackElement webStack="WordPress" onSelect={() => onWebStackChange("WordPress")} active={webStack === "WordPress"}/>
+    <WebStackElement webStack="LandingLion" onSelect={() => onWebStackChange("LandingLion")} active={webStack === "LandingLion"}/>
     <WebStackElement webStack="Other" onSelect={() => onWebStackChange(undefined)} active={webStack === undefined}/>
   </div>
 );
@@ -40,6 +42,8 @@ class InstructionPage extends Component{
         return <WordPress url={url}/>;
       case "Tumblr":
         return <TumblrInstruction/>;
+      case "LandingLion":
+        return <LandingLionInstruction/>
       default:
         return <Manual/>
     }
