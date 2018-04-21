@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import { POST_SEARCH_BY_PROJECT, POST_SEARCH_BY_TAG, POST_LOVE, POST_SAVE, POST_GET } from "./post.actions";
+import { POST_SEARCH_BY_PROJECT, POST_SEARCH_BY_TAG, POST_LOVE, POST_SAVE, POST_GET, POST_REFRESH } from "./post.actions";
 import { REFRESH_PROJECT_FEED } from "../project.actions";
 
 import authService from "reducers/util/auth";
@@ -36,6 +36,7 @@ function byIdReducer(stateMap = {}, { type, payload }) {
     case POST_SAVE.fulfilled:
     case POST_GET.fulfilled:
     case POST_LOVE.fulfilled:
+    case POST_REFRESH.fulfilled:
       return Object.assign({}, stateMap, { [payload._id]: markLoved(payload) });
     case POST_DELETE.fulfilled:
       let newState =  Object.assign({}, stateMap);

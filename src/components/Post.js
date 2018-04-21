@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
-import { lovePost, savePost, deletePost } from "reducers/post/post.actions";
+import { lovePost, savePost, deletePost, refreshPost } from "reducers/post/post.actions";
 import { goToAuth } from "reducers/navigation.actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
-import { DeleteIcon, LoveItButton, SaveIcon, SmallEditButton } from "components/Icon";
+import { DeleteIcon, LoveItButton, SaveIcon, RefreshIcon, EditIcon } from "components/Icon";
 import moment from "moment/moment";
 import { smallFieldWithLabel } from "components/form/form.utils";
 import Tags from "components/form/Tags";
@@ -64,8 +64,26 @@ function EditPostOnTimeline({ submitting, initialValues, project, handleSubmit, 
 
 EditPostOnTimeline = reduxForm({ enableReinitialize: true })(EditPostOnTimeline);
 
-function PostOnTimeline({ post, isAuthenticated, goToAuth, lovePost, switchToEdit }) {
+
+function PostControls({ post, switchToEdit, isAuthenticated, lovePost, goToAuth, refreshPost }) {
   let isMy = isMyObj(post.project);
+  if (isMy) {
+    return <div className="field has-addons">
+      <div className="control">
+        <a className="button is-primary is-outlined is-small" onClick={switchToEdit}>
+          <EditIcon>Edit</EditIcon>
+        </a>
+      </div>
+      <RefreshLink className="button is-primary is-outlined is-small" onClick={() => refreshPost(post)}>
+        <RefreshIcon>Refresh</RefreshIcon>
+      </RefreshLink>
+    </div>
+  } else {
+    return <LoveItButton isLoved={post.isLoved} thank={post.thank} onLove={() => isAuthenticated ? lovePost(post.url) : goToAuth()}/>
+  }
+}
+
+function PostOnTimeline({ post, isAuthenticated, goToAuth, lovePost, switchToEdit, refreshPost }) {
   let { ogObj: { title, description, image: { url = "" } = {}, tags = [], pubDate }, project } = post;
   return (
     <li className="timeline-item is-primary">
@@ -89,7 +107,7 @@ function PostOnTimeline({ post, isAuthenticated, goToAuth, lovePost, switchToEdi
           <img src={url}/>
         </figure>
         <br/>
-        {isMy ? <SmallEditButton onClick={switchToEdit}/> : <LoveItButton isLoved={post.isLoved} thank={post.thank} onLove={() => isAuthenticated ? lovePost(post.url) : goToAuth()}/>}
+        <PostControls post={post} switchToEdit={switchToEdit} lovePost={lovePost} toToAuth={goToAuth} refreshPost={refreshPost}/>
       </div>
     </li>
   );
@@ -127,6 +145,6 @@ class Post extends Component {
 
 const mapStateToProps = ({ post: { byId }, auth: { isAuthenticated } }, { id }) => ({ post: byId[id], isAuthenticated });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ lovePost, savePost, deletePost, goToAuth }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ lovePost, savePost, deletePost, goToAuth, refreshPost }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post)

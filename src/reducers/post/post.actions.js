@@ -5,6 +5,7 @@ export const POST_GET = event("POST_GET");
 export const POST_SAVE = event("POST_SAVE");
 export const POST_LOVE = event("POST_LOVE");
 export const POST_DELETE = event("POST_DELETE");
+export const POST_REFRESH = event("POST_REFRESH");
 
 export function getPost(id) {
   return (dispatch, getState) => {
@@ -27,6 +28,13 @@ export function deletePost(post) {
   return (dispatch) => {
     let p = authService.remove(`/api/v1/thank/post/${post._id}`).then(() => post);
     return dispatchPromise(p, POST_DELETE, dispatch);
+  }
+}
+
+export function refreshPost(post) {
+  return (dispatch) => {
+    let p = authService.post(`/api/v1/thank/refresh/post/${post._id}`, {});
+    return dispatchPromise(p, POST_REFRESH, dispatch);
   }
 }
 
