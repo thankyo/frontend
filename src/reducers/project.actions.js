@@ -41,7 +41,7 @@ export function updateProject(project) {
   }
 }
 
-export function enrichProject(url) {
+export function enrichProject({ url }) {
   return (dispatch) => {
     let p = authService.get(`/api/v1/thank/enrich?url=${url}`);
     return dispatchPromise(p, ENRICH_PROJECT, dispatch);

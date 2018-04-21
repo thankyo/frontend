@@ -57,8 +57,8 @@ class AuthService {
       if (res.status === 401 || res.status === 403) {
         this.logout();
       } else if (res.status === 400) {
-        return res.json().then(err => {
-          throw err
+        return res.json().then(({ field, error }) => {
+          throw new SubmissionError({ [field]: error })
         });
       } else if (isJson) {
         if (res.status === 204) {
