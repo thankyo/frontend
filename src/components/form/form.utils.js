@@ -27,11 +27,11 @@ export const max54 = maxSize(54);
 
 const FieldHelp = ({ meta: { touched, error }, help }) => {
   if (error && touched) {
-    return (<p className="help is-danger">{error}</p>)
+    return (<div className="help is-danger">{error}</div>)
   } else {
-    return <p className="help">{help}</p>
+    return <div className="help">{help}</div>
   }
-}
+};
 
 export const renderField = (props) => (
   <div className="field">

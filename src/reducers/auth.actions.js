@@ -3,6 +3,8 @@ import { SubmissionError } from "redux-form";
 import { dispatchPromise, event } from "reducers/util/promiseStates";
 import tokenStore from "reducers/util/JWTTokenStore";
 import { goToContributions, goToForgotAuth } from "reducers/navigation.actions";
+import { getContributions } from "reducers/statistic.actions";
+import { getUser } from "reducers/user.actions";
 
 export const AUTHENTICATION = event("AUTHENTICATION");
 
@@ -33,6 +35,11 @@ export function decodeToken(token) {
   return JSON.parse(window.atob(base64));
 }
 
+export const initializeOnAuth = (dispatch) => {
+  dispatch(getContributions("my"));
+  dispatch(getUser("my"));
+};
+
 const doAuth = (req, dispatch) => {
   let p = fetch(req)
     .then(handleFetchResponse)
@@ -43,7 +50,10 @@ const doAuth = (req, dispatch) => {
       return auth;
     });
 
-  return dispatchPromise(p, AUTHENTICATION, dispatch).then(() => dispatch(goToContributions));
+  return dispatchPromise(p, AUTHENTICATION, dispatch).then(() => {
+    dispatch(initializeOnAuth);
+    dispatch(goToContributions)
+  });
 };
 
 export const authWithSocial = (provider) => (dispatch) => {

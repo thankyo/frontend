@@ -12,15 +12,15 @@ import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux'
 import conf from "./conf";
 import reducers from "./reducers";
 import AppRouter from "./AppRouter";
+import { initializeOnAuth } from "reducers/auth.actions";
 
 const history = createHistory();
 const store = createStore(reducers(), composeWithDevTools(applyMiddleware(routerMiddleware(history), thunk)));
 
 let { auth: { isAuthenticated }} = store.getState();
 if (isAuthenticated) {
-
+  initializeOnAuth(store.dispatch);
 }
-console.log(isAuthenticated);
 
 let loaded = new Promise((resolve) => {
   if (document.readyState === 'complete' || document.readyState === "interactive") {

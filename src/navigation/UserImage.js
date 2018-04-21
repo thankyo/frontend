@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
-import { getUser } from "reducers/user.actions";
 
 let UserImage = ({ avatar }) => {
   return (
@@ -12,11 +11,6 @@ let UserImage = ({ avatar }) => {
   )
 };
 
-const mapUserImageToProps = (dispatch) => {
-  dispatch(getUser("my"));
-  return {}
-};
-
-UserImage = connect(({ user: { my }}) => my, mapUserImageToProps)(componentFactory(UserImage, spinnerFactory(124)));
+UserImage = connect(({ user: { my = {} }}) => my)(componentFactory(UserImage, spinnerFactory(124)));
 
 export default UserImage;

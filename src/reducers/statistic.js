@@ -5,7 +5,9 @@ import { GET_CONTRIBUTIONS } from "./statistic.actions";
 
 import { POST_LOVE } from "reducers/post/post.actions";
 
-function contributionLovedReducer(state = {}, { type }) {
+const INITIAL_STATE = { my: {} }
+
+function contributionLovedReducer(state = INITIAL_STATE, { type }) {
   switch (type) {
     case POST_LOVE.pending: {
       let { my: { contributions = 0 } = {} } = state;
@@ -29,5 +31,5 @@ function contributionLovedReducer(state = {}, { type }) {
 }
 
 export default combineReducers({
-  contribution: asSingleReducer(promiseReducerDB(GET_CONTRIBUTIONS), contributionLovedReducer)
+  contribution: asSingleReducer(promiseReducerDB(GET_CONTRIBUTIONS, INITIAL_STATE), contributionLovedReducer)
 })

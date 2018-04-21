@@ -9,14 +9,14 @@ function SearchPanel({ handleSubmit, submitting }) {
   return (
     <Form className="is-fullwidth" onSubmit={handleSubmit} style={{ width: "100%" }}>
       <div className="field has-addons" style={{ flexGrow: 1 }}>
-        <p className="control" style={{ flexGrow: 1 }}>
+        <div className="control" style={{ flexGrow: 1 }}>
           <Field name="tags" component={flatField} placeholder="Search" autocomplete={false}/>
-        </p>
-        <p className="control">
+        </div>
+        <div className="control">
           <button type="submit" className={`button is-primary ${submitting ? "is-loading" : ""}`}>
               <SearchIcon>Search</SearchIcon>
           </button>
-        </p>
+        </div>
       </div>
     </Form>
   )

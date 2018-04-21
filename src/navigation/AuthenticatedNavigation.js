@@ -4,7 +4,6 @@ import auth from "reducers/util/auth";
 import { LogOutIcon } from "components/Icon";
 import { Link } from "react-router-dom";
 import Brand from "components/Brand";
-import { getContributions } from "reducers/statistic.actions";
 import UserImage from "./UserImage";
 
 const NavigationLink = ({ name, icon, pathname, isActive, isMobile }) => {
@@ -74,15 +73,13 @@ let AuthenticatedNavigation = ({ links, contributions }) => (
   </Fragment>
 );
 
-const mapStateToProps = ({ navigation: { links }, statistic: { contribution: { my = {} } } }) => (
-  { links, contributions: my.contributions || 0 }
-);
-
-const mapDispatchToProps = (dispatch) => {
-  dispatch(getContributions("my"));
-  return {};
+const mapStateToProps = ({ navigation: { links }, statistic: { contribution: { my } } }) => {
+  return {
+    links,
+    contributions: my.contributions || 0
+  };
 };
 
-AuthenticatedNavigation =  connect(mapStateToProps, mapDispatchToProps)(AuthenticatedNavigation);
+AuthenticatedNavigation =  connect(mapStateToProps)(AuthenticatedNavigation);
 
 export default AuthenticatedNavigation;

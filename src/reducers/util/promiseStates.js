@@ -72,8 +72,8 @@ export function promiseReducer(
   };
 }
 
-export function promiseReducerDB(event) {
-  return function (state = {}, { type, payload }) {
+export function promiseReducerDB(event, initial = {}) {
+  return function (state = initial, { type, payload }) {
     switch (type) {
       case event.pending:
         return state;
