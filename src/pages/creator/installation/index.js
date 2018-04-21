@@ -5,6 +5,7 @@ import Description from "./Description";
 import PendingProjects from "./PendingProjects";
 import InstalledProjects from "./InstalledProjects";
 import spinnerFactory from "components/spinnerFactory";
+import { DibsIcon } from "components/Icon";
 import AddSite from "./AddSite";
 
 const Spinner = spinnerFactory(260);
@@ -12,7 +13,13 @@ const Spinner = spinnerFactory(260);
 function UserProjects({ pending, installed }) {
   if (pending.length === 0 && installed.length === 0) {
     return <ul className="timeline">
+      <li className="timeline-header is-success">
+        <span className="tag is-primary">
+          <DibsIcon>Dibs</DibsIcon>
+        </span>
+      </li>
       <AddSite/>
+      <li className="timeline-item is-primary"/>
       <li className="timeline-item is-primary">
         <div className="timeline-marker is-medium is-primary"/>
         <div className="timeline-content">
@@ -23,7 +30,13 @@ function UserProjects({ pending, installed }) {
   }
   return (
     <ul className="timeline">
+      <li className="timeline-header is-success">
+        <span className="tag is-primary">
+          <DibsIcon>Dibs</DibsIcon>
+        </span>
+      </li>
       <AddSite/>
+      <li className="timeline-item is-primary"/>
       <PendingProjects projects={pending}/>
       <li className="timeline-item is-primary"/>
       <InstalledProjects projects={installed}/>

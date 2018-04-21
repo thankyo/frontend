@@ -11,3 +11,7 @@ export const goToForgotAuth = (dispatch) => {
 export const goToContributions = (dispatch) => {
   return dispatch(push("/contribution/my"));
 };
+
+export const goToProject = (project) => (dispatch) => {
+  return dispatch(push(`/creator/my/project/${project._id}`))
+};

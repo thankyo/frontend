@@ -99,9 +99,19 @@ function ownedReducer(state = { installed: [], pending: [], owned: [], isLoading
   }
 }
 
+function dibsReducer(state = { }, { type, payload }) {
+  switch (type) {
+    case ENRICH_PROJECT.fulfilled:
+      return payload;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   byId: byIdReducer,
   byUser: byUserReducer,
   supported: supportedReducer,
-  owned: ownedReducer
+  owned: ownedReducer,
+  dibs: dibsReducer
 })

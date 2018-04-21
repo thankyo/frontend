@@ -2,6 +2,7 @@ import authService from "./util/auth";
 import { dispatchPromise, event } from "./util/promiseStates";
 import { markMy } from "reducers/util/markMy";
 import { dispatchPromiseWith } from "reducers/util/promiseStates";
+import { goToProject } from "reducers/navigation.actions";
 
 export const PROJECT_GET = event("PROJECT_GET");
 export const GET_SUPPORTED = event("GET_SUPPORTED");
@@ -72,7 +73,7 @@ export function refreshMyProjects() {
 export function createProject(project) {
   return (dispatch) => {
     let p = authService.post(`/api/v1/thank/project`, project).then(markMy);
-    return dispatchPromise(p, CREATE_PROJECT, dispatch);
+    return dispatchPromise(p, CREATE_PROJECT, dispatch).then(prj => dispatch(goToProject(prj)));
   }
 }
 
