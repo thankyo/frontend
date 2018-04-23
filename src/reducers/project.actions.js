@@ -13,6 +13,7 @@ export const DELETE_PROJECT = event("DELETE_PROJECT");
 export const REFRESH_MY_PROJECTS = event("REFRESH_MY_PROJECTS");
 export const UPDATE_MY_PROJECT = event("UPDATE_MY_PROJECT");
 export const PROJECT_DIBS = event("PROJECT_DIBS");
+export const PROJECT_DELETE_OWNED = event("PROJECT_DELETE_OWNED");
 export const GET_OWNED_PROJECTS = event("GET_OWNED_PROJECTS");
 export const REFRESH_PROJECT_FEED = event("REFRESH_PROJECT_FEED");
 
@@ -81,5 +82,12 @@ export function deleteProject(project) {
   return (dispatch) => {
     let p = authService.remove(`/api/v1/thank/project/${project._id}`).then(() => markMy(project));
     return dispatchPromise(p, DELETE_PROJECT, dispatch);
+  }
+}
+
+export function deleteOwnedProject(project) {
+  return (dispatch) => {
+    let p = authService.remove(`/api/v1/thank/user/my/owned?url=${encodeURIComponent(project.url)}`);
+    return dispatchPromise(p, PROJECT_DELETE_OWNED, dispatch);
   }
 }

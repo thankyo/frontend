@@ -2,7 +2,7 @@ import { combineReducers } from "redux"
 import { PROJECT_GET, GET_USER_PROJECTS, GET_SUPPORTED, REFRESH_MY_PROJECTS } from "./project.actions";
 import {
   GET_OWNED_PROJECTS, UPDATE_MY_PROJECT, CREATE_PROJECT,
-  DELETE_PROJECT, PROJECT_DIBS
+  DELETE_PROJECT, PROJECT_DIBS, PROJECT_DELETE_OWNED
 } from "reducers/project.actions";
 
 function byIdReducer(state = {}, { type, payload }) {
@@ -69,6 +69,7 @@ function ownedReducer(state = { installed: [], pending: [], owned: [], isLoading
     case GET_OWNED_PROJECTS.pending: {
       return Object.assign({}, state, { isLoading: false })
     }
+    case PROJECT_DELETE_OWNED.fulfilled:
     case GET_OWNED_PROJECTS.fulfilled: {
       let { installed, owned } = payload;
       let pending = owned.filter(prj => installed.find(inl => inl.url === prj.url) === undefined);
