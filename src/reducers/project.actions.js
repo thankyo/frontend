@@ -12,7 +12,7 @@ export const CREATE_PROJECT = event("CREATE_PROJECT");
 export const DELETE_PROJECT = event("DELETE_PROJECT");
 export const REFRESH_MY_PROJECTS = event("REFRESH_MY_PROJECTS");
 export const UPDATE_MY_PROJECT = event("UPDATE_MY_PROJECT");
-export const ENRICH_PROJECT = event("ENRICH_PROJECT");
+export const PROJECT_DIBS = event("PROJECT_DIBS");
 export const GET_OWNED_PROJECTS = event("GET_OWNED_PROJECTS");
 export const REFRESH_PROJECT_FEED = event("REFRESH_PROJECT_FEED");
 
@@ -42,10 +42,10 @@ export function updateProject(project) {
   }
 }
 
-export function enrichProject({ url }) {
+export function enrichProject(body) {
   return (dispatch) => {
-    let p = authService.get(`/api/v1/thank/enrich?url=${url}`);
-    return dispatchPromise(p, ENRICH_PROJECT, dispatch);
+    let p = authService.post(`/api/v1/thank/user/my/owned`, body);
+    return dispatchPromise(p, PROJECT_DIBS, dispatch);
   }
 }
 

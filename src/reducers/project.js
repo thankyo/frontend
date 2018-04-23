@@ -2,7 +2,7 @@ import { combineReducers } from "redux"
 import { PROJECT_GET, GET_USER_PROJECTS, GET_SUPPORTED, REFRESH_MY_PROJECTS } from "./project.actions";
 import {
   GET_OWNED_PROJECTS, UPDATE_MY_PROJECT, CREATE_PROJECT,
-  DELETE_PROJECT, ENRICH_PROJECT
+  DELETE_PROJECT, PROJECT_DIBS
 } from "reducers/project.actions";
 
 function byIdReducer(state = {}, { type, payload }) {
@@ -92,7 +92,7 @@ function ownedReducer(state = { installed: [], pending: [], owned: [], isLoading
         installed: state.installed.concat(payload._id),
         pending: state.pending.filter(({ url }) => url !== payload.url)
       };
-    case ENRICH_PROJECT.fulfilled:
+    case PROJECT_DIBS.fulfilled:
       return { ... state, pending: [payload].concat(state.pending) };
     default:
       return state;
@@ -101,7 +101,7 @@ function ownedReducer(state = { installed: [], pending: [], owned: [], isLoading
 
 function dibsReducer(state = { }, { type, payload }) {
   switch (type) {
-    case ENRICH_PROJECT.fulfilled:
+    case PROJECT_DIBS.fulfilled:
       return payload;
     default:
       return state;
