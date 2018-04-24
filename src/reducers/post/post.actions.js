@@ -40,7 +40,7 @@ export function refreshPost(post) {
 
 export function lovePost(url) {
   return (dispatch) => {
-    let p = authService.post(`/api/v1/thank//graph/my/support`, { url });
+    let p = authService.post(`/api/v1/thank/graph/my/support`, { url });
     return dispatchPromise(p, POST_LOVE, dispatch);
   }
 }
