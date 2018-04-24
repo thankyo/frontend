@@ -107,7 +107,7 @@ function PostOnTimeline({ post, isAuthenticated, goToAuth, lovePost, switchToEdi
           <img src={url}/>
         </figure>
         <br/>
-        <PostControls post={post} switchToEdit={switchToEdit} lovePost={lovePost} toToAuth={goToAuth} refreshPost={refreshPost}/>
+        <PostControls post={post} switchToEdit={switchToEdit} lovePost={lovePost} goToAuth={goToAuth} refreshPost={refreshPost} isAuthenticated={isAuthenticated}/>
       </div>
     </li>
   );
