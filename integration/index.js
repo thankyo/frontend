@@ -13,7 +13,11 @@ import "./integration.sass";
   function getPostUrl() {
     let originalReferrer = document.referrer;
     let subPath = location.search.replace(/\?/g, "/").replace(/=/g, "/").replace(/&/g, "/");
-    return originalReferrer + subPath;
+    if (originalReferrer.endsWith("/")) {
+      return originalReferrer + subPath.substr(1);
+    } else {
+      return originalReferrer + subPath;
+    }
   }
 
   function updateCounter() {
