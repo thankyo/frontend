@@ -5,6 +5,7 @@ import tokenStore from "reducers/util/JWTTokenStore";
 import { goToContributions, goToForgotAuth } from "reducers/navigation.actions";
 import { getContributions } from "reducers/statistic.actions";
 import { getUser } from "reducers/user.actions";
+import { getOwnedProjects } from "reducers/project.actions";
 
 export const AUTHENTICATION = event("AUTHENTICATION");
 
@@ -38,6 +39,7 @@ export function decodeToken(token) {
 export const initializeOnAuth = (dispatch) => {
   dispatch(getContributions("my"));
   dispatch(getUser("my"));
+  dispatch(getOwnedProjects())
 };
 
 const doAuth = (req, dispatch) => {

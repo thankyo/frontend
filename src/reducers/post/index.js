@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
 import { POST_SEARCH_BY_PROJECT, POST_SEARCH_BY_TAG, POST_LOVE, POST_SAVE, POST_GET, POST_REFRESH } from "./post.actions";
-import { REFRESH_PROJECT_FEED } from "../project.actions";
+import { PROJECT_FEED_REFRESH } from "../project.actions";
 
 import authService from "reducers/util/auth";
 import { promiseReducer } from "reducers/util/promiseStates";
@@ -16,7 +16,7 @@ function markLoved(post) {
 
 function byIdReducer(stateMap = {}, { type, payload }) {
   switch (type) {
-    case REFRESH_PROJECT_FEED.fulfilled:
+    case PROJECT_FEED_REFRESH.fulfilled:
     case POST_SEARCH_BY_PROJECT.fulfilled: {
       let { posts } = payload;
       posts.forEach(markLoved);
@@ -54,7 +54,7 @@ function onlyUnique(value, index, self) {
 function byProjectReducer(state = {}, { type, payload }) {
   switch (type) {
     case POST_SEARCH_BY_PROJECT.fulfilled:
-    case REFRESH_PROJECT_FEED.fulfilled:
+    case PROJECT_FEED_REFRESH.fulfilled:
       let { id, posts } = payload;
       let prjIds = posts.map(({ _id }) => _id).concat(state[id] || []).filter(onlyUnique);
       return Object.assign({}, state, { [id]: prjIds });

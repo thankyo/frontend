@@ -1,26 +1,24 @@
 import { combineReducers } from "redux"
-import { PROJECT_GET, GET_USER_PROJECTS, GET_SUPPORTED, REFRESH_MY_PROJECTS } from "./project.actions";
+import { PROJECT_GET, PROJECT_GET_BY_USER, PROJECT_GET_SUPPORTED } from "./project.actions";
 import {
-  GET_OWNED_PROJECTS, UPDATE_MY_PROJECT, CREATE_PROJECT,
-  DELETE_PROJECT, PROJECT_DIBS, PROJECT_DELETE_OWNED
+  PROJECT_OWNERSHIP_GET, PROJECT_UPDATE, PROJECT_CREATE,
+  PROJECT_DELETE, PROJECT_OWNERSHIP_DIBS, PROJECT_OWNERSHIP_DELETE, PROJECT_OWNERSHIP_REFRESH
 } from "reducers/project.actions";
 
 function byIdReducer(state = {}, { type, payload }) {
   switch (type) {
-    case GET_OWNED_PROJECTS.fulfilled:
+    case PROJECT_OWNERSHIP_GET.fulfilled:
       payload = { projects: payload.installed };
-    case GET_USER_PROJECTS.fulfilled:
-    case REFRESH_MY_PROJECTS.fulfilled:
-    case GET_SUPPORTED.fulfilled:
+    case PROJECT_GET_BY_USER.fulfilled:
+    case PROJECT_GET_SUPPORTED.fulfilled:
       let projectById = payload.projects.reduce((agg, project) => {
         agg[project._id] = project;
         return agg
       }, {});
       return Object.assign({}, state, projectById);
     case PROJECT_GET.fulfilled:
-      return Object.assign({}, state, { [payload._id]: payload });
-    case UPDATE_MY_PROJECT.fulfilled:
-    case CREATE_PROJECT.fulfilled:
+    case PROJECT_UPDATE.fulfilled:
+    case PROJECT_CREATE.fulfilled:
       return Object.assign({}, state, { [payload._id]: payload });
     default:
       return state;
@@ -29,22 +27,16 @@ function byIdReducer(state = {}, { type, payload }) {
 
 function byUserReducer(state = {}, { type, payload }) {
   switch (type) {
-    case GET_USER_PROJECTS.fulfilled: {
+    case PROJECT_GET_BY_USER.fulfilled: {
       let { id: user, projects } = payload;
       return Object.assign({}, state, { [user]: projects.map(({ _id }) => _id) });
     }
-    case CREATE_PROJECT.fulfilled:
-    case UPDATE_MY_PROJECT.fulfilled: {
-      let { _id } = payload;
-      if (state.my.includes(_id)) {
-        return state;
-      } else {
-        return Object.assign({}, state, { "my": state.my.concat(_id) });
-      }
+    case PROJECT_CREATE.fulfilled: {
+      return { ... state, "my": state.my.concat(payload._id) };
     }
-    case DELETE_PROJECT.fulfilled: {
+    case PROJECT_DELETE.fulfilled: {
       let { _id } = payload;
-      return Object.assign({}, { "my": state.my.filter(id => id !== _id) });
+      return { ... state,  "my": state.my.filter(id => id !== _id) };
     }
     default:
       return state;
@@ -53,7 +45,7 @@ function byUserReducer(state = {}, { type, payload }) {
 
 function supportedReducer(state = {}, { type, payload }) {
   switch (type) {
-    case GET_SUPPORTED.fulfilled:
+    case PROJECT_GET_SUPPORTED.fulfilled:
       let { id: user, projects } = payload;
       return Object.assign({}, state, { [user]: projects.map(({ _id }) => _id) });
     default:
@@ -63,38 +55,33 @@ function supportedReducer(state = {}, { type, payload }) {
 
 function ownedReducer(state = { installed: [], pending: [], owned: [], isLoading: false }, { type, payload }) {
   switch (type) {
-    case GET_OWNED_PROJECTS.pending: {
-      return Object.assign({}, state, { isLoading: true })
+    case PROJECT_OWNERSHIP_GET.pending: {
+      return { ... state, isLoading: true };
     }
-    case GET_OWNED_PROJECTS.pending: {
-      return Object.assign({}, state, { isLoading: false })
-    }
-    case PROJECT_DELETE_OWNED.fulfilled:
-    case GET_OWNED_PROJECTS.fulfilled: {
-      let { installed, owned } = payload;
-      let pending = owned.filter(prj => installed.find(inl => inl.url === prj.url) === undefined);
+    case PROJECT_OWNERSHIP_DELETE.fulfilled:
+    case PROJECT_OWNERSHIP_REFRESH.fulfilled:
+    case PROJECT_OWNERSHIP_GET.fulfilled: {
       return {
-        installed: installed.map(({ _id }) => _id),
-        owned,
-        pending,
+        ... payload,
+        installed: payload.installed.map(({ _id }) => _id),
         isLoading: false
       };
     }
-    case DELETE_PROJECT.fulfilled:
-      let removed = Object.assign({}, payload);
-      delete removed.user;
-      delete removed._id;
-      return Object.assign({}, state, {
-        installed: state.installed.filter(id => id !== payload._id),
-        pending: state.pending.concat(removed),
-      });
-    case CREATE_PROJECT.fulfilled:
+    case PROJECT_DELETE.fulfilled:
       return {
-        installed: state.installed.concat(payload._id),
-        pending: state.pending.filter(({ url }) => url !== payload.url)
+        ...state,
+        installed: state.installed.filter(id => id !== payload._id)
       };
-    case PROJECT_DIBS.fulfilled:
-      return { ... state, pending: [payload].concat(state.pending) };
+    case PROJECT_CREATE.fulfilled:
+      return {
+        ... state,
+        installed: state.installed.concat(payload._id),
+      };
+    case PROJECT_OWNERSHIP_DIBS.fulfilled:
+      return {
+        ... state,
+        dibs: state.dibs.concat(payload._id)
+      };
     default:
       return state;
   }
@@ -102,7 +89,7 @@ function ownedReducer(state = { installed: [], pending: [], owned: [], isLoading
 
 function dibsReducer(state = { }, { type, payload }) {
   switch (type) {
-    case PROJECT_DIBS.fulfilled:
+    case PROJECT_OWNERSHIP_DIBS.fulfilled:
       return payload;
     default:
       return state;
