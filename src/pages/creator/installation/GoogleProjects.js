@@ -15,11 +15,13 @@ import { refreshGoogle } from "reducers/project.actions";
 
 const GoogleProjectInstallation = stepByStep(StartInstallation, ChooseWebStack, PostAddingExplanation, FinishInstallation);
 
-const GoogleEmpty = () => (
-  <div>
-    We could not retrieve any project data, please <a href="mailto:antono@loveit.tips">contact us.</a>
-  </div>
-);
+const GoogleSummary = ({ projects }) => {
+  if (projects.length === 0) {
+    return (<div>We could not retrieve any project data, please <a href="mailto:antono@loveit.tips">contact us.</a></div>);
+  } else {
+    return (<div>Found <strong>{projects.map(({ url }) => url).join(", ")}</strong></div>);
+  }
+};
 
 const GoogleNotConnected = ({ authUrl }) => (
   <div>
@@ -33,12 +35,10 @@ const GoogleNotConnected = ({ authUrl }) => (
 const GoogleConnectionStatus = ({ connected, authUrl, projects, refreshGoogle }) => {
   if (!connected) {
     return <GoogleNotConnected authUrl={authUrl}/>
-  } else if (projects.length === 0) {
-    return <GoogleEmpty/>
   } else {
     return (
       <div>
-        Found <strong>{projects.map(({ url }) => url).join(", ")}</strong>
+        <GoogleSummary projects={projects}/>
         <br/>
         <br/>
         <RefreshLink className="button is-small is-primary is-outlined is-rounded" onClick={() => refreshGoogle()}>

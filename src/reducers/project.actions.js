@@ -81,6 +81,13 @@ export function refreshGoogle() {
   }
 }
 
+export function refreshTumblr() {
+  return (dispatch) => {
+    let p = authService.post(`/api/v1/thank/refresh/tumblr`, {});
+    return dispatchPromise(p, PROJECT_OWNERSHIP_REFRESH, dispatch)
+  }
+}
+
 export function deleteProject(project) {
   return (dispatch) => {
     let p = authService.remove(`/api/v1/thank/project/${project._id}`).then(() => markMy(project));

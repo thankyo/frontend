@@ -5,13 +5,14 @@ import spinnerFactory from "components/spinnerFactory";
 import { DibsIcon } from "components/Icon";
 import AddSite from "./AddSite";
 import GoogleProjects from "./GoogleProjects";
+import TumblrProjects from "./TumblrProjects";
 
 const Spinner = spinnerFactory(260);
 
 let UserProjects = ({ installed }) => (
   <ul className="timeline">
     <GoogleProjects/>
-    <li className="timeline-item is-primary"/>
+    <TumblrProjects/>
     <li className="timeline-header is-success">
         <span className="tag is-primary">
           <DibsIcon>Dibs</DibsIcon>
@@ -27,8 +28,7 @@ let UserProjects = ({ installed }) => (
 function InstallationPage({ pending, owned, installed, isLoading }) {
   return (
     <Fragment>
-      <Description/>
-      <br/>
+      <h1 className="subtitle">Installation</h1>
       {isLoading ? <Spinner/> : <UserProjects pending={pending} installed={installed}/>}
     </Fragment>
   );
