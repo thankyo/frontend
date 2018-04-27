@@ -4,7 +4,6 @@ import { stepByStep } from "components/timeline/util";
 import { TumblrIcon, RefreshIcon } from "components/Icon";
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from "redux";
 
 import StartInstallation from "./pending/StartInstallation";
 import FinishInstallation from "./pending/FinishInstallation";
@@ -13,6 +12,7 @@ import { refreshTumblr } from "reducers/project.actions";
 
 import InstalledProject from "./InstalledProject";
 import { toInstalledAndPending } from "./util";
+import { bindToActions } from "reducers/util/action";
 
 const TumblrProjectInstallation = stepByStep(StartInstallation, FinishInstallation);
 
@@ -75,6 +75,6 @@ const mapStateToProps = ({ project: { owned, byId }, user: { my : { data: { prof
   isLoading: owned.isLoading
 });
 
-TumblrProjects =  connect(mapStateToProps, (dispatch) => bindActionCreators({ refreshTumblr }, dispatch))(TumblrProjects);
+TumblrProjects =  connect(mapStateToProps, bindToActions({ refreshTumblr }))(TumblrProjects);
 
 export default TumblrProjects;

@@ -5,20 +5,20 @@ import PostAddingExplanation from "./pending/PostAddingExplanation";
 import ChooseWebStackOrDelete from "./pending/ChooseWebStackOrDelete";
 import { stepByStep } from "components/timeline/util";
 
-import { DibsIcon } from "components/Icon";
+import { EmailIcon } from "components/Icon";
 import { connect } from 'react-redux';
 
-import DibsForm from "./DibsForm";
 import InstalledProject from "./InstalledProject";
 import { toInstalledAndPending } from "./util";
+import EmailVerifiedForm from "./EmailVerifiedForm";
 
-const DibsProjectInstallation = stepByStep(ChooseWebStackOrDelete, PostAddingExplanation, FinishInstallation);
+const EmailVerifiedInstallation = stepByStep(ChooseWebStackOrDelete, PostAddingExplanation, FinishInstallation);
 
-const DibsSummary = ({ projects }) => {
+const EmailVerifiedSummary = ({ projects }) => {
   if (projects.length === 0) {
-    return (<div>No Dibs</div>);
+    return (<div>No project verified</div>);
   } else {
-    return (<div>Dibs on <strong>{projects.map(({ url }) => url).join(", ")}</strong></div>);
+    return (<div>Verified <strong>{projects.map(({ url }) => url).join(", ")}</strong></div>);
   }
 };
 
@@ -26,18 +26,18 @@ let DibsProjects = ({ projects, pending, installed }) => {
   return <Fragment>
     <li className="timeline-header is-primary is-large">
       <div className="timeline-marker is-primary is-image is-30x30 has-text-centered">
-        <DibsIcon/>
+        <EmailIcon/>
       </div>
     </li>
     <li className="timeline-item is-primary is-paddingless">
       <div className="timeline-content">
-        <p className="heading">Dibs</p>
-        <DibsSummary projects={projects}/>
+        <p className="heading">Domain email</p>
+        <EmailVerifiedSummary projects={projects}/>
         <br/>
       </div>
     </li>
-    <DibsForm/>
-    {pending.map((project) => (<DibsProjectInstallation key={project.url} {...project}/>))}
+    <EmailVerifiedForm/>
+    {pending.map((project) => (<EmailVerifiedInstallation key={project.url} {...project}/>))}
     {installed.map((project) => (<InstalledProject key={project.url} {...project}/>))}
   </Fragment>;
 };

@@ -1,10 +1,10 @@
 import React from "react";
-import { bindActionCreators } from "redux";
 import { Field, Form, reduxForm } from "redux-form";
 import { LoadingButton, renderField, required } from "components/form/form.utils";
 import { SendIcon } from "components/Icon";
 import { connect } from "react-redux";
 import { forgot } from "reducers/auth.actions";
+import { bindToActions } from "reducers/util/action";
 
 let ForgotForm = ({ handleSubmit, submitting }) => (
   <Form onSubmit={handleSubmit} className="is-primary">
@@ -19,8 +19,6 @@ let ForgotForm = ({ handleSubmit, submitting }) => (
   </Form>
 );
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ onSubmit: forgot }, dispatch);
-
-ForgotForm = connect(undefined, mapDispatchToProps)(reduxForm({ form: 'forgot' })(ForgotForm));
+ForgotForm = connect(undefined, bindToActions({ onSubmit: forgot }))(reduxForm({ form: 'forgot' })(ForgotForm));
 
 export default ForgotForm;

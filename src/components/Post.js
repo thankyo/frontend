@@ -1,9 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { lovePost, savePost, deletePost, refreshPost } from "reducers/post/post.actions";
 import { goToAuth } from "reducers/navigation.actions";
 import { connect } from "react-redux";
-import { bindActionCreators } from 'redux';
 
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
 import { DeleteIcon, LoveItButton, SaveIcon, RefreshIcon, EditIcon } from "components/Icon";
@@ -12,6 +11,7 @@ import { smallFieldWithLabel } from "components/form/form.utils";
 import Tags from "components/form/Tags";
 import { isMyObj } from "reducers/util/markMy";
 import RefreshLink from "components/RefreshLink";
+import { bindToActions } from "reducers/util/action";
 
 function EditPostOnTimeline({ submitting, initialValues, project, handleSubmit, onDelete }) {
   return (
@@ -145,6 +145,6 @@ class Post extends Component {
 
 const mapStateToProps = ({ post: { byId }, auth: { isAuthenticated } }, { id }) => ({ post: byId[id], isAuthenticated });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ lovePost, savePost, deletePost, goToAuth, refreshPost }, dispatch);
+const mapDispatchToProps = bindToActions({ lovePost, savePost, deletePost, goToAuth, refreshPost });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post)

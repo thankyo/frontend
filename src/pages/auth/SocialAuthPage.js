@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { authWithSocial } from "reducers/auth.actions";
-import { bindActionCreators } from "redux";
+import { bindToActions } from "reducers/util/action";
 
 class SocialAuthPage extends Component {
   componentDidMount() {
@@ -18,6 +18,6 @@ class SocialAuthPage extends Component {
 
 }
 
-SocialAuthPage = connect(undefined, (dispatch) => bindActionCreators({ authWithSocial }, dispatch))(SocialAuthPage);
+SocialAuthPage = connect(undefined, bindToActions({ authWithSocial }))(SocialAuthPage);
 
 export default SocialAuthPage;

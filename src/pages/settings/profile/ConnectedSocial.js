@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import { DeleteIcon, FacebookIcon, GoogleIcon, TumblrIcon, } from "components/Icon";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import { deleteSocialConnection } from "reducers/user.actions";
+import { bindToActions } from "reducers/util/action";
 
 const ProviderIcon = ({ provider, children }) => {
   switch (provider) {
@@ -42,9 +42,8 @@ let SocialConnection = ({ isConnected, provider, url, deleteSocialConnection }) 
 };
 
 const mapStateToProps = ({ user: { my: { data: { profiles } }}, auth: { url }}, { provider }) => ({ url: url[provider], isConnected: profiles[provider] })
-const mapDispatchToProps = (dispatch) => bindActionCreators({ deleteSocialConnection }, dispatch);
 
-SocialConnection = connect(mapStateToProps, mapDispatchToProps)(SocialConnection);
+SocialConnection = connect(mapStateToProps, bindToActions({ deleteSocialConnection }))(SocialConnection);
 
 export default function ConnectedSocial() {
   return <Fragment>

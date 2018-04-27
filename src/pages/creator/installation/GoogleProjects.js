@@ -4,7 +4,6 @@ import { stepByStep } from "components/timeline/util";
 import { GoogleIcon, RefreshIcon } from "components/Icon";
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from "redux";
 
 import StartInstallation from "./pending/StartInstallation";
 import ChooseWebStack from "./pending/ChooseWebStack";
@@ -15,6 +14,7 @@ import { refreshGoogle } from "reducers/project.actions";
 
 import InstalledProject from "./InstalledProject";
 import { toInstalledAndPending } from "./util";
+import { bindToActions } from "reducers/util/action";
 
 const GoogleProjectInstallation = stepByStep(StartInstallation, ChooseWebStack, PostAddingExplanation, FinishInstallation);
 
@@ -81,6 +81,6 @@ const mapStateToProps = ({ project: { owned, byId }, user: { my: { data: { profi
   authUrl: url.google
 });
 
-GoogleProjects = connect(mapStateToProps, (dispatch) => bindActionCreators({ refreshGoogle }, dispatch))(GoogleProjects);
+GoogleProjects = connect(mapStateToProps, bindToActions({ refreshGoogle }))(GoogleProjects);
 
 export default GoogleProjects;

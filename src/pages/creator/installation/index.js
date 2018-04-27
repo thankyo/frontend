@@ -1,12 +1,10 @@
 import React, { Fragment } from "react";
 import { connect } from 'react-redux';
-import Description from "./Description";
 import spinnerFactory from "components/spinnerFactory";
-import { DibsIcon } from "components/Icon";
-import AddSite from "./AddSite";
 import GoogleProjects from "./GoogleProjects";
 import TumblrProjects from "./TumblrProjects";
 import DibsProjects from "./DibsProjects";
+import EmailVerifiedProjects from "./EmailVerifiedProjects";
 
 const Spinner = spinnerFactory(260);
 
@@ -14,6 +12,7 @@ let UserProjects = () => (
   <ul className="timeline">
     <GoogleProjects/>
     <TumblrProjects/>
+    <EmailVerifiedProjects/>
     <DibsProjects/>
   </ul>
 );

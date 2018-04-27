@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
 
 import Post from "components/Post";
@@ -7,6 +6,7 @@ import { searchByTag } from "reducers/post/post.actions";
 
 import NoResults from "./NoResults";
 import spinnerFactory from "components/spinnerFactory";
+import { bindToActions } from "reducers/util/action";
 
 const Loading = spinnerFactory(250);
 
@@ -67,6 +67,4 @@ const mapStateToProps = ({ navigation: { query }, post: { byTag } }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ searchByTag }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchDashboard);
+export default connect(mapStateToProps, bindToActions({ searchByTag }))(SearchDashboard);

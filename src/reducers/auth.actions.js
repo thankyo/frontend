@@ -2,7 +2,7 @@ import 'whatwg-fetch';
 import { SubmissionError } from "redux-form";
 import { dispatchPromise, event } from "reducers/util/promiseStates";
 import tokenStore from "reducers/util/JWTTokenStore";
-import { goToContributions, goToForgotAuth } from "reducers/navigation.actions";
+import { goToContributions, goToForgotAuth, goToProjectInstallation } from "reducers/navigation.actions";
 import { getContributions } from "reducers/statistic.actions";
 import { getUser } from "reducers/user.actions";
 import { getOwnedProjects } from "reducers/project.actions";
@@ -42,7 +42,7 @@ export const initializeOnAuth = (dispatch) => {
   dispatch(getOwnedProjects())
 };
 
-const doAuth = (req, dispatch) => {
+const doAuth = (req, dispatch, navigateAfter = goToContributions) => {
   let p = fetch(req)
     .then(handleFetchResponse)
     .then(authRes => {
@@ -54,13 +54,13 @@ const doAuth = (req, dispatch) => {
 
   return dispatchPromise(p, AUTHENTICATION, dispatch).then(() => {
     dispatch(initializeOnAuth);
-    dispatch(goToContributions)
+    dispatch(navigateAfter)
   });
 };
 
 export const authWithSocial = (provider) => (dispatch) => {
   let url = `/api/v1/auth/social/${provider}${location.search}`;
-  return doAuth(new Request(url, { credentials: 'same-origin' }), dispatch);
+  return doAuth(new Request(url, { credentials: 'same-origin' }), dispatch, provider !== "facebook" ? goToProjectInstallation : goToContributions);
 };
 
 export const signUp = (registrationForm) => (dispatch) => {

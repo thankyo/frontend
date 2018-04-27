@@ -19,6 +19,7 @@ import {
   faCheckCircle,
   faArrowCircleLeft,
   faCode,
+  faEnvelope,
   faCreditCard,
   faHandPaper,
   faDollarSign,
@@ -69,7 +70,7 @@ export const GitHubIcon = iconFactory(faGithub);
 export const GoogleIcon = iconFactory(faGoogle);
 export const TumblrIcon = iconFactory(faTumblr);
 export const FacebookIcon = iconFactory(faFacebook);
-export const TwitterIcon = iconFactory(faTwitter);
+export const EmailIcon = iconFactory(faEnvelope);
 export const DecrementIcon = iconFactory(faMinusCircle);
 export const IncrementIcon = iconFactory(faPlusCircle);
 export const ErrorIcon = iconFactory(faExclamationCircle);

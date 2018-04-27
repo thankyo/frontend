@@ -17,17 +17,17 @@ export function loadCSS(remote, local, integrity) {
     scpt.parentNode.insertBefore(elem, scpt);
   }
 
-  function loadCSS(url, onLoad, onError) {
+  function doLoadCSS(url, onLoad, onError) {
     let css = fillElement(url, onLoad, onError);
     insert(css);
   }
 
   return new Promise((resolve, reject) => {
     if (location.hostname === 'localhost') {
-      loadCSS(local, resolve, reject, local);
+      doLoadCSS(local, resolve, reject, local);
     } else {
-      loadCSS(remote, resolve, function () {
-        loadCSS(resolve, reject, local);
+      doLoadCSS(remote, resolve, function () {
+        doLoadCSS(resolve, reject, local);
       });
     }
   });

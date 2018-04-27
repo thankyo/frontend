@@ -7,7 +7,7 @@ import { flatField, LoadingButton, required, urlFormat } from "components/form/f
 
 import { reset } from 'redux-form';
 
-const AddSite = ({ handleSubmit, submitting }) => (
+let DibsForm = ({ handleSubmit, submitting }) => (
   <li className="timeline-item is-primary">
     <div className="timeline-marker is-primary">
     </div>
@@ -34,14 +34,12 @@ const AddSite = ({ handleSubmit, submitting }) => (
   </li>
 );
 
-const AddSiteForm = reduxForm({ form: "project-dibs" })(AddSite);
+DibsForm = reduxForm({ form: "project-dibs" })(DibsForm);
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (form) => dispatch(projectDibs(form)).then(() => {
-    dispatch(reset("project-dibs"))
-  })
+  onSubmit: (form) => dispatch(projectDibs(form)).then(() => dispatch(reset("project-dibs")))
 });
 
-const AddSiteReduxForm = connect(undefined, mapDispatchToProps)(AddSiteForm);
+DibsForm = connect(undefined, mapDispatchToProps)(DibsForm);
 
-export default AddSiteReduxForm;
+export default DibsForm;

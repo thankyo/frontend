@@ -7,6 +7,7 @@ import { BackIcon, InstallIcon } from "components/Icon";
 import { Form, reduxForm } from "redux-form";
 import ProjectFormSection from "components/form/ProjectFormSection";
 import WebStackMarker from "./WebStackMarker";
+import { bindToActions } from "reducers/util/action";
 
 function EditProject({ initialValues, submitting, handleSubmit }) {
   return (
@@ -52,4 +53,4 @@ const FinishInstallation = ({ data: project, createProject, previous }) => (
   </Fragment>
 );
 
-export default connect(undefined, (dispatch) => bindActionCreators({ createProject }, dispatch))(FinishInstallation);
+export default connect(undefined, bindToActions({ createProject }))(FinishInstallation);
