@@ -11,8 +11,9 @@ import { connect } from 'react-redux';
 import DibsForm from "./DibsForm";
 import InstalledProject from "./InstalledProject";
 import { toInstalledAndPending } from "./util";
+import WHOISVerification from "./pending/WHOISVerification";
 
-const DibsProjectInstallation = stepByStep(ChooseWebStackOrDelete, PostAddingExplanation, FinishInstallation);
+const DibsProjectInstallation = stepByStep(WHOISVerification, ChooseWebStackOrDelete, PostAddingExplanation, FinishInstallation);
 
 const DibsSummary = ({ projects }) => {
   if (projects.length === 0) {
