@@ -20,7 +20,7 @@ import {
   faArrowCircleLeft,
   faCode,
   faCreditCard,
-  faSmile,
+  faHandPaper,
   faDollarSign,
   faDownload,
   faTrash,
@@ -81,7 +81,7 @@ export const SearchIcon = iconFactory(faSearch);
 export const LogOutIcon = iconFactory(faSignOutAlt);
 export const StripeIcon = iconFactory(faCcStripe);
 export const InstallIcon = iconFactory(faPlayCircle);
-export const DibsIcon = iconFactory(faSmile);
+export const DibsIcon = iconFactory(faHandPaper);
 export const CancelIcon = iconFactory(faTimes);
 export const BackIcon = iconFactory(faArrowCircleLeft);
 export const DeleteIcon = iconFactory(faTrash);

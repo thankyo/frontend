@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Description from "./Description";
 import spinnerFactory from "components/spinnerFactory";
 import { DibsIcon } from "components/Icon";
-import AddSite from "./AddSite";
+import AddSite from "./pending/AddSite";
 import GoogleProjects from "./GoogleProjects";
 import TumblrProjects from "./TumblrProjects";
 import DibsProjects from "./DibsProjects";

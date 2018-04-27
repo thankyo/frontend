@@ -60,6 +60,7 @@ function ownedReducer(state = { installed: [], pending: [], owned: [], isLoading
     }
     case PROJECT_OWNERSHIP_DELETE.fulfilled:
     case PROJECT_OWNERSHIP_REFRESH.fulfilled:
+    case PROJECT_OWNERSHIP_DIBS.fulfilled:
     case PROJECT_OWNERSHIP_GET.fulfilled: {
       return {
         ... payload,
@@ -77,20 +78,6 @@ function ownedReducer(state = { installed: [], pending: [], owned: [], isLoading
         ... state,
         installed: state.installed.concat(payload._id),
       };
-    case PROJECT_OWNERSHIP_DIBS.fulfilled:
-      return {
-        ... state,
-        dibs: state.dibs.concat(payload._id)
-      };
-    default:
-      return state;
-  }
-}
-
-function dibsReducer(state = { }, { type, payload }) {
-  switch (type) {
-    case PROJECT_OWNERSHIP_DIBS.fulfilled:
-      return payload;
     default:
       return state;
   }
@@ -100,6 +87,5 @@ export default combineReducers({
   byId: byIdReducer,
   byUser: byUserReducer,
   supported: supportedReducer,
-  owned: ownedReducer,
-  dibs: dibsReducer
+  owned: ownedReducer
 })

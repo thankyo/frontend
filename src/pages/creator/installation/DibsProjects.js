@@ -1,23 +1,20 @@
 import React, { Fragment } from "react";
 
-import { stepByStep } from "components/timeline/util";
-import { DibsIcon, RefreshIcon } from "components/Icon";
-
-import { connect } from 'react-redux';
-import { bindActionCreators } from "redux";
-
-import StartInstallation from "./pending/StartInstallation";
 import FinishInstallation from "./pending/FinishInstallation";
-import { refreshTumblr } from "reducers/project.actions";
 import PostAddingExplanation from "./pending/PostAddingExplanation";
-import ChooseWebStack from "./pending/ChooseWebStack";
-import AddSite from "./AddSite";
+import ChooseWebStackOrDelete from "./pending/ChooseWebStackOrDelete";
+import { stepByStep } from "components/timeline/util";
 
-const DibsProjectInstallation = stepByStep(AddSite, ChooseWebStack, PostAddingExplanation, FinishInstallation);
+import { DibsIcon } from "components/Icon";
+import { connect } from 'react-redux';
+
+import AddSite from "./pending/AddSite";
+
+const DibsProjectInstallation = stepByStep(ChooseWebStackOrDelete, PostAddingExplanation, FinishInstallation);
 
 const DibsSummary = ({ projects }) => {
   if (projects.length === 0) {
-    return (<div/>);
+    return (<div>No Dibs</div>);
   } else {
     return (<div>Dibs on <strong>{projects.map(({ url }) => url).join(", ")}</strong></div>);
   }
@@ -37,7 +34,7 @@ let DibsProjects = ({ projects }) => {
         <br/>
       </div>
     </li>
-    <DibsProjectInstallation/>
+    <AddSite/>
     {projects.map((project) => (<DibsProjectInstallation key={project.url} {...project}/>))}
   </Fragment>;
 };
@@ -49,6 +46,6 @@ const mapStateToProps = ({ project: { owned } } ) => ({
   isLoading: owned.isLoading
 });
 
-DibsProjects =  connect(mapStateToProps, (dispatch) => bindActionCreators({ refreshTumblr }, dispatch))(DibsProjects);
+DibsProjects =  connect(mapStateToProps)(DibsProjects);
 
 export default DibsProjects;

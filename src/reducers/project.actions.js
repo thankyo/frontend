@@ -46,7 +46,7 @@ export function updateProject(project) {
   }
 }
 
-export function enrichProject(body) {
+export function projectDibs(body) {
   return (dispatch) => {
     let p = authService.post(`/api/v1/thank/user/my/owned`, body);
     return dispatchPromise(p, PROJECT_OWNERSHIP_DIBS, dispatch);
