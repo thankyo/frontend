@@ -40,7 +40,6 @@ const GoogleConnectionStatus = ({ connected, authUrl, projects, refreshGoogle })
       <div>
         <GoogleSummary projects={projects}/>
         <br/>
-        <br/>
         <RefreshLink className="button is-small is-primary is-outlined is-rounded" onClick={() => refreshGoogle()}>
           <RefreshIcon>Refresh</RefreshIcon>
         </RefreshLink>
