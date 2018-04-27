@@ -11,6 +11,9 @@ import FinishInstallation from "./pending/FinishInstallation";
 import RefreshLink from "components/RefreshLink";
 import { refreshTumblr } from "reducers/project.actions";
 
+import InstalledProject from "./InstalledProject";
+import { toInstalledAndPending } from "./util";
+
 const TumblrProjectInstallation = stepByStep(StartInstallation, FinishInstallation);
 
 const TumblrSummary = ({ projects }) => {
@@ -45,7 +48,7 @@ const TumblrConnectionStatus = ({ connected, authUrl, projects, refreshTumblr })
   }
 };
 
-let TumblrProjects = ({ projects, connected, authUrl, refreshTumblr }) => {
+let TumblrProjects = ({ projects, installed, pending, connected, authUrl, refreshTumblr }) => {
   return <Fragment>
     <li className="timeline-header is-primary is-large">
       <div className="timeline-marker is-primary is-image is-30x30 has-text-centered">
@@ -59,14 +62,14 @@ let TumblrProjects = ({ projects, connected, authUrl, refreshTumblr }) => {
         <br/>
       </div>
     </li>
-    {projects.map((project) => (<TumblrProjectInstallation key={project.url} {...project}/>))}
+    {pending.map((project) => (<TumblrProjectInstallation key={project.url} {...project}/>))}
+    {installed.map((project) => (<InstalledProject key={project.url} {...project}/>))}
   </Fragment>;
 };
 
 
-const mapStateToProps = ({ project: { owned }, user: { my : { data: { profiles = {} } } }, auth: { url } } ) => ({
-  projects: owned.tumblr,
-  installed: owned.installed,
+const mapStateToProps = ({ project: { owned, byId }, user: { my : { data: { profiles = {} } } }, auth: { url } } ) => ({
+  ... toInstalledAndPending(owned.tumblr, owned.installed, byId),
   connected: profiles.tumblr,
   authUrl: url.tumblr,
   isLoading: owned.isLoading

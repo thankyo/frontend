@@ -48,6 +48,8 @@ export function updateProject(project) {
 
 export function projectDibs(body) {
   return (dispatch) => {
+    if (body.url.trim().length === 0)
+      return Promise.reject({ url: "Must not be empty" });
     let p = authService.post(`/api/v1/thank/user/my/owned`, body);
     return dispatchPromise(p, PROJECT_OWNERSHIP_DIBS, dispatch);
   }

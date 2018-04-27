@@ -8,7 +8,9 @@ import { stepByStep } from "components/timeline/util";
 import { DibsIcon } from "components/Icon";
 import { connect } from 'react-redux';
 
-import AddSite from "./pending/AddSite";
+import AddSite from "./AddSite";
+import InstalledProject from "./InstalledProject";
+import { toInstalledAndPending } from "./util";
 
 const DibsProjectInstallation = stepByStep(ChooseWebStackOrDelete, PostAddingExplanation, FinishInstallation);
 
@@ -20,7 +22,7 @@ const DibsSummary = ({ projects }) => {
   }
 };
 
-let DibsProjects = ({ projects }) => {
+let DibsProjects = ({ projects, pending, installed }) => {
   return <Fragment>
     <li className="timeline-header is-primary is-large">
       <div className="timeline-marker is-primary is-image is-30x30 has-text-centered">
@@ -35,16 +37,13 @@ let DibsProjects = ({ projects }) => {
       </div>
     </li>
     <AddSite/>
-    {projects.map((project) => (<DibsProjectInstallation key={project.url} {...project}/>))}
+    {pending.map((project) => (<DibsProjectInstallation key={project.url} {...project}/>))}
+    {installed.map((project) => (<InstalledProject key={project.url} {...project}/>))}
   </Fragment>;
 };
 
 
-const mapStateToProps = ({ project: { owned } } ) => ({
-  projects: owned.dibs,
-  installed: owned.installed,
-  isLoading: owned.isLoading
-});
+const mapStateToProps = ({ project: { owned, byId } } ) => toInstalledAndPending(owned.dibs, owned.installed, byId);
 
 DibsProjects =  connect(mapStateToProps)(DibsProjects);
 

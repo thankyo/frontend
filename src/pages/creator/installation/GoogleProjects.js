@@ -13,11 +13,15 @@ import PostAddingExplanation from "./pending/PostAddingExplanation";
 import RefreshLink from "components/RefreshLink";
 import { refreshGoogle } from "reducers/project.actions";
 
+import InstalledProject from "./InstalledProject";
+import { toInstalledAndPending } from "./util";
+
 const GoogleProjectInstallation = stepByStep(StartInstallation, ChooseWebStack, PostAddingExplanation, FinishInstallation);
 
 const GoogleSummary = ({ projects }) => {
   if (projects.length === 0) {
-    return (<div>We could not retrieve any project data, please <a href="mailto:antono@loveit.tips">contact us.</a></div>);
+    return (
+      <div>We could not retrieve any project data, please <a href="mailto:antono@loveit.tips">contact us.</a></div>);
   } else {
     return (<div>Found <strong>{projects.map(({ url }) => url).join(", ")}</strong></div>);
   }
@@ -48,33 +52,35 @@ const GoogleConnectionStatus = ({ connected, authUrl, projects, refreshGoogle })
   }
 };
 
-let GoogleProjects = ({ projects, connected, authUrl, refreshGoogle }) => {
-  return <Fragment>
-    <li className="timeline-header is-primary is-large">
-      <div className="timeline-marker is-primary is-image is-30x30 has-text-centered">
-        <GoogleIcon/>
-      </div>
-    </li>
-    <li className="timeline-item is-primary is-paddingless">
-      <div className="timeline-content">
-        <p className="heading">Google</p>
-        <GoogleConnectionStatus authUrl={authUrl} connected={connected} projects={projects} refreshGoogle={refreshGoogle}/>
-        <br/>
-      </div>
-    </li>
-    {projects.map((project) => (<GoogleProjectInstallation key={project.url} {...project}/>))}
-  </Fragment>;
+let GoogleProjects = ({ projects, pending, installed, connected, authUrl, refreshGoogle }) => {
+  return (
+    <Fragment>
+      <li className="timeline-header is-primary is-large">
+        <div className="timeline-marker is-primary is-image is-30x30 has-text-centered">
+          <GoogleIcon/>
+        </div>
+      </li>
+      <li className="timeline-item is-primary is-paddingless">
+        <div className="timeline-content">
+          <p className="heading">Google</p>
+          <GoogleConnectionStatus authUrl={authUrl} connected={connected} projects={projects}
+                                  refreshGoogle={refreshGoogle}/>
+          <br/>
+        </div>
+      </li>
+      {pending.map((project) => (<GoogleProjectInstallation key={project.url} {...project}/>))}
+      {installed.map((project) => (<InstalledProject key={project.url} {...project}/>))}
+    </Fragment>
+  );
 };
 
 
-const mapStateToProps = ({ project: { owned }, user: { my : { data: { profiles = {} } } }, auth: { url } } ) => ({
-  projects: owned.google,
-  installed: owned.installed,
+const mapStateToProps = ({ project: { owned, byId }, user: { my: { data: { profiles = {} } } }, auth: { url } }) => ({
+  ... toInstalledAndPending(owned.google, owned.installed, byId),
   connected: profiles.google,
-  authUrl: url.google,
-  isLoading: owned.isLoading
+  authUrl: url.google
 });
 
-GoogleProjects =  connect(mapStateToProps, (dispatch) => bindActionCreators({ refreshGoogle }, dispatch))(GoogleProjects);
+GoogleProjects = connect(mapStateToProps, (dispatch) => bindActionCreators({ refreshGoogle }, dispatch))(GoogleProjects);
 
 export default GoogleProjects;
