@@ -5,7 +5,7 @@ import RefreshLink from "components/RefreshLink";
 import WebStackMarker from "./WebStackMarker";
 
 const StartInstallation = ({ data: { url, webStack }, next }) => (
-  <li className="timeline-item is-primary">
+  <div className="timeline-item is-primary">
     <WebStackMarker webStack={webStack}/>
     <div className="timeline-content">
       <p className="heading">
@@ -17,7 +17,7 @@ const StartInstallation = ({ data: { url, webStack }, next }) => (
         </RefreshLink>
       </div>
     </div>
-  </li>
+  </div>
 );
 
 export default StartInstallation;

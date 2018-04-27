@@ -15,6 +15,7 @@ export const PROJECT_UPDATE = event("PROJECT_UPDATE");
 export const PROJECT_OWNERSHIP_REFRESH = event("PROJECT_OWNERSHIP_REFRESH");
 
 export const PROJECT_OWNERSHIP_DIBS = event("PROJECT_OWNERSHIP_DIBS");
+export const PROJECT_OWNERSHIP_EMAIL = event("PROJECT_OWNERSHIP_EMAIL");
 export const PROJECT_OWNERSHIP_DELETE = event("PROJECT_OWNERSHIP_DELETE");
 export const PROJECT_OWNERSHIP_GET = event("PROJECT_OWNERSHIP_GET");
 
@@ -52,6 +53,16 @@ export function projectDibs(body) {
       return Promise.reject({ url: "Must not be empty" });
     let p = authService.post(`/api/v1/thank/user/my/owned`, body);
     return dispatchPromise(p, PROJECT_OWNERSHIP_DIBS, dispatch);
+  }
+}
+
+export function projectByEmail(email) {
+  return (dispatch) => {
+    if (body.email.trim().length === 0) {
+      return Promise.reject({ email: "Must not be empty" });
+    }
+    let p = authService.post(`/api/v1/thank/user/my/owned/email`, body);
+    return dispatchPromise(p, PROJECT_OWNERSHIP_EMAIL, dispatch);
   }
 }
 

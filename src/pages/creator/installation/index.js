@@ -9,18 +9,20 @@ import EmailVerifiedProjects from "./EmailVerifiedProjects";
 const Spinner = spinnerFactory(260);
 
 let UserProjects = () => (
-  <ul className="timeline">
+  <div className="timeline">
+    <header className="timeline-header">
+      <span className="tag is-primary">Installation</span>
+    </header>
     <GoogleProjects/>
     <TumblrProjects/>
     <EmailVerifiedProjects/>
     <DibsProjects/>
-  </ul>
+  </div>
 );
 
 function InstallationPage({ pending, owned, installed, isLoading }) {
   return (
     <Fragment>
-      <h1 className="subtitle">Installation</h1>
       {isLoading ? <Spinner/> : <UserProjects pending={pending} installed={installed}/>}
     </Fragment>
   );

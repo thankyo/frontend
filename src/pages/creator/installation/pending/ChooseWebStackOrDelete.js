@@ -11,7 +11,7 @@ import RefreshLink from "components/RefreshLink";
 
 const ChooseWebStackOrDelete = ({ data: { url, webStack }, next, deleteOwnedProject }) => (
   <Fragment>
-    <li className="timeline-item is-primary is-large">
+    <div className="timeline-item is-primary is-large">
       <WebStackMarker webStack={webStack}/>
       <div className="timeline-content">
         <p className="heading">
@@ -23,12 +23,12 @@ const ChooseWebStackOrDelete = ({ data: { url, webStack }, next, deleteOwnedProj
           <InstallIcon>Next</InstallIcon>
         </div>
       </div>
-    </li>
-    <li className="timeline-header is-success">
+    </div>
+    <header className="timeline-header is-success">
       <RefreshLink className="button is-small is-danger" onClick={() => deleteOwnedProject({ url })}>
         <DeleteIcon>Delete</DeleteIcon>
       </RefreshLink>
-    </li>
+    </header>
   </Fragment>
 );
 

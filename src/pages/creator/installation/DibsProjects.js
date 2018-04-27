@@ -24,12 +24,10 @@ const DibsSummary = ({ projects }) => {
 
 let DibsProjects = ({ projects, pending, installed }) => {
   return <Fragment>
-    <li className="timeline-header is-primary is-large">
-      <div className="timeline-marker is-primary is-image is-30x30 has-text-centered">
+    <li className="timeline-item is-paddingless is-primary">
+      <div className="timeline-marker is-image is-32x32 has-text-centered is-white">
         <DibsIcon/>
       </div>
-    </li>
-    <li className="timeline-item is-primary is-paddingless">
       <div className="timeline-content">
         <p className="heading">Dibs</p>
         <DibsSummary projects={projects}/>

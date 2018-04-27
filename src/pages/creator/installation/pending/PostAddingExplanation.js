@@ -4,7 +4,7 @@ import WebStackMarker from "./WebStackMarker";
 
 const HtmlAddingExplanation = ({ webStack, next, previous }) => (
   <Fragment>
-    <li className="timeline-item is-primary is-large">
+    <div className="timeline-item is-primary is-large">
       <WebStackMarker webStack={webStack}/>
       <div className="timeline-content">
         <div className="content">
@@ -23,12 +23,12 @@ const HtmlAddingExplanation = ({ webStack, next, previous }) => (
           <InstallIcon>Next</InstallIcon>
         </div>
       </div>
-    </li>
-    <li className="timeline-header is-success">
+    </div>
+    <header className="timeline-header is-success">
       <a className="tag is-primary" onClick={previous}>
         <BackIcon>Back</BackIcon>
       </a>
-    </li>
+    </header>
   </Fragment>
 );
 

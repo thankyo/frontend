@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+
 import { createProject } from "reducers/project.actions";
 import Resource from "components/Resource";
 import { BackIcon, InstallIcon } from "components/Icon";

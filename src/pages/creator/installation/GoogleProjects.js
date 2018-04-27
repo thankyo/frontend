@@ -55,19 +55,17 @@ const GoogleConnectionStatus = ({ connected, authUrl, projects, refreshGoogle })
 let GoogleProjects = ({ projects, pending, installed, connected, authUrl, refreshGoogle }) => {
   return (
     <Fragment>
-      <li className="timeline-header is-primary is-large">
-        <div className="timeline-marker is-primary is-image is-30x30 has-text-centered">
+      <div className="timeline-item is-paddingless is-primary">
+        <div className="timeline-marker is-image is-32x32 has-text-centered is-white">
           <GoogleIcon/>
         </div>
-      </li>
-      <li className="timeline-item is-primary is-paddingless">
         <div className="timeline-content">
           <p className="heading">Google</p>
           <GoogleConnectionStatus authUrl={authUrl} connected={connected} projects={projects}
                                   refreshGoogle={refreshGoogle}/>
           <br/>
         </div>
-      </li>
+      </div>
       {pending.map((project) => (<GoogleProjectInstallation key={project.url} {...project}/>))}
       {installed.map((project) => (<InstalledProject key={project.url} {...project}/>))}
     </Fragment>
