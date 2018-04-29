@@ -2,7 +2,8 @@ import React, { Fragment } from "react";
 
 import FinishInstallation from "./pending/FinishInstallation";
 import PostAddingExplanation from "./pending/PostAddingExplanation";
-import ChooseWebStackOrDelete from "./pending/ChooseWebStackOrDelete";
+import ChooseWebStack from "./pending/ChooseWebStack";
+import EmailVerification from "./pending/EmailVerification";
 import { stepByStep } from "components/timeline/util";
 
 import { EmailIcon } from "components/Icon";
@@ -12,7 +13,7 @@ import InstalledProject from "./InstalledProject";
 import { toInstalledAndPending } from "./util";
 import EmailVerifiedForm from "./EmailVerifiedForm";
 
-const EmailVerifiedInstallation = stepByStep(ChooseWebStackOrDelete, PostAddingExplanation, FinishInstallation);
+const EmailVerifiedInstallation = stepByStep(EmailVerification, ChooseWebStack, PostAddingExplanation, FinishInstallation);
 
 const EmailVerifiedSummary = ({ projects }) => {
   if (projects.length === 0) {

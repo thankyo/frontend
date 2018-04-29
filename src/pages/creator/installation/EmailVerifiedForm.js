@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { InstallIcon } from "components/Icon";
-import { projectDibs } from "reducers/project.actions";
+import { projectByEmail } from "reducers/project.actions";
 import { Field, Form, reduxForm } from "redux-form";
-import { flatField, LoadingButton, required, urlFormat } from "components/form/form.utils";
+import { emailFormat, flatField, LoadingButton, required } from "components/form/form.utils";
 
 import { reset } from 'redux-form';
 
@@ -19,7 +19,7 @@ let EmailVerifiedForm = ({ handleSubmit, submitting }) => (
         <Form onSubmit={handleSubmit} className="is-fullwidth" style={{ width: "100%" }}>
           <div className="field has-addons" style={{ flexGrow: 1 }}>
             <div className="control" style={{ flexGrow: 1 }}>
-              <Field type="text" className="input is-small" name="url" component={flatField} validate={[required, urlFormat]}/>
+              <Field type="text" className="input is-small" name="email" component={flatField} validate={[required, emailFormat]}/>
             </div>
             <div className="control">
               <LoadingButton className="button is-small is-primary" submitting={submitting}>
@@ -36,7 +36,7 @@ let EmailVerifiedForm = ({ handleSubmit, submitting }) => (
 EmailVerifiedForm = reduxForm({ form: "project-email" })(EmailVerifiedForm);
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (form) => dispatch(projectDibs(form)).then(() => {
+  onSubmit: (form) => dispatch(projectByEmail(form)).then(() => {
     dispatch(reset("project-email"))
   })
 });

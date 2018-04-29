@@ -47,22 +47,22 @@ export function updateProject(project) {
   }
 }
 
-export function projectDibs(body) {
+export function projectDibs(form) {
   return (dispatch) => {
-    if (body.url.trim().length === 0)
+    if (form.url.trim().length === 0)
       return Promise.reject({ url: "Must not be empty" });
-    let p = authService.post(`/api/v1/thank/user/my/owned`, body);
+    let p = authService.post(`/api/v1/thank/user/my/owned/dibs`, form);
     return dispatchPromise(p, PROJECT_OWNERSHIP_DIBS, dispatch);
   }
 }
 
-export function projectByEmail(email) {
+export function projectByEmail(form) {
   return (dispatch) => {
-    if (body.email.trim().length === 0) {
+    if (form.email.trim().length === 0) {
       return Promise.reject({ email: "Must not be empty" });
     }
-    let p = authService.post(`/api/v1/thank/user/my/owned/email`, body);
-    return dispatchPromise(p, PROJECT_OWNERSHIP_EMAIL, dispatch);
+    let p = authService.post(`/api/v1/thank/user/my/owned/email`, form);
+    return dispatchPromise(p, PROJECT_OWNERSHIP_REFRESH, dispatch);
   }
 }
 
@@ -121,9 +121,15 @@ export function reSendWHOISVerification(project) {
   }
 }
 
-export function verifyDibs(token) {
+export function reSendEmailVerification(project) {
+  return (dispatch) => {
+    return authService.post(`/api/v1/thank/user/my/owned/email/verify`, { email: project.email });
+  }
+}
+
+export function verifyOwnership(method, token) {
   return (dispatch) =>  {
-    let p = authService.put(`/api/v1/thank/user/my/owned/dibs/verify`, { token });
+    let p = authService.put(`/api/v1/thank/user/my/owned/${method}/verify`, { token });
     return dispatchPromise(p, PROJECT_OWNERSHIP_REFRESH, dispatch).then(() => dispatch(goToProjectInstallation));
   }
 }
