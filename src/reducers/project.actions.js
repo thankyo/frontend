@@ -15,7 +15,6 @@ export const PROJECT_UPDATE = event("PROJECT_UPDATE");
 export const PROJECT_OWNERSHIP_REFRESH = event("PROJECT_OWNERSHIP_REFRESH");
 
 export const PROJECT_OWNERSHIP_DIBS = event("PROJECT_OWNERSHIP_DIBS");
-export const PROJECT_OWNERSHIP_EMAIL = event("PROJECT_OWNERSHIP_EMAIL");
 export const PROJECT_OWNERSHIP_DELETE = event("PROJECT_OWNERSHIP_DELETE");
 export const PROJECT_OWNERSHIP_GET = event("PROJECT_OWNERSHIP_GET");
 
@@ -108,9 +107,16 @@ export function deleteProject(project) {
   }
 }
 
-export function deleteOwnedProject(project) {
+export function deleteDibs(project) {
   return (dispatch) => {
-    let p = authService.remove(`/api/v1/thank/user/my/owned?url=${encodeURIComponent(project.url)}`);
+    let p = authService.remove(`/api/v1/thank/user/my/owned/dibs`, { url: project.url });
+    return dispatchPromise(p, PROJECT_OWNERSHIP_DELETE, dispatch);
+  }
+}
+
+export function deleteOwnershipByEmail(project) {
+  return (dispatch) => {
+    let p = authService.remove(`/api/v1/thank/user/my/owned/email`, { email: project.email });
     return dispatchPromise(p, PROJECT_OWNERSHIP_DELETE, dispatch);
   }
 }

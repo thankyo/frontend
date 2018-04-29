@@ -12,8 +12,9 @@ import { connect } from 'react-redux';
 import InstalledProject from "./InstalledProject";
 import { toInstalledAndPending } from "./util";
 import EmailVerifiedForm from "./EmailVerifiedForm";
+import ChooseWebStackOrDelete from "./pending/ChooseWebStackOrDelete";
 
-const EmailVerifiedInstallation = stepByStep(EmailVerification, ChooseWebStack, PostAddingExplanation, FinishInstallation);
+const EmailVerifiedInstallation = stepByStep(EmailVerification, ChooseWebStackOrDelete, PostAddingExplanation, FinishInstallation);
 
 const EmailVerifiedSummary = ({ projects }) => {
   if (projects.length === 0) {

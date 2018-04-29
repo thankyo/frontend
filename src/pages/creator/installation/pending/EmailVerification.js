@@ -3,11 +3,12 @@ import Resource from "components/Resource";
 import { InstallIcon, EmailIcon } from "components/Icon";
 import WebStackMarker from "./WebStackMarker";
 import RefreshLink from "components/RefreshLink";
-import { deleteOwnedProject, reSendEmailVerification } from "reducers/project.actions";
+import { deleteOwnershipByEmail, reSendEmailVerification } from "reducers/project.actions";
 import { connect } from "react-redux";
 import { bindToActions } from "reducers/util/action";
+import DeleteButton from "./DeleteButton";
 
-const EmailVerification = ({ data: { email, url, webStack, verified }, next, deleteOwnedProject, reSendEmailVerification }) => {
+const EmailVerification = ({ data: { email, url, webStack, verified }, next, deleteOwnershipByEmail, reSendEmailVerification }) => {
   if (verified ) {
     next();
     return <div/>
@@ -37,8 +38,9 @@ const EmailVerification = ({ data: { email, url, webStack, verified }, next, del
           </div>
         </div>
       </div>
+      <DeleteButton onDelete={() => deleteOwnershipByEmail({ email })}/>
     </Fragment>
   );
 };
 
-export default connect(undefined, bindToActions({ deleteOwnedProject, reSendEmailVerification }))(EmailVerification);
+export default connect(undefined, bindToActions({ deleteOwnershipByEmail, reSendEmailVerification }))(EmailVerification);

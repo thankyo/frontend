@@ -3,7 +3,7 @@ import Resource from "components/Resource";
 import { DeleteIcon, InstallIcon, EmailIcon } from "components/Icon";
 import WebStackMarker from "./WebStackMarker";
 import RefreshLink from "components/RefreshLink";
-import { deleteOwnedProject, reSendWHOISVerification } from "reducers/project.actions";
+import { deleteDibs, reSendWHOISVerification } from "reducers/project.actions";
 import { connect } from "react-redux";
 import { bindToActions } from "reducers/util/action";
 import DeleteButton from "./DeleteButton";
@@ -47,4 +47,4 @@ const WHOISVerification = ({ data: { whoisEmail, url, webStack, verified }, next
   );
 };
 
-export default connect(undefined, bindToActions({ deleteOwnedProject, reSendWHOISVerification }))(WHOISVerification);
+export default connect(undefined, bindToActions({ deleteOwnedProject: deleteDibs, reSendWHOISVerification }))(WHOISVerification);

@@ -4,7 +4,7 @@ import { DeleteIcon, InstallIcon } from "components/Icon";
 import Instructions from "./instruction";
 import WebStackMarker from "./WebStackMarker";
 
-import { deleteOwnedProject } from "reducers/project.actions";
+import { deleteDibs } from "reducers/project.actions";
 import { connect } from "react-redux";
 import { bindToActions } from "reducers/util/action";
 import DeleteButton from "./DeleteButton";
@@ -28,4 +28,4 @@ const ChooseWebStackOrDelete = ({ data: { url, webStack, verified }, next, delet
   </Fragment>
 );
 
-export default connect(undefined, bindToActions({ deleteOwnedProject }))(ChooseWebStackOrDelete);
+export default connect(undefined, bindToActions({ deleteOwnedProject: deleteDibs }))(ChooseWebStackOrDelete);

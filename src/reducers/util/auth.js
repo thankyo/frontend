@@ -45,7 +45,7 @@ class AuthService {
     this.signAndFetch(new Request(url), false).then(handleCSVResponce(fileName))
   );
 
-  remove = (url) => this.signAndFetch(new Request(url, { method: 'DELETE' }));
+  remove = (url, body) => this.signAndFetch(new Request(url, { method: 'DELETE', body: body ? JSON.stringify(body): undefined }));
 
   signAndFetch = (req, isJson = true) => {
     let token = tokenStore.getToken();
