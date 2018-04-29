@@ -13,7 +13,7 @@ let EmailVerifiedForm = ({ handleSubmit, submitting }) => (
     </div>
     <div className="timeline-content">
       <p className="heading">
-        We'll send verification link to specified email
+        We'll send you verification link
       </p>
       <div className="content">
         <Form onSubmit={handleSubmit} className="is-fullwidth" style={{ width: "100%" }}>
