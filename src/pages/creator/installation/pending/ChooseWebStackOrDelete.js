@@ -7,9 +7,9 @@ import WebStackMarker from "./WebStackMarker";
 import { deleteOwnedProject } from "reducers/project.actions";
 import { connect } from "react-redux";
 import { bindToActions } from "reducers/util/action";
-import RefreshLink from "components/RefreshLink";
+import DeleteButton from "./DeleteButton";
 
-const ChooseWebStackOrDelete = ({ data: { url, webStack }, next, deleteOwnedProject }) => (
+const ChooseWebStackOrDelete = ({ data: { url, webStack, verified }, next, deleteOwnedProject }) => (
   <Fragment>
     <div className="timeline-item is-primary is-large">
       <WebStackMarker webStack={webStack}/>
@@ -24,11 +24,7 @@ const ChooseWebStackOrDelete = ({ data: { url, webStack }, next, deleteOwnedProj
         </div>
       </div>
     </div>
-    <header className="timeline-header is-success">
-      <RefreshLink className="button is-small is-danger" onClick={() => deleteOwnedProject({ url })}>
-        <DeleteIcon>Delete</DeleteIcon>
-      </RefreshLink>
-    </header>
+    {!verified && <DeleteButton onDelete={() => deleteOwnedProject({ url })}/>}
   </Fragment>
 );
 

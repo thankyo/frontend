@@ -13,14 +13,13 @@ let EmailVerifiedForm = ({ handleSubmit, submitting }) => (
     </div>
     <div className="timeline-content">
       <p className="heading">
-        We'll send verification link to specified email for verification
+        We'll send verification link to specified email
       </p>
       <div className="content">
         <Form onSubmit={handleSubmit} className="is-fullwidth" style={{ width: "100%" }}>
           <div className="field has-addons" style={{ flexGrow: 1 }}>
             <div className="control" style={{ flexGrow: 1 }}>
-              <Field type="text" className="input is-small" name="url" component={flatField}
-                     help="And verify manually if WHOIS did not workout" validate={[required, urlFormat]}/>
+              <Field type="text" className="input is-small" name="url" component={flatField} validate={[required, urlFormat]}/>
             </div>
             <div className="control">
               <LoadingButton className="button is-small is-primary" submitting={submitting}>

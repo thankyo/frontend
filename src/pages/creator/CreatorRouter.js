@@ -8,6 +8,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import InstallationPage from "./installation";
 import ProjectPosts from "./ProjectPosts";
 import { InstallIcon } from "components/Icon";
+import VerifyDibsPage from "./installation/VerifyDibPage";
 
 function InstallationLink() {
   let isActive = location.pathname === "/creator/my";
@@ -44,6 +45,7 @@ export default function CreatorRouter() {
                   <InstallationLink/>
                 </Fragment>
               </Route>
+              <Route path="/creator/dibs/verify/:token" component={VerifyDibsPage}/>
               <Route exact path="/creator/:user/project/:project"
                      render={(({ match: { params: { user, project } } }) => (
                        <Fragment>

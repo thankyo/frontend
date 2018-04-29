@@ -2,7 +2,7 @@ import authService from "./util/auth";
 import { dispatchPromise, event } from "./util/promiseStates";
 import { markMy } from "reducers/util/markMy";
 import { dispatchPromiseWith } from "reducers/util/promiseStates";
-import { goToProject } from "reducers/navigation.actions";
+import { goToProject, goToProjectInstallation } from "reducers/navigation.actions";
 
 export const PROJECT_GET_SUPPORTED = event("PROJECT_GET_SUPPORTED");
 export const PROJECT_GET_BY_USER = event("PROJECT_GET_BY_USER");
@@ -112,5 +112,18 @@ export function deleteOwnedProject(project) {
   return (dispatch) => {
     let p = authService.remove(`/api/v1/thank/user/my/owned?url=${encodeURIComponent(project.url)}`);
     return dispatchPromise(p, PROJECT_OWNERSHIP_DELETE, dispatch);
+  }
+}
+
+export function reSendWHOISVerification(project) {
+  return (dispatch) => {
+    return authService.post(`/api/v1/thank/user/my/owned/dibs/verify`, { url: project.url });
+  }
+}
+
+export function verifyDibs(token) {
+  return (dispatch) =>  {
+    let p = authService.put(`/api/v1/thank/user/my/owned/dibs/verify`, { token });
+    return dispatchPromise(p, PROJECT_OWNERSHIP_REFRESH, dispatch).then(() => dispatch(goToProjectInstallation));
   }
 }

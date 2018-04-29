@@ -13,10 +13,10 @@ let UserProjects = () => (
     <header className="timeline-header">
       <span className="tag is-primary">Installation</span>
     </header>
-    <GoogleProjects/>
     <TumblrProjects/>
     <EmailVerifiedProjects/>
     <DibsProjects/>
+    <GoogleProjects/>
   </div>
 );
 
