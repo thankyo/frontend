@@ -12,7 +12,11 @@ jobs:
 
       - restore_cache:
           keys:
-            - frontend-cache-{{ checksum "yarn.lock" }}
+            - frontend-cache-{{ checksum "yarn.lock" }}-{{ checksum "admin/yarn.lock" }}
+
+      - run:
+          name: Fetch submodules
+          command: git submodule update --init
 
       - run:
           name: Install packages frontend
@@ -27,9 +31,10 @@ jobs:
           command: yarn global add parcel-bundler@1.7.0
 
       - save_cache:
-          key: frontend-cache-{{ checksum "yarn.lock" }}
+          key: frontend-cache-{{ checksum "yarn.lock" }}-{{ checksum "admin/yarn.lock" }}
           paths:
             - node_modules
+            - admin/node_modules
 
       - run:
           name: Build integration
