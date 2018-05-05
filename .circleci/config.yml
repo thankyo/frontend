@@ -15,8 +15,12 @@ jobs:
             - frontend-cache-{{ checksum "yarn.lock" }}
 
       - run:
-          name: Install packages
+          name: Install packages frontend
           command: NODE_ENV=development yarn install
+
+      - run:
+          name: Install packages admin
+          command: cd admin && NODE_ENV=development yarn install
 
       - run:
           name: Install parcel
@@ -35,6 +39,14 @@ jobs:
       - run:
           name: Build main project
           command: yarn build
+
+      - run:
+          name: Build admin
+          command: cd admin && yarn build
+
+      - run:
+          name: Copy admin to assets
+          command: cp -R admin/build/ public/admin
 
       - run:
           name: Login to Docker
