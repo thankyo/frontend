@@ -20,7 +20,7 @@ jobs:
 
       - run:
           name: Install packages admin
-          command: cd admin && NODE_ENV=development yarn install
+          command: (cd admin && NODE_ENV=development yarn install)
 
       - run:
           name: Install parcel
@@ -42,7 +42,7 @@ jobs:
 
       - run:
           name: Build admin
-          command: cd admin && yarn build
+          command: (cd admin && yarn build)
 
       - run:
           name: Copy admin to assets
