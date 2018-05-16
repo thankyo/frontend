@@ -1,6 +1,6 @@
 import React from "react";
 import { Field, Form, reduxForm } from "redux-form";
-import { customInput, SubmitButton } from "components/form/form.utils";
+import { customInput, SubmitButton } from "components/form";
 import { required, max64 } from "components/form/validation";
 import { RestoreIcon } from "components/Icon";
 import { reset } from "reducers/auth.actions";
@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 
 let ResetForm = ({ handleSubmit, submitting }) => {
   return (
-    <Form onSubmit={handleSubmit} className="is-primary">
+    <Form onSubmit={handleSubmit}>
       <Field
         name="password"
         type="password"
@@ -16,11 +16,9 @@ let ResetForm = ({ handleSubmit, submitting }) => {
         placeholder="New Password"
         validate={[required, max64]}
       />
-      <div className="field">
-        <SubmitButton submitting={submitting}>
-          <RestoreIcon>Restore</RestoreIcon>
-        </SubmitButton>
-      </div>
+      <SubmitButton submitting={submitting}>
+        <RestoreIcon>Restore</RestoreIcon>
+      </SubmitButton>
     </Form>
   );
 };

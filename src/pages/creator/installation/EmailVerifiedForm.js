@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { InstallIcon } from "components/Icon";
 import { projectByEmail } from "reducers/project.actions";
 import { Field, Form, reduxForm } from "redux-form";
-import { customInput, SubmitButton } from "components/form/form.utils";
+import { customInput, SubmitButton } from "components/form";
 import { emailFormat, required } from "components/form/validation";
 
 import { reset } from 'redux-form';

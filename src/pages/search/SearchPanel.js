@@ -1,5 +1,5 @@
 import React from "react";
-import { customInput, SubmitButton } from "components/form/form.utils";
+import { customInput, SubmitButton } from "components/form";
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from "redux-form";
 import { SearchIcon } from "components/Icon";

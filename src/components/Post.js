@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
 import { DeleteIcon, LoveItButton, SaveIcon, RefreshIcon, EditIcon } from "components/Icon";
 import moment from "moment/moment";
-import { customInput } from "components/form/form.utils";
+import { customInput } from "components/form";
 import Tags from "components/form/Tags";
 import { isMyObj } from "reducers/util/markMy";
 import RefreshLink from "components/RefreshLink";

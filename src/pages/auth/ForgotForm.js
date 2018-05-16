@@ -1,6 +1,6 @@
 import React from "react";
 import { Field, Form, reduxForm } from "redux-form";
-import { customInput, SubmitButton } from "components/form/form.utils";
+import { customInput, SubmitButton } from "components/form";
 import { required } from "components/form/validation";
 import { SendIcon } from "components/Icon";
 import { connect } from "react-redux";
@@ -8,7 +8,7 @@ import { forgot } from "reducers/auth.actions";
 import { bindToActions } from "reducers/util/action";
 
 let ForgotForm = ({ handleSubmit, submitting }) => (
-  <Form onSubmit={handleSubmit} className="is-primary">
+  <Form onSubmit={handleSubmit}>
     <Field
       name="email"
       type="email"
@@ -16,11 +16,9 @@ let ForgotForm = ({ handleSubmit, submitting }) => (
       placeholder="Email"
       validate={[required]}
     />
-    <div className="field">
-      <SubmitButton submitting={submitting}>
-        <SendIcon>Send a password restore link</SendIcon>
-      </SubmitButton>
-    </div>
+    <SubmitButton submitting={submitting}>
+      <SendIcon>Send a password restore link</SendIcon>
+    </SubmitButton>
   </Form>
 );
 

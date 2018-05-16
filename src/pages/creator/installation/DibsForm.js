@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { InstallIcon } from "components/Icon";
 import { projectDibs } from "reducers/project.actions";
 import { Field, Form, reduxForm } from "redux-form";
-import { customInput, SubmitButton } from "components/form/form.utils";
+import { customInput, SubmitButton } from "components/form";
 import { required, urlFormat } from "components/form/validation";
 
 import { reset } from 'redux-form';
@@ -26,7 +26,7 @@ let DibsForm = ({ handleSubmit, submitting }) => (
         <Form onSubmit={handleSubmit}>
           <Field
             name="url"
-            type="url"
+            type="text"
             component={customInput}
             help="And verify manually if WHOIS did not workout"
             validate={[required, urlFormat]}
@@ -42,7 +42,7 @@ let DibsForm = ({ handleSubmit, submitting }) => (
 DibsForm = reduxForm({ form: "project-dibs" })(DibsForm);
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (form) => dispatch(projectDibs(form)).then(() => dispatch(reset("project-dibs")))
+  onSubmit: (form) => dispatch(projectDibs(form))
 });
 
 DibsForm = connect(undefined, mapDispatchToProps)(DibsForm);

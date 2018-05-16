@@ -1,8 +1,9 @@
 import React from "react";
-import { customInput } from "components/form/form.utils";
-import { max27, max54, required } from "components/form/validation";
 import { Field, FieldArray, FormSection } from "redux-form";
-import Tags from "components/form/Tags";
+
+import { max27, max54, required } from "./validation";
+import customInput from "./customInput";
+import Tags from "./Tags";
 
 export default function () {
   return (

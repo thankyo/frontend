@@ -1,26 +1,6 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import Date from "components/form/Date";
+import DateInput from "components/form/DateInput";
 import cx from "classnames";
-
-const submitClassName = ({ className, submitting }) => cx(
-  className,
-  "button",
-  {
-    "is-loading": submitting
-  }
-);
-
-export const SubmitButton = (props) => (
-  <button type="submit" className={submitClassName(props)}>
-    {props.children}
-  </button>
-);
-
-SubmitButton.propTypes = {
-  submitting: PropTypes.bool.isRequired
-};
-
 
 const FieldHelp = ({ meta: { touched, error, active }, help }) => {
   if (error && touched) {
@@ -31,7 +11,6 @@ const FieldHelp = ({ meta: { touched, error, active }, help }) => {
     return null;
   }
 };
-
 
 const labelClassName = ({ isSmall, meta: { error } }) => cx(
   "label",
@@ -68,7 +47,7 @@ const inputField = (props) => {
   } = props;
 
   if (type === "date") {
-    return <Date {...props}/>
+    return <DateInput {...props}/>
   } else if (type === "image") {
     return (
       <Fragment>
@@ -111,9 +90,9 @@ export const customInput = (props) => {
         <div className={controlClassName(props)}>
           {inputField(props)}
         </div>
-        {addon ? <div className="control">{addon}</div> : null}
-        <FieldHelp help={help} meta={meta}/>
+        {addon ? <div className="control">{addon}</div> : <FieldHelp help={help} meta={meta}/>}
       </div>
+      {addon && <FieldHelp help={help} meta={meta}/>}
     </Fragment>
   )
 };

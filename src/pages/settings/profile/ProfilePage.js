@@ -5,12 +5,11 @@ import { connect } from "react-redux";
 import { Field, Form, reduxForm } from "redux-form";
 import moment from "moment";
 
-import { customInput, SubmitButton } from "components/form/form.utils";
+import { customInput, SubmitButton } from "components/form";
 import { required } from "components/form/validation";
 import { SaveIcon } from "components/Icon";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
-import Date from "components/form/Date";
 
 function ProfileEdit({ avatar, handleSubmit, submitting, url, initialValues }) {
   return (

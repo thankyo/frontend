@@ -1,6 +1,6 @@
 import React from "react";
 import { Field, Form, reduxForm } from "redux-form";
-import { customInput, SubmitButton } from "components/form/form.utils";
+import { customInput, SubmitButton } from "components/form";
 import { max64, required } from "components/form/validation";
 import { LoginIcon } from "components/Icon";
 import { login } from "reducers/auth.actions";
@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 let LoginForm = ({ handleSubmit, submitting }) => {
   return (
-    <Form onSubmit={handleSubmit} className="is-primary">
+    <Form onSubmit={handleSubmit}>
       <Field
         name="email"
         type="email"
@@ -23,11 +23,9 @@ let LoginForm = ({ handleSubmit, submitting }) => {
         placeholder="Password"
         validate={[required, max64]}
         />
-      <div className="field">
-        <SubmitButton submitting={submitting}>
-          <LoginIcon>Log in</LoginIcon>
-        </SubmitButton>
-      </div>
+      <SubmitButton submitting={submitting}>
+        <LoginIcon>Log in</LoginIcon>
+      </SubmitButton>
     </Form>
   );
 };

@@ -4,7 +4,7 @@ import moment from "moment";
 const DATE_FORMAT = "YYYY-MM-DD";
 const DEFAULT_DATE = "1980-01-01";
 
-class Date extends Component {
+class DateInput extends Component {
   constructor(props) {
     super(props);
     let {  input: { value } } = this.props;
@@ -79,4 +79,4 @@ class Date extends Component {
   }
 }
 
-export default Date;
+export default DateInput;
