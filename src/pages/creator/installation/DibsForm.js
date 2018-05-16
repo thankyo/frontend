@@ -3,9 +3,16 @@ import { connect } from "react-redux";
 import { InstallIcon } from "components/Icon";
 import { projectDibs } from "reducers/project.actions";
 import { Field, Form, reduxForm } from "redux-form";
-import { flatField, LoadingButton, required, urlFormat } from "components/form/form.utils";
+import { customInput, SubmitButton } from "components/form/form.utils";
+import { required, urlFormat } from "components/form/validation";
 
 import { reset } from 'redux-form';
+
+let DibsSubmitButton = ({submitting}) => (
+  <SubmitButton className="button is-small is-primary" submitting={submitting}>
+    <InstallIcon>Add</InstallIcon>
+  </SubmitButton>
+);
 
 let DibsForm = ({ handleSubmit, submitting }) => (
   <li className="timeline-item is-primary">
@@ -16,18 +23,16 @@ let DibsForm = ({ handleSubmit, submitting }) => (
         We'll try to verify with WHOIS record
       </p>
       <div className="content">
-        <Form onSubmit={handleSubmit} className="is-fullwidth" style={{ width: "100%" }}>
-          <div className="field has-addons" style={{ flexGrow: 1 }}>
-            <div className="control" style={{ flexGrow: 1 }}>
-              <Field type="text" className="input is-small" name="url" component={flatField}
-                     help="And verify manually if WHOIS did not workout" validate={[required, urlFormat]}/>
-            </div>
-            <div className="control">
-              <LoadingButton className="button is-small is-primary" submitting={submitting}>
-                <InstallIcon>Add</InstallIcon>
-              </LoadingButton>
-            </div>
-          </div>
+        <Form onSubmit={handleSubmit}>
+          <Field
+            name="url"
+            type="url"
+            component={customInput}
+            help="And verify manually if WHOIS did not workout"
+            validate={[required, urlFormat]}
+            addon={<DibsSubmitButton submitting={submitting}/>}
+            isSmall
+          />
         </Form>
       </div>
     </div>

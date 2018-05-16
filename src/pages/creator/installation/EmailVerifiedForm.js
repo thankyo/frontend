@@ -3,9 +3,16 @@ import { connect } from "react-redux";
 import { InstallIcon } from "components/Icon";
 import { projectByEmail } from "reducers/project.actions";
 import { Field, Form, reduxForm } from "redux-form";
-import { emailFormat, flatField, LoadingButton, required } from "components/form/form.utils";
+import { customInput, SubmitButton } from "components/form/form.utils";
+import { emailFormat, required } from "components/form/validation";
 
 import { reset } from 'redux-form';
+
+const EmailSubmitButton = ({ submitting }) => (
+  <SubmitButton className="button is-small is-primary" submitting={submitting}>
+    <InstallIcon>Add</InstallIcon>
+  </SubmitButton>
+);
 
 let EmailVerifiedForm = ({ handleSubmit, submitting }) => (
   <li className="timeline-item is-primary">
@@ -16,17 +23,15 @@ let EmailVerifiedForm = ({ handleSubmit, submitting }) => (
         We'll send you verification link
       </p>
       <div className="content">
-        <Form onSubmit={handleSubmit} className="is-fullwidth" style={{ width: "100%" }}>
-          <div className="field has-addons" style={{ flexGrow: 1 }}>
-            <div className="control" style={{ flexGrow: 1 }}>
-              <Field type="text" className="input is-small" name="email" component={flatField} validate={[required, emailFormat]}/>
-            </div>
-            <div className="control">
-              <LoadingButton className="button is-small is-primary" submitting={submitting}>
-                <InstallIcon>Add</InstallIcon>
-              </LoadingButton>
-            </div>
-          </div>
+        <Form onSubmit={handleSubmit}>
+          <Field
+            name="email"
+            type="email"
+            component={customInput}
+            validate={[required, emailFormat]}
+            addon={<EmailSubmitButton submitting={submitting}/>}
+            isSmall
+          />
         </Form>
       </div>
     </div>

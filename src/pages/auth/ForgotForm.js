@@ -1,6 +1,7 @@
 import React from "react";
 import { Field, Form, reduxForm } from "redux-form";
-import { LoadingButton, renderField, required } from "components/form/form.utils";
+import { customInput, SubmitButton } from "components/form/form.utils";
+import { required } from "components/form/validation";
 import { SendIcon } from "components/Icon";
 import { connect } from "react-redux";
 import { forgot } from "reducers/auth.actions";
@@ -8,13 +9,17 @@ import { bindToActions } from "reducers/util/action";
 
 let ForgotForm = ({ handleSubmit, submitting }) => (
   <Form onSubmit={handleSubmit} className="is-primary">
-    <Field name="email" component={renderField} type="email" placeholder="Email"
-           validate={[required]} disabled={submitting}/>
-
+    <Field
+      name="email"
+      type="email"
+      component={customInput}
+      placeholder="Email"
+      validate={[required]}
+    />
     <div className="field">
-      <LoadingButton submitting={submitting}>
+      <SubmitButton submitting={submitting}>
         <SendIcon>Send a password restore link</SendIcon>
-      </LoadingButton>
+      </SubmitButton>
     </div>
   </Form>
 );

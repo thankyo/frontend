@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { Field, Form, reduxForm } from "redux-form";
 import moment from "moment";
 
-import { fieldWithLabel, LoadingButton, required } from "components/form/form.utils";
+import { customInput, SubmitButton } from "components/form/form.utils";
+import { required } from "components/form/validation";
 import { SaveIcon } from "components/Icon";
 import { componentFactory } from "components/loadingComponent";
 import spinnerFactory from "components/spinnerFactory";
@@ -26,36 +27,65 @@ function ProfileEdit({ avatar, handleSubmit, submitting, url, initialValues }) {
             </div>
           </div>
           <div className="column is-two-third">
-            <Field name="avatar" component={fieldWithLabel} type="url" placeholder="Avatar URL"/>
+            <Field
+              name="avatar"
+              type="url"
+              component={customInput}
+              label="Avatar URL"
+            />
             <p className="subtitle is-6">We currently do not store profile images, but you can use <a
               href="https://gravatar.com">gravatar</a></p>
           </div>
         </div>
         <div className="columns">
           <div className="column is-half">
-
-            <Field name="firstName"
-                   component={fieldWithLabel}
-                   type="string"
-                   placeholder="First name"
-                   validate={[required]}/>
+            <Field
+              name="firstName"
+              component={customInput}
+              type="string"
+              label="First Name"
+              validate={[required]}
+            />
           </div>
           <div className="column is-half">
-            <Field name="lastName" component={fieldWithLabel} type="string"
-                   placeholder="Last name" validate={[required]}/>
+            <Field
+              name="lastName"
+              type="string"
+              component={customInput}
+              label="Last Name"
+              validate={[required]}
+            />
           </div>
         </div>
         <div className="columns">
           <div className="column is-half">
-            <Field name="email" component={fieldWithLabel} type="email" placeholder="Email" validate={[required]}/>
+            <Field
+              name="email"
+              type="email"
+              component={customInput}
+              label="Email"
+              validate={[required]}
+            />
           </div>
           <div className="column is-half">
-            <Field name="dateOfBirth" component={Date} type="date" placeholder="Date Of Birth" />
+            <Field
+              name="dateOfBirth"
+              type="date"
+              component={customInput}
+              label="Date Of Birth"
+            />
           </div>
         </div>
         <div className="columns">
           <div className="column">
-            <Field name="bio" component={fieldWithLabel} type="textarea" className="textarea" placeholder="Bio"/>
+            <Field
+              name="bio"
+              component={customInput}
+              type="textarea"
+              className="textarea"
+              placeholder="Bio"
+              label="Bio"
+            />
           </div>
         </div>
         <div className="columns">
@@ -67,13 +97,13 @@ function ProfileEdit({ avatar, handleSubmit, submitting, url, initialValues }) {
           <div className="column">
             <time className="is-small is-pulled-right" date={initialValues.created}>
               Registration date: {moment(initialValues.created).format('LL')}
-              </time>
+            </time>
           </div>
         </div>
         <div className="is-pulled-right">
-          <LoadingButton submitting={submitting} className="is-outlined is-primary">
+          <SubmitButton submitting={submitting} className="is-outlined is-primary">
             <SaveIcon>Save</SaveIcon>
-          </LoadingButton>
+          </SubmitButton>
         </div>
       </Form>
     </div>

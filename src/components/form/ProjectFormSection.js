@@ -1,5 +1,6 @@
 import React from "react";
-import { max27, max54, required, smallFieldWithLabel } from "components/form/form.utils";
+import { customInput } from "components/form/form.utils";
+import { max27, max54, required } from "components/form/validation";
 import { Field, FieldArray, FormSection } from "redux-form";
 import Tags from "components/form/Tags";
 
@@ -8,39 +9,45 @@ export default function () {
     <FormSection name="project">
       <Field
         name="avatar"
-        component={smallFieldWithLabel}
         type="url"
-        placeholder="Project Avatar"
+        component={customInput}
+        label="Project Avatar"
         help="magnificent project avatar"
+        isSmall
       />
       <Field
         name="title"
-        component={smallFieldWithLabel}
-        placeholder="Title"
+        type="text"
+        component={customInput}
+        label="Title"
         validate={[required, max27]}
         help="27 symbols of awesomeness"
+        isSmall
       />
       <Field
         name="shortDescription"
-        component={smallFieldWithLabel}
-        placeholder="Short Description"
+        type="text"
+        component={customInput}
+        label="Short Description"
         validate={[required, max54]}
-        help={"something juicy, in 54 chars"}
+        help="something juicy, in 54 chars"
+        isSmall
       />
       <Field
         name="description"
-        component={smallFieldWithLabel}
         type="textarea"
-        className="textarea"
-        placeholder="Description"
-        help={"blow their mind"}
+        component={customInput}
+        label="Description"
+        help="blow their mind"
+        isSmall
       />
       <Field
         name="rss"
-        component={smallFieldWithLabel}
         type="url"
-        placeholder="RSS"
+        component={customInput}
+        label="RSS"
         help="we'll be watching every post you make"
+        isSmall
       />
       <FieldArray name="tags" component={(props) => {
         let { fields } = props;

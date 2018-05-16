@@ -43,11 +43,10 @@ class Date extends Component {
   };
 
   render() {
-    let { meta: { touched, error }, placeholder } = this.props;
+    let { meta: { touched, error } } = this.props;
     let { day, month, year } = this.state;
     return (
       <Fragment>
-        <label className="label">{placeholder}</label>
         <div className="field has-addons">
           <div className="control">
             <input type="number" className="input" min={1} max={32} value={day} onChange={this.handleDayChange} onBlur={this.handleBlur} onKeyDown={this.handleKeyDown}/>

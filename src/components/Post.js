@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { Field, FieldArray, Form, reduxForm } from "redux-form";
 import { DeleteIcon, LoveItButton, SaveIcon, RefreshIcon, EditIcon } from "components/Icon";
 import moment from "moment/moment";
-import { smallFieldWithLabel } from "components/form/form.utils";
+import { customInput } from "components/form/form.utils";
 import Tags from "components/form/Tags";
 import { isMyObj } from "reducers/util/markMy";
 import RefreshLink from "components/RefreshLink";
@@ -27,23 +27,43 @@ function EditPostOnTimeline({ submitting, initialValues, project, handleSubmit, 
           <h2 className="is-size-7 small">{moment(initialValues.pubDate).format("MMMM Do")}</h2>
         </div>
         <Form onSubmit={handleSubmit}>
-          <Field name="title" component={smallFieldWithLabel} placeholder="Title"/>
-          <Field name="description" component={smallFieldWithLabel} className="textarea" type="textarea" placeholder="Description"/>
-          <FieldArray name="tags" component={(props) => {
-            let { fields } = props;
-            let tags = fields.getAll() || [];
-            return (
-              <div className="field">
-                <label className="label is-small">Tags</label>
-                <Tags tags={tags} removeTag={(tag) => {
-                  fields.remove(tags.indexOf(tag))
-                }} addTag={({ tag }) => {
-                  fields.push(tag)
-                }}/>
-              </div>
-            )
-          }}/>
-          <Field name="image.url" component={smallFieldWithLabel} type="image" placeholder="Image"/>
+          <Field
+            name="title"
+            component={customInput}
+            label="Title"
+            isSmall
+          />
+          <Field
+            name="description"
+            type="textarea"
+            component={customInput}
+            label="Description"
+            isSmall
+          />
+          <FieldArray
+            name="tags"
+            component={(props) => {
+              let { fields } = props;
+              let tags = fields.getAll() || [];
+              return (
+                <div className="field">
+                  <label className="label is-small">Tags</label>
+                  <Tags tags={tags} removeTag={(tag) => {
+                    fields.remove(tags.indexOf(tag))
+                  }} addTag={({ tag }) => {
+                    fields.push(tag)
+                  }}/>
+                </div>
+              )
+            }}
+          />
+          <Field
+            name="image.url"
+            type="image"
+            component={customInput}
+            label="Image"
+            isSmall
+          />
           <div className="field has-addons">
             <div className="control">
               <button type="submit" className={`${submitting ? "is-loading" : ""} button is-primary is-small`}>
