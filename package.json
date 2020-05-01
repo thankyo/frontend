@@ -9,7 +9,9 @@
     "start": "NODE_ENV=development webpack-dev-server",
     "build": "rimraf public && NODE_ENV=production webpack -p --optimize-minimize",
     "start-integration": "parcel ./integration/index.html",
-    "build-integration": "rimraf assets/integration && parcel build ./integration/index.html -d assets/integration --public-url /integration/"
+    "build-integration": "rimraf assets/integration && parcel build ./integration/index.html -d assets/integration --public-url /integration/",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "engines": {
     "npm": "^5.0.4",
@@ -44,7 +46,8 @@
     "redux": "3.7.2",
     "redux-form": "^7.3.0",
     "redux-thunk": "2.2.0",
-    "whatwg-fetch": "2.0.3"
+    "whatwg-fetch": "2.0.3",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -87,5 +90,6 @@
     "webpack-manifest-plugin": "^2.0.0-rc.2",
     "webpack-md5-hash": "^0.0.6"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
